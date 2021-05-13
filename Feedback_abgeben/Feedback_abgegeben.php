@@ -7,10 +7,13 @@ session_start();
 $_SESSION["Fragenindex"] = -1;
 $_SESSION["Helpindex"] = 1;
 $_SESSION["Fragen"] = array();
-require_once "../Portal/config.php";
+require_once "../config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
 <head>
 <meta charset="UTF-8">
 <title>Feedback abgeben</title>

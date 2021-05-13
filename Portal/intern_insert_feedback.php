@@ -1,6 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
 <head>
 <meta charset="UTF-8">
 <title>Feedback abgeben</title>
@@ -8,7 +11,7 @@
 <body>
 
 <?php
-require_once "config.php";
+require_once "../config.php";
 require_once "session.php";
 
 $Antworten="";//In dieser Variable werden alle Antowrten zu den Fragen zusammengefasst

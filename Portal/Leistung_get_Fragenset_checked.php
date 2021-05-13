@@ -1,6 +1,6 @@
 <?php
 clearstatcache(true);
-include "config.php";
+include "../config.php";
 $ID = $_REQUEST["ID"];
 $checked_Fragen = "";
 $sql = "SELECT Fragen_extern FROM admin WHERE Leistung_".$ID." = 1";

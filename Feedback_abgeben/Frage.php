@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
-include "../Portal/config.php";
+include "../config.php";
 if(isset($_COOKIE["feedback_abgegeben"])) {
   header("location:Feedback_abgegeben.php");
 }
@@ -46,6 +46,9 @@ else{
 
 <!doctype html>
 <html lang="en">
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">

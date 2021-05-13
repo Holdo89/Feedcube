@@ -2,7 +2,7 @@
 
  require_once "session.php";
 
- require_once "config.php";
+ require_once "../config.php";
 
 $sql = "SELECT Is_Admin FROM users WHERE username = '".$_SESSION["username"]."'";
 $result = mysqli_query($link, $sql);

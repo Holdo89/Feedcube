@@ -1,7 +1,7 @@
 <?php
 
 require_once "session.php";
-require_once "config.php";
+require_once "../config.php";
 
 
 $sql = "SELECT MAX(post_order_no) FROM multiplechoice_answers";

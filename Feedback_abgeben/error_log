@@ -62,5 +62,5 @@
 [19-Apr-2021 00:07:38 America/Boise] PHP Warning:  scandir(): (errno 2): No such file or directory in /home3/feedcube/public_html/Software/Feedback_abgeben/Feedback_abgegeben.php on line 22
 [19-Apr-2021 00:07:38 America/Boise] PHP Warning:  scandir(../assets/feedcube/logo/): failed to open dir: No such file or directory in /home3/feedcube/public_html/Software/Feedback_abgeben/Feedback_abgegeben.php on line 23
 [19-Apr-2021 00:07:38 America/Boise] PHP Warning:  scandir(): (errno 2): No such file or directory in /home3/feedcube/public_html/Software/Feedback_abgeben/Feedback_abgegeben.php on line 23
-[20-Apr-2021 17:25:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[20-Apr-2021 17:25:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/config.php on line 17
 [30-Apr-2021 07:52:57 America/Boise] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Feedback_abgeben/Frage_aus_Datenbank.php on line 9

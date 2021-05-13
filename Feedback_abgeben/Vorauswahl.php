@@ -13,11 +13,14 @@ $_SESSION["Leistung"] = $_REQUEST["Leistung"];		//true für das erste mal in das
 $_SESSION["Fragenindex"] = 1;
 $_SESSION["Fragen"] = array();		//speichert die Antworten
 $_SESSION["Fragen_ID"] = array();	//speichert die ID der Fragen die ausgewählt wurden
-include "../Portal/config.php";
+include "../config.php";
 ?>
 
 <!doctype html>
 <html lang="en">
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">

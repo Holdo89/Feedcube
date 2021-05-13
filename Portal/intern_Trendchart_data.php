@@ -1,6 +1,6 @@
 <?php
 include "session.php";
-include "config.php";
+include "../config.php";
 $sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
 $exec = mysqli_query($link,$sql);
 $row = mysqli_fetch_assoc($exec);

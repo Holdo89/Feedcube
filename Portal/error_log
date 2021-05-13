@@ -1,4 +1,4 @@
-[18-Apr-2021 23:27:45 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'feedcube'@'localhost' to database 'feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[18-Apr-2021 23:27:45 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'feedcube'@'localhost' to database 'feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [18-Apr-2021 23:53:46 America/Boise] PHP Warning:  scandir(../assets/feedcube/bg_loginfb/): failed to open dir: No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
 [18-Apr-2021 23:53:46 America/Boise] PHP Warning:  scandir(): (errno 2): No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
 [18-Apr-2021 23:54:13 America/Boise] PHP Warning:  scandir(../assets/feedcube/bg_loginfb/): failed to open dir: No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
@@ -29,11 +29,11 @@
 [18-Apr-2021 23:59:00 America/Boise] PHP Warning:  scandir(): (errno 2): No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
 [19-Apr-2021 00:05:49 America/Boise] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/feedcube/public_html/Software/Portal/Range_speichern.php:1) in /home3/feedcube/public_html/Software/Portal/session.php on line 3
 [19-Apr-2021 00:05:49 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Range_speichern.php:1) in /home3/feedcube/public_html/Software/Portal/Range_speichern.php on line 101
-[20-Apr-2021 17:25:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[20-Apr-2021 17:25:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[20-Apr-2021 17:26:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[20-Apr-2021 17:29:37 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[20-Apr-2021 17:29:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[20-Apr-2021 17:25:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/../config.php on line 17
+[20-Apr-2021 17:25:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/../config.php on line 17
+[20-Apr-2021 17:26:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'feedcube'@'localhost' (using password: YES) in /home3/feedcube/public_html/Software/../config.php on line 17
+[20-Apr-2021 17:29:37 America/Boise] PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home3/feedcube/public_html/Software/../config.php on line 17
+[20-Apr-2021 17:29:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home3/feedcube/public_html/Software/../config.php on line 17
 [20-Apr-2021 17:30:42 America/Boise] PHP Warning:  scandir(../assets/test14/bg_loginfb/): failed to open dir: No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
 [20-Apr-2021 17:30:42 America/Boise] PHP Warning:  scandir(): (errno 2): No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
 [20-Apr-2021 17:37:37 America/Boise] PHP Warning:  scandir(../assets/treevelop/bg_loginfb/): failed to open dir: No such file or directory in /home3/feedcube/public_html/Software/Portal/login.php on line 110
@@ -267,7 +267,7 @@
 [01-May-2021 23:34:13 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [02-May-2021 01:29:22 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [02-May-2021 01:29:25 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[06-May-2021 13:44:21 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[06-May-2021 13:44:21 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [06-May-2021 14:35:15 America/Boise] PHP Warning:  mysqli_query(): Empty query in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 235
 [06-May-2021 14:35:15 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 236
 [06-May-2021 14:35:15 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Trendchart_data.php on line 16
@@ -276,93 +276,93 @@
 [06-May-2021 14:35:34 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [06-May-2021 14:35:35 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [06-May-2021 14:35:36 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[06-May-2021 15:02:54 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 15:03:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[06-May-2021 15:02:54 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 15:03:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [06-May-2021 15:06:00 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [06-May-2021 15:08:13 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[06-May-2021 15:17:06 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 15:59:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:00:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:01:28 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:01:47 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_dominic' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[06-May-2021 15:17:06 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 15:59:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:00:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:01:28 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:01:47 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_dominic' in /home3/feedcube/public_html/Software/../config.php on line 17
 [06-May-2021 16:06:25 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [06-May-2021 16:07:13 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [06-May-2021 16:07:33 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[06-May-2021 16:10:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:20:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:25:45 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:27:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:28:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:28:41 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:30:43 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:36:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:36:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:37:13 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:37:28 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:56:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:59:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 16:59:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:25:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:29:09 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[06-May-2021 16:10:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:20:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:25:45 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:27:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:28:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:28:41 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:30:43 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:36:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:36:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:37:13 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:37:28 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:56:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:59:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 16:59:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:25:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:29:09 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [06-May-2021 17:32:19 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[06-May-2021 17:39:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:40:44 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:41:52 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:42:21 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:42:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:45:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:46:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:47:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 17:47:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 18:17:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 18:57:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 21:18:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 21:54:54 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 22:28:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 22:28:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 23:11:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_cpcalendars' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 23:18:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 23:31:28 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_demo' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[06-May-2021 23:53:08 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 00:12:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 00:23:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[06-May-2021 17:39:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:40:44 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:41:52 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:42:21 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:42:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:45:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:46:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:47:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 17:47:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 18:17:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 18:57:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 21:18:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 21:54:54 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 22:28:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 22:28:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 23:11:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_cpcalendars' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 23:18:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 23:31:28 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_demo' in /home3/feedcube/public_html/Software/../config.php on line 17
+[06-May-2021 23:53:08 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 00:12:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 00:23:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [07-May-2021 02:41:58 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[07-May-2021 05:38:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_webdisk' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 08:45:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 09:14:03 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_cpcalendars' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 09:33:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_demo' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 09:49:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 10:22:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hostmaster' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 13:55:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 14:14:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 14:14:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 14:17:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 14:17:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 14:17:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 14:17:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 16:49:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 18:53:53 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 18:53:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 21:55:35 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_dominic' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 21:55:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_dominic' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 22:56:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 22:56:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 23:42:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[07-May-2021 23:42:51 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 04:22:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 04:22:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 09:05:20 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 14:00:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 14:00:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 14:00:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 14:00:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[07-May-2021 05:38:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_webdisk' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 08:45:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 09:14:03 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_cpcalendars' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 09:33:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_demo' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 09:49:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 10:22:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hostmaster' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 13:55:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 14:14:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 14:14:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 14:17:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 14:17:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 14:17:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 14:17:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 16:49:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 18:53:53 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 18:53:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 21:55:35 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_dominic' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 21:55:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_dominic' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 22:56:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 22:56:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 23:42:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[07-May-2021 23:42:51 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 04:22:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 04:22:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:18 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:19 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 09:05:20 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 14:00:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 14:00:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 14:00:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 14:00:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
 [08-May-2021 14:18:11 America/Boise] PHP Warning:  mysqli_query(): Empty query in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 235
 [08-May-2021 14:18:11 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 236
 [08-May-2021 14:18:11 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Trendchart_data.php on line 16
@@ -373,57 +373,57 @@
 [08-May-2021 14:18:19 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Trendchart_data.php on line 16
 [08-May-2021 14:18:19 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Trendchart_data.php on line 20
 [08-May-2021 14:18:19 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/Trendchart_data.php on line 30
-[08-May-2021 18:47:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 18:47:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 18:47:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 18:47:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 23:39:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[08-May-2021 23:39:16 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 04:27:47 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 04:27:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 09:08:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 09:08:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 09:08:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 09:09:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 09:09:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 09:09:01 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 14:47:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 14:47:51 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 19:51:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[09-May-2021 19:52:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 00:49:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 00:49:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 00:49:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 00:49:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 03:50:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_cpcalendars' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 04:32:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 04:32:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:02:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hostmaster' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:38:10 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:38:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:38:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:38:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:38:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 05:38:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[08-May-2021 18:47:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 18:47:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 18:47:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 18:47:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 23:39:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[08-May-2021 23:39:16 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 04:27:47 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 04:27:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 09:08:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 09:08:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 09:08:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 09:09:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 09:09:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 09:09:01 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 14:47:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 14:47:51 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 19:51:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[09-May-2021 19:52:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 00:49:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 00:49:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 00:49:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 00:49:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 03:50:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_cpcalendars' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 04:32:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 04:32:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hiuewif' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:02:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_hostmaster' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:38:10 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:38:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:38:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:38:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:38:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 05:38:12 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
 [10-May-2021 07:36:38 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[10-May-2021 09:26:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_webdisk' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 10:36:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 10:36:41 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 10:36:42 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 10:36:42 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 15:26:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 15:26:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 20:15:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 20:15:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[10-May-2021 21:17:10 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 01:12:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 01:12:16 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 06:04:10 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 06:04:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 06:52:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 06:52:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 06:52:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 07:44:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[10-May-2021 09:26:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_webdisk' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 10:36:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 10:36:41 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 10:36:42 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 10:36:42 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 15:26:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 15:26:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 20:15:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 20:15:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[10-May-2021 21:17:10 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 01:12:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 01:12:16 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 06:04:10 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 06:04:11 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 06:52:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 06:52:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 06:52:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 07:44:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [11-May-2021 08:01:59 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home3/feedcube/public_html/Software/Portal/session.php on line 3
 [11-May-2021 08:01:59 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php:1) in /home3/feedcube/public_html/Software/Portal/session.php on line 7
 [11-May-2021 08:03:16 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home3/feedcube/public_html/Software/Portal/session.php on line 3
@@ -694,31 +694,31 @@
 [11-May-2021 08:30:42 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php:5) in /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php on line 12
 [11-May-2021 08:30:42 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php:5) in /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php on line 13
 [11-May-2021 08:30:42 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php:5) in /home3/feedcube/public_html/Software/Portal/Leistungmanagement.php on line 14
-[11-May-2021 11:26:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 11:26:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 13:23:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 13:23:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[11-May-2021 11:26:23 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 11:26:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 13:23:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 13:23:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [11-May-2021 15:39:41 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [11-May-2021 15:39:43 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [11-May-2021 16:44:53 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
-[11-May-2021 16:45:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[11-May-2021 16:45:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [11-May-2021 16:49:10 America/Boise] PHP Warning:  Division by zero in /home3/feedcube/public_html/Software/Portal/Statistics.php on line 159
 [11-May-2021 16:50:15 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Export_Data_Admin.php:17) in /home3/feedcube/public_html/Software/Portal/Export_Data_Admin.php on line 46
-[11-May-2021 17:01:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 17:01:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 17:01:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 17:01:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 17:42:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 17:55:47 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 17:55:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 18:38:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 19:32:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 20:07:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 22:33:13 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 22:33:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 22:52:04 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[11-May-2021 22:52:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 00:06:46 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[11-May-2021 17:01:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 17:01:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 17:01:38 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 17:01:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 17:42:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 17:55:47 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 17:55:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 18:38:30 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 19:32:31 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 20:07:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 22:33:13 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 22:33:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 22:52:04 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[11-May-2021 22:52:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 00:06:46 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
 [12-May-2021 01:50:28 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Export_Data_Admin.php:17) in /home3/feedcube/public_html/Software/Portal/Export_Data_Admin.php on line 46
 [12-May-2021 01:52:05 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/feedcube/public_html/Software/Portal/Export_Data_Admin.php:17) in /home3/feedcube/public_html/Software/Portal/Export_Data_Admin.php on line 46
 [12-May-2021 02:13:47 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/intern_Trendchart_data.php on line 19
@@ -731,54 +731,54 @@
 [12-May-2021 02:14:17 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/intern_Trendchart_data.php on line 19
 [12-May-2021 02:14:17 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/intern_Trendchart_data.php on line 23
 [12-May-2021 02:14:17 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home3/feedcube/public_html/Software/Portal/intern_Trendchart_data.php on line 27
-[12-May-2021 03:41:21 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 03:58:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 03:58:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 03:58:35 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 03:58:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 03:58:41 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 03:58:43 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 04:35:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 05:05:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 05:09:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 05:15:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 05:15:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 05:15:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 07:31:57 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 09:05:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 09:05:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 09:18:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 11:13:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 11:39:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 11:50:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 12:28:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 13:42:04 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 13:42:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 13:49:06 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 13:49:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 14:13:49 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 14:13:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 18:25:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 19:27:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 19:27:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 19:27:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 19:27:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 20:47:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 22:05:51 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 22:46:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[12-May-2021 22:46:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 00:07:09 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 00:33:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 00:33:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 00:43:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 00:48:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 00:49:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 03:03:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 03:33:27 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 05:38:46 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 05:53:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 06:16:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 06:16:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 06:53:42 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 06:53:52 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
-[13-May-2021 06:53:53 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/Portal/config.php on line 17
+[12-May-2021 03:41:21 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 03:58:24 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 03:58:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 03:58:35 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 03:58:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 03:58:41 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 03:58:43 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 04:35:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 05:05:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 05:09:25 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 05:15:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 05:15:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 05:15:39 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 07:31:57 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 09:05:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 09:05:02 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 09:18:29 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 11:13:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 11:39:40 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 11:50:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 12:28:37 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 13:42:04 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 13:42:05 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 13:49:06 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 13:49:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 14:13:49 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 14:13:50 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 18:25:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 19:27:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 19:27:33 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 19:27:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 19:27:34 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 20:47:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 22:05:51 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 22:46:15 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[12-May-2021 22:46:17 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 00:07:09 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 00:33:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 00:33:59 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 00:43:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_www' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 00:48:58 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 00:49:00 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 03:03:14 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 03:33:27 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 05:38:46 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 05:53:36 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 06:16:55 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 06:16:56 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_blog' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 06:53:42 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 06:53:52 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17
+[13-May-2021 06:53:53 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1049): Unknown database 'feedcube_feedcube' in /home3/feedcube/public_html/Software/../config.php on line 17

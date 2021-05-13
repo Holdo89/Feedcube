@@ -1,6 +1,6 @@
 <?php
 
-    require_once "config.php";
+    require_once "../config.php";
 
     $sql="SELECT * FROM singlechoice_answers ORDER BY post_order_no ASC";
 

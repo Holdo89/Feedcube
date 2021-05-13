@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Portal/config.php";
+require_once "../config.php";
 
 //Gibt die Anzahl aller gespeicherten Fragen an
 

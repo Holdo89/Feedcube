@@ -20,7 +20,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 // Include config file
 
-require_once "config.php";
+require_once "../config.php";
 
  
 
@@ -145,6 +145,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!doctype html>
 
 <html lang="en">
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
 
   <head>
 

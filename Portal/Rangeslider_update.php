@@ -2,7 +2,7 @@
 
  require_once "session.php";
 
- require_once "config.php";
+ require_once "../config.php";
 
  $ID=$_REQUEST["ID"];
  $max=$_REQUEST["max"];

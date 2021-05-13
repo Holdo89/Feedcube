@@ -1,6 +1,6 @@
 <?php
 
-require_once "config.php";
+require_once "../config.php";
 require_once "session.php";
 
 $sql = "SELECT Is_Admin FROM users WHERE username = '".$_SESSION["username"]."'";

@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 $ID=$_REQUEST["ID"];
 
     $sql = "SELECT * FROM rangeslider_answers WHERE Frage_ID = ".$ID; 

@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
-require_once "../Portal/config.php";
+require_once "../config.php";
 if(isset($_COOKIE["feedback_abgeben"])) {
     header("location:Feedback_abgegeben.php");
 }

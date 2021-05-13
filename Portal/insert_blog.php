@@ -1,6 +1,6 @@
 
 <?php
-require_once "config.php";
+require_once "../config.php";
 $Blogbeitrag = $_REQUEST['Blogbeitrag'];
 
 // attempt insert query execution

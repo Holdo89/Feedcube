@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 $ID = $_REQUEST["ID"];
 $checked_Fragen = "";
 $sql = "SELECT Fragen_extern FROM admin";

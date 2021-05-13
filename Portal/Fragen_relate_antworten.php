@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 $Antwort = $_POST["checkbox"]; 
 $Type = $_REQUEST["Type"];
 $Questiontype = $_REQUEST["Questiontype"];

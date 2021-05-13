@@ -1,7 +1,7 @@
 <?php
 
 require_once "session.php";
-require_once "config.php";
+require_once "../config.php";
 
 		echo'<select class="Auswahl_Select" id="Auswahl_Fragenset" name="Auswahl_Fragenset" oninput="display_leistung()">';
 		echo "<option value='kein_Fragenset'>freie Auswahl</option>";

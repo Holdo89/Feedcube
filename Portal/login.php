@@ -9,7 +9,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
  
 // Include config file
-require_once "config.php";
+require_once "../config.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -90,6 +90,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
 <!doctype html>
 <html lang="en">
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
+<head>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

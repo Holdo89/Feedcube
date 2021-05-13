@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../config.php');
 
 $post_order = isset($_POST["post_order_ids"]) ? $_POST["post_order_ids"] : [];
 

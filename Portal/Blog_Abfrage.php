@@ -10,7 +10,7 @@
 </script>
 <?php
  require_once "session.php";
- require_once "config.php";
+ require_once "../config.php";
  
 
  $query = "SELECT * FROM interner_blog ORDER BY Timestamp DESC";

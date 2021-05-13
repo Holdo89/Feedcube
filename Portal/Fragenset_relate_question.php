@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 $Frage = $_POST["Fragenset_checkbox"]; 
 $ID = $_REQUEST["Fragenset_ID"];
 
