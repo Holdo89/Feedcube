@@ -11,7 +11,9 @@
 <!DOCTYPE HTML>
 
 <html>
-
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
 <head>
 
     <meta charset="UTF-8">
@@ -63,16 +65,9 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link href="navigation.css" rel="stylesheet" type="text/css">
 
-
-
-
-
 <script type="text/javascript" src="navigation.js"></script>
-
-
 
 <div class="header">
 
@@ -96,7 +91,7 @@
 
 					<a href="feedback_charts.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
 
-					<a href="multiplechoice-responsive_2\tester.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
+					<a href="forms.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
 
 				</div>
 
@@ -149,7 +144,7 @@
 
 <h2>Hi <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, Willkommen auf der Startseite von</h2>
 
-<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" width="220" height="70">
+<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="300" height="120">
 
 <div style="text-align:left;margin-top:20px;margin-bottom:20px">
 
@@ -175,7 +170,7 @@ Dabei werden sowohl multiplechoice Fragen gestellt, als auch Fragen die eine Tex
 
 <a class="w3-btn" style="background-color:rgba(3, 122, 143, 0.904); color:white; border-radius:5px;width:150px;" href="feedback_charts.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
 
-<a class="w3-btn" style="background-color:rgba(3, 122, 143, 0.904); color:white; border-radius:5px;width:150px" href="multiplechoice-responsive_2\tester.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>
+<a class="w3-btn" style="background-color:rgba(3, 122, 143, 0.904); color:white; border-radius:5px;width:150px" href="forms.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>
 
 
 

@@ -5,7 +5,9 @@
 
 <!DOCTYPE HTML>
 <html>
-<head>
+<?php
+ require_once "FEEDCUBE_icon.php"
+?><head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feedback Auswertung</title>
@@ -47,7 +49,7 @@
 				<button class="dropbtn">Auswertung <i class="fa fa-caret-down"></i></button>
 				<div class="dropdown-content">			
 					<a href="feedback_charts.php" class="active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
-					<a href="multiplechoice-responsive_2\tester.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
+					<a href="forms.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
 				</div>
 			</div>
 			<div class="dropdown">

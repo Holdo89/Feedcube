@@ -5,7 +5,9 @@
 
 <!DOCTYPE HTML>
 <html>
-<head>
+<?php
+ require_once "FEEDCUBE_icon.php"
+?><head>
 <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
@@ -38,7 +40,7 @@
       			<i class="fa fa-caret-down"></i>
     		</button>
 			<div class="dropdown-content">			<a href="feedback_charts.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
-			<a href="multiplechoice-responsive_2\tester_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				</div>
+			<a href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				</div>
 			</div>
 			<div class="dropdown">
 			<button class="dropbtn">Intern

@@ -1,9 +1,7 @@
 <?php
 
  require_once "session.php";
-
  require_once "config.php";
-
 ?>
 
 
@@ -11,9 +9,11 @@
 <!DOCTYPE HTML>
 
 <html>
-
+<?php
+ require_once "FEEDCUBE_icon.php"
+?>
 <head>
-
+	<div w3-include-html="FEEDCUBE_icon.html"></div>
     <meta charset="UTF-8">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,22 +21,11 @@
 	<title>Feedback Auswertung</title>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="icon" href="../assets/brand/FEEDCUBE_icon.png" type="image/gif">
-
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-
 	<link href="charts.css" rel="stylesheet" type="text/css">
-
 	<link href="slider-range.css" rel="stylesheet" type="text/css">
-
 	<script type="text/javascript" src="hidefunction.js"></script>
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-
-		
-
-
-
 
 
 </head>
@@ -75,7 +64,7 @@
 
 					<a href="feedback_charts.php" class="active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
 
-					<a href="multiplechoice-responsive_2\tester_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
+					<a href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
 
 				</div>
 
@@ -170,7 +159,7 @@ Dabei werden sowohl multiplechoice Fragen gestellt, als auch Fragen die eine Tex
 
 <a class="w3-btn" style="background-color:rgba(3, 122, 143, 0.904); color:white; border-radius:5px;width:150px;margin-bottom:10px" href="feedback_charts.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
 
-<a class="w3-btn" style="background-color:rgba(3, 122, 143, 0.904); color:white; border-radius:5px;width:150px;margin-bottom:10px" href="multiplechoice-responsive_2\tester_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>
+<a class="w3-btn" style="background-color:rgba(3, 122, 143, 0.904); color:white; border-radius:5px;width:150px;margin-bottom:10px" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
- require_once "../IsAdmincheck.php";
+ require_once "IsAdmincheck.php";
 
  if($Trainer=='externes_feedback'){
  		$query = "SELECT * FROM externes_feedback ORDER BY Datum DESC";

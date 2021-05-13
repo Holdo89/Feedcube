@@ -1,8 +1,8 @@
 <?php
 
-require_once "../session.php";
+require_once "session.php";
 
-require_once "../config.php";
+require_once "config.php";
 
 $Id=$_REQUEST["Id"];
 
@@ -17,6 +17,6 @@ mysqli_query($link, $sql);
 
 mysqli_close($link);
 
-header("location: tester_admin.php");
+header("location: forms_admin.php");
 
 ?>
