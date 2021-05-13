@@ -1,0 +1,21 @@
+<?php
+ require_once "session.php";
+ require_once "config.php";
+ 
+ $datum_min=$_REQUEST["datum_min"];
+ $datum_max=$_REQUEST["datum_max"];
+ $Frage=$_REQUEST["Frage"];
+
+ if($Frage){
+$query = "SELECT ".$Frage.", Datum FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." != '' ORDER BY Datum DESC";
+
+$exec = mysqli_query($link,$query);
+while($row = mysqli_fetch_array($exec)){
+		echo "
+		<div class='posts'>
+		<p>".$row['Datum']."</p>
+		<p style= 'font-style: italic; font-size: 18px; margin-top: 20px'>".$row[$Frage]."</p>
+		</div>";
+	}
+ }	
+?>

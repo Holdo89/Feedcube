@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+
+body {
+
+  width: 100vw;
+
+  height: 100vh;
+
+  display: block;
+
+  align-items: center;
+
+  justify-items: center;
+
+  font-size: 12pt;
+
+  font-family: "Spartan";
+
+  color: #2A293E;
+
+  overflow-x: hidden;
+
+}
+
+
+
+form {
+
+  --background: white;
+
+  --border: rgba(0, 0, 0, 0.125);
+
+  --borderDark: rgba(0, 0, 0, 0.25);
+
+  --borderDarker: rgba(0, 0, 0, 0.5);
+
+  --bgColorH: 0;
+
+  --bgColorS: 0%;
+
+  --bgColorL: 98%;
+
+  --fgColorH: 210;
+
+  --fgColorS: 50%;
+
+  --fgColorL: 38%;
+
+  --shadeDark: 0.3;
+
+  --shadeLight: 0.7;
+
+  --shadeNormal: 0.5;
+
+  --borderRadius: 0.125rem;
+
+  --highlight: #306090;
+
+  background: white;
+
+  border: 3px solid var(--border);
+
+  border-radius: 10px 10px;
+
+  box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
+
+  margin-left:20px;
+
+  margin-right:10px;
+
+  margin-top:30px;
+
+  margin-bottom:30px;
+
+  position: relative; 
+
+  width:95%;
+
+
+
+}
+
+.deleteButton{
+ 
+  border: none;
+
+  border-radius: 10px 10px;
+
+  box-shadow: 0rem 0rem 0rem 0rem var(--border);
+
+  margin: 4px;
+
+  position: relative; 
+
+  width:95%;
+
+
+}
+
+
+
+
+label, input, textarea {
+
+  /*display: block;*/
+
+  /*width: 100%;*/
+
+  font-size: 12pt;
+
+  line-height: 24pt;
+
+  font-family: "Spartan";
+
+}
+
+
+
+.grid-container {
+
+  display: grid;
+
+  text-align: center;
+
+  padding: 2px;
+
+  margin: 20px;
+
+}
+
+
+
+.choice {
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+
+  padding: 10px;
+
+  font-size: 13px;
+
+}
+
+
+
+
+
+.leer {
+
+  padding: 6px;
+
+  grid-column-start: 1;
+
+  grid-column-end: -1;
+
+}
+
+
+
+.frage_text{
+
+  background-color:white;
+
+  text-align:center;
+
+  vertical-align: middle;
+
+  grid-column-start: 2;
+
+  grid-column-end: -1;
+
+  border: 1.0px solid rgba(0, 0, 0, 0.8);
+
+}
+
+.chapter{
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+
+  padding: 10px;
+
+  font-size: 20px;
+
+}
+
+
+
+.frage{
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+
+
+
+
+input {
+
+  margin-bottom: 10pt;
+
+  margin-top: 10pt;
+
+}
+
+
+
+h3 {
+
+  font-weight: normal;
+
+  font-size: 10pt;
+
+  line-height: 24pt;
+
+  font-style: italic;
+
+  margin: 0 0 0.5em 0;
+
+}
+
+
+
+span {
+
+  font-size: 8pt;
+
+}
+
+
+
+em {
+
+  color: #f45702;
+
+  font-weight: bold;
+
+}
+
+
+
+input, textarea {
+
+  border: none;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  border-radius: 2px;
+
+  background: #f8f4e5;
+
+  padding-left: 5px;
+
+  outline: none;
+
+}
+
+
+
+input:focus, textarea:focus {
+
+  border: 1px solid #6bd4b1;
+
+}
+
+
+
+textarea {
+
+  resize: none;
+
+}
+
+
+
+::selection {
+
+  background: #ffc7b8;
+
+}
+
+
+
+input:-webkit-autofill,
+
+input:-webkit-autofill:hover,
+
+input:-webkit-autofill:focus,
+
+textarea:-webkit-autofill,
+
+textarea:-webkit-autofill:hover,
+
+textarea:-webkit-autofill:focus {
+
+  border: 1px solid #6bd4b1;
+
+  -webkit-text-fill-color: #2A293E;
+
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+
+  transition: background-color 5000s ease-in-out 0s;
+
+}
+
+
+
+@media only screen and (max-width: 720px){
+
+
+
+form{
+
+	margin-left:2px;
+
+  padding:1px;
+
+  width: 97%;
+
+  overflow: auto;
+
+}
+
+
+
+.choice{
+
+  font-size:10px;
+
+  min-width: 80px;
+
+  padding:0px;
+
+  padding-top:10px;
+
+  padding-bottom:10px;
+
+
+
+}
+
+
+
+.frage,.frage_text{
+
+  font-size:12px;
+
+}
+
+
+
+.chapter{
+
+  font-size: 13px;
+
+}
+
+
+
+.Datum{
+
+	font-size:20px;
+
+}
+
+
+
+.grid-container {
+
+  display: grid;
+
+  text-align: center;
+
+  margin: 3px;
+
+}
+
+}
+

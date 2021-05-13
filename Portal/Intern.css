@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+form {
+
+  --background: white;
+
+  --border: rgba(0, 0, 0, 0.125);
+
+  --borderDark: rgba(0, 0, 0, 0.25);
+
+  --borderDarker: rgba(0, 0, 0, 0.5);
+
+  --bgColorH: 0;
+
+  --bgColorS: 0%;
+
+  --bgColorL: 98%;
+
+  --fgColorH: 210;
+
+  --fgColorS: 50%;
+
+  --fgColorL: 38%;
+
+  --shadeDark: 0.3;
+
+  --shadeLight: 0.7;
+
+  --shadeNormal: 0.5;
+
+  --borderRadius: 0.125rem;
+
+  --highlight: #306090;
+
+  background: white;
+
+  border: 3px solid var(--border);
+
+  border-radius: 10px 10px;
+
+  box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
+
+  padding: 2rem;
+
+  position: relative;
+
+  overflow: hidden;
+
+  min-width: 40%; 
+
+  width: 60vw;
+
+  margin: auto;
+
+}
+
+
+
+
+
+.choice {
+
+  padding: 3px;
+
+  font-size: 15px;
+
+}
+
+
+
+.chapter{
+
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+
+  padding: 10px;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+}
+
+.multi
+{
+  text-align:left; 
+  margin-left:20vw; 
+  margin-bottom:50px;
+}
+
+.frage{
+
+  padding: 5px;
+
+  font-size: 18px;
+
+  margin-top:20px;
+
+  margin-bottom:20px;
+
+}
+
+
+
+.frage_text{
+
+  padding: 5px;
+
+  font-size: 18px;
+
+  margin-top:20px;
+
+  margin-bottom:20px;
+
+  width: 95%;
+
+}
+
+
+
+.antwort{
+
+  padding: 5px;
+
+  font-size: 30px;
+
+  text-align:center;
+
+  color: white;
+
+}
+
+
+
+.center {
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width: 70%;
+
+  margin-bottom: 30px;
+
+}
+
+
+
+.label_progress{
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  text-align: center;
+
+  margin-top:20px;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.center_button {
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width: 50%;
+
+  margin-top:30px;
+
+  padding: 5px;
+
+}
+
+
+
+.progressbar{
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width:60%;
+
+}
+
+
+
+
+
+em {
+
+  color: #f45702;
+
+  font-weight: bold;
+
+}
+
+
+
+input, textarea {
+
+  border: none;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  border-radius: 10px;
+
+  outline: none;
+
+}
+
+
+
+input:focus, textarea:focus {
+
+  border: 1px solid #6bd4b1;
+
+}
+
+
+
+textarea {
+
+  resize: none;
+
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+
+  form {
+
+    width: 90vw;
+
+  }
+  .multi{
+    margin-left: 18vw;
+  }
+  .center_button {
+    width:80vw;
+    max-width: 300px;
+
+}
+
+
+}

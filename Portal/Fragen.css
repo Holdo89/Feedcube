@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+
+body {
+
+  width: 100vw;
+
+  height: 100vh;
+
+  align-items: center;
+
+  justify-items: center;
+
+  font-size: 11pt;
+
+  font-family: "Spartan";
+
+  color: #2A293E;
+
+}
+
+
+
+
+
+label, input, textarea {
+
+  line-height: 25pt;
+  font-family: "Spartan";
+  outline: none;    
+
+}
+
+
+
+
+
+.überschrift{
+
+  text-align:left;
+
+  color:white;
+
+  background:rgba(4, 51, 78, 0.904);
+
+  margin-bottom:0;
+
+  line-height: 20pt;
+  padding-left:2px;
+  min-width:35px;
+
+}
+
+
+
+form,.form_intern, .form_antworten  {
+
+ /* --background: white;
+
+  --border: rgba(0, 0, 0, 0.125);
+
+  --borderDark: rgba(0, 0, 0, 0.25);
+
+  --borderDarker: rgba(0, 0, 0, 0.5);
+
+  --bgColorH: 0;
+
+  --bgColorS: 0%;
+
+  --bgColorL: 98%;
+
+  --fgColorH: 210;
+
+  --fgColorS: 50%;
+
+  --fgColorL: 38%;
+
+  --shadeDark: 0.3;
+
+  --shadeLight: 0.7;
+
+  --shadeNormal: 0.5;
+
+  --borderRadius: 0.125rem;
+
+  --highlight: #306090;*/
+
+  background: white;
+
+  display: grid;
+
+  grid-template-columns:2.5fr 5.5fr 150px 0.4fr 0.4fr;
+
+  margin:auto;
+
+  text-align: center;
+
+  border: 1px solid var(--border);
+
+  box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
+
+  position: relative;
+
+  overflow: hidden;
+
+  width: 90vw;
+
+  margin-bottom:0px;
+
+}
+
+
+
+.form_intern {
+
+   grid-template-columns:7.5fr 2fr 0.4fr 0.4fr;
+
+ }
+
+ .form_antworten {
+
+   grid-template-columns:5fr 0.5fr;
+   width: 70vw;
+
+ }
+ .form_schieberegler_antworten {
+
+  grid-template-columns:2fr 2fr 2fr;
+  width: 70vw;
+
+}
+
+
+
+.center {
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width: 50%;
+
+  margin-bottom: 30px;
+
+}
+
+
+
+.center_button {
+
+  background-color:white;
+
+  display: block;
+
+  font-size: 16pt;
+
+  width: 100%;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.center_select {
+
+  background-color:white;
+  text-align:left;
+  display: block;
+  width: 100%;
+  line-height: 30pt;
+  height: 30pt;
+  padding-left:2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+
+
+input, label, textarea{
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  padding: 2px;
+
+  outline: none;
+
+}
+
+
+
+input:focus, textarea:focus {
+
+  border: 1px solid #6bd4b1;
+
+}
+
+
+
+textarea {
+
+  resize: none;
+
+}
+
+
+
+::selection {
+
+  background: #ffc7b8;
+
+}
+
+
+
+input:-webkit-autofill,
+
+input:-webkit-autofill:hover,
+
+input:-webkit-autofill:focus,
+
+textarea:-webkit-autofill,
+
+textarea:-webkit-autofill:hover,
+
+textarea:-webkit-autofill:focus {
+
+  border: 1px solid #6bd4b1;
+
+  -webkit-text-fill-color: #2A293E;
+
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+
+  transition: background-color 5000s ease-in-out 0s;
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  form, .form_intern{
+
+    width:550px;
+
+    font-size: 11px;
+
+  }
+
+  .form_schieberegler_antworten {
+    width: 90vw;
+    padding:5px;
+  }
+
+  .form_antworten{
+
+    font-size: 11px;
+
+    padding:5px;
+
+    width:90vw;
+
+  }
+
+  .center_button {
+
+    font-size: 14pt;
+
+    min-width:35px;
+
+  }
+
+  div.scroll{
+
+    width:100%;
+
+    overflow:auto;
+
+  }
+
+}
+
+
+
