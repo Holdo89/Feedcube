@@ -77,8 +77,9 @@ label, input, textarea {
 
 
 .überschrift{
-  text-align:center;
-  font-size:12px;
+  text-align:left;
+  font-weight: bold;
+  font-size:13px;
   color:white;
   background:rgba(4, 51, 78, 0.904);
   margin-bottom:0;
@@ -111,7 +112,7 @@ form {
   margin:auto;
   text-align: left;
   border: 1px solid var(--border);
-  border-radius: 10px 10px;
+  border-radius: 5px 5px 0px 0px;
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
   position: relative;
   overflow: hidden;

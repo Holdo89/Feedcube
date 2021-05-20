@@ -120,7 +120,7 @@
 	}
 	</style>
 	<form action="insert_user.php" method="post">
-	<label class="überschrift">Name</label><label class="überschrift">Username</label><label class="überschrift">Email</label><label class="überschrift">Admin</label><label class="überschrift">Trainer</label><label class="überschrift">Link</label><label class="überschrift" style="font-size:11px">Passwort</label><label class="überschrift"></label>
+	<label class="überschrift">Name</label><label class="überschrift">Username</label><label class="überschrift">Email</label><label class="überschrift">Admin</label><label class="überschrift">Trainer</label><label class="überschrift" style="text-align:center">Link</label><label class="überschrift" style="font-size:11px">Passwort</label><label class="überschrift"></label>
 	<?php
 		include "User_Abfrage.php";
 	?>
@@ -156,8 +156,9 @@ $new_password_err = $confirm_password_err = "";
 		<?php
 			include "Auswahlmöglichkeiten_Leistung.php"
 		?>
-		<div id="Link" name="Link" style="margin-top:20px;">Wähle dein Fragenset zur ausgewählten Leistung:</div>
-
+		<p style="margin-top:20px;">Feedback-Link: </p>
+		<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
+		<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system"; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>">Link kopieren</button>
 	</form>
 	</div>
 	<script>
@@ -166,30 +167,45 @@ $new_password_err = $confirm_password_err = "";
 	function display(Trainer) {
 		modal.style.display = "block";
 		Trainer_element.value = Trainer;
+		var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
+		Auswahl_Leistung.value = "%"
 		Trainer_element.innerHTML= "Erzeuge einen Feedback-Link für den Trainer <b>" + Trainer + "</b><div style='margin-top:20px;margin-bottom:20px'> Wähle eine Leistung die bewertet wird:</div>";
 		var Link = document.getElementById("Link");
-		Link.innerHTML= "Feedback-Link:";
+		Link.value = "";
 	}
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 	var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
 	var Link = document.getElementById("Link");
+	var copyButton = document.getElementById("copyButton");
 	var current_url = window.location.href;
 	var index = current_url.indexOf("Portal");
 	current_url = current_url.substr(0,index)+"Feedback_abgeben";
 	Auswahl_Leistung.onchange = function(){
-		Link.innerHTML= "Feedback-Link:<div style='font-size:13px;'> "+current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Leistung="+Auswahl_Leistung.value;
+		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
+		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Leistung="+Auswahl_Leistung.value;
+		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		Link.value = Feedbacklink;
+		copyButton.style.display = "block";
 	};
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
   		modal.style.display = "none";
+		copyButton.style.display = "none";
 	}
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 	if (event.target == modal) {
 		modal.style.display = "none";
+		copyButton.style.display = "none";
 	}
+	}
+	function copyLink() {
+		var copyLink = document.getElementById("Link");
+		copyLink.select();
+		copyLink.setSelectionRange(0, 99999);
+		document.execCommand("copy");
 	}
 	</script>
     </body>

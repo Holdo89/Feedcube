@@ -170,7 +170,7 @@
 
 	<p style="font-size:13pt; margin-bottom:20px; margin-top:30px;">Fragen an Kunden</p>
 	<div id="externe_Fragen" class="scroll" style="padding:20px;">
-	<form>
+	<form style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift">Kapitel</label>
 	<label class="überschrift">Frage</label>
 	<label class="überschrift">Typ</label>
@@ -227,7 +227,7 @@
 	</form>
 	<p style="font-size:13pt; margin-bottom:20px;">Fragen an Mitarbeiter</p>
 	<div id="interne_Fragen" class="scroll" style="padding:20px;">
-	<form class="form_intern">
+	<form class="form_intern" style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift">Frage</label>
 	<label class="überschrift">Typ</label>
 	<label class="überschrift"></label>
@@ -251,7 +251,7 @@
 	</form>
 	</div>
 	<p style="font-size:13pt; margin-bottom:20px;">Antwortmöglichkeiten</p>
-	<form class="form_antworten">
+	<form class="form_antworten" style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift">Singlechoice</label>
 	<label class="überschrift"></label>
 	</form>
@@ -265,7 +265,7 @@
 	<input class="center_button" type="submit" value="+"></input>
 	</form>
 
-	<form class="form_antworten">
+	<form class="form_antworten" style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift">Multiplechoice</label>
 	<label class="überschrift"></label>
 	</form>
