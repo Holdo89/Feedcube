@@ -18,7 +18,7 @@
  $sql="SELECT * FROM admin ORDER BY post_order_no ASC";
  $result=mysqli_query($link,$sql);
  while($rows=mysqli_fetch_array($result)){
-    echo $rows["Fragen_extern"].";";
+    echo '"'.$rows["Fragen_extern"].'";';
     $Id[$i]="Frage_".$rows["ID"];
     $i=$i+1;
  }
@@ -37,7 +37,7 @@ while($rows=mysqli_fetch_array($result)){
     $u=0;
     echo $rows["Datum"].";".$rows["Trainer"].";".$rows["Leistung"].";";
     while($u<=$i-1){
-        echo $rows[$Id[$u]].";";
+        echo '"'.$rows[$Id[$u]].'";';
         $u=$u+1;
     }
     echo"\n";
