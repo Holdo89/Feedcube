@@ -3100,8 +3100,9 @@ html {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
     border-color: rgba(0, 0, 0, 0.5);
-    width:43vw;
+    width:40vw;
   }
+
   .btn-primary:focus,
   .btn-primary.focus {
     color: #fff;

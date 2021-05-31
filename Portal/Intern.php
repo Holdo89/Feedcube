@@ -44,7 +44,7 @@
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;">Internes Feedback <i class="fa fa-bullhorn" aria-hidden="true"></i> </h1>
 		</div>
-	<div style="width:90vw; margin:auto; @media only screen and (max-width: 600px){width:100vw}">	
+	<div style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw}">	
 
 	<?php
 		$sql = "SELECT name, internes_feedback_abgegeben FROM users WHERE username = '".$_SESSION['username']."'";

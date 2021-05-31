@@ -5,7 +5,7 @@
 </a>
     <a style="  margin-bottom:20px; visibility: hidden;"></a>
 			
-    <a id ="feedback_charts" href="feedback_charts.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Diagramme</a>
+    <a id ="feedback_charts" href="feedback_charts.php"><i class="fa fa-line-chart" aria-hidden="true"></i> Auswertung</a>
     <a id ="forms_admin" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
     <a id ="Intern" href="Intern.php"><i class="fa fa-bullhorn" aria-hidden="true"></i> Feedback</a>
     <a id ="interner_blog" href="interner_blog.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>

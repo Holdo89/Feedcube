@@ -47,14 +47,7 @@
 <div class="header">
 
 <?php
-$sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
-$exec = mysqli_query($link,$sql);
-$row = mysqli_fetch_assoc($exec);
-$IsAdmin = $row["Is_Admin"];
-	if($IsAdmin == 1)
-		include "navigation_admin.php";
-	else
-		include "navigation.php";
+	include "navigation_admin.php";		//Pie and COlumnchart
 ?>
 
 <div style="width:90vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	

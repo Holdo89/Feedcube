@@ -67,7 +67,7 @@ while($row = mysqli_fetch_assoc($result)){
         $result_answers = mysqli_query($link, $sql_answers) ;
         while($row_answers=mysqli_fetch_array($result_answers)){
 
-            echo"<div><input id='element_1_".$Antwort_index."' name='intern_input_".$i."' type='radio' value='".$row_answers['Answers']."'
+            echo"<div><input id='element_1_".$Antwort_index."' name='intern_input_".$i."' type='radio' value='|".$row_answers['Answers']."|'
             style='margin:10px; ' for='element_1_".$Antwort_index."'>".$row_answers['Answers']."</div>";
 
             $Antwort_index=$Antwort_index+1;

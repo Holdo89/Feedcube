@@ -92,7 +92,7 @@ $feedback_year=substr($datum_max,0,4);
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
-			$sql2 = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." = '".$row["Answers"]."'";
+			$sql2 = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);
 			$Anzahl_abgegenes_feedback=$Anzahl_abgegenes_feedback+$row2["COUNT(".$Frage.")"];

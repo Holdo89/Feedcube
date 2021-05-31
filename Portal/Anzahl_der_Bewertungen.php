@@ -7,6 +7,8 @@ include "IsAdmincheck.php";
  $Leistung=$_REQUEST["Leistung"];
  $Frage=$_REQUEST["Frage"];
  $Frage_ID=substr($Frage,6);
+ $Trainer=$_REQUEST["Trainer"];
+ 
 
  if($Leistung && $Frage !="undefined"){ //falls noch keine multiplechoice Frage geschrieben wurde
 	$query = "SELECT Typ FROM admin WHERE ID=".$Frage_ID;

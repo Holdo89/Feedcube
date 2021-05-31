@@ -27,7 +27,7 @@ $Frage_ID=substr($Frage,6);
 
  		while($i<=intval($rows["Anzahl_Antworten"])){
 			$rows_answers=mysqli_fetch_array($result_answers);
-			$query = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND ".$Frage." = '".$rows_answers["Answers"]."'";
+			$query = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%'";
 			$exec = mysqli_query($link,$query);
 
 			while($row = mysqli_fetch_array($exec)){

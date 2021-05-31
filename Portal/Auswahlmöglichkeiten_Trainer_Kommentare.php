@@ -37,11 +37,17 @@ else
         echo "<option selected='selected' value='".$row['username']."'>".$row['name']."</option>";
 
     }
-
+    
     else{
-
-        echo "<option value='".$row['username']."'>".$row['name']."</option>";
-
+        if($IsAdmin==1){
+            echo "<option value='".$row['username']."'>".$row['name']."</option>";
+        }
+        else{
+            if($_SESSION["username"]==$row['username'])
+            {
+                echo "<option value='".$row['username']."'>".$row['name']."</option>";
+            }
+        }
     }
 
     }
