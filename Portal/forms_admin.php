@@ -39,6 +39,9 @@
 				include "Auswahlmöglichkeiten_Trainer.php"
 			?>
 	</div>
+	<script>
+	document.getElementById("Auswahl_Trainer").oninput = function(){formular()};
+	</script>
 	<div id="auswertungen" style="display:grid; margin:10px;">
 	</div>
 	<script>
