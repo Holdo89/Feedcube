@@ -3,7 +3,7 @@
 
 	<div class="btn-group">
   	<button type="button" id="metriken_button" class="btn btn-primary" onclick="change_color('metriken_button','text_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','blog'); hide('charts','blog');update();"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="buttontext">Diagramme<span></button>
-	<button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl')"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
+	<button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');create_blog();"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
 </div>
 </div>
 <div id=Hinweis style="margin-top:50px;"><p><label>Wähle Diagramme oder Kommentare um dein Feedback auszuwerten</label></p></div>
@@ -17,7 +17,7 @@
 
 	<label class="Auswahl"> Wähle einen Zeitraum: </label>	
 	<div class="Auswahl_Slider">
-	<div id="slider-range" onmousemove="datum_update(), datum_update_blog()"></div>
+	<div id="slider-range" onmousemove="datum_update_blog()"></div>
 	<p style="margin-top:0.5em">Bewertungen von: <span id="demo"></span></p>
 	</div>
 	</div>

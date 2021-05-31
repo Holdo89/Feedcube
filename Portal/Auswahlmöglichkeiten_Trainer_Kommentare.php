@@ -23,7 +23,7 @@ if ($i<2)
 }
 else
 {
-    echo'	<select class="Auswahl_Select" id="Auswahl_Trainer_Kommentare" name="Auswahl_Trainer_Kommentare" oninput="create_blog();">';
+    echo'	<select class="Auswahl_Select" id="Auswahl_Trainer_Kommentare" name="Auswahl_Trainer_Kommentare" oninput="get_new_datediff(\'Kommentare\');create_blog();">';
     $sql = "SELECT name, username, Is_Trainer FROM users WHERE Is_Trainer = 1 ORDER BY name ASC" ;
 
     $result = mysqli_query($link, $sql) ;

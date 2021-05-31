@@ -41,7 +41,7 @@ else*/
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script type="text/javascript" src="rangeslider_jquery_noadmin.js"> </script>
+  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
 
 </head>
 <body class="text-center">
