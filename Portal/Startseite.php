@@ -75,14 +75,12 @@ else*/
 </style>
 
 <!--erstes Kapitel Inhalt des Seminars-->
-
-<div class="container">
-  <div class="btn-group">
-  	<button type="button" id="metriken_button" class="btn btn-primary" onclick="change_color('metriken_button','text_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','blog'); hide('charts','blog');">Team</button>
-    <button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');">Individuell</button>
-  </div>
+<div id="Auswahl" class="grid-container-auswahl" style="width:78vw;">
+	<label class="Auswahl" style="text-align:center; padding:0"> Wähle einen Berater: </label>
+			<?php
+				include "Auswahlmöglichkeiten_Trainer.php"
+			?>	
 </div>
-
 <div class="startdashboard">
 <div class="überschrift"><b>Singlechoice</b> </div> <div class="überschrift"><b>Total</b></div> <div class="überschrift"><b>Trend</b> </div>
 <?php

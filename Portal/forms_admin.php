@@ -33,8 +33,8 @@
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;">Formulare <i class="fa fa-file-text-o" aria-hidden="true"></i> </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks</p>	</div>
-	<div id="Auswahl_Admin" class="grid-container-auswahl">
-	<label class="Auswahl" style="font-size: 13pt;"> Wähle einen Berater: </label>
+	<div id="Auswahl_Admin" class="grid-container-auswahl" style="width:78vw; margin:auto;">
+	<label class="Auswahl" style="text-align:center; padding:0"> Wähle einen Berater: </label>
 			<?php
 				include "Auswahlmöglichkeiten_Trainer.php"
 			?>
