@@ -6,13 +6,7 @@ $sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
 $exec = mysqli_query($link,$sql);
 $row = mysqli_fetch_assoc($exec);
 $IsAdmin = $row["Is_Admin"];
-/*
-if($IsAdmin==1)
-{
-    $Trainer=$_REQUEST["Trainer"];
-}
-else*/
-    $Trainer=$_SESSION["username"];
+$Trainer=$_SESSION["username"];
 ?>
 
 <!DOCTYPE HTML>
@@ -28,20 +22,6 @@ else*/
 	<link rel="icon" href="../assets/brand/FEEDCUBE_icon.png" type="image/gif">
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="slider-range.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="hidefunction.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-
-				<?php
-				include "Draw_Charts.php";		//Pie and COlumnchart
-				include "Draw_Trend_Chart.php";
-				include "Create_Blog.php";
-			?>
-
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
 
 </head>
 <body class="text-center">
@@ -78,21 +58,14 @@ else*/
 <div id="Auswahl" class="grid-container-auswahl" style="width:78vw;">
 	<label class="Auswahl" style="text-align:center; padding:0"> Wähle einen Berater: </label>
 			<?php
-				include "Auswahlmöglichkeiten_Trainer.php"
+				include "Auswahlmöglichkeiten_Trainer_Start.php"
 			?>	
 </div>
-<div class="startdashboard">
+<div class="startdashboard" id="startdashboard">
 <div class="überschrift"><b>Singlechoice</b> </div> <div class="überschrift"><b>Total</b></div> <div class="überschrift"><b>Trend</b> </div>
 <?php
 	include "Fragen_Startseite.php";
 	questions("Singlechoice", $link, "externes_feedback");
-?>
-
-
-<div class="überschrift"><b>Schieberegler</b> </div> <div class="überschrift"><b>Total</b></div> <div class="überschrift"><b>Trend</b> </div>
-
-<?php
-	questions("Schieberegler", $link, "externes_feedback");
 ?>
 
 <div class="überschrift"><b>Multiplechoice</b></div><div class="überschrift"><b>Häufigste</b></div> <div class="überschrift"><b>Seltenste</b> </div>
@@ -101,11 +74,30 @@ else*/
 	questions("Multiplechoice", $link, "externes_feedback");
 ?>
 
+<div class="überschrift"><b>Schieberegler</b> </div> <div class="überschrift"><b>Total</b></div> <div class="überschrift"><b>Trend</b> </div>
+
+<?php
+	questions("Schieberegler", $link, "externes_feedback");
+?>
+
 </div>
 </div>
 </div>
 
-
+<script>
+	function Startstatistics(){
+		var Trainer = Auswahl_Trainer.value;
+		var dashboard = document.getElementById("startdashboard");
+		var xmlhttp_options = new XMLHttpRequest();
+     	xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				dashboard.innerHTML=this.responseText;
+			}
+    	;};
+    	xmlhttp_options.open("GET", "Start_Dashboard.php?Trainer=" + Trainer, false);
+    	xmlhttp_options.send();
+	}
+</script>
 </body>
 </html>
 

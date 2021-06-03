@@ -7,12 +7,12 @@ function questions($Fragentyp, $link, $Trainer){
 		$Message="";
 
 		if($row["Is_Admin"]==1){
-				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage'> Es wurde noch keine Metriken-Frage <a href='Fragen.php'>hinzugefügt</a></div>";
+				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' style='grid-column-start:1;grid-column-end:-1;margin-bottom:20px;'> Es wurde noch keine ".$Fragentyp." Frage <a href='Fragen.php'>hinzugefügt</a></div>";
 			}
 		else{
-				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage'> Es wurde noch keine Metriken-Frage hinzugefügt, wende dich an einen Feedcube Administrator</div>";
+				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' style='grid-column-start:1;grid-column-end:-1; margin-bottom:20px;'> Es wurde noch keine ".$Fragentyp." Frage hinzugefügt, wende dich an einen Feedcube Administrator</div>";
 			}
-		$sql = "SELECT ID, Typ, Fragen_extern FROM admin WHERE Fragen_extern !=''AND Typ != 'Text'";
+		$sql = "SELECT ID, Typ, Fragen_extern FROM admin WHERE Fragen_extern !=''AND Typ = '".$Fragentyp."'";
 		$i=0;
 		$result = mysqli_query($link, $sql) ;
 		while($row = mysqli_fetch_assoc($result)) {
