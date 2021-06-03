@@ -9,9 +9,10 @@ if($rowCount > 0){
     while($row = mysqli_fetch_assoc($result)) {
         $tutorial_id = 	$row['post_id'];
         echo "<form data-post-id=".$row["post_id"]." style = 'cursor: grab'>";
-        echo "<div class='center_select' id='Kapitel_".$row["ID"]."' value='".$row["Kapitel"]."' onblur='user_abfrage_speichern(".$row["ID"].")'>".$row["Kapitel"]."</div>";
-        echo "<div class='center_select' id='Frage_".$row["ID"]."' value='".$row["Fragen_extern"]."' onblur='user_abfrage_speichern(".$row["ID"].")'>".$row["Fragen_extern"]."</div>";
-        echo "<div class='center_select' id='Auswahl_Fragentyp_".$row["ID"]."' name='Auswahl_Fragentyp' oninput='user_abfrage_speichern(".$row["ID"].")'>".$row["Typ"]."</div>";
+        echo "<div class='center_select' style='text-align:center; margin:auto'><i class='fa fa-bars'></i></div>";
+        echo "<input class='center_select' id='Kapitel_".$row["ID"]."' value='".$row["Kapitel"]."' onblur='user_abfrage_speichern(".$row["ID"].")'></input>";
+        echo "<input class='center_select' id='Frage_".$row["ID"]."' value='".$row["Fragen_extern"]."' onblur='user_abfrage_speichern(".$row["ID"].")'></input>";
+        echo "<input class='center_select' id='Auswahl_Fragentyp_".$row["ID"]."' value='".$row["Typ"]."' name='Auswahl_Fragentyp' oninput='user_abfrage_speichern(".$row["ID"].")' readonly></input>";
         echo "<button type='button' class='center_button' onclick='user_abfrage_löschen(".$row["ID"].")'><i class='fa fa-trash'></i></button>"; 
         if ($row["Typ"]=="Singlechoice") 
         { 

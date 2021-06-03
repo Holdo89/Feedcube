@@ -1,7 +1,8 @@
 <?php
 
-include "IsAdmincheck.php";
-
+require_once "../config.php";
+require_once "session.php";
+ $Trainer=$_REQUEST["Trainer"];
  $month_sum=$_REQUEST["month_sum"];
  $datum_min=$_REQUEST["datum_min"];
  $datum_max=$_REQUEST["datum_max"];
