@@ -51,7 +51,7 @@ $Trainer=$_SESSION["username"];
 <p>Hier erhältst du einen Überblick über die Auswertung des Kunden und Mitarbeiter Feedbacks</p><br>
 
 <style>
-  .überschrift {margin-top:10px;margin-bottom:5px;}
+  .überschrift_start {margin-top:10px;margin-bottom:5px;}
 </style>
 
 <!--erstes Kapitel Inhalt des Seminars-->
@@ -62,19 +62,19 @@ $Trainer=$_SESSION["username"];
 			?>	
 </div>
 <div class="startdashboard" id="startdashboard">
-<div class="überschrift"><b>Singlechoice</b> </div> <div class="überschrift"><b>Total</b></div> <div class="überschrift"><b>Trend</b> </div>
+<div class="überschrift_start"><b>Singlechoice</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>
 <?php
 	include "Fragen_Startseite.php";
 	questions("Singlechoice", $link, "externes_feedback");
 ?>
 
-<div class="überschrift"><b>Multiplechoice</b></div><div class="überschrift"><b>Häufigste</b></div> <div class="überschrift"><b>Seltenste</b> </div>
+<div class="überschrift_start"><b>Multiplechoice</b></div><div class="überschrift_start"><b>Häufigste</b></div> <div class="überschrift_start"><b>Seltenste</b> </div>
 
 <?php
 	questions("Multiplechoice", $link, "externes_feedback");
 ?>
 
-<div class="überschrift"><b>Schieberegler</b> </div> <div class="überschrift"><b>Total</b></div> <div class="überschrift"><b>Trend</b> </div>
+<div class="überschrift_start"><b>Schieberegler</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>
 
 <?php
 	questions("Schieberegler", $link, "externes_feedback");
