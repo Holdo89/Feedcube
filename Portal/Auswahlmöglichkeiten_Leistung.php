@@ -17,7 +17,7 @@ else{
     }
 
 $i=0;
-$sql = "SELECT Leistung FROM leistungen";
+$sql = "SELECT * FROM leistungen";
 $result = mysqli_query($link, $sql) ;
 while($row = mysqli_fetch_assoc($result)) {
     $i=$i+1;
@@ -34,7 +34,7 @@ else
 
     while($row = mysqli_fetch_assoc($result)) {
 
-		echo "<option value='".$row['Leistung']."'>".$row['Leistung']."</option>";
+		echo "<option value='".$row['ID']."'>".$row['Leistung']."</option>";
 
     }  
     echo'</select>';

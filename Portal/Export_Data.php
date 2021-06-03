@@ -29,8 +29,12 @@
 // close connection
 
 while($rows=mysqli_fetch_array($result)){
+    $sql_test = "SELECT Leistung from leistungen WHERE ID = ".$rows['Leistung'];
+    $exec_test = mysqli_query($link,$sql_test);
+    $leistung_titel = mysqli_fetch_array($exec_test); 
+   
     $u=0;
-    echo $rows["Datum"].";".$rows["Trainer"].";".$rows["Leistung"].";";
+    echo $rows["Datum"].";".$rows["Trainer"].";".$leistung_titel["Leistung"].";";
     while($u<=$i-1){
         echo '"'.$rows[$Id[$u]].'";';
         $u=$u+1;
@@ -38,6 +42,5 @@ while($rows=mysqli_fetch_array($result)){
     echo"\n";
 }
 mysqli_close($link);
-header("location.reload()");
 
 ?>

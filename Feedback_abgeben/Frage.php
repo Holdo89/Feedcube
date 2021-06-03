@@ -36,11 +36,7 @@ else{
     }
 }
 
-//holt die ID der ausgewählten Leistung
-  $sql = "SELECT ID FROM leistungen WHERE Leistung = '".$_SESSION["Leistung"]."'";
-  $result = mysqli_query($link,$sql);
-  $rows = mysqli_fetch_assoc($result);
-  $ID=$rows["ID"];
+  $ID=$_SESSION["Leistung"];
 
 ?>
 

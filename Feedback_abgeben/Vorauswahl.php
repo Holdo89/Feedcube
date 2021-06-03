@@ -14,6 +14,9 @@ $_SESSION["Fragenindex"] = 1;
 $_SESSION["Fragen"] = array();		//speichert die Antworten
 $_SESSION["Fragen_ID"] = array();	//speichert die ID der Fragen die ausgewählt wurden
 include "../config.php";
+$sql_test = "SELECT Leistung from leistungen WHERE ID = ".$_SESSION['Leistung'];
+$exec_test = mysqli_query($link,$sql_test);
+$leistung_titel = mysqli_fetch_array($exec_test); 
 ?>
 
 <!doctype html>
@@ -35,9 +38,14 @@ include "../config.php";
 	?>');">
 <link href="css/fancy_auswahl.css" rel="stylesheet" type="text/css">
 <form action="Frage.php?0" method="post">
+<img class="center" src="../assets/<?php echo $subdomain ?>/logo/<?php
+	$dir = "../assets/".$subdomain."/logo/";
+	$file = scandir($dir);
+	echo $file[2];
+	?>" alt="" width="220" height="70">
 <label align=center><?php echo"Vielen Dank für dein Feedback zur Teilnahme an folgendem Kurs</label>
 <p style='margin-top:15px;'>Trainer: <b>".$_SESSION["Trainer"]."</b></p>
-<p>Leistung: <b>".$_SESSION["Leistung"]?></b></p>
+<p>Leistung: <b>".$leistung_titel["Leistung"]?></b></p>
 <input class="center_button" type="submit" value="Feedback starten">
 </form>
 </body>

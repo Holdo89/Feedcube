@@ -29,13 +29,10 @@ while($index_Frage<=$_SESSION["Fragenindex"]-2){//-2 weil index von 0startet und
 }
 
 //holt die ID der ausgewählten Leistung
-$sql = "SELECT ID FROM leistungen WHERE Leistung = '".$_SESSION["Leistung"]."'";
-$result = mysqli_query($link,$sql);
-$rows = mysqli_fetch_assoc($result);
-$ID=$rows["ID"];
+$ID=$_SESSION["Leistung"];
 
 //alle Spaltennamen außer Datum und ID
-$sql = "SELECT ID FROM admin WHERE Leistung_".$rows["ID"]." = 1 ORDER BY post_order_no ASC";
+$sql = "SELECT ID FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";
 $result = mysqli_query($link, $sql) ;
 
 while($row = mysqli_fetch_assoc($result)){

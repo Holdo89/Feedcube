@@ -14,7 +14,10 @@
  $i=0;
  $feedback_index = 1; //welches feedback ist gerade dran
 while($row = mysqli_fetch_array($exec)){
-	 echo $row['Leistung']."  ";
+	$sql_test = "SELECT Leistung from leistungen WHERE ID = ".$row['Leistung'];
+	$exec_test = mysqli_query($link,$sql_test);
+	$leistung_titel = mysqli_fetch_array($exec_test); 
+	 echo $leistung_titel['Leistung']."  ";
 	 echo $row['Datum'];
 	 if($IsAdmin==1)
 	 {
@@ -24,11 +27,9 @@ while($row = mysqli_fetch_array($exec)){
 	 echo'<form style="padding:10px; padding-bottom:15px;">';
 
 	//Hole zuerst die ID der Leistung die beurteilt wurde
-	$query ="SELECT ID FROM leistungen WHERE Leistung = '".$row['Leistung']."'";
-	$execute = mysqli_query($link,$query);
-	$row_ID = mysqli_fetch_array($execute);
+	$row_ID = $row['Leistung'];
 	//Finde heraus welche Fragen zu dieser Leistung gestellt wurden
-	$query = "SELECT * FROM admin WHERE Leistung_".$row_ID["ID"]." = 1 ORDER BY post_order_no ASC";	
+	$query = "SELECT * FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
  	$execute = mysqli_query($link,$query);
  	$execute_chapter = mysqli_query($link,$query);
  	$chapter="";
