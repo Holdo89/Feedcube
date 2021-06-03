@@ -145,6 +145,7 @@
 	?>
 	
 	<form style="margin-bottom:40px;" action="insert_fragen.php" method="post">
+	<div class="überschrift" style="background-color:white;"></div>
 	<input class="center_select" id="neues_Kapitel" name="neues_Kapitel" placeholder="Kapitel?"></input>
 	<input class="center_select" id="neue_Frage"  name="neue_Frage" placeholder="Eingabe einer neuen Frage" required></input>
 	<select class="center_select" id="Auswahl_Fragentyp" name="Auswahl_Fragentyp">
@@ -185,6 +186,7 @@
 	</script>
 
 	<input class="center_button" type="submit" value="+"></input>
+	<div class="überschrift" style="background-color:white;"></div>
 	</div>
 	</form>
 	<p style="font-size:13pt; margin-bottom:20px;">Fragen an Mitarbeiter</p>
@@ -202,6 +204,7 @@
 	?>
 	
 	<form class="form_intern" action="intern_insert_fragen.php" method="post" style="margin-bottom:30px">
+	<div class="überschrift" style="background-color:white;"></div>
 	<input id="neue_Frage" class="center_select" name="neue_Frage" placeholder="Eingabe einer neuen Frage" required></input>
 	<select id="Auswahl_Fragentyp" class="center_select" name="Auswahl_Fragentyp">
 		<option value="Multiplechoice">Multiplechoice</option>
@@ -209,8 +212,8 @@
 		<option value="Schieberegler">Schieberegler</option>
 		<option value="Text">Text</option>
 	</select>
-
 	<input class="center_button" type="submit" value="+"></input>
+	<div class="überschrift" style="background-color:white;"></div>
 	</form>
 	</div>
 	<p style="font-size:13pt; margin-bottom:20px;">Antwortmöglichkeiten</p>
@@ -228,7 +231,7 @@
 	<input class="center_button" type="submit" value="+"></input>
 	</form>
 
-	<form class="form_antworten" style="border-radius:5px 5px 0px 0px">
+	<form class="form_antworten" style="border-radius:5px 5px 0px 0px;">
 	<label class="überschrift">Multiplechoice</label>
 	<label class="überschrift"></label>
 	</form>
@@ -237,11 +240,10 @@
 		include "Antworten_Abfrage_Multiplechoice.php";
 	?>
 	</div>
-	<form class="form_antworten" action="insert_antworten_multiplechoice.php" method="post" style="margin-bottom:30px">
+	<form class="form_antworten" action="insert_antworten_multiplechoice.php" method="post" style="padding-bottom:80px">
 	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
 	<input class="center_button" type="submit" value="+"></input>
 	</form>
-
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	<form action="Fragen_relate_antworten.php?Type=extern&Questiontype=Singlechoice" method="post">
