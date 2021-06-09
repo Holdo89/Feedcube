@@ -18,7 +18,7 @@ $( function() {
 
     range: true,
     min: 0,
-    max: get_datediff(),
+    max: datediff,
     values: [0, datediff]
   });
 } );
