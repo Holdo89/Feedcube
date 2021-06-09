@@ -9,6 +9,7 @@ while($row = mysqli_fetch_assoc($result)) {
     echo "<input type='radio' id='Antwort_".$row["ID"]."' value='".$row["Answers"]."' style='float:left; margin-top:13px; margin-left:40%; margin-right:10px;' checked></input>";
     echo "<label for='Antwort_".$row["ID"]."' value='".$row["Answers"]."' onblur='Antwort_speichern(".$row["ID"].")' style='border:none'>".$row["Answers"]."</label>";
     echo"</div>";
+    echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"answers\", \"Singlechoice\");' ><i class='fa fa-pencil'></i></button>";
     echo "<button type='button' class='center_button' onclick='Antwort_löschen(".$row["ID"].",\"Singlechoice\")'><i class='fa fa-trash'></i></button>";    
     echo"</form>";
 }

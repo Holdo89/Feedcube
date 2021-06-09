@@ -118,6 +118,8 @@ $new_password_err = $confirm_password_err = "";
 		<?php
 			include "Auswahlmöglichkeiten_Leistung.php"
 		?>
+		<br>
+		<input type="checkbox" id ="Sprache"> Englischer Kurs</input>
 		<p style="margin-top:20px;">Feedback-Link: </p>
 		<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
 		<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system"; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>">Link kopieren</button>
@@ -138,6 +140,8 @@ $new_password_err = $confirm_password_err = "";
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 	var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
+	var Auswahl_Sprache = document.getElementById("Sprache");
+	var Sprache = "Deutsch";
 	var Link = document.getElementById("Link");
 	var copyButton = document.getElementById("copyButton");
 	var current_url = window.location.href;
@@ -145,7 +149,21 @@ $new_password_err = $confirm_password_err = "";
 	current_url = current_url.substr(0,index)+"Feedback_abgeben";
 	Auswahl_Leistung.onchange = function(){
 		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
-		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Leistung="+Auswahl_Leistung.value;
+		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
+		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		Link.value = Feedbacklink;
+		copyButton.style.display = "block";
+	};
+	Auswahl_Sprache.onclick = function(){
+		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
+		if(Auswahl_Sprache.checked)
+		{
+			Sprache= "Englisch";
+		}
+		else{
+			Sprache="Deutsch";
+		}
+		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
 		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
 		Link.value = Feedbacklink;
 		copyButton.style.display = "block";

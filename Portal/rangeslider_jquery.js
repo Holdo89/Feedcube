@@ -1,4 +1,5 @@
 $( function() {
+  datediff=get_datediff();
   $( "#slider-range" ).slider({
     stop: function(event, ui) {
       datum_update();
@@ -6,8 +7,8 @@ $( function() {
   },
     range: true,
     min: 0,
-    max: get_datediff(),
-    values: [0, get_datediff()],
+    max: datediff,
+    values: [0, datediff],
   });
 
   $( "#slider-range2" ).slider({
@@ -18,7 +19,7 @@ $( function() {
     range: true,
     min: 0,
     max: get_datediff(),
-    values: [0, get_datediff()]
+    values: [0, datediff]
   });
 } );
 
@@ -61,6 +62,7 @@ $( function() {
     }
 
 function get_new_datediff(DiagrammeorKomment){
+      datediff=get_datediff(DiagrammeorKomment);
       $( "#slider-range" ).slider({
         stop: function(event, ui) {
           datum_update();
@@ -68,8 +70,8 @@ function get_new_datediff(DiagrammeorKomment){
       },
         range: true,
         min: 0,
-        max: get_datediff(DiagrammeorKomment),
-        values: [0, get_datediff(DiagrammeorKomment)],
+        max: datediff,
+        values: [0, datediff],
       });
     
       $( "#slider-range2" ).slider({
@@ -80,8 +82,8 @@ function get_new_datediff(DiagrammeorKomment){
     
         range: true,
         min: 0,
-        max: get_datediff(DiagrammeorKomment),
-        values: [0, get_datediff(DiagrammeorKomment)]
+        max: datediff,
+        values: [0, datediff]
       });
     };
     

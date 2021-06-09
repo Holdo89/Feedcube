@@ -14,7 +14,6 @@ echo"<label>Es wurde noch keine Frage hinzugefügt</label>";
 else{
 
 $sql = "SELECT * FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";
-
 $result = mysqli_query($link, $sql) ;
 
 $index=1;
@@ -31,6 +30,11 @@ $row_range = mysqli_fetch_assoc($result_range);
 $max = $row_range["range_max"];
 $min = $row_range["range_min"];
 $default = $max/2;
+$Buttontext = "WEITER";
+if($_SESSION["Sprache"]=="Deutsch")
+    $Buttontext = "WEITER";
+else if($_SESSION["Sprache"]=="Englisch") 
+    $Buttontext = "NEXT";
 
 //holt die Antwortmöglichkeiten
 if ($row['Typ']=='Singlechoice'){
@@ -44,8 +48,12 @@ else if ($row['Typ']=='Multiplechoice')
     $result_answers = mysqli_query($link, $sql_answers) ;
 }
 if ($backindex==$rownumber['Anzahl_Fragen']){
-
-    echo"<form action='insert.php' method='post'>";}
+    echo"<form action='insert.php' method='post'>";
+    if($_SESSION["Sprache"]=="Deutsch")
+        $Buttontext = "Feedback abgeben";
+    else if($_SESSION["Sprache"]=="Englisch") 
+        $Buttontext = "Send feedback";
+}
 
 else{
 
@@ -56,17 +64,31 @@ else{
 
     echo"
     <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'>
-    <div class='container'> 
-    <div class='chapter'>".$row['Kapitel']."</div>
-    <div class='frage'>".$row['Fragen_extern']."</div>";
-
+    <div class='container'>";
+    if($_SESSION["Sprache"]=="Deutsch"){
+    echo"
+        <div class='chapter'>".$row['Kapitel']."</div>
+        <div class='frage'>".$row['Fragen_extern']."</div>";  
+    }
+    else if($_SESSION["Sprache"]=="Englisch"){
+        echo"
+            <div class='chapter'>".$row['Kapitel_Englisch']."</div>
+            <div class='frage'>".$row['Frage_Englisch']."</div>";  
+        }
+        
     $Antwort_index=1;
 
     if ($row['Typ']=='Singlechoice'){
         while($row_answers=mysqli_fetch_array($result_answers)){
             if ($row_answers["Frage_".$row["ID"]] == 1){
-            echo"<div><input id='element_1_".$Antwort_index."' name='element_1' type='radio' value='|".$row_answers["Answers"]."|'
-            class='choice' for='element_1_".$Antwort_index."' required>".$row_answers['Answers']."</div>";
+                if($_SESSION["Sprache"]=="Deutsch"){
+                    $answers = $row_answers['Answers'];
+                }
+                else if($_SESSION["Sprache"]=="Englisch"){
+                    $answers = $row_answers['Answers_Englisch'];
+                }
+                echo"<div><input id='element_1_".$Antwort_index."' name='element_1' type='radio' value='|".$row_answers['Answers']."|'
+                class='choice' for='element_1_".$Antwort_index."' required>".$answers."</div>";
             }
             $Antwort_index=$Antwort_index+1;
         }
@@ -75,8 +97,14 @@ else{
     else if ($row['Typ']=='Multiplechoice'){
         while($row_answers=mysqli_fetch_array($result_answers)){
             if ($row_answers["Frage_".$row["ID"]] == 1){
-            echo"<div><input id='element_1_".$Antwort_index."' name='element_1[]' type='checkbox' value='|".$row_answers["Answers"]."|'
-            class='choice' for='element_1_".$Antwort_index."'>".$row_answers['Answers']."</div>";
+                if($_SESSION["Sprache"]=="Deutsch"){
+                    $answers = $row_answers['Answers'];
+                }
+                else if($_SESSION["Sprache"]=="Englisch"){
+                    $answers = $row_answers['Answers_Englisch'];
+                }
+            echo"<div><input id='element_1_".$Antwort_index."' name='element_1[]' type='checkbox' value='|".$row_answers['Answers']."|'
+            class='choice' for='element_1_".$Antwort_index."'>".$answers."</div>";
             }
             $Antwort_index=$Antwort_index+1;
         }
@@ -95,7 +123,7 @@ else{
         echo"	<div><textarea class = 'frage_text' name='element_1' cols='50' rows='4' maxlength='1000' wrap='soft'></textarea></div>";
     }
     echo"</div>
-    <input class='center_button' type='submit' value='WEITER'>
+    <input class='center_button' type='submit' value='".$Buttontext."'>
     <label class='label_progress'>Frage ".$backindex." von ".$rownumber['Anzahl_Fragen']."</label>
     <progress class='progressbar' id='progress' value='".$backindex."' max='".$rownumber['Anzahl_Fragen']."'></progress>
     </form>";

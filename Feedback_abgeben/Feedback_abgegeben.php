@@ -28,12 +28,25 @@ echo"
 <body style=\"background-image:url('../assets/".$subdomain."/bg_givefb/".$file[2]."')\";>
 <div style='width:40vw; min-width:900px;'>
     <img class= 'center' src='../assets/".$subdomain."/logo/".$file_logo[2]."' alt='' width='400' height='140'>
-";
-?>
     <label style='font-size: 16pt; color:white; padding:10vw; text-align:center;'> 
+";
+if($_SESSION["Sprache"]=="Deutsch")
+{
+    echo"
     <p>Vielen Dank für Ihr Feedback.</p>
     <p>Wir schätzen die Meinung unserer Kunden sehr und sind dankbar für jegliche Rückmeldung durch die wir unseren Service noch weiter verbessern können</p>
     </label>
+    ";
+}
+else if($_SESSION["Sprache"]=="Englisch")
+{
+    echo"
+    <p>Thank you for your feedback</p>
+    <p>We really appreciate our customer's feedback which enables us to improve our service further</p>
+    </label>
+    ";
+}
+?>
 </div>
 </body>
 </html>

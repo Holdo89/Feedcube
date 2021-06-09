@@ -20,11 +20,7 @@ function get_options(Frage, Trainer){
 //Zeichnet die Charts mit dem TypColumn oder Piechart
 
 function chartjs(typ,name){
-
-<?php 
-include "IsAdmin.php";
-?>
-
+var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
 var value_min = $( "#slider-range" ).slider( "values", 0 );
@@ -135,9 +131,7 @@ xmlhttp.onreadystatechange = function() {
 }
 
 function statistics(name){
-<?php 
-    include "IsAdmin.php";
-?>
+var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
 var value_min = $( "#slider-range" ).slider( "values", 0 );
@@ -187,9 +181,7 @@ function update(){
     if(ctx.getAttribute("height")!=160){ //check if chart was already created
 
 
-    <?php 
-    include "IsAdmin.php";
-    ?>
+    var Trainer = Auswahl_Trainer.value;
     var Frage = Auswahl_Frage.value;
     var Leistung = Auswahl_Leistung.value;
     var value_min = $( "#slider-range" ).slider( "values", 0 );

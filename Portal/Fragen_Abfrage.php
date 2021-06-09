@@ -26,6 +26,10 @@ if($rowCount > 0){
         {
             echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Schieberegler\");' ><i class='fa fa-pencil'></i></button>";
         }
+        else if ($row["Typ"]=="Text") 
+        {
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Text\");' ><i class='fa fa-pencil'></i></button>";
+        }
         else{
             echo "<button type='button' class='center_button'></button>";
         }

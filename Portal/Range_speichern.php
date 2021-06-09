@@ -77,6 +77,24 @@ $ID=$_REQUEST["ID"];
 $max=$_REQUEST["Range_Max"];
 $min=$_REQUEST["Range_Min"];
 $columns=$_REQUEST["Columns"];
+$Type = $_REQUEST["Type"];
+$Questiontype = $_REQUEST["Questiontype"];
+$Frage_Englisch = $_REQUEST["frage_englisch_".$Type."_".$Questiontype];
+$Kapitel_Englisch = $_REQUEST["kapitel_englisch_".$Type."_".$Questiontype];
+
+if($Type=="extern"){
+    $Kapitel_Englisch = $_REQUEST["kapitel_englisch_".$Type."_".$Questiontype];
+    $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
+
+    $sql = "UPDATE admin SET Kapitel_Englisch = '".$Kapitel_Englisch."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
+}
+else if($Type=="intern"){
+    echo "intern";
+    $sql = "UPDATE intern SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
+}
 
 if($max <= $min)
 {

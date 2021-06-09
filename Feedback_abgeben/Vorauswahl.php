@@ -10,6 +10,7 @@ $_SESSION["Backbutton"] = true;
 $_SESSION["Helpindex"] = false; 
 $_SESSION["Trainer"] = $_REQUEST["Trainer"];
 $_SESSION["Leistung"] = $_REQUEST["Leistung"];		//true für das erste mal in das feedback eingestiegen
+$_SESSION["Sprache"] = $_REQUEST["Sprache"];
 $_SESSION["Fragenindex"] = 1;
 $_SESSION["Fragen"] = array();		//speichert die Antworten
 $_SESSION["Fragen_ID"] = array();	//speichert die ID der Fragen die ausgewählt wurden
@@ -43,10 +44,23 @@ $leistung_titel = mysqli_fetch_array($exec_test);
 	$file = scandir($dir);
 	echo $file[2];
 	?>" alt="" width="220" height="70">
-<label align=center><?php echo"Vielen Dank für dein Feedback zur Teilnahme an folgendem Kurs</label>
+<label align=center>
+<?php 
+if($_SESSION["Sprache"]=="Deutsch")
+{
+echo"Vielen Dank für dein Feedback zur Teilnahme an folgendem Kurs</label>
 <p style='margin-top:15px;'>Trainer: <b>".$_SESSION["Trainer"]."</b></p>
-<p>Leistung: <b>".$leistung_titel["Leistung"]?></b></p>
-<input class="center_button" type="submit" value="Feedback starten">
+<p>Seminar: <b>".$leistung_titel["Leistung"]."</b></p>
+<input class='center_button' type='submit' value='Feedback starten'>";
+}
+else if($_SESSION["Sprache"]=="Englisch")
+{
+echo"Thank you for your feedback on the attended seminar</label>
+<p style='margin-top:15px;'>Trainer: <b>".$_SESSION["Trainer"]."</b></p>
+<p>Seminar: <b>".$leistung_titel["Leistung"]."</b></p>
+<input class='center_button' type='submit' value='start feedback'>";
+}
+?>
 </form>
 </body>
 </html>

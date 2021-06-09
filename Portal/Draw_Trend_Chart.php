@@ -4,10 +4,7 @@
 
 function trendchartjs(typ,name){
 
-<?php 
-include "IsAdmin.php";
-?>
-
+var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
 var value_min = $( "#slider-range" ).slider( "values", 0 );
