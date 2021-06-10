@@ -50,7 +50,36 @@ xmlhttp.onreadystatechange = function() {
         else{
             labeloptions=options_answers
         }
-        console.log(labeloptions);
+        var colorsteps = labeloptions.length;
+        var chartcolors = [];
+        var bordercolors = [];
+        if (Fragen_typ=="Singlechoice"){
+            var hslnumber = 120;
+            var hslnumber_max = 140;
+            while(hslnumber >= 0){
+                chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
+                bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
+                hslnumber = hslnumber - Math.round(hslnumber_max/colorsteps);
+            }
+        }
+        else if (Fragen_typ=="Multiplechoice"){
+            var hslnumber = 160;
+            while(hslnumber <= 1000){
+                chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
+                bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
+                hslnumber = hslnumber + 50;
+            }
+        }
+        else if (Fragen_typ=="Schieberegler"){
+            var hslnumber = 0;
+            var hslnumber_max = 120;
+            while(hslnumber <= 120){
+                chartcolors.push("hsl("+hslnumber+", 70%, 50%, 0.4)");
+                bordercolors.push("hsl("+hslnumber+", 70%, 50%, 1)")
+                hslnumber = hslnumber + Math.round(hslnumber_max/colorsteps);
+            }
+        }
+
         array.shift();
         function isfeedbackgiven(i){ //wurde schon Feedback zu dieser Frage abgegeben wenn kein Feedbackabgegeben wird ist array 0,0,0,0...
             var u=0;  
@@ -75,30 +104,8 @@ xmlhttp.onreadystatechange = function() {
 			datasets: [{
             label: '# der Bewertungen',
             data: array,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(155, 206, 86, 0.2)',
-                'rgba(175, 192, 192, 0.2)',
-                'rgba(153, 202, 255, 0.2)',
-                'rgba(155, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(155, 206, 86, 1)',
-                'rgba(175, 192, 192, 1)',
-                'rgba(153, 202, 255, 1)',
-                'rgba(155, 159, 64, 1)'
-            ],
+            backgroundColor: chartcolors,
+            borderColor: bordercolors,
 
             borderWidth: 1
         }]
@@ -211,6 +218,35 @@ function update(){
         else{
             labeloptions=options_answers
         }
+        var colorsteps = labeloptions.length;
+        var chartcolors = [];
+        var bordercolors = [];
+        if (Fragen_typ=="Singlechoice"){
+            var hslnumber = 120;
+            var hslnumber_max = 140;
+            while(hslnumber >= 0){
+                chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
+                bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
+                hslnumber = hslnumber - Math.round(hslnumber_max/colorsteps);
+            }
+        }
+        else if (Fragen_typ=="Multiplechoice"){
+            var hslnumber = 160;
+            while(hslnumber <= 1000){
+                chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
+                bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
+                hslnumber = hslnumber + 50;
+            }
+        }
+        else if (Fragen_typ=="Schieberegler"){
+            var hslnumber = 0;
+            var hslnumber_max = 120;
+            while(hslnumber <= 120){
+                chartcolors.push("hsl("+hslnumber+", 70%, 50%, 0.4)");
+                bordercolors.push("hsl("+hslnumber+", 70%, 50%, 1)")
+                hslnumber = hslnumber + Math.round(hslnumber_max/colorsteps);
+            }
+        }
         array.shift();
         function isfeedbackgiven(i){ //wurde schon Feedback zu dieser Frage abgegeben wenn kein Feedbackabgegeben wird ist array 0,0,0,0...
             var u=0;  
@@ -225,8 +261,8 @@ function update(){
         } 
         i=isfeedbackgiven(i);
          if (array[0]!="nomultiplechoice" && i==true){
-            addData(ColumnChart, array, labeloptions);
-            addData(PieChart, array, labeloptions);
+            addData(ColumnChart, array, labeloptions, chartcolors, bordercolors);
+            addData(PieChart, array, labeloptions, chartcolors, bordercolors);
          }
          else{
             ColumnChart.destroy();
@@ -241,7 +277,7 @@ function update(){
     xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
     xmlhttp.send();
     
-    function addData(chart, data, label){
+    function addData(chart, data, label, chartcolors, bordercolors){
         console.log("labels")
         console.log(label);
         var u=0;
@@ -266,6 +302,8 @@ function update(){
             });
             u=u+1;
         }
+        chart.data.datasets[0].backgroundColor= chartcolors;  
+        chart.data.datasets[0].borderColor= bordercolors;
         chart.update();
     } 
     statistics('Statistics'); 
@@ -277,8 +315,6 @@ function update(){
     drawtrendchart();
 }
 }
-
-
 
 function update_initiate(){
 	drawcharts();

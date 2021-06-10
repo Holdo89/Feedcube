@@ -191,28 +191,35 @@ if(Fragen_typ=="Multiplechoice"){
             $rows_multi=mysqli_fetch_array($result_multi);
 
             $i=0;
-            $color = ['rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-            'rgba(155, 206, 86, 1)',
-            'rgba(175, 192, 192, 1)',
-            'rgba(153, 202, 255, 1)',
-            'rgba(155, 159, 64, 1)'];
-            
-            while($i<=$rows_multi["Anzahl_Antworten"])
+            $chartcolors = array();
+            $bordercolors = array();
+            $hslnumber = 160;
+            $hslnumber_max = 360;
+            while($hslnumber <= 1000){
+                array_push($chartcolors,"hsl(".$hslnumber.", 75%, 85%, 0.2)");
+                array_push($bordercolors,"hsl(".$hslnumber.", 75%, 50%, 0.8)");
+                $hslnumber = $hslnumber + 50;
+            }
+            while($i<$rows_multi["Anzahl_Antworten"])
             {
-                echo"{
-                    label: legende[".$i."],
-                    data: array2[".$i."],
-                    borderColor: [
-                        '".$color[$i]."',
-                    ]
-                },";
-                $i = $i+1;
+                try{
+                    echo"{
+                        label: legende[".$i."],
+                        data: array2[".$i."],
+                        borderColor: [
+                            '".$bordercolors[$i]."',
+                        ],
+                        backgroundColor: [
+                            '".$chartcolors[$i]."',
+                        ]
+                    },";
+                    $i = $i+1;
+                }
+                catch(Exception $e){
+                    break;
+                }
             }  
+
             ?>    
         ]
     },

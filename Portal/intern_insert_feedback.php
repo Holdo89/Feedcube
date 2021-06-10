@@ -1,15 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<?php
- require_once "FEEDCUBE_icon.php"
-?>
-<head>
-<meta charset="UTF-8">
-<title>Feedback abgeben</title>
-</head>
-<body>
-
 <?php
 require_once "../config.php";
 require_once "session.php";

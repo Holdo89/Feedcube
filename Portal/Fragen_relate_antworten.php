@@ -16,7 +16,6 @@ if($Type=="extern"){
     $query = mysqli_query($link, $sql);
 }
 else if($Type=="intern"){
-    echo "intern";
     $sql = "UPDATE intern SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }

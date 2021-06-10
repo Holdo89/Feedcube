@@ -27,12 +27,8 @@ $( function() {
 
   //gibt die Anzahl der Tage zwischen dem ersten feedback und heute zurück
 
-  function get_datediff(DiagrammeorKomment){
-    if (DiagrammeorKomment=="Diagramme")
-      var Trainer = Auswahl_Trainer.value;
-    else
-      var Trainer = Auswahl_Trainer_Kommentare.value;
-    console.log("Trainer: "+Trainer);
+  function get_datediff(){
+
     var datediff=10;
     var xmlhttp_options = new XMLHttpRequest();
                 xmlhttp_options.onreadystatechange = function() {
@@ -54,7 +50,7 @@ $( function() {
                       }
                       console.log("datediff"+datediff);
             ;};
-            xmlhttp_options.open("GET", "first_date_intern.php?Trainer="+Trainer, false);
+            xmlhttp_options.open("GET", "first_date_intern.php", false);
             xmlhttp_options.send();
                       
       return datediff;
