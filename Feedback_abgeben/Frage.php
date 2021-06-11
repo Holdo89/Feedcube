@@ -59,7 +59,7 @@ else{
 	?>');">
 
 <link href="css/fancy.css" rel="stylesheet" type="text/css">
-<link href="../Feedcube/slider-range.css" rel="stylesheet" type="text/css">
+<link href="../Portal/slider-range.css" rel="stylesheet" type="text/css">
 
   <?php 
     include "Frage_aus_Datenbank.php";

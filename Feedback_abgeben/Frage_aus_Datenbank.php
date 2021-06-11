@@ -29,7 +29,7 @@ $result_range = mysqli_query($link, $sql_range);
 $row_range = mysqli_fetch_assoc($result_range);
 $max = $row_range["range_max"];
 $min = $row_range["range_min"];
-$default = $max/2;
+$default = ($max-$min)/2+$min;
 $Buttontext = "WEITER";
 if($_SESSION["Sprache"]=="Deutsch")
     $Buttontext = "WEITER";
@@ -145,7 +145,7 @@ function color()
     var slider = document.getElementById("myRange")
     var value = (slider.value-slider.min)/(slider.max-slider.min)*100
     var value2 = value-10
-    var temp =  slider.value*(100/(slider.max-slider.min));
+    var temp =  (slider.value-slider.min)*(100/(slider.max-slider.min));
     var color =  "hsl("+temp+", 100%, 50%) ";
     var color2 =  "#82CFD0 ";
     slider.style.background = 'linear-gradient(to right, '+color+'0%, '+color + value2 + '%, '+color+value2+'%, '+color2 + value + '%, #fff ' + value + '%, white 100%)'

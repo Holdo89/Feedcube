@@ -120,11 +120,11 @@ $typ=$row["Typ"];
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
-		$sql2 = "SELECT COUNT(".$Frage.") FROM (SELECT * FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." LIKE '%|".$row["Answers"]."|%' ORDER BY Datum DESC LIMIT 10) AS a";
-		$exec2 = mysqli_query($link, $sql2);
-		$row2=mysqli_fetch_array($exec2);
-		$Average_10=$Average_10+($i*intval($row2["COUNT(".$Frage.")"]));
-		$i =$i+1;
+			$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' ORDER BY Datum DESC LIMIT 10) AS a";
+			$exec2 = mysqli_query($link, $sql2);
+			$row2=mysqli_fetch_array($exec2);
+			$Average_10=$Average_10+($i*intval($row2["result"]));
+			$i =$i+1;
 		}
 	}
 	if($typ=="Singlechoice" || $typ=="Multiplechoice"){
