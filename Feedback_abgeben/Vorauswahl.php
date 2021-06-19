@@ -6,14 +6,11 @@ session_start();
 if(isset($_COOKIE["feedback_abgegeben"])) {
 	header("location:Feedback_abgegeben.php");
   }
-$_SESSION["Backbutton"] = true;
-$_SESSION["Helpindex"] = false; 
+
 $_SESSION["Trainer"] = $_REQUEST["Trainer"];
 $_SESSION["Leistung"] = $_REQUEST["Leistung"];		//true für das erste mal in das feedback eingestiegen
 $_SESSION["Sprache"] = $_REQUEST["Sprache"];
-$_SESSION["Fragenindex"] = 1;
-$_SESSION["Fragen"] = array();		//speichert die Antworten
-$_SESSION["Fragen_ID"] = array();	//speichert die ID der Fragen die ausgewählt wurden
+
 include "../config.php";
 $sql_test = "SELECT Leistung from leistungen WHERE ID = ".$_SESSION['Leistung'];
 $exec_test = mysqli_query($link,$sql_test);
@@ -38,7 +35,7 @@ $leistung_titel = mysqli_fetch_array($exec_test);
 	echo $file[2];
 	?>');">
 <link href="css/fancy_auswahl.css" rel="stylesheet" type="text/css">
-<form action="Frage.php?0" method="post">
+<form action="Frage.php" method="post">
 <img class="center" src="../assets/<?php echo $subdomain ?>/logo/<?php
 	$dir = "../assets/".$subdomain."/logo/";
 	$file = scandir($dir);

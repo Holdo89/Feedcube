@@ -5,37 +5,6 @@ include "../config.php";
 if(isset($_COOKIE["feedback_abgegeben"])) {
   header("location:Feedback_abgegeben.php");
 }
-
-$questionmarkpos = strpos($_SERVER['REQUEST_URI'],"?");
-$backindex = intval(substr($_SERVER['REQUEST_URI'],$questionmarkpos+1))+1;
-
-while($_SESSION["Fragenindex"]>$backindex){
-  $_SESSION["Backbutton"]=true;
-  $_SESSION["Fragenindex"] = $_SESSION["Fragenindex"]-1;
-}
-
-if($_SESSION["Helpindex"]){
-    $_SESSION["Trainer"] = $_REQUEST["Auswahl_Trainer"];
-    $_SESSION["Leistung"] = $_REQUEST["Auswahl_Leistung"];
-    $_SESSION["Helpindex"]=false;
-  }
-
-else{
-    if($_SESSION["Backbutton"]==false)
-    {
-      if(gettype($_REQUEST['element_1'])=="array")
-      {  
-            array_push($_SESSION["Fragen"], implode("|",$_REQUEST['element_1']));
-      }
-      else{
-        array_push($_SESSION["Fragen"], $_REQUEST['element_1']);
-      }
-    }
-    else{
-      $_SESSION["Backbutton"]=false;
-    }
-}
-
   $ID=$_SESSION["Leistung"];
 
 ?>
@@ -60,6 +29,10 @@ else{
 
 <link href="css/fancy.css" rel="stylesheet" type="text/css">
 <link href="../Portal/slider-range.css" rel="stylesheet" type="text/css">
+<input id="Fragenzahl" style="display:none" value=1></input>
+<input id="Singlechoicezahl" style="display:none" value=1></input>
+<input id="Multiplechoicezahl" style="display:none" value=0></input>
+<input id="Schiebereglerzahl" style="display:none" value=1></input>
 
   <?php 
     include "Frage_aus_Datenbank.php";
