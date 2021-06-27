@@ -3,13 +3,13 @@
 require_once "../config.php";
 
 $Buttontext = "WEITER";
-$Buttontext_send_feedback = "Feedback abschicken";
+$Buttontext_send_feedback = "SENDEN";
 $Buttontext_back = "ZURÜCK";
 if($_SESSION["Sprache"]=="Englisch") 
 {
     $Buttontext = "NEXT";
     $Buttontext_back = "BACK";
-    $Buttontext_send_feedback = "Send feedback";
+    $Buttontext_send_feedback = "SEND";
 }
 //Gibt die Anzahl aller Fragen an diebei dieser Leistung abgefragt werden
 
