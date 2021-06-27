@@ -135,11 +135,11 @@ require_once "session.php";
 			{
 				if($Trainer=='externes_feedback')
 				{
-					$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback ORDER BY Datum DESC LIMIT 10) AS a";
+					$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
 				}
 			
 				else{
-					$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE Username = '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
+					$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE Username = '".$Trainer."' AND ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
 				}
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);

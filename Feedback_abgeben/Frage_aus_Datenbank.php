@@ -4,9 +4,11 @@ require_once "../config.php";
 
 $Buttontext = "WEITER";
 $Buttontext_send_feedback = "Feedback abschicken";
+$Buttontext_back = "ZURÜCK";
 if($_SESSION["Sprache"]=="Englisch") 
 {
     $Buttontext = "NEXT";
+    $Buttontext_back = "BACK";
     $Buttontext_send_feedback = "Send feedback";
 }
 //Gibt die Anzahl aller Fragen an diebei dieser Leistung abgefragt werden
@@ -50,6 +52,17 @@ while($index<=$Anzahl_Fragen) {
     }
     array_push($Fragentyp_array,$row["Typ"]);
     array_push($Fragenid_array,$row["ID"]);
+
+    //Berechne die Anzahl der unterschiedlichen Kapitel
+    $Anzahl_Kapitel=0;
+    $verschiedene_Kapitel_index =1;
+    while( $verschiedene_Kapitel_index<count($Kapitel_array))
+    {
+        if ($Kapitel_array[$verschiedene_Kapitel_index]!=$Kapitel_array[$verschiedene_Kapitel_index-1]){
+            $Anzahl_Kapitel=$Anzahl_Kapitel+1;
+        }
+        $verschiedene_Kapitel_index=$verschiedene_Kapitel_index+1;
+    }
 
     $index=$index+1;
 
@@ -106,60 +119,27 @@ while($index<=$Anzahl_Fragen) {
     }
 }
 
-    echo"<form id='Frage_form'>";}
-
+    echo"<form id='Frage_form' style='margin:30px;min-height:600px;'>";}
 	$dir = '../assets/'.$subdomain.'/logo/';
 	$file = scandir($dir);
 
     echo"
         <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'>
-        <div class='container'>
-        <div class='chapter' id='chapter'>".$Kapitel_array[0]."</div>
-        <div class='frage' id='frage'>".$Fragen_array[0]."</div>
-        <div id='Antwortmöglichkeiten'>";  
-        
-    $Antwort_index=0;
-
-    if ($Fragentyp_array[0]=='Singlechoice'){
-        while($Antwort_index<count($Singlechoice_array_value[0])){
-            echo"<div><input id='element_1' name='element_1' type='radio' value='|".$Singlechoice_array_value[0][$Antwort_index]."|'
-            class='choice' for='element_1' required>".$Singlechoice_array[0][$Antwort_index]."</div>";
-            $Antwort_index=$Antwort_index+1;
-        }
-    }
-
-    else if ($row['Typ']=='Multiplechoice'){
-        while($Antwort_index<count($Multiplechoice_array_value[0])){
-            echo"<div><input id='element_1' name='element_1[]' type='checkbox' value='|".$Multiplechoice_array_value[0][$Antwort_index]."|'
-            class='choice' for='element_1' required>".$Multiplechoice_array[0][$Antwort_index]."</div>";
-            $Antwort_index=$Antwort_index+1;
-        }
-    }
-
-    else if($row['Typ']=='Schieberegler'){
-        echo"
-        <div style='text-align:center'>
-        <p style='margin-bottom:20px;'>Bewertung: <span id='output' style='font-size:15px;'>".$Default_Schieberegler_array[0]."</span></p>
-        <input type='range' style='width:80%; margin-left:10px;' min='".$Min_Schieberegler_array[0]."' max='".$Max_Schieberegler_array[0]."' value='".$Default_Schieberegler_array[0]."' name='element_1' id='element_1' ontouchend='input_update()' oninput='input_update(), color()'>
-        </div>
-        ";
-        }
-
-    else{
-        echo"
-        <div><textarea class = 'frage_text' name='element_1' cols='50' rows='4' maxlength='1000' wrap='soft'></textarea></div>";
-    }
+        <div class='container' id = 'container'>
+        <div class='chapter' id='chapter'>".$Kapitel_array[0]."</div>";
+    $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren singlechoice antworten
     echo"
     </div>
-    </div><input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='get_next_question()'>
-    <label class='label_progress' id='label_progress'>Frage 1 von ".$Anzahl_Fragen."</label>
-    <progress class='progressbar' id='progress' value='1' max='".$Anzahl_Fragen."'></progress>
-    </form>";
-
+    </div>
+    <input id='submitbutton' type='submit' style='visibility:hidden'></input>
+    </form>
+    <input id='Fragenzahl' style='display:none' value=".$i."></input>";
 ?>
 
 <script>
+var current_chapter =0;
 var abgegebenes_feedback_array = [];
+var current_html = [];
 var Anzahl_Fragen = <?php echo $Anzahl_Fragen;?>; //gesamte Anzahl der Fragen
 var Kapitel_array = [<?php foreach($Kapitel_array as $Kapitel){echo"'".$Kapitel."',";}?>];
 var Fragen_array = [<?php foreach($Fragen_array as $Frage){echo"'".$Frage."',";}?>];
@@ -167,30 +147,96 @@ var Fragentyp_array = [<?php foreach($Fragentyp_array as $Fragentyp){echo"'".$Fr
 var Default_Schieberegler_array = [<?php foreach($Default_Schieberegler_array as $Default_Schieberegler){echo"'".$Default_Schieberegler."',";}?>];
 var Max_Schieberegler_array = [<?php foreach($Max_Schieberegler_array as $Max_Schieberegler){echo"'".$Max_Schieberegler."',";}?>];
 var Min_Schieberegler_array = [<?php foreach($Min_Schieberegler_array as $Min_Schieberegler){echo"'".$Min_Schieberegler."',";}?>];
+get_next_question();
+var i =0;
+
+function push_all_Answers(){
+    current_chapter++
+    console.log(current_chapter);
+    current_html.push(document.getElementById("body").innerHTML)
+    var Fragenzahl = parseInt(document.getElementById("Fragenzahl").value); //Frage die gerade dran ist
+    console.log("Fragenzahl push_answers:"+Fragenzahl);
+    console.log("i:"+i);
+    while(i<Fragenzahl)
+    {
+        try{
+            if (Fragentyp_array[i]=="Singlechoice" || Fragentyp_array[i] == "Multiplechoice")
+                {
+                    var Antwortmöglichkeit = document.getElementsByName("element_1_"+i);
+                    var u = 0;
+                    var checked = false;
+                    if (Fragentyp_array[i]=="Multiplechoice")
+                    {
+                        var Multiplechoice_Antworten ="";
+                        while(u < Antwortmöglichkeit.length) {
+                            if (Antwortmöglichkeit[u].checked) {
+                                Multiplechoice_Antworten=Multiplechoice_Antworten+Antwortmöglichkeit[u].value;
+                            }
+                            u=u+1;
+                        }  
+                        checked = true;
+                        //if (Multiplechoice_Antworten!="")
+                            abgegebenes_feedback_array.push("'"+Multiplechoice_Antworten+"'");
+                        /*else  
+                            abgegebenes_feedback_array.push('NULL');*/             
+                    }
+                    else if (Fragentyp_array[i]=="Singlechoice"){
+                        while(u < Antwortmöglichkeit.length) {
+                            if (Antwortmöglichkeit[u].checked) {
+                                abgegebenes_feedback_array.push("'"+Antwortmöglichkeit[u].value + "'");
+                                checked = true;
+                            }
+                            u=u+1;
+                        }
+                    }
+                    if (checked == false){
+                        current_chapter-- //wenn nichts gechecked wurde dann wird auch nicht das nächste Kapitel gezeigt
+                        current_html.pop();
+                        document.getElementById("submitbutton").click();
+                        return false;
+                        //throw new Error("Something went badly wrong!");
+                    }  
+                }
+
+                else if (Fragentyp_array[i]=="Text" || Fragentyp_array[i] == "Schieberegler")
+                {
+                    var Antwort_abgegeben = document.getElementById("element_1_"+i).value.replaceAll("'", '"');
+                    var Antwort = "'" + Antwort_abgegeben +"'";
+                    abgegebenes_feedback_array.push(Antwort);
+                }  
+        }
+        catch(err){
+            console.log("Test"+Fragenzahl);
+        }
+        i=i+1;
+    }
+    console.log(abgegebenes_feedback_array)
+    if(Fragenzahl == Anzahl_Fragen){
+        console.log(abgegebenes_feedback_array);
+        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>Vielen Dank für ihr Feedback</p>\" ";?>;
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "insert.php?Antworten_array="+abgegebenes_feedback_array);
+        xhttp.send();
+    }
+    else
+    get_next_question();
+}
 
 function get_next_question()
 {
+    
+    document.documentElement.scrollTop = 0; 
     var Fragenzahl = parseInt(document.getElementById("Fragenzahl").value); //Frage die gerade dran ist
-    document.getElementById("Fragenzahl").value=parseInt(document.getElementById("Fragenzahl").value)+1;
-    document.getElementById("label_progress").innerHTML = "Frage " + parseInt(Fragenzahl+1) + " von " + Anzahl_Fragen;
-        if (Fragentyp_array[Fragenzahl-1]=="Singlechoice" || Fragentyp_array[Fragenzahl-1] == "Multiplechoice")
-        {
-            push_SingleorMulti();
-            console.log(abgegebenes_feedback_array)
-        }
+    
+    document.getElementById("container").innerHTML="<div class='chapter' id='chapter'>"+Kapitel_array[Fragenzahl]+"</div>";
 
-        else
-        {
-            push_Antwort();
-            console.log(abgegebenes_feedback_array)
-        }
+        do{
+        document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+"<div class='frage' id='frage_"+Fragenzahl+"'>"+Fragen_array[Fragenzahl]+"</div><div id='Antwortmöglichkeiten_"+Fragenzahl+"'>";
 
-        var Kapitel = document.getElementById("chapter");
-        Kapitel.innerHTML = Kapitel_array[Fragenzahl];
-
-        var Frage = document.getElementById("frage");
+        Antwort_index=0;
+        var Frage = document.getElementById("frage_"+Fragenzahl);
         Frage.innerHTML = Fragen_array[Fragenzahl];
-
+        
         if (Fragentyp_array[Fragenzahl]=="Singlechoice")
         { 
             var i=0;
@@ -198,10 +244,10 @@ function get_next_question()
             document.getElementById("Singlechoicezahl").value=parseInt(document.getElementById("Singlechoicezahl").value)+1;
             var Singlechoice_array_value = [<?php foreach($Singlechoice_array_value as $Singlechoice){echo"["; foreach($Singlechoice as $Single){echo"'".$Single."',";}echo"],";}?>];
             var Singlechoice_array = [<?php foreach($Singlechoice_array as $Singlechoice_show){echo"["; foreach($Singlechoice_show as $Single_show){echo"'".$Single_show."',";}echo"],";}?>];
-            document.getElementById("Antwortmöglichkeiten").innerHTML="";
-            while(i<=Singlechoice_array_value[Singlechoicezahl].length)
+            document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="";
+            while(i<Singlechoice_array_value[Singlechoicezahl].length)
             {
-                document.getElementById("Antwortmöglichkeiten").innerHTML += "<div><input id='element_1' name='element_1' type='radio' value='|"+Singlechoice_array_value[Singlechoicezahl][i]+"|'class='choice' for='element_1' required>"+Singlechoice_array[Singlechoicezahl][i]+"</div>"
+                document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML += "<div><input id='element_1_"+Fragenzahl+i+"' name='element_1_"+Fragenzahl+"' type='radio' value='|"+Singlechoice_array_value[Singlechoicezahl][i]+"|'class='choice' for='element_1_"+Fragenzahl+i+"' required>"+Singlechoice_array[Singlechoicezahl][i]+"</div>"
                 i++;
             }
         }
@@ -213,10 +259,10 @@ function get_next_question()
             document.getElementById("Multiplechoicezahl").value=parseInt(document.getElementById("Multiplechoicezahl").value)+1;
             var Multiplechoice_array_value = [<?php foreach($Multiplechoice_array_value as $Multiplechoice){echo"["; foreach($Multiplechoice as $Multiple){echo"'".$Multiple."',";}echo"],";}?>];
             var Multiplechoice_array = [<?php foreach($Multiplechoice_array as $Multiplechoice_show){echo"["; foreach($Multiplechoice_show as $Multiple_show){echo"'".$Multiple_show."',";}echo"],";}?>];
-            document.getElementById("Antwortmöglichkeiten").innerHTML="";
+            document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="";
             while(i<Multiplechoice_array_value[Multiplechoicezahl].length)
             {
-                document.getElementById("Antwortmöglichkeiten").innerHTML += "<div><input id='element_1' name='element_1[]' type='checkbox' value='|"+Multiplechoice_array_value[Multiplechoicezahl][i]+"|'class='choice' for='element_1'>"+Multiplechoice_array[Multiplechoicezahl][i]+"</div>"
+                document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML += "<div><input id='element_1_"+Fragenzahl+i+"' name='element_1_"+Fragenzahl+"' type='checkbox' value='|"+Multiplechoice_array_value[Multiplechoicezahl][i]+"|'class='choice' for='element_1_"+Fragenzahl+i+"'>"+Multiplechoice_array[Multiplechoicezahl][i]+"</div>"
                 i++;
             }
         }
@@ -228,64 +274,57 @@ function get_next_question()
             var Default_Schieberegler_array = [<?php foreach($Default_Schieberegler_array as $Default_Schieberegler){echo $Default_Schieberegler.",";};?>];
             var Max_Schieberegler_array = [<?php foreach($Max_Schieberegler_array as $Max_Schieberegler){echo $Max_Schieberegler.",";};?>];
             var Min_Schieberegler_array = [<?php foreach($Min_Schieberegler_array as $Min_Schieberegler){echo $Min_Schieberegler.",";};?>];
-            document.getElementById("Antwortmöglichkeiten").innerHTML="<div style='text-align:center'><p style='margin-bottom:20px;'>Bewertung: <span id='output' style='font-size:15px;'>"+ Default_Schieberegler_array[0] + "</span></p><input type='range' style='width:80%; margin-left:10px;' min='"+ Min_Schieberegler_array[0] +"' max='" + Max_Schieberegler_array[0]+"' value='" + Default_Schieberegler_array[0] + "' name='element_1' id='element_1' ontouchend='input_update()' oninput='input_update(), color()'></div>";
+            document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="<div style='text-align:center'><p style='margin-bottom:20px;'>Bewertung: <span id='output_"+Fragenzahl+"' style='font-size:15px;'>"+ Default_Schieberegler_array[0] + "</span></p><input type='range' style='width:80%; margin-left:10px;' min='"+ Min_Schieberegler_array[0] +"' max='" + Max_Schieberegler_array[0]+"' value='" + Default_Schieberegler_array[0] + "' name='element_1_"+Fragenzahl+"' id='element_1_"+Fragenzahl+"' ontouchend='input_update("+Fragenzahl+")' oninput='input_update("+Fragenzahl+"), color("+Fragenzahl+")'></div>";
         }
 
         else
-            document.getElementById("Antwortmöglichkeiten").innerHTML="<div><textarea class = 'frage_text' name='element_1' id='element_1' cols='50' rows='4' maxlength='1000' wrap='soft'></textarea></div>";
+            document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="<div><textarea class = 'frage_text' name='element_1_"+Fragenzahl+"' id='element_1_"+Fragenzahl+"' cols='50' rows='4' maxlength='1000' wrap='soft'></textarea></div>";      
+            Fragenzahl = Fragenzahl +1 
+        }while(Kapitel_array[Fragenzahl-1]==Kapitel_array[Fragenzahl])
         
-        function push_SingleorMulti(){
-            var Antwortmöglichkeit = document.forms[0];
-            var Antwort_checked = "";
-            var i;
-            for (i = 0; i < Antwortmöglichkeit.length; i++) {
-                if (Antwortmöglichkeit[i].checked) {
-                    Antwort_checked = Antwort_checked + "'" + Antwortmöglichkeit[i].value + "'";
-                }
-            }
-            if (Antwort_checked == ""){
-                Antwort_checked = Antwort_checked + "''";
-            }
-            abgegebenes_feedback_array.push(Antwort_checked)
+        //weiter und zurück button hinzufügen
+        document.getElementById("Fragenzahl").value=Fragenzahl;
+        if (abgegebenes_feedback_array.length>0){
+            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"</div></div><input class='center_button' type='button' id ='button2' value='".$Buttontext_back."' onclick='previous_question()' style='display:inline; width:40%; margin:8%; margin-right:2%; margin-bottom:2%; margin-top:15%'>\""?>;
+            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"<input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='push_all_Answers()' style='display:inline; width:40%'><label class='label_progress' id='label_progress'>Kapitel \"";?>+parseInt(current_chapter+1)+<?php echo"\" von ".$Anzahl_Kapitel."</label><progress class='progressbar' id='progress' value='\"";?>+parseInt(current_chapter+1)+<?php echo"\"' max='".$Anzahl_Kapitel."'></progress></form>\""?>;    
         }
-        function push_Antwort(){
-            var Antwort_abgegeben = document.getElementById("element_1").value.replaceAll("'", '"');
-            var Antwort = "'" + Antwort_abgegeben +"'";
-            abgegebenes_feedback_array.push(Antwort);
-        }
-
-        if (Fragenzahl+1==Anzahl_Fragen){
-            document.getElementById("button").value=<?php echo"'".$Buttontext_send_feedback."'";?>;
-            document.getElementById("button").onclick=send_feedback;
-        }
-function send_feedback() //wenn alle Fragen beantwortet wurden und die Antworten übergeben werden 
-    {
-        if (Fragentyp_array[Fragenzahl-1]=="Singlechoice" || Fragentyp_array[Fragenzahl-1] == "Multiplechoice")
-        {
-            push_SingleorMulti();
-            console.log(abgegebenes_feedback_array)
-        }
-
         else
-        {
-            push_Antwort();
-            console.log(abgegebenes_feedback_array)
+            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"<input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='push_all_Answers()'><label class='label_progress' id='label_progress'>Kapitel \"";?>+parseInt(current_chapter+1)+<?php echo"\" von ".$Anzahl_Kapitel."</label><progress class='progressbar' id='progress' value='\"";?>+parseInt(current_chapter+1)+<?php echo"\"' max='".$Anzahl_Kapitel."'></progress></form>\""?>;    
+
+        if (Fragenzahl==Anzahl_Fragen){
+            document.getElementById("button").value=<?php echo"'".$Buttontext_send_feedback."'";?>;
         }
-        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>Vielen Dank für ihr Feedback</p>\" ";?>;
-        const xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "insert.php?Antworten_array="+abgegebenes_feedback_array);
-        xhttp.send();
-    }
 }
-function input_update()
+
+function previous_question(){
+    current_chapter--
+    console.log(current_chapter);
+    var last_question = parseInt(Fragenzahl.value) -(parseInt(Fragenzahl.value) - abgegebenes_feedback_array.length)-1
+    last_Chapter = Kapitel_array[last_question-1];
+    var u = 0;
+    while(Kapitel_array[last_question-u]==Kapitel_array[last_question-u-1]){
+
+        abgegebenes_feedback_array.pop()
+        u=u+1;
+    }
+    abgegebenes_feedback_array.pop()
+    document.getElementById("body").innerHTML=current_html[current_chapter];
+    current_html.pop();
+    console.log(abgegebenes_feedback_array);
+    document.getElementById("Fragenzahl").value=last_question+1;
+    i = last_question-u;
+    console.log(Fragen_array[i])
+
+}
+function input_update(i)
 {
-    var value = document.getElementById("element_1").value;
-    var output = document.getElementById("output");
+    var value = document.getElementById("element_1_"+i).value;
+    var output = document.getElementById("output_"+i);
     output.innerHTML = value;
 }
-function color() 
+function color(i) 
 { 
-    var slider = document.getElementById("element_1")
+    var slider = document.getElementById("element_1_"+i)
     var value = (slider.value-slider.min)/(slider.max-slider.min)*100
     var value2 = value-10
     var temp =  (slider.value-slider.min)*(100/(slider.max-slider.min));

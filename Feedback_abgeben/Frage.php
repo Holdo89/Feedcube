@@ -21,7 +21,7 @@ if(isset($_COOKIE["feedback_abgegeben"])) {
 	<title>Feedback abgeben</title>
   </head>
 
-<body style= "background-image: url('../assets/<?php echo $subdomain ?>/bg_givefb/<?php
+<body id ='body' style= "background-image: url('../assets/<?php echo $subdomain ?>/bg_givefb/<?php
 	$dir = "../assets/".$subdomain."/bg_givefb/";
 	$file = scandir($dir);
 	echo $file[2];
@@ -29,8 +29,7 @@ if(isset($_COOKIE["feedback_abgegeben"])) {
 
 <link href="css/fancy.css" rel="stylesheet" type="text/css">
 <link href="../Portal/slider-range.css" rel="stylesheet" type="text/css">
-<input id="Fragenzahl" style="display:none" value=1></input>
-<input id="Singlechoicezahl" style="display:none" value=1></input>
+<input id="Singlechoicezahl" style="display:none" value=0></input>
 <input id="Multiplechoicezahl" style="display:none" value=0></input>
 <input id="Schiebereglerzahl" style="display:none" value=1></input>
 
