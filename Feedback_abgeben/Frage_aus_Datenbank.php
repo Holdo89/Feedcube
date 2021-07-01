@@ -212,9 +212,15 @@ function push_all_Answers(){
     }
     console.log(abgegebenes_feedback_array)
     if(Fragenzahl == Anzahl_Fragen){
-        console.log(abgegebenes_feedback_array);
         document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>Vielen Dank für ihr Feedback</p>\" ";?>;
         const xhttp = new XMLHttpRequest();
+        //replace & in url weil sonst insert nicht funktioniert
+        var g = 0;
+        while(g<abgegebenes_feedback_array.length)
+        {
+            abgegebenes_feedback_array[g]=abgegebenes_feedback_array[g].replaceAll("&","%26");
+            g=g+1;
+        }
         xhttp.open("GET", "insert.php?Antworten_array="+abgegebenes_feedback_array);
         xhttp.send();
     }
