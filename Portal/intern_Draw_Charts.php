@@ -10,7 +10,7 @@ function get_options(Frage){
         }
     ;};
 
-    xmlhttp_options.open("GET", "get_answers_intern.php?Frage="+Frage, true);
+    xmlhttp_options.open("GET", "get_answers_intern.php?Frage="+Frage, false);
     xmlhttp_options.send();
 }
 

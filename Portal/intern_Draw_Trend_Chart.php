@@ -153,27 +153,27 @@ if(month_sum==0){
             var autoDisplayLegendPlugin = {
             // Called at start of update.
             beforeUpdate: function(chartInstance) {
-        if (chartInstance.options.autoDisplayLegend) {
-        // The first (and, assuming, only) dataset.
-        var i=0
-        var length = chartInstance.data.datasets.length
-        while(i<length){
-            var dataset = chartInstance.data.datasets[i];
-            console.log(dataset);
-            if (dataset.label==="")
-            {
-                chartInstance.data.datasets.splice(i,2);
-                length = length-1;
-            }  
+    if (chartInstance.options.autoDisplayLegend) {
+      var i=0
+      var length = chartInstance.data.datasets.length
+      console.log("Length" + length)
+      while(i<=length){
+      var dataset = (chartInstance.data.datasets[i])?chartInstance.data.datasets[i]:"";
+      console.log("dataset "+i+" : "+dataset.label)
+      if (dataset.label==="")
+      {
+        chartInstance.data.datasets.splice(i);
+        length = length-1;
+      }  
 
-            else{
-                chartInstance.options.legend.display = true;
-            }
-                i=i+1;
-            }
-        }
+    else{
+        chartInstance.options.legend.display = true;
     }
-    };
+        i=i+1;
+    }
+    }
+  }
+};
 
 Chart.pluginService.register(autoDisplayLegendPlugin);
 
