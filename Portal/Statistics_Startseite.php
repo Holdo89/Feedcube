@@ -169,7 +169,7 @@ function Statistik($Frage,$link,$Trainer){
 
 		if($typ=="Singlechoice"){
 			$Trend = round($Average_10-$Average,1);
-		if($Trend<$range*-1)
+		if($Trend<=$range*-1)
 		{
 			echo"<p style='color:green'>&darr;  ";
 			echo $Trend;
@@ -206,7 +206,7 @@ function Statistik($Frage,$link,$Trainer){
 		$row_range = mysqli_fetch_array($exec_range);
 		$range = ($row_range["range_max"]-$row_range["range_min"])*0.1;
 		$Trend = $rows["ROUND(AVG(".$Frage."),1)"] - $rowx["ROUND(AVG(".$Frage."),1)"];
-		if($Trend<$range*-1)
+		if($Trend<=$range*-1)
 		{
 			echo"<p style='color:red'>&darr;  ";
 			echo $Trend;
