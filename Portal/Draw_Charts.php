@@ -63,11 +63,11 @@ xmlhttp.onreadystatechange = function() {
             }
         }
         else if (Fragen_typ=="Multiplechoice"){
-            var hslnumber = 160;
-            while(hslnumber <= 1000){
+            var hslnumber = 0;
+            while(hslnumber <= 360){
                 chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
                 bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
-                hslnumber = hslnumber + 50;
+                hslnumber = hslnumber + 360/colorsteps;
             }
         }
         else if (Fragen_typ=="Schieberegler"){
@@ -79,7 +79,6 @@ xmlhttp.onreadystatechange = function() {
                 hslnumber = hslnumber + Math.round(hslnumber_max/colorsteps);
             }
         }
-
         array.shift();
         function isfeedbackgiven(i){ //wurde schon Feedback zu dieser Frage abgegeben wenn kein Feedbackabgegeben wird ist array 0,0,0,0...
             var u=0;  
@@ -95,7 +94,6 @@ xmlhttp.onreadystatechange = function() {
         i=isfeedbackgiven(i);
         var ctx = document.getElementById(name);
         ctx.width=280;
-        console.log(array);
         if (array[0]!="nomultiplechoice" && i==true){
 		window[name] = new Chart(ctx, {
 			type: typ,
@@ -231,11 +229,11 @@ function update(){
             }
         }
         else if (Fragen_typ=="Multiplechoice"){
-            var hslnumber = 160;
-            while(hslnumber <= 1000){
+            var hslnumber = 0;
+            while(hslnumber <= 360){
                 chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
                 bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
-                hslnumber = hslnumber + 50;
+                hslnumber = hslnumber + 360/colorsteps;
             }
         }
         else if (Fragen_typ=="Schieberegler"){
@@ -278,8 +276,6 @@ function update(){
     xmlhttp.send();
     
     function addData(chart, data, label, chartcolors, bordercolors){
-        console.log("labels")
-        console.log(label);
         var u=0;
       
         while(u<100)
@@ -298,7 +294,6 @@ function update(){
             chart.data.datasets.forEach((dataset) => {
             chart.data.labels.push(label[u]);
             dataset.data.push(data[u]);
-            console.log(data);
             });
             u=u+1;
         }

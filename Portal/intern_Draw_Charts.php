@@ -59,11 +59,11 @@ xmlhttp.onreadystatechange = function() {
             }
         }
         else if (Fragen_typ=="Multiplechoice"){
-            var hslnumber = 160;
-            while(hslnumber <= 1000){
+            var hslnumber = 0;
+            while(hslnumber <= 360){
                 chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
                 bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
-                hslnumber = hslnumber + 50;
+                hslnumber = hslnumber + 360/colorsteps;
             }
         }
         else if (Fragen_typ=="Schieberegler"){
@@ -221,11 +221,11 @@ function update(){
             }
         }
         else if (Fragen_typ=="Multiplechoice"){
-            var hslnumber = 160;
-            while(hslnumber <= 1000){
+            var hslnumber = 0;
+            while(hslnumber <= 360){
                 chartcolors.push("hsl("+hslnumber+", 75%, 50%, 0.4)");
                 bordercolors.push("hsl("+hslnumber+", 75%, 50%, 1)")
-                hslnumber = hslnumber + 50;
+                hslnumber = hslnumber + 360/colorsteps;
             }
         }
         else if (Fragen_typ=="Schieberegler"){
