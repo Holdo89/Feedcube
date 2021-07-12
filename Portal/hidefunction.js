@@ -13,7 +13,7 @@ function hide($x,$y) {
 		} else {
 
 			x.style.display = "none";
-			Hinweis.style.display ="grid";
+			Hinweis.style.display ="block";
 
 		}
 

@@ -6,7 +6,12 @@
 	<button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');create_blog();"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
 </div>
 </div>
-<div id=Hinweis style="margin-top:50px;"><p><label>Wähle Diagramme oder Kommentare um dein Feedback auszuwerten</label></p></div>
+
+<div id=Hinweis style="margin-top:30px;">
+<img src="charts_undraw.svg" alt="" class="undraw_charts">
+<div class="undraw_seperator"></div>
+<img src="chat_undraw.svg" alt="" class="undraw_charts">
+</div>
 
 <div id="fullAuswahl"  style='display:none; width: 83vw; margin:auto;'>
 	<div id="Auswahl" class="grid-container-auswahl">

@@ -66,7 +66,7 @@
 </script>
 
 		<h1 style="font-size:30px; margin-bottom:10px;">Auswertung <i class="fa fa-line-chart" aria-hidden="true"></i> </h1>
-		<p style="margin-bottom:40px;"> Hier findest du die Auswertung deines Kundenfeedbacks</p>
+		<p style="margin-bottom:40px;"> Wähle Diagramme oder Kommentare um dein Feedback auszuwerten</p>
     </div>
 <div style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	
 
@@ -79,9 +79,12 @@
   </div>
 
 </div>
-
-<div id=Hinweis style="margin-top:50px;"><p><label>Wähle Diagramme oder Kommentare um dein Feedback auszuwerten</label></p></div>
-	<div id=fullAuswahl style='display:none'>
+<div id=Hinweis style="margin-top:30px;">
+<img src="charts_undraw.svg" alt="" class="undraw_charts">
+<div class="undraw_seperator"></div>
+<img src="chat_undraw.svg" alt="" class="undraw_charts">
+</div>
+<div id=fullAuswahl style='display:none'>
 	<div id="Auswahl" class="grid-container-auswahl">
 	<label class="Auswahl"> Wähle einen Berater: </label>
 			<?php

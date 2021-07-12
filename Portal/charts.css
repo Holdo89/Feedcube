@@ -195,6 +195,20 @@ margin-top: 20px;
   text-align:left;
 }
 
+.undraw_charts{
+  float:left; 
+  width:20%; 
+  margin-left:18%; 
+  margin-top:5%;
+}
+
+.undraw_seperator{
+  border-right:1px solid black; 
+  height:22vw; 
+  float:left; 
+  margin-left:12%
+}
+
 .dashboard_stats{
   color:darkblue;
   background-color:aliceblue;
@@ -338,10 +352,32 @@ h1{
 .dashboard_stats{
   grid-template-columns: auto
 }
+.undraw_charts{
+  float:left; 
+  width:30%; 
+  margin-left:15%; 
+  margin-top:5%;
+}
+.undraw_seperator{
+  height:30vw;
+  margin-left:5%; 
+  margin-top:0%;
+}
 }
 
 @media only screen and (max-width: 600px){
 
+  .undraw_charts{
+    float:left; 
+    width:40%; 
+    margin-left:5%; 
+    margin-top:5%;
+  }
+  .undraw_seperator{
+    height:40vw;
+    margin-left:5%; 
+    margin-top:0%;
+  }
   
   .buttontext{
     display:none;
