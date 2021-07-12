@@ -195,6 +195,18 @@ margin-top: 20px;
   text-align:left;
 }
 
+.dashboard_stats{
+  color:darkblue;
+  background-color:aliceblue;
+  border-radius: 15px;
+  text-align:center; 
+  padding:30px;
+  margin-top:30px; 
+  grid-column: 1 / span 3; 
+  display:grid; 
+  grid-template-columns: 3fr 3fr 3fr
+}
+
 .grid-container-charts {
   max-width:1300px; 
   
@@ -320,6 +332,12 @@ h1{
 
 }
 
+}
+
+@media only screen and (max-width: 900px){
+.dashboard_stats{
+  grid-template-columns: auto
+}
 }
 
 @media only screen and (max-width: 600px){

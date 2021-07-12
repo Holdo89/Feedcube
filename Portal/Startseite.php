@@ -24,7 +24,7 @@ $Trainer=$_SESSION["username"];
 	<link href="charts.css" rel="stylesheet" type="text/css">
 
 </head>
-<body class="text-center">
+<body class="text-center" onload="Startstatistics()">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -61,26 +61,10 @@ $Trainer=$_SESSION["username"];
 				include "Auswahlmöglichkeiten_Trainer_Start.php"
 			?>	
 </div>
+
 <div class="startdashboard" id="startdashboard">
-<div class="überschrift_start"><b>Singlechoice</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>
-<?php
-	include "Fragen_Startseite.php";
-	questions("Singlechoice", $link, "externes_feedback");
-?>
 
-<div class="überschrift_start"><b>Multiplechoice</b></div><div class="überschrift_start"><b>Häufigste</b></div> <div class="überschrift_start"><b>Seltenste</b> </div>
 
-<?php
-	questions("Multiplechoice", $link, "externes_feedback");
-?>
-
-<div class="überschrift_start"><b>Schieberegler</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>
-
-<?php
-	questions("Schieberegler", $link, "externes_feedback");
-?>
-
-</div>
 </div>
 </div>
 
