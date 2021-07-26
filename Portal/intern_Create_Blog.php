@@ -22,7 +22,8 @@ output.innerHTML = datum_min + " bis " + datum_max;
 		if (this.response=="")
 		{
         	var canvas = document.getElementById("nofeedback_Kommentar");
-        	canvas.innerHTML="Es wurde noch kein Feedback abgegeben";
+            canvas.innerHTML='<p style="margin-top:-25px"><label>Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
+
 		}
 		else{
 			var canvas = document.getElementById("nofeedback_Kommentar");

@@ -148,7 +148,7 @@ margin-top: 20px;
 
 }
 
-.überschrift_start{
+.端berschrift_start{
   padding-top:20px;
 }
 
@@ -193,6 +193,7 @@ margin-top: 20px;
   width:78vw; 
   margin:auto; 
   text-align:left;
+  overflow:auto;
 }
 
 .undraw_charts{
@@ -200,6 +201,13 @@ margin-top: 20px;
   width:20%; 
   margin-left:18%; 
   margin-top:5%;
+}
+
+.undraw_chart_empty{
+  float:center; 
+  margin:auto;
+  margin-top:5%;
+  width:20%; 
 }
 
 .undraw_seperator{
@@ -218,7 +226,7 @@ margin-top: 20px;
   margin-top:30px; 
   grid-column: 1 / span 3; 
   display:grid; 
-  grid-template-columns: 3fr 3fr 3fr
+  grid-template-columns: 3fr 3fr 3fr;
 }
 
 .grid-container-charts {
@@ -358,6 +366,9 @@ h1{
   margin-left:15%; 
   margin-top:5%;
 }
+.undraw_chart_empty{
+  width:40%; 
+}
 .undraw_seperator{
   height:30vw;
   margin-left:5%; 
@@ -373,6 +384,11 @@ h1{
     margin-left:5%; 
     margin-top:5%;
   }
+
+  .undraw_chart_empty{
+    width:50%; 
+  }
+
   .undraw_seperator{
     height:40vw;
     margin-left:5%; 
@@ -390,9 +406,15 @@ h1{
 
 .startdashboard{
   font-size:12px; 
-  width:80vw; 
+  width:85vw; 
 }
 
+.dashboard_stats{
+  max-width:250px;
+  margin-left:28px;
+  margin-top:5px;
+
+}
 
 .leftchart{
 

@@ -53,7 +53,7 @@
 		if (this.response.length==2) //Wenn kein response kommt dann haben wir eine Länge von 2
 		{
         	var canvas = document.getElementById("auswertungen");
-        	canvas.innerHTML="<label style='margin:50px'>Es wurde noch kein Feedback abgegeben</label>";
+            canvas.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
 		}
 		else{
 			document.getElementById("auswertungen").innerHTML=this.responseText;

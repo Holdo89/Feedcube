@@ -123,8 +123,7 @@ xmlhttp.onreadystatechange = function() {
       }	
     else{
         var canvas = document.getElementById("nofeedback");
-        canvas.innerHTML="Es wurde noch kein Feedback abgegeben";
-        canvas.style.marginTop="50px";
+        canvas.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
     }
     }
 	;};
@@ -259,8 +258,7 @@ function update(){
             PieChart.destroy();
             trendctx.style.display="none";
             var canvas = document.getElementById("nofeedback");
-            canvas.innerHTML="Es wurde noch kein Feedback abgegeben";
-            canvas.style.marginTop="50px";  
+            canvas.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
          }
     }
 	;};
