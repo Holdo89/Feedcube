@@ -32,8 +32,10 @@ include "../config.php";
 	echo $file[2];
 	?>');">
 <link href="css/fancy_auswahl.css" rel="stylesheet" type="text/css">
-<form action="Frage.php?0" method="post">
 
+<input type="text" id="Link" name="Link" style="margin-top:5px; display:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
+
+<form id="FeedbackForm" action="" method="post">
 <img class="center" src="../assets/<?php echo $subdomain ?>/logo/<?php
 	$dir = "../assets/".$subdomain."/logo/";
 	$file = scandir($dir);
@@ -42,27 +44,59 @@ include "../config.php";
 
 <div class="container">
 
-<select class="center" name="Auswahl_Trainer" required>
+<select class="center" name="Auswahl_Trainer" id="Auswahl_Trainer" required>
 <?php
 
     $sql = "SELECT name, username, Is_Trainer FROM users WHERE Is_Trainer = 1 AND name!='Alle Berater'";
     $result = mysqli_query($link, $sql) ;
-	echo '<option value="" selected disabled hidden>Wähle deinen Berater</option>';
+	echo '<option value="" selected disabled hidden>Wähle den Kursleiter</option>';
     while($row = mysqli_fetch_assoc($result)) {
 		echo "<option>".$row['name']."</option>";
 }
 ?>
 </select>
-<select class="center" name="Auswahl_Leistung" required>
-	<option value="" selected disabled hidden>Welche Leistung möchten Sie bewerten?</option>
+<select class="center" name="Auswahl_Leistung" id="Auswahl_Leistung" required>
+	<option value="" selected disabled hidden>Wähle die Leistung</option>
   <?php
   include "Auswahl_Leistung_Teilnehmer.php"
   ?>
 </select>
+<select class="center" name="Auswahl_Sprache"  id="Auswahl_Sprache" required>
+<option value="" selected disabled hidden>Wähle die Sprache</option>
+	<option value="Deutsch">Deutsch</option>
+	<option value="Englisch">Englisch</option>
+</select>
 </div>
 <input class="center_button" type="submit" value="WEITER">
-
-
 </form>
+
+<script>
+	var FeedbackForm = document.getElementById("FeedbackForm");
+	var Auswahl_Trainer = document.getElementById("Auswahl_Trainer");
+	var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
+	var Auswahl_Sprache = document.getElementById("Auswahl_Sprache");
+	var Sprache = "Deutsch";
+	var Link = document.getElementById("Link");
+	var current_url = window.location.href;
+	var index = current_url.indexOf("Auswahl");
+	current_url = current_url.substr(0,index);
+	function createLink(){
+		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
+		Sprache = Auswahl_Sprache.value
+		var Feedbacklink = current_url+"Vorauswahl.php?Trainer="+Auswahl_Trainer.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
+		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		Link.value = Feedbacklink;
+		FeedbackForm.action = Feedbacklink;
+	}
+	Auswahl_Trainer.onchange = function(){
+		createLink();
+	};
+	Auswahl_Leistung.onchange = function(){
+		createLink();
+	};
+	Auswahl_Sprache.onchange = function(){
+		createLink()
+	};
+</script>
 </body>
 </html>
