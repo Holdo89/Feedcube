@@ -32,18 +32,18 @@ echo"
 ";
 if($_SESSION["Sprache"]=="Deutsch")
 {
-    echo"
-    <p>Vielen Dank für Ihr Feedback.</p>
-    <p>Wir schätzen die Meinung unserer Kunden sehr und sind dankbar für jegliche Rückmeldung durch die wir unseren Service noch weiter verbessern können</p>
-    </label>
+	$sql = "SELECT Text_nach_Abgabe FROM system";
+	$query = mysqli_query($link, $sql);
+	$result = mysqli_fetch_array($query);
+	echo $result["Text_nach_Abgabe"]."</label>
     ";
 }
 else if($_SESSION["Sprache"]=="Englisch")
 {
-    echo"
-    <p>Thank you for your feedback</p>
-    <p>We really appreciate our customer's feedback which enables us to improve our service further</p>
-    </label>
+	$sql = "SELECT Text_after_Feedback FROM system";
+	$query = mysqli_query($link, $sql);
+	$result = mysqli_fetch_array($query);
+	echo $result["Text_after_Feedback"]."</label>
     ";
 }
 ?>

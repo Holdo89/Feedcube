@@ -212,7 +212,23 @@ function push_all_Answers(){
     }
     console.log(abgegebenes_feedback_array)
     if(Fragenzahl == Anzahl_Fragen){
-        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>Vielen Dank für ihr Feedback</p>\" ";?>;
+        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>"; 
+        if($_SESSION["Sprache"]=="Deutsch")
+        {
+            $sql = "SELECT Text_nach_Abgabe FROM system";
+            $query = mysqli_query($link, $sql);
+            $result = mysqli_fetch_array($query);
+            echo $result["Text_nach_Abgabe"]."</p>";
+        }
+        else if($_SESSION["Sprache"]=="Englisch")
+        {
+            $sql = "SELECT Text_after_Feedback FROM system";
+            $query = mysqli_query($link, $sql);
+            $result = mysqli_fetch_array($query);
+            echo $result["Text_after_Feedback"]."</p>";
+        }
+        echo "<img class='center' src='undraw_going_up.svg' alt='' width='300' style='margin-top:10vh;'> <p style='text-align:center; font-size:13px;'>Powered by <a href='https://feedcube.net'>Feedcube</a></p> \" ";
+        ?>;
         const xhttp = new XMLHttpRequest();
         //replace & in url weil sonst insert nicht funktioniert
         var g = 0;
