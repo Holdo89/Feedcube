@@ -35,16 +35,7 @@ if(mysqli_query($link, $sql)){
     $sql = "UPDATE users SET internes_feedback_abgegeben = NOW() WHERE username = '".$_SESSION['username']."'";
     $result = mysqli_query($link, $sql);
     $rowcolumns = mysqli_fetch_assoc($result);
-    $sql = "SELECT Is_Admin FROM users WHERE username = '".$_SESSION["username"]."'";
-    $result = mysqli_query($link, $sql);
-    $row = mysqli_fetch_assoc($result);
-
-    if($row["Is_Admin"]==0){
-        header("location: Intern_noadmin.php");
-    }
-    else{
-        header("location: Intern.php");
-    }
+    header("location: Intern.php");
 } 
 else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

@@ -4,11 +4,11 @@
  $Leistung=$_REQUEST["Leistung"];
 
  if($Trainer=='externes_feedback'){
- 		$query = "SELECT * FROM externes_feedback WHERE Leistung LIKE '".$Leistung."' ORDER BY Datum DESC";
+ 		$query = "SELECT * FROM externes_feedback WHERE Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
  }
 
  else{
-		$query = "SELECT * FROM externes_feedback WHERE Username = '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC";
+		$query = "SELECT * FROM externes_feedback WHERE Username = '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
  }	
 
  $exec = mysqli_query($link,$query);
@@ -37,7 +37,7 @@ while($row = mysqli_fetch_array($exec)){
 	$fragen_index = 1; //welche Frage im Feedback ist dran
 
 	while($row_questions = mysqli_fetch_array($execute)){
-		echo'<div id="formular_div_'.$feedback_index.$fragen_index.'" class="grid-container" style="padding:0px; margin:0px;">';
+		echo'<div id="formular_div_'.$feedback_index.$fragen_index.$_POST["start"].'" class="grid-container" style="padding:0px; margin:0px;">';
 		if ($chapter != $row_questions["Kapitel"]){
  			echo'<div class="leer"></div>
 			<div class="chapter" style="grid-column-start: 1; grid-column-end: -1;">'.$row_questions["Kapitel"].'</div>';
@@ -55,7 +55,7 @@ while($row = mysqli_fetch_array($exec)){
 			echo'
 			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragen_extern"].'</div>';
 			while($row_answers=mysqli_fetch_array($result)){
-				echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
+				echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
 				<div class="choice" for="element_1_'.$option_index.'">'.$row_answers["Answers"].'</div>';
 				$gridcolumns = $gridcolumns." 2fr";
@@ -71,7 +71,7 @@ while($row = mysqli_fetch_array($exec)){
 			}
 			if($rows_answers["Answers"]=='NULL')
 			{
-				echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index."'); elem.remove();</script>";
+				echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
 			}
 			$i=$i+1;
 		}
@@ -87,7 +87,7 @@ while($row = mysqli_fetch_array($exec)){
 			echo'
 			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragen_extern"].'</div>';
 			while($row_answers=mysqli_fetch_array($result)){
-				echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
+				echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
 				<div class="choice" for="element_1_'.$option_index.'">'.$row_answers["Answers"].'</div>';
 				$gridcolumns = $gridcolumns." 2fr";
@@ -104,13 +104,13 @@ while($row = mysqli_fetch_array($exec)){
 			}
 			if($rows_answers["Answers"]=='NULL')
 			{
-				echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index."'); elem.remove();</script>";
+				echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
 			}
 			$i=$i+1;
 		}
 
 	else if($row_questions["Typ"]=="Schieberegler"){
-		echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index."').style.gridTemplateColumns = '25% 4fr'</script>";
+		echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo
 		'<div class="frage"><p>'.$row_questions["Fragen_extern"].'</div>
 		<div style="border: 1px solid #000; grid-column-start: 2; grid-column-end: -1; display: grid; grid-template-columns: auto auto auto auto auto;">
@@ -119,19 +119,19 @@ while($row = mysqli_fetch_array($exec)){
 		</div>';
 		if($row["Frage_".$row_questions["ID"]]==NULL)
 		{
-			echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index."'); elem.remove();</script>";
+			echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
 		}
 
 	}
 
 	else{
-		echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index."').style.gridTemplateColumns = '25% 4fr'</script>";
+		echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo	
 		'<div class="frage"><p>'.$row_questions["Fragen_extern"].'</div>
 		<textarea class="frage_text" name="element_1" cols="50" rows="3" maxlength="1000" wrap="soft">'.$row["Frage_".$row_questions["ID"]].'</textarea>';
 		if($row["Frage_".$row_questions["ID"]]=='NULL')
 		{
-			echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index."'); elem.remove();</script>";
+			echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
 		}
 	}
 //wird benötigt um das vorherige Kapitel zu bestimmen um dann nur Kapitel zu schreiben wenn das vorige nicht das jetzige Kapitel ist

@@ -7,8 +7,8 @@
 </a>
     <a style="  margin-bottom:20px; visibility: hidden;"></a>		
     <a id ="feedback_charts" href="feedback_charts.php"><i class="fa fa-line-chart" aria-hidden="true"></i> Auswertung</a>
-    <a id ="forms" href="forms.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
-    <a id ="Intern_noadmin" href="Intern_noadmin.php"><i class="fa fa-bullhorn" aria-hidden="true"></i> Feedback</a>
+    <a id ="forms" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
+    <a id ="Intern" href="Intern.php"><i class="fa fa-bullhorn" aria-hidden="true"></i> Feedback</a>
     <a id ="intern_blog_noadmin" href="interner_blog_noadmin.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>
 
 

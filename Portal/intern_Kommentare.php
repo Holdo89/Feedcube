@@ -7,7 +7,7 @@
  $Frage=$_REQUEST["Frage"];
 
  if($Frage){
-$query = "SELECT ".$Frage.", Datum FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." != '' ORDER BY Datum DESC";
+$query = "SELECT ".$Frage.", Datum FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." != '' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
 
 $exec = mysqli_query($link,$query);
 while($row = mysqli_fetch_array($exec)){

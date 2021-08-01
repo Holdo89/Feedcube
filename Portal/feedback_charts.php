@@ -27,7 +27,6 @@
 				<?php
 				include "Draw_Charts.php";		//Pie and COlumnchart
 				include "Draw_Trend_Chart.php";		
-				include "Create_Blog.php";
 			?>	
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -75,7 +74,7 @@
 <div class="container">
   <div class="btn-group">
     <button type="button" id="metriken_button" class="btn btn-primary" onclick="change_color('metriken_button','text_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','blog'); hide('charts','blog');get_new_datediff('Diagramme');update();"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="buttontext">Diagramme<span></button>
-    <button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');get_new_datediff('Kommentare');create_blog();"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
+    <button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');get_new_datediff('Kommentare');create_blog_posts();"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
   </div>
 
 </div>
@@ -157,12 +156,92 @@
 	</div>
 	</div>
 
-	<label class="Auswahl" id="nofeedback_Kommentar" name="nofeedback_Kommentar" style="text-align:center; margin-top:1rem"></label>	
-	</div> 
+	<label class="Auswahl" id="nofeedback_Kommentar" name="nofeedback_Kommentar" style="text-align:center; margin-top:1rem"></label>		
+	<div id="load_data_message"></div>
+</div> 
 </div>
 </body>
 
 </html>
+<script>
+
+function create_blog_posts(){
+	var blog = document.getElementById("blog_posts");
+	blog.innerHTML="";
+	var limit = 5;
+	var start = 0;
+	var action = 'inactive';
+	function load_country_data(limit, start)
+ 	{
+	var Trainer = Auswahl_Trainer_Kommentare.value;
+	var Frage = Auswahl_Frage_Kommentar.value;
+	var Leistung = Auswahl_Leistung_Kommentar.value;
+	var value_min = $( "#slider-range2" ).slider( "values", 0 );
+	var value_max = $( "#slider-range2" ).slider( "values", 1 );
+	var output = document.getElementById("demo2");
+	var datum_min = new Date();
+	var datum_max = new Date();
+	datum_min.setDate(datum_min.getDate() - value_min);
+	datum_min = datum_min.toISOString().split('T')[0];
+	datum_max.setDate(datum_max.getDate() - value_max);
+	datum_max = datum_max.toISOString().split('T')[0];
+	output.innerHTML = datum_min + " bis " + datum_max;
+	console.log("trainer "+Trainer);
+	console.log("leistung "+Leistung);
+  	$.ajax({
+   url:"Create_Blog.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer,
+   method:"POST",
+   data:{limit:limit, start:start},
+   cache:false,
+   success:function(data)
+   {
+    $('#blog_posts').append(data);
+    if(data == '')
+    {
+     $('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
+     action = 'active';
+    }
+    else
+    {
+     $('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
+     action = "inactive";
+    }
+   }
+  });
+ }
+
+ if(action == 'inactive')
+ {
+  action = 'active';
+  load_country_data(limit, start);
+ }
+ $(window).scroll(function(){
+  if($(window).scrollTop() + $(window).height() > $("#blog_posts").height() && action == 'inactive')
+  {
+   action = 'active';
+   start = start + limit;
+   setTimeout(function(){
+    load_country_data(limit, start);
+   }, 1000);
+  }
+ });
+ 
+};
+function datum_update_blog(){
+	var value_min = $( "#slider-range2" ).slider( "values", 0 );
+	var value_max = $( "#slider-range2" ).slider( "values", 1 );
+	var output = document.getElementById("demo2");
+	var datum_min = new Date();
+	var datum_max = new Date();
+	datum_min.setDate(datum_min.getDate() - value_min);
+	datum_min = datum_min.toISOString().split('T')[0];
+	datum_max.setDate(datum_max.getDate() - value_max);
+	datum_max = datum_max.toISOString().split('T')[0];
+	output.innerHTML = datum_min + " bis " + datum_max;
+}
+</script>
+
+
 
 	
 

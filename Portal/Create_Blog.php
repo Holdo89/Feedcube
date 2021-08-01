@@ -1,63 +1,36 @@
-<script>
+<?php
 
-function create_blog(){
-	var Trainer = Auswahl_Trainer_Kommentare.value;
-	var Frage = Auswahl_Frage_Kommentar.value;
-	var Leistung = Auswahl_Leistung_Kommentar.value;
-	var value_min = $( "#slider-range2" ).slider( "values", 0 );
-	var value_max = $( "#slider-range2" ).slider( "values", 1 );
-	var output = document.getElementById("demo2");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
-	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
-	datum_max = datum_max.toISOString().split('T')[0];
-	output.innerHTML = datum_min + " bis " + datum_max;
+require_once "session.php";
+require_once "../config.php"; 
 
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var posts = document.getElementById("blog_posts");
-			posts.innerHTML = this.responseText;
-			if (this.response=="")
-			{
-				var canvas = document.getElementById("nofeedback_Kommentar");
-				canvas.innerHTML='<p style="margin-top:-25px;"><label>Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
+ $Trainer=$_REQUEST["Trainer"];
+ $datum_min=$_REQUEST["datum_min"];
+ $datum_max=$_REQUEST["datum_max"];
+ $Leistung=$_REQUEST["Leistung"];
+ $Frage=$_REQUEST["Frage"];
 
-			}
-			else{
-				var canvas = document.getElementById("nofeedback_Kommentar");
-				canvas.innerHTML="";
-			}
-			}
+if($Leistung && $Frage !="undefined"){
 
-		};
+	if($Trainer=='externes_feedback'){
+		$query = "SELECT ".$Frage.", Datum, Leistung FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." != '' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
+	}
 
-		xmlhttp.open("GET", "Kommentare_Admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
-		xmlhttp.send();
+	else{
+		$query = "SELECT ".$Frage.", Datum, Leistung FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." != '' AND Username='".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
+	}
+
+	$exec = mysqli_query($link,$query);
+	while($row = mysqli_fetch_array($exec)){
+		$sql_leistung = "SELECT Leistung FROM leistungen WHERE ID = ".$row['Leistung'];
+		$query_leistung = mysqli_query($link, $sql_leistung);
+		$row_Leistung = mysqli_fetch_array($query_leistung);
+		$Leistung = $row_Leistung["Leistung"];
+		echo "
+		<div class='posts'>
+		<p style= 'font-style: italic; font-size: 13px'>".$row['Datum'].",  ".$Leistung."</p>
+		<p style= 'font-style: italic; font-size: 18px; margin-top: 20px'>".$row[$Frage]."</p>
+		</div>";
+	}
 }
 
-function datum_update_blog(){
-	var value_min = $( "#slider-range2" ).slider( "values", 0 );
-	var value_max = $( "#slider-range2" ).slider( "values", 1 );
-	var output = document.getElementById("demo2");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
-	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
-	datum_max = datum_max.toISOString().split('T')[0];
-	output.innerHTML = datum_min + " bis " + datum_max;
-}
-
-</script>
-
-
-
-
-
-
-
-
-
+?>

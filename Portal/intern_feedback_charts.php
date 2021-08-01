@@ -3,7 +3,7 @@
 
 	<div class="btn-group">
   	<button type="button" id="metriken_button" class="btn btn-primary" onclick="change_color('metriken_button','text_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','blog'); hide('charts','blog');update();"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="buttontext">Diagramme<span></button>
-	<button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');create_blog();"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
+	<button type="button" id="text_button" class="btn btn-primary" onclick="change_color('text_button','metriken_button','<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>'); hide('fullAuswahl','charts');hide('blog','fullAuswahl');create_blog_posts();"><i class="fa fa-commenting" aria-hidden="true"></i> <span class="buttontext">Kommentare</span></button>
 </div>
 </div>
 
@@ -58,7 +58,9 @@
 	</div>
 	</div>	
 	<label class="Auswahl" id="nofeedback_Kommentar" name="nofeedback_Kommentar" style="text-align:center; margin-top:1rem"></label>	
-	</div> 
+	<div id="load_data_message"></div>	
+</div> 
+
 
 
 

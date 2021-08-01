@@ -31,7 +31,7 @@ else{
         echo $Message;
 	}
 	else{
-		echo'<select class="Auswahl_Select" id="Auswahl_Frage_Kommentar" name="Auswahl_Frage_Kommentar" oninput="create_blog()">';
+		echo'<select class="Auswahl_Select" id="Auswahl_Frage_Kommentar" name="Auswahl_Frage_Kommentar" oninput="create_blog_posts()">';
 		$result = mysqli_query($link, $sql) ;
 
     	while($row = mysqli_fetch_assoc($result)) {

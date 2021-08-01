@@ -13,7 +13,7 @@ $( function() {
 
   $( "#slider-range2" ).slider({
   stop: function(event, ui) {
-    create_blog();
+    create_blog_posts();
   },
 
     range: true,
@@ -73,7 +73,7 @@ function get_new_datediff(DiagrammeorKomment){
       $( "#slider-range2" ).slider({
       stop: function(event, ui) {
         datum_update();
-        create_blog();
+        create_blog_posts();
       },
     
         range: true,
