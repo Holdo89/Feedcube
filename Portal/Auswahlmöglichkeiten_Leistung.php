@@ -30,7 +30,7 @@ else
 {
     $result = mysqli_query($link, $sql) ;
     echo'<select class="Auswahl_Select" id="Auswahl_Leistung" name="Auswahl_Leistung" oninput="update()">';
-	echo '<option value="%">Alle Leistungen</option>';
+	echo '<option value="%25">Alle Leistungen</option>';
 
     while($row = mysqli_fetch_assoc($result)) {
 

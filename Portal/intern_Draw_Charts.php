@@ -108,13 +108,6 @@ xmlhttp.onreadystatechange = function() {
 
     options: {
 	responsive: true, 
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
     }
 });
     var canvas = document.getElementById("nofeedback");
@@ -170,7 +163,7 @@ output.innerHTML = datum_min + " bis " + datum_max;
 
 function drawcharts(){
     chartjs('bar','ColumnChart');
-    chartjs('pie','PieChart');
+    chartjs('doughnut','PieChart');
     statistics('Statistics');
 }
 
