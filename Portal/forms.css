@@ -85,8 +85,7 @@ form {
   position: relative; 
 
   width:95%;
-
-
+  overflow:auto;
 
 }
 

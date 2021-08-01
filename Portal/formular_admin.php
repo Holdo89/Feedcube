@@ -1,13 +1,14 @@
 <?php
 
  require_once "IsAdmincheck.php";
+ $Leistung=$_REQUEST["Leistung"];
 
  if($Trainer=='externes_feedback'){
- 		$query = "SELECT * FROM externes_feedback ORDER BY Datum DESC";
+ 		$query = "SELECT * FROM externes_feedback WHERE Leistung LIKE '".$Leistung."' ORDER BY Datum DESC";
  }
 
  else{
-		$query = "SELECT * FROM externes_feedback WHERE Username = '".$Trainer."' ORDER BY Datum DESC";
+		$query = "SELECT * FROM externes_feedback WHERE Username = '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC";
  }	
 
  $exec = mysqli_query($link,$query);

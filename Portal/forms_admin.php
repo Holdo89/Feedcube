@@ -38,15 +38,21 @@
 			<?php
 				include "Auswahlmöglichkeiten_Trainer.php"
 			?>
+		<label class="Auswahl" style="text-align:center; padding:0"> Wähle eine Leistung: </label>
+			<?php
+				include "Auswahlmöglichkeiten_Leistung.php"
+			?>
 	</div>
 	<script>
 	document.getElementById("Auswahl_Trainer").oninput = function(){formular()};
+	document.getElementById("Auswahl_Leistung").oninput = function(){formular()};
 	</script>
 	<div id="auswertungen" style="display:grid; margin:10px;">
 	</div>
 	<script>
 	function formular(){
 	var Trainer = Auswahl_Trainer.value;
+	var Leistung = Auswahl_Leistung.value;
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
   	if (this.readyState == 4 && this.status == 200) {
@@ -65,7 +71,7 @@
 	}
 	;};
 
-	xmlhttp.open("GET", "formular_admin.php?Trainer=" + Trainer, true);
+	xmlhttp.open("GET", "formular_admin.php?Trainer=" + Trainer + "&Leistung=" + Leistung, true);
 	xmlhttp.send();
 	}
 	formular()

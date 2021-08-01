@@ -34,12 +34,20 @@
 	</div> 
 		<h1 style="font-size:30px; margin-bottom:10px;">Formulare <i class="fa fa-file-text-o" aria-hidden="true"></i> </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks</p>	</div>
-
+		<div id="Auswahl_Admin" class="grid-container-auswahl" style="width:78vw; margin:auto;">
+		<label class="Auswahl" style="text-align:center; padding:0"> Wähle eine Leistung: </label>
+			<?php
+				include "Auswahlmöglichkeiten_Leistung.php"
+			?>
+	</div>
+	<script>
+	document.getElementById("Auswahl_Leistung").oninput = function(){formular()};
+	</script>
 	<div id="auswertungen" style="display:grid; margin:10px;">
 	</div>
 	<script>
 	function formular(){
-	//var Trainer = Auswahl_Trainer.value;
+	var Leistung = Auswahl_Leistung.value;
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
   	if (this.readyState == 4 && this.status == 200) {
@@ -58,7 +66,7 @@
 	}
 	;};
 
-	xmlhttp.open("GET", "formular_admin.php", true);
+	xmlhttp.open("GET", "formular_admin.php?Leistung=" +Leistung, true);
 	xmlhttp.send();
 	}
 	formular()
