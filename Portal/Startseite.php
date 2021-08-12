@@ -61,10 +61,9 @@ $Trainer=$_SESSION["username"];
 				include "Auswahlmöglichkeiten_Trainer_Start.php"
 			?>	
 </div>
-
+<h3 style='margin:auto; margin-top: 30px; font-size:20px; grid-column-end:span 3; text-align:center; display:grid;'>Statistik</h3>
+<hr style='grid-column-end:span 3;'>
 <div class="startdashboard" id="startdashboard">
-
-
 </div>
 </div>
 

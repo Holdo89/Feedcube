@@ -81,7 +81,9 @@ require_once "session.php";
         }
     }
     if($Feedback_abgegeben)
-    {
+    {   
+        echo"<h3 style='margin:auto; font-size:20px; margin-top:30px; grid-column-end:span 3; text-align:center; display:grid;'>Fragenauswertung</h3>";
+        echo"<hr style='grid-column-end:span 3;'>";
         echo'<div class="überschrift_start"><b>Singlechoice</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>';
         include "Fragen_Startseite.php";
         questions("Singlechoice", $link, $Trainer);

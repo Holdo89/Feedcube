@@ -129,7 +129,8 @@
 		<strong> Note !</strong> <span class="warning-message"> Die angegebenen Werte waren nicht korrekt </span>
 	</div>
 
-	<p style="font-size:13pt; margin-bottom:20px; margin-top:30px;">Fragen an Kunden</p>
+	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;">Fragen an Kunden</p>
+	<hr style='max-width:90vw; margin:auto;'>
 	<div id="externe_Fragen" class="scroll" style="padding:20px;">
 	<form style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift"></label>
@@ -189,7 +190,8 @@
 	<div class="überschrift" style="background-color:white;"></div>
 	</div>
 	</form>
-	<p style="font-size:13pt; margin-bottom:20px;">Fragen an Mitarbeiter</p>
+	<p style="font-size:13pt; margin-bottom:10px;">Fragen an Mitarbeiter</p>
+	<hr style='max-width:90vw; margin:auto;'>
 	<div id="interne_Fragen" class="scroll" style="padding:20px;">
 	<form class="form_intern" style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift"></label>
@@ -216,7 +218,8 @@
 	<div class="überschrift" style="background-color:white;"></div>
 	</form>
 	</div>
-	<p style="font-size:13pt; margin-bottom:20px;">Antwortmöglichkeiten</p>
+	<p style="font-size:13pt; margin-bottom:10px;">Antwortmöglichkeiten</p>
+	<hr style='max-width:90vw; margin:auto; margin-bottom:20px;'>
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift">Singlechoice</label>
 	<label class="überschrift"></label>

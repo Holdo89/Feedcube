@@ -19,7 +19,6 @@
 	<?php
 				include "intern_Draw_Charts.php";		//Pie and COlumnchart
 				include "intern_Draw_Trend_Chart.php";
-				include "intern_Create_Blog.php";
 			?>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>

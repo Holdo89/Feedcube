@@ -204,12 +204,15 @@ margin-top: 20px;
 }
 
 .dashboard_stats{
-  color:darkblue;
+  background-image: url("background_statistic.jpg");
+  background-size: cover;
+  color:white;
   background-color:aliceblue;
   border-radius: 15px;
   text-align:center; 
-  padding:30px;
-  margin-top:30px; 
+  padding:50px;
+  padding-bottom:30px;
+  margin-bottom:30px; 
   grid-column: 1 / span 3; 
   display:grid; 
   grid-template-columns: 3fr 3fr 3fr;
@@ -392,12 +395,12 @@ h1{
 
 .startdashboard{
   font-size:12px; 
-  width:85vw; 
+  width:100vw; 
 }
 
 .dashboard_stats{
-  max-width:250px;
-  margin-left:28px;
+  max-width:300px;
+  margin-left:5px;
   margin-top:5px;
 
 }
