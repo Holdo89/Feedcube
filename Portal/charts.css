@@ -170,6 +170,13 @@ margin-top: 20px;
 
 }
 
+.start{
+    width:85vw; 
+    margin:auto; 
+    text-align:center; 
+    font-size:19px;
+}
+
 .startdashboard{
   grid-template-columns: 6fr 2fr 2fr; 
   column-gap: 10px;
@@ -192,7 +199,8 @@ margin-top: 20px;
   float:center; 
   margin:auto;
   margin-bottom:5%;
-  width:26%; 
+  width:26%;
+  min-width:250px;
   grid-column-start: 1;
   grid-column-end:-1;
 }
@@ -206,8 +214,11 @@ margin-top: 20px;
 
 .dashboard_stats{
   color:white;
+  margin:auto;
+  max-width:90%;
   background: linear-gradient(90deg, rgba(46,193,200,1) 0%, rgba(48,23,107,1) 100%);
   border-radius: 15px;
+  font-size:15px;
   text-align:center; 
   padding:50px;
   padding-bottom:30px;
@@ -395,24 +406,23 @@ h1{
 	margin-left:-20px;
 }
 
+.start{
+    width:90vw; 
+}
+
 .startdashboard{
-  font-size:12px; 
-  width:100vw; 
+  width:90vw; 
+  font-size:13px;
 }
 
 .dashboard_stats{
-  max-width:300px;
-  margin-left:5px;
-  margin-top:5px;
-
+  max-width:90vw;
 }
 
 .leftchart{
 
   width:340px;
-
   margin-left:-20px;
-
   margin-top: 10px;
 
 }

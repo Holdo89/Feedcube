@@ -24,14 +24,14 @@ function questions($Fragentyp, $link, $Trainer){
 		}
 		else{
 			$result = mysqli_query($link, $sql) ;
-	
 			while($row = mysqli_fetch_assoc($result)) {
-	
+	            echo"<hr style='grid-column-end:span 3; margin-bottom:10px; margin-top:4px;'>";
 				if($row['Typ']==$Fragentyp){
-					echo "<div style='margin-bottom:10px;' id='Frage_".$row['ID']."'>".$row['Fragen_extern']."</div>";
+					echo "<div id='Frage_".$row['ID']."'>".$row['Fragen_extern']."</div>";
 					Statistik("Frage_".$row['ID'], $link, $Trainer);
 				}
 			}
+				            echo"<hr style='grid-column-end:span 3; margin-bottom:30px; margin-top:4px;'>";
 		}	
 	}
 

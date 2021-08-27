@@ -43,7 +43,7 @@ $Trainer=$_SESSION["username"];
 </div> 
 </div>
 
-<div style="width:85vw; margin:auto; text-align:center; font-size:19px; @media only screen and (max-width: 600px){width:100vw}">	
+<div class="start">	
 <!--erstes Kapitel Inhalt des Seminars-->
 
 <h2>Hi <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, Willkommen auf der Startseite von</h2>
@@ -63,7 +63,7 @@ $Trainer=$_SESSION["username"];
 </div>
 <h3 style='margin:auto; margin-top: 30px; font-size:20px; grid-column-end:span 3; text-align:center; display:grid;'>Statistik</h3>
 <hr style='grid-column-end:span 3;'>
-<div class="startdashboard" id="startdashboard">
+<div id="startdashboard">
 </div>
 </div>
 

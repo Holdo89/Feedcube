@@ -82,8 +82,9 @@ require_once "session.php";
     }
     if($Feedback_abgegeben)
     {   
-        echo"<h3 style='margin:auto; font-size:20px; margin-top:30px; grid-column-end:span 3; text-align:center; display:grid;'>Fragenauswertung</h3>";
+        echo"<h3 style='margin:auto; font-size:20px; margin-top:50px; grid-column-end:span 3; text-align:center; display:grid;'>Fragenauswertung</h3>";
         echo"<hr style='grid-column-end:span 3;'>";
+        echo"<div style='grid-column-end:span 3;' class='startdashboard'>";
         echo'<div class="überschrift_start"><b>Singlechoice</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>';
         include "Fragen_Startseite.php";
         questions("Singlechoice", $link, $Trainer);
@@ -91,8 +92,9 @@ require_once "session.php";
         questions("Multiplechoice", $link, $Trainer);
         echo'<div class="überschrift_start"><b>Schieberegler</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>';
         questions("Schieberegler", $link, $Trainer);
+        echo"</div>";
     }
     else{
-        echo"<div style='text-align:center; grid-column: 1 / span 3;'>'<p><label style='margin-top:30px'>Es wurde noch kein Feedback abgegeben</label></p> <img src='undraw_empty_xct9.svg' alt='' class='undraw_chart_empty'>'</div>";
+        echo"<div style='text-align:center; grid-column: 1 / span 3;'><p><label style='margin-top:30px'>Es wurde noch kein Feedback abgegeben</label></p> <img src='undraw_empty_xct9.svg' alt='' class='undraw_chart_empty'></div>";
     }
 ?>

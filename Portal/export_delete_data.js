@@ -27,6 +27,7 @@ function delete_data(){
     xmlhttp.open("GET", "Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
     xmlhttp.send();
     }
+    location.reload();
 }
 
 function intern_delete_data(){
@@ -48,6 +49,7 @@ function intern_delete_data(){
     xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max, true);
     xmlhttp.send();
     }
+    location.reload();
 }
 
 function export_data_admin(){
