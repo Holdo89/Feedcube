@@ -82,6 +82,8 @@
 
 function create_blog_posts(){
 	var blog = document.getElementById("blog_posts");
+	var undraw_empty = document.getElementById("undraw_empty_2");
+	undraw_empty.style.display="none";
 	blog.innerHTML="";
 	var limit = 5;
 	var start = 0;
@@ -108,19 +110,27 @@ function create_blog_posts(){
    {
     $('#blog_posts').append(data);
     if(data == '')
-    {
-     $('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
-     action = 'active';
-    }
+	{
+		if(blog.innerHTML=="")
+		{	
+			undraw_empty.style.display="block";
+			$('#load_data_message').hide();
+		}
+		else
+		{	
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
+			action = 'active';	
+		}
+	}
     else
     {
-     $('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
-     action = "inactive";
+		$('#load_data_message').show();
+     	$('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
+     	action = "inactive";
     }
    }
   });
  }
-
  if(action == 'inactive')
  {
   action = 'active';

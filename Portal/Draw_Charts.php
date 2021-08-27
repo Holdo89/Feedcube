@@ -20,6 +20,7 @@ function get_options(Frage, Trainer){
 //Zeichnet die Charts mit dem TypColumn oder Piechart
 
 function chartjs(typ,name){
+var charts = document.getElementById("charts");
 var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
@@ -113,14 +114,11 @@ xmlhttp.onreadystatechange = function() {
 	responsive: true, 
     }
 });
-    var canvas = document.getElementById("nofeedback");
-    canvas.innerHTML="";
-    canvas.style.marginTop=0;
+    undraw_empty.style.display="none";
       }	
     else{
-        var canvas = document.getElementById("nofeedback");
-        canvas.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
-    }
+        undraw_empty.style.display="block";
+        }
     }
 	;};
     xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
@@ -152,11 +150,11 @@ output.innerHTML = datum_min + " bis " + datum_max;
         {
             ctx.innerHTML = "";
             ctx.width=1000;
-            ctx.style.backgroundImage="none";
+            ctx.style.display="none";
         }
         else{
             ctx.innerHTML = array;
-            ctx.style.backgroundImage="url(background_statistic.jpg)"
+            ctx.style.display="block";
         }
         }
       }
@@ -165,16 +163,19 @@ output.innerHTML = datum_min + " bis " + datum_max;
     xmlhttp.send();
 }
 
-function drawcharts(){
+function drawcharts(){  
     chartjs('bar','ColumnChart');
     chartjs('doughnut','PieChart');
     statistics('Statistics');
 }
 
 function update(){
+    var charts = document.getElementById("charts");
     var ctx = document.getElementById("ColumnChart");
     var trendctx = document.getElementById("TrendChart");
     trendctx.style.display="block";
+    var undraw_empty = document.getElementById("undraw_empty");
+
     if(ctx.getAttribute("height")!=160){ //check if chart was already created
 
 
@@ -258,9 +259,8 @@ function update(){
             ColumnChart.destroy();
             PieChart.destroy();
             trendctx.style.display="none";
-            var canvas = document.getElementById("nofeedback");
-            canvas.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_No_data.svg" alt="" class="undraw_chart_empty">';
-         }
+            undraw_empty.style.display="block";           
+        }
     }
 	;};
     xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);

@@ -26,7 +26,7 @@
 	<p style="margin-top:0.5em">Bewertungen von: <span id="demo"></span></p>
 	</div>
 	</div>
-	<label class="Auswahl" id="nofeedback" name="nofeedback" style="text-align:center; margin-top:5rem"></label>
+	<div id="undraw_empty" style="display:none; margin-top:48px;"><p><label style="font-size:16px;">Es wurde noch kein Feedback abgegeben</label></p><img src="undraw_empty_xct9.svg" alt="" class="undraw_chart_empty"></div>
 </div>
 	<div id="charts" class="grid-container-charts"  style='display:none'>
 			<div class= "leftchart">
@@ -39,7 +39,7 @@
 			<canvas id="TrendChart" height=200></canvas>
 			</div>
 			<div class="rightchart"> 
-			<p id="Statistics" style="overflow:auto; font-size:18px; font-weight: bold;border-radius: 10px 10px; background-image: url('background_statistic.jpg'); background-size: cover; color:white; margin-top:11%; padding-top:20%;height:330px;">
+			<p id="Statistics" style="overflow:auto; font-size:18px; font-weight: bold;border-radius: 10px 10px; background: linear-gradient(90deg, rgba(46,193,200,1) 0%, rgba(48,23,107,1) 90%); color:white; margin-top:11%; padding-top:20%;height:330px;">
 			</div>
 	</div>
 	<div id="blog"  style='display:none'>		
@@ -57,8 +57,8 @@
 	<span id="blog_posts" ></span> <!--hier werden die Kommentare eingefügt-->
 	</div>
 	</div>	
-	<label class="Auswahl" id="nofeedback_Kommentar" name="nofeedback_Kommentar" style="text-align:center; margin-top:1rem"></label>	
-	<div id="load_data_message"></div>	
+	<div id="load_data_message"></div>
+	<div id="undraw_empty_2" style="display:none"><p><label style="font-size:16px;">Es wurde noch kein Feedback abgegeben</label></p><img src="undraw_empty_xct9.svg" alt="" class="undraw_chart_empty"></div>	
 </div> 
 
 

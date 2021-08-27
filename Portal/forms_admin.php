@@ -100,20 +100,31 @@ function create_formular(){
    success:function(data)
    {
     $('#auswertungen').append(data);
-    if(data == '')
+    if(data.length <= 2)
     {
-     $('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
-     action = 'active';
-    }
+		if(blog.innerHTML.length<=2)
+		{	
+			console.log("Nodata:" + blog.innerHTML);
+			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_empty_xct9.svg" alt="" style="width:20%;" class="undraw_chart_empty">';
+			$('#load_data_message').hide();
+		}
+		else
+		{	
+			console.log("data: "+blog.innerHTML);
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
+			action = 'active';	
+		}
+	}
     else
     {
-     $('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
-     action = "inactive";
+		console.log("data"+data);
+		$('#load_data_message').show();
+     	$('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
+     	action = "inactive";
     }
    }
   });
  }
-
  if(action == 'inactive')
  {
   action = 'active';
@@ -144,4 +155,14 @@ function datum_update_blog(){
 	datum_max = datum_max.toISOString().split('T')[0];
 	output.innerHTML = datum_min + " bis " + datum_max;
 }
+
+function deleteFeedback(id){
+		if (confirm("Wollen Sie dieses Feedback wirklich entfernen?"))
+	  	{
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "deleteFeedback.php?Id=" + id, true);
+			xmlhttp.send();
+			location.reload();
+	  }
+	}
 </script>

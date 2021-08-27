@@ -1,7 +1,7 @@
 function hide($x,$y) {
 
 		var x = document.getElementById($x);
-
+		var charts = document.getElementById("charts");
 		var y = document.getElementById($y);
 		var Hinweis = document.getElementById("Hinweis");
 
