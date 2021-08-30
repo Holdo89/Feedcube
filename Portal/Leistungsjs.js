@@ -41,8 +41,6 @@
 		xmlhttp1.onreadystatechange = function() {
 
 		if (this.readyState == 4 && this.status == 200) {
-		    console.log("outter rim")
-			console.log(this.responseText);
 			var checked_sets = this.response.split(";.,");
 			var i=0;
 			while (i<checked_sets.length){
@@ -61,17 +59,13 @@
 
 			if (this.readyState == 4 && this.status == 200) {
 				var checked_sets = this.response.split(";.,");
-				console.log("innerrim")
-				console.log(checked_sets);
 				var i=0;
 				while (i<checked_sets.length){
 					if(type=="fragenset")
 					{
-					    console.log("Hello");
 						var checkbox = document.getElementById('Fragenset_'+checked_sets[i]);
 					}
 					else{
-					    console.log("Hello2");
 						var checkbox = document.getElementById(checked_sets[i]);
 					    
 					}checkbox.checked=true;	
@@ -134,7 +128,6 @@
 
 			if (this.readyState == 4 && this.status == 200) {
 				var checked_sets = this.response.split(",");
-				console.log(checked_sets);
 				var i=0;
 				while (i<checked_sets.length){
 					var checkbox = document.getElementById(checked_sets[i]);

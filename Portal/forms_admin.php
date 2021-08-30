@@ -104,20 +104,17 @@ function create_formular(){
     {
 		if(blog.innerHTML.length<=2)
 		{	
-			console.log("Nodata:" + blog.innerHTML);
 			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_empty_xct9.svg" alt="" style="width:20%;" class="undraw_chart_empty">';
 			$('#load_data_message').hide();
 		}
 		else
 		{	
-			console.log("data: "+blog.innerHTML);
 			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
 			action = 'active';	
 		}
 	}
     else
     {
-		console.log("data"+data);
 		$('#load_data_message').show();
      	$('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
      	action = "inactive";

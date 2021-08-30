@@ -152,11 +152,8 @@ var i =0;
 
 function push_all_Answers(){
     current_chapter++
-    console.log(current_chapter);
     current_html.push(document.getElementById("body").innerHTML)
     var Fragenzahl = parseInt(document.getElementById("Fragenzahl").value); //Frage die gerade dran ist
-    console.log("Fragenzahl push_answers:"+Fragenzahl);
-    console.log("i:"+i);
     while(i<Fragenzahl)
     {
         try{
@@ -210,7 +207,6 @@ function push_all_Answers(){
         }
         i=i+1;
     }
-    console.log(abgegebenes_feedback_array)
     if(Fragenzahl == Anzahl_Fragen){
         document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>"; 
         if($_SESSION["Sprache"]=="Deutsch")
@@ -320,7 +316,6 @@ function get_next_question()
 
 function previous_question(){
     current_chapter--
-    console.log(current_chapter);
     var last_question = parseInt(Fragenzahl.value) -(parseInt(Fragenzahl.value) - abgegebenes_feedback_array.length)-1
     last_Chapter = Kapitel_array[last_question-1];
     var u = 0;
@@ -332,10 +327,8 @@ function previous_question(){
     abgegebenes_feedback_array.pop()
     document.getElementById("body").innerHTML=current_html[current_chapter];
     current_html.pop();
-    console.log(abgegebenes_feedback_array);
     document.getElementById("Fragenzahl").value=last_question+1;
     i = last_question-u;
-    console.log(Fragen_array[i])
 
 }
 function input_update(i)

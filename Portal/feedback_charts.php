@@ -185,8 +185,6 @@ function create_blog_posts(){
 	datum_max.setDate(datum_max.getDate() - value_max);
 	datum_max = datum_max.toISOString().split('T')[0];
 	output.innerHTML = datum_min + " bis " + datum_max;
-	console.log("trainer "+Trainer);
-	console.log("leistung "+Leistung);
   	$.ajax({
    url:"Create_Blog.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer,
    method:"POST",

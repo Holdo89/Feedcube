@@ -126,8 +126,6 @@ if(month_sum==0){
                     {
                         array2[index2]=[];
                     }
-                    console.log("Array");
-                    console.log(array);
                     array2[index2].push(array[index]);
                     index = index+1;
                     index2 = index2+1;
@@ -157,10 +155,8 @@ if(month_sum==0){
     if (chartInstance.options.autoDisplayLegend) {
       var i=0
       var length = chartInstance.data.datasets.length
-      console.log("Length" + length)
       while(i<=length){
       var dataset = (chartInstance.data.datasets[i])?chartInstance.data.datasets[i]:"";
-      console.log("dataset "+i+" : "+dataset.label)
       if (dataset.label==="")
       {
         chartInstance.data.datasets.splice(i);

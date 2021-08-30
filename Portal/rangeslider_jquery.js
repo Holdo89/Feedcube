@@ -32,7 +32,6 @@ $( function() {
       var Trainer = Auswahl_Trainer.value;
     else
       var Trainer = Auswahl_Trainer_Kommentare.value;
-    console.log("Trainer: "+Trainer);
     var datediff=10;
     var xmlhttp_options = new XMLHttpRequest();
                 xmlhttp_options.onreadystatechange = function() {
@@ -52,7 +51,6 @@ $( function() {
                           values: [0, datediff]
                         });
                       }
-                      console.log("datediff"+datediff);
             ;};
             xmlhttp_options.open("GET", "first_date_extern.php?Trainer="+Trainer, false);
             xmlhttp_options.send();

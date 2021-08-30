@@ -257,8 +257,6 @@ function update(){
     xmlhttp.send();
     
     function addData(chart, data, label, chartcolors, bordercolors){
-        console.log("labels")
-        console.log(label);
         var u=0;
       
         while(u<100)
@@ -277,7 +275,6 @@ function update(){
             chart.data.datasets.forEach((dataset) => {
             chart.data.labels.push(label[u]);
             dataset.data.push(data[u]);
-            console.log(data);
             });
             u=u+1;
         }

@@ -48,7 +48,6 @@ $( function() {
                           values: [0, datediff]
                         });
                       }
-                      console.log("datediff"+datediff);
             ;};
             xmlhttp_options.open("GET", "first_date_intern.php", false);
             xmlhttp_options.send();
