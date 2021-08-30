@@ -174,8 +174,8 @@
 		alert("Die Frage wurde gelöscht");
 		location.reload();}
 	;}
-	function Antwort_speichern(id) {
-		speichern_antwort(id);
+	function Antwort_speichern(id,typ) {
+		speichern_antwort(id, typ);
 	;}
 
 	function Antwort_löschen(id,typ) {

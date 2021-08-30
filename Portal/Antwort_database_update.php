@@ -1,17 +1,20 @@
 <?php
 
  require_once "session.php";
-
  require_once "../config.php";
 
  $Id=$_REQUEST["Id"];
-
  $Antwort=$_REQUEST["Antwort"];
+ $typ = $_REQUEST["Typ"]; 
 
-//effr
-
-$query = "UPDATE singlechoice_answers SET Answers = '".$Antwort."' WHERE ID = '".$Id."'";
-
+ if($typ == "Singlechoice")
+ {
+    $query = "UPDATE singlechoice_answers SET Answers = '".$Antwort."' WHERE ID = '".$Id."'";
+    
+ }
+ else{
+    $query = "UPDATE multiplechoice_answers SET Answers = '".$Antwort."' WHERE ID = '".$Id."'";
+ }
 $exec = mysqli_query($link,$query);
 
 

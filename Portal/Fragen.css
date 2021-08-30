@@ -186,6 +186,19 @@ form,.form_intern, .form_antworten  {
 
 }
 
+.antworten {
+
+  background-color:white;
+  text-align:left;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  width: 100%;
+  line-height: 30pt;
+  height: 30pt;
+  padding-left:40%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+}
 
 
 
@@ -208,12 +221,25 @@ input:focus, textarea:focus {
 
 }
 
+.antworten_text{
+  font-size: 13px;
+  display:inline;
+  overflow-x: auto;
+  white-space: nowrap;
+  border:none;
+  width:20vw;
+}
 
+input[type='radio'],
+input[type='checkbox'] {
+  float:left; 
+  margin-top:13px; 
+  margin-left:40%; 
+  margin-right:10px;
+}
 
 textarea {
-
   resize: none;
-
 }
 
 
@@ -268,9 +294,6 @@ textarea:-webkit-autofill:focus {
   .form_antworten{
 
     font-size: 11px;
-
-    padding:5px;
-
     width:90vw;
 
   }
@@ -290,6 +313,16 @@ textarea:-webkit-autofill:focus {
     overflow:auto;
 
   }
+  .antworten_text{
+    font-size: 11px;
+    width:70%
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    margin-left:10%; 
+  }
+  
 
 }
 

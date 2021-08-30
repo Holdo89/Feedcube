@@ -34,10 +34,10 @@ xmlhttp.send();
 
 
 
-function speichern_antwort(Id){
+function speichern_antwort(Id, typ){
     var Antwort = document.getElementById("Antwort_"+Id).value;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "Antwort_database_update.php?Id=" + Id + "&Antwort=" + Antwort, true);
+    xmlhttp.open("GET", "Antwort_database_update.php?Id=" + Id + "&Antwort=" + Antwort + "&Typ="+ typ, true);
     xmlhttp.send();
 }
 
