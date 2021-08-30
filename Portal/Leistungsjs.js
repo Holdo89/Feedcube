@@ -114,7 +114,7 @@
 		xmlhttp1.onreadystatechange = function() {
 
 		if (this.readyState == 4 && this.status == 200) {
-			var checked_sets = this.response.split(",");
+			var checked_sets = this.response.split(";.,");
 			var i=0;
 			while (i<checked_sets.length){
 				var checkbox = document.getElementById(checked_sets[i]);
@@ -127,7 +127,7 @@
 			xmlhttp.onreadystatechange = function() {
 
 			if (this.readyState == 4 && this.status == 200) {
-				var checked_sets = this.response.split(",");
+				var checked_sets = this.response.split(";.,");
 				var i=0;
 				while (i<checked_sets.length){
 					var checkbox = document.getElementById(checked_sets[i]);
