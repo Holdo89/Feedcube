@@ -80,42 +80,54 @@ $columns=$_REQUEST["Columns"];
 $Type = $_REQUEST["Type"];
 $Questiontype = $_REQUEST["Questiontype"];
 $Frage_Englisch = $_REQUEST["frage_englisch_".$Type."_".$Questiontype];
-$Kapitel_Englisch = $_REQUEST["kapitel_englisch_".$Type."_".$Questiontype];
 
 if($Type=="extern"){
     $Kapitel_Englisch = $_REQUEST["kapitel_englisch_".$Type."_".$Questiontype];
     $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-
     $sql = "UPDATE admin SET Kapitel_Englisch = '".$Kapitel_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }
 else if($Type=="intern"){
-    echo "intern";
     $sql = "UPDATE intern SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }
 
 if($max <= $min)
 {
-    include "Fragen.php";
-    echo"<script>display(".$ID.", \"extern\", \"Schieberegler\");
-    var Schieberoutput = document.getElementById('SchieberID');
-    Schieberoutput.innerHTML='<div id=\"range_alert\" class=\"alert icon-alert with-arrow alert-danger form-alter\" role=\"alert\" style=\"display:block;grid-column-end: span 3;\"><i class=\"fa fa-fw fa-times-circle\"></i><strong> Note !</strong> <span class=\"warning-message\"> Die angegebenen Werte waren nicht korrekt </span></div>'+Schieberoutput.innerHTML;
-    </script>";
+    if($Type=="extern"){
+        include "Fragen.php";
+        echo"<script>display(".$ID.", \"extern\", \"Schieberegler\");
+        var Schieberoutput = document.getElementById('SchieberID');
+        Schieberoutput.innerHTML='<div id=\"range_alert\" class=\"alert icon-alert with-arrow alert-danger form-alter\" role=\"alert\" style=\"display:block;grid-column-end: span 3;\"><i class=\"fa fa-fw fa-times-circle\"></i><strong> Note !</strong> <span class=\"warning-message\"> Die angegebenen Werte waren nicht korrekt </span></div>'+Schieberoutput.innerHTML;
+        </script>";
+    }
+    if($Type=="intern"){
+        include "Fragen.php";
+        echo"<script>display(".$ID.", \"intern\", \"Schieberegler\");
+        var Schieberoutput = document.getElementById('SchieberID');
+        Schieberoutput.innerHTML='<div id=\"range_alert\" class=\"alert icon-alert with-arrow alert-danger form-alter\" role=\"alert\" style=\"display:block;grid-column-end: span 3;\"><i class=\"fa fa-fw fa-times-circle\"></i><strong> Note !</strong> <span class=\"warning-message\"> Die angegebenen Werte waren nicht korrekt </span></div>'+Schieberoutput.innerHTML;
+        </script>";
+    }
 }
 else{
-$query = "UPDATE rangeslider_answers SET range_min = '".$min."' WHERE Frage_ID = '".$ID."'";
-
-$exec = mysqli_query($link,$query);
-
-$query = "UPDATE rangeslider_answers SET range_max = '".$max."' WHERE Frage_ID = '".$ID."'";
-
-$exec = mysqli_query($link,$query);
-
-$query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Frage_ID = '".$ID."'";
-
-$exec = mysqli_query($link,$query);
-header("location:Fragen.php");
+    if($Type=="extern"){
+        $query = "UPDATE rangeslider_answers SET range_min = '".$min."' WHERE Frage_ID = '".$ID."'";
+        $exec = mysqli_query($link,$query);
+        $query = "UPDATE rangeslider_answers SET range_max = '".$max."' WHERE Frage_ID = '".$ID."'";
+        $exec = mysqli_query($link,$query);
+        $query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Frage_ID = '".$ID."'";
+        $exec = mysqli_query($link,$query);
+        header("location:Fragen.php");
+    }
+    if($Type=="intern"){
+        $query = "UPDATE rangeslider_answers SET range_min = '".$min."' WHERE Intern_ID = '".$ID."'";
+        $exec = mysqli_query($link,$query);
+        $query = "UPDATE rangeslider_answers SET range_max = '".$max."' WHERE Intern_ID = '".$ID."'";
+        $exec = mysqli_query($link,$query);
+        $query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Intern_ID = '".$ID."'";
+        $exec = mysqli_query($link,$query);
+        header("location:Fragen.php"); 
+    }
 }
 ?>
