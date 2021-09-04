@@ -2,8 +2,8 @@
 
 // Start the session
 
-require_once "session.php";
 require_once "../config.php";
+require_once "session.php";
 
 $sql = "SELECT MAX(post_order_no) FROM admin";
 $query = mysqli_query($link, $sql);

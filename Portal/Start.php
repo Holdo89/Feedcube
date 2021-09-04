@@ -1,6 +1,6 @@
 <?php
- require_once "session.php";
  require_once "../config.php";
+ require_once "session.php";
 
 $sql = "SELECT Is_Admin, Is_Trainer FROM users WHERE username ='".$_SESSION["username"]."'";
 $exec = mysqli_query($link,$sql);
@@ -13,7 +13,7 @@ if($IsTrainer || $IsAdmin)
 }
 else 
 {
-    include "StartseiteNotAcknowledged.php";
+    include "pending.php";
 }
 ?>
 

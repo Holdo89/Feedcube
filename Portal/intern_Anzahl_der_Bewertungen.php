@@ -1,7 +1,7 @@
 <?php
 
-require_once "session.php";
 require_once "../config.php";
+require_once "session.php";
 
 $datum_min=$_REQUEST["datum_min"];
 $datum_max=$_REQUEST["datum_max"];

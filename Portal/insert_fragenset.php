@@ -2,8 +2,8 @@
 
 // Start the session
 
-require_once "session.php";
 require_once "../config.php";
+require_once "session.php";
 
 $neues_Fragenset = mysqli_real_escape_string($link, $_REQUEST["neues_Fragenset"]);
 

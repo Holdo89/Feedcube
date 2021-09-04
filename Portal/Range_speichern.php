@@ -70,8 +70,8 @@ if(range_min_is_valid == true && range_max_is_valid == true && columns_is_valid 
 */
 </script>
 <?php
-require_once "session.php";
 require_once "../config.php";
+require_once "session.php";
 
 $ID=$_REQUEST["ID"];
 $max=$_REQUEST["Range_Max"];

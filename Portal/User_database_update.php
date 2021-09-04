@@ -1,6 +1,6 @@
 <?php
- require_once "session.php";
  require_once "../config.php";
+ require_once "session.php";
  $Id=$_REQUEST["Id"];
  $User=$_REQUEST["User"];
  $Username=$_REQUEST["Username"];

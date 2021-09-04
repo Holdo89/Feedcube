@@ -1,6 +1,6 @@
 <?php
-require_once "session.php";
 require_once "../config.php";
+require_once "session.php";
 questions("Singlechoice", $link);
 questions("Multiplechoice", $link);
 questions("Schieberegler", $link);
