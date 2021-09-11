@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70">
     <div class="divider">
         <div class="login">
-            <img src="undraw_secure_login.svg" width="250" height="280">
+            <img src="user_security.svg" width="230" height="250">
         </div>
         <div>   
 		<h1 class="h4 mb-3 font-weight-normal">Anmeldung</h1>

@@ -258,7 +258,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Prepare an insert statement
 
-        $sql = "INSERT INTO users (name, username, email, password, Is_Trainer) VALUES (?, ?, ?, ?, 1)";
+        $sql = "INSERT INTO users (name, username, email, password, Is_Trainer) VALUES (?, ?, ?, ?, 0)";
 
          
 

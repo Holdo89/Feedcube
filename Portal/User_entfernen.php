@@ -27,6 +27,6 @@ if(mysqli_query($link, $sql)){
 
 mysqli_close($link);
 
-header("location: Fragen.php");
+header("location: Start.php");
 
 ?>

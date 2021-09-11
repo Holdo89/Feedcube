@@ -13,18 +13,18 @@ while($row = mysqli_fetch_assoc($result)) {
 
     if($row["Is_Creator"]!=1){
         if ($row["Is_Admin"]!=0){
-            echo "<a type='button' class='center_button'  href='set_admin.php?Id=".$row["id"]."&Bool=0'><i class='fa fa-check'></i></a>";
+            echo "<a type='button' class='center_button' style='background-color:green' href='set_admin.php?Id=".$row["id"]."&Bool=0'><i class='fa fa-check' style='color:white'></i></a>";
         }
         else{
-            echo "<a type='button' class='center_button'  href='set_admin.php?Id=".$row["id"]."&Bool=1'><i class='fa fa-times'></i></a>";
+            echo "<a type='button' class='center_button' style='background-color:red' href='set_admin.php?Id=".$row["id"]."&Bool=1'><i class='fa fa-times' style='color:white'></i></a>";
         }
 
         if ($row["Is_Trainer"]!=0){
-            echo "<a type='button' class='center_button'  href='set_trainer.php?Id=".$row["id"]."&Bool=0'><i class='fa fa-check'></i></a>";
+            echo "<a type='button' class='center_button' style='background-color:green' href='set_trainer.php?Id=".$row["id"]."&Bool=0&Url=Usermanagement'><i class='fa fa-check' style='color:white'></i></a>";
         }
 
         else{
-            echo "<a type='button' class='center_button'  href='set_trainer.php?Id=".$row["id"]."&Bool=1'><i class='fa fa-times'></i></a>";
+            echo "<a type='button' class='center_button' style='background-color:red' href='set_trainer.php?Id=".$row["id"]."&Bool=1&Url=Usermanagement'><i class='fa fa-times' style='color:white'></i></a>";
         }
         echo "<button type='button' class='center_button'  onclick='display(\"".$row["name"]."\");'><i class='fa fa-link'></i></button>";
         echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i></a>";
@@ -32,12 +32,12 @@ while($row = mysqli_fetch_assoc($result)) {
     }
 
     else{
-            echo "<a type='button' class='center_button'><i class='fa fa-check'></i></a>"; 
+            echo "<a type='button' class='center_button' style='background-color:green'><i class='fa fa-check' style='color:white'></i></a>"; 
             if ($row["Is_Trainer"]!=0){
-                echo "<a type='button' class='center_button'  href='set_trainer.php?Id=".$row["id"]."&Bool=0'><i class='fa fa-check'></i></a>";
+                echo "<a type='button' class='center_button' style='background-color:green' href='set_trainer.php?Id=".$row["id"]."&Bool=0&Url=Usermanagement'><i class='fa fa-check' style='color:white'></i></a>";
             }
             else{    
-                echo "<a type='button' class='center_button'  href='set_trainer.php?Id=".$row["id"]."&Bool=1'><i class='fa fa-times'></i></a>";
+                echo "<a type='button' class='center_button' style='background-color:red' href='set_trainer.php?Id=".$row["id"]."&Bool=1&Url=Usermanagement'><i class='fa fa-times' style='color:white'></i></a>";
             }
             echo "<button type='button' class='center_button'  onclick='display(\"".$row["name"]."\");'><i class='fa fa-link'></i></button>";
             echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i></a>";

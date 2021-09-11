@@ -28,6 +28,15 @@ body {
 
 }
 
+.undraw_chart_empty{
+  float:center; 
+  margin:auto;
+  margin-bottom:5%;
+  width:15%;
+  min-width:250px;
+  grid-column-start: 1;
+  grid-column-end:-1;
+}
 
 
 h1 {
@@ -108,7 +117,7 @@ form {
 
   background: white;
   display: grid;
-  grid-template-columns:1.5fr 0.7fr 2fr 60px 60px 60px 60px 60px;
+  grid-template-columns:1.5fr 0.7fr 2fr 60px 60px;
   margin:auto;
   text-align: left;
   border: 1px solid var(--border);
@@ -116,11 +125,17 @@ form {
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
   position: relative;
   overflow: auto;
-  width: 90vw;
+  width: 80vw;
+  min-width:800px;
 }
 
 
-
+.newUser{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  outline: none;
+  line-height: 25px;
+}
 
 
 .center {
@@ -142,20 +157,13 @@ form {
 .center_button {
 
   background-color:white;
-
-  display: block;
-
   text-align: center;
-
-  padding-top:0.4em;
-
+  padding-top:5px;
   font-size: 16pt;
-
   width: 100%;
-
   border: 1px solid rgba(0, 0, 0, 0.1);
-
   color:black; 
+  height:40px;
 
 }
 
@@ -242,10 +250,18 @@ textarea:-webkit-autofill:focus {
 @media only screen and (max-width: 800px) {
 
   form{
+
+    width:800px;
+
     font-size: 12px;
 
     margin:5px;
 
+  }
+
+  
+  .undraw_chart_empty{
+    width:70%; 
   }
 
   .center_button {
