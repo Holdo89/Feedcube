@@ -167,6 +167,17 @@ form {
 
 }
 
+.suspendButton{
+  padding:12px; 
+  width:25%; 
+  margin-top:50px;
+  border:1.5px solid; 
+  border-radius:5px;
+  color:white;
+  margin-bottom:50px;
+  background-color: white;
+}
+
 
 
 .center_select {
@@ -250,13 +261,8 @@ textarea:-webkit-autofill:focus {
 @media only screen and (max-width: 800px) {
 
   form{
-
-    width:800px;
-
     font-size: 12px;
-
     margin:5px;
-
   }
 
   
@@ -265,13 +271,13 @@ textarea:-webkit-autofill:focus {
   }
 
   .center_button {
-
     font-size: 14pt;
-
     padding-top:0.5em;
-
     min-width:35px;
+  }
 
+  .suspendButton{
+    width:80%;
   }
 
   div.scroll{

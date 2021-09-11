@@ -75,8 +75,8 @@ $sql = "SELECT id, name, username, email FROM users WHERE Is_Admin = 0 AND Is_Tr
 ?>
 </form>
 </div>
-<form action="setSuspendedConfirmation.php" style="text-align:center; margin:auto; display:block; width:20px">
-<button type="submit" style="padding:12px; width:30%; margin-top:5%; border:1px; border-radius: 5px; background:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>; color:white; ">Überspringen</button>
+<form action="setSuspendedConfirmation.php" style="text-align:center; margin:auto; display:block; min-width:20px">
+<button type="submit" class="suspendButton" style="color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;border-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;">Überspringen</button>
 </form>
 </body>
 </html>
