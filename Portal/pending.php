@@ -64,7 +64,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<p>Um den Vorgang zu beschleunigen kontaktiere bitte einen Feedcube Administrator.</b></p>
 
 </div>
-<img class="undraw_chart_empty" src="Undraw_Confirmation.svg" alt="">
+<img class="undraw_chart_empty" src="undraw_Confirmation.svg" alt="">
 </div>
 
 </div>

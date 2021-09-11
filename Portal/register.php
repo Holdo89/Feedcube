@@ -279,7 +279,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
-            $registerMessage = "Ein neuer Benutzer hat sich registriert\r\n \r\nBenutzername: ".$username." \r\nName:".$fullname." \r\nEmail:".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen";
+            $registerMessage = "Ein neuer Benutzer hat sich registriert\r\n \r\nBenutzername: ".$username." \r\nName: ".$fullname." \r\nEmail: ".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen";
 
             // use wordwrap() if lines are longer than 70 characters
             $registerMessage = wordwrap($registerMessage,70);
