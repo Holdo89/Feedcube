@@ -2,14 +2,15 @@
  require_once "../config.php";
  require_once "session.php";
 
-// the message
-$msg = $_SESSION["username"]." just logged in";
+ $msg = $_SESSION["username"]." just logged in";
 
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
-
-// send email
-mail("holdo89@gmail.com","Loggin",$msg);
+ // use wordwrap() if lines are longer than 70 characters
+ $msg = wordwrap($msg,70);
+ 
+ // send email
+ $headers .= 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
+ 
+ mail("holdo89@gmail.com","My subject",$msg,$headers);
 
 
 $sql = "SELECT Is_Admin, Is_Trainer FROM users WHERE username ='".$_SESSION["username"]."'";
