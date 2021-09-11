@@ -259,7 +259,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare an insert statement
 
         $sql = "INSERT INTO users (name, username, email, password, Is_Trainer) VALUES (?, ?, ?, ?, 0)";
-
          
 
         if($stmt = mysqli_prepare($link, $sql)){
@@ -279,7 +278,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_email = $email;
 
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            
+            $registerMessage = "Ein neuer Benutzer hat sich registriert\r\n \r\nBenutzername: ".$username." \r\nName:".$fullname." \r\nEmail:".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen";
 
+            // use wordwrap() if lines are longer than 70 characters
+            $registerMessage = wordwrap($registerMessage,70);
+            $headers .= 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
+            mail("holdo89@gmail.com","neue Benutzer-Registrierung",$registerMessage,$headers);
             
 
             // Attempt to execute the prepared statement

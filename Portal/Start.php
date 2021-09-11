@@ -6,10 +6,7 @@
 
  // use wordwrap() if lines are longer than 70 characters
  $msg = wordwrap($msg,70);
- 
- // send email
  $headers .= 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
- 
  mail("holdo89@gmail.com","My subject",$msg,$headers);
 
 
