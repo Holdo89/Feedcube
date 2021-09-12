@@ -115,7 +115,7 @@ form {
   border-radius: 5px 5px 0px 0px;
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   width: 90vw;
 }
 
@@ -239,11 +239,11 @@ textarea:-webkit-autofill:focus {
 
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 950px) {
 
   form{
     font-size: 12px;
-
+    overflow: auto;
     margin:5px;
 
   }
