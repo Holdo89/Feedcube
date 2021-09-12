@@ -279,12 +279,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
-            $registerMessage = "Ein neuer Benutzer hat sich registriert\r\n \r\nBenutzername: ".$username." \r\nName: ".$fullname." \r\nEmail: ".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen";
-
-            // use wordwrap() if lines are longer than 70 characters
-            $registerMessage = wordwrap($registerMessage,70);
+            $registerMessage = "Ein neuer Benutzer hat sich registriert\r\n \r\nBenutzername: ".$username." \r\nName: ".$fullname." \r\nEmail: ".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen\r\nhttps://".$subdomain.".feedcube.net";
             $headers .= 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
-            mail("holdo89@gmail.com","neue Benutzer-Registrierung",$registerMessage,$headers);
+            $sql = "SELECT email FROM users WHERE Is_Admin = 1";
+            $exec = mysqli_query($link,$sql);
+            while($row=mysqli_fetch_array($exec))
+            {
+                mail($row["email"],"neue Benutzerregistrierung",$registerMessage,$headers);
+            }
             
 
             // Attempt to execute the prepared statement

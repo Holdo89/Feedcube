@@ -65,6 +65,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
 								// Redirect user to welcome page
 								header("location: Start.php");
+								$msg = $_SESSION["username"]." just logged in";
+								$headers .= 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
+								mail("holdo89@gmail.com","My subject",$msg,$headers);
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
