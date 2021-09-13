@@ -253,11 +253,11 @@ textarea {
 
   form {
 
-    width: 90vw;
+    width: 95vw;
 
   }
   .multi{
-    margin-left: 18vw;
+    margin-left: auto;
   }
   .center_button {
     width:80vw;

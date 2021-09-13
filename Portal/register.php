@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["fullname"]))){
 
-        $fullname_err = "Please enter a fullname.";
+        $fullname_err = "Bitte gib deinen vollen Namen ein.";
 
     } else{
 
@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["username"]))){
 
-        $username_err = "Please enter a username.";
+        $username_err = "Bitte gib einen Usernamen ein.";
 
     } else{
 
@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 if(mysqli_stmt_num_rows($stmt) == 1){
 
-                    $username_err = "This username is already taken.";
+                    $username_err = "Dieser Username wird bereits verwendet.";
 
                 } else{
 
@@ -150,7 +150,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(empty(trim($_POST["email"]))){
 
-            $username_err = "Please enter an emailadress.";
+            $username_err = "Bitte eine Email Adresse eingeben.";
 
         } else{
 
@@ -186,7 +186,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     if(mysqli_stmt_num_rows($stmt) == 1){
 
-                        $email_err = "This email is already taken.";
+                        $email_err = "Diese Email ist bereits vergeben.";
 
                     } else{
 
@@ -216,11 +216,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["password"]))){
 
-        $password_err = "Please enter a password.";     
+        $password_err = "Bitte Passwort eingeben.";     
 
     } elseif(strlen(trim($_POST["password"])) < 6){
 
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Passwort muss mindestens 6 Zeichen beinhalten.";
 
     } else{
 
@@ -234,7 +234,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["confirm_password"]))){
 
-        $confirm_password_err = "Please confirm password.";     
+        $confirm_password_err = "Bitte bestätige das Passwort.";     
 
     } else{
 
@@ -242,7 +242,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(empty($password_err) && ($password != $confirm_password)){
 
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Passwörter stimmen nicht überein.";
 
         }
 
@@ -342,7 +342,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <meta name="generator" content="Jekyll v4.0.1">
 
-    <title>Sign up</title>
+    <title>Registrierung</title>
 
 
 
@@ -402,9 +402,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70">
 
-			<h1  class= "h4 mb-3 font-weight-normal">Sign Up</h1>
+			<h1  class= "h4 mb-3 font-weight-normal">Registrierung</h1>
 
-			<p>Please fill this form to create an account.</p> 
+			<p>Fülle das Formular vollständig aus um einen neuen Benutzer zu erstellen.</p> 
 
 			<div class="form-group <?php echo (!empty($fullname_err)) ? 'has-error' : ''; ?>">
 
@@ -416,7 +416,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
 
-                <input type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
+                <input type="text" name="username" placeholder="Benutzername" class="form-control" value="<?php echo $username; ?>">
 
                 <span class="help-block"><?php echo $username_err; ?></span>
 
@@ -432,7 +432,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
 
-                <input type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
+                <input type="password" name="password" placeholder="Passwort" class="form-control" value="<?php echo $password; ?>">
 
                 <span class="help-block"><?php echo $password_err; ?></span>
 
@@ -440,7 +440,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
 
-                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control" value="<?php echo $confirm_password; ?>">
+                <input type="password" name="confirm_password" placeholder="Passwort bestätigen" class="form-control" value="<?php echo $confirm_password; ?>">
 
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
 
@@ -454,7 +454,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             </div>
 
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+            <p>Du besitzt bereits einen Account? <a href="login.php">Hier anmelden</a>.</p>
 
         </form>   
 
