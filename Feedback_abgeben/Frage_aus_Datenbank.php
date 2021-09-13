@@ -11,9 +11,21 @@ if($_SESSION["Sprache"]=="Englisch")
     $Buttontext_back = "BACK";
     $Buttontext_send_feedback = "SEND";
 }
-//Gibt die Anzahl aller Fragen an diebei dieser Leistung abgefragt werden
 
-$sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM admin WHERE Leistung_".$ID." = 1";
+//check ob bei der Frage ein Fragenset verwendet wird
+$sql_currentFragenset = "SELECT Fragenset FROM leistungen WHERE ID =".$ID;
+$result_currentFragenset = mysqli_query($link, $sql_currentFragenset) ;
+$rowcurrentFragenset = mysqli_fetch_assoc($result_currentFragenset);
+$currentFragenset = $rowcurrentFragenset["Fragenset"];
+if($currentFragenset==0)
+{
+    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM admin WHERE Leistung_".$ID." = 1";
+}
+else
+{
+    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM admin WHERE Fragenset_".$currentFragenset." = 1";
+}
+//Gibt die Anzahl aller Fragen an diebei dieser Leistung abgefragt werden
 $result_rownumber = mysqli_query($link, $sql_rownumber) ;
 $rownumber = mysqli_fetch_assoc($result_rownumber);
 $Anzahl_Fragen = $rownumber["Anzahl_Fragen"];
@@ -22,8 +34,14 @@ if($Anzahl_Fragen==0)
     echo"<label>Es wurde noch keine Frage hinzugefügt</label>";
 
 else{
-
-$sql = "SELECT * FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";
+    if($currentFragenset==0)
+    {
+        $sql = "SELECT * FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";
+    }
+    else
+    {
+        $sql = "SELECT * FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";
+    }
 $result = mysqli_query($link, $sql) ;
 $index=0;
 

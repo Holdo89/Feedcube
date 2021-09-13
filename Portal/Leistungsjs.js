@@ -23,7 +23,17 @@
 	;}
 	
 	function display(id,type) {
-        
+
+		var getFragenset = new XMLHttpRequest();
+		var currentFragenset="";
+
+		getFragenset.onreadystatechange = function() {
+			currentFragenset=this.responseText;
+		}
+		getFragenset.open("GET", "Leistung_getCurrentFragenset.php?ID=" + id, false);	
+		getFragenset.send();
+		
+		
 		if(type=="fragenset")
 		{
 			fragenset_modal.style.display = "block";
@@ -35,6 +45,10 @@
 			var div_id=document.getElementById("ID");
 		}
 		div_id.value=id;
+		if(currentFragenset == 0 || type=="fragenset")
+		{
+		Auswahl_Fragenset.value="kein_Fragenset";
+		enableAllCheckboxes();
 
 		var xmlhttp1 = new XMLHttpRequest();
 
@@ -63,12 +77,12 @@
 				while (i<checked_sets.length){
 					if(type=="fragenset")
 					{
-						var checkbox = document.getElementById('Fragenset_'+checked_sets[i]);
+						var checkbox = document.getElementById('Fragenset_'+checked_sets[i]);	
 					}
 					else{
 						var checkbox = document.getElementById(checked_sets[i]);
-					    
-					}checkbox.checked=true;	
+					}
+					checkbox.checked=true;
 					i=i+1;		
 				}
 			}
@@ -86,7 +100,11 @@
 		};
 		xmlhttp1.open("GET", "Leistung_get_Fragenset.php?ID=" + id, true);	
 		xmlhttp1.send();
-
+	}
+	else{
+		Auswahl_Fragenset.value=currentFragenset;
+		display_leistung();
+	}
 	}
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
@@ -108,9 +126,10 @@
 
 	function display_leistung() {
 		var Fragenset_ID = Auswahl_Fragenset.value;
-
+		console.log(Fragenset_ID)
 		var xmlhttp1 = new XMLHttpRequest();
-
+		if (Fragenset_ID != "kein_Fragenset")
+		{
 		xmlhttp1.onreadystatechange = function() {
 
 		if (this.readyState == 4 && this.status == 200) {
@@ -131,7 +150,8 @@
 				var i=0;
 				while (i<checked_sets.length){
 					var checkbox = document.getElementById(checked_sets[i]);
-					checkbox.checked=true;	
+					checkbox.checked=true;
+					checkbox.disabled=true;	
 					i=i+1;		
 				}
 			}
@@ -143,5 +163,21 @@
 		};
 		xmlhttp1.open("GET", "Leistung_get_Fragenset.php?ID=" + Fragenset_ID, true);	
 		xmlhttp1.send();
+		}
+		else{
+			enableAllCheckboxes();
+		}
 		
+	}
+
+	function enableAllCheckboxes(){
+		var checkbox_list = document.getElementsByTagName('input');
+ 
+		for (var i = 0; i < checkbox_list.length; i++) {
+			var checkbox = checkbox_list[i];
+		
+			if (checkbox.getAttribute('type') == 'checkbox') {
+				checkbox.disabled=false;
+			}
+		} 
 	}

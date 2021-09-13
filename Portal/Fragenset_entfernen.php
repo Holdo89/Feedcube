@@ -6,6 +6,9 @@ require_once "session.php";
 $Id=$_REQUEST["Id"];
 $Fragenset=$_REQUEST["Fragenset"];
 
+$sql = "UPDATE leistungen SET Fragenset = '0' WHERE Fragenset = '".$Id."'";
+mysqli_query($link,$sql); 
+
 $sql="ALTER TABLE admin DROP COLUMN Fragenset_".$Id;
 $result=mysqli_query($link, $sql);
 
