@@ -11,22 +11,7 @@ include "IsAdmincheck.php";
 
  if($Leistung && $Frage!="undefined"){
 	echo "
-	<div class='dropdown' style='margin-top:-90px; border-radius:20px;'>
-	<button class='dropbtn' style='font-size:25px;'><i class='fa fa-bars'></i></button>
-	<div class='dropdown-content'>";
-	if($IsAdmin==1)
-	{
-		echo"<a href='javascript:export_data_admin()' style='font-size:15px;'>Export</a>
-		<a href='javascript:delete_data()' style='font-size:15px;'>Löschen</a>				
-		";
-	}
-	else
-	{
-		echo"<a href='javascript:export_data()' style='font-size:15px;'>Export</a>";
-	}
-	echo"
-	</div>
-	</div>
+
 	<p style='font-size:30px;margin-bottom:50px; margin-top:-40px'>Statistik</p>";
 
 //get type of question

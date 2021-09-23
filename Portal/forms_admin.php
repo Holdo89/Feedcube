@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Feedback abgeben</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<link href="forms.css" rel="stylesheet" type="text/css">
-	<link href="charts.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
@@ -42,18 +42,20 @@
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;">Formulare <i class="fa fa-file-text-o" aria-hidden="true"></i> </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks</p>	</div>
-	<div id="Auswahl_Admin" class="grid-container-auswahl" style="width:78vw; margin:auto;">
+	<hr>
+	<div id="Auswahl_Admin" class="grid-container-auswahl">
 	<?php
 		if($IsAdmin == 1){
-			echo '	<label class="Auswahl" style="text-align:center; padding:0"> Wähle einen Berater: </label>';
+			echo '	<label class="Auswahl">Berater: </label>';
 			include "Auswahlmöglichkeiten_Trainer.php";
 		}
 	?>
-		<label class="Auswahl" style="text-align:center; padding:0"> Wähle eine Leistung: </label>
+		<label class="Auswahl">Leistung: </label>
 			<?php
 				include "Auswahlmöglichkeiten_Leistung.php"
 			?>
 	</div>
+	<hr>
 	<script>
 	<?php
 		if($IsAdmin == 1){

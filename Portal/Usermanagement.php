@@ -114,7 +114,7 @@ $new_password_err = $confirm_password_err = "";
 	<div id="myModal" class="modal">
 	<form style="display:block; padding:30px; width:70%;" method="post">
 		<span class="close">&times;</span>
-		<div id="Trainer_Auswahl" name="Trainer_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung:</div>
+		<div id="Trainer_Auswahl" name="Trainer_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
 		<?php
 			include "Auswahlmöglichkeiten_Leistung.php"
 		?>
@@ -133,7 +133,7 @@ $new_password_err = $confirm_password_err = "";
 		Trainer_element.value = Trainer;
 		var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
 		Auswahl_Leistung.value = "%"
-		Trainer_element.innerHTML= "Erzeuge einen Feedback-Link für den Trainer <b>" + Trainer + "</b><div style='margin-top:20px;margin-bottom:20px'> Wähle eine Leistung die bewertet wird:</div>";
+		Trainer_element.innerHTML= "Erzeuge einen Feedback-Link für den Trainer <b>" + Trainer + "</b><div style='margin-top:20px;margin-bottom:20px'>Leistung die bewertet wird:</div>";
 		var Link = document.getElementById("Link");
 		Link.value = "";
 	}

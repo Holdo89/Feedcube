@@ -8,7 +8,8 @@ function delete_data(){
         Trainer_Name="Alle Trainer";
     }
     var Leistung_Text = Auswahl_Leistung.value;
-    if(Leistung_Text == "%"){
+    console.log("Leistungtext:"+Leistung_Text)
+    if(Leistung_Text == "%25"){
         Leistung_Text="Alle Leistungen";
     }
     var value_min = $( "#slider-range" ).slider( "values", 0 );
@@ -62,7 +63,7 @@ function export_data_admin(){
             Trainer_Name="Alle Trainer";
         }
         var Leistung_Text = Auswahl_Leistung.value;
-        if(Leistung_Text == "%"){
+        if(Leistung_Text == "%25"){
             Leistung_Text="Alle Leistungen";
         }
         var value_min = $( "#slider-range" ).slider( "values", 0 );
@@ -104,7 +105,7 @@ function export_data(){
     var Frage = Auswahl_Frage.value;
     var Leistung = Auswahl_Leistung.value;
     var Leistung_Text = Auswahl_Leistung.value;
-    if(Leistung_Text == "%"){
+    if(Leistung_Text == "%25"){
         Leistung_Text="Alle Leistungen";
     }
     var value_min = $( "#slider-range" ).slider( "values", 0 );

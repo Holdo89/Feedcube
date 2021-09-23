@@ -70,6 +70,16 @@ form {
 
 }
 
+.grid-container-auswahl {
+  padding-left:20%;
+  margin:auto;
+  margin-top:10px;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 0.5fr 6fr;
+
+}
+
 .deleteButton{
  
   border: none;
@@ -84,23 +94,6 @@ form {
 
   width:95%;
 
-
-}
-
-
-
-
-label, input, textarea {
-
-  /*display: block;*/
-
-  /*width: 100%;*/
-
-  font-size: 12pt;
-
-  line-height: 24pt;
-
-  font-family: "Spartan";
 
 }
 

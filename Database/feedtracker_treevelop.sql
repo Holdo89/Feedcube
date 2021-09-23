@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Fragen_extern`, `Kapitel`) VALUES
 (160, '2020-10-03 23:20:55', 'multiple_choice', 'fachliche Kompetenz des Beraters', 'der Berater'),
-(161, '2020-10-03 23:22:10', 'text', 'ein Kommentar zu Ihrem Berater:', 'der Berater'),
+(161, '2020-10-03 23:22:10', 'text', 'ein Kommentar zu Ihrem Berater', 'der Berater'),
 (162, '2020-10-03 23:25:36', 'multiple_choice', 'die Qualität der erbrachten Leistungen', 'die Umsetzung'),
 (163, '2020-10-03 23:27:12', 'multiple_choice', 'die Kosten der erbrachten Leistungen', 'die Umsetzung'),
 (164, '2020-10-03 23:28:40', 'text', 'Wie haben Sie die Zusammenarbeit mit Treevelop empfunden?', 'allgemeines Kommentar'),

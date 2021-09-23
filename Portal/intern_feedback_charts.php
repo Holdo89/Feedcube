@@ -15,12 +15,12 @@
 
 <div id="fullAuswahl"  style='display:none; width: 83vw; margin:auto;'>
 	<div id="Auswahl" class="grid-container-auswahl">
-	<label class="Auswahl"> Wähle eine Frage: </label>
+	<label class="Auswahl">Frage: </label>
 	<?php
 		include "intern_Auswahlmöglichkeiten_Fragen.php"
 	?>
 
-	<label class="Auswahl"> Wähle einen Zeitraum: </label>	
+	<label class="Auswahl">Zeitraum: </label>	
 	<div class="Auswahl_Slider">
 	<div id="slider-range" onmousemove="datum_update_blog()"></div>
 	<p style="margin-top:0.5em">Bewertungen von: <span id="demo"></span></p>
@@ -44,11 +44,11 @@
 	</div>
 	<div id="blog"  style='display:none'>		
 	<div id="blog2" class="grid-container-auswahl" style='width: 83vw; margin:auto;'>
-	<label class="Auswahl"> Wähle eine Frage: </label>
+	<label class="Auswahl">Frage: </label>
 	<?php
 		include "intern_Auswahlmöglichkeiten_Fragen_Kommentare.php"
 	?>
-	<label class="Auswahl"> Wähle einen Zeitraum: </label>	
+	<label class="Auswahl">Zeitraum: </label>	
 	<div class="Auswahl_Slider">
 	<div id="slider-range2"  onmousemove="datum_update(), datum_update_blog()"></div>
 	<p style="margin-top:0.5em">Bewertungen von: <span id="demo2" ></span></p>

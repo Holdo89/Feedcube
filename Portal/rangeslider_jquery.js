@@ -11,16 +11,6 @@ $( function() {
     values: [0, datediff],
   });
 
-  $( "#slider-range2" ).slider({
-  stop: function(event, ui) {
-    create_blog_posts();
-  },
-
-    range: true,
-    min: 0,
-    max: datediff,
-    values: [0, datediff]
-  });
 } );
 
 
@@ -28,10 +18,7 @@ $( function() {
   //gibt die Anzahl der Tage zwischen dem ersten feedback und heute zurück
 
   function get_datediff(DiagrammeorKomment){
-    if (DiagrammeorKomment=="Diagramme")
-      var Trainer = Auswahl_Trainer.value;
-    else
-      var Trainer = Auswahl_Trainer_Kommentare.value;
+    var Trainer = Auswahl_Trainer.value;
     var datediff=10;
     var xmlhttp_options = new XMLHttpRequest();
                 xmlhttp_options.onreadystatechange = function() {
@@ -42,13 +29,6 @@ $( function() {
                           min: 0,
                           max: datediff,
                           values: [0, datediff],
-                        });
-
-                        $( "#slider-range2" ).slider({
-                          range: true,
-                          min: 0,
-                          max: datediff,
-                          values: [0, datediff]
                         });
                       }
             ;};
@@ -71,17 +51,6 @@ function get_new_datediff(DiagrammeorKomment){
         max: datediff,
         values: [0, datediff],
       });
-    
-      $( "#slider-range2" ).slider({
-      stop: function(event, ui) {
-        datum_update();
-        create_blog_posts();
-      },
-    
-        range: true,
-        min: 0,
-        max: datediff,
-        values: [0, datediff]
-      });
+
     };
     

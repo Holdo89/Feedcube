@@ -170,14 +170,15 @@ function drawcharts(){
 }
 
 function update(){
+    var undraw_empty= document.getElementById("undraw_empty");
+	undraw_empty.style.display="none";
+	var blog = document.getElementById("Kommentare");
     var charts = document.getElementById("charts");
     var ctx = document.getElementById("ColumnChart");
     var trendctx = document.getElementById("TrendChart");
     trendctx.style.display="block";
     var undraw_empty = document.getElementById("undraw_empty");
-
     if(ctx.getAttribute("height")!=160){ //check if chart was already created
-
 
     var Trainer = Auswahl_Trainer.value;
     var Frage = Auswahl_Frage.value;
@@ -201,6 +202,11 @@ function update(){
 		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
         var i=false;
         var Fragen_typ = array[0];
+        console.log("Fragen_Typ:"+Fragen_typ)
+        if(Fragen_typ!="")
+        {
+        blog.style.display="none";
+        charts.style.display="grid";
         var labeloptions = [];
         if (Fragen_typ=="Schieberegler"){
             labeloptions=array[1].split(";");
@@ -261,6 +267,9 @@ function update(){
             trendctx.style.display="none";
             undraw_empty.style.display="block";           
         }
+        }
+        else
+        create_blog_posts();
     }
 	;};
     xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
@@ -301,6 +310,7 @@ function update(){
     drawtrendchart();
 }
 }
+
 
 function update_initiate(){
 	drawcharts();

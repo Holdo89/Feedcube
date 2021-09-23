@@ -42,11 +42,11 @@
 	<div id="Auswahl_Admin" class="grid-container-auswahl" style="width:78vw; margin:auto;">
 	<?php
 		if($IsAdmin == 1){
-			echo '	<label class="Auswahl" style="text-align:center; padding:0"> Wähle einen Berater: </label>';
+			echo '	<label class="Auswahl" style="text-align:center; padding:0">Berater: </label>';
 			include "Auswahlmöglichkeiten_Trainer.php";
 		}
 	?>
-		<label class="Auswahl" style="text-align:center; padding:0"> Wähle eine Leistung: </label>
+		<label class="Auswahl" style="text-align:center; padding:0">Leistung: </label>
 			<?php
 				include "Auswahlmöglichkeiten_Leistung.php"
 			?>
