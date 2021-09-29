@@ -5,7 +5,6 @@ $result = mysqli_query($link, $sql);
 $passwort_reset_text="this.innerHTML = Passwort reset";
 
 while($row = mysqli_fetch_assoc($result)) {
-    if($row["username"]!="externes_feedback"){
     echo "<input id='User_".$row["id"]."' value='".$row["name"]."' onblur='user_abfrage_speichern(".$row["id"].")'></input>";
     echo "<input id='Username_".$row["id"]."' value='".$row["username"]."' onblur='user_abfrage_speichern(".$row["id"].")'></input>";
     echo "<input id='Email_".$row["id"]."' value='".$row["email"]."' onblur='user_abfrage_speichern(".$row["id"].")'></input>";   
@@ -43,6 +42,5 @@ while($row = mysqli_fetch_assoc($result)) {
             echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i></a>";
             echo "<a type='button' class='center_button'></a>";
     }
-}
 }
 ?>

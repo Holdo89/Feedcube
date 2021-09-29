@@ -56,7 +56,7 @@ $Trainer=$_SESSION["username"];
 
 <!--erstes Kapitel Inhalt des Seminars-->
 <div id="Auswahl" class="grid-container-auswahl" style="width:78vw;">
-	<label class="Auswahl" style="text-align:center; padding:0">Berater: </label>
+	<label class="Auswahl" style="text-align:center; padding:0">Trainer: </label>
 			<?php
 				include "Auswahlmöglichkeiten_Trainer_Start.php"
 			?>	

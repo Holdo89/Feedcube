@@ -70,8 +70,17 @@ form {
 
 }
 
+.forms{
+  grid-template-columns: auto auto auto;
+  max-width:350px;
+  display:grid; 
+  text-align:center;
+  justify-items:center;
+  margin:auto
+}
+
 .grid-container-auswahl {
-  padding-left:20%;
+  padding-left:5%;
   margin:auto;
   margin-top:10px;
   justify-items: center;
@@ -206,24 +215,6 @@ h3 {
   font-style: italic;
 
   margin: 0 0 0.5em 0;
-
-}
-
-
-
-span {
-
-  font-size: 8pt;
-
-}
-
-
-
-em {
-
-  color: #f45702;
-
-  font-weight: bold;
 
 }
 

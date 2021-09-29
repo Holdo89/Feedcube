@@ -20,7 +20,6 @@
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts2.css" rel="stylesheet" type="text/css">
-	<link href="slider-range.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
@@ -28,11 +27,6 @@
 				include "Draw_Charts.php";		//Pie and COlumnchart
 				include "Draw_Trend_Chart.php";		
 			?>	
-
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
   <script type = "text/javascript" src="export_delete_data.js"></script>
 
 </head>
@@ -91,30 +85,10 @@
 
 	</div>
 	<hr>
-	<div id="FilterCharts" style="overflow:hidden; grid-column: 1 / span 3; max-height: 900px; max-height:0px">
-	<div id="Auswahl" class="grid-container-auswahl">
-	<label class="Auswahl">Berater: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Trainer.php"
-			?>	
+	<?php
+	include "Filter.php";
+	?>
 
-	<label class="Auswahl">Leistung: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Leistung.php"
-			?>
-	
-
-	<label class="Auswahl">Zeitraum: </label>
-	<div class="Auswahl_Slider">
-	<div id="slider-range" onmousemove="datum_update()"></div>
-	</div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<p>Bewertungen von: <span id="demo" ></span></p>
-	</div>
-	<hr>
-	</div>
 	<div id="undraw_empty" style="display:none; margin-top:48px;"><p><label>Es wurde noch kein Feedback abgegeben</label></p><img src="undraw_empty_xct9.svg" alt="" class="undraw_chart_empty"></div>
 
 
@@ -144,21 +118,32 @@
 
 </html>
 <script>
+var limit = 5;
+var start = 0;
+var action = 'active';
+var blog = document.getElementById("blog_posts");
 
 function create_blog_posts(){
-	console.log("creat_blog_posts")
+	action = 'inactive';
 	var Kommentare = document.getElementById("Kommentare");
 	Kommentare.style.display="block";
-	var blog = document.getElementById("blog_posts");
 	blog.innerHTML="";
 	var charts = document.getElementById("charts");
 	charts.style.display="none";
 	var undraw_empty= document.getElementById("undraw_empty");
 	undraw_empty.style.display="none";
-	var limit = 5;
-	var start = 0;
-	var action = 'inactive';
-	function load_country_data(limit, start)
+
+ if(action == 'inactive')
+ {
+  start=0;
+  console.log("inactive")
+  action = 'active';
+  loadNewData(limit, start);
+ }
+ 
+};
+
+function loadNewData(limit, start)
  	{
 	var Trainer = Auswahl_Trainer.value;
 	var Frage = Auswahl_Frage.value;
@@ -181,7 +166,7 @@ function create_blog_posts(){
    success:function(data)
    {
     $('#blog_posts').append(data);
-    if(data == '')
+    if(data.length < 3)
     {
 		if(blog.innerHTML=="")
 		{	
@@ -190,13 +175,14 @@ function create_blog_posts(){
 		}
 		else
 		{	
-			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
-			action = 'active';	
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");	
 		}
+		action = "inactive";
 	}
     else
     {
 		$('#load_data_message').show();
+		console.log("action"+start);
      	$('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
      	action = "inactive";
     }
@@ -204,53 +190,17 @@ function create_blog_posts(){
   });
  }
 
- if(action == 'inactive')
- {
-  action = 'active';
-  load_country_data(limit, start);
- }
  $(window).scroll(function(){
-  if($(window).scrollTop() + $(window).height() > $("#blog_posts").height() && action == 'inactive')
+  if($(window).scrollTop() + $(window).height() > $("#Kommentare").height() && action == 'inactive')
   {
    action = 'active';
+   console.log("active"+start);
    start = start + limit;
    setTimeout(function(){
-    load_country_data(limit, start);
-   }, 1000);
+    loadNewData(limit, start);
+   }, 500);
   }
  });
- 
-};
-function datum_update_blog(){
-	var value_min = $( "#slider-range" ).slider( "values", 0 );
-	var value_max = $( "#slider-range" ).slider( "values", 1 );
-	var output = document.getElementById("slider-range");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
-	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
-	datum_max = datum_max.toISOString().split('T')[0];
-	output.innerHTML = datum_min + " bis " + datum_max;
-}
-
-function toggleFilterVisibility(Filterdiv, Filtericon ){
-	var filterdiv = document.getElementById(Filterdiv)
-	var filtericon = document.getElementById(Filtericon)
-	if (filterdiv.style.maxHeight != '0px')
-	{
-		filterdiv.style.transition = "0.6s ease max-height";
-		filterdiv.style.maxHeight = "0px";
-		filtericon.className = "fa fa-chevron-right";
-	}
-	else
-	{
-		filterdiv.style.transition = "1.4s ease max-height";
-		filterdiv.style.maxHeight = "999px";
-		filtericon.className = "fa fa-chevron-down";
-	}
-}
-
 </script>
 
 

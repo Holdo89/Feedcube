@@ -20,13 +20,7 @@ require_once "session.php";
  $exec_max = mysqli_query($link,$query_max);
  $row_max = mysqli_fetch_array($exec_max);
 
- if($Trainer=='externes_feedback'){
-	$sql="SELECT COUNT(".$Frage.") As Anzahl_Feedback FROM externes_feedback";
-
- }
- else{
- 	$sql="SELECT COUNT(".$Frage.") As Anzahl_Feedback FROM externes_feedback WHERE Username = '".$Trainer."'";
- } 
+ $sql="SELECT COUNT(".$Frage.") As Anzahl_Feedback FROM externes_feedback WHERE Username LIKE '".$Trainer."'";
  $result_feedback=mysqli_query($link,$sql);
  $rows_feedback=mysqli_fetch_array($result_feedback);
 
@@ -87,14 +81,7 @@ $feedback_year=substr($datum_max,0,4);
 	
 	if($typ=="Singlechoice")
 	{
-		if($Trainer=='externes_feedback')
-		{
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."'";
-		}
-	   
-		else{
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND Username = '".$Trainer."'";
-		}
+		$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 		$Anzahl_abgegenes_feedback=0;
@@ -104,14 +91,7 @@ $feedback_year=substr($datum_max,0,4);
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
-			if($Trainer=='externes_feedback')
-			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
-			}
-			else
-			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username = '".$Trainer."'";
-			}
+			$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username LIKE '".$Trainer."'";
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);
 			$Anzahl_abgegenes_feedback=$Anzahl_abgegenes_feedback+$row2["COUNT(".$Frage.")"];
@@ -142,14 +122,7 @@ $feedback_year=substr($datum_max,0,4);
 
 	else if($typ=="Multiplechoice")
 	{
-		if($Trainer=='externes_feedback')
-		{
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."'";
-		}
-	   
-		else{
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND Username = '".$Trainer."'";
-		}
+		$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";	
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 		$Anzahl_abgegenes_feedback=0;
@@ -159,14 +132,7 @@ $feedback_year=substr($datum_max,0,4);
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
-			if($Trainer=='externes_feedback')
-			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
-			}
-			else
-			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username = '".$Trainer."'";
-			}
+			$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username LIKE '".$Trainer."'";
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);
 			$Anzahl_abgegenes_feedback=$Anzahl_abgegenes_feedback+$row2["COUNT(".$Frage.")"];
@@ -196,18 +162,7 @@ $feedback_year=substr($datum_max,0,4);
 
 	else
 	{
-		if($Trainer=='externes_feedback'){
-
-			$query = "SELECT AVG(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."'";
-
-		}
-
-		else{
-
-			$query = "SELECT AVG(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND Username='".$Trainer."'";
-
-		}
-	
+	$query = "SELECT AVG(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 	$exec = mysqli_query($link,$query);
 
 	while($row = mysqli_fetch_array($exec)){

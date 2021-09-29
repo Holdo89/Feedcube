@@ -25,21 +25,13 @@ if ($i<2)
 else
 {
     echo'	<select class="Auswahl_Select" id="Auswahl_Trainer" name="Auswahl_Trainer" oninput="get_new_datediff(\'Diagramme\');update();">';
+    echo '<option value="%25">Alle Trainer</option>';
+
     $sql = "SELECT name, username, Is_Trainer FROM users WHERE Is_Trainer = 1 ORDER BY name ASC" ;
 
     $result = mysqli_query($link, $sql) ;
 
     while($row = mysqli_fetch_assoc($result)) {
-
-    if ($row['name']=="Alle Berater"){
-
-        //hierdurch ist immer Alle Berater default ausgewählt
-
-        echo "<option selected='selected' value='".$row['username']."'>".$row['name']."</option>";
-
-    }
-
-    else{
         if($IsAdmin==1){
             echo "<option value='".$row['username']."'>".$row['name']."</option>";
         }
@@ -49,7 +41,6 @@ else
                 echo "<option value='".$row['username']."'>".$row['name']."</option>";
             }
         }
-    }
 
     }
     echo'</select>';

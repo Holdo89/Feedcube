@@ -1,15 +1,12 @@
 <?php
 
  require_once "IsAdmincheck.php";
+ $Trainer=$_REQUEST["Trainer"];
  $Leistung=$_REQUEST["Leistung"];
+ $datum_min=$_REQUEST["datum_min"];
+ $datum_max=$_REQUEST["datum_max"];
 
- if($Trainer=='externes_feedback'){
- 		$query = "SELECT * FROM externes_feedback WHERE Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
- }
-
- else{
-		$query = "SELECT * FROM externes_feedback WHERE Username = '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
- }	
+$query = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";	
 
  $exec = mysqli_query($link,$query);
  $i=0;
@@ -25,7 +22,7 @@ while($row = mysqli_fetch_array($exec)){
 	 	echo '<i class="fa fa-trash" onclick="deleteFeedback('.$row['ID'].')" style="cursor:pointer;"></i>';
 	 }
 	 $chapter = "";
-	 echo'<form style="padding:10px; padding-bottom:15px;">';
+	 echo'<form style="padding:5px; padding-bottom:15px; margin-top:40px; margin-bottom:40px;">';
 
 	//Hole zuerst die ID der Leistung die beurteilt wurde
 	$row_ID = $row['Leistung'];
@@ -142,7 +139,8 @@ echo"</div>";
 $fragen_index=$fragen_index+1;
  }
 echo '</div>
-</form>';
+</form>
+<hr>';
 $i=$i+1;
 $feedback_index = $feedback_index+1;
 }

@@ -170,16 +170,11 @@ function drawcharts(){
 }
 
 function update(){
-    var undraw_empty= document.getElementById("undraw_empty");
-	undraw_empty.style.display="none";
-	var blog = document.getElementById("Kommentare");
-    var charts = document.getElementById("charts");
-    var ctx = document.getElementById("ColumnChart");
-    var trendctx = document.getElementById("TrendChart");
-    trendctx.style.display="block";
-    var undraw_empty = document.getElementById("undraw_empty");
-    if(ctx.getAttribute("height")!=160){ //check if chart was already created
-
+    try{
+    var array="";
+    var Fragen_Typ="";
+    var xmlhttp = new XMLHttpRequest();
+    var i = true;
     var Trainer = Auswahl_Trainer.value;
     var Frage = Auswahl_Frage.value;
     var Leistung = Auswahl_Leistung.value;
@@ -193,16 +188,30 @@ function update(){
     datum_max.setDate(datum_max.getDate() - value_max);
     datum_max = datum_max.toISOString().split('T')[0];
     output.innerHTML = datum_min + " bis " + datum_max;
-    
-    get_options(Frage, Trainer);
+
+    get_options(Frage, Trainer);    
     
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
-        var i=false;
-        var Fragen_typ = array[0];
+		array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
+        i=false;
+        Fragen_typ = array[0];
         console.log("Fragen_Typ:"+Fragen_typ)
+    }
+	;};
+    xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, false);
+    xmlhttp.send();
+    var undraw_empty= document.getElementById("undraw_empty");
+	undraw_empty.style.display="none";
+	var blog = document.getElementById("Kommentare");
+    var charts = document.getElementById("charts");
+    var ctx = document.getElementById("ColumnChart");
+    var trendctx = document.getElementById("TrendChart");
+    trendctx.style.display="block";
+    var undraw_empty = document.getElementById("undraw_empty");
+    get_options(Frage, Trainer);
+    
         if(Fragen_typ!="")
         {
         blog.style.display="none";
@@ -262,18 +271,19 @@ function update(){
             addData(PieChart, array, labeloptions, chartcolors, bordercolors);
          }
          else{
+            try{
             ColumnChart.destroy();
             PieChart.destroy();
+             }
+             catch{
+                 "Columnchart was created first time"
+             }
             trendctx.style.display="none";
             undraw_empty.style.display="block";           
         }
         }
         else
         create_blog_posts();
-    }
-	;};
-    xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
-    xmlhttp.send();
     
     function addData(chart, data, label, chartcolors, bordercolors){
         var u=0;
@@ -302,34 +312,33 @@ function update(){
         chart.update();
     } 
     statistics('Statistics'); 
+    try{
     TrendChart.destroy()
+    }
+    catch{
+        console.log("Chart was created first time")
+    }
     drawtrendchart();
     }
-    else{
-	drawcharts();
-    drawtrendchart();
-}
+    catch{
+    update_initiate();
+    }
 }
 
 
 function update_initiate(){
-	drawcharts();
+    try{
+    ColumnChart.destroy();
+    PieChart.destroy();
+    //TrendChart.destroy();
+        }
+    catch{
+        console.log("Chart was created first time");
+    }
+    drawcharts();
     drawtrendchart();
 }
 
-function datum_update(){
-var value_min = $( "#slider-range" ).slider( "values", 0 );
-var value_max = $( "#slider-range" ).slider( "values", 1 );
-var output = document.getElementById("demo");
-var datum_min = new Date();
-var datum_max = new Date();
-
-datum_min.setDate(datum_min.getDate() - value_min);
-datum_min = datum_min.toISOString().split('T')[0];
-datum_max.setDate(datum_max.getDate() - value_max);
-datum_max = datum_max.toISOString().split('T')[0];
-output.innerHTML = datum_min + " bis " + datum_max;
-}
 
 </script>
 

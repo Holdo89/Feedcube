@@ -20,12 +20,8 @@
     $i=$i+1;
  }
  echo"\n";
-
-
-if($Trainer=="externes_feedback")//Alle Trainer
-    $sql = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC";
-else    
-    $sql = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username = '".$Trainer."' ORDER BY Datum DESC";
+   
+    $sql = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC";
     $result=mysqli_query($link,$sql);
 
 while($rows=mysqli_fetch_array($result)){

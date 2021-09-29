@@ -302,6 +302,7 @@ yAxes: [{
 	}
 
 	;};
+    console.log("draw Trendchart")
     xmlhttp.open("GET", "Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Month=" + max_date.getMonth(), true);
 
     xmlhttp.send();

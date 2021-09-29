@@ -13,15 +13,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Feedback abgeben</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<link href="forms.css" rel="stylesheet" type="text/css">
+	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type = "text/javascript" src="export_delete_data.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	
   </head>
 
-<body class="text-center">
+<body class="text-center" onload="datum_update(), update()">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="navigation.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="navigation.js"></script>
@@ -42,29 +43,26 @@
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;">Formulare <i class="fa fa-file-text-o" aria-hidden="true"></i> </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks</p>	</div>
-	<hr>
-	<div id="Auswahl_Admin" class="grid-container-auswahl">
+		<div id=fullAuswahl class="forms">
+	<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
 	<?php
-		if($IsAdmin == 1){
-			echo '	<label class="Auswahl">Berater: </label>';
-			include "Auswahlmöglichkeiten_Trainer.php";
-		}
-	?>
-		<label class="Auswahl">Leistung: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Leistung.php"
-			?>
+	if($IsAdmin == 1)
+	{
+		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="export_data_admin()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
+	}
+	else{
+		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+	}
+	?>	
+
 	</div>
 	<hr>
-	<script>
 	<?php
-		if($IsAdmin == 1){
-			echo 'document.getElementById("Auswahl_Trainer").oninput = function(){create_formular()};';
-		}
+	include "Filter.php";
 	?>
-	document.getElementById("Auswahl_Leistung").oninput = function(){create_formular()};
-	</script>
-	<div id="auswertungen" style="display:grid; margin:10px;">
+
+	<div id="auswertungen" style="display:grid">
 	</div>
 	<div id="load_data_message"></div>
 	
@@ -72,29 +70,38 @@
 </html>
 
 <script>
+var limit = 5;
+var start = 0;
+var action = 'inactive';
+var blog = document.getElementById("auswertungen");
 
-function create_formular(){
-	var blog = document.getElementById("auswertungen");
+function update(){
+	var output = document.getElementById("demo");
 	blog.innerHTML="";
-	var limit = 5;
-	var start = 0;
-	var action = 'inactive';
-	function load_country_data(limit, start)
+	if(action == 'inactive')
+	{
+	start = 0;
+	action = 'active';
+	load_country_data(limit, start);
+	}
+};
+
+function load_country_data(limit, start)
  	{
-	<?php
-		if($IsAdmin == 1){
-			echo 'var Trainer = Auswahl_Trainer.value;';
-		}
-	?>
+	var Trainer = Auswahl_Trainer.value;
 	var Leistung = Auswahl_Leistung.value;
+	var value_min = $( "#slider-range" ).slider( "values", 0 );
+	var value_max = $( "#slider-range" ).slider( "values", 1 );
+	var output = document.getElementById("demo");
+	var datum_min = new Date();
+	var datum_max = new Date();
+	datum_min.setDate(datum_min.getDate() - value_min);
+	datum_min = datum_min.toISOString().split('T')[0];
+	datum_max.setDate(datum_max.getDate() - value_max);
+	datum_max = datum_max.toISOString().split('T')[0];
   	$.ajax({
 	<?php
-		if($IsAdmin == 1){
-			echo 'url:"formular_admin.php?Leistung=" + Leistung + "&Trainer=" + Trainer';
-		}
-		else{
-			echo'url:"formular_admin.php?Leistung=" + Leistung';
-		}
+			echo 'url:"formular_admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer';
 	?>,
    method:"POST",
    data:{limit:limit, start:start},
@@ -111,9 +118,9 @@ function create_formular(){
 		}
 		else
 		{	
-			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
-			action = 'active';	
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");	
 		}
+		action="inactive";
 	}
     else
     {
@@ -124,11 +131,7 @@ function create_formular(){
    }
   });
  }
- if(action == 'inactive')
- {
-  action = 'active';
-  load_country_data(limit, start);
- }
+
  $(window).scroll(function(){
   if($(window).scrollTop() + $(window).height() > $("#auswertungen").height() && action == 'inactive')
   {
@@ -139,21 +142,7 @@ function create_formular(){
    }, 1000);
   }
  });
- 
-};
-create_formular();
-function datum_update_blog(){
-	var value_min = $( "#slider-range2" ).slider( "values", 0 );
-	var value_max = $( "#slider-range2" ).slider( "values", 1 );
-	var output = document.getElementById("demo2");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
-	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
-	datum_max = datum_max.toISOString().split('T')[0];
-	output.innerHTML = datum_min + " bis " + datum_max;
-}
+
 
 function deleteFeedback(id){
 		if (confirm("Wollen Sie dieses Feedback wirklich entfernen?"))

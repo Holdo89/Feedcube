@@ -12,26 +12,11 @@ require_once "session.php";
 	$row = mysqli_fetch_array($exec);
 	$typ=$row["Typ"]; 
 
-		if($Trainer=='externes_feedback')
-		{
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback ";
-		}
-	
-		else{
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Username = '".$Trainer."'";
-		}
+		$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Username LIKE '".$Trainer."'";
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 
-
-		if($Trainer=='externes_feedback')
-		{
-			$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." != 'NULL'";
-		}
-	
-		else{
-			$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Username = '".$Trainer."'";
-		}
+		$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Username LIKE '".$Trainer."'";
 
 		$query_get_Anzahl_abgegebenes_feedback = mysqli_query($link, $sql_get_Anzahl_abgegebenes_feedback);
 		$Anzahl_abgegenes_feedback_row=mysqli_fetch_array($query_get_Anzahl_abgegebenes_feedback);
@@ -43,19 +28,11 @@ require_once "session.php";
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-			
-				if($Trainer=='externes_feedback')
-				{
-					$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%'";
-				}
-			
-				else{
-					$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username = '".$Trainer."'";
-				}
-			$exec2 = mysqli_query($link, $sql2);
-			$row2=mysqli_fetch_array($exec2);
-			$Average=$Average+($i*intval($row2["COUNT(".$Frage.")"]));
-			$i =$i+1;
+				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username LIKE '".$Trainer."'";
+				$exec2 = mysqli_query($link, $sql2);
+				$row2=mysqli_fetch_array($exec2);
+				$Average=$Average+($i*intval($row2["COUNT(".$Frage.")"]));
+				$i =$i+1;
 			}
 		}
 
@@ -68,15 +45,7 @@ require_once "session.php";
 				$Average = $Average/$Anzahl_abgegenes_feedback;
 			}
 
-
-		if($Trainer=='externes_feedback')
-		{
-			$query = "SELECT ROUND(AVG(".$Frage."),1) FROM externes_feedback ";
-		}
-
-		else{
-			$query = "SELECT ROUND(AVG(".$Frage."),1) FROM externes_feedback  WHERE Username = '".$Trainer."'";
-		}
+		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM externes_feedback  WHERE Username LIKE '".$Trainer."'";
 
 		$exec = mysqli_query($link,$query);
 		$rowx = mysqli_fetch_array($exec);
@@ -89,20 +58,12 @@ require_once "session.php";
 			$sql="SELECT Answers FROM multiplechoice_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
-			{
-			
-				if($Trainer=='externes_feedback')
-				{
-					$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%'";
-				}
-			
-				else{
-					$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username = '".$Trainer."'";
-				}
-			$exec2 = mysqli_query($link, $sql2);
-			$row2=mysqli_fetch_array($exec2);
-			$a=array("Auswahl" => $row["Answers"], "Anzahl" => $row2["COUNT(".$Frage.")"]);
-			array_push($Bewertungsarray,$a);
+			{		
+				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Username LIKE '".$Trainer."'";
+				$exec2 = mysqli_query($link, $sql2);
+				$row2=mysqli_fetch_array($exec2);
+				$a=array("Auswahl" => $row["Answers"], "Anzahl" => $row2["COUNT(".$Frage.")"]);
+				array_push($Bewertungsarray,$a);
 			}
 		}
 		else{
@@ -133,18 +94,11 @@ require_once "session.php";
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				if($Trainer=='externes_feedback')
-				{
-					$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
-				}
-			
-				else{
-					$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE Username = '".$Trainer."' AND ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
-				}
-			$exec2 = mysqli_query($link, $sql2);
-			$row2=mysqli_fetch_array($exec2);
-			$Average_10=$Average_10+($i*intval($row2["result"]));
-			$i =$i+1;
+				$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE Username LIKE '".$Trainer."' AND ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
+				$exec2 = mysqli_query($link, $sql2);
+				$row2=mysqli_fetch_array($exec2);
+				$Average_10=$Average_10+($i*intval($row2["result"]));
+				$i =$i+1;
 			}
 		}
 		if($typ=="Singlechoice"||$typ=="Multiplechoice"){
@@ -157,16 +111,7 @@ require_once "session.php";
 				$Average_10 = $Average_10/10;
 			}
 		}
-		if($Trainer=='externes_feedback')
-		{
-			$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
-		}
-
-		else{
-			$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE Username = '".$Trainer."' AND ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";
-		}
-
-
+		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE Username LIKE '".$Trainer."' AND ".$Frage." != 'NULL' ORDER BY Datum DESC LIMIT 10) AS a";		
 		$exec = mysqli_query($link,$query);
 		$rows = mysqli_fetch_array($exec);
 

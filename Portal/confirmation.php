@@ -64,13 +64,11 @@ require_once "session.php";
 $sql = "SELECT id, name, username, email FROM users WHERE Is_Admin = 0 AND Is_Trainer = 0";
         $result = mysqli_query($link,$sql);
         while($row = mysqli_fetch_assoc($result)) {
-            if($row["username"]!="externes_feedback"){
                 echo "<div class = 'newUser' id='User_".$row["id"]."'>".$row["name"]."</div>";
                 echo "<div class = 'newUser' id='Username_".$row["id"]."'>".$row["username"]."</div>";
                 echo "<div class = 'newUser' id='Email_".$row["id"]."' >".$row["email"]."</div>"; 
 				echo "<a type='button' class='center_button' style='background-color:green' href='set_trainer.php?Id=".$row["id"]."&Bool=1&Url=Start'><i class='fa fa-check' style='color:white'></i></a>";
 				echo "<a type='button' class='center_button' style='background-color:red' href='User_entfernen.php?Id=".$row["id"]."&Username=".$row["username"]."'><i class='fa fa-trash' style='color:white'></i></a>";
-			}
         }
 ?>
 </form>
