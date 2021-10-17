@@ -20,12 +20,6 @@
 		<option value="7 days">letzten 7 Tage</option>
 		<option value="30 days">letzten 30 Tage</option>
 		</select>
-
-	<label class="Auswahl" style="margin-top:14px;">Leistung: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Leistung.php"
-			?>
-	
 	<div id ="AuswahlZeitraum" style="grid-column:3/ span 2;">
 	<div class="Auswahl_Slider">
 	<div id="slider-range" onmousemove="datum_update()"></div>

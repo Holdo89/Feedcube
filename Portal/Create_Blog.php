@@ -8,7 +8,13 @@ require_once "session.php";
  $datum_max=$_REQUEST["datum_max"];
  $Leistung=$_REQUEST["Leistung"];
  $Frage=$_REQUEST["Frage"];
-
+ $Zeitraum = $_REQUEST["Zeitraum"];
+ if($Zeitraum != "Benutzerdefiniert")
+ {
+	 $datum_min = date("Y-m-d");
+	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
+ }
+ 
 if($Leistung && $Frage !="undefined"){
 
 		$query = "SELECT ".$Frage.", Datum, Leistung FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND ".$Frage." != '' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";

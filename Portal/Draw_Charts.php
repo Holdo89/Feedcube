@@ -24,6 +24,14 @@ var charts = document.getElementById("charts");
 var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
+var Zeitraum =  document.getElementById("zeitraum").value;
+var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+if(Zeitraum=="Benutzerdefiniert")
+{
+    AuswahlZeitraum.style.visibility="visible"; }
+else{
+        AuswahlZeitraum.style.visibility="hidden"; 
+    }
 var value_min = $( "#slider-range" ).slider( "values", 0 );
 var value_max = $( "#slider-range" ).slider( "values", 1 );
 var output = document.getElementById("demo");
@@ -40,6 +48,7 @@ get_options(Frage, Trainer);
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        console.log("Response: "+this.responseText)
 		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
         var i=false;
         var Fragen_typ = array[0];
@@ -121,7 +130,7 @@ xmlhttp.onreadystatechange = function() {
         }
     }
 	;};
-    xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
+    xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
     xmlhttp.send();
 }
 
@@ -129,6 +138,15 @@ function statistics(name){
 var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
+var Zeitraum =  document.getElementById("zeitraum").value;
+var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+if(Zeitraum=="Benutzerdefiniert")
+{
+    AuswahlZeitraum.style.visibility="visible"; }
+else
+{
+    AuswahlZeitraum.style.visibility="hidden"; 
+}
 var value_min = $( "#slider-range" ).slider( "values", 0 );
 var value_max = $( "#slider-range" ).slider( "values", 1 );
 var output = document.getElementById("demo");
@@ -159,7 +177,7 @@ output.innerHTML = datum_min + " bis " + datum_max;
         }
       }
 
-    xmlhttp.open("GET", "Statistics.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
+    xmlhttp.open("GET", "Statistics.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
     xmlhttp.send();
 }
 
@@ -178,6 +196,14 @@ function update(){
     var Trainer = Auswahl_Trainer.value;
     var Frage = Auswahl_Frage.value;
     var Leistung = Auswahl_Leistung.value;
+    var Zeitraum =  document.getElementById("zeitraum").value;
+    var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+    if(Zeitraum=="Benutzerdefiniert")
+    {
+        AuswahlZeitraum.style.visibility="visible"; }
+    else{
+        AuswahlZeitraum.style.visibility="hidden"; 
+    }
     var value_min = $( "#slider-range" ).slider( "values", 0 );
     var value_max = $( "#slider-range" ).slider( "values", 1 );
     var output = document.getElementById("demo");
@@ -194,13 +220,15 @@ function update(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        console.log("Response: "+this.responseText)
+
 		array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
         i=false;
         Fragen_typ = array[0];
         console.log("Fragen_Typ:"+Fragen_typ)
     }
 	;};
-    xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, false);
+    xmlhttp.open("GET", "Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage + "&Trainer=" + Trainer, false);
     xmlhttp.send();
     var undraw_empty= document.getElementById("undraw_empty");
 	undraw_empty.style.display="none";

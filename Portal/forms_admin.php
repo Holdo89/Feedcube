@@ -90,6 +90,16 @@ function load_country_data(limit, start)
  	{
 	var Trainer = Auswahl_Trainer.value;
 	var Leistung = Auswahl_Leistung.value;
+	var Zeitraum =  document.getElementById("zeitraum").value;
+    var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+    if(Zeitraum=="Benutzerdefiniert")
+	{
+		AuswahlZeitraum.style.visibility="visible"; 
+	}
+	else
+	{
+		AuswahlZeitraum.style.visibility="hidden"; 
+	}
 	var value_min = $( "#slider-range" ).slider( "values", 0 );
 	var value_max = $( "#slider-range" ).slider( "values", 1 );
 	var output = document.getElementById("demo");
@@ -101,7 +111,7 @@ function load_country_data(limit, start)
 	datum_max = datum_max.toISOString().split('T')[0];
   	$.ajax({
 	<?php
-			echo 'url:"formular_admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer';
+			echo 'url:"formular_admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Trainer=" + Trainer';
 	?>,
    method:"POST",
    data:{limit:limit, start:start},

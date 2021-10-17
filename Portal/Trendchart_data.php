@@ -7,6 +7,12 @@ require_once "session.php";
  $datum_min=$_REQUEST["datum_min"];
  $datum_max=$_REQUEST["datum_max"];
  $Leistung=$_REQUEST["Leistung"];
+ $Zeitraum = $_REQUEST["Zeitraum"];
+ if($Zeitraum != "Benutzerdefiniert")
+ {
+	 $datum_min = date("Y-m-d");
+	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
+ }
  $Frage=$_REQUEST["Frage"];
  $ID = substr($Frage,6);
  $Month=$_REQUEST["Month"];

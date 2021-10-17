@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="charts.css" rel="stylesheet" type="text/css">
+	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<link href="intern_daterangeslider.css" rel="stylesheet" type="text/css">
 	<link href="slider-range.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>
@@ -29,7 +29,7 @@
   <script type = "text/javascript" src="export_delete_data.js"></script>
 
 </head>
-<body class="text-center">
+<body class="text-center" onload="update()">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -79,38 +79,63 @@
     </body>
 </html>
 <script>
-
+var limit = 5;
+var start = 0;
+var action = 'active';
+var blog = document.getElementById("blog_posts");
 function create_blog_posts(){
-	var blog = document.getElementById("blog_posts");
-	var undraw_empty = document.getElementById("undraw_empty_2");
-	undraw_empty.style.display="none";
+	action = 'inactive';
+	var Kommentare = document.getElementById("Kommentare");
+	Kommentare.style.display="block";
 	blog.innerHTML="";
-	var limit = 5;
-	var start = 0;
-	var action = 'inactive';
-	function load_country_data(limit, start)
+	var charts = document.getElementById("charts");
+	charts.style.display="none";
+	var undraw_empty= document.getElementById("undraw_empty");
+	undraw_empty.style.display="none";
+
+ if(action == 'inactive')
+ {
+  start=0;
+  console.log("inactive")
+  action = 'active';
+  loadNewData(limit, start);
+ }
+ 
+};
+
+function loadNewData(limit, start)
  	{
-	var Frage = Auswahl_Frage_Kommentar.value;
-	var value_min = $( "#slider-range2" ).slider( "values", 0 );
-	var value_max = $( "#slider-range2" ).slider( "values", 1 );
-	var output = document.getElementById("demo2");
+	var Frage = Auswahl_Frage.value;
+	var Zeitraum =  document.getElementById("zeitraum").value;
+    var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+    if(Zeitraum=="Benutzerdefiniert")
+	{
+		AuswahlZeitraum.style.visibility="visible"; 
+	}
+	else
+	{
+		AuswahlZeitraum.style.visibility="hidden"; 
+	}
+	var value_min = $( "#slider-range" ).slider( "values", 0 );
+	var value_max = $( "#slider-range" ).slider( "values", 1 );
+	var output = document.getElementById("slider-range");
 	var datum_min = new Date();
 	var datum_max = new Date();
 	datum_min.setDate(datum_min.getDate() - value_min);
 	datum_min = datum_min.toISOString().split('T')[0];
 	datum_max.setDate(datum_max.getDate() - value_max);
 	datum_max = datum_max.toISOString().split('T')[0];
-	output.innerHTML = datum_min + " bis " + datum_max;
+
   	$.ajax({
-   url:"intern_Kommentare.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage,
+   url:"intern_Kommentare.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage,
    method:"POST",
    data:{limit:limit, start:start},
    cache:false,
    success:function(data)
    {
     $('#blog_posts').append(data);
-    if(data == '')
-	{
+    if(data.length < 3)
+    {
 		if(blog.innerHTML=="")
 		{	
 			undraw_empty.style.display="block";
@@ -118,48 +143,32 @@ function create_blog_posts(){
 		}
 		else
 		{	
-			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");
-			action = 'active';	
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");	
 		}
+		action = "inactive";
 	}
     else
     {
 		$('#load_data_message').show();
+		console.log("action"+start);
      	$('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
      	action = "inactive";
     }
    }
   });
  }
- if(action == 'inactive')
- {
-  action = 'active';
-  load_country_data(limit, start);
- }
+
  $(window).scroll(function(){
-  if($(window).scrollTop() + $(window).height() > $("#blog_posts").height() && action == 'inactive')
+  if($(window).scrollTop() + $(window).height() > $("#Kommentare").height() && action == 'inactive')
   {
    action = 'active';
+   console.log("active"+start);
    start = start + limit;
    setTimeout(function(){
-    load_country_data(limit, start);
-   }, 1000);
+    loadNewData(limit, start);
+   }, 500);
   }
  });
- 
-};
-function datum_update_blog(){
-	var value_min = $( "#slider-range2" ).slider( "values", 0 );
-	var value_max = $( "#slider-range2" ).slider( "values", 1 );
-	var output = document.getElementById("demo2");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
-	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
-	datum_max = datum_max.toISOString().split('T')[0];
-	output.innerHTML = datum_min + " bis " + datum_max;
-}
 </script>
 
 

@@ -7,8 +7,34 @@ function trendchartjs(typ,name){
 var Trainer = Auswahl_Trainer.value;
 var Frage = Auswahl_Frage.value;
 var Leistung = Auswahl_Leistung.value;
-var value_min = $( "#slider-range" ).slider( "values", 0 );
-var value_max = $( "#slider-range" ).slider( "values", 1 );
+var Zeitraum =  document.getElementById("zeitraum").value;
+var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+if(Zeitraum=="Benutzerdefiniert")
+{
+    AuswahlZeitraum.style.visibility="visible"; 
+    var value_min = $( "#slider-range" ).slider( "values", 0 );
+    var value_max = $( "#slider-range" ).slider( "values", 1 );
+}
+else
+{
+    AuswahlZeitraum.style.visibility="hidden"; 
+    var value_min = 0;
+    switch(Zeitraum){
+    case "24 hours":
+        var value_max = 1;
+        break;
+    case "3 days":
+        var value_max = 3;
+        break;
+    case "7 days":
+        var value_max = 7;
+        break;
+    case "30 days":
+        var value_max = 30;
+        break;
+    }
+}
+
 var output = document.getElementById("demo");
 var datum_min = new Date();
 var datum_max = new Date();
@@ -302,8 +328,7 @@ yAxes: [{
 	}
 
 	;};
-    console.log("draw Trendchart")
-    xmlhttp.open("GET", "Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Month=" + max_date.getMonth(), true);
+    xmlhttp.open("GET", "Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Month=" + max_date.getMonth(), true);
 
     xmlhttp.send();
 

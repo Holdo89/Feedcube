@@ -148,6 +148,16 @@ function loadNewData(limit, start)
 	var Trainer = Auswahl_Trainer.value;
 	var Frage = Auswahl_Frage.value;
 	var Leistung = Auswahl_Leistung.value;
+	var Zeitraum =  document.getElementById("zeitraum").value;
+    var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+    if(Zeitraum=="Benutzerdefiniert")
+	{
+		AuswahlZeitraum.style.visibility="visible"; 
+	}
+	else
+	{
+		AuswahlZeitraum.style.visibility="hidden"; 
+	}
 	var value_min = $( "#slider-range" ).slider( "values", 0 );
 	var value_max = $( "#slider-range" ).slider( "values", 1 );
 	var output = document.getElementById("slider-range");
@@ -159,7 +169,7 @@ function loadNewData(limit, start)
 	datum_max = datum_max.toISOString().split('T')[0];
 
   	$.ajax({
-   url:"Create_Blog.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer,
+   url:"Create_Blog.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage + "&Trainer=" + Trainer,
    method:"POST",
    data:{limit:limit, start:start},
    cache:false,

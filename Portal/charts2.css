@@ -147,6 +147,7 @@ margin-top: 20px;
   padding:5px;
 	margin-bottom:5px;
 	text-align:center;
+  grid-column: 3 / span 2;
 }
 
 .start{
@@ -229,10 +230,9 @@ select {
 .grid-container-auswahl {
   margin:auto;
   max-width:75vw; 
-  justify-items: center;
+  justify-items: left;
   display: grid;
-  grid-template-columns: 0.5fr 5fr 0.5fr 4fr;
-
+  grid-template-columns: 1.1fr 5fr 2fr 2fr;
 }
 
 .FragenAuswahl{

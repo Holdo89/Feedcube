@@ -18,6 +18,14 @@ function get_options(Frage){
 function chartjs(typ,name){
 var charts = document.getElementById("charts");
 var Frage = Auswahl_Frage.value;
+var Zeitraum =  document.getElementById("zeitraum").value;
+var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+if(Zeitraum=="Benutzerdefiniert")
+{
+    AuswahlZeitraum.style.visibility="visible"; }
+else{
+        AuswahlZeitraum.style.visibility="hidden"; 
+    }
 var value_min = $( "#slider-range" ).slider( "values", 0 );
 var value_max = $( "#slider-range" ).slider( "values", 1 );
 var output = document.getElementById("demo");
@@ -117,13 +125,21 @@ undraw_empty.style.display="none";
         }
     }
 	;};
-    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage, true);
+    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage + "&Zeitraum=" + Zeitraum, true);
     xmlhttp.send();
 }
 
 function statistics(name){
 
 var Frage = Auswahl_Frage.value;
+var Zeitraum =  document.getElementById("zeitraum").value;
+var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+if(Zeitraum=="Benutzerdefiniert")
+{
+    AuswahlZeitraum.style.visibility="visible"; }
+else{
+        AuswahlZeitraum.style.visibility="hidden"; 
+    }
 var value_min = $( "#slider-range" ).slider( "values", 0 );
 var value_max = $( "#slider-range" ).slider( "values", 1 );
 var output = document.getElementById("demo");
@@ -154,7 +170,7 @@ output.innerHTML = datum_min + " bis " + datum_max;
         }
       }
 
-    xmlhttp.open("GET", "Intern_Statistics.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage, true);
+    xmlhttp.open("GET", "Intern_Statistics.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage + "&Zeitraum=" + Zeitraum, true);
     xmlhttp.send();
 }
 
@@ -163,15 +179,24 @@ function drawcharts(){
     chartjs('doughnut','PieChart');
     statistics('Statistics');
 }
-
+//
+//
 function update(){
-    var charts = document.getElementById("charts");
-    var ctx = document.getElementById("ColumnChart");
-    var trendctx = document.getElementById("TrendChart");
-    trendctx.style.display="block";
-    var undraw_empty = document.getElementById("undraw_empty");
-    if(ctx.getAttribute("height")!=160){ //check if chart was already created
+    try{
+    console.log("Test")
+    var array="";
+    var Fragen_Typ="";
+    var xmlhttp = new XMLHttpRequest();
+    var i = true;
     var Frage = Auswahl_Frage.value;
+    var Zeitraum =  document.getElementById("zeitraum").value;
+    var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
+    if(Zeitraum=="Benutzerdefiniert")
+{
+    AuswahlZeitraum.style.visibility="visible"; }
+else{
+        AuswahlZeitraum.style.visibility="hidden"; 
+    }
     var value_min = $( "#slider-range" ).slider( "values", 0 );
     var value_max = $( "#slider-range" ).slider( "values", 1 );
     var output = document.getElementById("demo");
@@ -182,15 +207,34 @@ function update(){
     datum_max.setDate(datum_max.getDate() - value_max);
     datum_max = datum_max.toISOString().split('T')[0];
     output.innerHTML = datum_min + " bis " + datum_max;
-    
-    get_options(Frage);
-    
+
+    get_options(Frage);    
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
-        var i=false;
-        var Fragen_typ = array[0];
+        console.log("Response: "+this.responseText)
+
+		array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
+        i=false;
+        Fragen_typ = array[0];
+    }
+	;};
+    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage, false);
+    xmlhttp.send();
+    var undraw_empty= document.getElementById("undraw_empty");
+	undraw_empty.style.display="none";
+	var blog = document.getElementById("Kommentare");
+    var charts = document.getElementById("charts");
+    var ctx = document.getElementById("ColumnChart");
+    var trendctx = document.getElementById("TrendChart");
+    trendctx.style.display="block";
+    var undraw_empty = document.getElementById("undraw_empty");
+    get_options(Frage);
+    console.log("Fragentyp: "+Fragen_Typ)
+        if(Fragen_typ!="")
+        {
+        blog.style.display="none";
+        charts.style.display="grid";
         var labeloptions = [];
         if (Fragen_typ=="Schieberegler"){
             labeloptions=array[1].split(";");
@@ -246,15 +290,19 @@ function update(){
             addData(PieChart, array, labeloptions, chartcolors, bordercolors);
          }
          else{
+            try{
             ColumnChart.destroy();
             PieChart.destroy();
+             }
+             catch{
+                 "Columnchart was created first time"
+             }
             trendctx.style.display="none";
             undraw_empty.style.display="block";           
-         }
-    }
-	;};
-    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage, true);
-    xmlhttp.send();
+        }
+        }
+        else
+        create_blog_posts();
     
     function addData(chart, data, label, chartcolors, bordercolors){
         var u=0;
@@ -283,19 +331,31 @@ function update(){
         chart.update();
     } 
     statistics('Statistics'); 
+    try{
     TrendChart.destroy()
+    }
+    catch{
+        console.log("Chart was created first time")
+    }
     drawtrendchart();
     }
-    else{
-	drawcharts();
-    drawtrendchart();
+    catch{
+    update_initiate();
+    }
 }
-}
-
 
 
 function update_initiate(){
-	drawcharts();
+    console.log("Testinit")
+    try{
+    ColumnChart.destroy();
+    PieChart.destroy();
+    //TrendChart.destroy();
+        }
+    catch{
+        console.log("Chart was created first time");
+    }
+    drawcharts();
     drawtrendchart();
 }
 

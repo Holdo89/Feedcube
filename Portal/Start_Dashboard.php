@@ -10,15 +10,25 @@ require_once "session.php";
     if($row["Is_Admin"]==1){
         $Is_admin = true;
     }
+    $datum_min=$_REQUEST["datum_min"];
+    $datum_max=$_REQUEST["datum_max"];
     $Trainer = $_REQUEST["Trainer"];
+    $Leistung=$_REQUEST["Leistung"];
+    $Trainer=$_REQUEST["Trainer"];
+    $Zeitraum = $_REQUEST["Zeitraum"];
+    if($Zeitraum != "Benutzerdefiniert")
+    {
+        $datum_min = date("Y-m-d");
+        $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
+    }
 
-        $sql = "SELECT COUNT(ID) FROM externes_feedback WHERE Username LIKE '".$Trainer."'";
+        $sql = "SELECT COUNT(ID) FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
         $query = mysqli_query($link,$sql);
         $row = mysqli_fetch_array($query);
         $Feedback_abgegeben = $row["COUNT(ID)"];
         if($Feedback_abgegeben)
         {
-            $sql_date_last = "SELECT Datum, Trainer, Leistung FROM externes_feedback WHERE Username LIKE '".$Trainer."' ORDER BY Datum DESC";
+            $sql_date_last = "SELECT Datum, Trainer, Leistung FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'  ORDER BY Datum DESC";
             $query_date_last = mysqli_query($link,$sql_date_last);
             $row_date_last = mysqli_fetch_array($query_date_last);
 
@@ -51,11 +61,11 @@ require_once "session.php";
         echo"<div style='grid-column-end:span 3;' class='startdashboard'>";
         echo'<div class="überschrift_start"><b>Singlechoice</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>';
         include "Fragen_Startseite.php";
-        questions("Singlechoice", $link, $Trainer);
+        questions("Singlechoice", $link, $Trainer,$Leistung,$datum_min,$datum_max);
         echo'<div class="überschrift_start"><b>Multiplechoice</b></div><div class="überschrift_start"><b>Häufigste</b></div> <div class="überschrift_start"><b>Seltenste</b> </div>';
-        questions("Multiplechoice", $link, $Trainer);
+        questions("Multiplechoice", $link, $Trainer,$Leistung,$datum_min,$datum_max);
         echo'<div class="überschrift_start"><b>Schieberegler</b> </div> <div class="überschrift_start"><b>Total</b></div> <div class="überschrift_start"><b>Trend</b> </div>';
-        questions("Schieberegler", $link, $Trainer);
+        questions("Schieberegler", $link, $Trainer,$Leistung,$datum_min,$datum_max);
         echo"</div>";
     }
     else{

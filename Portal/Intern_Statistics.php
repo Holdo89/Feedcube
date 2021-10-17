@@ -6,14 +6,19 @@ $sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
 $exec = mysqli_query($link,$sql);
 $row = mysqli_fetch_assoc($exec);
 $IsAdmin = $row["Is_Admin"];
-
  $datum_min=$_REQUEST["datum_min"];
  $datum_max=$_REQUEST["datum_max"];
  $Frage=$_REQUEST["Frage"];
  $ID = substr($Frage,6);
  $Frage_multi="Intern_".$ID;
  $Antwort = 0;
-
+ $Zeitraum = $_REQUEST["Zeitraum"];
+ if($Zeitraum != "Benutzerdefiniert")
+ {
+	 $datum_min = date("Y-m-d");
+	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
+ }
+ 
  if($Frage!="undefined"){
 	echo "
 	<div class='dropdown' style='margin-top:-90px; border-radius:20px;'>
