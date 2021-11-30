@@ -20,7 +20,11 @@
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts2.css" rel="stylesheet" type="text/css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 	<script type="text/javascript" src="hidefunction.js"></script>
+	<script type="text/javascript" src="createPdf.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 				<?php
@@ -57,11 +61,10 @@
 <script>
 	document.getElementById("feedback_charts").className = "active";
 </script>
-
 		<h1 style="font-size:30px; margin-bottom:10px;">Auswertung <i class="fa fa-line-chart" aria-hidden="true"></i> </h1>
 		<p style="margin-bottom:40px;"> Wähle eine Frage um das Feedback dazu auszuwerten</p>
     </div>
-<div style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	
+<div id = "pdfExporterDiv" style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	
 
 <!--Auswertung von multiple choice Fragen-->
 
@@ -71,15 +74,15 @@
 			<?php
 				include "Auswahlmöglichkeiten_Fragen.php"
 			?>
-	<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
+	<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
 	<?php
 	if($IsAdmin == 1)
 	{
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="export_data_admin()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="createPdf(\'pdfExporterDiv\')"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
 	}
 	else{
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
 	}
 	?>	
 
@@ -114,6 +117,7 @@
 	<div id="load_data_message"></div>
 	</div>
 </div>
+<div id="elementH"></div>
 </body>
 
 </html>

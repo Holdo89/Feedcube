@@ -44,15 +44,15 @@
 		<h1 style="font-size:30px; margin-bottom:10px;">Formulare <i class="fa fa-file-text-o" aria-hidden="true"></i> </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks</p>	</div>
 		<div id=fullAuswahl class="forms">
-	<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
+	<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
 	<?php
 	if($IsAdmin == 1)
 	{
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="export_data_admin()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="export_data_admin()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
 	}
 	else{
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;" onclick="export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
 	}
 	?>	
 
