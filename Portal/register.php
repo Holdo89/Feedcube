@@ -408,7 +408,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			<div class="form-group <?php echo (!empty($fullname_err)) ? 'has-error' : ''; ?>">
 
-                <input type="text" name="fullname" placeholder="Name" class="form-control" value="<?php echo $fullname; ?>">
+                <input type="text" name="fullname" placeholder="Name" class="form-control" value="<?php echo $fullname; ?>" required>
 
                 <span class="help-block"><?php echo $fullname_err; ?></span>
 
@@ -416,7 +416,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
 
-                <input type="text" name="username" placeholder="Benutzername" class="form-control" value="<?php echo $username; ?>">
+                <input type="text" name="username" placeholder="Benutzername" class="form-control" value="<?php echo $username; ?>" required>
 
                 <span class="help-block"><?php echo $username_err; ?></span>
 
@@ -424,7 +424,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
 
-                <input type="text" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
+                <input type="text" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>" required>
 
                 <span class="help-block"><?php echo $email_err; ?></span>
 
@@ -432,7 +432,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
 
-                <input type="password" name="password" placeholder="Passwort" class="form-control" value="<?php echo $password; ?>">
+                <input type="password" name="password" placeholder="Passwort" class="form-control" value="<?php echo $password; ?>" required>
 
                 <span class="help-block"><?php echo $password_err; ?></span>
 
@@ -440,7 +440,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
 
-                <input type="password" name="confirm_password" placeholder="Passwort bestätigen" class="form-control" value="<?php echo $confirm_password; ?>">
+                <input type="password" name="confirm_password" placeholder="Passwort bestätigen" class="form-control" value="<?php echo $confirm_password; ?>" required>
 
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
 
