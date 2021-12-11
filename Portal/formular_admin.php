@@ -72,10 +72,10 @@ while($row = mysqli_fetch_array($exec)){
 					echo'></div>';	
 				$option_index=$option_index+1;
 			}
-			if($rows_answers["Answers"]=='NULL')
-			{
-				echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
-			}
+			//if($rows_answers["Answers"]=='NULL')
+			//{
+				//echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
+			//}
 			$i=$i+1;
 		}
 
@@ -105,10 +105,10 @@ while($row = mysqli_fetch_array($exec)){
 
 				$option_index=$option_index+1;
 			}
-			if($rows_answers["Answers"]=='NULL')
-			{
-				echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
-			}
+			//if($rows_answers["Answers"]=='NULL')
+			//{
+				//echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
+			//}
 			$i=$i+1;
 		}
 

@@ -78,7 +78,7 @@
 	<?php
 	if($IsAdmin == 1)
 	{
-		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="createPdf(\'pdfExporterDiv\')"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="export_data_admin()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
 		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
 	}
 	else{

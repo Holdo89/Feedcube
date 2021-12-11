@@ -15,6 +15,12 @@
  $Frage_ID=substr($Frage,6);
 
  $Trainer=$_REQUEST["Trainer"];
+ $Zeitraum = $_REQUEST["Zeitraum"];
+ if($Zeitraum != "Benutzerdefiniert")
+ {
+	 $datum_min = date("Y-m-d");
+	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
+ }
   
  $sql = "DELETE FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 
