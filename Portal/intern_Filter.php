@@ -3,24 +3,20 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="rangeslider_jquery.js"> </script>
+<script type="text/javascript" src="rangeslider_jquery_intern.js"> </script>
 <script type = "text/javascript" src="color_change.js"></script>
-<div id="FilterCharts" style="overflow:hidden; grid-column: 1 / span 3; max-height:0px">
-	<div id="Auswahl" class="grid-container-auswahl">
-	<label class="Auswahl">Trainer: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Trainer.php"
-			?>	
+<div id="FilterCharts" style="overflow:hidden; max-height:0px">
+	<div id="Auswahl" class="grid-container-auswahl" style="grid-template-columns: 1fr 2fr 5fr;">
 
-	<label class="Auswahl" for="zeitraum">Bewertungszeitraum: </label>
-		<select class = "Auswahl_Select" name="zeitraum" id="zeitraum" oninput="update()">
+	<label class="Auswahl" for="zeitraum" style="margin-top: 14px">Bewertungszeitraum: </label>
+		<select class = "Auswahl_Select" name="zeitraum" id="zeitraum" oninput="update()" style="text-align:top; ">
 		<option value="Benutzerdefiniert"> Benutzerdefiniert</option>
 		<option value="24 hours">Heute</option>
 		<option value="3 days">letzten 3 Tage</option>
 		<option value="7 days">letzten 7 Tage</option>
 		<option value="30 days">letzten 30 Tage</option>
 		</select>
-	<div id ="AuswahlZeitraum" style="grid-column:3/ span 2;">
+	<div id ="AuswahlZeitraum" style="grid-column:3/ span 2; width:700px;">
 	<div class="Auswahl_Slider">
 	<div id="slider-range" onmousemove="datum_update()"></div>
 	</div>
