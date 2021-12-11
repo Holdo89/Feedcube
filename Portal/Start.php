@@ -10,7 +10,7 @@ $IsTrainer = $row["Is_Trainer"];
 if($IsTrainer || $IsAdmin)
 {
     if($IsAdmin){
-        $sql = "SELECT COUNT(id) FROM users WHERE Is_Admin = 0 AND Is_Trainer = 0";
+        $sql = "SELECT COUNT(id) FROM users WHERE Confirmed = 0";
         $exec = mysqli_query($link,$sql);
         $row = mysqli_fetch_assoc($exec);
         if($row["COUNT(id)"]>0 && !isset($_SESSION["suspendConfirmation"]))

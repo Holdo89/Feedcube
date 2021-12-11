@@ -61,7 +61,7 @@ require_once "session.php";
 <label class="überschrift">Name</label><label class="überschrift">Username</label><label class="überschrift">Email</label><label class="überschrift"></label><label class="überschrift"></label>
 
 <?php
-$sql = "SELECT id, name, username, email FROM users WHERE Is_Admin = 0 AND Is_Trainer = 0";
+$sql = "SELECT id, name, username, email FROM users WHERE Confirmed = 0";
         $result = mysqli_query($link,$sql);
         while($row = mysqli_fetch_assoc($result)) {
                 echo "<div class = 'newUser' id='User_".$row["id"]."'>".$row["name"]."</div>";
