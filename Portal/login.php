@@ -139,6 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
             <p>Sie haben noch keinen Account? <a href="register.php">Registrieren</a>.</p>
+            <p>Passwort vergessen? Hier Passwort <a href="passwortvergessen.php">zurücksetzen</a>.</p>
         </div>
     </div>
     </form>
