@@ -117,7 +117,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$file = scandir($dir);
 	echo $file[2];
 	?>'">
-    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="padding:40px;">
     <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70">
     <div class="divider">
         <div class="login">
@@ -135,11 +135,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Passwort" required>
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
+            <p style="text-align:left; margin-top:-10px"><a href="passwortvergessen.php">Passwort vergessen?</a>.</p>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
+                <input type="submit" class="btn btn-primary" value="Login" style="width:150px;">
             </div>
-            <p>Sie haben noch keinen Account? <a href="register.php">Registrieren</a>.</p>
-            <p>Passwort vergessen? Hier Passwort <a href="passwortvergessen.php">zurücksetzen</a>.</p>
+            <p>Neu bei Feedcube? <a href="register.php">Benutzer erstellen</a>.</p>
         </div>
     </div>
     </form>
