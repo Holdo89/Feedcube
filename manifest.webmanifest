@@ -1,0 +1,15 @@
+{
+    "name": "Feedcube",
+    "short_name": "Feedcube",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Feedback To Keep Track",
+    "icons": [
+      {
+        "src": "assets/brand/FEEDCUBE_square.png",
+        "sizes": "861x861",
+        "type": "image/png"
+      }
+    ]
+  }
