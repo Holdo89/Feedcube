@@ -1,7 +1,7 @@
 {
     "name": "Feedcube",
     "short_name": "Feedcube",
-    "start_url": ".",
+    "start_url": ".\\Portal",
     "display": "standalone",
     "background_color": "#fff",
     "description": "Feedback To Keep Track",

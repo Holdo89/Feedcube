@@ -142,6 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Login" style="width:150px;">
             </div>
             <p>Neu bei Feedcube? <a href="register.php">Benutzer erstellen</a>.</p>
+            <div><?php if($host[0]=="mobile") echo "Bei einer anderen Feedcube <a href='..\subdomaininput.php'>anmelden</a>";?></div>
         </div>
     </div>
     </form>

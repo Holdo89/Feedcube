@@ -10,7 +10,7 @@ $subdomain = $host[0];
 if($subdomain == "mobile")
 {
     if(!isset($_COOKIE["subdomain"])){
-        header("location: subdomaininput.php");
+        header("location: ..\subdomaininput.php");
         exit;
     }
     $subdomain = $_COOKIE["subdomain"];
