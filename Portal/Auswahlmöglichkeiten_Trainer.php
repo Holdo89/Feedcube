@@ -6,10 +6,10 @@ $Message="";
 $IsAdmin = $row["Is_Admin"];
 
 if($row["Is_Admin"]==1){
-        $Message ="<div id='Auswahl_Trainer' name='Auswahl_Trainer'> Es wurde noch kein Trainer <a href='register.php'>hinzugefügt</a></div>";
+        $Message ="<div id='Auswahl_Trainer' name='Auswahl_Trainer' class='Auswahlmöglichkeit'> Es wurde noch kein Trainer <a href='register.php'>hinzugefügt</a></div>";
     }
 else{
-        $Message ="<div id='Auswahl_Trainer' name='Auswahl_Trainer'> Es wurde noch kein Trainer hinzugefügt, wende dich an einen Feedcube Administrator</div>";
+        $Message ="<div id='Auswahl_Trainer' name='Auswahl_Trainer' class='Auswahlmöglichkeit'> Es wurde noch kein Trainer hinzugefügt, wende dich an einen Feedcube Administrator</div>";
     }
 
 $i=0;

@@ -221,7 +221,14 @@ if(Fragen_typ=="Multiplechoice"){
             $bordercolors = array();
             $hslnumber = 0;
             $hslnumber_max = 360;
-            $colorsteps = 360/$rows_multi_colors["Anzahl_Antworten"];
+            if($rows_multi_colors["Anzahl_Antworten"]==0)
+            {
+                $colorsteps = 1000;  
+            }
+            else
+            {
+                $colorsteps = 360/$rows_multi_colors["Anzahl_Antworten"];
+            }
             while($hslnumber <= 360){
                 array_push($chartcolors,"hsl(".$hslnumber.", 75%, 85%, 0.2)");
                 array_push($bordercolors,"hsl(".$hslnumber.", 75%, 50%, 0.8)");

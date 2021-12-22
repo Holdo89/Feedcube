@@ -36,8 +36,6 @@ body{
 
 }
 
-
-
 .Auswahl{
 
 	font-size:12pt;
@@ -46,6 +44,13 @@ body{
   padding:10px;
 }
 
+.Auswahlmöglichkeit,.Auswahlmöglichkeit_Leistung{
+  margin-top:10px;
+  text-align:left;
+}
+.Auswahlmöglichkeit_Leistung{
+  margin-top:24px;
+}
 
 
 .leftchart{
@@ -453,6 +458,12 @@ h1{
   padding-left:0px;
 	margin-bottom:5px;
 
+}
+
+.Auswahlmöglichkeit,.Auswahlmöglichkeit_Leistung{
+  margin-top:0px;
+  margin-bottom:10px;
+  grid-column: 2 /span 2;
 }
 
 .Kommentare{

@@ -9,10 +9,10 @@ $row = mysqli_fetch_assoc($result);
 $Message="";
 
 if($row["Is_Admin"]==1){
-        $Message ="<div id='Auswahl_Leistung' name='Auswahl_Leistung'> Es wurde noch keine Leistung <a href='Leistungmanagement.php'>hinzugefügt</a></div>";
+        $Message ="<div id='Auswahl_Leistung' name='Auswahl_Leistung' class='Auswahlmöglichkeit_Leistung'> Es wurde noch keine Leistung <a href='Leistungmanagement.php'>hinzugefügt</a></div>";
     }
 else{
-        $Message ="<div id='Auswahl_Leistung' name='Auswahl_Leistung'> Es wurde noch keine Leistung hinzugefügt, wende dich an einen Feedcube Administrator</div>";
+        $Message ="<div id='Auswahl_Leistung' name='Auswahl_Leistung' class='Auswahlmöglichkeit_Leistung'> Es wurde noch keine Leistung hinzugefügt, wende dich an einen Feedcube Administrator</div>";
     }
 
 $i=0;
