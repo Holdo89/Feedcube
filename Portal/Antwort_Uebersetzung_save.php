@@ -14,5 +14,5 @@ else
   
 $query = mysqli_query($link, $sql);
 
-header("location:Fragen.php");
+header("location:Antwortmoeglichkeiten.php");
 ?>

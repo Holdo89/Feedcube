@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="hidefunction.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>	
   	<script type = "text/javascript" src="export_delete_data.js"></script>
+  	<link rel="manifest" href="../../manifest.json">
 
 </head>
 <style>
@@ -50,9 +51,8 @@
 		include "navigation.php";
 ?>
 
-<h2>Hi <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, Willkommen auf der Startseite von</h2>
-<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="300" height="120">
-<p>Hier erhältst du einen Überblick über die Auswertung des Kunden und Mitarbeiter Feedbacks</p><br>
+<img class="mb-4" src="../assets/brand/DASHBOARD.svg" alt="" width="300" height="120" style="margin-top:-20px">
+<p style="max-width:90vw; margin:auto">Hier erhältst du einen groben Überblick über die Auswertung des Feedbacks</p><br>
 
     </div>
 <div style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	

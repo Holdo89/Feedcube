@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Feedback Auswertung</title>
+	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="User_optionen.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
@@ -57,6 +58,18 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+
+.modalform{
+    width:90%; 
+    display:block;
+    text-align:left;
+    margin:auto;
+    max-width:1000px; 
+    padding:30px; 
+    overflow:auto; 
+    border-radius: 15px;
+}
 </style>
 
 <body class="text-center">
@@ -72,9 +85,10 @@
 	document.getElementById("Usermanagement").className = "active";
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;">Benutzer <i class="fa fa-users" aria-hidden="true"></i> </h1>
-		<p style="margin-bottom:30px; text-align:center; margin-left:auto;"> Bearbeite hier Benutzer die internes Feedback abgeben und Kundenfeedback erhalten</p>	</div>
-		</div>
+
+		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/group.png" width="60" style="margin-top:-10px;">  Benutzer </h1>
+		<p style="margin:auto; margin-bottom:30px; text-align:center; max-width:95vw"> Bearbeite hier Benutzer und weise Berechtigungen als Trainer oder Administrator zu</p></div>
+		
 	<div class="scroll">
 	<style>
 	.überschrift{
@@ -112,7 +126,7 @@ $new_password_err = $confirm_password_err = "";
 	</div>
 		<!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form style="display:block; padding:30px; width:70%; border-radius:15px; margin:auto" method="post">
+	<form class="modalform" method="post">
 		<span class="close">&times;</span>
 		<div id="Trainer_Auswahl" name="Trainer_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
 		<?php

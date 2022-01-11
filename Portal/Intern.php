@@ -54,7 +54,7 @@
 <script>
 	document.getElementById("Intern").className = "active";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;">Internes Feedback <i class="fa fa-bullhorn" aria-hidden="true"></i> </h1>
+		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/promotion.png" width="60" style="margin-top:-10px;"> Feedback </h1>
 		</div>
 	<div style="width:85vw; margin:auto; font-size:14px">	
 
@@ -71,7 +71,7 @@
 		}
 		else{
 			echo'<link href="Intern.css" rel="stylesheet" type="text/css">';
-			echo"<p style='margin-bottom:50px'> Hier kannst du anonymes Feedback abgeben, es werden keinerlei Userdaten gespeichert.</p>";
+			echo"<p style='margin-bottom:50px'> Hier kannst du anonym internes Feedback abgeben, es werden keinerlei Userdaten gespeichert.</p>";
 			include "interne_Fragen.php";
 		}
 	?>

@@ -2,7 +2,7 @@
 
 require_once "../config.php";
 require_once "session.php";
-
+$sql = "SELECT * FROM fragensets";
 		echo'<select class="Auswahl_Select" id="Auswahl_Fragenset" name="Auswahl_Fragenset" oninput="display_leistung()">';
 		echo "<option value='kein_Fragenset'>freie Auswahl</option>";
 		$result = mysqli_query($link, $sql) ;

@@ -102,8 +102,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="generator" content="Jekyll v4.0.1">
-    <link rel="manifest" href="../manifest.webmanifest">
-<script src="../index.js" type="module"></script>
     <title>Feedcube Login</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
@@ -113,12 +111,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
   </head>
 <body class="text-center" style="background-image:url('../assets/<?php echo $subdomain ?>/bg_loginfb/<?php
 	$dir = "../assets/".$subdomain."/bg_loginfb/";
 	$file = scandir($dir);
 	echo $file[2];
 	?>'">
+    <script type = "text/javascript" src="app.js"></script>
+
     <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="padding:40px;">
     <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70">
     <div class="divider">

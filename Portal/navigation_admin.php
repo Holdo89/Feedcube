@@ -12,9 +12,11 @@
     <div id ="optionen" class="dropdown">
     <button class="dropbtn"><i class="fa fa-wrench" aria-hidden="true"></i> Optionen </button>
     <div class="dropdown-content">
-            <a id ="Fragen" href="Fragen.php"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Feedbackfragen</a>
-            <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
+            <a id ="Fragen" href="Fragen.php"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Fragen</a>
+            <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Antworten</a>
+            <a id ="Fragensets" href="Fragenset.php"><i class="fa fa-question-circle" aria-hidden="true"></i> Fragensets</a>
             <a id ="Leistungmanagement" href="Leistungmanagement.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Leistungen</a>
+            <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
     </div>
     </div>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">

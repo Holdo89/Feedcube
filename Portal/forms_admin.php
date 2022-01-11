@@ -41,8 +41,8 @@
 <script>
 	document.getElementById("forms_admin").className = "active";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;">Formulare <i class="fa fa-file-text-o" aria-hidden="true"></i> </h1>
-		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks</p>	</div>
+		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/documents.png" width="50" style="margin-top:-10px;"> Formulare </h1>
+		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks in Form von befüllten Formularen</p>	</div>
 		<div id=fullAuswahl class="forms">
 	<?php
 		include "FilterExportDeleteOptions.php"

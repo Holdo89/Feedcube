@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+scro@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
 
 * {
 
@@ -239,20 +239,20 @@ textarea:-webkit-autofill:focus {
 
 
 @media only screen and (max-width: 600px) {
-
+    
   form{
-
-    min-width:370px;
-
-    font-size: 11px;
-
-    padding:5px;
+    width:95vw;
+    font-size: 12px;
+    overflow: auto;
+    margin:5px;
 
   }
 
   .center_button {
 
     font-size: 14pt;
+
+    padding-top:0.5em;
 
     min-width:35px;
 

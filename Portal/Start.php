@@ -2,6 +2,11 @@
  require_once "../config.php";
  require_once "session.php";
 
+if(!isset($_COOKIE["SkipIntro"])) {
+     header("location: offline.php");
+}
+
+
 $sql = "SELECT Is_Admin, Is_Trainer FROM users WHERE username ='".$_SESSION["username"]."'";
 $exec = mysqli_query($link,$sql);
 $row = mysqli_fetch_assoc($exec);

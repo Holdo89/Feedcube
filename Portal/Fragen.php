@@ -117,7 +117,7 @@
 	document.getElementById("Fragen").className = "active";
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;">Feedbackfragen <i class="fa fa-question-circle-o" aria-hidden="true"></i> </h1>
+		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/questionmark.png" width="60" style="margin-top:-10px;"> Fragen </h1>
 		Hier kannst du Fragen, die beim Feedback gestellt werden, bearbeiten
 	</div>
 	<style>
@@ -140,7 +140,7 @@
 
 	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;">Fragen an Kunden</p>
 	<hr style='max-width:90vw; margin:auto;'>
-	<div id="externe_Fragen" class="scroll" style="padding:20px;">
+	<div id="externe_Fragen" class="scroll" style="padding:10px;">
 	<form style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift"></label>
 	<label class="überschrift">Kapitel</label>
@@ -201,7 +201,7 @@
 	</form>
 	<p style="font-size:13pt; margin-bottom:10px;">Fragen an Mitarbeiter</p>
 	<hr style='max-width:90vw; margin:auto;'>
-	<div id="interne_Fragen" class="scroll" style="padding:20px;">
+	<div id="interne_Fragen" class="scroll" style="padding:10px;">
 	<form class="form_intern" style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift"></label>
 	<label class="überschrift">Frage</label>
@@ -227,37 +227,6 @@
 	<div class="überschrift" style="background-color:white;"></div>
 	</form>
 	</div>
-	<p style="font-size:13pt; margin-bottom:10px;">Antwortmöglichkeiten</p>
-	<hr style='max-width:90vw; margin:auto; margin-bottom:20px;'>
-	<form class="form_antworten" style="border-radius:5px 5px 0px 0px">
-	<label class="überschrift">Singlechoice</label>
-	<label class="überschrift"></label>
-	<label class="überschrift"></label>
-	</form>
-	<div id="Antworten" class="scroll">
-	<?php
-		include "Antworten_Abfrage.php";
-	?>
-	</div>
-	<form class="form_antworten" action="insert_antworten.php" method="post" style="margin-bottom:30px">
-	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
-	<input class="center_button" type="submit" value="+"></input>
-	</form>
-
-	<form class="form_antworten" style="border-radius:5px 5px 0px 0px;">
-	<label class="überschrift">Multiplechoice</label>
-	<label class="überschrift"></label>
-	<label class="überschrift"></label>
-	</form>
-	<div id="Antworten_Multiplechoice" class="scroll">
-	<?php
-		include "Antworten_Abfrage_Multiplechoice.php";
-	?>
-	</div>
-	<form class="form_antworten" action="insert_antworten_multiplechoice.php" method="post" style="padding-bottom:80px">
-	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
-	<input class="center_button" type="submit" value="+"></input>
-	</form>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">

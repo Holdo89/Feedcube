@@ -25,6 +25,6 @@ $sql= "ALTER TABLE admin ADD Fragenset_".$row['ID']." tinyint(1)";
 $result=mysqli_query($link, $sql);
 
 mysqli_close($link);
-header("location: Leistungmanagement.php");
+header("location: Fragenset.php");
 
 ?>

@@ -14,6 +14,6 @@ for ($i=0; $i<sizeof ($Frage);$i++) {
     }
 } 
 
-header("location:Leistungmanagement.php");
+header("location:Fragenset.php");
   
 ?> 

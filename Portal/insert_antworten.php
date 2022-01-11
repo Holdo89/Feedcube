@@ -16,6 +16,6 @@ mysqli_query($link, $sql);
 
 // close connection
 mysqli_close($link);
-header("location: Fragen.php");
+header("location: Antwortmoeglichkeiten.php");
 
 ?>

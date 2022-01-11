@@ -18,7 +18,7 @@ $result = mysqli_query($link, $sql) ;
 while($row = mysqli_fetch_assoc($result)) {
     $i=$i+1;
 }
-if ($i<2)
+if ($i<1)
 {
     echo $Message;
 }

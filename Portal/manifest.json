@@ -1,0 +1,33 @@
+{
+    "name": "Feedcube",
+    "short_name": "Feedcube",
+    "start_url": "index.php",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#fff",
+    "description": "Feedback To Keep Track",
+    "icons": [
+      {
+        "src": "../assets/brand/FEEDCUBE_square.png",
+        "sizes": "861x861",
+        "type": "image/png"
+      },
+      {
+        "src": "../assets/brand/FEEDCUBE_square_512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+      "src": "../assets/brand/FEEDCUBE_square_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "maskable" 
+    },
+          {
+        "src": "../assets/brand/FEEDCUBE_square.png",
+        "sizes": "861x861",
+        "type": "image/png",
+        "purpose": "maskable" 
+    }
+    ]
+  }

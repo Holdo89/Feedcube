@@ -61,7 +61,7 @@
 <script>
 	document.getElementById("feedback_charts").className = "active";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;">Auswertung <i class="fa fa-line-chart" aria-hidden="true"></i> </h1>
+		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/bar-chart.png" width="50" style="margin-top:-10px;"> Auswertung </h1>
 		<p style="margin:auto; margin-bottom:40px; width:90vw;"> Wähle eine Frage um das Feedback dazu auszuwerten</p>
     </div>
 <div id = "pdfExporterDiv" style="width:83vw; margin:auto;">	

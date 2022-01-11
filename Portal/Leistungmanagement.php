@@ -65,9 +65,11 @@
 }
 
 .modalform{
-    width:70vw; 
+    width:90%; 
+    text-align:center;
+    margin:auto;
     max-width:1000px; 
-    padding:20px; 
+    padding:30px; 
     overflow:auto; 
     border-radius: 15px;
 }
@@ -87,7 +89,7 @@
 	document.getElementById("Leistungmanagement").className = "active";
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;">Leistungen <i class="fa fa-graduation-cap" aria-hidden="true"></i> </h1>
+		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h1>
 		<p style="margin-bottom:30px"> Bearbeite hier die Leistungen zu denen du Feedback erhalten möchtest </p>	</div>
 		</div>
 	<div class="scroll">
@@ -106,16 +108,6 @@
 	</form>
 	</div>
 	
-	<div class="scroll" style="margin-top:20px;">
-	<form action="insert_fragenset.php" method="post">
-	<label class="überschrift">Fragensets</label><label class="überschrift"></label><label class="überschrift"></label>
-	<?php
-		include "Fragenset_Abfrage.php";
-	?>
-	<input id="neues_Fragenset" class="center_select" name="neues_Fragenset" placeholder="Eingabe eines neuen Fragensets" required></input>
-	<input class="center_button" type="submit" value="+"></input>
-	</form>
-	</div>
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
 	<form class = "modalform" action="Leistung_relate_question.php" method="post">

@@ -242,6 +242,7 @@ textarea:-webkit-autofill:focus {
 @media only screen and (max-width: 950px) {
 
   form{
+    width:95vw;
     font-size: 12px;
     overflow: auto;
     margin:5px;

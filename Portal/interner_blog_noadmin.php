@@ -82,7 +82,7 @@
 		document.getElementById("intern_blog_noadmin").className = "active";
 	</script>
 	</div> 
-        <h1>Interner Blog <i class="fa fa-comments-o" aria-hidden="true"></i></h1>
+		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/chat.png" width="60" style="margin-top:-10px;"> Blog </h1>
     </div>
 	<div style="width:90vw; margin:auto; @media only screen and (max-width: 600px){width:100vw}">
 	<p>Hier kannst du anonym Kommentare und Beiträge erstellen und kommentieren </p> <p>Es werden keinerlei Userdaten gespeichert</p> 
