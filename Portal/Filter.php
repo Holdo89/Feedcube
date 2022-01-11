@@ -11,8 +11,13 @@
 			<?php
 				include "Auswahlmöglichkeiten_Trainer.php"
 			?>	
+	
+	<label class="Auswahl">Leistung: </label>
+			<?php
+				include "Auswahlmöglichkeiten_Leistung.php"
+			?>
 
-	<label class="Auswahl" for="zeitraum">Bewertungszeitraum: </label>
+	<label class="Auswahl" for="zeitraum" style="margin-top:14px">Zeitraum: </label>
 		<select class = "Auswahl_Select" name="zeitraum" id="zeitraum" oninput="update()">
 		<option value="Benutzerdefiniert"> Benutzerdefiniert</option>
 		<option value="24 hours">Heute</option>
@@ -20,11 +25,6 @@
 		<option value="7 days">letzten 7 Tage</option>
 		<option value="30 days">letzten 30 Tage</option>
 		</select>
-
-	<label class="Auswahl" style="margin-top:14px;">Leistung: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Leistung.php"
-			?>
 	
 	<div id ="AuswahlZeitraum" style="grid-column:3/ span 2;">
 	<div class="Auswahl_Slider">

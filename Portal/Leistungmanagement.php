@@ -31,7 +31,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 50px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -62,6 +62,14 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modalform{
+    width:70vw; 
+    max-width:1000px; 
+    padding:20px; 
+    overflow:auto; 
+    border-radius: 15px;
 }
 </style>
 
@@ -110,7 +118,7 @@
 	</div>
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form action="Leistung_relate_question.php" method="post">
+	<form class = "modalform" action="Leistung_relate_question.php" method="post">
 		<input id="ID" name="ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
@@ -136,7 +144,7 @@
 	</div>
 	<!-- The Modal -->
 	<div id="Fragenset_Modal" class="modal">
-	<form action="Fragenset_relate_question.php" method="post">
+	<form class= "modalform" action="Fragenset_relate_question.php" method="post">
 		<input id="Fragenset_ID" name="Fragenset_ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>

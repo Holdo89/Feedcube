@@ -1,4 +1,18 @@
-
+<style>
+    .AuswahlZeitraum{
+        width:40vw;
+    }
+    .Auswahl_Slider{
+        width:40vw;
+    }
+    @media only screen and (max-width: 600px) {
+      .AuswahlZeitraum {
+        width:75vw;
+      }
+        .Auswahl_Slider {
+        width:75vw;
+      }
+</style>
 <link href="slider-range.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -16,7 +30,7 @@
 		<option value="7 days">letzten 7 Tage</option>
 		<option value="30 days">letzten 30 Tage</option>
 		</select>
-	<div id ="AuswahlZeitraum" style="grid-column:3/ span 2; width:700px;">
+	<div id ="AuswahlZeitraum" class="AuswahlZeitraum">
 	<div class="Auswahl_Slider">
 	<div id="slider-range" onmousemove="datum_update()"></div>
 	</div>

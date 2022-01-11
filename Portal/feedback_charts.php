@@ -62,9 +62,9 @@
 	document.getElementById("feedback_charts").className = "active";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;">Auswertung <i class="fa fa-line-chart" aria-hidden="true"></i> </h1>
-		<p style="margin-bottom:40px;"> Wähle eine Frage um das Feedback dazu auszuwerten</p>
+		<p style="margin:auto; margin-bottom:40px; width:90vw;"> Wähle eine Frage um das Feedback dazu auszuwerten</p>
     </div>
-<div id = "pdfExporterDiv" style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	
+<div id = "pdfExporterDiv" style="width:83vw; margin:auto;">	
 
 <!--Auswertung von multiple choice Fragen-->
 

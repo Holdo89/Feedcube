@@ -1,0 +1,9 @@
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "net.feedcube.app",
+    "sha256_cert_fingerprints":
+      ["FA:4E:A6:DD:5B:0C:36:BA:DC:4E:70:4E:32:1C:B2:C1:E0:78:81:71:CC:17:D4:39:DA:54:CB:B4:20:FE:4A:83"]
+   }
+}

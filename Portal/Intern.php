@@ -56,7 +56,7 @@
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;">Internes Feedback <i class="fa fa-bullhorn" aria-hidden="true"></i> </h1>
 		</div>
-	<div style="width:100vw; margin:auto; @media only screen and (max-width: 600px){width:100vw}">	
+	<div style="width:85vw; margin:auto; font-size:14px">	
 
 	<?php
 		$sql = "SELECT name, internes_feedback_abgegeben FROM users WHERE username = '".$_SESSION['username']."'";
@@ -66,7 +66,7 @@
 		$today= date('Y-m-d',$today); 
 		$new_feedback_date = date('Y-m-d', strtotime($row["internes_feedback_abgegeben"] . ' +1 weeks'));//nur einmalpro Woche ist es möglich Feedback abzugeben
 		if ($today<=$new_feedback_date){
-			echo"<p>Vielen Dank für dein Feedback, 7 Tage nach Abgabe kannst du erneut Feedback abgeben.</p> Erneutes Feedback möglich am: ".$new_feedback_date;
+			echo"<p>Vielen Dank für dein Feedback, 7 Tage nach Abgabe kannst du erneut Feedback abgeben.</p> <p style='margin-bottom:50px'>Erneutes Feedback möglich am: ".$new_feedback_date."</p>";
 			include "intern_feedback_charts.php";
 		}
 		else{
