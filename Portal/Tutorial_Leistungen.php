@@ -19,112 +19,12 @@
 	<?php
 	include "Leistung_speichern.php";
 	include "Fragenset_speichern.php";
+  include "Tutorialstyle.php"
 	?>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-<style>
-
-#element{
-  width:250px;
-  position: relative;
-  margin:auto;
-  text-align:center;
-  margin-top:25px; 
-  cursor:pointer; 
-  padding:15px; 
-  font-size: 16px; 
-  border:none; 
-  border-radius:30px; 
-  color:white; 
-  background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
-}
-
-#element2{
-      width:250px;
-  position: relative;
-  margin:auto;
-  text-align:center;
-  margin-top:25px; 
-  margin-left:-50px;
-  margin-right:20px;
-  cursor:pointer; 
-  padding:13px; 
-  font-size: 16px; 
-  border:3px solid; 
-  border-radius:30px; 
-  border-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
-  color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>; 
-  background-color:white
-}
-
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 50px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  border: 1px solid #888;
-  width: 50%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modalform{
-    width:95%; 
-    text-align:center;
-    margin:auto;
-    max-width:1000px; 
-    padding:30px; 
-    overflow:auto; 
-    border-radius: 15px;
-}
-@media only screen and (max-width: 600px){
- #icon{
-     width:200px;
-     height:70px;
- }  
- 
-#element2{
-    margin:auto;
-    margin-left:0px;
-    margin-top:60px;
-}
-#element{
-    margin:auto;
-    margin-left:0px;
-    margin-top:10px;
-}
-}
-</style>
 
 </head>
 <body class="text-center">
@@ -143,7 +43,7 @@
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
 	}
 	</style>
-	<form action="insert_leistung.php" method="post">
+	<form action="Tutorial_insert_leistung.php" method="post">
 	<label class="überschrift">Leistungen</label><label class="überschrift"></label><label class="überschrift"></label>
 	<?php
 		include "Leistung_Abfrage.php";
@@ -180,15 +80,15 @@
 	</form>
 	</div>
 
-	<div id="Fragenset_Modal" class="modal" style="display:block">
-	<form class= "modalform" action"#" onsubmit="hideinformation(); return false" method="post">
+	<div id="Fragenset_Modal" class="modal" style="display:none">
+	<form class= "modalform" style="grid-template-columns: auto" action"#" onsubmit="hideinformation(); return false" method="post">
 	    <div></div>
 	    <div></div>
-		<span class="close">&times;</span>
+		<span class="close" style="text-align:right">&times;</span>
 		<div>		
 		<h4 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h4>
-		<p>
-		    Leistungen repräsentieren Themen zu denen Feedback von Teilnehmern abgegeben werden. Beispiele dafür sind Schulungen, Seminare oder andere Dienstleistungen. 
+		<p style="text-align:left">
+		    Leistungen repräsentieren Dienstleistungen zu denen Feedback von Teilnehmern abgegeben werden. Beispiele dafür sind Schulungen, Seminare, oder auch Beratungen. 
 		    Um Fragen zu wählen die bei einer Leistung abgefragt werden klicken Sie <i class="fa fa-pencil" aria-hidden="true"></i>. Fragen können einzeln oder durch
 		    ein zuvor definiertes Fragenset gewählt werden.  
 		</p>
@@ -200,15 +100,28 @@
 	</div>
 
 	<div class="content">
-	        <button id="element2" onclick = "skipIntro()">zurück</button>
-            <button id="element" onclick = "pageRedirect()">weiter</button>
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
     </div>
 
 
     <script src="Leistungsjs.js" type="text/javascript"></script>
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
     <script>
+        checkCookie("LeistungInformationChecked", "Fragenset_Modal")
+
+        function weiter() {
+            window.location.href = "Tutorial_Leistungen.php";
+        }
+
+        function zurück() {
+            window.location.href = "Tutorial_Fragen.php";
+        }
+
         function hideinformation(){
             document.getElementById("Fragenset_Modal").style.display="none"
+            document.cookie = "LeistungInformationChecked=1";
         }
     </script>
     </body>

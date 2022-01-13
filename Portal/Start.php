@@ -3,7 +3,7 @@
  require_once "session.php";
 
 if(!isset($_COOKIE["SkipIntro"])) {
-     header("location: offline.php");
+     header("location: Introstart.php");
 }
 
 
