@@ -285,7 +285,7 @@ $new_password_err = $confirm_password_err = "";
 	</div>
 		<!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class="modalform" method="post">
+	<form class="modalform" method="get">
 		<span class="close">&times;</span>
 		<div id="Trainer_Auswahl" name="Trainer_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
 		<?php
@@ -296,7 +296,7 @@ $new_password_err = $confirm_password_err = "";
 		<p style="margin-top:20px;">Feedback-Link: </p>
 		<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
 		<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system"; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>">Link kopieren</button>
-	</form>
+    </form>
 	</div>
 	<div id="newUserModal" class="modal" style="display:none;">
 		<form class="form-signin" style="display:block; padding:40px; max-width:1000px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
