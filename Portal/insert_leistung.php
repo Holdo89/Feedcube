@@ -29,6 +29,16 @@ $sql= "ALTER TABLE admin ADD Leistung_".$row['ID']." tinyint(1)";
 $result=mysqli_query($link, $sql);
 
 mysqli_close($link);
-header("location: Leistungmanagement.php");
+
+$Step = $_REQUEST["Step"];
+if($Step == 5)
+{
+    header("location: Tutorial_Leistungen.php");
+}
+
+else{
+    header("location: Leistungmanagement.php");
+}
+
 
 ?>

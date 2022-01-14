@@ -44,5 +44,14 @@ mysqli_query($link, $sql);
 
 // close connection
 mysqli_close($link);
-header("location: Fragen.php");
+
+$Step = $_REQUEST["Step"];
+if($Step == 1)
+{
+    header("location: Tutorial_Fragen.php");
+}
+
+else{
+    header("location: Fragen.php");
+}
 ?>

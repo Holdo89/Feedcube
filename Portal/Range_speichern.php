@@ -118,7 +118,6 @@ else{
         $exec = mysqli_query($link,$query);
         $query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Frage_ID = '".$ID."'";
         $exec = mysqli_query($link,$query);
-        header("location:Fragen.php");
     }
     if($Type=="intern"){
         $query = "UPDATE rangeslider_answers SET range_min = '".$min."' WHERE Intern_ID = '".$ID."'";
@@ -127,7 +126,16 @@ else{
         $exec = mysqli_query($link,$query);
         $query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Intern_ID = '".$ID."'";
         $exec = mysqli_query($link,$query);
-        header("location:Fragen.php"); 
+    }
+    
+    $Step = $_REQUEST["Step"];
+    if($Step == 1)
+    {
+        header("location: Tutorial_Fragen.php");
+    }
+
+    else{
+        header("location: Fragen.php");
     }
 }
 ?>

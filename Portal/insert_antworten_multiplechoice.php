@@ -16,6 +16,16 @@ mysqli_query($link, $sql);
 
 // close connection
 mysqli_close($link);
-header("location: Antwortmoeglichkeiten.php");
+
+$Step = $_REQUEST["Step"];
+if($Step == 2)
+{
+    header("location: Tutorial_Antwortmoeglichkeiten.php");
+}
+
+else{
+    header("location: Antwortmoeglichkeiten.php");
+}
+
 
 ?>

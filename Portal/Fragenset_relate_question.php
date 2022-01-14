@@ -14,6 +14,14 @@ for ($i=0; $i<sizeof ($Frage);$i++) {
     }
 } 
 
-header("location:Fragenset.php");
+$Step = $_REQUEST["Step"];
+if($Step == 4)
+{
+    header("location: Tutorial_Fragenset.php");
+}
+
+else{
+    header("location: Fragenset.php");
+}
   
 ?> 

@@ -25,6 +25,14 @@ $sql= "ALTER TABLE admin ADD Fragenset_".$row['ID']." tinyint(1)";
 $result=mysqli_query($link, $sql);
 
 mysqli_close($link);
-header("location: Fragenset.php");
+$Step = $_REQUEST["Step"];
+if($Step == 4)
+{
+    header("location: Tutorial_Fragenset.php");
+}
+
+else{
+    header("location: Fragenset.php");
+}
 
 ?>

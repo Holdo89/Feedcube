@@ -43,7 +43,7 @@
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
 	}
 	</style>
-	<form action="Tutorial_insert_leistung.php" method="post">
+	<form action="insert_leistung.php?Step=5" method="post">
 	<label class="überschrift">Leistungen</label><label class="überschrift"></label><label class="überschrift"></label>
 	<?php
 		include "Leistung_Abfrage.php";
@@ -55,7 +55,7 @@
 	
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class = "modalform" action="Tutorial_Leistung_relate_question.php" method="post">
+	<form class = "modalform" action="Leistung_relate_question.php?Step=5" method="post">
 		<input id="ID" name="ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
@@ -86,7 +86,7 @@
 	    <div></div>
 		<span class="close" style="text-align:right">&times;</span>
 		<div>		
-		<h4 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h4>
+		<h4 style="font-size:30px; margin-bottom:10px;">Schritt 5: <img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h4>
 		<p style="text-align:left">
 		    Leistungen repräsentieren Dienstleistungen zu denen Feedback von Teilnehmern abgegeben werden. Beispiele dafür sind Schulungen, Seminare, oder auch Beratungen. 
 		    Um Fragen zu wählen die bei einer Leistung abgefragt werden klicken Sie <i class="fa fa-pencil" aria-hidden="true"></i>. Fragen können einzeln oder durch
@@ -116,7 +116,7 @@
         }
 
         function zurück() {
-            window.location.href = "Tutorial_Fragen.php";
+            window.location.href = "Tutorial_Fragenset.php";
         }
 
         function hideinformation(){

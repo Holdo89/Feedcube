@@ -28,7 +28,16 @@ else{
     mysqli_query($link,$sql); 
 }
 
-header("location:Leistungmanagement.php");
+
+$Step = $_REQUEST["Step"];
+if($Step == 5)
+{
+    header("location: Tutorial_Leistungen.php");
+}
+
+else{
+    header("location: Leistungmanagement.php");
+}
 exit();
   
 ?> 

@@ -73,6 +73,11 @@
   cursor: pointer;
 }
 
+.radio{
+  height:0px;
+  display:none;
+}
+
 .modalform{
     width:95%; 
     text-align:center;
@@ -82,7 +87,17 @@
     overflow:auto; 
     border-radius: 15px;
 }
+
+.radio-inline, .checkbox-inline{
+		border:none;
+	}
+	input[type=radio], input[type=checkbox]{
+		margin-top:8px;
+	}
 @media only screen and (max-width: 600px){
+  .radio-inline, .checkbox-inline{
+		font-size:10px;
+	}
  #icon{
      width:200px;
      height:70px;
