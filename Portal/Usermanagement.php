@@ -141,12 +141,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Close statement
             mysqli_stmt_close($stmt);
         }
+            $sql="UPDATE users SET internes_feedback_abgegeben = '2020-03-27 16:55:00' WHERE username = '".$param_username."'";
+            $query=mysqli_query($link,$sql);
+            $sql="UPDATE users SET Confirmed = 1 WHERE username = '".$param_username."'";
+            $query=mysqli_query($link,$sql);
+            $sql="UPDATE users SET Is_Trainer = 1 WHERE username = '".$param_username."'";
+            $query=mysqli_query($link,$sql);
+            // Close connection
+            mysqli_close($link);
     }
-    $sql="UPDATE users SET internes_feedback_abgegeben = '2020-03-27 16:55:00' WHERE username = '".$param_username."'";
-    $query=mysqli_query($link,$sql);
-    $row=mysqli_fetch_array($query);
-    // Close connection
-    mysqli_close($link);
+    else{
+        echo"<script>function error(){document.getElementById('newUserModal').style.display = 'block'}</script>";
+    }
 }
 ?>
 <!DOCTYPE HTML>
@@ -324,6 +330,12 @@ $new_password_err = $confirm_password_err = "";
 	</div>
 	<button id="element" onclick = "setVisibility()"><i class="fa fa-user-plus" style="font-size:19px" aria-hidden="true"></i> Benutzer hinzufügen</button>
 	<script>
+	try{
+	    error();
+	}
+	catch{
+	    
+	};
 	var modal = document.getElementById("myModal");
 	var Trainer_element = document.getElementById("Trainer_Auswahl");
 	function display(Trainer) {
