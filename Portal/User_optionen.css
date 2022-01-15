@@ -108,7 +108,7 @@ form {
 
   background: white;
   display: grid;
-  grid-template-columns:1.5fr 0.7fr 2fr 60px 60px 60px 60px 60px;
+  grid-template-columns:1.5fr 0.7fr 2fr 50px 50px 50px 50px 50px;
   margin:auto;
   text-align: left;
   border: 1px solid var(--border);
@@ -147,9 +147,9 @@ form {
 
   text-align: center;
 
-  padding-top:0.4em;
+  padding-top:0.55em;
 
-  font-size: 16pt;
+  font-size: 14pt;
 
   width: 100%;
 

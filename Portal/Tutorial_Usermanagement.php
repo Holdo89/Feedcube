@@ -135,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: Usermanagement.php");
+                header("location: Tutorial_Usermanagement.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -240,14 +240,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
-<div class="header">
-	<?php
-	include "navigation_admin.php";	
-?>
-<script>
-	document.getElementById("Usermanagement").className = "active";
-	document.getElementById("optionen").style.backgroundColor = "lightgrey";
-</script>
+    <div class="header" style="padding-top:50px;">
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/group.png" width="60" style="margin-top:-10px;">  Benutzer </h1>
 		<p style="margin:auto; margin-bottom:30px; text-align:center; max-width:95vw"> Bearbeite hier Benutzer und weise Berechtigungen als Trainer oder Administrator zu</p></div>
 		
@@ -330,7 +323,7 @@ $new_password_err = $confirm_password_err = "";
 			</div>
 		</form>   
 	</div>
-	<button id="element" onclick = "setVisibility()"><i class="fa fa-user-plus" style="font-size:19px" aria-hidden="true"></i> Benutzer hinzufügen</button>
+	<button id="element" onclick = "setVisibility()"><i class="fa fa-user-plus" style="font-size:16px" aria-hidden="true"></i>  Benutzer hinzufügen</button>
 	<script>
 	try{
 	    error();
@@ -408,6 +401,31 @@ $new_password_err = $confirm_password_err = "";
 		}
 	}
 	</script>
+    	<div class="content">
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
+    </div>
+
+
+    <script src="Leistungsjs.js" type="text/javascript"></script>
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
+    <script>
+        checkCookie("LeistungInformationChecked", "Fragenset_Modal")
+
+        function weiter() {
+            window.location.href = "Tutorial_Leistungen.php";
+        }
+
+        function zurück() {
+            window.location.href = "Tutorial_Leistungen.php";
+        }
+
+        function hideinformation(){
+            document.getElementById("Fragenset_Modal").style.display="none"
+            document.cookie = "LeistungInformationChecked=1";
+        }
+    </script>
     
     </body>
 </html>

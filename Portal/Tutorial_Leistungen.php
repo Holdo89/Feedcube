@@ -29,7 +29,7 @@
 </head>
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header" style="margin-top:100px">
@@ -112,7 +112,7 @@
         checkCookie("LeistungInformationChecked", "Fragenset_Modal")
 
         function weiter() {
-            window.location.href = "Tutorial_Leistungen.php";
+            window.location.href = "Tutorial_Usermanagement.php";
         }
 
         function zurück() {

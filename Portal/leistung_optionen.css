@@ -104,7 +104,7 @@ form {
 
   display: grid;
 
-  grid-template-columns: 6fr 0.4fr 0.4fr;
+  grid-template-columns: 6fr 0.3fr 0.3fr;
 
   margin:auto;
 
@@ -152,7 +152,7 @@ form {
 
   display: block;
 
-  font-size: 16pt;
+  font-size: 14pt;
 
   width: 100%;
 

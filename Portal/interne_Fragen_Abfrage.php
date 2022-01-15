@@ -11,7 +11,6 @@ while($row = mysqli_fetch_assoc($result)) {
     echo "<div class='center_select' style='text-align:center; margin:auto; min-width:35px'><i class='fa fa-bars'></i></div>";
     echo "<input class='center_select' id='Frage_".$row["ID"]."' value='".$row["Fragen_intern"]."' onblur='user_abfrage_speichern_intern(".$row["ID"].")'></input>";
     echo "<input class='center_select' id='Auswahl_Fragentyp_".$row["ID"]."' name='Auswahl_Fragentyp' value = ".$row["Typ"]." oninput='user_abfrage_speichern_intern(".$row["ID"].")' readonly></input>";
-    echo "<button type='button' class='center_button' onclick='user_abfrage_löschen_intern(".$row["ID"].")'><i class='fa fa-trash'></i></button>";          
     if ($row["Typ"]=="Singlechoice") 
     { 
         echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"intern\", \"Singlechoice\");' ><i class='fa fa-pencil'></i></button>";
@@ -27,6 +26,8 @@ while($row = mysqli_fetch_assoc($result)) {
     else{
         echo "<button type='button' class='center_button'></button>";
     }
+    echo "<button type='button' class='center_button' onclick='user_abfrage_löschen_intern(".$row["ID"].")'><i class='fa fa-trash'></i></button>";          
+
     echo"</form>";
 }
 }
