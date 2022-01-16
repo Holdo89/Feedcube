@@ -10,8 +10,8 @@ $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
 
-$neues_Kapitel = mysqli_real_escape_string($link, $_REQUEST["neues_Kapitel"]);
-$neue_Frage = mysqli_real_escape_string($link, $_REQUEST["neue_Frage"]);
+$neues_Kapitel = mysqli_real_escape_string($link, $_REQUEST["Kapitel"]);
+$neue_Frage = mysqli_real_escape_string($link, $_REQUEST["Frage"]);
 $Fragentyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Fragentyp"]);
 
 $sql = "INSERT INTO admin (Kapitel, Typ, Fragen_extern, post_order_no, post_id) VALUES ('$neues_Kapitel', '$Fragentyp', '$neue_Frage','$last_order','$last_order')";

@@ -3,12 +3,14 @@ include "../config.php";
 $Antwort = $_POST["checkbox"]; 
 $Type = $_REQUEST["Type"];
 $Questiontype = $_REQUEST["Questiontype"];
-$ID = $_REQUEST["ID_".$Type."_".$Questiontype];
-$Frage_Englisch = $_REQUEST["frage_englisch_".$Type."_".$Questiontype];
+$ID = $_REQUEST["Id"];
+$Frage = $_REQUEST["Frage"];
+$Kapitel = $_REQUEST["Kapitel"];
+$Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
+$Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
 
 
 if($Type=="extern"){
-    $Kapitel_Englisch = $_REQUEST["kapitel_englisch_".$Type."_".$Questiontype];
     $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 
