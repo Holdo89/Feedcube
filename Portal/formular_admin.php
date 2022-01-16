@@ -47,12 +47,12 @@ while($row = mysqli_fetch_array($exec)){
 		}
 
 
-		if ($row_questions["Typ"]=="Singlechoice"){
+		if ($row_questions["Typ"]=="Bewertung"){
 			$option_index=1;
-			$sql="SELECT * FROM singlechoice_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
+			$sql="SELECT * FROM bewertung_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
 			$result = mysqli_query($link,$sql);
 			$gridcolumns = "25% 2fr ";
-			$sql_answers="SELECT Answers FROM singlechoice_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
+			$sql_answers="SELECT Answers FROM bewertung_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
 			$exec_answers=mysqli_query($link,$sql_answers);
 			$option_index=1;
 			echo'

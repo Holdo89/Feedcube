@@ -59,11 +59,11 @@ while($row = mysqli_fetch_assoc($result)){
 
     }
 
-    else if ($row['Typ']=='Singlechoice'){
+    else if ($row['Typ']=='Bewertung'){
         echo"<div class='multi'>";
-        echo"<input id = 'ident_".$i."' name='ident_".$i."' value = 'Singlechoice' style='height:0px; margin:0px; visibility:hidden'></input>";
+        echo"<input id = 'ident_".$i."' name='ident_".$i."' value = 'Bewertung' style='height:0px; margin:0px; visibility:hidden'></input>";
         $Antwort_index=1;
-        $sql_answers = "SELECT * FROM singlechoice_answers WHERE Intern_".$row['ID']." = 1 ORDER BY post_order_no ASC";
+        $sql_answers = "SELECT * FROM bewertung_answers WHERE Intern_".$row['ID']." = 1 ORDER BY post_order_no ASC";
         $result_answers = mysqli_query($link, $sql_answers) ;
         while($row_answers=mysqli_fetch_array($result_answers)){
 

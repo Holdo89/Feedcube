@@ -54,8 +54,8 @@ $typ=$row["Typ"];
 	$Anzahl_abgegenes_feedback = $Anzahl_abgegenes_feedback_row["COUNT(".$Frage.")"];
     $Average = 0;
 	$i=1;
-	if($typ=="Singlechoice"){
-		$sql="SELECT Answers FROM singlechoice_answers WHERE Intern_".$ID." = 1 ORDER BY post_order_no ASC";
+	if($typ=="Bewertung"){
+		$sql="SELECT Answers FROM bewertung_answers WHERE Intern_".$ID." = 1 ORDER BY post_order_no ASC";
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
@@ -81,7 +81,7 @@ $typ=$row["Typ"];
 	$rowx = mysqli_fetch_array($exec);
 	$Bewertungsarray = array();
 
-	if($typ=="Singlechoice"){
+	if($typ=="Bewertung"){
     	echo "<p style='font-size:25px;'>&empty; Total: ".round($Average,1)."</p>";
 	}
 	
@@ -115,13 +115,13 @@ $typ=$row["Typ"];
 
     $Average_10 = 0;
 	$i=1;
-	if($typ=="Singlechoice"){
-		$sql_number_of_answers="SELECT COUNT(Answers) FROM singlechoice_answers WHERE Intern_".$ID." = 1 ORDER BY post_order_no ASC";
+	if($typ=="Bewertung"){
+		$sql_number_of_answers="SELECT COUNT(Answers) FROM bewertung_answers WHERE Intern_".$ID." = 1 ORDER BY post_order_no ASC";
 		$exec_number_of_answers = mysqli_query($link, $sql_number_of_answers);
 		$number_of_answers = mysqli_fetch_array($exec_number_of_answers);
 		$range = intval($number_of_answers[0])*0.1;
 
-		$sql="SELECT Answers FROM singlechoice_answers WHERE Intern_".$ID." = 1 ORDER BY post_order_no ASC";
+		$sql="SELECT Answers FROM bewertung_answers WHERE Intern_".$ID." = 1 ORDER BY post_order_no ASC";
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
@@ -132,7 +132,7 @@ $typ=$row["Typ"];
 			$i =$i+1;
 		}
 	}
-	if($typ=="Singlechoice" || $typ=="Multiplechoice"){
+	if($typ=="Bewertung" || $typ=="Multiplechoice"){
 		if($Anzahl_abgegenes_feedback<10)
 		{
 			$Average_10 = $Average_10/$Anzahl_abgegenes_feedback;
@@ -146,13 +146,13 @@ $typ=$row["Typ"];
 	$exec = mysqli_query($link,$query);
 	$rows = mysqli_fetch_array($exec);
 
-	if($typ=="Singlechoice"){
+	if($typ=="Bewertung"){
     	echo "<p>&empty; letzten 10 Bewertungen: ".round($Average_10,1)."</p>";
 	}
 else if($typ=="Schieberegler"){
 		echo "<p>&empty; letzten 10 Bewertungen: ".$rows["ROUND(AVG(".$Frage."),1)"]."</p>";
 	}
-	if($typ=="Singlechoice"){
+	if($typ=="Bewertung"){
 		$Trend = round($Average_10-$Average,1);
 	if($Trend<$range*-1)
     {

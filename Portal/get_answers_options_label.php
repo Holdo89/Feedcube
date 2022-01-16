@@ -2,7 +2,7 @@
 
     require_once "../config.php";
 
-    $sql="SELECT * FROM singlechoice_answers ORDER BY post_order_no ASC";
+    $sql="SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
 
     $i=1;
 

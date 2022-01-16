@@ -146,7 +146,7 @@
 	</div>
 
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px; margin-top:30px;">
-	<label class="überschrift">Singlechoice</label>
+	<label class="überschrift">Bewertung</label>
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>
@@ -289,9 +289,9 @@
 	function display(id, type, questiontype) {
 		if(type=='intern')
 		{
-			if(questiontype=="Singlechoice")
+			if(questiontype=="Bewertung")
 			{
-				modal.innerHTML = '<form class="modalform" action="Fragen_relate_antworten.php?Type=intern&Questiontype=Singlechoice" method="post"><input id="ID_intern_Singlechoice" name="ID_intern_Singlechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Singlechoice" name ="frage_englisch_intern_Singlechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM singlechoice_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Singlechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Singlechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+				modal.innerHTML = '<form class="modalform" action="Fragen_relate_antworten.php?Type=intern&Questiontype=Bewertung" method="post"><input id="ID_intern_Bewertung" name="ID_intern_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Bewertung" name ="frage_englisch_intern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 			if(questiontype=="Multiplechoice")
 			{
@@ -309,9 +309,9 @@
 		}
 		else if(type=='extern')
 		{
-			if(questiontype=="Singlechoice")
+			if(questiontype=="Bewertung")
 			{	
-				modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=extern&Questiontype=Singlechoice" method="post"><input id="ID_extern_Singlechoice" name="ID_extern_Singlechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal()">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_extern_Singlechoice" name ="kapitel_englisch_extern_Singlechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_extern_Singlechoice" name ="frage_englisch_extern_Singlechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM singlechoice_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Singlechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Singlechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+				modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=extern&Questiontype=Bewertung" method="post"><input id="ID_extern_Bewertung" name="ID_extern_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal()">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_extern_Bewertung" name ="kapitel_englisch_extern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_extern_Bewertung" name ="frage_englisch_extern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 			else if(questiontype=="Multiplechoice")
 			{	
@@ -328,9 +328,9 @@
 			}			
 		}
 		else{
-			if(questiontype=="Singlechoice")
+			if(questiontype=="Bewertung")
 			{
-				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Step=2&Type=answers&Questiontype=Singlechoice" method="post"><input id="ID_answers_Singlechoice" name="ID_answers_Singlechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Singlechoice" name ="englisch_answers_Singlechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Step=2&Type=answers&Questiontype=Bewertung" method="post"><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 			if(questiontype=="Multiplechoice")
 			{
@@ -462,7 +462,7 @@
 		    Antworten werden von Fragen abgekoppelt behandelt, wodurch eine Wiederverwendbarkeit für mehrere Fragen erleichtert wird. Antwortmöglichkeiten werden in 2 verschiedene Arten kategorisiert:    
         </p>
         <p style="text-align:left">
-        <b>Singlechoice</b> - Antworten bei denen genau eine Option gewählt wird. Beispiel dafür: </p>
+        <b>Bewertung</b> - Antworten bei denen genau eine Option gewählt wird. Beispiel dafür: </p>
 			<label class="radio-inline">
 			<input type="radio" name="optradio">Option 1
 			</label>

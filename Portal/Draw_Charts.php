@@ -63,7 +63,7 @@ xmlhttp.onreadystatechange = function() {
         var colorsteps = labeloptions.length;
         var chartcolors = [];
         var bordercolors = [];
-        if (Fragen_typ=="Singlechoice"){
+        if (Fragen_typ=="Bewertung"){
             var hslnumber = 120;
             var hslnumber_max = 140;
             while(hslnumber >= 0){
@@ -255,7 +255,7 @@ function update(){
         var colorsteps = labeloptions.length;
         var chartcolors = [];
         var bordercolors = [];
-        if (Fragen_typ=="Singlechoice"){
+        if (Fragen_typ=="Bewertung"){
             var hslnumber = 120;
             var hslnumber_max = 140;
             while(hslnumber >= 0){

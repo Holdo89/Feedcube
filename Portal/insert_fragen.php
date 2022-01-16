@@ -26,8 +26,8 @@ $sql = "SELECT ID FROM admin ORDER BY ID DESC LIMIT 1";
 $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
 
-if($Fragentyp=='Singlechoice'){
-    $sql= "ALTER TABLE singlechoice_answers ADD Frage_".$row['ID']." tinyint(1)";
+if($Fragentyp=='Bewertung'){
+    $sql= "ALTER TABLE bewertung_answers ADD Frage_".$row['ID']." tinyint(1)";
 }
 else if($Fragentyp=='Multiplechoice'){
     $sql= "ALTER TABLE multiplechoice_answers ADD Frage_".$row['ID']." tinyint(1)";
@@ -40,7 +40,7 @@ mysqli_query($link, $sql);
 if($Fragentyp=='Text'){
 $sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." TEXT";}
 
-elseif($Fragentyp=='Singlechoice' || $Fragentyp=='Multiplechoice'){
+elseif($Fragentyp=='Bewertung' || $Fragentyp=='Multiplechoice'){
 $sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." TEXT";}
 
 elseif($Fragentyp=='Schieberegler'){

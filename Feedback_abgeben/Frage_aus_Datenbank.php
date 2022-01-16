@@ -52,8 +52,8 @@ $Fragenid_array = array();
 $Default_Schieberegler_array = array();
 $Max_Schieberegler_array = array();
 $Min_Schieberegler_array = array();
-$Singlechoice_array_value = array();
-$Singlechoice_array = array();
+$Bewertung_array_value = array();
+$Bewertung_array = array();
 $Multiplechoice_array_value = array();
 $Multiplechoice_array = array();
 $abgegebenes_feedback_array = array();
@@ -95,24 +95,24 @@ while($index<=$Anzahl_Fragen) {
         array_push($Max_Schieberegler_array, $max);
         array_push($Min_Schieberegler_array, $min);
     }
-    else if ($row['Typ']=='Singlechoice'){
-        $Singlechoice = array();
-        $Singlechoice_value = array(); //Singlechoicemöglichkeiten der einzelnen Frage
-        $sql_answers = "SELECT * FROM singlechoice_answers ORDER BY post_order_no ASC";
+    else if ($row['Typ']=='Bewertung'){
+        $Bewertung = array();
+        $Bewertung_value = array(); //Bewertungmöglichkeiten der einzelnen Frage
+        $sql_answers = "SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
         $result_answers = mysqli_query($link, $sql_answers) ;
         while($row_answers=mysqli_fetch_array($result_answers)){
             if ($row_answers["Frage_".$row["ID"]] == 1){
-                array_push($Singlechoice_value, $row_answers['Answers']);
+                array_push($Bewertung_value, $row_answers['Answers']);
                 if($_SESSION["Sprache"]=="Deutsch"){
-                    array_push($Singlechoice, $row_answers['Answers']);
+                    array_push($Bewertung, $row_answers['Answers']);
                 }
                 else if($_SESSION["Sprache"]=="Englisch"){
-                    array_push($Singlechoice,$row_answers['Answers_Englisch']);
+                    array_push($Bewertung,$row_answers['Answers_Englisch']);
                 }
             }
         }
-        array_push($Singlechoice_array_value,$Singlechoice_value);
-        array_push($Singlechoice_array,$Singlechoice);
+        array_push($Bewertung_array_value,$Bewertung_value);
+        array_push($Bewertung_array,$Bewertung);
     }
     else if ($row['Typ']=='Multiplechoice')
     {
@@ -145,7 +145,7 @@ while($index<=$Anzahl_Fragen) {
         <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'>
         <div class='container' id = 'container'>
         <div class='chapter' id='chapter'>".$Kapitel_array[0]."</div>";
-    $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren singlechoice antworten
+    $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren Bewertung antworten
     echo"
     </div>
     </div>
@@ -175,7 +175,7 @@ function push_all_Answers(){
     while(i<Fragenzahl)
     {
         try{
-            if (Fragentyp_array[i]=="Singlechoice" || Fragentyp_array[i] == "Multiplechoice")
+            if (Fragentyp_array[i]=="Bewertung" || Fragentyp_array[i] == "Multiplechoice")
                 {
                     var Antwortmöglichkeit = document.getElementsByName("element_1_"+i);
                     var u = 0;
@@ -195,7 +195,7 @@ function push_all_Answers(){
                         /*else  
                             abgegebenes_feedback_array.push('NULL');*/             
                     }
-                    else if (Fragentyp_array[i]=="Singlechoice"){
+                    else if (Fragentyp_array[i]=="Bewertung"){
                         while(u < Antwortmöglichkeit.length) {
                             if (Antwortmöglichkeit[u].checked) {
                                 abgegebenes_feedback_array.push("'"+Antwortmöglichkeit[u].value + "'");
@@ -273,17 +273,17 @@ function get_next_question()
         var Frage = document.getElementById("frage_"+Fragenzahl);
         Frage.innerHTML = Fragen_array[Fragenzahl];
         
-        if (Fragentyp_array[Fragenzahl]=="Singlechoice")
+        if (Fragentyp_array[Fragenzahl]=="Bewertung")
         { 
             var i=0;
-            var Singlechoicezahl = parseInt(document.getElementById("Singlechoicezahl").value);
-            document.getElementById("Singlechoicezahl").value=parseInt(document.getElementById("Singlechoicezahl").value)+1;
-            var Singlechoice_array_value = [<?php foreach($Singlechoice_array_value as $Singlechoice){echo"["; foreach($Singlechoice as $Single){echo"'".$Single."',";}echo"],";}?>];
-            var Singlechoice_array = [<?php foreach($Singlechoice_array as $Singlechoice_show){echo"["; foreach($Singlechoice_show as $Single_show){echo"'".$Single_show."',";}echo"],";}?>];
+            var Bewertungzahl = parseInt(document.getElementById("Bewertungzahl").value);
+            document.getElementById("Bewertungzahl").value=parseInt(document.getElementById("Bewertungzahl").value)+1;
+            var Bewertung_array_value = [<?php foreach($Bewertung_array_value as $Bewertung){echo"["; foreach($Bewertung as $Single){echo"'".$Single."',";}echo"],";}?>];
+            var Bewertung_array = [<?php foreach($Bewertung_array as $Bewertung_show){echo"["; foreach($Bewertung_show as $Single_show){echo"'".$Single_show."',";}echo"],";}?>];
             document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="";
-            while(i<Singlechoice_array_value[Singlechoicezahl].length)
+            while(i<Bewertung_array_value[Bewertungzahl].length)
             {
-                document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML += "<div><input id='element_1_"+Fragenzahl+i+"' name='element_1_"+Fragenzahl+"' type='radio' value='|"+Singlechoice_array_value[Singlechoicezahl][i]+"|'class='choice' for='element_1_"+Fragenzahl+i+"' required>"+Singlechoice_array[Singlechoicezahl][i]+"</div>"
+                document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML += "<div><input id='element_1_"+Fragenzahl+i+"' name='element_1_"+Fragenzahl+"' type='radio' value='|"+Bewertung_array_value[Bewertungzahl][i]+"|'class='choice' for='element_1_"+Fragenzahl+i+"' required>"+Bewertung_array[Bewertungzahl][i]+"</div>"
                 i++;
             }
         }

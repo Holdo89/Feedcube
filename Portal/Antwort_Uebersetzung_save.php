@@ -7,8 +7,8 @@ $Questiontype = $_REQUEST["Questiontype"];
 $ID = $_REQUEST["ID_".$Type."_".$Questiontype];
 $Answers_Englisch = $_REQUEST["englisch_".$Type."_".$Questiontype];
 
-if($Questiontype=="Singlechoice")
-    $sql = "UPDATE singlechoice_answers SET Answers_Englisch = '".$Answers_Englisch."' WHERE ID = ".$ID;
+if($Questiontype=="Bewertung")
+    $sql = "UPDATE bewertung_answers SET Answers_Englisch = '".$Answers_Englisch."' WHERE ID = ".$ID;
 else
     $sql = "UPDATE multiplechoice_answers SET Answers_Englisch = '".$Answers_Englisch."' WHERE ID = ".$ID;
   

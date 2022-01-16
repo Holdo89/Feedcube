@@ -33,8 +33,8 @@ $IsAdmin = $row["Is_Admin"];
  $rows_feedback=mysqli_fetch_array($result_feedback);
 
  if($rows_feedback["Anzahl_Feedback"]!=0){
-	if($row_typ["Typ"]=="Singlechoice"){
-		$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM singlechoice_answers WHERE Intern_".$Frage_ID." = 1";
+	if($row_typ["Typ"]=="Bewertung"){
+		$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM bewertung_answers WHERE Intern_".$Frage_ID." = 1";
 		$result_multi=mysqli_query($link,$sql);
 		$rows_multi=mysqli_fetch_array($result_multi);
 	}
@@ -45,8 +45,8 @@ $IsAdmin = $row["Is_Admin"];
 	}
 
  if($Frage !="undefined"){ //falls noch keine multiplechoice Frage geschrieben wurde
-	if($row_typ["Typ"]=="Singlechoice"){
-		$sql="SELECT * FROM singlechoice_answers WHERE Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
+	if($row_typ["Typ"]=="Bewertung"){
+		$sql="SELECT * FROM bewertung_answers WHERE Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
 		$i=1;
 		$result=mysqli_query($link,$sql);
 		while($row=mysqli_fetch_array($result))
@@ -55,7 +55,7 @@ $IsAdmin = $row["Is_Admin"];
 			$i=$i+1;
 		}
 		echo",";
-		echo"Singlechoice,".$rows_multi["Anzahl_Antworten"].",";
+		echo"Bewertung,".$rows_multi["Anzahl_Antworten"].",";
 	}
 	if($row_typ["Typ"]=="Multiplechoice"){
 		$sql="SELECT * FROM multiplechoice_answers WHERE Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
@@ -86,7 +86,7 @@ $feedback_year=substr($datum_max,0,4);
 	$row = mysqli_fetch_array($exec);
 	$typ=$row["Typ"];	 
 	
-	if($typ=="Singlechoice")
+	if($typ=="Bewertung")
 	{
 		$query = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
 		$exec = mysqli_query($link, $query);
@@ -94,7 +94,7 @@ $feedback_year=substr($datum_max,0,4);
 		$Anzahl_abgegenes_feedback=0;
 		$Average = 0;
 		$g=1;
-		$sql="SELECT Answers FROM singlechoice_answers WHERE Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
+		$sql="SELECT Answers FROM bewertung_answers WHERE Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{

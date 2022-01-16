@@ -8,7 +8,7 @@
 		    Im ersten Schritt werden neue Fragen hinzugefügt, die sowohl bei Kunden als auch bei internen Mitarbeiter Befragungen beantwortet werden. Dabei kann zwischen 4 verschiedenen Fragetypen unterschieden werden.   
         </p>
         <p style="text-align:left">
-        <b>Singlechoice</b> - Fragen bei denen genau eine Antwortmöglichkeit gewählt wird. <a onclick="showExample('radio')">Beispiel anzeigen</a><br><br></p>
+        <b>Bewertung</b> - Fragen bei denen genau eine Antwortmöglichkeit gewählt wird. <a onclick="showExample('radio')">Beispiel anzeigen</a><br><br></p>
 		<div id="radio" class="radio">
 		Wie bewerten Sie unsere Dienstleistung?<br>
 			<label class="radio-inline">

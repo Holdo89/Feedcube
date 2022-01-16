@@ -20,14 +20,14 @@ include "IsAdmincheck.php";
 	$exec = mysqli_query($link,$query);
 	$row = mysqli_fetch_array($exec);
 	
-	if($row["Typ"]=="Singlechoice")
+	if($row["Typ"]=="Bewertung")
 	{
-		echo'Singlechoice,';
-		$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM singlechoice_answers WHERE ".$Frage." = 1";
+		echo'Bewertung,';
+		$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM bewertung_answers WHERE ".$Frage." = 1";
 		$result=mysqli_query($link,$sql);
 		$rows=mysqli_fetch_array($result);
 
-		$sql_answers="SELECT Answers FROM singlechoice_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
+		$sql_answers="SELECT Answers FROM bewertung_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
 		$result_answers=mysqli_query($link,$sql_answers);
 
 		$i=1; //Bewertungsmöglichkeiten 1,...,6

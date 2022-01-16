@@ -6,11 +6,11 @@ echo $ID;
 
 for ($i=0; $i<sizeof($Antwort);$i++) { 
     if(!strpos($Antwort[$i],"_unchecked")){
-    $query="UPDATE singlechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+    $query="UPDATE bewertung_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
     mysqli_query($link,$query); 
     } 
     else{
-        $query="UPDATE singlechoice_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+        $query="UPDATE bewertung_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
         mysqli_query($link,$query); 
     }
 }  

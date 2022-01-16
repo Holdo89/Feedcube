@@ -25,9 +25,9 @@ if($Questiontype!="Text")
     if ($Type == "extern"){
         for ($i=0; $i<sizeof($Antwort);$i++) { 
             if(!strpos($Antwort[$i],"_unchecked")){
-                if($Questiontype=="Singlechoice")
+                if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE singlechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
                 }
                 else if($Questiontype=="Multiplechoice")
                 {
@@ -36,9 +36,9 @@ if($Questiontype!="Text")
                 mysqli_query($link,$query); 
             } 
             else{
-                if($Questiontype=="Singlechoice")
+                if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE singlechoice_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
                 }
                 else if($Questiontype =="Multiplechoice")
                 {
@@ -52,9 +52,9 @@ if($Questiontype!="Text")
     if ($Type == "intern"){
         for ($i=0; $i<sizeof($Antwort);$i++) { 
             if(!strpos($Antwort[$i],"_unchecked")){
-                if($Questiontype=="Singlechoice")
+                if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE singlechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                    $query="UPDATE bewertung_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
                 }
                 else if($Questiontype=="Multiplechoice")
                 {
@@ -63,9 +63,9 @@ if($Questiontype!="Text")
                 mysqli_query($link,$query); 
             } 
             else{
-                if($Questiontype=="Singlechoice")
+                if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE singlechoice_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                    $query="UPDATE bewertung_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
                 }
                 else if($Questiontype =="Multiplechoice")
                 {

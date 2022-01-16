@@ -14,7 +14,7 @@
     if ($Fragentyp=="Multiplechoice")
         $sql="SELECT * FROM multiplechoice_answers WHERE Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
     else
-        $sql="SELECT * FROM singlechoice_answers WHERE Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC"; 
+        $sql="SELECT * FROM bewertung_answers WHERE Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC"; 
     $result=mysqli_query($link,$sql);
     while($row=mysqli_fetch_array($result))
     {

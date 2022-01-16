@@ -21,9 +21,9 @@ if(mysqli_query($link, $sql)){
 $sql = "SELECT ID FROM intern ORDER BY ID DESC LIMIT 1";
 $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
-if($Fragentyp=='Singlechoice')
+if($Fragentyp=='Bewertung')
 {
-    $sql= "ALTER TABLE singlechoice_answers ADD Intern_".$row['ID']." tinyint(1)";
+    $sql= "ALTER TABLE bewertung_answers ADD Intern_".$row['ID']." tinyint(1)";
 }
 else if($Fragentyp=='Multiplechoice')
 {
@@ -34,7 +34,7 @@ else if($Fragentyp=='Schieberegler'){
 }
 mysqli_query($link, $sql);
 
-if($Fragentyp=='Text' || $Fragentyp=='Singlechoice'|| $Fragentyp=='Multiplechoice'){
+if($Fragentyp=='Text' || $Fragentyp=='Bewertung'|| $Fragentyp=='Multiplechoice'){
     $sql= "ALTER TABLE internes_feedback ADD Frage_".$row['ID']." TEXT";}
 
 elseif($Fragentyp=='Schieberegler'){

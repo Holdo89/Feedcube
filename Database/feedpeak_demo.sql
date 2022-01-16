@@ -192,10 +192,10 @@ INSERT INTO `leistungen` (`ID`, `Datum`, `Leistung`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `singlechoice_answers`
+-- Tabellenstruktur für Tabelle `bewertung_answers`
 --
 
-CREATE TABLE `singlechoice_answers` (
+CREATE TABLE `bewertung_answers` (
   `ID` int(11) NOT NULL,
   `Answers` varchar(2000) NOT NULL,
   `Frage_258` tinyint(1) NOT NULL,
@@ -207,10 +207,10 @@ CREATE TABLE `singlechoice_answers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `singlechoice_answers`
+-- Daten für Tabelle `bewertung_answers`
 --
 
-INSERT INTO `singlechoice_answers` (`ID`, `Answers`, `Frage_258`, `Frage_259`, `Frage_260`, `Frage_261`, `Frage_271`, `Frage_274`) VALUES
+INSERT INTO `bewertung_answers` (`ID`, `Answers`, `Frage_258`, `Frage_259`, `Frage_260`, `Frage_261`, `Frage_271`, `Frage_274`) VALUES
 (18, 'unbrauchbar', 1, 1, 0, 1, 0, 0),
 (19, 'schlecht', 0, 1, 0, 0, 1, 0),
 (20, 'eher negativ', 1, 1, 0, 0, 1, 0),
@@ -339,9 +339,9 @@ ALTER TABLE `leistungen`
   ADD KEY `ID` (`ID`);
 
 --
--- Indizes für die Tabelle `singlechoice_answers`
+-- Indizes für die Tabelle `bewertung_answers`
 --
-ALTER TABLE `singlechoice_answers`
+ALTER TABLE `bewertung_answers`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -410,9 +410,9 @@ ALTER TABLE `leistungen`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
--- AUTO_INCREMENT für Tabelle `singlechoice_answers`
+-- AUTO_INCREMENT für Tabelle `bewertung_answers`
 --
-ALTER TABLE `singlechoice_answers`
+ALTER TABLE `bewertung_answers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --

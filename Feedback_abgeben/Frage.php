@@ -29,7 +29,7 @@ if(isset($_COOKIE["feedback_abgegeben"])) {
 
 <link href="css/fancy.css" rel="stylesheet" type="text/css">
 <link href="../Portal/slider-range.css" rel="stylesheet" type="text/css">
-<input id="Singlechoicezahl" style="display:none" value=0></input>
+<input id="Bewertungzahl" style="display:none" value=0></input>
 <input id="Multiplechoicezahl" style="display:none" value=0></input>
 <input id="Schiebereglerzahl" style="display:none" value=1></input>
 

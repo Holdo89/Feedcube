@@ -10,9 +10,9 @@ $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($result);
 $Fragentyp = $row["Typ"];
 
-if($Fragentyp=="Singlechoice")
+if($Fragentyp=="Bewertung")
 {
-    $sql="ALTER TABLE singlechoice_answers DROP COLUMN Intern_".$Id;
+    $sql="ALTER TABLE bewertung_answers DROP COLUMN Intern_".$Id;
 }
 else if($Fragentyp=="Multiplechoice")
 {

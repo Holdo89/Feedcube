@@ -7,9 +7,9 @@
  $Antwort=$_REQUEST["Antwort"];
  $typ = $_REQUEST["Typ"]; 
 
- if($typ == "Singlechoice")
+ if($typ == "Bewertung")
  {
-    $query = "UPDATE singlechoice_answers SET Answers = '".$Antwort."' WHERE ID = '".$Id."'";
+    $query = "UPDATE bewertung_answers SET Answers = '".$Antwort."' WHERE ID = '".$Id."'";
     
  }
  else{

@@ -6,17 +6,17 @@ $Typ=$_REQUEST["Typ"];
 $Id=$_REQUEST["Id"];
 $Antwort=$_REQUEST["Antwort"];
 
-if($Typ == "Singlechoice")
+if($Typ == "Bewertung")
 {
-    $sql = "DELETE FROM singlechoice_answers WHERE ID = '".$Id."'";
+    $sql = "DELETE FROM bewertung_answers WHERE ID = '".$Id."'";
     mysqli_query($link, $sql);
 
     $i = 1;
-    $sql = "SELECT * FROM singlechoice_answers ORDER BY post_id";
+    $sql = "SELECT * FROM bewertung_answers ORDER BY post_id";
     $query= mysqli_query($link,$sql);
     while($row = mysqli_fetch_assoc($query))
     {
-        $sql2 = "UPDATE singlechoice_answers SET post_id = ".$i." WHERE ID = ".$row["ID"];
+        $sql2 = "UPDATE bewertung_answers SET post_id = ".$i." WHERE ID = ".$row["ID"];
         $query2= mysqli_query($link,$sql2);
         $i = $i+1;
     }
