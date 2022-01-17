@@ -156,19 +156,6 @@
 		include "Fragen_Abfrage.php";
 	?>
 	
-	<form style="margin-bottom:40px;" action="insert_fragen.php" method="post">
-		<div class="überschrift" style="background-color:white;"></div>
-		<input class="center_select" id="neues_Kapitel" name="neues_Kapitel" placeholder="Kapitel?"></input>
-		<input class="center_select" id="neue_Frage"  name="neue_Frage" placeholder="Eingabe einer neuen Frage" required></input>
-		<select class="center_select" id="Auswahl_Fragentyp" name="Auswahl_Fragentyp">
-			<option value="Multiplechoice">Multiplechoice</option>
-			<option value="Bewertung">Bewertung</option>
-			<option value="Schieberegler">Schieberegler</option>
-			<option value="Text">Text</option>
-		</select>
-		<input class="center_button" type="submit" value="+"></input>
-		<div class="überschrift" style="background-color:white;"></div>
-	</form>
 	<button id="element" onclick = "display()"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
 
 	<script>
@@ -248,21 +235,33 @@
 				<h5>Fragenübersetzung: </h5>
 				<input class="center_select" id="Frage_Übersetzung" name ="Frage_Übersetzung" placeholder="Eingabe der Fragenübersetzung"></input>
 				<br>
-				<div style="grid-template-columns:100px 2fr 100px 3fr; display:grid; margin-bottom:20px;">
-				<h5 style="margin-top:12px;">Fragentyp: </h5>
-				<select class="center_select" style="border:none; appearance:none" id="Auswahl_Fragentyp" name="Auswahl_Fragentyp">
-					<option value="Multiplechoice">Multiplechoice</option>
-					<option value="Bewertung">Bewertung</option>
-					<option value="Schieberegler">Schieberegler</option>
-					<option value="Text">Text</option>
-				</select>
-				<h5 style="margin-top:13px;">Antworten: </h5>
-				<select class="center_select" style="border:none; appearance:none" id="Auswahl_Antworttyp" name="Auswahl_Antworttyp">
-					<option value="Fragenspezifisch">Fragenspezifische</option>
-					<option value="Vordefiniert">Vordefinierte</option>
-				</select>
-	  			</div>
+				<div class="container">
+				<p>Fragentyp:</p>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Fragentyp" value="Bewertung" style="margin-top:10px;" required>Bewertung
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Fragentyp" value="Multiplechoice" style="margin-top:10px;" required>Multiplechoice
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Fragentyp" value="Schieberegler" style="margin-top:10px;" required>Schieberegler
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Fragentyp" value="Text" style="margin-top:10px;" required>Text
+					</label>
+				</div>
+				<div class="container">
+				<p>Antworttyp:</p>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Antworttyp" value="vordefiniert" style="margin-top:10px;" value="Vordefiniert" oninput="showoptions('vordefiniert')" required>Vordefiniert
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Antworttyp" value="fragenspezifisch" style="margin-top:10px;" value="Fragenspezifisch" oninput="showoptions('fragenspezifisch')" required>Fragenspezifisch
+					</label>
+				</div>
 				<div id="Bewertungoptionen" style="font-size:12px;">
+				</div>
+				<div id="Bewertungoptionen2" style="font-size:12px;">
 				</div>
 				<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 				</form>
@@ -386,20 +385,26 @@
 			{
 				if(questiontype=="Bewertung")
 				{
-					modal.innerHTML = '<form class="modalform" action="Fragen_relate_antworten.php?Type=intern&Questiontype=Bewertung" method="post"><input id="ID_intern_Bewertung" name="ID_intern_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Bewertung" name ="frage_englisch_intern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Bewertung";
+					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+					<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 				}
 				if(questiontype=="Multiplechoice")
 				{
-					modal.innerHTML = '<form class="modalform"action="Fragen_relate_antworten.php?Type=intern&Questiontype=Multiplechoice" method="post"><input id="ID_intern_Multiplechoice" name="ID_intern_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Multiplechoice" name ="frage_englisch_intern_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Multiplechoice";
+					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+					<?php $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 				}
 				if(questiontype=="Schieberegler")
 				{
-					modal.innerHTML = '<form class="form_schieberegler_antworten" style="padding:30px;" action="Range_speichern.php?Type=intern&Questiontype=Schieberegler" method="post"><input style="display:none;" id="ID_intern_Schieberegler" name="ID_intern_Schieberegler" ></input><span class="close" style="grid-column-start:1;grid-column-end:-1; text-align:right" onclick="hide_modal();">&times;</span><div name="uebersetzung" style="grid-column-start:1;grid-column-end:-1;text-align:left"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Schieberegler" name ="frage_englisch_intern_Schieberegler" style="display:inline-block ;width:500px; max-width:80%; height:30px;"><h4 style="grid-column-start:1;grid-column-end:-2">Wähle die Konfiguration des Schiebereglers:</h4></input></div><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></form>';
-					var ID = ID_intern_Schieberegler.value;
+					Modalform.action = "Range_speichern.php?Type=extern&Questiontype=Schieberegler";
+					Bewertungoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div style="grid-template-columns:2fr 2fr 2fr; display:grid"><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></div>';
+					var ID = id;
 				}
 				else if(questiontype=="Text")
 				{	
-					modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=intern&Questiontype=Text" method="post"><input id="ID_intern_Text" name="ID_intern_Text" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_intern_Text" name ="kapitel_englisch_intern_Text" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Text" name ="frage_englisch_intern_Text" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>'
+					Modalform.action="Fragen_relate_antworten.php?Type=intern&Questiontype=Text";
+					Bewertungoptionen.innerHTML='';				
 				}	
 			}
 			else if(type=='extern')
@@ -500,7 +505,7 @@
 						else if(type=='intern')
 						{
 							var xmlhttp_options = new XMLHttpRequest();
-							var ID = ID_intern_Schieberegler.value;
+							var ID = id;
 							xmlhttp_options.onreadystatechange = function() {
 								if (this.readyState == 4 && this.status == 200) {
 									Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
@@ -559,13 +564,45 @@
 			}
 		}
 		else{
-				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-				<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
-				modal.style.display ="block";
+			modal.style.display ="block";
 		}
 	}
 
+	function showoptions(Antworttyp, id)
+	{
+		var Bewertungoptionen = document.getElementById("Bewertungoptionen");
+		var Fragentyp = document.getElementById("Auswahl_Fragentyp");
+		console.log(Fragentyp);
+		if(Antworttyp == "vordefiniert")
+		{
+			if (Fragentyp == "Bewertung")
+			{
+				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+				<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
+			}
+			else if (Fragentyp == "Multiplechoice")
+			{
+				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+				<?php $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
+			} 
+		}
+		if(Antworttyp == "fragenspezifisch")
+		{
+			//!id = neue Frage
+			if(!id)
+			{
+				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+				<?php $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
+			}
+		}
+	}
+
+
 	// When the user clicks anywhere outside of the modal, close it
+	function newanswer(){
+		
+	}
+
 	function hide_modal(){
 		var modal = document.getElementById("myModal");
 		modal.style.display = "none";

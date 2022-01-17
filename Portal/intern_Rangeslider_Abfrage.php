@@ -11,7 +11,4 @@ $ID=$_REQUEST["ID"];
         echo "<input class='center_select' id='Columns' name='Columns' value='".$row["columns"]."' style='text-align:center;margin:auto'></input>";
     };
     echo "<input class='center_select' id='ID' name='ID' value='".$ID."' style='text-align:center;margin:auto; display:none;'></input>";
-
-    echo'<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>';
-
 ?>  
