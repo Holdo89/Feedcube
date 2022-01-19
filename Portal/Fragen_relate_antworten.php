@@ -2,6 +2,7 @@
 include "../config.php";
 $Antwort = $_POST["checkbox"]; 
 $Type = $_REQUEST["Type"];
+$Antworttyp = $_REQUEST["Auswahl_Antworttyp"];
 $Questiontype = $_REQUEST["Questiontype"];
 $ID = $_REQUEST["Id"];
 $Frage = $_REQUEST["Frage"];
@@ -11,14 +12,23 @@ $Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
 
 
 if($Type=="extern"){
+    $sql = "UPDATE admin SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
+
     $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
+
+    $sql = "UPDATE admin SET Kapitel = '".$Kapitel."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 
     $sql = "UPDATE admin SET Kapitel_Englisch = '".$Kapitel_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
+
+    $sql = "UPDATE admin SET Antworttyp = '".$Antworttyp."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
 }
 else if($Type=="intern"){
-    $sql = "UPDATE intern SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
+    $sql = "UPDATE intern SET Fragen_intern = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }
 

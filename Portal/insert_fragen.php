@@ -13,8 +13,14 @@ $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolg
 $neues_Kapitel = mysqli_real_escape_string($link, $_REQUEST["Kapitel"]);
 $neue_Frage = mysqli_real_escape_string($link, $_REQUEST["Frage"]);
 $Fragentyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Fragentyp"]);
+$Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
 
-$sql = "INSERT INTO admin (Kapitel, Typ, Fragen_extern, post_order_no, post_id) VALUES ('$neues_Kapitel', '$Fragentyp', '$neue_Frage','$last_order','$last_order')";
+
+$Antwort = $_POST["checkbox"]; 
+$Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
+$Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
+
+$sql = "INSERT INTO admin (Kapitel, Kapitel_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Kapitel', '$Kapitel_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 
 if(mysqli_query($link, $sql)){
 
@@ -25,6 +31,7 @@ if(mysqli_query($link, $sql)){
 $sql = "SELECT ID FROM admin ORDER BY ID DESC LIMIT 1";
 $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
+$ID = $row['ID'];
 
 if($Fragentyp=='Bewertung'){
     $sql= "ALTER TABLE bewertung_answers ADD Frage_".$row['ID']." tinyint(1)";
@@ -46,11 +53,70 @@ $sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." TEXT";}
 elseif($Fragentyp=='Schieberegler'){
 $sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." INT(11)";}
 
+//Fragen_relate_antworten.php
+
+if($Fragentyp!="Text" && $Fragentyp!="Schieberegler")
+{
+        for ($i=0; $i<sizeof($Antwort);$i++) { 
+            if(!strpos($Antwort[$i],"_unchecked")){
+                if($Fragentyp=="Bewertung")
+                {
+                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                }
+                else if($Fragentyp=="Multiplechoice")
+                {
+                    $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                }
+                mysqli_query($link,$query); 
+            } 
+            else{
+                if($Fragentyp=="Bewertung")
+                {
+                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                }
+                else if($Fragentyp =="Multiplechoice")
+                {
+                    $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                }    
+                mysqli_query($link,$query); 
+            }
+        } 
+}
+
+else{
+    $max=$_REQUEST["Range_Max"];
+    $min=$_REQUEST["Range_Min"];
+    $columns=$_REQUEST["Columns"];
+
+    if($max <= $min)
+    {
+        if($Type=="extern"){
+            include "Fragen.php";
+            echo"<script>display(".$ID.", \"extern\", \"Schieberegler\");
+            var Schieberoutput = document.getElementById('SchieberID');
+            Schieberoutput.innerHTML='<div id=\"range_alert\" class=\"alert icon-alert with-arrow alert-danger form-alter\" role=\"alert\" style=\"display:block;grid-column-end: span 3;\"><i class=\"fa fa-fw fa-times-circle\"></i><strong> Note !</strong> <span class=\"warning-message\"> Die angegebenen Werte waren nicht korrekt </span></div>'+Schieberoutput.innerHTML;
+            </script>";
+        }
+        if($Type=="intern"){
+            include "Fragen.php";
+            echo"<script>display(".$ID.", \"intern\", \"Schieberegler\");
+            var Schieberoutput = document.getElementById('SchieberID');
+            Schieberoutput.innerHTML='<div id=\"range_alert\" class=\"alert icon-alert with-arrow alert-danger form-alter\" role=\"alert\" style=\"display:block;grid-column-end: span 3;\"><i class=\"fa fa-fw fa-times-circle\"></i><strong> Note !</strong> <span class=\"warning-message\"> Die angegebenen Werte waren nicht korrekt </span></div>'+Schieberoutput.innerHTML;
+            </script>";
+        }
+    }
+    else{
+        $query = "UPDATE rangeslider_answers SET range_min = '".$min."' WHERE Frage_ID = '".$ID."'";
+        $exec = mysqli_query($link, $query);
+        $query = "UPDATE rangeslider_answers SET range_max = '".$max."' WHERE Frage_ID = '".$ID."'";
+        $exec = mysqli_query($link, $query);
+        $query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Frage_ID = '".$ID."'";
+        $exec = mysqli_query($link, $query);
+    }
+
+}
+
 mysqli_query($link, $sql);
-
-
-
-// close connection
 
 mysqli_close($link);
 
