@@ -383,7 +383,7 @@
 	function display(id, type, questiontype) {
 		
 		document.getElementById('alert').style.display='none';
-		document.getElementById('extern').checked=true;
+		document.getElementById(type).checked=true;
 
 		if (questiontype == "Bewertung" || questiontype == "Multiplechoice")
 		{
@@ -677,7 +677,7 @@
 	function showoptions()
 	{
 		document.getElementById('alert').style.display='none';
-		var externinterntyp = document.getElementById("externinterntyp").value;
+		var externinterntyp = "extern";
 		var Modalform = document.getElementById("Modalform");
 		var id = document.getElementById('Fragenid').value;
 		console.log(id)
