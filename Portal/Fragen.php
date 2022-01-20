@@ -5,24 +5,37 @@
 
 $Schieberegler_err="";
 
- if($_SERVER["REQUEST_METHOD"] == "POST"){
+ if ($_SERVER["REQUEST_METHOD"] == "POST") 
+ {
+    $ID=$_REQUEST["Fragenid"];
     $Type = $_REQUEST["externinterntyp"];
-	$Fragentyp = $_REQUEST["Auswahl_Fragentyp"];
-	$Antworttyp = $_REQUEST["Auswahl_Antworttyp"];
-    echo "<script>console.log('".$Fragentyp."')</script>";
-    if ($Fragentyp=="Schieberegler") {
+    $Fragentyp = $_REQUEST["Auswahl_Fragentyp"];
+
+    if ($Fragentyp=="Schieberegler") 
+    {
         $max=$_REQUEST["Range_Max"];
         $min=$_REQUEST["Range_Min"];
         $columns=$_REQUEST["Columns"];
 
-        if ($max <= $min) {
+        if ($max <= $min) 
+        {
             $Schieberegler_err="Der Maximalwert kann nicht niedriger als das Minimum sein";
+        } 
+        else 
+        {
+            if ($ID) 
+            {
+                include "Range_speichern.php";
+            } 
+            else 
+            {
+                include "insert_".$Fragentyp."_fragen.php";
+            }
         }
-		else{
-			include "Range_speichern.php";
-		}
-    }
-	else{
+    } 
+    else 
+    {
+        $Antworttyp = $_REQUEST["Auswahl_Antworttyp"];
         include "insert_".$Fragentyp."_fragen.php";
     }
  }
@@ -35,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $Antworttyp = $_REQUEST["Auswahl_Antworttyp"];
             $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
             $Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
-
+            
             echo"<script>
             document.getElementById('Kapitel').value = '".$neues_Kapitel."';
             document.getElementById('Kapitel_Übersetzung').value = '".$Kapitel_Englisch."';
@@ -54,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>\
             </div>';
             document.getElementById('Rangeoptionen').style.display='block';
-            display(0, \"extern\", \"Schieberegler\");
+            display(".$ID.", \"".$Type."\", \"Schieberegler\");
             </script>";
         }
     }

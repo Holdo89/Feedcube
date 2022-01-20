@@ -12,8 +12,7 @@ if($Type=="extern")
 else
 {
     $sql = "SELECT MAX(post_order_no) FROM intern";
-}
-$query = mysqli_query($link, $sql);
+}$query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
 
@@ -21,6 +20,9 @@ $neues_Kapitel = mysqli_real_escape_string($link, $_REQUEST["Kapitel"]);
 $neue_Frage = mysqli_real_escape_string($link, $_REQUEST["Frage"]);
 $Fragentyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Fragentyp"]);
 $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
+
+
+$Antwort = $_POST["checkbox"]; 
 $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
 $Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
 
@@ -32,6 +34,7 @@ else
 {
     $sql = "INSERT INTO intern (Typ, Fragen_intern, Antworttyp, post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '$last_order','$last_order')";
 }
+
 mysqli_query($link, $sql);
 
 if($Type=="extern")
@@ -42,23 +45,16 @@ else
 {
     $sql = "SELECT ID FROM intern ORDER BY ID DESC LIMIT 1";
 }
+
 $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
 $ID = $row['ID'];
 
-if($Type=="extern")
-{
-    $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Frage_ID) VALUES (".$max.", ".$min.", ".$columns.", ".$row['ID'].")";
-}
-else
-{
-    $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Intern_ID) VALUES (".$max.", ".$min.", ".$columns.", ".$row['ID'].")";
-}
 mysqli_query($link, $sql);
 
-$sql= "ALTER TABLE  ".$Type."es_feedback ADD Frage_".$row['ID']." INT(11)";
-mysqli_query($link, $sql);
+$sql= "ALTER TABLE ".$Type."es_feedback ADD Frage_".$row['ID']." TEXT";
 
+mysqli_query($link, $sql);
 
 mysqli_close($link);
 

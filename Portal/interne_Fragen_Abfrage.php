@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM intern ORDER BY post_order_no ASC";  /*Datum dient hier zu erkenn welcher Eintarg gelöscht wird*/
+$sql = "SELECT * FROM intern ORDER BY post_order_no ASC"; 
 $result = mysqli_query($link, $sql);
 $rowCount = mysqli_num_rows($result);
 

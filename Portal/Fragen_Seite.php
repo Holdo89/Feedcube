@@ -245,11 +245,9 @@
 					<input type="radio" name="Auswahl_Antworttyp" id="fragenspezifisch" value="fragenspezifisch" style="margin-top:10px;" value="fragenspezifisch" oninput="showoptions()">Fragenspezifisch
 					</label>
 				</div>
-				<input id="Fragenid" style="font-size:12px; display:none;" value = 0>
+				<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
 	 			</input>
-				 <input type="radio" id="extern" name="externinterntyp" value = "extern" style="font-size:12px; display:none;">
-	 			</input>
-				 <input type="radio" id="intern" name="externinterntyp" value = "intern" style="font-size:12px; display:none;">
+				 <input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
 	 			</input>
 				<div id="Bewertungoptionen" style="font-size:12px; display:none;">
 				</div>
@@ -383,7 +381,7 @@
 	function display(id, type, questiontype) {
 		
 		document.getElementById('alert').style.display='none';
-		document.getElementById(type).checked=true;
+		document.getElementById("externinterntyp").value=type;
 
 		if (questiontype == "Bewertung" || questiontype == "Multiplechoice")
 		{
@@ -395,10 +393,11 @@
 		if(id && id!=0)
 		{
 			document.getElementById("Fragenid").value = id;
-			document.getElementById("Bewertung").disabled=false;
-			document.getElementById("Multiplechoice").disabled=false;
-			document.getElementById("Schieberegler").disabled=false;
-			document.getElementById("Text").disabled=false;
+			document.getElementById("Bewertung").disabled=true;
+			document.getElementById("Multiplechoice").disabled=true;
+			document.getElementById("Schieberegler").disabled=true;
+			document.getElementById("Text").disabled=true;
+			document.getElementById(questiontype).disabled=false;
 
 			if(type=='intern')
 			{
@@ -429,7 +428,6 @@
 				if(questiontype=="Schieberegler")
 				{
 					document.getElementById("Schieberegler").checked=true;
-					Modalform.action = "Range_speichern.php?Type=intern&Questiontype=Schieberegler";
 					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div style="grid-template-columns:2fr 2fr 2fr; display:grid"><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></div>';
 					var ID = id;
 					Bewertungoptionen.style.display="none";
@@ -438,7 +436,7 @@
 				}
 				else if(questiontype=="Text")
 				{	
-					Modalform.action="Fragen_relate_antworten.php?Type=intern&Questiontype=Text";
+					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Text";
 					Bewertungoptionen.innerHTML='';	
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
@@ -482,7 +480,7 @@
 				else if(questiontype=="Text")
 				{						
 					document.getElementById("Text").checked=true;
-					Modalform.action="Fragen_relate_antworten.php?Type=extern&Questiontype=Text";
+					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Text";
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";	
@@ -620,10 +618,10 @@
 				xmlhttp1.open("GET", "Fragen_get_Antwortenset.php?ID=" + id  + "&Type="+questiontype, false);
 				xmlhttp1.send();
 
+				}
 			}
-		}
-		else
-		{
+			else
+			{
 				var antwort_englisch = document.getElementById("englisch_"+type+"_"+questiontype);     
 				xmlhttp_options.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -677,7 +675,8 @@
 	function showoptions()
 	{
 		document.getElementById('alert').style.display='none';
-		var externinterntyp = "extern";
+		var externinterntyp = document.getElementById("externinterntyp").value
+
 		var Modalform = document.getElementById("Modalform");
 		var id = document.getElementById('Fragenid').value;
 		console.log(id)
@@ -702,7 +701,9 @@
 			document.getElementById('fragenspezifisch').required=true;
 		}
 		else{
-			document.getElementById('Antworttyp_container').style.display="none";	
+			document.getElementById('Antworttyp_container').style.display="none";
+			document.getElementById('vordefiniert').required=false;
+			document.getElementById('fragenspezifisch').required=false;	
 		}
 		var Bewertungoptionen = document.getElementById("Bewertungoptionen");
 		var Multiplechoiceoptionen = document.getElementById("Multiplechoiceoptionen");
