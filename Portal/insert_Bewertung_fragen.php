@@ -74,6 +74,11 @@ mysqli_query($link, $sql);
 for ($i=0; $i<sizeof($Antwort);$i++) { 
     if(!strpos($Antwort[$i],"_unchecked"))
     {
+        if($Antworttyp=="fragenspezifisch")
+        {
+            $sql = "INSERT INTO bewertung_answers (Answers, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Antwort[$i]. "','$ID', '$last_order','$last_order')";    
+            mysqli_query($link, $sql);
+        }
         if($Type=="extern")
         {
             $query="UPDATE bewertung_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
