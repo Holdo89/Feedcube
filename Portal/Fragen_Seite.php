@@ -398,6 +398,150 @@
 		}
 	}
 
+	function getCheckedAntworttyp(id, type){
+
+		var xmlhttp_options = new XMLHttpRequest();
+		var frage = document.getElementById("Frage");     
+		xmlhttp_options.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) {
+				frage.value=this.responseText;
+			}
+		;};
+		xmlhttp_options.open("GET", "Fragen_Beschreibung.php?ID=" + id + "&Type=" +type, false);
+		xmlhttp_options.send();
+
+		var vordefiniert = document.getElementById("vordefiniert"); 
+		var fragenspezifisch = document.getElementById("fragenspezifisch"); 
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.response!="fragenspezifisch")
+				{
+					vordefiniert.checked=true;
+				}
+				else
+				{
+					fragenspezifisch.checked=true;
+				}
+			}
+		;};
+		xmlhttp_options.open("GET", "Fragen_Check_Fragenspezifisch.php?ID=" + id + "&Type=" +type, false);
+		xmlhttp_options.send();
+	}
+
+	function getFragenUebersetzung(id, type){
+		var xmlhttp_options = new XMLHttpRequest();
+		var frage_englisch = document.getElementById("Frage_Übersetzung");     
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				frage_englisch.value=this.responseText;
+			}
+		;};
+		xmlhttp_options.open("GET", "Fragen_Uebersetzung.php?ID=" + id + "&Type=" +type, false);
+		xmlhttp_options.send();
+	}
+
+	function getKapitelUebersetzung(id){
+		var xmlhttp_options = new XMLHttpRequest();
+		var kapitel = document.getElementById("Kapitel");   
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				kapitel.value=this.responseText;
+			}
+		;};
+		xmlhttp_options.open("GET", "Kapitel_Beschreibung.php?ID=" + id, false);
+		xmlhttp_options.send();
+
+		var kapitel_englisch = document.getElementById("Kapitel_Übersetzung");            
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				kapitel_englisch.value=this.responseText;
+			}
+		;};
+		xmlhttp_options.open("GET", "Kapitel_Uebersetzung.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+
+	function Rangesliderabfrage(id){
+		var xmlhttp_options = new XMLHttpRequest();
+		var Schieberoutput = document.getElementById("SchieberID");
+		if(type=='extern')
+		{
+			var xmlhttp_options = new XMLHttpRequest();
+			var ID = id;
+			xmlhttp_options.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
+				}
+			;};
+			xmlhttp_options.open("GET", "Rangeslider_Abfrage.php?ID=" + ID, true);
+			xmlhttp_options.send();
+		}
+		else if(type=='intern')
+		{
+			var xmlhttp_options = new XMLHttpRequest();
+			var ID = id;
+			xmlhttp_options.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
+				}
+			;};
+			xmlhttp_options.open("GET", "intern_Rangeslider_Abfrage.php?ID=" + ID, true);
+			xmlhttp_options.send();
+		}
+	}
+
+	function checkAnswerboxes(id, type, questiontype){
+		var fragenspezifisch = "false";
+		if(document.getElementById("fragenspezifisch").checked == true){
+			fragenspezifisch = "true";
+		}
+		console.log("fragenspezifisch ="+fragenspezifisch)
+		var xmlhttp1 = new XMLHttpRequest();
+
+		xmlhttp1.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var checked_sets = this.response.split(",");
+			var i=0;
+			while (i<checked_sets.length){
+				var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
+				checkbox.checked=false;	
+				i=i+1;		
+			}
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = function() {
+
+			if (this.readyState == 4 && this.status == 200) {
+				var checked_sets = this.response.split(",");
+				var i=0;
+				while (i<checked_sets.length){
+					var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
+					checkbox.checked=true;	
+					i=i+1;		
+				}
+			}
+			};
+			xmlhttp.open("GET", "Fragen_get_Antwortenset_checked_"+type+".php?ID=" + id + "&Type="+questiontype, false);
+			xmlhttp.send();
+		}
+		};
+		xmlhttp1.open("GET", "Fragen_get_Antwortenset.php?ID=" + id  + "&Type="+questiontype+"&fragenspezifisch="+fragenspezifisch, false);
+		xmlhttp1.send();
+	}
+
+	function getFragenBeschreibung(id, type){
+		var xmlhttp_options = new XMLHttpRequest();
+		var frage = document.getElementById("Frage");     
+				xmlhttp_options.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						frage.value=this.responseText;
+					}
+				;};
+				xmlhttp_options.open("GET", "Fragen_Beschreibung.php?ID=" + id + "&Type=" +type, false);
+				xmlhttp_options.send();
+	}
+
 	function display(id, type, questiontype) {
 		
 		document.getElementById('alert').style.display='none';
@@ -420,6 +564,15 @@
 			document.getElementById("Schieberegler").disabled=true;
 			document.getElementById("Text").disabled=true;
 			document.getElementById(questiontype).disabled=false;
+			modal.style.display = "block";
+
+			getFragenBeschreibung(id,type);
+			getCheckedAntworttyp(id, type);
+			getFragenUebersetzung(id, type);
+
+			if(type!="intern"){
+				getKapitelUebersetzung(id);
+			}
 
 			if(type=='intern')
 			{
@@ -474,8 +627,21 @@
 				{
 					document.getElementById("Bewertung").checked=true;
 					Modalform.action = 	"Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Bewertung";
-					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					if(fragenspezifisch.checked == true)
+					{
+						var xmlhttp_options = new XMLHttpRequest();
+						xmlhttp_options.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>'+this.responseText;
+							}
+						;};
+						xmlhttp_options.open("GET", "Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp=Bewertung", false);
+						xmlhttp_options.send();					
+					}
+					else{
+						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+                    }
 					Bewertungoptionen.style.display="block";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";		
@@ -519,140 +685,13 @@
 				}
 
 			}
-			modal.style.display = "block";
-			var xmlhttp_options = new XMLHttpRequest();
-
-			if(type!="answers")
+			if(questiontype=="Schieberegler")
 			{
-				var frage = document.getElementById("Frage");     
-				xmlhttp_options.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						frage.value=this.responseText;
-					}
-				;};
-				xmlhttp_options.open("GET", "Fragen_Beschreibung.php?ID=" + id + "&Type=" +type, false);
-				xmlhttp_options.send();
-
-				var vordefiniert = document.getElementById("vordefiniert"); 
-				var fragenspezifisch = document.getElementById("fragenspezifisch"); 
-				xmlhttp_options.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						if(this.response!="fragenspezifisch")
-						{
-							vordefiniert.checked=true;
-						}
-						else
-						{
-							fragenspezifisch.checked=true;
-						}
-					}
-				;};
-				xmlhttp_options.open("GET", "Fragen_Check_Fragenspezifisch.php?ID=" + id + "&Type=" +type, false);
-				xmlhttp_options.send();
-
-				var frage_englisch = document.getElementById("Frage_Übersetzung");     
-				xmlhttp_options.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						frage_englisch.value=this.responseText;
-					}
-				;};
-				xmlhttp_options.open("GET", "Fragen_Uebersetzung.php?ID=" + id + "&Type=" +type, false);
-				xmlhttp_options.send();
-
-				if(type!="intern"){
-					var kapitel = document.getElementById("Kapitel");   
-					xmlhttp_options.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-							kapitel.value=this.responseText;
-						}
-					;};
-					xmlhttp_options.open("GET", "Kapitel_Beschreibung.php?ID=" + id, false);
-					xmlhttp_options.send();
-
-					var kapitel_englisch = document.getElementById("Kapitel_Übersetzung");            
-					xmlhttp_options.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-							kapitel_englisch.value=this.responseText;
-						}
-					;};
-					xmlhttp_options.open("GET", "Kapitel_Uebersetzung.php?ID=" + id, true);
-					xmlhttp_options.send();
-				}
-				if(questiontype=="Schieberegler")
-					{
-						var Schieberoutput = document.getElementById("SchieberID");
-						if(type=='extern')
-						{
-							var xmlhttp_options = new XMLHttpRequest();
-							var ID = id;
-							xmlhttp_options.onreadystatechange = function() {
-								if (this.readyState == 4 && this.status == 200) {
-									Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-								}
-							;};
-							xmlhttp_options.open("GET", "Rangeslider_Abfrage.php?ID=" + ID, true);
-							xmlhttp_options.send();
-						}
-						else if(type=='intern')
-						{
-							var xmlhttp_options = new XMLHttpRequest();
-							var ID = id;
-							xmlhttp_options.onreadystatechange = function() {
-								if (this.readyState == 4 && this.status == 200) {
-									Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-								}
-							;};
-							xmlhttp_options.open("GET", "intern_Rangeslider_Abfrage.php?ID=" + ID, true);
-							xmlhttp_options.send();
-						}
-					}	
-				else{
-				var xmlhttp1 = new XMLHttpRequest();
-
-				xmlhttp1.onreadystatechange = function() {
-
-				if (this.readyState == 4 && this.status == 200) {
-					var checked_sets = this.response.split(",");
-					var i=0;
-					while (i<checked_sets.length){
-						var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
-						checkbox.checked=false;	
-						i=i+1;		
-					}
-					var xmlhttp = new XMLHttpRequest();
-
-					xmlhttp.onreadystatechange = function() {
-
-					if (this.readyState == 4 && this.status == 200) {
-						var checked_sets = this.response.split(",");
-						var i=0;
-						while (i<checked_sets.length){
-							var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
-							checkbox.checked=true;	
-							i=i+1;		
-						}
-					}
-					};
-					xmlhttp.open("GET", "Fragen_get_Antwortenset_checked_"+type+".php?ID=" + id + "&Type="+questiontype, false);
-					xmlhttp.send();
-				}
-				};
-				xmlhttp1.open("GET", "Fragen_get_Antwortenset.php?ID=" + id  + "&Type="+questiontype, false);
-				xmlhttp1.send();
-
-				}
-			}
-			else
-			{
-				var antwort_englisch = document.getElementById("englisch_"+type+"_"+questiontype);     
-				xmlhttp_options.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						antwort_englisch.value=this.responseText;
-					}
-				;};
-				xmlhttp_options.open("GET", "Antwort_Uebersetzung.php?ID=" + id+"&Questiontype="+questiontype, false);
-				xmlhttp_options.send();
-			}
+				Rangesliderabfrage(id);	
+			}	
+			else{
+				checkAnswerboxes(id, type, questiontype)
+			}		
 		}
 		else if(id==0)
 		{
@@ -746,23 +785,16 @@
 				Bewertungoptionen.style.display="block";
 				Multiplechoiceoptionen.style.display="none";
 				Rangeoptionen.style.display="none";
-				if(id==0)
-				{
-					console.log("Test");	
-					Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
-				}
+				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+				<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
 			}
 			else if (Fragentyp_value == "Multiplechoice")
 			{
 				Bewertungoptionen.style.display="none";
 				Multiplechoiceoptionen.style.display="block";
 				Rangeoptionen.style.display="none";	
-				if(id==0)
-				{
-					Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql); while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
-				}
+				Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+				<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql); while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 			}	
 		}
 		
