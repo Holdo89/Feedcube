@@ -562,7 +562,12 @@
 				var xmlhttp_options = new XMLHttpRequest();
 				xmlhttp_options.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						Bewertungoptionen.innerHTML=this.responseText;
+						if(questiontype=="Bewertung"){
+							Bewertungoptionen.innerHTML=this.responseText;
+						}
+						if(questiontype=="Multiplechoice"){
+							Multiplechoiceoptionen.innerHTML=this.responseText;
+						}
 					}
 				;};
 				xmlhttp_options.open("GET", "Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype, false);
@@ -574,16 +579,26 @@
 					<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 				}
 				else{
-					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+					Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
 					<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 				}
 			}
 		}
 		else{
-			Bewertungoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
-			<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
-			<input type="button" onclick="addSpecificAnswer('+questiontype+')" value="hinzufügen"></input><br>\
-			<h5>Wähle Antworten für diese Frage:</h5>';
+			if(questiontype="Bewertung")
+			{
+				Bewertungoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
+				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
+				<input type="button" onclick="addSpecificAnswer('+questiontype+')" value="hinzufügen"></input><br>\
+				<h5>Wähle Antworten für diese Frage:</h5>';
+			}
+			if(questiontype="Multiplechoice")
+			{
+				Multiplechoiceoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
+				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
+				<input type="button" onclick="addSpecificAnswer('+questiontype+')" value="hinzufügen"></input><br>\
+				<h5>Wähle Antworten für diese Frage:</h5>';
+			}
 		}
 	}
 
