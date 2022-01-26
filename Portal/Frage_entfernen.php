@@ -13,10 +13,14 @@ $Fragentyp = $row["Typ"];
 if($Fragentyp=="Bewertung")
 {
     $sql="ALTER TABLE bewertung_answers DROP COLUMN Frage_".$Id;
+    $result=mysqli_query($link, $sql);
+    $sql="DELETE FROM bewertung_answers WHERE Fragenspezifisch = '".$Id."'";
 }
 else if($Fragentyp=="Multiplechoice")
 {
     $sql="ALTER TABLE multiplechoice_answers DROP COLUMN Frage_".$Id;
+    $result=mysqli_query($link, $sql);
+    $sql="DELETE FROM multiplechoice_answers WHERE Fragenspezifisch = '".$Id."'";
 }
 else if($Fragentyp=="Schieberegler")
 {
