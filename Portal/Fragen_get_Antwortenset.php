@@ -22,7 +22,12 @@ if ($Type == "Bewertung")
 else if($Type == "Multiplechoice")
 {
     $checked_Fragen = "";
-    $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC";
+    if ($fragenspezifisch=="false") {
+        $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+    }
+    else{
+        $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = ".$ID." ORDER BY post_order_no ASC";
+    }
     $result = mysqli_query($link,$sql);
     while($row = mysqli_fetch_assoc($result)){
         $checked_Fragen = $checked_Fragen.$row["Answers"].",";

@@ -387,7 +387,7 @@
 		}
 		else if (Fragentyp.value == "Multiplechoice")
 		{
-			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_extern_Bewertung" name="checkbox[]" value="'+Answer+'" onclick="return false" checked readonly><label for="'+ Answer +'_extern_Bewertung" style="border:none;"> '+Answer+'</label><br>';
+			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_extern_Multiplechoice" name="checkbox[]" value="'+Answer+'" onclick="return false" checked readonly><label for="'+ Answer +'_extern_Multiplechoice" style="border:none;"> '+Answer+'</label><br>';
 			Multiplechoiceoptionen.innerHTML = Multiplechoiceoptionen.innerHTML + inputtext;
 		}
 		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
@@ -497,6 +497,9 @@
 	}
 
 	function checkAnswerboxes(id, type, questiontype){
+		console.log("ID:"+id)
+		console.log("Fragentyp:"+questiontype)
+		console.log("Typ:"+type)
 		if(id!=0)
 		{
 			var fragenspezifisch = "false";
@@ -511,22 +514,23 @@
 				var i=0;
 				while (i<checked_sets.length){
 					var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
+					console.log("not checked"+checkbox);
 					checkbox.checked=false;	
 					i=i+1;		
 				}
 				var xmlhttp = new XMLHttpRequest();
 
 				xmlhttp.onreadystatechange = function() {
-
-				if (this.readyState == 4 && this.status == 200) {
-					var checked_sets = this.response.split(",");
-					var i=0;
-					while (i<checked_sets.length){
-						var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
-						checkbox.checked=true;	
-						i=i+1;		
+					if (this.readyState == 4 && this.status == 200) {
+						var checked_sets = this.response.split(",");
+						var i=0;
+						while (i<checked_sets.length){
+							var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
+							console.log("checked:"+checkbox);
+							checkbox.checked=true;	
+							i=i+1;		
+						}
 					}
-				}
 				};
 				xmlhttp.open("GET", "Fragen_get_Antwortenset_checked_"+type+".php?ID=" + id + "&Type="+questiontype, false);
 				xmlhttp.send();
@@ -580,19 +584,19 @@
 				}
 				else{
 					Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 				}
 			}
 		}
 		else{
-			if(questiontype="Bewertung")
+			if(questiontype=="Bewertung")
 			{
 				Bewertungoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
 				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
 				<input type="button" onclick="addSpecificAnswer('+questiontype+')" value="hinzufügen"></input><br>\
 				<h5>Wähle Antworten für diese Frage:</h5>';
 			}
-			if(questiontype="Multiplechoice")
+			if(questiontype=="Multiplechoice")
 			{
 				Multiplechoiceoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
 				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
@@ -627,10 +631,6 @@
 			getFragenBeschreibung(id,type);
 			getCheckedAntworttyp(id, type);
 			getFragenUebersetzung(id, type);
-
-			if(type!="intern"){
-				getKapitelUebersetzung(id);
-			}
 
 			if(type=='intern')
 			{
@@ -681,6 +681,9 @@
 				document.getElementById("Kapitel_Container").style.display="block";
 				document.getElementById("Frageübersetzung_Label").style.display="block";
 				document.getElementById("Frage_Übersetzung").style.display="block";
+
+				getKapitelUebersetzung(id);
+
 				if(questiontype=="Bewertung")
 				{
 					getFragenspezifischeAntworten(id, questiontype);
@@ -729,6 +732,7 @@
 				Rangesliderabfrage(id);	
 			}	
 			if (document.getElementById("fragenspezifisch").checked==false){
+				console.log("display");
 				checkAnswerboxes(id, type, questiontype);
 			}		
 		}
@@ -815,6 +819,7 @@
 
 		if(Antworttyp_value == "vordefiniert")
 		{
+			console.log("showoptions")
 			Rangeoptionen_fragenspezifisch.style.display="none";
 			if (Fragentyp_value == "Bewertung")
 			{
