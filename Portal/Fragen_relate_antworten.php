@@ -30,6 +30,9 @@ if($Type=="extern"){
 else if($Type=="intern"){
     $sql = "UPDATE intern SET Fragen_intern = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
+
+    $sql = "UPDATE intern SET Antworttyp = '".$Antworttyp."' WHERE ID = ".$ID;
+    $query = mysqli_query($link, $sql);
 }
 
 if($Questiontype!="Text")

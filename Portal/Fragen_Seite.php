@@ -382,12 +382,12 @@
 		console.log(Fragentyp.value)
 		if (Fragentyp.value == "Bewertung")
 		{
-			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_extern_Bewertung" name="checkbox[]" value="'+Answer+'" onclick="return false" checked><label for="'+ Answer +'_extern_Bewertung" style="border:none;"> '+Answer+'</label><br>';
+			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_'+Type+'_Bewertung" name="checkbox[]" value="'+Answer+'" onclick="return false" checked><label for="'+ Answer +'_extern_Bewertung" style="border:none;"> '+Answer+'</label><br>';
 			Bewertungoptionen.innerHTML = Bewertungoptionen.innerHTML + inputtext; 
 		}
 		else if (Fragentyp.value == "Multiplechoice")
 		{
-			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_extern_Multiplechoice" name="checkbox[]" value="'+Answer+'" onclick="return false" checked readonly><label for="'+ Answer +'_extern_Multiplechoice" style="border:none;"> '+Answer+'</label><br>';
+			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_'+Type+'_Multiplechoice" name="checkbox[]" value="'+Answer+'" onclick="return false" checked readonly><label for="'+ Answer +'_extern_Multiplechoice" style="border:none;"> '+Answer+'</label><br>';
 			Multiplechoiceoptionen.innerHTML = Multiplechoiceoptionen.innerHTML + inputtext;
 		}
 		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
@@ -467,7 +467,7 @@
 		xmlhttp_options.send();
 	}
 
-	function Rangesliderabfrage(id){
+	function Rangesliderabfrage(id, type){
 		var xmlhttp_options = new XMLHttpRequest();
 		var Schieberoutput = document.getElementById("SchieberID");
 		if(type=='extern')
@@ -553,14 +553,15 @@
 				xmlhttp_options.send();
 	}
 
-	function getFragenspezifischeAntworten(id, questiontype){
+	function getFragenspezifischeAntworten(id, questiontype, type){
+		console.log("Typ="+type)
 		if(id!=0)
 		{
 			var Modalform = document.getElementById("Modalform");
 			var fragenspezifisch = document.getElementById("fragenspezifisch");
 			
 			document.getElementById(questiontype).checked=true;
-			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype="+questiontype;
+			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type="+type+"&Questiontype="+questiontype;
 			if(fragenspezifisch.checked == true)
 			{
 				var xmlhttp_options = new XMLHttpRequest();
@@ -574,17 +575,31 @@
 						}
 					}
 				;};
-				xmlhttp_options.open("GET", "Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype, false);
+				xmlhttp_options.open("GET", "Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype+"&Typ="+type, false);
 				xmlhttp_options.send();					
 			}
 			else{
-				if(questiontype=="Bewertung"){
-					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+				if(type=="extern")
+				{
+					if(questiontype=="Bewertung"){
+						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					}
+					else{
+						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					}
 				}
-				else{
-					Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+				if(type=="intern")
+				{
+					if(questiontype=="Bewertung"){
+						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					}
+					else{
+						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					}
 				}
 			}
 		}
@@ -638,26 +653,22 @@
 				document.getElementById("Frageübersetzung_Label").style.display="none";
 				document.getElementById("Frage_Übersetzung").style.display="none";
 
+
 				if(questiontype=="Bewertung")
 				{
-					document.getElementById("Bewertung").checked=true;
-					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Bewertung";
-					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+					getFragenspezifischeAntworten(id, questiontype, type);
 					Bewertungoptionen.style.display="block";
 					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="none";	
+					Rangeoptionen.style.display="none";		
 				}
-				if(questiontype=="Multiplechoice")
-				{
-					document.getElementById("Multiplechoice").checked=true;
-					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Multiplechoice";
-					Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-					<?php $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+				else if(questiontype=="Multiplechoice")
+				{	
+					getFragenspezifischeAntworten(id, questiontype, type);
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="block";
-					Rangeoptionen.style.display="none";
+					Rangeoptionen.style.display="none";	
 				}
+
 				if(questiontype=="Schieberegler")
 				{
 					document.getElementById("Schieberegler").checked=true;
@@ -686,14 +697,14 @@
 
 				if(questiontype=="Bewertung")
 				{
-					getFragenspezifischeAntworten(id, questiontype);
+					getFragenspezifischeAntworten(id, questiontype, type);
 					Bewertungoptionen.style.display="block";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";		
 				}
 				else if(questiontype=="Multiplechoice")
 				{	
-					getFragenspezifischeAntworten(id, questiontype);
+					getFragenspezifischeAntworten(id, questiontype, type);
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="block";
 					Rangeoptionen.style.display="none";	
@@ -729,7 +740,7 @@
 			}
 			if(questiontype=="Schieberegler")
 			{
-				Rangesliderabfrage(id);	
+				Rangesliderabfrage(id, type);	
 			}	
 			if (document.getElementById("fragenspezifisch").checked==false){
 				console.log("display");
@@ -844,7 +855,7 @@
 		{
 			if (Fragentyp_value == "Bewertung")
 			{
-				getFragenspezifischeAntworten(id, Fragentyp_value);
+				getFragenspezifischeAntworten(id, Fragentyp_value, externinterntyp);
 				Bewertungoptionen.style.display="block";
 				Multiplechoiceoptionen.style.display="none";
 				Rangeoptionen.style.display="none";	
@@ -852,7 +863,7 @@
 
 			else if (Fragentyp_value == "Multiplechoice")
 			{
-				getFragenspezifischeAntworten(id, Fragentyp_value);
+				getFragenspezifischeAntworten(id, Fragentyp_value, externinterntyp);
 				Bewertungoptionen.style.display="none";
 				Multiplechoiceoptionen.style.display="block";
 				Rangeoptionen.style.display="none";	
