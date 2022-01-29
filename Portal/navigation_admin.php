@@ -16,6 +16,7 @@
             <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Antworten</a>
             <a id ="Fragensets" href="Fragenset.php"><i class="fa fa-question-circle" aria-hidden="true"></i> Fragensets</a>
             <a id ="Leistungmanagement" href="Leistungmanagement.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Leistungen</a>
+            <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-sync" aria-hidden="true"></i> Umfragen</a>
             <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
     </div>
     </div>
