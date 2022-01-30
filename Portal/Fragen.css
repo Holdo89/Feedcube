@@ -57,6 +57,8 @@ label, input, textarea {
   line-height: 20pt;
   padding-left:2px;
   min-width:35px;
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 
@@ -167,7 +169,8 @@ form,.form_intern, .form_antworten  {
 
   width: 100%;
 
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 
@@ -182,7 +185,8 @@ form,.form_intern, .form_antworten  {
   line-height: 30pt;
   height: 30pt;
   padding-left:2px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 

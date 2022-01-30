@@ -41,6 +41,8 @@ body {
   margin-bottom:0;
 
   line-height: 20pt;
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 
@@ -156,7 +158,8 @@ form {
 
   width: 100%;
 
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 
@@ -169,8 +172,8 @@ form {
   display: block;
 
   width: 100%;
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 

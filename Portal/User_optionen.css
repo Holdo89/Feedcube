@@ -84,6 +84,8 @@ label, input, textarea {
   background:rgba(4, 51, 78, 0.904);
   margin-bottom:0;
   line-height: 20pt;
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
@@ -153,9 +155,9 @@ form {
 
   width: 100%;
 
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
   color:black; 
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 
@@ -169,8 +171,8 @@ form {
 
   width: 100%;
 
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
@@ -178,13 +180,10 @@ form {
 
 
 input, label, textarea,.Fragentyp_Select{
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
   padding: 3px;
-
   outline: none;
-
+  border:none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
