@@ -108,67 +108,95 @@
 	</style>
 
 	<form method="post">
-	<label class="überschrift">Umfragen</label><label class="überschrift"></label><label class="überschrift"></label>
+	<label style ="grid-column: 1 / span 2; padding-left:10px" class="überschrift">Umfragen</label><label class="überschrift"></label>
 	</form>
 	<?php
 		include "Umfrage_Abfrage.php";
 	?>
-	<form action="insert_Umfrage.php" method="post">
-	<input id="neue_Umfrage" class="center_select" name="neue_Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
-	<input class="center_button" type="submit" value="+"></input>
-	</form>
+
+	<button id ="element" onclick = "showNewUmfrageModal()"><i class="fa fa-bullhorn" style="font-size:19px" aria-hidden="true"></i> Umfrage hinzufügen</button>
+
 	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
-		<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
-		<div style="text-align:left">
-		<h4>Neue Frage hinzufügen</h4>
-		<hr style="margin-bottom:30px; margin-top:-5px;">
-				<h5>Frage: </h5>
-				<input class="center_select" id="Frage"  name="Frage" placeholder="Eingabe einer neuen Frage" required></input>
-				<div class="container">
-				<p>Fragentyp:</p>
-					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Fragentyp" id="Bewertung" value="Bewertung" style="margin-top:10px;" oninput="showoptions()" required>Bewertung
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Fragentyp" id="Multiplechoice" value="Multiplechoice" style="margin-top:10px;" oninput="showoptions()" required>Multiplechoice
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Fragentyp" id="Schieberegler" value="Schieberegler" style="margin-top:10px;" oninput="showoptions()" required>Schieberegler
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Fragentyp" id="Text" value="Text" style="margin-top:10px;" oninput="showoptions()" required>Text
-					</label>
-				</div>
-				<div id="Antworttyp_container" class="container" style="display:none">
-				<p>Antworttyp:</p>
-					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Antworttyp" id="vordefiniert" value="vordefiniert" style="margin-top:10px;" value="vordefiniert" oninput="showoptions()">Vordefiniert
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Antworttyp" id="fragenspezifisch" value="fragenspezifisch" style="margin-top:10px;" value="fragenspezifisch" oninput="showoptions()">Fragenspezifisch
-					</label>
-				</div>
-				<input id="Umfragenid" name="Umfragenid" style="font-size:12px; display:none;" value = 0>
-	 			</input>
-				<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
-	 			</input>
-				 <input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
-	 			</input>
-				<div id="Bewertungoptionen" style="font-size:12px; display:none;">
-				</div>
-				<div id="Multiplechoiceoptionen" style="font-size:12px; display:none;">
-				</div>
-				<span id="alert" class="alert icon-alert with-arrow alert-danger form-alter" role="alert" style="display:none;" ><?php echo $Schieberegler_err; ?></span>
-				<div id="Rangeoptionen" style="font-size:12px; display:none;">
-				</div>
-				<div id="Rangeoptionen_fragenspezifisch" style="font-size:12px; display:none;">
-				</div>
-				<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
-				</form>
-	  </div>
+		<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+			<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
+			<div style="text-align:left">
+			<h4>Neue Frage hinzufügen</h4>
+			<hr style="margin-bottom:30px; margin-top:-5px;">
+					<p>Frage: <p>
+					<input class="center_select" id="Frage"  name="Frage" placeholder="Eingabe einer neuen Frage" required></input>
+					<div class="container">
+					<br>
+					<p>Fragentyp:</p>
+						<label class="radio-inline">
+						<input type="radio" name="Auswahl_Fragentyp" id="Bewertung" value="Bewertung" style="margin-top:10px;" oninput="showoptions()" required>Bewertung
+						</label>
+						<label class="radio-inline">
+						<input type="radio" name="Auswahl_Fragentyp" id="Multiplechoice" value="Multiplechoice" style="margin-top:10px;" oninput="showoptions()" required>Multiplechoice
+						</label>
+						<label class="radio-inline">
+						<input type="radio" name="Auswahl_Fragentyp" id="Schieberegler" value="Schieberegler" style="margin-top:10px;" oninput="showoptions()" required>Schieberegler
+						</label>
+						<label class="radio-inline">
+						<input type="radio" name="Auswahl_Fragentyp" id="Text" value="Text" style="margin-top:10px;" oninput="showoptions()" required>Text
+						</label>
+					</div>
+					<div id="Antworttyp_container" class="container" style="display:none">
+					<p>Antworttyp:</p>
+						<label class="radio-inline">
+						<input type="radio" name="Auswahl_Antworttyp" id="vordefiniert" value="vordefiniert" style="margin-top:10px;" value="vordefiniert" oninput="showoptions()">Vordefiniert
+						</label>
+						<label class="radio-inline">
+						<input type="radio" name="Auswahl_Antworttyp" id="fragenspezifisch" value="fragenspezifisch" style="margin-top:10px;" value="fragenspezifisch" oninput="showoptions()">Fragenspezifisch
+						</label>
+					</div>
+					<input id="Umfragenid" name="Umfragenid" style="font-size:12px; display:none;" value = 0>
+					</input>
+					<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
+					</input>
+					<input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
+					</input>
+					<div id="Bewertungoptionen" style="font-size:12px; display:none;">
+					</div>
+					<div id="Multiplechoiceoptionen" style="font-size:12px; display:none;">
+					</div>
+					<span id="alert" class="alert icon-alert with-arrow alert-danger form-alter" role="alert" style="display:none;" ><?php echo $Schieberegler_err; ?></span>
+					<div id="Rangeoptionen" style="font-size:12px; display:none;">
+					</div>
+					<div id="Rangeoptionen_fragenspezifisch" style="font-size:12px; display:none;">
+					</div>
+					<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+			</div>
+		</form>
+	</div>
+
+
+	  <!-- The Modal -->
+	<div id="neueUmfrage" class="modal">
+		<form class="modalform" id="neueUmfrageForm" style="margin-bottom:40px; display:block; margin-top:-20px" action="insert_Umfrage.php" method="post">
+			<span class="close" style="text-align:right" onclick="hide_newUmfragemodal()">&times;</span>
+			<div style="text-align:left">
+			<p>Neue Umfrage hinzufügen<p>
+			<hr style="margin-bottom:30px; margin-top:-5px;">
+			<p>Umfrage: </p>
+			<input class="center_select" id="Umfrage"  name="Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
+			<div class="container">
+			<br>
+			<p>Benachrichtigung:</p>
+				<label class="radio-inline">
+				<input type="radio" name="Auswahl_Umfragentyp" id="niemals" value="niemals" style="margin-top:10px;" oninput="showoptions()" required>niemals
+				</label>
+				<label class="radio-inline">
+				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="showoptions()" required>einmalig
+				</label>
+				<label class="radio-inline">
+				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="showoptions()" required>wiederkehrend
+				</label>
+			</div>
+			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+		</form>
+	</div>
 	<script>
 			
 	$(document).ready(function(){
@@ -209,10 +237,12 @@
 		location.reload();}
 	;}
 	var modal = document.getElementById("myModal");
+	var neueUmfragemodal = document.getElementById("neueUmfrage");
 	var Bewertungoptionen = document.getElementById("Bewertungoptionen");
 	var Multiplechoiceoptionen = document.getElementById("Multiplechoiceoptionen");
 	var Rangeoptionen = document.getElementById("Rangeoptionen");
 	var Modalform = document.getElementById("Modalform");
+	var neueUmfrageform = document.getElementById("neueUmfrageForm");
 
 	function addSpecificAnswer(Fragentyp, id){
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
@@ -270,17 +300,6 @@
 			}
 		;};
 		xmlhttp_options.open("GET", "Fragen_Check_Fragenspezifisch.php?ID=" + id + "&Type=" +type, false);
-		xmlhttp_options.send();
-	}
-
-	function getFragenUebersetzung(id, type){
-		var xmlhttp_options = new XMLHttpRequest();
-		xmlhttp_options.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				frage_englisch.value=this.responseText;
-			}
-		;};
-		xmlhttp_options.open("GET", "Fragen_Uebersetzung.php?ID=" + id + "&Type=" +type, false);
 		xmlhttp_options.send();
 	}
 
@@ -408,6 +427,10 @@
 		}
 	}
 
+	function showNewUmfrageModal(){
+		neueUmfragemodal.style.display="block";
+	}
+
 	function display(id, type, questiontype, umfragenid) 
 	{	
 		document.getElementById('Umfragenid').value = umfragenid;
@@ -433,7 +456,6 @@
 
 			getFragenBeschreibung(id,type);
 			getCheckedAntworttyp(id, type);
-			getFragenUebersetzung(id, type);
 
 			if(type=='intern')
 			{
@@ -640,6 +662,11 @@
 	function hide_modal(){
 		var modal = document.getElementById("myModal");
 		modal.style.display = "none";
+	}
+
+	function hide_newUmfragemodal()
+	{
+		neueUmfragemodal.style.display = "none";
 	}
 
 	window.onclick = function(event) {

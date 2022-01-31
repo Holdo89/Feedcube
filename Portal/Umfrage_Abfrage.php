@@ -5,7 +5,7 @@ $result_Umfragen = mysqli_query($link, $sql_Umfragen);
 
 while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     echo "<form style='border-radius:5px 5px 0px 0px;margin-bottom:0px;'>
-    <button type='button' class='center_button' onclick='showQuestions(".$row_Umfragen["ID"].");' ><i class='fa fa-angle-right'></i></button>
+    <button type='button' id='angle_".$row_Umfragen["ID"]."' class='center_button' onclick='showQuestions(".$row_Umfragen["ID"].");' ><i class='fa fa-angle-right'></i></button>
     <input class= center_select id='Umfrage_".$row_Umfragen["ID"]."' value='".$row_Umfragen["Umfrage"]."' onblur='user_abfrage_speichern(".$row_Umfragen["ID"].")'></input>
     <button type='button' class='center_button' onclick='user_abfrage_löschen(".$row_Umfragen["ID"].")'><i class='fa fa-trash'></i></button>";            
     echo'

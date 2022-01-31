@@ -25,11 +25,17 @@
 
 	function showQuestions(id)
 	{
+		var anglebutton = document.getElementById("angle_"+id);
 		var form = document.getElementById("form_"+id);
-		if(form.style.display=="grid")
-		form.style.display="none";
+		if(form.style.display=="grid"){
+			form.style.display="none";
+			anglebutton.innerHTML="<i class='fa fa-angle-right'></i>"
+		}
 		else
-		form.style.display="grid";
+		{
+			form.style.display="grid";
+			anglebutton.innerHTML="<i class='fa fa-angle-down'></i>"
+		}
 	}
 	
 	// Get the <span> element that closes the modal

@@ -5,20 +5,13 @@
 require_once "../config.php";
 require_once "session.php";
 
-
-
-$neue_Umfrage = mysqli_real_escape_string($link, $_REQUEST["neue_Umfrage"]);
-
-
-
+$neue_Umfrage = mysqli_real_escape_string($link, $_REQUEST["Umfrage"]);
 $sql = "INSERT INTO umfragen (Umfrage) VALUES ('$neue_Umfrage')";
 
 if(mysqli_query($link, $sql)){
 
 } else{
-
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-
 }
 
 $sql = "SELECT ID FROM umfragen ORDER BY ID DESC LIMIT 1";
@@ -35,7 +28,6 @@ if($Step == 5)
 {
     header("location: Tutorial_Umfragen.php");
 }
-
 else{
     header("location: Umfragen.php");
 }
