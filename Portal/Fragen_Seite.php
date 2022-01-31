@@ -136,7 +136,6 @@
 
 	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;">Fragen an Kunden</p>
 	<hr style='max-width:90vw; margin:auto;'>
-	<div id="externe_Fragen" class="scroll" style="padding:10px;">
 	<form style="border-radius:5px 5px 0px 0px">
 	<label class="überschrift"></label>
 	<label class="überschrift">Kapitel</label>
@@ -145,8 +144,9 @@
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>
-	
+	<div id="externe_Fragen" class="scroll" style="padding:10px;">
 	<?php
+		//div externe_Fragen kennzeichnet den Bereich der per drag and drop verschoben werden kann
 		include "Fragen_Abfrage.php";
 	?>
 	</div>

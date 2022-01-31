@@ -10,9 +10,12 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     <button type='button' class='center_button' onclick='user_abfrage_löschen(".$row_Umfragen["ID"].")'><i class='fa fa-trash'></i></button>";            
     echo'
 	</form>
-    <div id="form_'.$row_Umfragen["ID"].'" style="display:none; width:90%; text-align:center; margin:auto">';
+    <div id="form_'.$row_Umfragen["ID"].'" style="display:none; width:90%; text-align:center; margin:auto">
+    <div class="interne_Fragen" style="padding:10px;">';
 	include "interne_Fragen_Abfrage.php";
-	echo'<button id="element" onclick = "display(undefined,\'intern\',undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button></div></div>';
+	echo'</div>
+    <button id="element" onclick = "display(undefined,\'intern\',undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
+    </div>';
 }
 
 ?>

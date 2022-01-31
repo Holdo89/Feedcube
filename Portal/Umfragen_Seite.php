@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 
-#interne_Fragen form.ui-state-highlight {
+.interne_Fragen form.ui-state-highlight {
     padding: 20px;
     background-color: #eaecec;
     border: 1px dotted #ccc;
@@ -101,7 +101,6 @@
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/loop.png" width="50"> Umfragen </h1>
 		<p style="margin-bottom:30px"> Bearbeite hier Umfragen zu den Mitarbeiter Bewertungen abgeben</p>	</div>
 		</div>
-	<div class="scroll">
 	<style>
 	.überschrift{
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
@@ -118,7 +117,6 @@
 	<input id="neue_Umfrage" class="center_select" name="neue_Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
 	<input class="center_button" type="submit" value="+"></input>
 	</form>
-	</div>
 	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -184,91 +182,16 @@
 	<script>
 			
 	$(document).ready(function(){
-		$( "#externe_Fragen" ).sortable({
+		$( ".interne_Fragen" ).sortable({
 			placeholder : "ui-state-highlight",
 			update  : function(event, ui)
 			{	
 				var post_order_ids = new Array();
-				$('#externe_Fragen form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#interne_Fragen" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#interne_Fragen form').each(function(){
+				$('.interne_Fragen form').each(function(){
 					post_order_ids.push($(this).data("post-id"));
 				});
 				$.ajax({
 					url:"ajax_upload_intern.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#Antworten" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#Antworten form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload_antworten.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#Antworten_Multiplechoice" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#Antworten_Multiplechoice form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload_antworten_multiplechoice.php",
 					method:"POST",
 					data:{post_order_ids:post_order_ids},
 					success:function(data)
