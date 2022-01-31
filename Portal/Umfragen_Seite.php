@@ -125,18 +125,8 @@
 		<div style="text-align:left">
 		<h4>Neue Frage hinzufügen</h4>
 		<hr style="margin-bottom:30px; margin-top:-5px;">
-				<div id="Kapitel_Container">
-					<h5>Kapitel: </h5>
-					<input class="center_select" id="Kapitel" name="Kapitel" placeholder="Eingabe eines neuen Kapitels"></input>
-					<h5 id="Kapitelübersetzung_Label">Kapitelübersetzung: </h5>
-					<input class="center_select" id="Kapitel_Übersetzung" name ="Kapitel_Übersetzung" placeholder="Eingabe der Kapitelübersetzung"></input>
-				</div>
-				<br>
 				<h5>Frage: </h5>
 				<input class="center_select" id="Frage"  name="Frage" placeholder="Eingabe einer neuen Frage" required></input>
-				<h5 id="Frageübersetzung_Label">Fragenübersetzung: </h5>
-				<input class="center_select" id="Frage_Übersetzung" name ="Frage_Übersetzung" placeholder="Eingabe der Fragenübersetzung"></input>
-				<br>
 				<div class="container">
 				<p>Fragentyp:</p>
 					<label class="radio-inline">
@@ -225,7 +215,6 @@
 	var Modalform = document.getElementById("Modalform");
 
 	function addSpecificAnswer(Fragentyp, id){
-		console.log("ID="+id)
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
 		var Type = document.getElementById("externinterntyp").value;
 		console.log("Answer:"+Answer)
@@ -286,7 +275,6 @@
 
 	function getFragenUebersetzung(id, type){
 		var xmlhttp_options = new XMLHttpRequest();
-		var frage_englisch = document.getElementById("Frage_Übersetzung");     
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				frage_englisch.value=this.responseText;
@@ -296,54 +284,18 @@
 		xmlhttp_options.send();
 	}
 
-	function getKapitelUebersetzung(id){
-		var xmlhttp_options = new XMLHttpRequest();
-		var kapitel = document.getElementById("Kapitel");   
-		xmlhttp_options.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				kapitel.value=this.responseText;
-			}
-		;};
-		xmlhttp_options.open("GET", "Kapitel_Beschreibung.php?ID=" + id, false);
-		xmlhttp_options.send();
-
-		var kapitel_englisch = document.getElementById("Kapitel_Übersetzung");            
-		xmlhttp_options.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				kapitel_englisch.value=this.responseText;
-			}
-		;};
-		xmlhttp_options.open("GET", "Kapitel_Uebersetzung.php?ID=" + id, true);
-		xmlhttp_options.send();
-	}
-
 	function Rangesliderabfrage(id, type){
 		var xmlhttp_options = new XMLHttpRequest();
 		var Schieberoutput = document.getElementById("SchieberID");
-		if(type=='extern')
-		{
-			var xmlhttp_options = new XMLHttpRequest();
-			var ID = id;
-			xmlhttp_options.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-				}
-			;};
-			xmlhttp_options.open("GET", "Rangeslider_Abfrage.php?ID=" + ID, true);
-			xmlhttp_options.send();
-		}
-		else if(type=='intern')
-		{
-			var xmlhttp_options = new XMLHttpRequest();
-			var ID = id;
-			xmlhttp_options.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-				}
-			;};
-			xmlhttp_options.open("GET", "intern_Rangeslider_Abfrage.php?ID=" + ID, true);
-			xmlhttp_options.send();
-		}
+		var xmlhttp_options = new XMLHttpRequest();
+		var ID = id;
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
+			}
+		;};
+		xmlhttp_options.open("GET", "intern_Rangeslider_Abfrage.php?ID=" + ID, true);
+		xmlhttp_options.send();
 	}
 
 	function checkAnswerboxes(id, type, questiontype){
@@ -404,7 +356,6 @@
 	}
 
 	function getFragenspezifischeAntworten(id, questiontype, type){
-		console.log("Typ="+type)
 		if(id!=0)
 		{
 			var Modalform = document.getElementById("Modalform");
@@ -429,28 +380,14 @@
 				xmlhttp_options.send();					
 			}
 			else{
-				if(type=="extern")
-				{
-					if(questiontype=="Bewertung"){
-						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
-					}
-					else{
-						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
-					}
+				if(questiontype=="Bewertung"){
+					Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+					<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
 				}
-				if(type=="intern")
-				{
-					if(questiontype=="Bewertung"){
-						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
-					}
-					else{
-						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
-					}
-				}
+				else{
+					Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
+					<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+				}		
 			}
 		}
 		else{
@@ -500,11 +437,6 @@
 
 			if(type=='intern')
 			{
-				document.getElementById("Kapitel_Container").style.display="none";
-				document.getElementById("Frageübersetzung_Label").style.display="none";
-				document.getElementById("Frage_Übersetzung").style.display="none";
-
-
 				if(questiontype=="Bewertung")
 				{
 					getFragenspezifischeAntworten(id, questiontype, type);
@@ -538,46 +470,6 @@
 					Rangeoptionen.style.display="none";			
 				}	
 			}
-			else if(type=='extern')
-			{
-				document.getElementById("Kapitel_Container").style.display="block";
-				document.getElementById("Frageübersetzung_Label").style.display="block";
-				document.getElementById("Frage_Übersetzung").style.display="block";
-
-				getKapitelUebersetzung(id);
-
-				if(questiontype=="Bewertung")
-				{
-					getFragenspezifischeAntworten(id, questiontype, type);
-					Bewertungoptionen.style.display="block";
-					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="none";		
-				}
-				else if(questiontype=="Multiplechoice")
-				{	
-					getFragenspezifischeAntworten(id, questiontype, type);
-					Bewertungoptionen.style.display="none";
-					Multiplechoiceoptionen.style.display="block";
-					Rangeoptionen.style.display="none";	
-				}	
-				else if(questiontype=="Schieberegler")
-				{
-					document.getElementById("Schieberegler").checked=true;
-					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div style="grid-template-columns:2fr 2fr 2fr; display:grid"><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></div>';
-					var ID = id;
-					Bewertungoptionen.style.display="none";
-					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="block";	
-				}
-				else if(questiontype=="Text")
-				{						
-					document.getElementById("Text").checked=true;
-					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Text";
-					Bewertungoptionen.style.display="none";
-					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="none";	
-				}			
-			}
 			else{
 				if(questiontype=="Bewertung")
 				{
@@ -587,14 +479,13 @@
 				{
 					modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice" method="post"><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 				}
-
 			}
+
 			if(questiontype=="Schieberegler")
 			{
 				Rangesliderabfrage(id, type);	
 			}	
 			if (document.getElementById("fragenspezifisch").checked==false){
-				console.log("display");
 				checkAnswerboxes(id, type, questiontype);
 			}		
 		}
@@ -619,21 +510,7 @@
 			document.getElementById("Bewertungoptionen").style.display="none";
 			document.getElementById("Multiplechoiceoptionen").style.display="none";
 			document.getElementById("Rangeoptionen").style.display="none";
-			document.getElementById("Kapitel").value="";
-			document.getElementById("Kapitel_Übersetzung").value="";
 			document.getElementById("Frage").value="";
-			document.getElementById("Frage_Übersetzung").value="";
-			if(type=="intern")
-			{
-				document.getElementById("Kapitel_Container").style.display="none";
-				document.getElementById("Frageübersetzung_Label").style.display="none";
-				document.getElementById("Frage_Übersetzung").style.display="none";
-			}
-			else{
-				document.getElementById("Kapitel_Container").style.display="block";
-				document.getElementById("Frageübersetzung_Label").style.display="block";
-				document.getElementById("Frage_Übersetzung").style.display="block";		
-			}
 
 			modal.style.display ="block";
 			document.getElementById("Fragenid").value = 0;
