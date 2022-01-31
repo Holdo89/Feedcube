@@ -30,6 +30,20 @@ body {
 
 
 
+
+
+label, input, textarea {
+
+  line-height: 25pt;
+  font-family: "Spartan";
+  outline: none;    
+
+}
+
+
+
+
+
 .überschrift{
 
   text-align:left;
@@ -41,36 +55,16 @@ body {
   margin-bottom:0;
 
   line-height: 20pt;
-    border:none;
+  padding-left:2px;
+  min-width:35px;
+  border:none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
 }
 
-label, input, textarea {
-
-  line-height: 25pt;
-
-  font-family: "Spartan";
-
-  outline: none;    
-
-}
 
 
-
-.Fragentyp_Select{
-
-  font-family: "Spartan";
-
-  min-width: 150px;
-
-  outline: none; 
-
-}
-
-
-
-form {
+form,.form_intern, .form_antworten  {
 
  /* --background: white;
 
@@ -106,15 +100,13 @@ form {
 
   display: grid;
 
-  grid-template-columns: 0.3fr 6fr 0.3fr;
+  grid-template-columns:0.3fr 2fr 5.5fr 150px 0.4fr 0.4fr;
 
   margin:auto;
 
   text-align: center;
 
   border: 1px solid var(--border);
-
-  border-radius: 5px 5px 0px 0px;
 
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
 
@@ -124,11 +116,30 @@ form {
 
   width: 90vw;
 
-
+  margin-bottom:0px;
 
 }
 
 
+
+.form_intern {
+
+   grid-template-columns:0.3fr 7.2fr 2fr 0.4fr 0.4fr;
+
+ }
+
+ .form_antworten {
+
+   grid-template-columns:5fr 0.3fr 0.3fr;
+   width: 70vw;
+
+ }
+ .form_schieberegler_antworten {
+
+  grid-template-columns:2fr 2fr 2fr;
+  width: 70vw;
+
+}
 
 
 
@@ -157,6 +168,7 @@ form {
   font-size: 14pt;
 
   width: 100%;
+
   border:none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
@@ -167,24 +179,39 @@ form {
 .center_select {
 
   background-color:white;
-
+  text-align:left;
   display: block;
-
   width: 100%;
-
+  line-height: 30pt;
+  height: 30pt;
+  padding-left:2px;
   border:none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.antworten {
+
+  background-color:white;
+  text-align:left;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  width: 100%;
+  line-height: 30pt;
+  height: 30pt;
+  padding-left:40%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
 }
 
 
 
 
-
-input, label, textarea,.Fragentyp_Select{
+input, label, textarea{
 
   border: 1px solid rgba(0, 0, 0, 0.1);
 
-  padding: 3px;
+  padding: 2px;
 
   outline: none;
 
@@ -198,12 +225,25 @@ input:focus, textarea:focus {
 
 }
 
+.antworten_text{
+  font-size: 13px;
+  display:inline;
+  overflow-x: auto;
+  white-space: nowrap;
+  border:none;
+  width:20vw;
+}
 
+input[type='radio'],
+input[type='checkbox'] {
+  float:left; 
+  margin-top:13px; 
+  margin-left:40%; 
+  margin-right:10px;
+}
 
 textarea {
-
   resize: none;
-
 }
 
 
@@ -241,20 +281,30 @@ textarea:-webkit-autofill:focus {
 
 
 @media only screen and (max-width: 600px) {
-    
-  form{
-    width:95vw;
-    font-size: 12px;
-    overflow: auto;
-    margin:5px;
+
+  form, .form_intern{
+
+    width:550px;
+
+    font-size: 11px;
+
+  }
+
+  .form_schieberegler_antworten {
+    width: 90vw;
+    padding:5px;
+  }
+
+  .form_antworten{
+
+    font-size: 11px;
+    width:90vw;
 
   }
 
   .center_button {
 
     font-size: 14pt;
-
-    padding-top:0.5em;
 
     min-width:35px;
 
@@ -267,6 +317,16 @@ textarea:-webkit-autofill:focus {
     overflow:auto;
 
   }
+  .antworten_text{
+    font-size: 11px;
+    width:70%
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    margin-left:10%; 
+  }
+  
 
 }
 

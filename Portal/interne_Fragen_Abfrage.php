@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM intern ORDER BY post_order_no ASC"; 
+$sql = "SELECT * FROM intern WHERE Umfrage_".$row_Umfragen["ID"]." = 1 ORDER BY post_order_no ASC"; 
 $result = mysqli_query($link, $sql);
 $rowCount = mysqli_num_rows($result);
 

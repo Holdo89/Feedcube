@@ -33,7 +33,7 @@ if($Type=="extern")
 }
 else
 {
-    $sql = "INSERT INTO intern (Typ, Fragen_intern, Antworttyp, post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '$last_order','$last_order')";
+    $sql = "INSERT INTO intern (Typ, Fragen_intern, Antworttyp, Umfrage_".$Umfragenid.", post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '1', '$last_order','$last_order')";
 }
 
 mysqli_query($link, $sql);
@@ -91,10 +91,19 @@ mysqli_close($link);
 $Step = $_REQUEST["Step"];
 if($Step == 1)
 {
-    header("location: Tutorial_Fragen.php");
+    if($Type=="extern")
+        header("location: Tutorial_Fragen.php");
+    else{
+        header("location: Tutorial_Umfragen.php");
+
+    }
 }
 
 else{
-    header("location: Fragen.php");
+    if($Type=="extern")
+        header("location: Fragen.php");
+    else{
+        header("location: Umfragen.php");
+    }
 }
 ?>

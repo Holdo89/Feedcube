@@ -38,7 +38,7 @@ if($max <= $min)
         </script>";
     }
     if($Type=="intern"){
-        include "Fragen.php";
+        include "Umfragen.php";
         echo"<script>display(".$ID.", \"intern\", \"Schieberegler\");
         var Schieberoutput = document.getElementById('SchieberID');
         Schieberoutput.innerHTML='<div id=\"range_alert\" class=\"alert icon-alert with-arrow alert-danger form-alter\" role=\"alert\" style=\"display:block;grid-column-end: span 3;\"><i class=\"fa fa-fw fa-times-circle\"></i><strong> Note !</strong> <span class=\"warning-message\"> Die angegebenen Werte waren nicht korrekt </span></div>'+Schieberoutput.innerHTML;

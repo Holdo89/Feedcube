@@ -22,91 +22,16 @@
 		alert("Die Umfrage wurde gelöscht");
 		location.reload();}
 	;}
-	
-	function display(id,type) {
 
-		var getFragenset = new XMLHttpRequest();
-		var currentFragenset="";
-
-		getFragenset.onreadystatechange = function() {
-			currentFragenset=this.responseText;
-		}
-		getFragenset.open("GET", "Umfrage_getCurrentFragenset.php?ID=" + id, false);	
-		getFragenset.send();
-		
-		
-		if(type=="fragenset")
-		{
-			fragenset_modal.style.display = "block";
-			var div_id=document.getElementById("Fragenset_ID");
-		}
+	function showQuestions(id)
+	{
+		var form = document.getElementById("form_"+id);
+		if(form.style.display=="grid")
+		form.style.display="none";
 		else
-		{
-			modal.style.display = "block";
-			var div_id=document.getElementById("ID");
-		}
-		div_id.value=id;
-		if(currentFragenset == 0 || type=="fragenset")
-		{
-		Auswahl_Fragenset.value="kein_Fragenset";
-		enableAllCheckboxes();
-
-		var xmlhttp1 = new XMLHttpRequest();
-
-		xmlhttp1.onreadystatechange = function() {
-
-		if (this.readyState == 4 && this.status == 200) {
-			var checked_sets = this.response.split(";.,");
-			var i=0;
-			while (i<checked_sets.length){
-				if(type=="fragenset"){
-					var checkbox = document.getElementById('Fragenset_'+checked_sets[i]);
-				}
-				else
-					var checkbox = document.getElementById(checked_sets[i]);
-
-				checkbox.checked=false;	
-				i=i+1;		
-			}
-			var xmlhttp = new XMLHttpRequest();
-
-			xmlhttp.onreadystatechange = function() {
-
-			if (this.readyState == 4 && this.status == 200) {
-				var checked_sets = this.response.split(";.,");
-				var i=0;
-				while (i<checked_sets.length){
-					if(type=="fragenset")
-					{
-						var checkbox = document.getElementById('Fragenset_'+checked_sets[i]);	
-					}
-					else{
-						var checkbox = document.getElementById(checked_sets[i]);
-					}
-					checkbox.checked=true;
-					i=i+1;		
-				}
-			}
-			};
-			if(type=="fragenset")
-			{
-				xmlhttp.open("GET", "Fragenset_get_Fragenset_checked.php?ID=" + id, true);
-			}
-			else
-			{
-				xmlhttp.open("GET", "Umfrage_get_Fragenset_checked.php?ID=" + id, true);
-			}
-			xmlhttp.send();
-		}
-		};
-		xmlhttp1.open("GET", "Umfrage_get_Fragenset.php?ID=" + id, true);	
-		xmlhttp1.send();
+		form.style.display="grid";
 	}
-	else{
-		Auswahl_Fragenset.value=currentFragenset;
-		display_umfrage();
-	}
-	}
+	
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 	// When the user clicks on <span> (x), close the modal

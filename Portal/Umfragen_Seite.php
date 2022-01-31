@@ -1,19 +1,30 @@
+<?php
+ require_once "../config.php";
+ require_once "session.php";
+?>
+
 <!DOCTYPE HTML>
 <html>
 <?php
  require_once "FEEDCUBE_icon.php"
 ?><head>
+       
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="Fragen.css" rel="stylesheet" type="text/css">
+	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
+	<link href="umfrage_optionen.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
-	include "Frage_speichern.php";
+	include "Umfrage_speichern.php";
+	include "Fragenset_speichern.php";
 	?>
-</head>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
 <style>
 
 /* The Modal (background) */
@@ -21,7 +32,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 30px; /* Location of the box */
+  padding-top: 50px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -43,7 +54,6 @@
 .close {
   color: #aaaaaa;
   float: right;
-  margin-right:50px;
   font-size: 28px;
   font-weight: bold;
 }
@@ -55,13 +65,6 @@
   cursor: pointer;
 }
 
-#externe_Fragen form.ui-state-highlight {
-    padding: 20px;
-    background-color: #eaecec;
-    border: 1px dotted #ccc;
-    cursor: move;
-    margin-top: 12px;
-    }
 #interne_Fragen form.ui-state-highlight {
     padding: 20px;
     background-color: #eaecec;
@@ -69,121 +72,54 @@
     cursor: move;
     margin-top: 12px;
     }
-
-#Antworten form.ui-state-highlight {
-	width:70%;
-    padding: 20px;
-    background-color: #eaecec;
-    border: 1px dotted #ccc;
-    cursor: move;
-    margin-top: 12px;
-    }
-
-
-#Antworten_Multiplechoice form.ui-state-highlight {
-	width:70%;
-    padding: 20px;
-    background-color: #eaecec;
-    border: 1px dotted #ccc;
-    cursor: move;
-    margin-top: 12px;
-    }
-    
+	
 .modalform{
     width:90%; 
+    text-align:center;
+    margin:auto;
     max-width:1000px; 
     padding:30px; 
     overflow:auto; 
     border-radius: 15px;
 }
 </style>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
-
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
 	<?php
-	include "navigation_admin.php";	
+	include "navigation_admin.php";		//Pie and COlumnchart
 ?>
 <script>
-	document.getElementById("Fragen").className = "active";
+	document.getElementById("Umfragen").className = "active";
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/questionmark.png" width="60" style="margin-top:-10px;"> Fragen </h1>
-		Hier kannst du Fragen, die beim Feedback gestellt werden, bearbeiten
-	</div>
+		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/loop.png" width="50"> Umfragen </h1>
+		<p style="margin-bottom:30px"> Bearbeite hier Umfragen zu den Mitarbeiter Bewertungen abgeben</p>	</div>
+		</div>
+	<div class="scroll">
 	<style>
 	.überschrift{
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
 	}
 	</style>
-	<div class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none;">
-		<i class="fa fa-fw fa-check-circle"></i>
-		<strong> Success ! </strong> <span class="success-message"> Die Reihenfolge der Fragen wurde erfolgreich bearbeitet </span>
-	</div>
-	<div class="alert icon-alert with-arrow alert-danger form-alter" role="alert" style="display:none;">
-		<i class="fa fa-fw fa-times-circle"></i>
-		<strong> Note !</strong> <span class="warning-message"> Eine leere Liste kann nicht sortiert werden </span>
-	</div>
-	<div id="range_alert" class="alert icon-alert with-arrow alert-danger form-alter" role="alert" style="display:none;">
-		<i class="fa fa-fw fa-times-circle"></i>
-		<strong> Note !</strong> <span class="warning-message"> Die angegebenen Werte waren nicht korrekt </span>
-	</div>
 
-	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;">Fragen an Kunden</p>
-	<hr style='max-width:90vw; margin:auto;'>
-	<div id="externe_Fragen" class="scroll" style="padding:10px;">
-	<form style="border-radius:5px 5px 0px 0px">
-	<label class="überschrift"></label>
-	<label class="überschrift">Kapitel</label>
-	<label class="überschrift">Frage</label>
-	<label class="überschrift">Typ</label>
-	<label class="überschrift"></label>
-	<label class="überschrift"></label>
+	<form method="post">
+	<label class="überschrift">Umfragen</label><label class="überschrift"></label><label class="überschrift"></label>
 	</form>
-	
 	<?php
-		include "Fragen_Abfrage.php";
+		include "Umfrage_Abfrage.php";
 	?>
+	<form action="insert_Umfrage.php" method="post">
+	<input id="neue_Umfrage" class="center_select" name="neue_Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
+	<input class="center_button" type="submit" value="+"></input>
+	</form>
 	</div>
-	<button id="element" onclick = "display(undefined,'extern')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
-
-	<script>
-	function user_abfrage_speichern(id) {
-			speichern(id);
-	;}
-	function user_abfrage_löschen(id) {
-  	if (confirm("Wollen Sie diese Frage entfernen? Ihre bestehenden Antworten zu dieser Frage werden ebenfalls entfernt"))
-	  {entfernen(id);
-		alert("Die Frage wurde gelöscht");
-		location.reload();}
-	;}
-	function user_abfrage_speichern_intern(id) {
-		speichern_intern(id);
-	;}
-	function user_abfrage_löschen_intern(id) {
-  	if (confirm("Wollen Sie diese Frage entfernen? Ihre bestehenden Antworten zu dieser Frage werden ebenfalls entfernt"))
-	  {entfernen_intern(id);
-		alert("Die Frage wurde gelöscht");
-		location.reload();}
-	;}
-	function Antwort_speichern(id,typ) {
-		speichern_antwort(id, typ);
-	;}
-
-	function Antwort_löschen(id,typ) {
-  	if (confirm("Wollen Sie diese Antwort entfernen? Ihre bestehenden Daten zu dieser Antwort werden ebenfalls entfernt"))
-	  {entfernen_antwort(id,typ);
-		alert("Die Antwort wurde gelöscht");
-		location.reload();}
-	;}
-	</script>
-
-
+	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
@@ -227,6 +163,8 @@
 					<input type="radio" name="Auswahl_Antworttyp" id="fragenspezifisch" value="fragenspezifisch" style="margin-top:10px;" value="fragenspezifisch" oninput="showoptions()">Fragenspezifisch
 					</label>
 				</div>
+				<input id="Umfragenid" name="Umfragenid" style="font-size:12px; display:none;" value = 0>
+	 			</input>
 				<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
 	 			</input>
 				 <input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
@@ -243,10 +181,8 @@
 				<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 				</form>
 	  </div>
-
-
 	<script>
-	
+			
 	$(document).ready(function(){
 		$( "#externe_Fragen" ).sortable({
 			placeholder : "ui-state-highlight",
@@ -350,6 +286,15 @@
 		});
 	});
 
+	function user_abfrage_speichern_intern(id) {
+		speichern_intern(id);
+	;}
+	function user_abfrage_löschen_intern(id) {
+  	if (confirm("Wollen Sie diese Frage entfernen? Ihre bestehenden Antworten zu dieser Frage werden ebenfalls entfernt"))
+	  {entfernen_intern(id);
+		alert("Die Frage wurde gelöscht");
+		location.reload();}
+	;}
 	var modal = document.getElementById("myModal");
 	var Bewertungoptionen = document.getElementById("Bewertungoptionen");
 	var Multiplechoiceoptionen = document.getElementById("Multiplechoiceoptionen");
@@ -603,8 +548,9 @@
 		}
 	}
 
-	function display(id, type, questiontype) 
+	function display(id, type, questiontype, umfragenid) 
 	{	
+		document.getElementById('Umfragenid').value = umfragenid;
 		document.getElementById('alert').style.display='none';
 		document.getElementById("externinterntyp").value=type;
 
@@ -736,7 +682,7 @@
 		}
 		else{
 			var Modalform = document.getElementById("Modalform");
-			Modalform.action="Fragen.php";
+			Modalform.action="Umfragen.php";
 			document.getElementById("Bewertung").disabled=false;
 			document.getElementById("Multiplechoice").disabled=false;
 			document.getElementById("Schieberegler").disabled=false;
@@ -902,5 +848,6 @@
 	}
 	}
 	</script>
+    <script src="Umfragenjs.js" type="text/javascript"></script>
     </body>
 </html>
