@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feedback Auswertung</title>
+	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
@@ -21,10 +22,24 @@
 	include "Umfrage_speichern.php";
 	include "Fragenset_speichern.php";
 	?>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+	<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"/>
 
+	<script>
+	$(document).ready(function() {
+		$('#Auswahl_Trainer').multiselect({
+		includeSelectAllOption: true,
+		enableFiltering: true,
+		enableCaseInsensitiveFiltering: true,
+		filterPlaceholder:'Hier suchen..'
+		});
+	});
+	</script>
 <style>
 
 /* The Modal (background) */
@@ -119,7 +134,7 @@
 	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
-		<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+		<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:hidden" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
 			<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
 			<div style="text-align:left">
 			<h4>Neue Frage hinzufügen</h4>
@@ -174,14 +189,13 @@
 
 	  <!-- The Modal -->
 	<div id="neueUmfrage" class="modal">
-		<form class="modalform" id="neueUmfrageForm" style="margin-bottom:40px; display:block; margin-top:-20px" action="insert_Umfrage.php" method="post">
+		<form class="modalform" id="neueUmfrageForm" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:visible" action="insert_Umfrage.php" method="post">
 			<span class="close" style="text-align:right" onclick="hide_newUmfragemodal()">&times;</span>
 			<div style="text-align:left">
 			<p>Neue Umfrage hinzufügen<p>
 			<hr style="margin-bottom:30px; margin-top:-5px;">
 			<p>Umfrage: </p>
 			<input class="center_select" id="Umfrage"  name="Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
-			<div class="container">
 			<br>
 			<p>Benachrichtigung:</p>
 				<label class="radio-inline">
@@ -193,12 +207,42 @@
 				<label class="radio-inline">
 				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="showoptions()" required>wiederkehrend
 				</label>
-			</div>
+				<br>
+				<br>
+			<p>Intervall:</p>
+				<label class="radio-inline">
+				<input type="radio" name="Benachrichtigungsintervall" id="täglich" value="täglich" style="margin-top:10px;" oninput="showoptions()" required>täglich
+				</label>
+				<label class="radio-inline">
+				<input type="radio" name="Benachrichtigungsintervall" id="wöchentlich" value="wöchentlich" style="margin-top:10px;" oninput="showoptions()" required>wöchentlich
+				</label>
+				<label class="radio-inline">
+				<input type="radio" name="Benachrichtigungsintervall" id="monatlich" value="monatlich" style="margin-top:10px;" oninput="showoptions()" required>monatlich
+				</label>
+				<label class="radio-inline">
+				<input type="radio" name="Benachrichtigungsintervall" id="nach Tagen:" value="nach Tagen:" style="margin-top:10px;" oninput="showoptions()" required>alle <input type="number" id="quantity" name="quantity" style="height:30px" min="1" max="365"></input> Tage
+				</label>
+			<br>
+			<br>
+			<p>Benutzer die benachrichtigt werden:
+				<?php
+					include "Auswahlmöglichkeiten_Benutzer.php";
+				?>
+			</p>
+			<p>Erste Benachrichtigung am:
+			<input type="datetime-local" id="UmfrageDatum" style="border-left:none; border-right:none; border-top:none; " name="UmfrageDatum" required></input>
+			</p>
+			<br>
 			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 		</form>
 	</div>
 	<script>
-			
+	const myDate = new Date();
+	myDate.setHours( myDate.getHours() + 1 );
+	myDate.setMinutes( myDate.getMinutes() + 1 );
+	var today = myDate.toISOString().slice(0,16);
+	document.getElementById("UmfrageDatum").min=today;
+
 	$(document).ready(function(){
 		$( ".interne_Fragen" ).sortable({
 			placeholder : "ui-state-highlight",
