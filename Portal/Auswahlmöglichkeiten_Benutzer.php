@@ -24,19 +24,19 @@ if ($i<1)
 }
 else
 {
-    echo' <select id="Auswahl_Trainer" name="Auswahl_Trainer" multiple="multiple">';
+    echo' <select id="Auswahl_Trainer" name="Auswahl_Trainer[]" multiple="multiple">';
     $sql = "SELECT name, username, Is_Trainer FROM users ORDER BY name ASC" ;
 
     $result = mysqli_query($link, $sql) ;
 
     while($row = mysqli_fetch_assoc($result)) {
         if($IsAdmin==1){
-            echo "<option value='".$row['username']."'>".$row['name']."</option>";
+            echo "<option id='".$row['username']."' value='".$row['username']."'>".$row['name']."</option>";
         }
         else{
             if($_SESSION["username"]==$row['username'])
             {
-                echo "<option value='".$row['username']."'>".$row['name']."</option>";
+                echo "<option id='".$row['username']."' value='".$row['username']."'>".$row['name']."</option>";
             }
         }
 

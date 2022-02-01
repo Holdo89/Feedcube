@@ -6,7 +6,15 @@ require_once "../config.php";
 require_once "session.php";
 
 $neue_Umfrage = mysqli_real_escape_string($link, $_REQUEST["Umfrage"]);
-$sql = "INSERT INTO umfragen (Umfrage) VALUES ('$neue_Umfrage')";
+$Benachrichtigung = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Umfragentyp"]);
+$Intervall = mysqli_real_escape_string($link, $_REQUEST["Benachrichtigungsintervall"]);
+$UmfrageDatum = mysqli_real_escape_string($link, $_REQUEST["UmfrageDatum"]);
+
+$Benutzer = "";
+foreach ($_REQUEST['Auswahl_Trainer'] as $subject)
+                $Benutzer=$Benutzer."|".$subject."|";
+
+$sql = "INSERT INTO umfragen (Umfrage, Benachrichtigung, Intervall, Benutzer, Benachrichtigungsdatum) VALUES ('$neue_Umfrage','$Benachrichtigung','$Intervall','$Benutzer','$UmfrageDatum')";
 
 if(mysqli_query($link, $sql)){
 

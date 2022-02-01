@@ -212,13 +212,13 @@
 				<br>
 			<p>Intervall:</p>
 				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="täglich" value="täglich" style="margin-top:10px;" oninput="showoptions()" required>täglich
+				<input type="radio" name="Benachrichtigungsintervall" id="1" value=1 style="margin-top:10px;" oninput="showoptions()" required>täglich
 				</label>
 				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="wöchentlich" value="wöchentlich" style="margin-top:10px;" oninput="showoptions()" required>wöchentlich
+				<input type="radio" name="Benachrichtigungsintervall" id="7" value=7 style="margin-top:10px;" oninput="showoptions()" required>wöchentlich
 				</label>
 				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="monatlich" value="monatlich" style="margin-top:10px;" oninput="showoptions()" required>monatlich
+				<input type="radio" name="Benachrichtigungsintervall" id="30" value=30 style="margin-top:10px;" oninput="showoptions()" required>monatlich
 				</label>
 				<label class="radio-inline">
 				<input type="radio" name="Benachrichtigungsintervall" id="nach Tagen:" value="nach Tagen:" style="margin-top:10px;" oninput="showoptions()" required>alle <input type="number" id="quantity" name="quantity" style="height:30px" min="1" max="365"></input> Tage
@@ -472,8 +472,76 @@
 		}
 	}
 
+	function getUmfrageBeschreibung(id){
+		var xmlhttp_options = new XMLHttpRequest();
+		var UmfrageBeschreibung = document.getElementById("Umfrage");
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				UmfrageBeschreibung.value=this.responseText;
+				console.log("Text:"+this.responseText)
+			}
+		;};
+		xmlhttp_options.open("GET", "getUmfrageBeschreibung.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+
+	function getBenachrichtigung(id){
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var Benachrichtigung = document.getElementById(this.responseText.slice(0,-2));
+				Benachrichtigung.checked=true;
+			}
+		;};
+		xmlhttp_options.open("GET", "getBenachrichtigung.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+
+	function getIntervall(id){
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var Intervall = document.getElementById(this.responseText.slice(0,-2));
+				Intervall.checked=true;
+			}
+		;};
+		xmlhttp_options.open("GET", "getIntervall.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+	
+	function getBenutzer(id){
+		var u = 0;
+		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText)
+				for (var i = 0; i < checkboxes.length; i++) {
+					if(this.responseText.includes("|"+checkboxes[i].value+"|"))
+					{
+						checkboxes[i].checked = true;
+						u=u+1;
+						selectbox.innerHTML = "("+u+") Benutzer gewählt";
+					}
+				}
+			}
+		;};
+		xmlhttp_options.open("GET", "getBenutzer.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+
+
 	function showNewUmfrageModal(){
 		neueUmfragemodal.style.display="block";
+	}
+
+	function showUmfrage(id){
+		neueUmfragemodal.style.display="block";
+		getUmfrageBeschreibung(id);
+		getBenachrichtigung(id);
+		getIntervall(id);
+		getBenutzer(id);
 	}
 
 	function display(id, type, questiontype, umfragenid) 
