@@ -102,6 +102,7 @@
 </head>
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
@@ -123,7 +124,7 @@
 	</style>
 
 	<form method="post">
-	<label style ="grid-column: 1 / span 2; padding-left:10px" class="überschrift">Umfragen</label><label class="überschrift"></label>
+	<label style ="grid-column: 1 / span 5; padding-left:10px" class="überschrift">Umfragen</label>
 	</form>
 	<?php
 		include "Umfrage_Abfrage.php";

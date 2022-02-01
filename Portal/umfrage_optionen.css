@@ -106,7 +106,7 @@ form {
 
   display: grid;
 
-  grid-template-columns: 0.3fr 6fr 0.3fr;
+  grid-template-columns: 0.3fr 5fr 0.2fr 0.2fr 0.2fr;
 
   margin:auto;
 
@@ -122,7 +122,7 @@ form {
 
   overflow: hidden;
 
-  width: 90vw;
+  width: 80vw;
 
 
 
