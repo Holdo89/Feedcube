@@ -512,19 +512,39 @@
 	function getBenutzer(id){
 		var u = 0;
 		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
+		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
+
 		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 		var xmlhttp_options = new XMLHttpRequest();
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				console.log(this.responseText)
 				for (var i = 0; i < checkboxes.length; i++) {
+					if(checkboxes[i].value!="multiselect-all")
+					{
+						document.getElementById(checkboxes[i].value).selected=false
+					}
+						checkboxes[i].checked = false;
+						var listitem = checkboxes[i].closest("li");
+						listitem.className = "false";
+					
+
 					if(this.responseText.includes("|"+checkboxes[i].value+"|"))
 					{
+						console.log(checkboxes[i].value)
+						document.getElementById(checkboxes[i].value).selected=true
 						checkboxes[i].checked = true;
+						var listitem = checkboxes[i].closest("li");
+						listitem.className = "active";
 						u=u+1;
-						selectbox.innerHTML = "("+u+") Benutzer gewählt";
+						selectbox.innerHTML = u+" Benutzer gewählt";
 					}
 				}
+				selectbox.style.fontSize="15px";
+				selectbutton.style.border="none";
+				selectbutton.style.overflow="hidden";
+				selectbutton.style.maxWidth="300px";
+
 			}
 		;};
 		xmlhttp_options.open("GET", "getBenutzer.php?ID=" + id, true);
