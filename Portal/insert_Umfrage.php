@@ -10,6 +10,19 @@ $Benachrichtigung = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Umfragen
 $Intervall = mysqli_real_escape_string($link, $_REQUEST["Benachrichtigungsintervall"]);
 $UmfrageDatum = mysqli_real_escape_string($link, $_REQUEST["UmfrageDatum"]);
 
+date_default_timezone_set("Europe/Berlin");
+
+$to_time = strtotime($UmfrageDatum);
+$from_time = strtotime(date("Y-m-dTH:i"));
+$timeToWait = round(abs($to_time - $from_time) / 60,2);
+
+sleep($timeToWait);
+$msg = "Erinnerung wegen der Umfrage";
+$headers = 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
+mail("holdo89@gmail.com","Erinnerung",$msg,$headers);
+
+
+/*
 $Benutzer = "";
 foreach ($_REQUEST['Auswahl_Trainer'] as $subject)
                 $Benutzer=$Benutzer."|".$subject."|";
@@ -38,7 +51,7 @@ if($Step == 5)
 }
 else{
     header("location: Umfragen.php");
-}
+}*/
 
 
 ?>
