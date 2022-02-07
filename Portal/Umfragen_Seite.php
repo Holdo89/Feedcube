@@ -583,6 +583,10 @@
 		var radio = document.querySelectorAll('input[type="radio"]');
 
 		for (var i = 0; i < checkboxes.length; i++) {
+			if(checkboxes[i].value!="multiselect-all")
+			{
+				document.getElementById(checkboxes[i].value).selected=false
+			}
 			checkboxes[i].checked = false;
 			var listitem = checkboxes[i].closest("li");
 			listitem.className = "false";
@@ -593,12 +597,31 @@
 		}
 	}
 
+	function getUmfrageDatum(id){
+		var UmfrageDatum = document.getElementById('UmfrageDatum');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var UmfrageDatum = document.getElementById('UmfrageDatum');
+				UmfrageDatum.value = this.responseText.replace(" ", "T").slice(0,-2);
+;
+			}
+		;};
+		xmlhttp_options.open("GET", "getUmfrageDatum.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+
+	function resetUmfrageDatum(){
+		document.getElementById('UmfrageDatum').value = "";
+		var UmfrageDatum = document.getElementById('UmfrageDatum');
+	}
 
 	function showNewUmfrageModal(){
 		neueUmfragemodal.style.display="block";
 		neueUmfragemodalform.action = "insert_Umfrage.php";
 		resetRadio();
 		resetBeschreibung();
+		resetUmfrageDatum();
 	}
 
 	function showUmfrage(id){
@@ -609,6 +632,7 @@
 		getBenachrichtigung(id);
 		getIntervall(id);
 		getBenutzer(id);
+		getUmfrageDatum(id);
 	}
 
 	function display(id, type, questiontype, umfragenid) 
