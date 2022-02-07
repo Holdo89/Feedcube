@@ -486,6 +486,11 @@
 		xmlhttp_options.send();
 	}
 
+	function resetBeschreibung(){
+		var UmfrageBeschreibung = document.getElementById("Umfrage");
+		UmfrageBeschreibung.value="";
+	}
+
 	function getBenachrichtigung(id){
 		var xmlhttp_options = new XMLHttpRequest();
 		xmlhttp_options.onreadystatechange = function() {
@@ -503,6 +508,18 @@
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var Intervall = document.getElementById(this.responseText.slice(0,-2));
+				Intervall.checked=true;
+			}
+		;};
+		xmlhttp_options.open("GET", "getIntervall.php?ID=" + id, true);
+		xmlhttp_options.send();
+	}
+	
+	function resetIntervall(){
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var Intervall = document.getElementById("Benachrichtigungsintervall");
 				Intervall.checked=true;
 			}
 		;};
@@ -552,12 +569,40 @@
 		xmlhttp_options.send();
 	}
 
+	function resetRadio()
+	{
+		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
+		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
+
+		selectbox.style.fontSize="15px";
+		selectbutton.style.border="none";
+		selectbutton.style.overflow="hidden";
+		selectbutton.style.maxWidth="300px";
+		selectbox.innerHTML = "kein Benutzer gewählt";
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		var radio = document.querySelectorAll('input[type="radio"]');
+
+		for (var i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].checked = false;
+			var listitem = checkboxes[i].closest("li");
+			listitem.className = "false";
+		}
+
+		for (var i = 0; i < radio.length; i++) {
+			radio[i].checked = false;
+		}
+	}
+
 
 	function showNewUmfrageModal(){
 		neueUmfragemodal.style.display="block";
+		neueUmfragemodalform.action = "insert_Umfrage.php";
+		resetRadio();
+		resetBeschreibung();
 	}
 
 	function showUmfrage(id){
+		resetRadio();
 		neueUmfragemodal.style.display="block";
 		neueUmfragemodalform.action = "update_Umfrage.php?Id="+id;
 		getUmfrageBeschreibung(id);
