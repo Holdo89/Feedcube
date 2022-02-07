@@ -283,6 +283,7 @@
 	;}
 	var modal = document.getElementById("myModal");
 	var neueUmfragemodal = document.getElementById("neueUmfrage");
+	var neueUmfragemodalform = document.getElementById("neueUmfrageForm");
 	var Bewertungoptionen = document.getElementById("Bewertungoptionen");
 	var Multiplechoiceoptionen = document.getElementById("Multiplechoiceoptionen");
 	var Rangeoptionen = document.getElementById("Rangeoptionen");
@@ -558,6 +559,7 @@
 
 	function showUmfrage(id){
 		neueUmfragemodal.style.display="block";
+		neueUmfragemodalform.action = "update_Umfrage.php?Id="+id;
 		getUmfrageBeschreibung(id);
 		getBenachrichtigung(id);
 		getIntervall(id);
