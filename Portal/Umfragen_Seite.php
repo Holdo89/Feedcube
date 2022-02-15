@@ -200,39 +200,43 @@
 			<br>
 			<p>Benachrichtigung:</p>
 				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="niemals" value="niemals" style="margin-top:10px;" oninput="showoptions()" required>niemals
+				<input type="radio" name="Auswahl_Umfragentyp" id="niemals" value="niemals" style="margin-top:10px;" oninput="hidenotificationoptions()">niemals
 				</label>
 				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="showoptions()" required>einmalig
+				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="notificationoptions()">einmalig
 				</label>
 				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="showoptions()" required>wiederkehrend
+				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="notificationoptionsdetails()">wiederkehrend
 				</label>
 				<br>
 				<br>
-			<p>Intervall:</p>
-				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="1" value=1 style="margin-top:10px;" oninput="showoptions()" required>täglich
-				</label>
-				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="7" value=7 style="margin-top:10px;" oninput="showoptions()" required>wöchentlich
-				</label>
-				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="30" value=30 style="margin-top:10px;" oninput="showoptions()" required>monatlich
-				</label>
-				<label class="radio-inline">
-				<input type="radio" name="Benachrichtigungsintervall" id="nach Tagen:" value="nach Tagen:" style="margin-top:10px;" oninput="showoptions()" required>alle <input type="number" id="quantity" name="quantity" style="height:30px" min="1" max="365"></input> Tage
-				</label>
-			<br>
-			<br>
-			<p>Benutzer die benachrichtigt werden:
-				<?php
-					include "Auswahlmöglichkeiten_Benutzer.php";
-				?>
-			</p>
-			<p>Erste Benachrichtigung am:
-			<input type="datetime-local" id="UmfrageDatum" style="border-left:none; border-right:none; border-top:none; " name="UmfrageDatum" required></input>
-			</p>
+			<div id="Intervall" style="display:none">
+				<p>Intervall:</p>
+					<label class="radio-inline">
+					<input type="radio" name="Benachrichtigungsintervall" id="1" value=1 style="margin-top:10px;" oninput="disablecustominervall()">täglich
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Benachrichtigungsintervall" id="7" value=7 style="margin-top:10px;" oninput="disablecustominervall()">wöchentlich
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Benachrichtigungsintervall" id="30" value=30 style="margin-top:10px;" oninput="disablecustominervall()">monatlich
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Benachrichtigungsintervall" id="nach Tagen:" value=0 style="margin-top:10px;" oninput="enablecustominervall()">alle <input type="number" id="quantity" name="quantity" style="height:30px" min="1" max="365" disbaled></input> Tage
+					</label>
+				<br>
+				<br>
+			</div>
+			<div id="Benachrichtigungsdetails" style="display:none">
+				<p>Benutzer die benachrichtigt werden:
+					<?php
+						include "Auswahlmöglichkeiten_Benutzer.php";
+					?>
+				</p>
+				<p>Erste Benachrichtigung am:
+				<input type="datetime-local" id="UmfrageDatum" style="border-left:none; border-right:none; border-top:none; " name="UmfrageDatum"></input>
+				</p>
+			</div>
 			<br>
 			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 		</form>
@@ -271,6 +275,30 @@
 			}
 		});
 	});
+
+	function hidenotificationoptions(){
+		var Intervall = document.getElementById("Intervall");
+		Intervall.style.display="none";	
+		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
+		Benachrichtigungsdetails.style.display="none";	
+	}
+
+	function notificationoptions(){
+		var Intervall = document.getElementById("Intervall");
+		Intervall.style.display="none";	
+		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
+		Benachrichtigungsdetails.style.display="block";
+		var AuswahlBenutzer = document.getElementById("Auswahl_Trainer");
+		AuswahlBenutzer.required=true;	
+		var Umfragedatum = document.getElementById("UmfrageDatum");
+		Umfragedatum.required=true;	
+	}
+
+	function notificationoptionsdetails(){
+		notificationoptions();
+		var Intervall = document.getElementById("Intervall");
+		Intervall.style.display="block";
+	}
 
 	function user_abfrage_speichern_intern(id) {
 		speichern_intern(id);
@@ -499,7 +527,7 @@
 				Benachrichtigung.checked=true;
 			}
 		;};
-		xmlhttp_options.open("GET", "getBenachrichtigung.php?ID=" + id, true);
+		xmlhttp_options.open("GET", "getBenachrichtigung.php?ID=" + id, false);
 		xmlhttp_options.send();
 	}
 
@@ -633,6 +661,26 @@
 		getIntervall(id);
 		getBenutzer(id);
 		getUmfrageDatum(id);
+		var AuswahlUmfragentyp = document.getElementsByName("Auswahl_Umfragentyp");
+		var AuswahlUmfragentyp_value;
+		for(var i = 0; i < AuswahlUmfragentyp.length; i++){
+			if(AuswahlUmfragentyp[i].checked){
+				AuswahlUmfragentyp_value = AuswahlUmfragentyp[i].value;
+			}
+		}
+		var Intervall = document.getElementById("Intervall");
+		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
+		hidenotificationoptions();
+	
+
+		if(AuswahlUmfragentyp_value!="niemals")
+		{
+			notificationoptions();	
+			if(AuswahlUmfragentyp_value=="wiederkehrend")
+			{
+				notificationoptionsdetails();	
+			}
+		}
 	}
 
 	function display(id, type, questiontype, umfragenid) 
