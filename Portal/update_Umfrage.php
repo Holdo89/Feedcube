@@ -10,6 +10,11 @@ $neue_Umfrage = mysqli_real_escape_string($link, $_REQUEST["Umfrage"]);
 $Benachrichtigung = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Umfragentyp"]);
 $Intervall = mysqli_real_escape_string($link, $_REQUEST["Benachrichtigungsintervall"]);
 $UmfrageDatum = mysqli_real_escape_string($link, $_REQUEST["UmfrageDatum"]);
+$Quantity = mysqli_real_escape_string($link, $_REQUEST["quantity"]);
+if ($Quantity != "")
+{
+    $Intervall = $Quantity;
+}
 
 $Benutzer = "";
 foreach ($_REQUEST['Auswahl_Trainer'] as $subject)

@@ -17,14 +17,17 @@ $result = mysqli_query($link, $sql) ;
 
 while($row = mysqli_fetch_assoc($result)) 
 {
-    if($now>$row['Benachrichtigungsdatum'])
+    if($now>$row['Benachrichtigungsdatum'] && $row['Benachrichtigung']!="niemals" )
     {
         $date=date_create($row['Benachrichtigungsdatum']);
         date_add($date,date_interval_create_from_date_string($row['Intervall']." days"));
         echo $row['Benachrichtigungsdatum']."<br>";
         echo $date->format('Y-m-d H:i:s');
-        $sql_update = "UPDATE umfragen SET Benachrichtigungsdatum = '".$date->format('Y-m-d H:i:s')."' WHERE ID = ".$row['ID'];
-        mysqli_query($link, $sql_update);
+        if($row['Benachrichtigung']=="wiederkehrend")
+        {
+            $sql_update = "UPDATE umfragen SET Benachrichtigungsdatum = '".$date->format('Y-m-d H:i:s')."' WHERE ID = ".$row['ID'];
+            mysqli_query($link, $sql_update);
+        }
         
         $Benutzer = $row['Benutzer'];
         $Benutzer = str_replace("||",",",$Benutzer);

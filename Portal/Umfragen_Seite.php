@@ -213,16 +213,16 @@
 			<div id="Intervall" style="display:none">
 				<p>Intervall:</p>
 					<label class="radio-inline">
-					<input type="radio" name="Benachrichtigungsintervall" id="1" value=1 style="margin-top:10px;" oninput="disablecustominervall()">täglich
+					<input type="radio" name="Benachrichtigungsintervall" id="1" value=1 style="margin-top:10px;" oninput="disablecustomintervall()">täglich
 					</label>
 					<label class="radio-inline">
-					<input type="radio" name="Benachrichtigungsintervall" id="7" value=7 style="margin-top:10px;" oninput="disablecustominervall()">wöchentlich
+					<input type="radio" name="Benachrichtigungsintervall" id="7" value=7 style="margin-top:10px;" oninput="disablecustomintervall()">wöchentlich
 					</label>
 					<label class="radio-inline">
-					<input type="radio" name="Benachrichtigungsintervall" id="30" value=30 style="margin-top:10px;" oninput="disablecustominervall()">monatlich
+					<input type="radio" name="Benachrichtigungsintervall" id="31" value=31 style="margin-top:10px;" oninput="disablecustomintervall()">monatlich
 					</label>
 					<label class="radio-inline">
-					<input type="radio" name="Benachrichtigungsintervall" id="nach Tagen:" value=0 style="margin-top:10px;" oninput="enablecustominervall()">alle <input type="number" id="quantity" name="quantity" style="height:30px" min="1" max="365" disbaled></input> Tage
+					<input type="radio" name="Benachrichtigungsintervall" id="Benutzerdefiniert" value=0 style="margin-top:10px;" oninput="enablecustomintervall()">alle <input type="number" id="quantity" name="quantity" style="height:30px" min="1" max="365" disabled></input> Tage
 					</label>
 				<br>
 				<br>
@@ -276,11 +276,26 @@
 		});
 	});
 
+	function disablecustomintervall(){
+		var customInterval = document.getElementById("quantity");
+		quantity.disabled = true;
+		quantity.value = "";
+	}
+
+	function enablecustomintervall(){
+		var customInterval = document.getElementById("quantity");
+		quantity.disabled = false;
+	}
+
 	function hidenotificationoptions(){
 		var Intervall = document.getElementById("Intervall");
 		Intervall.style.display="none";	
 		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
 		Benachrichtigungsdetails.style.display="none";	
+		var AuswahlBenutzer = document.getElementById("Auswahl_Trainer");
+		AuswahlBenutzer.required=false;	
+		var Umfragedatum = document.getElementById("UmfrageDatum");
+		Umfragedatum.required=false;
 	}
 
 	function notificationoptions(){
@@ -535,8 +550,23 @@
 		var xmlhttp_options = new XMLHttpRequest();
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				var Intervall = document.getElementById(this.responseText.slice(0,-2));
-				Intervall.checked=true;
+				console.log("Test:"+this.responseText.slice(0,-2))
+				if(this.responseText.slice(0,-2) == "1"|| this.responseText.slice(0,-2) == "7"|| this.responseText.slice(0,-2) == "31")
+				{
+					var Intervall = document.getElementById(this.responseText.slice(0,-2));
+					Intervall.checked=true;
+				}
+				else{
+					if(this.responseText.slice(0,-2) != "0")
+					{
+						console.log("Test:"+this.responseText.slice(0,-2))
+						var Intervall = document.getElementById("Benutzerdefiniert");
+						Intervall.checked=true;
+						var Quantity = document.getElementById("quantity");
+						quantity.value=this.responseText.slice(0,-2);
+						quantity.disabled=false;
+					}
+				}
 			}
 		;};
 		xmlhttp_options.open("GET", "getIntervall.php?ID=" + id, true);
