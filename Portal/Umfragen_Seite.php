@@ -41,6 +41,24 @@
 	});
 	</script>
 <style>
+.radio-inline, .checkbox-inline{
+	border:none;
+}
+#element{
+  width:250px;
+  position: relative;
+  margin:auto;
+  text-align:center;
+  margin-top:25px;
+  margin-bottom:30px; 
+  cursor:pointer; 
+  padding:15px; 
+  font-size: 16px; 
+  border:none; 
+  border-radius:30px; 
+  color:white; 
+  background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
+}
 
 /* The Modal (background) */
 .modal {

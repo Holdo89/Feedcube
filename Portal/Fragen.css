@@ -41,11 +41,13 @@ label, input, textarea {
 }
 
 
-
+.scroll{
+  overflow:auto;
+}
 
 
 .überschrift{
-
+  font-size:13px;
   text-align:left;
 
   color:white;
@@ -283,11 +285,14 @@ textarea:-webkit-autofill:focus {
 @media only screen and (max-width: 600px) {
 
   form, .form_intern{
-
-    width:550px;
-
+    min-width:500px;
+    width:100%;
     font-size: 11px;
 
+  }
+
+  .überschrift{
+    font-size:12px;
   }
 
   .form_schieberegler_antworten {

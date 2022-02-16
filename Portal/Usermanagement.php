@@ -1,7 +1,6 @@
 <?php
  require_once "../config.php";
  require_once "session.php";
- include "Tutorialstyle.php";
 // Define variables and initialize with empty values
 $fullname = $username = $email = $password = $confirm_password = "";
 $fullname_err = $username_err = $email_err = $password_err = $confirm_password_err = "";
@@ -258,7 +257,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 	</style>
 	<form>
-	<label class="überschrift">Name</label><label class="überschrift">Username</label><label class="überschrift">Email</label><label class="überschrift" style="text-align:center; margin:auto; padding:9px; padding-left:15px; padding-right:15px; font-size:16px"><i class="fas fa-user-cog" aria-hidden="true"></i><span class="tooltiptext">Administrator</span></label><label class="überschrift" style="text-align:center; margin:auto; padding:9px; padding-left:15px; padding-right:15px; font-size:16px"><i class="fas fa-chalkboard-teacher"></i><span class="tooltiptext">Trainer</span></label><label class="überschrift" style="text-align:center"></label><label class="überschrift" style="font-size:11px"></label><label class="überschrift"></label>
+	<label class="überschrift">Name</label><label class="überschrift">Username</label><label class="überschrift">Email</label><label class="überschrift" style="text-align:center; margin:auto; padding:3px; padding-left:15px; padding-right:15px; font-size:16px"><i class="fas fa-user-cog" aria-hidden="true"></i><span class="tooltiptext">Administrator</span></label><label class="überschrift" style="text-align:center; margin:auto; padding:3px; padding-left:15px; padding-right:15px; font-size:16px"><i class="fas fa-chalkboard-teacher"></i><span class="tooltiptext">Trainer</span></label><label class="überschrift" style="text-align:center"></label><label class="überschrift" style="font-size:11px"></label><label class="überschrift"></label>
 	<?php
 		include "User_Abfrage.php";
 	?>

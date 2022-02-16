@@ -1,7 +1,6 @@
 <?php
  require_once "../config.php";
  require_once "session.php";
- include "Tutorialstyle.php";
 
 $Schieberegler_err="";
 

@@ -284,8 +284,7 @@ textarea:-webkit-autofill:focus {
 
   form, .form_intern{
 
-    width:550px;
-
+    width:100%;
     font-size: 11px;
 
   }

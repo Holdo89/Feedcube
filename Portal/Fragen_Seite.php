@@ -15,7 +15,24 @@
 	?>
 </head>
 <style>
-
+.radio-inline, .checkbox-inline{
+	border:none;
+}
+#element{
+  width:250px;
+  position: relative;
+  margin:auto;
+  text-align:center;
+  margin-top:25px;
+  margin-bottom:30px; 
+  cursor:pointer; 
+  padding:15px; 
+  font-size: 16px; 
+  border:none; 
+  border-radius:30px; 
+  color:white; 
+  background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -136,17 +153,21 @@
 
 	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;">Fragen an Kunden</p>
 	<hr style='max-width:90vw; margin:auto;'>
-	<form style="border-radius:5px 5px 0px 0px">
+	<style>
+	.überschrift{
+		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
+	}
+	</style>
+	<div id="externe_Fragen" class="scroll">
+	<form style=" border-radius:5px 5px 0px 0px;">
 	<label class="überschrift"></label>
 	<label class="überschrift">Kapitel</label>
 	<label class="überschrift">Frage</label>
 	<label class="überschrift">Typ</label>
 	<label class="überschrift"></label>
-	<label class="überschrift"></label>
+	<label class="überschrift"></label>	
 	</form>
-	<div id="externe_Fragen" class="scroll" style="padding:10px;">
 	<?php
-		//div externe_Fragen kennzeichnet den Bereich der per drag and drop verschoben werden kann
 		include "Fragen_Abfrage.php";
 	?>
 	</div>
