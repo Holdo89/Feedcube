@@ -17,7 +17,7 @@ require_once "session.php";
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Feedback Auswertung</title>
+	<title>Confirmation</title>
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">

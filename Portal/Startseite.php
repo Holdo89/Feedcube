@@ -17,7 +17,7 @@
 
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Feedback Auswertung</title>
+    <title>Dashboard</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>

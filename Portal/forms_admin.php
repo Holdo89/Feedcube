@@ -11,7 +11,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Feedback abgeben</title>
+	<title>Formulare</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="forms.css" rel="stylesheet" type="text/css">
 	<link href="charts2.css" rel="stylesheet" type="text/css">

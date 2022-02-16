@@ -10,7 +10,7 @@
 ?><head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Feedback Auswertung</title>
+    <title>FAQ</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="interner_blog.css" rel="stylesheet" type="text/css">
