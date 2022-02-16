@@ -3,9 +3,6 @@
 session_start();
 //unset($_COOKIE["feedback_abgegeben"]);
 //setcookie('feedback_abgegeben', '', time() - 3600, '/'); // empty value and old timestamp
-if(isset($_COOKIE["feedback_abgegeben"])) {
-	header("location:Feedback_abgegeben.php");
-  }
 
 $_SESSION["Umfrage"] = $_REQUEST["Umfrage"];		//true für das erste mal in das feedback eingestiegen
 
