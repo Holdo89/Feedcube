@@ -1,0 +1,420 @@
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+
+body {
+
+  background-size: cover;
+
+  width: 100vw;
+
+  height: 100%;
+
+  display: grid;
+
+  align-items: center;
+
+  justify-items: center;
+
+  font-size: 12pt;
+
+  font-family: "Spartan";
+
+  color: #2A293E;
+
+}
+
+
+
+select {
+
+  font-size: 12pt;
+
+  font-family: "Spartan";
+
+  margin: 25px;
+
+  height: 6vh;
+
+}
+
+
+
+
+
+label, input, textarea {
+
+  /*display: block;
+
+  width: 100%;*/
+
+  font-size: 12pt;
+
+  line-height: 24pt;
+
+  font-family: "Spartan";
+
+}
+
+
+
+form {
+
+  --background: white;
+
+  --border: rgba(0, 0, 0, 0.125);
+
+  --borderDark: rgba(0, 0, 0, 0.25);
+
+  --borderDarker: rgba(0, 0, 0, 0.5);
+
+  --bgColorH: 0;
+
+  --bgColorS: 0%;
+
+  --bgColorL: 98%;
+
+  --fgColorH: 210;
+
+  --fgColorS: 50%;
+
+  --fgColorL: 38%;
+
+  --shadeDark: 0.3;
+
+  --shadeLight: 0.7;
+
+  --shadeNormal: 0.5;
+
+  --borderRadius: 0.125rem;
+
+  --highlight: #306090;
+
+  background: white;
+
+  border: 3px solid var(--border);
+
+  border-radius: 10px 10px;
+
+  box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
+
+  padding: 2rem;
+
+  position: relative;
+
+  overflow: hidden;
+
+  min-width: 40%; 
+
+  max-width: 600px;
+
+}
+
+
+
+
+
+.choice {
+
+  padding: 3px;
+
+  font-size: 15px;
+
+}
+
+
+
+.chapter{
+
+  border: 0.5px solid rgba(0, 0, 0, 0.8);
+
+  padding: 10px;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+}
+
+
+
+.frage{
+
+  padding: 5px;
+
+  font-size: 18px;
+
+  margin-top:20px;
+
+  margin-bottom:20px;
+
+}
+
+
+
+.frage_text{
+
+  padding: 5px;
+
+  font-size: 18px;
+
+  margin-top:20px;
+
+  margin-bottom:20px;
+
+  width: 95%;
+
+}
+
+
+
+.antwort{
+
+  padding: 5px;
+
+  font-size: 30px;
+
+  text-align:center;
+
+  color: white;
+
+}
+
+
+
+.center {
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width: 70%;
+
+  margin-bottom: 30px;
+
+}
+
+
+
+.label_progress{
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  text-align: center;
+
+  margin-top:20px;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.center_button {
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width: 50%;
+
+  margin-top:30px;
+
+  padding: 5px;
+
+}
+
+
+
+.progressbar{
+
+  display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  width:60%;
+
+}
+
+
+
+input {
+
+  margin-bottom: 7pt;
+
+  margin-top: 7pt;
+
+  margin-left: 20px; 
+
+  margin-right:8px;
+
+}
+
+
+
+h3 {
+
+  font-weight: normal;
+
+  font-size: 10pt;
+
+  line-height: 24pt;
+
+  font-style: italic;
+
+  margin: 0 0 0.5em 0;
+
+}
+
+
+
+span {
+
+  font-size: 8pt;
+
+}
+
+
+
+em {
+
+  color: #f45702;
+
+  font-weight: bold;
+
+}
+
+
+
+input, textarea {
+
+  border: none;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  border-radius: 10px;
+
+  outline: none;
+
+}
+
+
+
+input:focus, textarea:focus {
+
+  border: 1px solid #6bd4b1;
+
+}
+
+
+
+textarea {
+
+  resize: none;
+
+}
+
+
+
+button {
+
+  display: block;
+
+  float: center;
+
+  line-height: 24pt;
+
+  padding: 0 20px;
+
+  border: none;
+
+  background: #f45702;
+
+  color: white;
+
+  letter-spacing: 2px;
+
+  transition: 0.2s all ease-in-out;
+
+  border-bottom: 2px solid transparent;
+
+  outline: none;
+
+}
+
+button:hover {
+
+  background: inherit;
+
+  color: #f45702;
+
+  border-bottom: 2px solid #f45702;
+
+}
+
+
+
+::selection {
+
+  background: #ffc7b8;
+
+}
+
+
+
+input:-webkit-autofill,
+
+input:-webkit-autofill:hover,
+
+input:-webkit-autofill:focus,
+
+textarea:-webkit-autofill,
+
+textarea:-webkit-autofill:hover,
+
+textarea:-webkit-autofill:focus {
+
+  border: 1px solid #6bd4b1;
+
+  -webkit-text-fill-color: #2A293E;
+
+  -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+
+  transition: background-color 5000s ease-in-out 0s;
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  form {
+
+    width: 90%;
+
+	  height:90%;
+
+  }
+
+}
+
+
+
