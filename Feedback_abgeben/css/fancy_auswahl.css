@@ -118,6 +118,8 @@ form {
   margin-right: auto;
   width: 50%;
   margin-top:30px;
+    background-color: #084f6e;
+  color:white;
 }
 
 .progressbar{

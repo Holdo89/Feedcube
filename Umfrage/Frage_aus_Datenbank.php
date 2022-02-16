@@ -175,7 +175,7 @@ function push_all_Answers(){
         $query = mysqli_query($link, $sql);
         $result = mysqli_fetch_array($query);
         echo $result["Text_nach_Abgabe"]."</p>";
-        echo "<img class='center' src='undraw_going_up.svg' alt='' width='300' style='margin-top:10vh;'> <input class='center_button' type='button' onclick=\\\"location.href='../Portal/Umfragen.php'\\\" value='zurück zum Portal'></input> \" ";
+        echo "<img class='center' src='undraw_going_up.svg' alt='' width='300' style='margin-top:10vh;'> <input class='center_button' type='button' style='background-color:#084f6e; color:white' onclick=\\\"location.href='../Portal/Umfragen.php'\\\" value='zurück zum Portal'></input> \" ";
         ?>;
         const xhttp = new XMLHttpRequest();
         //replace & in url weil sonst insert nicht funktioniert

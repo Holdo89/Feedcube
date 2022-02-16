@@ -58,7 +58,7 @@ $Multiplechoice_array_value = array();
 $Multiplechoice_array = array();
 $abgegebenes_feedback_array = array();
 
-while($index<=$Anzahl_Fragen) {
+while($index<$Anzahl_Fragen) {
     $row = mysqli_fetch_assoc($result);
     if($_SESSION["Sprache"]=="Deutsch"){
         array_push($Fragen_array,$row["Fragen_extern"]);
