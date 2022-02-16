@@ -112,9 +112,8 @@
 ?>
 <script>
 	document.getElementById("Umfragen").className = "active";
-	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/loop.png" width="50"> Umfragen </h1>
+		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/promotion.png" width="50"> Umfragen </h1>
 		<p style="margin-bottom:30px"> Bearbeite hier Umfragen zu den Mitarbeiter Bewertungen abgeben</p>	</div>
 		</div>
 	<style>
@@ -193,7 +192,7 @@
 		<form class="modalform" id="neueUmfrageForm" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:visible" action="insert_Umfrage.php" method="post">
 			<span class="close" style="text-align:right" onclick="hide_newUmfragemodal()">&times;</span>
 			<div style="text-align:left">
-			<p>Neue Umfrage hinzufügen<p>
+			<p id="ÜberschriftUmfrage" style="font-weight:bold">Neue Umfrage hinzufügen</p>
 			<hr style="margin-bottom:30px; margin-top:-5px;">
 			<p>Umfrage: </p>
 			<input class="center_select" id="Umfrage"  name="Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
@@ -233,7 +232,7 @@
 						include "Auswahlmöglichkeiten_Benutzer.php";
 					?>
 				</p>
-				<p>Erste Benachrichtigung am:
+				<p>Nächste Benachrichtigung am:
 				<input type="datetime-local" id="UmfrageDatum" style="border-left:none; border-right:none; border-top:none; " name="UmfrageDatum"></input>
 				</p>
 			</div>
@@ -675,6 +674,7 @@
 	}
 
 	function showNewUmfrageModal(){
+		document.getElementById("ÜberschriftUmfrage").innerHTML = "Neue Umfrage hinzufügen";
 		neueUmfragemodal.style.display="block";
 		neueUmfragemodalform.action = "insert_Umfrage.php";
 		resetRadio();
@@ -683,6 +683,7 @@
 	}
 
 	function showUmfrage(id){
+		document.getElementById("ÜberschriftUmfrage").innerHTML = "Umfrage bearbeiten";
 		resetRadio();
 		neueUmfragemodal.style.display="block";
 		neueUmfragemodalform.action = "update_Umfrage.php?Id="+id;

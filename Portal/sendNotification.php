@@ -35,15 +35,23 @@ while($row = mysqli_fetch_assoc($result))
         $Benutzerarray = explode(",",$Benutzer);
         for($i = 0; $i<sizeof($Benutzerarray); $i++)
         {
-            $sql_email = "SELECT email FROM users WHERE username = '".$Benutzerarray[$i]."'";
-            $result_email = mysqli_query($link, $sql_email) ;
-            $row_email = mysqli_fetch_assoc($result_email);
-            $email = $row_email["email"];
-            echo $email;
-            $msg = "Test";
-            $headers = 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
-            mail($email,$row["Umfrage"],$msg,$headers);
+            $sql_emailsent="SELECT ersteBenachrichtigungGesendet FROM umfragen WHERE ID = ".$row['ID'];
+            $result_emailsent = mysqli_query($link, $sql_emailsent) ;
+            $row_emailsent = mysqli_fetch_assoc($result_emailsent);
+            if (($row['Benachrichtigung']=="einmalig" && $row_emailsent['ersteBenachrichtigungGesendet']==0)||$row['Benachrichtigung']=="wiederkehrend") {
+                $sql_email = "SELECT email FROM users WHERE username = '".$Benutzerarray[$i]."'";
+                $result_email = mysqli_query($link, $sql_email) ;
+                $row_email = mysqli_fetch_assoc($result_email);
+                $email = $row_email["email"];
+                echo $email;
+                $msg = "Test";
+                $headers = 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
+                mail($email, $row["Umfrage"], $msg, $headers);
+            }
         }
+
+        $sql_update = "UPDATE umfragen SET ersteBenachrichtigungGesendet = 1 WHERE ID = ".$row['ID'];
+        mysqli_query($link, $sql_update);
     }
 }
 ?>

@@ -7,7 +7,7 @@
 			
     <a id ="feedback_charts" href="feedback_charts.php"><i class="fa fa-line-chart" aria-hidden="true"></i> Auswertung</a>
     <a id ="forms_admin" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
-    <a id ="Intern" href="Intern.php"><i class="fa fa-bullhorn" aria-hidden="true"></i> Feedback</a>
+    <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-bullhorn" aria-hidden="true"></i> Umfragen</a>
     <a id ="interner_blog" href="interner_blog.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>
     <div id ="optionen" class="dropdown">
     <button class="dropbtn"><i class="fa fa-wrench" aria-hidden="true"></i> Optionen </button>
@@ -16,7 +16,6 @@
             <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Antworten</a>
             <a id ="Fragensets" href="Fragenset.php"><i class="fa fa-question-circle" aria-hidden="true"></i> Fragensets</a>
             <a id ="Leistungmanagement" href="Leistungmanagement.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Leistungen</a>
-            <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-sync" aria-hidden="true"></i> Umfragen</a>
             <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
     </div>
     </div>
