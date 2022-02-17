@@ -54,26 +54,12 @@
 <script>
 	document.getElementById("Intern").className = "active";
 </script>
-		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/promotion.png" width="60" style="margin-top:-10px;"> Feedback </h1>
+		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/graph.png" width="60" style="margin-top:-10px;"> Auswertung </h1>
 		</div>
-	<div style="width:85vw; margin:auto; font-size:14px">	
-
+	<div style="width:85vw; margin:auto; font-size:16px">	
+	<p style='margin-bottom:50px'>Hier findest du die Auswertung des Feedbacks zu internen Umfragen</p>
 	<?php
-		$sql = "SELECT name, internes_feedback_abgegeben FROM users WHERE username = '".$_SESSION['username']."'";
-		$result = mysqli_query($link, $sql);
-		$row = mysqli_fetch_assoc($result);
-		$today= strtotime("now");
-		$today= date('Y-m-d',$today); 
-		$new_feedback_date = date('Y-m-d', strtotime($row["internes_feedback_abgegeben"] . ' +1 weeks'));//nur einmalpro Woche ist es möglich Feedback abzugeben
-		if ($today<=$new_feedback_date){
-			echo"<p>Vielen Dank für dein Feedback, 7 Tage nach Abgabe kannst du erneut Feedback abgeben.</p> <p style='margin-bottom:50px'>Erneutes Feedback möglich am: ".$new_feedback_date."</p>";
 			include "intern_feedback_charts.php";
-		}
-		else{
-			echo'<link href="Intern.css" rel="stylesheet" type="text/css">';
-			echo"<p style='margin-bottom:50px'> Hier kannst du anonym internes Feedback abgeben, es werden keinerlei Userdaten gespeichert.</p>";
-			include "interne_Fragen.php";
-		}
 	?>
 	</div>
     </body>

@@ -131,8 +131,8 @@
 <script>
 	document.getElementById("Umfragen").className = "active";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/promotion.png" width="50"> Umfragen </h1>
-		<p style="margin-bottom:30px"> Bearbeite hier Umfragen zu den Mitarbeiter Bewertungen abgeben</p>	</div>
+		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/promotion.png" width="60"> Umfragen </h1>
+		<p style="margin-bottom:30px"> Erstelle und bearbeite Umfragen zu denen Mitarbeiter und Kollegen Bewertungen abgeben</p>	</div>
 		</div>
 	<style>
 	.überschrift{
