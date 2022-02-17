@@ -320,6 +320,8 @@ else
 		}
 		else{
 			hidenotificationoptions();
+			var Umfragedatum = document.getElementById("UmfrageDatum");
+			Umfragedatum.value="";
 		}
 
 	}
