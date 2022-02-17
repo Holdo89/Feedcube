@@ -5,6 +5,7 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+  border:none;
 }
 
 .switch input { 
@@ -62,7 +63,7 @@ input:checked + .slider:before {
 </style>
 
 <label class="switch">
-  <input type="checkbox" oninput = "shownotifications()">
+  <input id="toggle" type="checkbox" value = "toggle" oninput = "shownotifications()">
   <span class="slider round"></span>
 </label>
 

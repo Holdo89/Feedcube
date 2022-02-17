@@ -226,10 +226,10 @@ else
 			<br>
 			<p>Umfragetyp:</p>
 				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="hidenotificationoptionsdetails()">einmalig
+				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="hidenotificationoptionsdetails()" required>einmalig
 				</label>
 				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="notificationoptionsdetails()">wiederkehrend
+				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="notificationoptionsdetails()" required>wiederkehrend
 				</label>
 				<br>
 				<br>
@@ -344,11 +344,21 @@ else
 	function hidenotificationoptionsdetails(){
 		var Intervall = document.getElementById("Intervall");
 		Intervall.style.display="none";
+		var Intervalloptionen = document.getElementsByName("Benachrichtigungsintervall");
+		for(var i = 0; i<Intervalloptionen.length; i++)
+		{
+			Intervalloptionen[i].required=false;	
+		}
 	}
 
 	function notificationoptionsdetails(){
 		var Intervall = document.getElementById("Intervall");
-		Intervall.style.display="block";
+		Intervall.style.display="block";	
+		var Intervalloptionen = document.getElementsByName("Benachrichtigungsintervall");
+		for(var i = 0; i<Intervalloptionen.length; i++)
+		{
+			Intervalloptionen[i].required=true;	
+		}
 	}
 
 	function user_abfrage_speichern_intern(id) {
@@ -632,24 +642,27 @@ else
 			if (this.readyState == 4 && this.status == 200) {
 				console.log(this.responseText)
 				for (var i = 0; i < checkboxes.length; i++) {
-					if(checkboxes[i].value!="multiselect-all")
+					if(checkboxes[i].value!="toggle")
 					{
-						document.getElementById(checkboxes[i].value).selected=false
-					}
-						checkboxes[i].checked = false;
-						var listitem = checkboxes[i].closest("li");
-						listitem.className = "false";
-					
+						if(checkboxes[i].value!="multiselect-all")
+						{
+							document.getElementById(checkboxes[i].value).selected=false
+						}
+							checkboxes[i].checked = false;
+							var listitem = checkboxes[i].closest("li");
+							listitem.className = "false";
+						
 
-					if(this.responseText.includes("|"+checkboxes[i].value+"|"))
-					{
-						console.log(checkboxes[i].value)
-						document.getElementById(checkboxes[i].value).selected=true
-						checkboxes[i].checked = true;
-						var listitem = checkboxes[i].closest("li");
-						listitem.className = "active";
-						u=u+1;
-						selectbox.innerHTML = u+" Benutzer gewählt";
+						if(this.responseText.includes("|"+checkboxes[i].value+"|"))
+						{
+							console.log(checkboxes[i].value)
+							document.getElementById(checkboxes[i].value).selected=true
+							checkboxes[i].checked = true;
+							var listitem = checkboxes[i].closest("li");
+							listitem.className = "active";
+							u=u+1;
+							selectbox.innerHTML = u+" Benutzer gewählt";
+						}
 					}
 				}
 				selectbox.style.fontSize="15px";
@@ -661,11 +674,11 @@ else
 		;};
 		xmlhttp_options.open("GET", "getBenutzer.php?ID=" + id, true);
 		xmlhttp_options.send();
+		
 	}
 
 	function resetRadio()
 	{
-		try{
 		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
 		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
 
@@ -678,22 +691,22 @@ else
 		var radio = document.querySelectorAll('input[type="radio"]');
 
 		for (var i = 0; i < checkboxes.length; i++) {
-			if(checkboxes[i].value!="multiselect-all")
+			if(checkboxes[i].value!="toggle")
 			{
-				document.getElementById(checkboxes[i].value).selected=false
+				if(checkboxes[i].value!="multiselect-all")
+				{
+					document.getElementById(checkboxes[i].value).selected=false
+				}
+				checkboxes[i].checked = false;
+				var listitem = checkboxes[i].closest("li");
+				listitem.className = "false";
 			}
-			checkboxes[i].checked = false;
-			var listitem = checkboxes[i].closest("li");
-			listitem.className = "false";
 		}
 
 		for (var i = 0; i < radio.length; i++) {
 			radio[i].checked = false;
 		}
 	}
-	catch(Exception) {
-}
-}
 
 	function getUmfrageDatum(id){
 		var UmfrageDatum = document.getElementById('UmfrageDatum');
@@ -702,10 +715,9 @@ else
 			if (this.readyState == 4 && this.status == 200) {
 				var UmfrageDatum = document.getElementById('UmfrageDatum');
 				UmfrageDatum.value = this.responseText.replace(" ", "T").slice(0,-2);
-;
-			}
+			;}
 		;};
-		xmlhttp_options.open("GET", "getUmfrageDatum.php?ID=" + id, true);
+		xmlhttp_options.open("GET", "getUmfrageDatum.php?ID=" + id, false);
 		xmlhttp_options.send();
 	}
 
@@ -716,11 +728,16 @@ else
 
 	function showNewUmfrageModal(){
 		document.getElementById("ÜberschriftUmfrage").innerHTML = "Neue Umfrage hinzufügen";
+		document.getElementById("Benachrichtigungsdetails").style.display="none";
 		neueUmfragemodal.style.display="block";
 		neueUmfragemodalform.action = "insert_Umfrage.php";
+		var Toggle = document.getElementById("toggle");
+		Toggle.checked=false;
 		resetRadio();
 		resetBeschreibung();
 		resetUmfrageDatum();
+		hidenotificationoptionsdetails();
+		hidenotificationoptions();
 	}
 
 	function showUmfrage(id){
@@ -742,16 +759,21 @@ else
 		}
 		var Intervall = document.getElementById("Intervall");
 		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
+		var Toggle = document.getElementById("toggle");
+		Toggle.checked=false;
 		hidenotificationoptions();
-	
-
-		if(AuswahlUmfragentyp_value!="niemals")
+		hidenotificationoptionsdetails();
+		var UmfrageDatum = document.getElementById('UmfrageDatum').value;
+		console.log("UmfrageDatum:"+UmfrageDatum)
+		if(UmfrageDatum != "")
 		{
-			notificationoptions();	
-			if(AuswahlUmfragentyp_value=="wiederkehrend")
-			{
-				notificationoptionsdetails();	
-			}
+			Toggle.checked=true;
+			notificationoptions();
+	
+		}
+		if(AuswahlUmfragentyp_value=="wiederkehrend")
+		{
+			notificationoptionsdetails();	
 		}
 	}
 
