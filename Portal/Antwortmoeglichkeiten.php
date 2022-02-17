@@ -76,7 +76,7 @@
     margin-top: 12px;
     }
 
-#Antworten form.ui-state-highlight {
+#Antworten_Bewertungen form.ui-state-highlight {
 	width:70%;
     padding: 20px;
     background-color: #eaecec;
@@ -156,7 +156,7 @@
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>
-	<div id="Antworten" class="scroll">
+	<div id="Antworten_Bewertungen" class="scroll">
 	<?php
 		include "Antworten_Abfrage.php";
 	?>
@@ -188,62 +188,12 @@
 	<script>
 	
 	$(document).ready(function(){
-		$( "#externe_Fragen" ).sortable({
+		$( "#Antworten_Bewertungen" ).sortable({
 			placeholder : "ui-state-highlight",
 			update  : function(event, ui)
 			{	
 				var post_order_ids = new Array();
-				$('#externe_Fragen form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#interne_Fragen" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#interne_Fragen form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload_intern.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#Antworten" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#Antworten form').each(function(){
+				$('#Antworten_Bewertungen form').each(function(){
 					post_order_ids.push($(this).data("post-id"));
 				});
 				$.ajax({

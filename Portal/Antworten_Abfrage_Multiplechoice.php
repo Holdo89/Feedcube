@@ -2,7 +2,6 @@
 
 $sql = "SELECT * FROM multiplechoice_answers ORDER BY post_order_no ASC";
 $result = mysqli_query($link, $sql);
-$typ = "Multiplechoice";
 
 while($row = mysqli_fetch_assoc($result)) {
     echo"<form class='form_antworten' data-post-id=".$row["post_id"]." style = 'cursor: grab'>";
