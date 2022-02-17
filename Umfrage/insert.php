@@ -3,9 +3,18 @@
 // Start the session
 session_start();
 require_once "../config.php";
-if(isset($_COOKIE["feedback_abgeben"])) {
-    header("location:Feedback_abgegeben.php");
+if(isset($_COOKIE["Umfrage".$_SESSION["Umfrage"]."_teilgenommen"])) {
+	header("location:Feedback_abgegeben.php");
+  }
+$cookie_name = "Umfrage".$_SESSION["Umfrage"]."_teilgenommen";
+$sql = "SELECT Intervall FROM umfragen WHERE ID = ".$_SESSION["Umfrage"];
+$query = mysqli_query($link, $sql);
+$result = mysqli_fetch_array($query);
+if($result["Intervall"]==0){
+    $result["Intervall"]=3000;
 }
+$cookie_value = date("Y-m-d H:i", time() + 86400*$result["Intervall"]);
+setcookie($cookie_name, $cookie_value, time() + (86400*$result["Intervall"]), "/"); // 86400 = 1 day
 
 $Umfrage = mysqli_real_escape_string($link, $_SESSION["Umfrage"]);
 $Antworten_temp = $_REQUEST["Antworten_array"];

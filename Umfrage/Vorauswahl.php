@@ -6,6 +6,10 @@ session_start();
 
 $_SESSION["Umfrage"] = $_REQUEST["Umfrage"];		//true für das erste mal in das feedback eingestiegen
 
+if(isset($_COOKIE["Umfrage".$_SESSION["Umfrage"]."_teilgenommen"])) {
+	header("location:Feedback_abgegeben.php");
+  }
+
 include "../config.php";
 $sql_test = "SELECT Umfrage from umfragen WHERE ID = ".$_SESSION['Umfrage'];
 $exec_test = mysqli_query($link,$sql_test);

@@ -3,7 +3,9 @@
 session_start();
 include "../config.php";
   $ID=$_SESSION["Umfrage"];
-
+  if(isset($_COOKIE["Umfrage".$_SESSION["Umfrage"]."_teilgenommen"])) {
+    header("location:Feedback_abgegeben.php");
+    }
 ?>
 
 <!doctype html>
