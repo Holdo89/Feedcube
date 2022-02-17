@@ -224,12 +224,9 @@ else
 			<p>Umfrage: </p>
 			<input class="center_select" id="Umfrage"  name="Umfrage" placeholder="Eingabe einer neuen Umfrage" required></input>
 			<br>
-			<p>Benachrichtigung:</p>
+			<p>Umfragetyp:</p>
 				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="niemals" value="niemals" style="margin-top:10px;" oninput="hidenotificationoptions()">niemals
-				</label>
-				<label class="radio-inline">
-				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="notificationoptions()">einmalig
+				<input type="radio" name="Auswahl_Umfragentyp" id="einmalig" value="einmalig" style="margin-top:10px;" oninput="hidenotificationoptionsdetails()">einmalig
 				</label>
 				<label class="radio-inline">
 				<input type="radio" name="Auswahl_Umfragentyp" id="wiederkehrend" value="wiederkehrend" style="margin-top:10px;" oninput="notificationoptionsdetails()">wiederkehrend
@@ -253,6 +250,10 @@ else
 				<br>
 				<br>
 			</div>
+			<p>Benachrichtigungen:</p>
+			<?php
+				include "toggle.php";
+			?>
 			<div id="Benachrichtigungsdetails" style="display:none">
 				<p>Benutzer die benachrichtigt werden:
 					<?php
@@ -312,10 +313,18 @@ else
 		var customInterval = document.getElementById("quantity");
 		quantity.disabled = false;
 	}
+	function shownotifications(){
+		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
+		if(Benachrichtigungsdetails.style.display=="none"){
+			notificationoptions();
+		}
+		else{
+			hidenotificationoptions();
+		}
+
+	}
 
 	function hidenotificationoptions(){
-		var Intervall = document.getElementById("Intervall");
-		Intervall.style.display="none";	
 		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
 		Benachrichtigungsdetails.style.display="none";	
 		var AuswahlBenutzer = document.getElementById("Auswahl_Trainer");
@@ -325,8 +334,6 @@ else
 	}
 
 	function notificationoptions(){
-		var Intervall = document.getElementById("Intervall");
-		Intervall.style.display="none";	
 		var Benachrichtigungsdetails = document.getElementById("Benachrichtigungsdetails");
 		Benachrichtigungsdetails.style.display="block";
 		var AuswahlBenutzer = document.getElementById("Auswahl_Trainer");
@@ -334,9 +341,12 @@ else
 		var Umfragedatum = document.getElementById("UmfrageDatum");
 		Umfragedatum.required=true;	
 	}
+	function hidenotificationoptionsdetails(){
+		var Intervall = document.getElementById("Intervall");
+		Intervall.style.display="none";
+	}
 
 	function notificationoptionsdetails(){
-		notificationoptions();
 		var Intervall = document.getElementById("Intervall");
 		Intervall.style.display="block";
 	}
@@ -655,6 +665,7 @@ else
 
 	function resetRadio()
 	{
+		try{
 		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
 		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
 
@@ -680,6 +691,9 @@ else
 			radio[i].checked = false;
 		}
 	}
+	catch(Exception) {
+}
+}
 
 	function getUmfrageDatum(id){
 		var UmfrageDatum = document.getElementById('UmfrageDatum');
