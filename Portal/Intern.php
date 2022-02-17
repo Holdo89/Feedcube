@@ -53,6 +53,7 @@
 ?>
 <script>
 	document.getElementById("Intern").className = "active";
+	document.getElementById("UmfrageMöglichkeiten").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/graph.png" width="60" style="margin-top:-10px;"> Auswertung </h1>
 		</div>

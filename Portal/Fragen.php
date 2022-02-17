@@ -1,8 +1,10 @@
 <?php
  require_once "../config.php";
  require_once "session.php";
+ include "RedirectToStart.php";
 
 $Schieberegler_err="";
+
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") 
  {

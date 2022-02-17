@@ -1,6 +1,7 @@
 <?php
  require_once "../config.php";
  require_once "session.php";
+ include "RedirectToStart.php";
 ?>
 
 <!DOCTYPE HTML>

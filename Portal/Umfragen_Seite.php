@@ -126,10 +126,19 @@
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
 	<?php
-	include "navigation_admin.php";		//Pie and COlumnchart
+
+$sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
+$exec = mysqli_query($link,$sql);
+$row = mysqli_fetch_assoc($exec);
+$IsAdmin = $row["Is_Admin"];
+if($IsAdmin == 1)
+	include "navigation_admin.php";
+else
+	include "navigation.php";
 ?>
 <script>
 	document.getElementById("Umfragen").className = "active";
+	document.getElementById("UmfrageMöglichkeiten").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/promotion.png" width="60"> Umfragen </h1>
 		<p style="margin-bottom:30px"> Erstelle und bearbeite Umfragen zu denen Mitarbeiter und Kollegen Bewertungen abgeben</p>	</div>

@@ -7,9 +7,14 @@
 </a>
     <a style="  margin-bottom:20px; visibility: hidden;"></a>		
     <a id ="feedback_charts" href="feedback_charts.php"><i class="fa fa-line-chart" aria-hidden="true"></i> Auswertung</a>
-    <a id ="forms" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
-    <a id ="Intern" href="Umfragen.php"><i class="fa fa-bullhorn" aria-hidden="true"></i> Umfragen</a>
-    <a id ="intern_blog_noadmin" href="interner_blog_noadmin.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>
+    <a id ="forms_admin" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>				
+    <div id ="UmfrageMöglichkeiten" class="dropdown">
+    <button class="dropbtn"><i class="fa fa-bullhorn" aria-hidden="true"></i> Umfragen </button>
+    <div class="dropdown-content">
+        <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-cogs" aria-hidden="true"></i> Konfiguration</a>
+        <a id ="Intern" href="Intern.php"><i class="fa fa-pie-chart" aria-hidden="true"></i> Auswertung</a>
+    </div>
+    </div>    <a id ="intern_blog_noadmin" href="interner_blog_noadmin.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>
 
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
