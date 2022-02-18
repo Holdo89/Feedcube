@@ -10,6 +10,14 @@ $Kapitel = $_REQUEST["Kapitel"];
 $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
 $Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
 
+if($Antworttyp == "fragenspezifisch")
+{
+    $Fragenspezifisch = $ID;
+}
+else
+{
+    $Fragenspezifisch = 0;
+}
 
 if($Type=="extern"){
     $sql = "UPDATE admin SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
@@ -42,22 +50,22 @@ if($Questiontype!="Text")
             if(!strpos($Antwort[$i],"_unchecked")){
                 if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }
                 else if($Questiontype=="Multiplechoice")
                 {
-                    $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                    $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }
                 mysqli_query($link,$query); 
             } 
             else{
                 if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                    $query="UPDATE bewertung_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }
                 else if($Questiontype =="Multiplechoice")
                 {
-                    $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                    $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }    
                 mysqli_query($link,$query); 
             }
@@ -69,22 +77,22 @@ if($Questiontype!="Text")
             if(!strpos($Antwort[$i],"_unchecked")){
                 if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE bewertung_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                    $query="UPDATE bewertung_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }
                 else if($Questiontype=="Multiplechoice")
                 {
-                    $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                    $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }
                 mysqli_query($link,$query); 
             } 
             else{
                 if($Questiontype=="Bewertung")
                 {
-                    $query="UPDATE bewertung_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                    $query="UPDATE bewertung_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }
                 else if($Questiontype =="Multiplechoice")
                 {
-                    $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "'";  
+                    $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 0 WHERE Answers = '".substr($Antwort[$i],0,-10). "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
                 }    
                 mysqli_query($link,$query); 
             }

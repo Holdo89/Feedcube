@@ -63,6 +63,14 @@ mysqli_query($link, $sql);
 $sql= "ALTER TABLE ".$Type."es_feedback ADD Frage_".$row['ID']." TEXT";
 mysqli_query($link, $sql);
 
+if($Antworttyp == "fragenspezifisch")
+{
+    $Fragenspezifisch = $ID;
+}
+else
+{
+    $Fragenspezifisch = 0;
+}
 
 //Fragen_relate_antworten.php
 for ($i=0; $i<sizeof($Antwort);$i++) 
@@ -76,11 +84,11 @@ for ($i=0; $i<sizeof($Antwort);$i++)
         }
         if($Type=="extern")
             {
-                $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";   
             }
             else
             {
-                $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "'";  
+                $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
             }
         mysqli_query($link,$query); 
     } 

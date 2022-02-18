@@ -234,7 +234,7 @@ else
 				<br>
 				<br>
 			<div id="Intervall" style="display:none">
-				<p>Intervall:</p>
+				<p>Intervall für Teilnahme an der Umfrage:</p>
 					<label class="radio-inline">
 					<input type="radio" name="Benachrichtigungsintervall" id="1" value=1 style="margin-top:10px;" oninput="disablecustomintervall()">täglich
 					</label>
