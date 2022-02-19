@@ -28,4 +28,12 @@ xmlhttp.open("GET", "interne_Frage_entfernen.php?Id=" + Id, true);
 xmlhttp.send();
 }
 
+
+function entfernen_antwort(Id,Typ){
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open("GET", "Antwort_entfernen.php?Id=" + Id + "&Typ=" + Typ, true);
+xmlhttp.send();
+}
+
 </script>

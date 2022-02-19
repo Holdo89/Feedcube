@@ -21,7 +21,6 @@
 	<?php
 	include "Umfrage_speichern.php";
 	include "Fragenset_speichern.php";
-	include "Frage_speichern.php";
 	?>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
