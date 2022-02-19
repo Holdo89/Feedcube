@@ -10,7 +10,6 @@ while($row = mysqli_fetch_assoc($result)) {
     echo "<form class='form_intern' data-post-id=".$row["post_id"]." style = 'cursor: grab'>";
     echo "<div class='center_select' style='text-align:center; margin:auto; min-width:35px'><i class='fa fa-bars'></i></div>";
     echo "<input class='center_select' id='Frage_".$row["ID"]."' value='".$row["Fragen_intern"]."' onblur='user_abfrage_speichern_intern(".$row["ID"].")'></input>";
-    echo "<input class='center_select' id='Auswahl_Fragentyp_".$row["ID"]."' name='Auswahl_Fragentyp' value = ".$row["Typ"]." oninput='user_abfrage_speichern_intern(".$row["ID"].")' readonly></input>";
     if ($row["Typ"]=="Bewertung") 
     { 
         echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"intern\", \"Bewertung\");' ><i class='fa fa-pencil'></i></button>";
