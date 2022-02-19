@@ -108,7 +108,14 @@ if($Step == 1)
 }
 
 else{
-    header("location: Fragen.php");
+    if($Type=="intern")
+    {
+        header("location: Umfragen.php");
+
+    }
+    else{
+        header("location: Fragen.php");
+    }
 }
   
 ?> 

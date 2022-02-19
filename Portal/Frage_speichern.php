@@ -58,9 +58,8 @@ function speichern_range(){
 
 function entfernen_antwort(Id,Typ){
 
-    var Antwort = document.getElementById("Antwort_"+Id).value;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "Antwort_entfernen.php?Id=" + Id + "&Antwort=" + Antwort + "&Typ=" + Typ, true);
+    xmlhttp.open("GET", "Antwort_entfernen.php?Id=" + Id + "&Typ=" + Typ, true);
     xmlhttp.send();
 }
 

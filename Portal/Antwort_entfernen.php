@@ -4,7 +4,6 @@ require_once "session.php";
 
 $Typ=$_REQUEST["Typ"];
 $Id=$_REQUEST["Id"];
-$Antwort=$_REQUEST["Antwort"];
 
 if($Typ == "Bewertung")
 {
