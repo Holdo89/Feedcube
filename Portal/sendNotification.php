@@ -17,7 +17,7 @@ $result = mysqli_query($link, $sql) ;
 
 while($row = mysqli_fetch_assoc($result)) 
 {
-    if($now>$row['Benachrichtigungsdatum'] && $row['Benachrichtigung']!="niemals" )
+    if($now>$row['Benachrichtigungsdatum'] && $row['Benachrichtigungsdatum']!="0000-00-00 00:00:00" )
     {
         $date=date_create($row['Benachrichtigungsdatum']);
         date_add($date,date_interval_create_from_date_string($row['Intervall']." days"));
