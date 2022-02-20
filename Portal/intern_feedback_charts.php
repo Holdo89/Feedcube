@@ -1,5 +1,12 @@
 
 <div id=fullAuswahl class="FragenAuswahl">
+<label class="Auswahl">Umfrage: </label>
+			<?php
+				include "Auswahlmöglichkeiten_Umfrage.php";
+			?>
+<div></div>
+<div></div>
+<div></div>
 <label class="Auswahl">Frage: </label>
 			<?php
 				include "intern_Auswahlmöglichkeiten_Fragen.php"
