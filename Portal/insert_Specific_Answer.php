@@ -10,13 +10,13 @@ $ID = $_REQUEST["ID"];
 $Fragentyp = $_REQUEST["Fragentyp"];
 $Type = $_REQUEST["Externinterntyp"];
 
-if($Type=="extern")
+if ($Fragentyp=="Bewertung")
 {
-    $sql = "SELECT MAX(post_order_no) FROM admin";
+    $sql = "SELECT MAX(post_order_no) FROM bewertung_answers";
 }
 else
 {
-    $sql = "SELECT MAX(post_order_no) FROM intern";
+    $sql = "SELECT MAX(post_order_no) FROM multiplechoice_answers";
 }
 $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
