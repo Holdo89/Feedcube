@@ -42,11 +42,7 @@ $Umfrage_titel = mysqli_fetch_array($exec_test);
 	?>" alt="" width="220" height="70">
 <label align=center style="line-height:23px;">
 <?php 
-
-	$sql = "SELECT Text_vor_Abgabe FROM system";
-	$query = mysqli_query($link, $sql);
-	$result = mysqli_fetch_array($query);
-	echo $result["Text_vor_Abgabe"]."</label><br><br>
+	echo "Vielen Dank für die Teilnahme an der folgenden Umfrage</label><br><br>
 	<p>Umfrage	: <b>".$Umfrage_titel["Umfrage"]."</b></p>
 	<input class='center_button' type='submit' value='Feedback starten'>";
 

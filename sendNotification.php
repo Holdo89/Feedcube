@@ -49,7 +49,7 @@ function sendNotification($subdomain)
                     $msg = "Hallo ".$Benutzerarray[$i].",
                     
 Du kannst jetzt an der Umfrage \"".$row["Umfrage"]."\" teilnehmen. 
-Öffne dazu folgenden Link:
+Folge dazu dem untenstehenden Link:
 https://".$subdomain.".feedcube.net/Software/Umfrage/Vorauswahl.php?Umfrage=".$row['ID']."
                     
 Dein Feedcube Team";
@@ -63,5 +63,7 @@ Dein Feedcube Team";
         }
     }
 }
+sendNotification("swql");
 sendNotification("test");
+
 ?>
