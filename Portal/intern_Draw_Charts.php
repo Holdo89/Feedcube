@@ -344,6 +344,19 @@ else{
     }
 }
 
+function updateAuswahlFragen(id){
+    console.log("Test")
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("Auswahl_Frage").innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET", "update_intern_Auswahlmoeglichkeiten_Fragen.php?ID="+id, true);
+    xmlhttp.send();
+    console.log("Test2");
+    //update();
+}
 
 function update_initiate(){
     console.log("Testinit")

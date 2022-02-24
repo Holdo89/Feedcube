@@ -8,9 +8,9 @@
 <div></div>
 <div></div>
 <label class="Auswahl">Frage: </label>
-			<?php
-				include "intern_Auswahlmöglichkeiten_Fragen.php"
-			?>
+	<?php
+		include "intern_Auswahlmöglichkeiten_Fragen.php"
+	?>
 	<div style="text-align:left;font-size:16px; margin-top:8px;cursor: pointer;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
 	<?php
 	if($IsAdmin == 1)

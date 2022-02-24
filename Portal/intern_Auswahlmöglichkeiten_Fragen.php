@@ -3,8 +3,6 @@
 require_once "../config.php";
 require_once "session.php";
 
-
-
 $sql = "SELECT Is_Admin FROM users WHERE username = '".$_SESSION["username"]."'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -17,9 +15,7 @@ else{
         $Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmöglichkeit'> Es wurde noch keine Frage hinzugefügt, wende dich an einen Feedcube Administrator</div>";
     }
 
-
     $sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' ORDER BY post_order_no ASC";
-
 	$i=0;
 	$result = mysqli_query($link, $sql) ;
     while($row = mysqli_fetch_assoc($result)) {
