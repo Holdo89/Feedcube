@@ -569,8 +569,7 @@ else
 		var UmfrageBeschreibung = document.getElementById("Umfrage");
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				UmfrageBeschreibung.value=this.responseText;
-				console.log("Text:"+this.responseText)
+				UmfrageBeschreibung.value=this.responseText.slice(0,-2);
 			}
 		;};
 		xmlhttp_options.open("GET", "getUmfrageBeschreibung.php?ID=" + id, true);
