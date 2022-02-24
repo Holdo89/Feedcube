@@ -344,18 +344,18 @@ else{
     }
 }
 
-function updateAuswahlFragen(id){
-    console.log("Test")
+function updateAuswahlFragen(){
+    var id = document.getElementById("Auswahl_Umfrage").value;
+    console.log(id);
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("Auswahl_Frage").innerHTML=this.responseText;
         }
     }
-    xmlhttp.open("GET", "update_intern_Auswahlmoeglichkeiten_Fragen.php?ID="+id, true);
+    xmlhttp.open("GET", "update_intern_Auswahlmoeglichkeiten_Fragen.php?ID="+id, false);
     xmlhttp.send();
-    console.log("Test2");
-    //update();
+    update();
 }
 
 function update_initiate(){

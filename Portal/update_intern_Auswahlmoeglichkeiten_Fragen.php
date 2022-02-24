@@ -9,14 +9,19 @@ $row = mysqli_fetch_assoc($result);
 $ID = $_REQUEST["ID"];
 $Message="";
 
-if($row["Is_Admin"]==1){
-        $Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmöglichkeit'> Es wurde noch keine Frage <a href='Fragen.php'>hinzugefügt</a></div>";
-    }
-else{
-	$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmöglichkeit'> Es wurde noch keine Frage hinzugefügt, wende dich an einen Feedcube Administrator</div>";
-}
+echo"<script>console.log('".$ID."')</script>";
 
-$sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' AND Umfrage_".$ID." = 1 ORDER BY post_order_no ASC";
+$Message ="<option id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmöglichkeit'> Bei dieser Umfrage wurde noch keine Frage hinzugefügt</option>";
+
+
+if($ID=="%")
+{
+	$sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' ORDER BY post_order_no ASC";
+
+}
+else{
+	$sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' AND Umfrage_".$ID." = 1 ORDER BY post_order_no ASC";
+}
 
 $i=0;
 $result = mysqli_query($link, $sql) ;

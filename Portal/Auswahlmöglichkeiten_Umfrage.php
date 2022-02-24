@@ -28,7 +28,7 @@ if ($i==0)
 else
 {
     $result = mysqli_query($link, $sql) ;
-    echo'<select class="Auswahl_Select" id="Auswahl_Umfrage" name="Auswahl_Umfrage" oninput="updateAuswahlFragen(69)">';
+    echo'<select class="Auswahl_Select" id="Auswahl_Umfrage" name="Auswahl_Umfrage" oninput="updateAuswahlFragen()">';
 	echo '<option value="%25">Alle Umfragen</option>';
 
     while($row = mysqli_fetch_assoc($result)) {
