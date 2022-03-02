@@ -7,7 +7,7 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     echo "<form style='border-radius:5px 5px 0px 0px;margin-bottom:0px;'>
     <button type='button' id='angle_".$row_Umfragen["ID"]."' class='center_button' onclick='showQuestions(".$row_Umfragen["ID"].");' ><i class='fa fa-angle-right'></i></button>
     <input class= center_select id='Umfrage_".$row_Umfragen["ID"]."' value='".$row_Umfragen["Umfrage"]."' onblur='user_abfrage_speichern(".$row_Umfragen["ID"].")'></input>
-    <button type='button' class='center_button' onclick=\"location.href='../Umfrage/Vorauswahl.php?Umfrage=".$row_Umfragen["ID"]."';\"><i class='fa fa-link'></i><span class='tooltiptext'>Link kopieren</span></button>    
+    <button type='button' class='center_button' onclick='copyLink(".$row_Umfragen["ID"].")';\"><i class='fa fa-link'></i><span class='tooltiptext'>Link kopieren</span></button>    
     <button type='button' class='center_button' onclick='showUmfrage(".$row_Umfragen["ID"].")'><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>           
     <button type='button' class='center_button' onclick='user_abfrage_löschen(".$row_Umfragen["ID"].")'><i class='fa fa-trash'></i><span class='tooltiptext'>Löschen</span></button>";            
     echo'
@@ -19,5 +19,11 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     <button id="element" onclick = "display(undefined,\'intern\',undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
     </div>';
 }
-
 ?>
+<script>
+function copyLink(id) {
+    var copyLink = "https://<?php echo $subdomain ?>.feedcube.net/Software/Umfrage/Vorauswahl.php?Umfrage="+id;
+   navigator.clipboard.writeText(copyLink);
+    alert("Link zur Umfrage wurde in die Zwischenablage kopiert");
+}
+</script>
