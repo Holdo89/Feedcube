@@ -113,6 +113,10 @@
     overflow:auto; 
     border-radius: 15px;
 }
+
+.center_button:hover .tooltiptext {
+  visibility: visible;
+}
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -120,6 +124,7 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
+<link href="tooltip.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">

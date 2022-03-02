@@ -17,6 +17,7 @@
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
 	<link href="umfrage_optionen.css" rel="stylesheet" type="text/css">
+	<link href="tooltip.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Umfrage_speichern.php";
@@ -114,6 +115,11 @@
     padding:30px; 
     overflow:auto; 
     border-radius: 15px;
+}
+
+
+.center_button:hover .tooltiptext {
+  visibility: visible;
 }
 </style>
 

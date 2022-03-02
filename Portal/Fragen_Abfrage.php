@@ -15,24 +15,24 @@ if($rowCount > 0){
         echo "<input class='center_select' id='Auswahl_Fragentyp_".$row["ID"]."' value='".$row["Typ"]."' name='Auswahl_Fragentyp' oninput='user_abfrage_speichern(".$row["ID"].")' readonly></input>";
         if ($row["Typ"]=="Bewertung") 
         { 
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Bewertung\");' ><i class='fa fa-pencil'></i></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Bewertung\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         }
         else if ($row["Typ"]=="Multiplechoice") 
         {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Multiplechoice\");' ><i class='fa fa-pencil'></i></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Multiplechoice\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         }
         else if ($row["Typ"]=="Schieberegler") 
         {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Schieberegler\");' ><i class='fa fa-pencil'></i></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Schieberegler\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         }
         else if ($row["Typ"]=="Text") 
         {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Text\");' ><i class='fa fa-pencil'></i></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Text\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         }
         else{
             echo "<button type='button' class='center_button'></button>";
         }
-        echo "<button type='button' class='center_button' onclick='user_abfrage_löschen(".$row["ID"].")'><i class='fa fa-trash'></i></button>"; 
+        echo "<button type='button' class='center_button' onclick='user_abfrage_löschen(".$row["ID"].")'><i class='fa fa-trash'></i><span class='tooltiptext'>Löschen</span></button>"; 
 
         echo "</form>";
     }

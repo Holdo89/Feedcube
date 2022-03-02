@@ -15,6 +15,7 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="Fragen.css" rel="stylesheet" type="text/css">
+	<link href="tooltip.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Frage_speichern.php";
@@ -102,6 +103,11 @@
     overflow:auto; 
     border-radius: 15px;
 }
+
+.center_button:hover .tooltiptext {
+  visibility: visible;
+}
+
 </style>
 	<script>
 	function Antwort_speichern(id,typ) {

@@ -236,6 +236,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     overflow:auto; 
     border-radius: 15px;
 }
+
+.center_button:hover .tooltiptext {
+  visibility: visible;
+}
+
+a:hover .tooltiptext {
+  visibility: visible;
+}
 </style>
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->

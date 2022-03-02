@@ -16,6 +16,7 @@
     <title>Fragensets</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
+	<link href="tooltip.css" rel="stylesheet" type="text/css">
 	<link href="leistung_optionen.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
@@ -74,6 +75,9 @@
     padding:30px; 
     overflow:auto; 
     border-radius: 15px;
+}
+.center_button:hover .tooltiptext {
+  visibility: visible;
 }
 </style>
 

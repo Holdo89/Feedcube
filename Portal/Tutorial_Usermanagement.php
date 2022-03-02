@@ -1,7 +1,6 @@
 <?php
  require_once "../config.php";
  require_once "session.php";
- <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
 // Define variables and initialize with empty values
 $fullname = $username = $email = $password = $confirm_password = "";
 $fullname_err = $username_err = $email_err = $password_err = $confirm_password_err = "";

@@ -25,9 +25,9 @@ while($row = mysqli_fetch_assoc($result)) {
         else{
             echo "<a type='button' class='center_button' style='background-color:red' href='set_trainer.php?Id=".$row["id"]."&Bool=1&Url=Usermanagement'><i class='fa fa-times' style='color:white'></i></a>";
         }
-        echo "<button type='button' class='center_button' style='padding-top:0em;'  onclick='display(\"".$row["name"]."\");'><i class='fa fa-link'></i></button>";
-        echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i></a>";
-        echo "<a type='button' class='center_button'  href='' onclick='user_abfrage_löschen(".$row["id"].")'><i class='fa fa-trash'></i></a>";        
+        echo "<button type='button' class='center_button' style='padding-top:0em;'  onclick='display(\"".$row["name"]."\");'><i class='fa fa-link'></i><span class='tooltiptext'>Link erstellen</span></button>";
+        echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i><span class='tooltiptext'>neues Passwort</span></a>";
+        echo "<a type='button' class='center_button'  href='' onclick='user_abfrage_löschen(".$row["id"].")'><i class='fa fa-trash'></i><span class='tooltiptext'>Löschen</span></a>";        
     }
 
     else{
@@ -38,8 +38,8 @@ while($row = mysqli_fetch_assoc($result)) {
             else{    
                 echo "<a type='button' class='center_button' style='background-color:red' href='set_trainer.php?Id=".$row["id"]."&Bool=1&Url=Usermanagement'><i class='fa fa-times' style='color:white'></i></a>";
             }
-            echo "<button type='button' class='center_button' style='padding-top:0em;' onclick='display(\"".$row["name"]."\");'><i class='fa fa-link'></i></button>";
-            echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i></a>";
+            echo "<button type='button' class='center_button' style='padding-top:0em;' onclick='display(\"".$row["name"]."\");'><i class='fa fa-link'></i><span class='tooltiptext'>Link erstellen</span></button>";
+            echo "<a type='button' class='center_button'  href='reset-password-admin.php?Id=".$row["id"]."&Name=".$row["name"]."'><i class='fa fa-lock'></i><span class='tooltiptext'>neues Passwort</span></a>";
             echo "<a type='button' class='center_button'></a>";
     }
 }
