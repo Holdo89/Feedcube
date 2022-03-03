@@ -8,15 +8,22 @@ function sendNotification($subdomain)
     define('DB_NAME', 'feedcube_'.$subdomain);
     
     /* Attempt to connect to MySQL database */
-    $link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, 'feedcube_'.$subdomain);
     $link->set_charset("utf8");
 
     date_default_timezone_set("Europe/Berlin");
     $now = date("Y-m-d H:i");
+    
+    $sql = "SELECT COUNT(ID) FROM umfragen";
+    $result = mysqli_query($link, $sql) ;
+    $row = mysqli_fetch_array($result);
+    
+    if($row["COUNT(ID)"]!="0")
+    {
 
     $sql = "SELECT * FROM umfragen";
     $result = mysqli_query($link, $sql) ;
-
+    
     while($row = mysqli_fetch_assoc($result)) 
     {
         if($now>$row['Benachrichtigungsdatum'] && $row['Benachrichtigung']!="niemals" )
@@ -45,7 +52,6 @@ function sendNotification($subdomain)
                     $result_email = mysqli_query($link, $sql_email) ;
                     $row_email = mysqli_fetch_assoc($result_email);
                     $email = $row_email["email"];
-                    echo $email;
                     $msg = "Hallo ".$Benutzerarray[$i].",
                     
 Du kannst jetzt an der Umfrage \"".$row["Umfrage"]."\" teilnehmen. 
@@ -62,8 +68,10 @@ Dein Feedcube Team";
             mysqli_query($link, $sql_update);
         }
     }
+    }
+    mysqli_close($link);
 }
 sendNotification("swql");
 sendNotification("test");
 
-?>
+?><?php sendNotification('demo');?>
