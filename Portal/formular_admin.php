@@ -33,7 +33,19 @@ while($row = mysqli_fetch_array($exec)){
 	//Hole zuerst die ID der Leistung die beurteilt wurde
 	$row_ID = $row['Leistung'];
 	//Finde heraus welche Fragen zu dieser Leistung gestellt wurden
-	$query = "SELECT * FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
+	//check ob bei der Frage ein Fragenset verwendet wird
+	$sql_currentFragenset = "SELECT Fragenset FROM leistungen WHERE ID =".$row_ID;
+	$result_currentFragenset = mysqli_query($link, $sql_currentFragenset) ;
+	$rowcurrentFragenset = mysqli_fetch_assoc($result_currentFragenset);
+	$currentFragenset = $rowcurrentFragenset["Fragenset"];
+	if($currentFragenset==0)
+	{
+		$query = "SELECT * FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
+	}
+	else
+	{
+		$query = "SELECT * FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
+	}
  	$execute = mysqli_query($link,$query);
  	$execute_chapter = mysqli_query($link,$query);
  	$chapter="";
