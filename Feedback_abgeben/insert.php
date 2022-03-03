@@ -26,7 +26,17 @@ $Fragenauswahl = array();
 $ID=$_SESSION["Leistung"];
 
 //alle Spaltennamen außer Datum und ID
-$sql = "SELECT ID FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";
+$sql_currentFragenset = "SELECT Fragenset FROM leistungen WHERE ID =".$ID;
+$result_currentFragenset = mysqli_query($link, $sql_currentFragenset) ;
+$rowcurrentFragenset = mysqli_fetch_assoc($result_currentFragenset);
+$currentFragenset = $rowcurrentFragenset["Fragenset"];
+if($currentFragenset==0)
+{
+    $sql = "SELECT ID FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";}
+else
+{
+    $sql = "SELECT ID FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";}
+
 $result = mysqli_query($link, $sql) ;
 
 while($row = mysqli_fetch_assoc($result)){
