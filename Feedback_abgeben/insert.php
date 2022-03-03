@@ -11,12 +11,14 @@ $sql = "SELECT username FROM users WHERE name = '".$_SESSION["Trainer"]."'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
 
+date_default_timezone_set("Europe/Berlin");
+$Datum = date("Y-m-d h:i:s");
 $Leistung = mysqli_real_escape_string($link, $_SESSION["Leistung"]);
 $Trainer = mysqli_real_escape_string($link, $_SESSION["Trainer"]);
 $Antworten_temp = $_REQUEST["Antworten_array"];
 echo $Antworten_temp = $_REQUEST["Antworten_array"];
 
-$Antworten="'".$row['username']."','".$Trainer."','".$Leistung."',".$_REQUEST["Antworten_array"]; //In dieser Variable werden alle ANtowrten zu den Fragen zusammengefasst
+$Antworten="'".$Datum."','".$row['username']."','".$Trainer."','".$Leistung."',".$_REQUEST["Antworten_array"]; //In dieser Variable werden alle ANtowrten zu den Fragen zusammengefasst
 
 echo $Antworten;
 $Fragenauswahl = array();
@@ -31,7 +33,7 @@ while($row = mysqli_fetch_assoc($result)){
   array_push($Fragenauswahl,"Frage_".$row["ID"]);
 }
 $Fragenauswahl = implode(",", $Fragenauswahl);
-$Spaltennamen="Username, Trainer, Leistung, ";
+$Spaltennamen="Datum, Username, Trainer, Leistung, ";
 $Spaltennamen = $Spaltennamen.$Fragenauswahl;
 
 // attempt insert query execution
