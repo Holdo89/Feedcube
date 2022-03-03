@@ -72,7 +72,7 @@ while($index<$Anzahl_Fragen) {
     array_push($Fragenid_array,$row["ID"]);
 
     //Berechne die Anzahl der unterschiedlichen Kapitel
-    $Anzahl_Kapitel=0;
+    $Anzahl_Kapitel=1;
     $verschiedene_Kapitel_index =1;
     while( $verschiedene_Kapitel_index<count($Kapitel_array))
     {
