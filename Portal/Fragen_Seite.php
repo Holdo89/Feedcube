@@ -33,6 +33,23 @@
   color:white; 
   background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
 }
+#element2{
+  width:200px;
+  position: relative;
+  margin:auto;
+  margin-left:30px;
+  margin-right:30px;
+  text-align:center;
+  margin-top:25px;
+  margin-bottom:30px; 
+  cursor:pointer; 
+  padding:10px; 
+  font-size: 16px; 
+  border-radius:30px; 
+  background-color:white; 
+  border-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
+  color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -269,7 +286,7 @@
 				<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 				</form>
 	  </div>
-
+	  </div>
 
 	<script>
 	
