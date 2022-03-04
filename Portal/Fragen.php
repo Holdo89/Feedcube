@@ -74,5 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+if(isset($_REQUEST["Step"]))
+{
+    include "Tutorial_Fragen.php";
+}
 ?>
 

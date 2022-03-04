@@ -1,11 +1,9 @@
-<?php
- include "Fragen.php"
-?>
 <script>
 	document.getElementById("myTopnav").style.display="none";
 </script>
 
 <?php
+
 $Step=$_REQUEST["Step"];
 if($Step==3)
 {
@@ -16,7 +14,7 @@ else
 	include "Tutorial_Schritt1_Info.php";
 }
 ?>
-    
+    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
 	<div class="content">
 	        <button id="element2" onclick = "zurück()">zurück</button>
             <button id="element" onclick = "weiter()">weiter</button>

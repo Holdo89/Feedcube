@@ -506,11 +506,11 @@
         checkCookie("AntwortenInformationChecked", "AntwortenInfo_Modal")
 
         function weiter() {
-            window.location.href = "Tutorial_Fragen.php?Step=3";
+            window.location.href = "Fragen.php?Step=3";
         }
 
         function zurück() {
-            window.location.href = "Tutorial_Fragen.php";
+            window.location.href = "Fragen.php?Step=1";
         }
 
         function hideinformation(){

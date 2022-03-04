@@ -275,7 +275,7 @@
 
     <script>
     function pageRedirect() {
-        window.location.href = "Tutorial_Fragen.php";
+        window.location.href = "Fragen.php?Step=1";
     }
 
     function skipIntro() {

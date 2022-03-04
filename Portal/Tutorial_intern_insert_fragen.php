@@ -44,5 +44,5 @@ mysqli_query($link, $sql);
 
 // close connection
 mysqli_close($link);
-header("location: Tutorial_Fragen.php");
+header("location: Fragen.php?Step=1");
 ?>

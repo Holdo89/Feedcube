@@ -78,6 +78,6 @@ if($Questiontype!="Text")
 
 }
 
-header("location:Tutorial_Fragen.php");
+header("location:Fragen.php?Step=1");
   
 ?> 

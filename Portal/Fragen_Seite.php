@@ -779,7 +779,15 @@
 		}
 		else{
 			var Modalform = document.getElementById("Modalform");
-			Modalform.action="Fragen.php";
+			<?php
+			if(isset($_REQUEST["Step"]))
+			{
+				echo'Modalform.action="Fragen.php?Step=1";';
+			}
+			else{
+				echo'Modalform.action="Fragen.php";';
+			}
+			?>
 			document.getElementById("Bewertung").disabled=false;
 			document.getElementById("Multiplechoice").disabled=false;
 			document.getElementById("Schieberegler").disabled=false;

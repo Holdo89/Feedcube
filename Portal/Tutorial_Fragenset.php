@@ -182,7 +182,7 @@
         }
 
         function zurück() {
-            window.location.href = "Tutorial_Fragen.php?Step=3";
+            window.location.href = "Fragen.php?Step=3";
         }
 
         function hideinformation(){

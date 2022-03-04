@@ -100,7 +100,7 @@ $Step = $_REQUEST["Step"];
 if($Step == 1)
 {
     if($Type=="extern")
-        header("location: Tutorial_Fragen.php");
+        header("location: Fragen.php?Step=1");
     else{
         header("location: Tutorial_Umfragen.php");
 

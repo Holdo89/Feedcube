@@ -120,7 +120,7 @@ mysqli_close($link);
 $Step = $_REQUEST["Step"];
 if($Step == 1)
 {
-    header("location: Tutorial_Fragen.php");
+    header("location: Fragen.php?Step=1");
 }
 
 else{
