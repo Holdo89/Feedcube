@@ -11,7 +11,6 @@
     <div id ="UmfrageMöglichkeiten" class="dropdown">
     <button class="dropbtn"><i class="fa fa-bullhorn" aria-hidden="true"></i> Umfragen </button>
     <div class="dropdown-content">
-        <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-cogs" aria-hidden="true"></i> Konfiguration</a>
         <a id ="Intern" href="Intern.php"><i class="fa fa-pie-chart" aria-hidden="true"></i> Auswertung</a>
     </div>
     </div>    <a id ="intern_blog_noadmin" href="interner_blog_noadmin.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>

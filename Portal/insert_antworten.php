@@ -20,7 +20,7 @@ mysqli_close($link);
 $Step = $_REQUEST["Step"];
 if($Step == 2)
 {
-    header("location: Tutorial_Antwortmoeglichkeiten.php");
+    header("location: Antwortmoeglichkeiten.php?Step=2");
 }
 
 else{

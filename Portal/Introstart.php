@@ -275,7 +275,7 @@
 
     <script>
     function pageRedirect() {
-        window.location.href = "Fragen.php?Step=1";
+        window.location.href = "Antwortmoeglichkeiten.php?Step=2";
     }
 
     function skipIntro() {

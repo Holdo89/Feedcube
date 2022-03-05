@@ -33,7 +33,7 @@ mysqli_close($link);
 $Step = $_REQUEST["Step"];
 if($Step == 5)
 {
-    header("location: Tutorial_Leistungen.php");
+    header("location: Leistungmanagement.php?Step=5");
 }
 
 else{

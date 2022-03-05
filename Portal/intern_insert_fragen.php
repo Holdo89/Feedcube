@@ -117,10 +117,10 @@ mysqli_query($link, $sql);
 
 mysqli_close($link);
 
-$Step = $_REQUEST["Step"];
-if($Step == 1)
+if(isset($_REQUEST["Step"]))
 {
-    header("location: Fragen.php?Step=1");
+    $Step = $_REQUEST["Step"];
+    header("location: Fragen.php?Step=".$Step);
 }
 
 else{

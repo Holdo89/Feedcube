@@ -28,7 +28,7 @@ mysqli_close($link);
 $Step = $_REQUEST["Step"];
 if($Step == 4)
 {
-    header("location: Tutorial_Fragenset.php");
+    header("location: Fragenset.php?Step=4");
 }
 
 else{

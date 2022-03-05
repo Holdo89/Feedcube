@@ -111,8 +111,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
 
                 // Password updated successfully. Destroy the session, and redirect to login page
-
-                header("location: Usermanagement.php");
+                if(isset($_REQUEST["Step"]))
+                {
+                    $Step = $_REQUEST["Step"];
+                    header("location: Usermanagement.php?Step=".$Step);
+                }
+                else{
+                    header("location: Usermanagement.php");
+                }
 
                 exit();
 

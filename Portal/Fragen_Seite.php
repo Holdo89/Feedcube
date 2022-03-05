@@ -229,7 +229,14 @@
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+	<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="
+	<?php 
+	echo $_SERVER["PHP_SELF"];
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post">
 		<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
 		<div style="text-align:left">
 		<h4>Neue Frage hinzufügen</h4>
@@ -586,7 +593,14 @@
 			var fragenspezifisch = document.getElementById("fragenspezifisch");
 			
 			document.getElementById(questiontype).checked=true;
-			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type="+type+"&Questiontype="+questiontype;
+			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type="+type+"&Questiontype="+questiontype
+			<?php
+				if(isset($_REQUEST["Step"]))
+				{
+					$Step = $_REQUEST["Step"];
+					echo'+"&Step='.$Step.'"';
+				};
+			?>;
 			if(fragenspezifisch.checked == true)
 			{
 				var xmlhttp_options = new XMLHttpRequest();
@@ -705,7 +719,13 @@
 				}
 				else if(questiontype=="Text")
 				{	
-					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Text";
+					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Text<?php
+					if(isset($_REQUEST["Step"]))
+							{
+								$Step = $_REQUEST["Step"];
+								echo"&Step=".$Step;
+							};
+					?>";
 					Bewertungoptionen.innerHTML='';	
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
@@ -746,7 +766,13 @@
 				else if(questiontype=="Text")
 				{						
 					document.getElementById("Text").checked=true;
-					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Text";
+					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Text<?php
+					if(isset($_REQUEST["Step"]))
+					{
+						$Step = $_REQUEST["Step"];
+						echo'&Step='.$Step;
+					};
+					?>";
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";	
@@ -782,7 +808,8 @@
 			<?php
 			if(isset($_REQUEST["Step"]))
 			{
-				echo'Modalform.action="Fragen.php?Step=1";';
+				$Step=$_REQUEST["Step"];
+				echo'Modalform.action="Fragen.php?Step='.$Step.'";';
 			}
 			else{
 				echo'Modalform.action="Fragen.php";';

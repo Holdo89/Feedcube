@@ -106,7 +106,12 @@
 	</style>
 
 	<div class="scroll" style="margin-top:20px;">
-	<form action="insert_fragenset.php" method="post">
+	<form action="insert_fragenset.php<?php 
+	if(isset($_REQUEST["Step"]))
+	{
+		$Step = $_REQUEST["Step"];
+		echo"?Step=".$Step;
+	} ?>" method="post">
 	<label class="überschrift">Fragensets</label><label class="überschrift"></label><label class="überschrift"></label>
 	<?php
 		include "Fragenset_Abfrage.php";
@@ -117,7 +122,12 @@
 	</div>
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class = "modalform" action="Leistung_relate_question.php" method="post">
+	<form class = "modalform" action="Leistung_relate_question.php<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post">
 		<input id="ID" name="ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
@@ -143,7 +153,12 @@
 	</div>
 	<!-- The Modal -->
 	<div id="Fragenset_Modal" class="modal">
-	<form class= "modalform" action="Fragenset_relate_question.php" method="post">
+	<form class= "modalform" action="Fragenset_relate_question.php<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post">
 		<input id="Fragenset_ID" name="Fragenset_ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
@@ -163,5 +178,44 @@
 	</form>
 	</div>
     <script src="Leistungsjs.js" type="text/javascript"></script>
+	<?php
+    include "Tutorial_Schritt4_Info.php";
+if (isset($_REQUEST["Step"])) {
+    echo'
+    <script>
+	    document.getElementById("myTopnav").style.display="none";
+    </script>
+	<div class="content">
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
+    </div>';
+
+    $Step=$_REQUEST["Step"];
+}
+?>
+    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
+    <script>
+				checkCookie("FragensetInformationChecked", "FragensetInfo_Modal")
+				function weiter() {
+					window.location.href = "Leistungmanagement.php?Step=5"
+				}
+
+				function zurück() {
+					window.location.href = "Fragen.php?Step=3"
+				}
+				
+				function hideinformation(){
+					document.getElementById("FragensetInfo_Modal").style.display="none"
+					document.cookie = "FragensetInformationChecked=1";
+				}
+
+        function hideinformationWithoutremembering(){
+            document.getElementById("FragensetInfo_Modal").style.display="none"
+        }
+
+    </script>
+
     </body>
 </html>

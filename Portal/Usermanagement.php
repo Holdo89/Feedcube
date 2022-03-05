@@ -136,7 +136,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: Usermanagement.php");
+                if(isset($_REQUEST["Step"]))
+                {
+                    $Step = $_REQUEST["Step"];
+                    header("location: Usermanagement.php?Step=".$Step);
+                }
+                else{
+                    header("location: Usermanagement.php");
+                }
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -310,7 +317,12 @@ $new_password_err = $confirm_password_err = "";
     </form>
 	</div>
 	<div id="newUserModal" class="modal" style="display:none;">
-		<form class="form-signin" style="display:block; padding:40px; max-width:1000px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+		<form class="form-signin" style="display:block; padding:40px; max-width:1000px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); 
+	if(isset($_REQUEST["Step"]))
+	{
+		$Step = $_REQUEST["Step"];
+		echo"?Step=".$Step;
+	} ?>" method="post">
 			<span class="close" onclick = "setVisibility()" style="float:right; text-align:right">&times;</span>
 			<h1  class= "h4 mb-3 font-weight-normal">Registrierung</h1>
 			<p>Fülle das Formular vollständig aus um einen neuen Benutzer zu erstellen.</p> 
@@ -417,6 +429,44 @@ $new_password_err = $confirm_password_err = "";
 		}
 	}
 	</script>
-    
+    	<?php
+    include "Tutorial_Schritt6_Info.php";
+if (isset($_REQUEST["Step"])) {
+    echo'
+    <script>
+	    document.getElementById("myTopnav").style.display="none";
+    </script>
+	<div class="content">
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
+    </div>';
+
+    $Step=$_REQUEST["Step"];
+}
+?>
+    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
+    <script>
+				checkCookie("UserInformationChecked", "UserInfo_Modal")
+				function weiter() {
+					window.location.href = "Umfragen.php?Step=7"
+				}
+
+				function zurück() {
+					window.location.href = "Leistungmanagement.php?Step=5"
+				}
+				
+				function hideinformation(){
+					document.getElementById("UserInfo_Modal").style.display="none"
+					document.cookie = "UserInformationChecked=1";
+				}
+
+        function hideinformationWithoutremembering(){
+            document.getElementById("UserInfo_Modal").style.display="none"
+        }
+
+    </script>
+
     </body>
 </html>

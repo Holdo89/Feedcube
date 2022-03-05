@@ -167,7 +167,12 @@
 		include "Antworten_Abfrage.php";
 	?>
 	</div>
-	<form class="form_antworten" action="insert_antworten.php" method="post" style="margin-bottom:30px">
+	<form class="form_antworten" action="insert_antworten.php<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post" style="margin-bottom:30px">
 	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
 	<input class="center_button" type="submit" value="+"></input>
 	</form>
@@ -182,7 +187,12 @@
 		include "Antworten_Abfrage_Multiplechoice.php";
 	?>
 	</div>
-	<form class="form_antworten" action="insert_antworten_multiplechoice.php" method="post" style="padding-bottom:80px">
+	<form class="form_antworten" action="insert_antworten_multiplechoice.php<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post" style="padding-bottom:80px">
 	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
 	<input class="center_button" type="submit" value="+"></input>
 	</form>
@@ -292,11 +302,21 @@
 		else{
 			if(questiontype=="Bewertung")
 			{
-				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Bewertung" method="post"><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Bewertung<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"&Step=".$Step;
+		} ?>" method="post"><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 			if(questiontype=="Multiplechoice")
 			{
-  				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice" method="post"><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+  				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"&Step=".$Step;
+		} ?>" method="post"><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 
 		}
@@ -414,5 +434,44 @@
 	}
 	}
 	</script>
+<?php
+    include "Tutorial_Schritt2_Info.php";
+if (isset($_REQUEST["Step"])) {
+    echo'
+    <script>
+	    document.getElementById("myTopnav").style.display="none";
+    </script>
+	<div class="content">
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
+    </div>';
+
+    $Step=$_REQUEST["Step"];
+}
+?>
+    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
+    <script>
+				checkCookie("AntwortenInformationChecked", "AntwortenInfo_Modal")
+				function weiter() {
+					window.location.href = "Fragen.php?Step=3"
+				}
+
+				function zurück() {
+					window.location.href = "Introstart.php"
+				}
+				
+				function hideinformation(){
+					document.getElementById("AntwortenInfo_Modal").style.display="none"
+					document.cookie = "AntwortenInformationChecked=1";
+				}
+
+        function hideinformationWithoutremembering(){
+            document.getElementById("AntwortenInfo_Modal").style.display="none"
+        }
+
+    </script>
+
     </body>
 </html>

@@ -12,5 +12,12 @@ if(mysqli_query($link, $sql)){
 
 // close connection
 mysqli_close($link);
-header("location: Usermanagement.php");
+if(isset($_REQUEST["Step"]))
+{
+    $Step = $_REQUEST["Step"];
+    header("location: Usermanagement.php?Step=".$Step);
+}
+else{
+    header("location: Usermanagement.php");
+}
 ?>

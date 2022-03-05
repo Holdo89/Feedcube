@@ -105,7 +105,12 @@
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
 	}
 	</style>
-	<form action="insert_leistung.php" method="post">
+	<form action="insert_leistung.php<?php 
+	if(isset($_REQUEST["Step"]))
+	{
+		$Step = $_REQUEST["Step"];
+		echo"?Step=".$Step;
+	} ?>" method="post">
 	<label class="überschrift">Leistungen</label><label class="überschrift"></label><label class="überschrift"></label>
 	<?php
 		include "Leistung_Abfrage.php";
@@ -117,7 +122,12 @@
 	
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class = "modalform" action="Leistung_relate_question.php" method="post">
+	<form class = "modalform" action="Leistung_relate_question.php<?php 
+	if(isset($_REQUEST["Step"]))
+	{
+		$Step = $_REQUEST["Step"];
+		echo"?Step=".$Step;
+	} ?>" method="post">
 		<input id="ID" name="ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
@@ -143,7 +153,12 @@
 	</div>
 	<!-- The Modal -->
 	<div id="Fragenset_Modal" class="modal">
-	<form class= "modalform" action="Fragenset_relate_question.php" method="post">
+	<form class= "modalform" action="Fragenset_relate_question.php<?php 
+	if(isset($_REQUEST["Step"]))
+	{
+		$Step = $_REQUEST["Step"];
+		echo"?Step=".$Step;
+	} ?>" method="post">
 		<input id="Fragenset_ID" name="Fragenset_ID" style="visibility:hidden"></input>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
@@ -163,5 +178,44 @@
 	</form>
 	</div>
     <script src="Leistungsjs.js" type="text/javascript"></script>
+	<?php
+    include "Tutorial_Schritt5_Info.php";
+if (isset($_REQUEST["Step"])) {
+    echo'
+    <script>
+	    document.getElementById("myTopnav").style.display="none";
+    </script>
+	<div class="content">
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
+    </div>';
+
+    $Step=$_REQUEST["Step"];
+}
+?>
+    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
+    <script>
+				checkCookie("LeistungInformationChecked", "LeistungInfo_Modal")
+				function weiter() {
+					window.location.href = "Usermanagement.php?Step=6"
+				}
+
+				function zurück() {
+					window.location.href = "Fragenset.php?Step=4"
+				}
+				
+				function hideinformation(){
+					document.getElementById("LeistungInfo_Modal").style.display="none"
+					document.cookie = "LeistungInformationChecked=1";
+				}
+
+        function hideinformationWithoutremembering(){
+            document.getElementById("LeistungInfo_Modal").style.display="none"
+        }
+
+    </script>
+
     </body>
 </html>
