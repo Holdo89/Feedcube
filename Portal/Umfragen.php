@@ -75,5 +75,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+
+if (isset($_REQUEST["Step"])) {
+    echo'
+    <script>
+	    document.getElementById("myTopnav").style.display="none";
+    </script>
+	<div class="content">
+	        <button id="element2" onclick = "zurück()">zurück</button>
+            <button id="element" onclick = "weiter()">weiter</button>
+    </div>';
+
+    $Step=$_REQUEST["Step"];
+}
+include "Tutorial_Schritt7_Info.php";
+
 ?>
+    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+    <script src="Cookiefunctions.js" type="text/javascript"></script>
+
+    <script>
+
+        checkCookie("UmfragenInformationCheckedSchritt7", "UmfragenInfo_Modal")
+        function weiter() {
+            window.location.href = "Fragenset.php?Step=4"
+        }
+
+        function zurück() {
+            window.location.href = "Antwortmoeglichkeiten.php?Step=2"
+        }
+        
+        function hideinformation(){
+            document.getElementById("UmfragenInfo_Modal").style.display="none"
+            document.cookie = "UmfragenInformationCheckedSchritt7=1";
+        }
+        
+        function hideinformationWithoutremembering(){
+            document.getElementById("UmfragenInfo_Modal").style.display="none"
+        }
+
+    </script>
+
 

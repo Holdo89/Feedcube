@@ -167,7 +167,13 @@ else
 	
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
-		<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:hidden" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+		<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:hidden" action="<?php 
+	echo $_SERVER["PHP_SELF"];
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post">
 			<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
 			<div style="text-align:left">
 			<h4>Neue Frage hinzufügen</h4>
@@ -222,7 +228,12 @@ else
 
 	  <!-- The Modal -->
 	<div id="neueUmfrage" class="modal">
-		<form class="modalform" id="neueUmfrageForm" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:visible" action="insert_Umfrage.php" method="post">
+		<form class="modalform" id="neueUmfrageForm" style="margin-bottom:40px; display:block; margin-top:-20px; overflow:visible" action="insert_Umfrage.php<?php
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>" method="post">
 			<span class="close" style="text-align:right" onclick="hide_newUmfragemodal()">&times;</span>
 			<div style="text-align:left">
 			<p id="ÜberschriftUmfrage" style="font-weight:bold">Neue Umfrage hinzufügen</p>
@@ -274,6 +285,7 @@ else
 			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 		</form>
 	</div>
+</div>
 	<script>
 	const myDate = new Date();
 	myDate.setHours( myDate.getHours() + 1 );
@@ -737,7 +749,12 @@ else
 		document.getElementById("ÜberschriftUmfrage").innerHTML = "Neue Umfrage hinzufügen";
 		document.getElementById("Benachrichtigungsdetails").style.display="none";
 		neueUmfragemodal.style.display="block";
-		neueUmfragemodalform.action = "insert_Umfrage.php";
+		neueUmfragemodalform.action = "insert_Umfrage.php<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>";
 		var Toggle = document.getElementById("toggle");
 		Toggle.checked=false;
 		resetRadio();
@@ -871,7 +888,12 @@ else
 		}
 		else{
 			var Modalform = document.getElementById("Modalform");
-			Modalform.action="Umfragen.php";
+			Modalform.action="Umfragen.php<?php 
+			if(isset($_REQUEST["Step"]))
+				{
+					$Step = $_REQUEST["Step"];
+					echo"?Step=".$Step;
+				} ?>";
 			document.getElementById("Bewertung").disabled=false;
 			document.getElementById("Multiplechoice").disabled=false;
 			document.getElementById("Schieberegler").disabled=false;

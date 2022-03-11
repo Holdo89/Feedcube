@@ -85,34 +85,27 @@ if (isset($_REQUEST["Step"])) {
     </div>';
 
     $Step=$_REQUEST["Step"];
-    include "Tutorial_Schritt".$Step."_Info.php";
 }
+include "Tutorial_Schritt3_Info.php";
+
 ?>
     <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
     <script src="Cookiefunctions.js" type="text/javascript"></script>
 
     <script>
-
-        <?php
-        if (isset($_REQUEST["Step"])) {
-            $Step = $_REQUEST["Step"];
-            echo'
-                checkCookie("FragenInformationCheckedSchritt3", "FragenInfo_Modal")
-                function weiter() {
-                    window.location.href = "Fragenset.php?Step=4"
-                }
-
-                function zurück() {
-                    window.location.href = "Antwortmoeglichkeiten.php?Step=2"
-                }
-                
-                function hideinformation(){
-                    document.getElementById("FragenInfo_Modal").style.display="none"
-                    document.cookie = "FragenInformationCheckedSchritt3=1";
-                }
-            ';
+        checkCookie("FragenInformationCheckedSchritt3", "FragenInfo_Modal")
+        function weiter() {
+            window.location.href = "Fragenset.php?Step=4"
         }
-			?>
+
+        function zurück() {
+            window.location.href = "Antwortmoeglichkeiten.php?Step=2"
+        }
+        
+        function hideinformation(){
+            document.getElementById("FragenInfo_Modal").style.display="none"
+            document.cookie = "FragenInformationCheckedSchritt3=1";
+        }
 
         function hideinformationWithoutremembering(){
             document.getElementById("FragenInfo_Modal").style.display="none"

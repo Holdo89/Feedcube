@@ -59,14 +59,14 @@ mysqli_query($link, $sql);
 mysqli_close($link);
 
 $Step = $_REQUEST["Step"];
-if($Step == 1)
+if($Step == 3)
 {
-    if($Type=="extern")
-        header("location: Fragen.php?Step=1");
-    else{
-        header("location: Tutorial_Umfragen.php");
+    header("location: Fragen.php?Step=3");
+}
 
-    }
+elseif($Step==7)
+{
+    header("location: Umfragen.php?Step=7");  
 }
 
 else{

@@ -35,7 +35,7 @@ mysqli_close($link);
 $Step = $_REQUEST["Step"];
 if($Step == 5)
 {
-    header("location: Tutorial_Umfragen.php");
+    header("location: Umfragen.php?Step=7");
 }
 else{
     header("location: Umfragen.php");
