@@ -466,7 +466,7 @@ h1{
 }
 
 .Auswahlmöglichkeit,.Auswahlmöglichkeit_Leistung{
-  margin-top:0px;
+  margin-top:5px;
   margin-bottom:10px;
   grid-column: 2 /span 2;
 }

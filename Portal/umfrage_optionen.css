@@ -28,6 +28,10 @@ body {
 
 }
 
+.Auswahlmöglichkeit_Umfrage{
+  margin-top:10px;
+}
+
 
 
 .überschrift{
@@ -267,6 +271,7 @@ textarea:-webkit-autofill:focus {
     overflow:auto;
 
   }
+
 
 }
 

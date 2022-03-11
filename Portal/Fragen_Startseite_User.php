@@ -12,10 +12,10 @@ function questions($Fragentyp, $link){
 		$Message="";
 
 		if($row["Is_Admin"]==1){
-				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage'> Es wurde noch keine Frage <a href='Fragen.php'>hinzugefügt</a></div>";
+				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage'><a href='Fragen.php'>Frage hinzufügen</a></div>";
 			}
 		else{
-				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage'> Es wurde noch keine Frage hinzugefügt, wende dich an einen Feedcube Administrator</div>";
+				$Message ="<div id='Auswahl_Frage' name='Auswahl_Frage'> Es wurde noch keine Frage hinzugefügt</div>";
 			}
 
 		echo"<p><b>".$Fragentyp."</b></p>";
