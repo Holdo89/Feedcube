@@ -111,7 +111,7 @@
 
 </html>
 <script>
-var limit = 5;
+var limit = 10;
 var start = 0;
 var action = 'active';
 var blog = document.getElementById("blog_posts");
@@ -186,7 +186,7 @@ function loadNewData(limit, start)
     {
 		$('#load_data_message').show();
 		console.log("action"+start);
-     	$('#load_data_message').html("<button type='button' class='btn btn-warning'>Bitte warten....</button>");
+     	$('#load_data_message').html("<button type='button' style='display:none' class='btn btn-warning'>Bitte warten....</button>");
      	action = "inactive";
     }
    }
