@@ -179,7 +179,7 @@ else
 			<hr style="margin-bottom:30px; margin-top:-5px;">
 					<p>Frage: <p>
 					<input class="center_select" id="Frage"  name="Frage" placeholder="Eingabe einer neuen Frage" required></input>
-					<div class="container">
+					<div style="margin-bottom:20px">
 					<br>
 					<p>Fragentyp:</p>
 						<label class="radio-inline">
@@ -195,7 +195,7 @@ else
 						<input type="radio" name="Auswahl_Fragentyp" id="Text" value="Text" style="margin-top:10px;" oninput="showoptions()" required>Text
 						</label>
 					</div>
-					<div id="Antworttyp_container" class="container" style="display:none">
+					<div id="Antworttyp_container" style="display:none">
 					<p>Antworttyp:</p>
 						<label class="radio-inline">
 						<input type="radio" name="Auswahl_Antworttyp" id="vordefiniert" value="vordefiniert" style="margin-top:10px;" value="vordefiniert" oninput="showoptions()">Vordefiniert

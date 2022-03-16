@@ -50,7 +50,6 @@
 .close {
   color: #aaaaaa;
   float: right;
-  margin-right:50px;
   font-size: 28px;
   font-weight: bold;
 }
