@@ -125,7 +125,9 @@
     
 .modalform{
     width:90%; 
-    max-width:1000px; 
+    text-align:center;
+    margin:auto;
+    max-width:100px; 
     padding:30px; 
     overflow:auto; 
     border-radius: 15px;
@@ -229,7 +231,7 @@
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class="modalform" id="Modalform" style="margin-bottom:40px; display:block; margin-top:-20px" action="
+	<form class="modalform" id="Modalform" action="
 	<?php 
 	echo $_SERVER["PHP_SELF"];
 	if(isset($_REQUEST["Step"]))
