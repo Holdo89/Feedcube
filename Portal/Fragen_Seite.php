@@ -187,7 +187,6 @@
 	<label class="überschrift"></label>
 	<label class="überschrift">Kapitel</label>
 	<label class="überschrift">Frage</label>
-	<label class="überschrift">Typ</label>
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>	
 	</form>

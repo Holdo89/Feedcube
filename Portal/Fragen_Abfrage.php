@@ -12,7 +12,6 @@ if($rowCount > 0){
         echo "<div class='center_select' style='text-align:center; margin:auto;min-width:35px'><i class='fa fa-bars'></i></div>";
         echo "<input class='center_select' id='Kapitel_".$row["ID"]."' value='".$row["Kapitel"]."' onblur='user_abfrage_speichern(".$row["ID"].")'></input>";
         echo "<input class='center_select' id='Frage_".$row["ID"]."' value='".$row["Fragen_extern"]."' onblur='user_abfrage_speichern(".$row["ID"].")'></input>";
-        echo "<input class='center_select' id='Auswahl_Fragentyp_".$row["ID"]."' value='".$row["Typ"]."' name='Auswahl_Fragentyp' oninput='user_abfrage_speichern(".$row["ID"].")' readonly></input>";
         if ($row["Typ"]=="Bewertung") 
         { 
             echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Bewertung\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
