@@ -681,6 +681,8 @@
 			document.getElementById("Text").disabled=true;
 			document.getElementById(questiontype).disabled=false;
 			modal.style.display = "block";
+			var Modalform = document.getElementById("Modalform");
+
 
 			getFragenBeschreibung(id,type);
 			getCheckedAntworttyp(id, type);
