@@ -193,7 +193,7 @@
 		include "Fragen_Abfrage.php";
 	?>
 	</div>
-	<button id="element" onclick = "display(undefined,'extern')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'extern')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
 
 	<script>
 	function user_abfrage_speichern(id) {

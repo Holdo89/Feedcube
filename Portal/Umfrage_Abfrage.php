@@ -16,7 +16,7 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     <div class="interne_Fragen" style="padding:10px;">';
 	include "interne_Fragen_Abfrage.php";
 	echo'</div>
-    <button id="element" onclick = "display(undefined,\'intern\',undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
+    <button id="element" style="width:250px; background-color:'; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'" onclick = "display(undefined,\'intern\',undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
     </div>';
 }
 ?>
