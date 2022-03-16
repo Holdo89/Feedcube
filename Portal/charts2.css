@@ -136,13 +136,17 @@ margin-top: 20px;
 }
 
 
-.Auswahl_Select{
+.Auswahl_Select,.Auswahl_Select_Empty{
   background: white;
 	font-size:12pt;
 	width: 100%;
 	margin-bottom:5px;
   border:none;
 	text-align:left;
+}
+
+.Auswahl_Select_Empty{
+  margin-top:10px;
 }
 
 
@@ -343,7 +347,7 @@ h1{
 
 
 
-.Auswahl_Select{
+.Auswahl_Select, .Auswahl_Select_Empty{
   grid-column: span 3;
 }
 
@@ -449,10 +453,9 @@ h1{
 
 
 
-.Auswahl_Select{
-
-	margin-bottom:25px;
-
+.Auswahl_Select, .Auswahl_Select_Empty{
+  margin-top:0px;
+	margin-bottom:15px;
 }
 
 .Auswahl{

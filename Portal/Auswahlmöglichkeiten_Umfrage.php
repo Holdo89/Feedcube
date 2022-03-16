@@ -9,10 +9,10 @@ $row = mysqli_fetch_assoc($result);
 $Message="";
 
 if($row["Is_Admin"]==1){
-        $Message ="<div id='Auswahl_Umfrage' name='Auswahl_Umfrage' class='Auswahlmöglichkeit_Umfrage'><a href='Umfragen.php'>Umfrage hinzufügen</a></div>";
+        $Message ="<div id='Auswahl_Umfrage' name='Auswahl_Umfrage' class='Auswahl_Select_Empty'><a href='Umfragen.php'>Umfrage hinzufügen</a></div>";
     }
 else{
-        $Message ="<div id='Auswahl_Umfrage' name='Auswahl_Umfrage' class='Auswahlmöglichkeit_Umfrage'> Es wurde noch keine Umfrage hinzugefügt</div>";
+        $Message ="<div id='Auswahl_Umfrage' name='Auswahl_Umfrage' class='Auswahl_Select_Empty'> Es wurde noch keine Umfrage hinzugefügt</div>";
     }
 
 $i=0;

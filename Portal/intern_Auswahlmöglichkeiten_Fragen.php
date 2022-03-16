@@ -9,10 +9,10 @@ $row = mysqli_fetch_assoc($result);
 $Message="";
 
 if($row["Is_Admin"]==1){
-        $Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmöglichkeit'><a href='Fragen.php'>Frage hinzufügen</a></div>";
+        $Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahl_Select_Empty'><a href='Fragen.php'>Frage hinzufügen</a></div>";
     }
 else{
-        $Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmöglichkeit'> Es wurde noch keine Frage hinzugefügt</div>";
+        $Message ="<div id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahl_Select_Empty'> Es wurde noch keine Frage hinzugefügt</div>";
     }
 
     $sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' ORDER BY post_order_no ASC";
