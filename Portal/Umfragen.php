@@ -103,7 +103,7 @@ include "Tutorial_Schritt7_Info.php";
         }
 
         function zurück() {
-            window.location.href = "Antwortmoeglichkeiten.php?Step=2"
+            window.location.href = "Usermanagement.php?Step=6"
         }
         
         function hideinformation(){
