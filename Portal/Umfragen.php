@@ -99,7 +99,7 @@ include "Tutorial_Schritt7_Info.php";
 
         checkCookie("UmfragenInformationCheckedSchritt7", "UmfragenInfo_Modal")
         function weiter() {
-            window.location.href = "Fragenset.php?Step=4"
+            window.location.href = "TutorialErfolg.php"
         }
 
         function zurück() {
