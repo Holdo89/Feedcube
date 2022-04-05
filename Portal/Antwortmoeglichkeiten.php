@@ -166,15 +166,9 @@
 		include "Antworten_Abfrage.php";
 	?>
 	</div>
-	<form class="form_antworten" action="insert_antworten.php<?php 
-	if(isset($_REQUEST["Step"]))
-		{
-			$Step = $_REQUEST["Step"];
-			echo"?Step=".$Step;
-		} ?>" method="post" style="margin-bottom:30px">
-	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
-	<input class="center_button" type="submit" value="+"></input>
-	</form>
+
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'answers', 'Bewertung')"> Bewertung hinzufügen</button>
+
 
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px;">
 	<label class="überschrift">Multiplechoice</label>
@@ -186,15 +180,8 @@
 		include "Antworten_Abfrage_Multiplechoice.php";
 	?>
 	</div>
-	<form class="form_antworten" action="insert_antworten_multiplechoice.php<?php 
-	if(isset($_REQUEST["Step"]))
-		{
-			$Step = $_REQUEST["Step"];
-			echo"?Step=".$Step;
-		} ?>" method="post" style="padding-bottom:80px">
-	<input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" style='text-align:center;margin:auto' required></input>
-	<input class="center_button" type="submit" value="+"></input>
-	</form>
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'answers', 'Multiplechoice')"> Option hinzufügen</button>
+
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -258,158 +245,35 @@
 	var modal = document.getElementById("myModal");
 
 	function display(id, type, questiontype) {
-		if(type=='intern')
-		{
-			if(questiontype=="Bewertung")
-			{
-				modal.innerHTML = '<form class="modalform" action="Fragen_relate_antworten.php?Type=intern&Questiontype=Bewertung" method="post"><input id="ID_intern_Bewertung" name="ID_intern_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Bewertung" name ="frage_englisch_intern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-			}
-			if(questiontype=="Multiplechoice")
-			{
-  				modal.innerHTML = '<form class="modalform"action="Fragen_relate_antworten.php?Type=intern&Questiontype=Multiplechoice" method="post"><input id="ID_intern_Multiplechoice" name="ID_intern_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Multiplechoice" name ="frage_englisch_intern_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC";$result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-			}
-			if(questiontype=="Schieberegler")
-			{
-				modal.innerHTML = '<form class="form_schieberegler_antworten" style="padding:30px;" action="Range_speichern.php?Type=intern&Questiontype=Schieberegler" method="post"><input style="display:none;" id="ID_intern_Schieberegler" name="ID_intern_Schieberegler" ></input><span class="close" style="grid-column-start:1;grid-column-end:-1; text-align:right" onclick="hide_modal();">&times;</span><div name="uebersetzung" style="grid-column-start:1;grid-column-end:-1;text-align:left"><h4>Übersetzung</h4><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Schieberegler" name ="frage_englisch_intern_Schieberegler" style="display:inline-block ;width:500px; max-width:80%; height:30px;"><h4 style="grid-column-start:1;grid-column-end:-2">Wähle die Konfiguration des Schiebereglers:</h4></input></div><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></form>';
-				var ID = ID_intern_Schieberegler.value;
-			}
-			else if(questiontype=="Text")
-			{	
-				modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=intern&Questiontype=Text" method="post"><input id="ID_intern_Text" name="ID_intern_Text" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_intern_Text" name ="kapitel_englisch_intern_Text" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_intern_Text" name ="frage_englisch_intern_Text" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>'
-			}	
-		}
-		else if(type=='extern')
-		{
-			if(questiontype=="Bewertung")
-			{	
-				modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=extern&Questiontype=Bewertung" method="post"><input id="ID_extern_Bewertung" name="ID_extern_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal()">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_extern_Bewertung" name ="kapitel_englisch_extern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_extern_Bewertung" name ="frage_englisch_extern_Bewertung" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-			}
-			else if(questiontype=="Multiplechoice")
-			{	
-				modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=extern&Questiontype=Multiplechoice" method="post"><input id="ID_extern_Multiplechoice" name="ID_extern_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_extern_Multiplechoice" name ="kapitel_englisch_extern_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_extern_Multiplechoice" name ="frage_englisch_extern_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><h4>Wähle deine Antworten zur ausgewählten Frage:</h4><?php $sql = "SELECT Answers FROM multiplechoice_answers ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql); while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>'
-			}	
-			else if(questiontype=="Schieberegler")
-			{
-  				modal.innerHTML = '<form class="form_schieberegler_antworten" style="padding:30px;" action="Range_speichern.php?Type=extern&Questiontype=Schieberegler" method="post"><input style="display:none;" id="ID_extern_Schieberegler" name="ID_extern_Schieberegler" ></input><span class="close" style="grid-column-start:1;grid-column-end:-1; text-align:right" onclick="hide_modal();">&times;</span><div name="uebersetzung" style="grid-column-start:1;grid-column-end:-1;text-align:left"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_extern_Schieberegler" name ="kapitel_englisch_extern_Schieberegler" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_extern_Schieberegler" name ="frage_englisch_extern_Schieberegler" style="display:inline-block ;width:500px; max-width:80%; height:30px;"><h4 style="grid-column-start:1;grid-column-end:-2">Wähle die Konfiguration des Schiebereglers:</h4></input></div><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></form>';
-				var ID = ID_extern_Schieberegler.value;
-			}
-			else if(questiontype=="Text")
-			{	
-				modal.innerHTML='<form class="modalform" action="Fragen_relate_antworten.php?Type=extern&Questiontype=Text" method="post"><input id="ID_extern_Text" name="ID_extern_Text" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Kapitel: </h5><input class="center_select" id="kapitel_englisch_extern_Text" name ="kapitel_englisch_extern_Text" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input><h5>Frage: </h5><input class="center_select" id="frage_englisch_extern_Text" name ="frage_englisch_extern_Text" style="display:inline-block ;width:500px; max-width:80%; height:30px;"></input></div><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>'
-			}			
-		}
-		else{
-			if(questiontype=="Bewertung")
-			{
-				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Bewertung<?php 
-	if(isset($_REQUEST["Step"]))
-		{
-			$Step = $_REQUEST["Step"];
-			echo"&Step=".$Step;
-		} ?>" method="post"><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-			}
-			if(questiontype=="Multiplechoice")
-			{
-  				modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice<?php 
-	if(isset($_REQUEST["Step"]))
-		{
-			$Step = $_REQUEST["Step"];
-			echo"&Step=".$Step;
-		} ?>" method="post"><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-			}
 
-		}
-		modal.style.display = "block";
-		var div_id=document.getElementById("ID_"+type+"_"+questiontype);
-  		div_id.value=id;
-		var xmlhttp_options = new XMLHttpRequest();
-
-		if(type!="answers")
-		{
-			var frage_englisch = document.getElementById("frage_englisch_"+type+"_"+questiontype);     
-			xmlhttp_options.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					frage_englisch.value=this.responseText;
-				}
-			;};
-			xmlhttp_options.open("GET", "Fragen_Uebersetzung.php?ID=" + id + "&Type=" +type, false);
-			xmlhttp_options.send();
-			if(type!="intern"){
-				var kapitel_englisch = document.getElementById("kapitel_englisch_"+type+"_"+questiontype);            
-				xmlhttp_options.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						kapitel_englisch.value=this.responseText;
-					}
-				;};
-				xmlhttp_options.open("GET", "Kapitel_Uebersetzung.php?ID=" + id, true);
-				xmlhttp_options.send();
-			}
-			if(questiontype=="Schieberegler")
+			if(questiontype=="Bewertung")
+			{
+				modal.innerHTML = '<form id="antwortBearbeiten" class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Bewertung<?php 
+			if(isset($_REQUEST["Step"]))
 				{
-					var Schieberoutput = document.getElementById("SchieberID");
-					if(type=='extern')
-					{
-						var xmlhttp_options = new XMLHttpRequest();
-						var ID = ID_extern_Schieberegler.value;
-						xmlhttp_options.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-								Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-							}
-						;};
-						xmlhttp_options.open("GET", "Rangeslider_Abfrage.php?ID=" + ID, true);
-						xmlhttp_options.send();
-					}
-					else if(type=='intern')
-					{
-						var xmlhttp_options = new XMLHttpRequest();
-						var ID = ID_intern_Schieberegler.value;
-						xmlhttp_options.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-								Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-							}
-						;};
-						xmlhttp_options.open("GET", "intern_Rangeslider_Abfrage.php?ID=" + ID, true);
-						xmlhttp_options.send();
-					}
-				}	
-			else{
-			var xmlhttp1 = new XMLHttpRequest();
-
-			xmlhttp1.onreadystatechange = function() {
-
-			if (this.readyState == 4 && this.status == 200) {
-				var checked_sets = this.response.split(",");
-				var i=0;
-				while (i<checked_sets.length){
-					var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
-					checkbox.checked=false;	
-					i=i+1;		
-				}
-				var xmlhttp = new XMLHttpRequest();
-
-				xmlhttp.onreadystatechange = function() {
-
-				if (this.readyState == 4 && this.status == 200) {
-					var checked_sets = this.response.split(",");
-					var i=0;
-					while (i<checked_sets.length){
-						var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
-						checkbox.checked=true;	
-						i=i+1;		
-					}
-				}
-				};
-				xmlhttp.open("GET", "Fragen_get_Antwortenset_checked_"+type+".php?ID=" + id + "&Type="+questiontype, false);
-				xmlhttp.send();
+					$Step = $_REQUEST["Step"];
+					echo"&Step=".$Step;
+				} ?>" method="post"><h4 id="Überschrift">Frage bearbeiten <span class="close" onclick="hide_modal();">&times;</span></h4><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left; width:90%"><h5>Antwort: </h5><input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" required></input><div name="uebersetzung" style="margin-top:40px;"><h5>Übersetzung: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block; width:100%; height:30px;" placeholder="Übersetzung in zweite Sprache" required"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
-			};
-			xmlhttp1.open("GET", "Fragen_get_Antwortenset.php?ID=" + id  + "&Type="+questiontype, false);
-			xmlhttp1.send();
 
-		}
-	}
-	else
-	{
+			if(questiontype=="Multiplechoice")
+			{
+  				modal.innerHTML = '<form id="antwortBearbeiten" class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice<?php 
+			if(isset($_REQUEST["Step"]))
+				{
+					$Step = $_REQUEST["Step"];
+					echo"&Step=".$Step;
+				} ?>" method="post"><h4 id="Überschrift">Frage bearbeiten<span class="close" onclick="hide_modal();">&times;</span></h4><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left; width:90%"><h5>Antwort: </h5><input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort"  required></input><div name="uebersetzung" style="margin-top:40px;"><h5>Übersetzung: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block; width:100%; height:30px;" placeholder="Übersetzung in zweite Sprache" required></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+			}
+
+		modal.style.display = "block";
+
+		if(id!=undefined)
+		{
+			var div_id=document.getElementById("ID_"+type+"_"+questiontype);
+			div_id.value=id;
+			var xmlhttp_options = new XMLHttpRequest();
+
 			var antwort_englisch = document.getElementById("englisch_"+type+"_"+questiontype);     
 			xmlhttp_options.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -418,7 +282,39 @@
 			;};
 			xmlhttp_options.open("GET", "Antwort_Uebersetzung.php?ID=" + id+"&Questiontype="+questiontype, false);
 			xmlhttp_options.send();
+		
+			var xmlhttp_options = new XMLHttpRequest();
+
+			var antwort = document.getElementById("neue_Antwort");     
+			xmlhttp_options.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					antwort.value=this.responseText;
+				}
+			;};
+			xmlhttp_options.open("GET", "getAntwort.php?ID=" + id+"&Questiontype="+questiontype, false);
+			xmlhttp_options.send();
 		}
+		else{
+			if(questiontype=="Bewertung")
+			{
+				var buttonaction = "insert_antworten.php";
+			}
+			else
+			{
+				var buttonaction = "insert_antworten_Multiplechoice.php";
+			}
+			var überschrift=document.getElementById("Überschrift");
+			überschrift.innerHTML='Neue Antwort hinzufügen<span class="close" onclick="hide_modal();">&times;</span>';
+			var Antwortbearbeiten=document.getElementById("antwortBearbeiten");
+			Antwortbearbeiten.action=buttonaction+"<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>";
+
+		}
+	
 }
 
 	// When the user clicks anywhere outside of the modal, close it

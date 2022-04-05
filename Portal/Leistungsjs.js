@@ -23,6 +23,11 @@
 	;}
 	
 	function display(id,type) {
+		document.getElementById("Leistung_Form").action="Leistung_relate_question.php"
+		if (window.location.href.indexOf("Step") != -1)
+		{
+			document.getElementById("Leistung_Form").action="Leistung_relate_question.php?Step=5"	
+		}
 
 		var getFragenset = new XMLHttpRequest();
 		var currentFragenset="";
@@ -104,6 +109,22 @@
 	else{
 		Auswahl_Fragenset.value=currentFragenset;
 		display_leistung();
+		if(id==undefined)
+		{
+			document.getElementById("Leistung_Form").action="insert_leistung.php"
+			if (window.location.href.indexOf("Step") != -1)
+			{
+				document.getElementById("Leistung_Form").action="insert_leistung.php?Step=5"	
+			}
+		}
+	}
+	if(id!=undefined)
+	{
+		getFragenset.onreadystatechange = function() {
+			document.getElementById("neuer_Leistung").value=this.responseText;
+		}
+		getFragenset.open("GET", "getLeistung.php?ID=" + id, false);	
+		getFragenset.send();
 	}
 	}
 	// Get the <span> element that closes the modal

@@ -115,23 +115,25 @@
 	<?php
 		include "Leistung_Abfrage.php";
 	?>
-	<input id="neuer_Leistung" class="center_select" name="neuer_Leistung" placeholder="Eingabe einer neuen Leistung" required></input>
-	<input class="center_button" type="submit" value="+"></input>
 	</form>
 	</div>
-	
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'Leistung')"> Leistung hinzufügen</button>
+
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class = "modalform" action="Leistung_relate_question.php<?php 
+	<form id="Leistung_Form" class = "modalform" action="Leistung_relate_question.php<?php 
 	if(isset($_REQUEST["Step"]))
 	{
 		$Step = $_REQUEST["Step"];
 		echo"?Step=".$Step;
 	} ?>" method="post">
 		<input id="ID" name="ID" style="visibility:hidden"></input>
-		<div class="Kommentare" style="margin:auto; text-align:left">
 		<span class="close">&times;</span>
-		<h4>Wähle dein Fragenset zur ausgewählten Leistung:</h4>
+		<div class="Kommentare" style="margin:auto; text-align:left">
+		<h4 id="LeistungÜberschrift" style="margin-bottom:30px; text-align:left;">Leistung hinzufügen</h4> 
+		<h5>Bezeichnung:</h5>
+		<input id="neuer_Leistung" class="center_select" name="neuer_Leistung" required></input>
+		<h5>Wähle dein Fragenset zur ausgewählten Leistung:</h5>
 		<div>
 		<?php
 			include "Auswahlmöglichkeiten_Fragenset.php";
@@ -151,32 +153,7 @@
 		</div>
 	</form>
 	</div>
-	<!-- The Modal -->
-	<div id="Fragenset_Modal" class="modal">
-	<form class= "modalform" action="Fragenset_relate_question.php<?php 
-	if(isset($_REQUEST["Step"]))
-	{
-		$Step = $_REQUEST["Step"];
-		echo"?Step=".$Step;
-	} ?>" method="post">
-		<input id="Fragenset_ID" name="Fragenset_ID" style="visibility:hidden"></input>
-		<div class="Kommentare" style="margin:auto; text-align:left">
-		<span class="close">&times;</span>
-		<h4>Wähle deine Fragen zum ausgewählten Fragenset:</h4>
-		<?php
-		$sql = "SELECT Fragen_extern FROM admin ORDER BY post_order_no";
-		$result = mysqli_query($link,$sql);
-		while($row = mysqli_fetch_assoc($result)){
-			echo'
-			<input type="hidden" value="Fragenset_'.$row["Fragen_extern"].'_unchecked" name="Fragenset_checkbox[]">
-			<input type="checkbox" id="Fragenset_'.$row["Fragen_extern"].'" name="Fragenset_checkbox[]" value="'.$row["Fragen_extern"].'">
-			<label for="Fragenset_'.$row["Fragen_extern"].'" style="border:none"> '.$row["Fragen_extern"].'</label><br>';
-		}
-		?>
-		<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class='fa fa-save'></i> speichern</button>
-		</div>
-	</form>
-	</div>
+
     <script src="Leistungsjs.js" type="text/javascript"></script>
 	<?php
     include "Tutorial_Schritt5_Info.php";

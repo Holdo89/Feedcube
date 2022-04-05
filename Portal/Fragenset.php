@@ -116,53 +116,25 @@
 	<?php
 		include "Fragenset_Abfrage.php";
 	?>
-	<input id="neues_Fragenset" class="center_select" name="neues_Fragenset" placeholder="Eingabe eines neuen Fragensets" required></input>
-	<input class="center_button" type="submit" value="+"></input>
 	</form>
 	</div>
-	    <!-- The Modal -->
-	<div id="myModal" class="modal">
-	<form class = "modalform" action="Leistung_relate_question.php<?php 
-	if(isset($_REQUEST["Step"]))
-		{
-			$Step = $_REQUEST["Step"];
-			echo"?Step=".$Step;
-		} ?>" method="post">
-		<input id="ID" name="ID" style="visibility:hidden"></input>
-		<div class="Kommentare" style="margin:auto; text-align:left">
-		<span class="close">&times;</span>
-		<h4>Wähle dein Fragenset zur ausgewählten Leistung:</h4>
-		<div>
-		<?php
-			include "Auswahlmöglichkeiten_Fragenset.php";
-		?>
-		</div>
-		<?php
-		$sql = "SELECT Fragen_extern FROM admin ORDER BY post_order_no";
-		$result = mysqli_query($link,$sql);
-		while($row = mysqli_fetch_assoc($result)){
-			echo'
-			<input type="hidden" value="'.$row["Fragen_extern"].'_unchecked" name="checkbox[]">
-			<input type="checkbox" id="'.$row["Fragen_extern"].'" name="checkbox[]" value="'.$row["Fragen_extern"].'">
-			<label for="'.$row["Fragen_extern"].'" style="border:none"> '.$row["Fragen_extern"].'</label><br>';
-		}
-		?>
-		<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class='fa fa-save'></i> speichern</button>
-		</div>
-	</form>
-	</div>
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'fragenset')"> Fragenset hinzufügen</button>
+
 	<!-- The Modal -->
 	<div id="Fragenset_Modal" class="modal">
-	<form class= "modalform" action="Fragenset_relate_question.php<?php 
+	<form class= "modalform" id="Fragenset_Form" action="Fragenset_relate_question.php<?php 
 	if(isset($_REQUEST["Step"]))
 		{
 			$Step = $_REQUEST["Step"];
 			echo"?Step=".$Step;
 		} ?>" method="post">
-		<input id="Fragenset_ID" name="Fragenset_ID" style="visibility:hidden"></input>
-		<div class="Kommentare" style="margin:auto; text-align:left">
+		<input id="Fragenset_ID" name="Fragenset_ID" style="visibility:hidden; height:0px;"></input>
 		<span class="close">&times;</span>
-		<h4>Wähle deine Fragen zum ausgewählten Fragenset:</h4>
+		<div class="Kommentare" style="margin:auto; text-align:left">
+		<h4 id="FragensetÜberschrift" style="margin-bottom:30px; text-align:left;">Fragenset hinzufügen</h4> 
+		<h5>Bezeichnung:</h5>
+		<input id="neues_Fragenset" class="center_select" name="neues_Fragenset" required></input>
+		<h5 style="margin-top:40px">Wähle deine Fragen zum ausgewählten Fragenset:</h5>
 		<?php
 		$sql = "SELECT Fragen_extern FROM admin ORDER BY post_order_no";
 		$result = mysqli_query($link,$sql);
@@ -177,45 +149,45 @@
 		</div>
 	</form>
 	</div>
-    <script src="Leistungsjs.js" type="text/javascript"></script>
+    <script src="Fragensetjs.js" type="text/javascript"></script>
 	<?php
     include "Tutorial_Schritt4_Info.php";
-if (isset($_REQUEST["Step"])) {
-    echo'
-    <script>
-	    document.getElementById("myTopnav").style.display="none";
-    </script>
-	<div class="content">
-	        <button id="element2" onclick = "zurück()">zurück</button>
-            <button id="element" onclick = "weiter()">weiter</button>
-    </div>';
+	if (isset($_REQUEST["Step"])) {
+		echo'
+		<script>
+			document.getElementById("myTopnav").style.display="none";
+		</script>
+		<div class="content">
+				<button id="element2" onclick = "zurück()">zurück</button>
+				<button id="element" onclick = "weiter()">weiter</button>
+		</div>';
 
-    $Step=$_REQUEST["Step"];
-}
-?>
-    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
-    <script src="Cookiefunctions.js" type="text/javascript"></script>
+		$Step=$_REQUEST["Step"];
+	}
+	?>
+		<link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+		<script src="Cookiefunctions.js" type="text/javascript"></script>
 
-    <script>
-				checkCookie("FragensetInformationChecked", "FragensetInfo_Modal")
-				function weiter() {
-					window.location.href = "Leistungmanagement.php?Step=5"
-				}
+		<script>
+			checkCookie("FragensetInformationChecked", "FragensetInfo_Modal")
+			function weiter() {
+				window.location.href = "Leistungmanagement.php?Step=5"
+			}
 
-				function zurück() {
-					window.location.href = "Fragen.php?Step=3"
-				}
-				
-				function hideinformation(){
-					document.getElementById("FragensetInfo_Modal").style.display="none"
-					document.cookie = "FragensetInformationChecked=1";
-				}
+			function zurück() {
+				window.location.href = "Fragen.php?Step=3"
+			}
+			
+			function hideinformation(){
+				document.getElementById("FragensetInfo_Modal").style.display="none"
+				document.cookie = "FragensetInformationChecked=1";
+			}
 
-        function hideinformationWithoutremembering(){
-            document.getElementById("FragensetInfo_Modal").style.display="none"
-        }
+			function hideinformationWithoutremembering(){
+				document.getElementById("FragensetInfo_Modal").style.display="none"
+			}
 
-    </script>
+		</script>
 
     </body>
 </html>

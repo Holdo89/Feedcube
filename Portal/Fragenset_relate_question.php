@@ -2,6 +2,7 @@
 include "../config.php";
 $Frage = $_POST["Fragenset_checkbox"]; 
 $ID = $_REQUEST["Fragenset_ID"];
+$neues_Fragenset = mysqli_real_escape_string($link, $_REQUEST["neues_Fragenset"]);
 
 for ($i=0; $i<sizeof ($Frage);$i++) { 
     if(!strpos($Frage[$i],"_unchecked")){
@@ -13,6 +14,9 @@ for ($i=0; $i<sizeof ($Frage);$i++) {
         mysqli_query($link,$query); 
     }
 } 
+$query="UPDATE fragensets SET Fragenset = '".$neues_Fragenset."' WHERE ID = ".$ID;  
+mysqli_query($link,$query); 
+
 
 $Step = $_REQUEST["Step"];
 if($Step == 4)

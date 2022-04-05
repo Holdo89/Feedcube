@@ -4,6 +4,10 @@ $Frage = $_POST["checkbox"];
 $ID = $_REQUEST["ID"];
 $Auswahl_Fragenset = $_REQUEST["Auswahl_Fragenset"];
 
+$neuer_Leistung = $_REQUEST["neuer_Leistung"];
+$sql = "UPDATE leistungen SET Leistung ='".$neuer_Leistung."' WHERE ID=".$ID;
+$result=mysqli_query($link, $sql);
+
 if($Auswahl_Fragenset=="kein_Fragenset")
 {
     $sql = "UPDATE leistungen SET Fragenset = '0' WHERE ID = ".$ID;
