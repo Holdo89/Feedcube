@@ -29,6 +29,15 @@
 			document.getElementById("Leistung_Form").action="Leistung_relate_question.php?Step=5"	
 		}
 
+		if(id==undefined)
+		{
+			document.getElementById("Leistung_Form").action="insert_leistung.php"
+			if (window.location.href.indexOf("Step") != -1)
+			{
+				document.getElementById("Leistung_Form").action="insert_leistung.php?Step=5"	
+			}
+		}
+
 		var getFragenset = new XMLHttpRequest();
 		var currentFragenset="";
 
@@ -109,14 +118,6 @@
 	else{
 		Auswahl_Fragenset.value=currentFragenset;
 		display_leistung();
-		if(id==undefined)
-		{
-			document.getElementById("Leistung_Form").action="insert_leistung.php"
-			if (window.location.href.indexOf("Step") != -1)
-			{
-				document.getElementById("Leistung_Form").action="insert_leistung.php?Step=5"	
-			}
-		}
 	}
 	if(id!=undefined)
 	{
@@ -129,14 +130,11 @@
 	}
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
-	var span_2 = document.getElementsByClassName("close")[1];
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
   		modal.style.display = "none";
 	}
-	span_2.onclick = function() {
-		fragenset_modal.style.display = "none";
-	}
+
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 	if (event.target == modal || event.target == fragenset_modal ) {
