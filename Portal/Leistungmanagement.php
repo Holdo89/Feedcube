@@ -127,7 +127,7 @@
 		$Step = $_REQUEST["Step"];
 		echo"?Step=".$Step;
 	} ?>" method="post">
-		<input id="ID" name="ID" style="visibility:hidden"></input>
+		<input id="ID" name="ID" style="visibility:hidden; height:0px;"></input>
 		<span class="close">&times;</span>
 		<div class="Kommentare" style="margin:auto; text-align:left">
 		<h4 id="LeistungÜberschrift" style="margin-bottom:30px; text-align:left;">Leistung hinzufügen</h4> 

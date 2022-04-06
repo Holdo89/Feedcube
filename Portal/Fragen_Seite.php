@@ -239,8 +239,7 @@
 		} ?>" method="post">
 		<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
 		<div style="text-align:left">
-		<h4>Neue Frage hinzufügen</h4>
-		<hr style="margin-bottom:30px; margin-top:-5px;">
+		<h4 id="FragenÜberschrift" style="margin-bottom:30px;">Neue Frage hinzufügen</h4>
 				<div id="Kapitel_Container">
 					<h5>Kapitel: </h5>
 					<input class="center_select" id="Kapitel" name="Kapitel" placeholder="Eingabe eines neuen Kapitels"></input>
@@ -674,6 +673,7 @@
 		}
 		if(id && id!=0)
 		{
+			document.getElementById("FragenÜberschrift").innerHTML="Frage bearbeiten";
 			document.getElementById("Fragenid").value = id;
 			document.getElementById("Bewertung").disabled=true;
 			document.getElementById("Multiplechoice").disabled=true;
@@ -802,6 +802,7 @@
 		}
 		else if(id==0)
 		{
+			document.getElementById("FragenÜberschrift").innerHTML="Neue Frage hinzufügen";
 			modal.style.display ="block";
 			document.getElementById('alert').style.display='block';
 		}

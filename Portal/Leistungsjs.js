@@ -23,7 +23,8 @@
 	;}
 	
 	function display(id,type) {
-		document.getElementById("Leistung_Form").action="Leistung_relate_question.php"
+		document.getElementById("LeistungÜberschrift").innerHTML="Leistung bearbeiten";
+		document.getElementById("Leistung_Form").action="Leistung_relate_question.php";
 		if (window.location.href.indexOf("Step") != -1)
 		{
 			document.getElementById("Leistung_Form").action="Leistung_relate_question.php?Step=5"	
@@ -31,6 +32,8 @@
 
 		if(id==undefined)
 		{
+			document.getElementById("neuer_Leistung").value="";
+			document.getElementById("LeistungÜberschrift").innerHTML="Neue Leistung hinzufügen";
 			document.getElementById("Leistung_Form").action="insert_leistung.php"
 			if (window.location.href.indexOf("Step") != -1)
 			{

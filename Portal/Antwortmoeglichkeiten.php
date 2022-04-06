@@ -253,7 +253,7 @@
 				{
 					$Step = $_REQUEST["Step"];
 					echo"&Step=".$Step;
-				} ?>" method="post"><h4 id="Überschrift">Frage bearbeiten <span class="close" onclick="hide_modal();">&times;</span></h4><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left; width:90%"><h5>Antwort: </h5><input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" required></input><div name="uebersetzung" style="margin-top:40px;"><h5>Übersetzung: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block; width:100%; height:30px;" placeholder="Übersetzung in zweite Sprache" required"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+				} ?>" method="post"><span class="close" onclick="hide_modal();">&times;</span><div class="Kommentare" style="margin:auto; text-align:left; width:90%"><h4 id="Überschrift">Antwort bearbeiten</h4><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden; height:0px"></input><h5>Antwort: </h5><input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort" required></input><div name="uebersetzung" style="margin-top:40px;"><h5>Übersetzung: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block; width:100%; height:30px;" placeholder="Übersetzung in zweite Sprache" required"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 
 			if(questiontype=="Multiplechoice")
@@ -263,7 +263,7 @@
 				{
 					$Step = $_REQUEST["Step"];
 					echo"&Step=".$Step;
-				} ?>" method="post"><h4 id="Überschrift">Frage bearbeiten<span class="close" onclick="hide_modal();">&times;</span></h4><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left; width:90%"><h5>Antwort: </h5><input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort"  required></input><div name="uebersetzung" style="margin-top:40px;"><h5>Übersetzung: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block; width:100%; height:30px;" placeholder="Übersetzung in zweite Sprache" required></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
+				} ?>" method="post"><span class="close" onclick="hide_modal();">&times;</span><div class="Kommentare" style="margin:auto; text-align:left; width:90%"><h4 id="Überschrift">Antwort bearbeiten</h4><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden; height:0px"></input><h5>Antwort: </h5><input id="neue_Antwort" class="center_select" name="neue_Antwort" placeholder="Eingabe einer neuen Antwort"  required></input><div name="uebersetzung" style="margin-top:40px;"><h5>Übersetzung: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block; width:100%; height:30px;" placeholder="Übersetzung in zweite Sprache" required></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
 			}
 
 		modal.style.display = "block";
@@ -304,7 +304,7 @@
 				var buttonaction = "insert_antworten_Multiplechoice.php";
 			}
 			var überschrift=document.getElementById("Überschrift");
-			überschrift.innerHTML='Neue Antwort hinzufügen<span class="close" onclick="hide_modal();">&times;</span>';
+			überschrift.innerHTML='Neue Antwort hinzufügen';
 			var Antwortbearbeiten=document.getElementById("antwortBearbeiten");
 			Antwortbearbeiten.action=buttonaction+"<?php 
 	if(isset($_REQUEST["Step"]))
