@@ -337,14 +337,16 @@ if (isset($_REQUEST["Step"])) {
 	    document.getElementById("myTopnav").style.display="none";
     </script>
 	<div class="content">
-	        <button id="element2" onclick = "zurück()">zurück</button>
-            <button id="element" onclick = "weiter()">weiter</button>
+	        <button class="TutorialNavi" onclick = "zurück()"><i class="fa fa-arrow-left"></i><br>zurück</button>
+			<progress id="progress" value="1" max="6" style="font-size:25px"></progress>
+            <button class="TutorialNavi" onclick = "weiter()"><i class="fa fa-arrow-right"></i><br>weiter</button>
+			<progress id="progressmobile" value="1" max="6" style="font-size:25px;"></progress>
     </div>';
 
     $Step=$_REQUEST["Step"];
 }
 ?>
-    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+	<link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
     <script src="Cookiefunctions.js" type="text/javascript"></script>
 
     <script>

@@ -158,9 +158,12 @@
 			document.getElementById("myTopnav").style.display="none";
 		</script>
 		<div class="content">
-				<button id="element2" onclick = "zurück()">zurück</button>
-				<button id="element" onclick = "weiter()">weiter</button>
-		</div>';
+		<button class="TutorialNavi" onclick = "zurück()"><i class="fa fa-arrow-left"></i><br>zurück</button>
+		<progress id="progress" value="3" max="6" style="font-size:25px"></progress>
+		<button class="TutorialNavi" onclick = "weiter()"><i class="fa fa-arrow-right"></i><br>weiter</button>
+		<progress id="progressmobile" value="3" max="6" style="font-size:25px;"></progress>
+</div>';
+
 
 		$Step=$_REQUEST["Step"];
 	}

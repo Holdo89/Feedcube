@@ -33,6 +33,23 @@
   background-color:white
 }
 
+#progressmobile{
+  display:none;
+  margin:auto;
+}
+
+.TutorialNavi
+{
+  text-align:center;
+  border:none;
+  margin:100px;
+  color:#084f6e; 
+  background-color:white;
+  font-size: 18px; 
+  margin-top:-10px;
+  margin-bottom:50px;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -111,5 +128,18 @@
 #element{
     margin:auto;
     margin-top:10px;
+    margin-bottom: 20px;
+}
+#progress{
+  display:none;
+}
+#progressmobile{
+  display:block;
+  margin-bottom: 20px;
+}
+.TutorialNavi{
+  margin:20px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 }
