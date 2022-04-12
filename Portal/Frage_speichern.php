@@ -35,7 +35,7 @@ xmlhttp.send();
 
 
 function speichern_antwort(Id, typ){
-    var Antwort = document.getElementById("Antwort_"+Id).value;
+    var Antwort = document.getElementById("Antwort_"+typ+"_"+Id).value;
     Antwort = Antwort.replace("&","%26");
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "Antwort_database_update.php?Id=" + Id + "&Antwort=" + Antwort + "&Typ="+ typ, true);
