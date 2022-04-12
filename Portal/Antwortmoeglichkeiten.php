@@ -301,7 +301,7 @@
 			}
 			else
 			{
-				var buttonaction = "insert_antworten_Multiplechoice.php";
+				var buttonaction = "insert_antworten_multiplechoice.php";
 			}
 			var überschrift=document.getElementById("Überschrift");
 			überschrift.innerHTML='Neue Antwort hinzufügen';
