@@ -32,7 +32,7 @@ function delete_data()
     if(confirm("Wollen Sie das gesammelte Feedback zum konfigurierten Filter löschen?"))
         {
             var xmlhttp = new XMLHttpRequest();    
-            xmlhttp.open("GET", "Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Zeitraum=" + Zeitraumvalue, true);
+            xmlhttp.open("GET", "Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Zeitraum=" + Zeitraumvalue, false);
             xmlhttp.send();
             location.reload();
         }
@@ -53,7 +53,7 @@ function intern_delete_data(){
     if(confirm("Wollen Sie das gesammelte interne Feedback zum konfigurierten Filter löschen?"))
     {
     var xmlhttp = new XMLHttpRequest();    
-    xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Zeitraum=" + Zeitraumvalue, true);
+    xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Zeitraum=" + Zeitraumvalue, false);
     xmlhttp.send();
     location.reload();
     }

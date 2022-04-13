@@ -150,7 +150,7 @@ function deleteFeedback(id){
 		if (confirm("Wollen Sie dieses Feedback wirklich entfernen?"))
 	  	{
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.open("GET", "deleteFeedback.php?Id=" + id, true);
+			xmlhttp.open("GET", "deleteFeedback.php?Id=" + id, false);
 			xmlhttp.send();
 			location.reload();
 	  }
