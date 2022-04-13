@@ -62,9 +62,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label style=\"margin-bottom:0px\">Maximum</label>\
                 <label style=\"margin-bottom:0px\"># Balken</label>\
                 <div id=\"SchieberID\" style=\"grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid\">\
-                <input class=\"center-select\" id=\"Range_Min\" name=\"Range_Min\" value=\"".$min."\" style=\"text-align:center; margin-auto\"></input> \
-                <input class=\"center-select\" id=\"Range_Max\" name=\"Range_Max\" value=\"".$max."\" style=\"text-align:center; margin-auto\"></input> \
-                <input class=\"center-select\" id=\"Columns\" name=\"Columns\" value=\"".$columns."\" style=\"text-align:center; margin-auto\"></input> \
+                <input class=\"center-select\" id=\"Range_Min\" name=\"Range_Min\" value=\"".$min."\" style=\"text-align:center; margin:auto\"></input> \
+                <input class=\"center-select\" id=\"Range_Max\" name=\"Range_Max\" value=\"".$max."\" style=\"text-align:center; margin:auto\"></input> \
+                <input class=\"center-select\" id=\"Columns\" name=\"Columns\" value=\"".$columns."\" style=\"text-align:center; margin:auto\"></input> \
                 </div>\
             </div>';
             document.getElementById('Rangeoptionen').style.display='block';

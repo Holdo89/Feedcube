@@ -8,7 +8,7 @@
 		    Hier werden bestehende Fragen bearbeitet und neue Fragen hinzugefügt, die bei Kundenbefragungen beantwortet werden. Dabei wird zwischen 4 verschiedenen Fragentypen unterschieden.   
         </p>
         <p style="text-align:left">
-        <b>Bewertung</b> - Fragen bei denen genau eine Antwortmöglichkeit gewählt wird. <a onclick="showExample('radio')">Beispiel anzeigen</a><br><br></p>
+        <b>Bewertung</b> - Fragen bei denen genau eine Antwortmöglichkeit gewählt wird. <a onclick="showExample('radio')" style="cursor:pointer">Beispiel anzeigen</a><br><br></p>
 		<div id="radio" class="radio">
 		Wie bewerten Sie unsere Dienstleistung?<br>
 			<label class="radio-inline">
@@ -23,7 +23,7 @@
 		<br><br>
 		</div>
   		<p style="text-align:left">
-        <b>Multiplechoice</b> - Fragen bei denen mehrere oder keine Antwortmöglichkeit gewählt wird. <a onclick="showExample('checkbox')">Beispiel anzeigen</a><br><br></p>
+        <b>Multiplechoice</b> - Fragen bei denen mehrere oder keine Antwortmöglichkeit gewählt wird. <a onclick="showExample('checkbox')" style="cursor:pointer">Beispiel anzeigen</a><br><br></p>
 		<div id="checkbox" class="radio">
 			Welche Themen sind noch interessant?<br>
 			<label class="checkbox-inline">
@@ -37,7 +37,7 @@
 			</label>
 		</div>
 		<p style="text-align:left">
-        <b>Schieberegler</b> - Durch Verschieben eines Reglers wird ein Zahlenwert ermittelt und als Bewertung abgegeben. Um das Maximum und Minimum des Reglers zu bearbeiten klicke <i class="fa fa-pencil" aria-hidden="true"></i>. <a onclick="showExample('range')">Beispiel anzeigen</a><br><br></p>
+        <b>Schieberegler</b> - Durch Verschieben eines Reglers wird ein Zahlenwert ermittelt und als Bewertung abgegeben. Um das Maximum und Minimum des Reglers zu bearbeiten klicke <i class="fa fa-pencil" aria-hidden="true"></i>. <a onclick="showExample('range')" style="cursor:pointer">Beispiel anzeigen</a><br><br></p>
 		<div id="range" class="radio">
 		<div style='text-align:center'><p style='margin-bottom:20px;'>Bewertung: <span id='output' style='font-size:15px;'>50</span></p><input type='range' style='width:70%; margin:auto;' min='0' max='100' value='50' name='element_1_1' id='element_1_1' ontouchend='input_update(1)' oninput='input_update(1), color(1)'></div>
 		<br><br>
