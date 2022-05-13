@@ -13,7 +13,8 @@
     <div class="dropdown-content">
         <a id ="Intern" href="Intern.php"><i class="fa fa-pie-chart" aria-hidden="true"></i> Auswertung</a>
     </div>
-    </div>    <a id ="intern_blog_noadmin" href="interner_blog_noadmin.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>
+    </div>    
+    <!--<a id ="intern_blog_noadmin" href="interner_blog_noadmin.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>-->
 
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">

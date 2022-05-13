@@ -16,7 +16,7 @@
     </div>
     </div>
 
-    <a id ="interner_blog" href="interner_blog.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>
+    <!--<a id ="interner_blog" href="interner_blog.php"><i class="fa fa-comments-o" aria-hidden="true"></i> Blog</a>-->
     <div id ="optionen" class="dropdown">
     <button class="dropbtn"><i class="fa fa-wrench" aria-hidden="true"></i> Optionen </button>
     <div class="dropdown-content">
