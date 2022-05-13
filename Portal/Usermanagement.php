@@ -307,7 +307,7 @@ $new_password_err = $confirm_password_err = "";
 		<span class="close">&times;</span>
 		<div id="Trainer_Auswahl" name="Trainer_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
 		<?php
-			include "Auswahlmöglichkeiten_Leistung.php"
+			include "Auswahlmöglichkeiten_Leistung_ohne_alle.php"
 		?>
 		<br>
 		<input type="checkbox" id ="Sprache"> Englischer Kurs</input>
