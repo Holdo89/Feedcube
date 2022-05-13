@@ -303,7 +303,7 @@ $new_password_err = $confirm_password_err = "";
 	</div>
 		<!-- The Modal -->
 	<div id="myModal" class="modal">
-	<form class="modalform" method="get">
+	<form class="modalform" method="get" style="text-align:left">
 		<span class="close">&times;</span>
 		<div id="Trainer_Auswahl" name="Trainer_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
 		<?php
