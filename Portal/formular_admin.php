@@ -125,13 +125,28 @@ while($row = mysqli_fetch_array($exec)){
 		}
 
 	else if($row_questions["Typ"]=="Schieberegler"){
+		$sql_range="SELECT * FROM rangeslider_answers WHERE Frage_ID = ".$row_questions["ID"];
+		$result_range = mysqli_query($link,$sql_range);
+		$row_range=mysqli_fetch_array($result_range);
 		echo"<script>document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo
 		'<div class="frage"><p>'.$row_questions["Fragen_extern"].'</div>
 		<div style="border: 1px solid #000; grid-column-start: 2; grid-column-end: -1; display: grid; grid-template-columns: auto auto auto auto auto;">
 		<div style="margin:auto;">Bewertung: '.$row["Frage_".$row_questions["ID"]].'</div>
-		<input type="range" style="width:80%; grid-column-start: 2; grid-column-end: -1; margin:auto;" value='.$row["Frage_".$row_questions["ID"]].' name="element_1" wrap="soft"></input>
-		</div>';
+		<input type="range" id="range_'.$row["ID"].'" style="width:80%; grid-column-start: 2; grid-column-end: -1; margin:auto;" value='.$row["Frage_".$row_questions["ID"]].' min='.$row_range['range_min'].' max='.$row_range['range_max'].' name="element_1" wrap="soft"></input>
+		</div>
+		<script>function color(i) 
+		{ 
+			var slider = document.getElementById("range_"+i)
+			var value = (slider.value-slider.min)/(slider.max-slider.min)*100
+			var value2 = value-10
+			var temp =  (slider.value-slider.min)*(100/(slider.max-slider.min));
+			var color =  "hsl("+temp+", 100%, 50%) ";
+			var color2 =  "#82CFD0 ";
+			slider.style.background = "linear-gradient(to right, "+color+"0%, "+color + value2 + "%, "+color+value2+"%, "+color2 + value + "%, #fff " + value + "%, white 100%)"
+		}
+		color('.$row["ID"].');
+		</script>';
 		if($row["Frage_".$row_questions["ID"]]==NULL)
 		{
 			echo"<script>var elem = document.getElementById('formular_div_".$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
@@ -164,4 +179,3 @@ $feedback_index = $feedback_index+1;
 }
 
 ?>
-
