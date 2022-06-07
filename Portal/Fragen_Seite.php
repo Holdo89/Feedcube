@@ -951,9 +951,9 @@
 					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5>\
 						<div id="SchieberID">\
 						<h5>Minimum:\
-						<input type="number" id="Range_Min" name="Range_Min" min="0" value="0"  style="text-align:center;margin:auto; border-left:none; border-right:none; border-top:none"></input></h5>\
+						<input type="number" id="Range_Min" name="Range_Min" min="0" value="0"  style="text-align:center;margin:auto; border-left:none; border-right:none; border-top:none; width: 65px;"></input></h5>\
 						<h5>Maximum:\
-						<input type="number" class="center-select" id="Range_Max" name="Range_Max" max="1000" value="100"  style="text-align:center;margin:auto; border-left:none; border-right:none; border-top:none"></input></h5>\
+						<input type="number" class="center-select" id="Range_Max" name="Range_Max" max="1000" value="100"  style="text-align:center;margin:auto; border-left:none; border-right:none; border-top:none; width: 65px;"></input></h5>\
 						</div>\
 					</div>';
 					var ID = id;	
