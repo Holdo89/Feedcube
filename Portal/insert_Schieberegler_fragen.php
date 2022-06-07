@@ -48,11 +48,11 @@ $ID = $row['ID'];
 
 if($Type=="extern")
 {
-    $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Frage_ID) VALUES (".$max.", ".$min.", ".$columns.", ".$row['ID'].")";
+    $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Frage_ID) VALUES (".$max.", ".$min.", 5, ".$row['ID'].")";
 }
 else
 {
-    $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Intern_ID) VALUES (".$max.", ".$min.", ".$columns.", ".$row['ID'].")";
+    $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Intern_ID) VALUES (".$max.", ".$min.", 5, ".$row['ID'].")";
 }
 mysqli_query($link, $sql);
 

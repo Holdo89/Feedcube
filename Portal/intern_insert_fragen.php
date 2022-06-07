@@ -83,7 +83,6 @@ if($Fragentyp!="Text" && $Fragentyp!="Schieberegler")
 else{
     $max=$_REQUEST["Range_Max"];
     $min=$_REQUEST["Range_Min"];
-    $columns=$_REQUEST["Columns"];
 
     if($max <= $min)
     {
@@ -107,7 +106,7 @@ else{
         $exec = mysqli_query($link, $query);
         $query = "UPDATE rangeslider_answers SET range_max = '".$max."' WHERE Frage_ID = '".$ID."'";
         $exec = mysqli_query($link, $query);
-        $query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Frage_ID = '".$ID."'";
+        $query = "UPDATE rangeslider_answers SET columns = '5' WHERE Frage_ID = '".$ID."'";
         $exec = mysqli_query($link, $query);
     }
 

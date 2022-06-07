@@ -253,7 +253,7 @@
 				<input class="center_select" id="Frage_Übersetzung" name ="Frage_Übersetzung" placeholder="Eingabe der Fragenübersetzung"></input>
 				<br>
 				<div class="container">
-				<p>Fragentyp:</p>
+				<h5>Fragentyp:</h5>
 					<label class="radio-inline">
 					<input type="radio" name="Auswahl_Fragentyp" id="Bewertung" value="Bewertung" style="margin-top:10px;" oninput="showoptions()" required>Bewertung
 					</label>
@@ -713,7 +713,7 @@
 				if(questiontype=="Schieberegler")
 				{
 					document.getElementById("Schieberegler").checked=true;
-					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div style="grid-template-columns:2fr 2fr 2fr; display:grid"><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></div>';
+					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div id="SchieberID"></div>';
 					var ID = id;
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
@@ -759,7 +759,7 @@
 				else if(questiontype=="Schieberegler")
 				{
 					document.getElementById("Schieberegler").checked=true;
-					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div style="grid-template-columns:2fr 2fr 2fr; display:grid"><label style="margin-bottom:0px">Minimum</label><label style="margin-bottom:0px">Maximum</label><label style="margin-bottom:0px"># Balken</label><div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid"></div></div>';
+					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div id="SchieberID"></div>';
 					var ID = id;
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
@@ -949,14 +949,11 @@
 				if(id==0)
 				{
 					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5>\
-					<div style="grid-template-columns:2fr 2fr 2fr; display:grid">\
-						<label style="margin-bottom:0px">Minimum</label>\
-						<label style="margin-bottom:0px">Maximum</label>\
-						<label style="margin-bottom:0px"># Balken</label>\
-						<div id="SchieberID" style="grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid">\
-						<input class="center-select" id="Range_Min" name="Range_Min" value="0" style="text-align:center; margin:auto"></input> \
-						<input class="center-select" id="Range_Max" name="Range_Max" value="100" style="text-align:center; margin:auto"></input> \
-						<input class="center-select" id="Columns" name="Columns" value="5" style="text-align:center; margin:auto"></input> \
+						<div id="SchieberID">\
+						<h5>Minimum:\
+						<input type="number" id="Range_Min" name="Range_Min" min="0" value="0"  style="text-align:center;margin:auto; border-left:none; border-right:none; border-top:none"></input></h5>\
+						<h5>Maximum:\
+						<input type="number" class="center-select" id="Range_Max" name="Range_Max" max="1000" value="100"  style="text-align:center;margin:auto; border-left:none; border-right:none; border-top:none"></input></h5>\
 						</div>\
 					</div>';
 					var ID = id;	

@@ -16,7 +16,6 @@ $Schieberegler_err="";
     {
         $max=$_REQUEST["Range_Max"];
         $min=$_REQUEST["Range_Min"];
-        $columns=$_REQUEST["Columns"];
 
         if ($max <= $min) 
         {
@@ -57,14 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             document.getElementById('Frage_Übersetzung').value = '".$Frage_Englisch."';
             document.getElementById('Schieberegler').checked = true;
             document.getElementById('Rangeoptionen').innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5>\
-            <div style=\"grid-template-columns:2fr 2fr 2fr; display:grid\">\
+            <div style=\"grid-template-columns:2fr 2fr; display:grid\">\
                 <label style=\"margin-bottom:0px\">Minimum</label>\
                 <label style=\"margin-bottom:0px\">Maximum</label>\
-                <label style=\"margin-bottom:0px\"># Balken</label>\
-                <div id=\"SchieberID\" style=\"grid-template-columns:2fr 2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid\">\
-                <input class=\"center-select\" id=\"Range_Min\" name=\"Range_Min\" value=\"".$min."\" style=\"text-align:center; margin:auto\"></input> \
-                <input class=\"center-select\" id=\"Range_Max\" name=\"Range_Max\" value=\"".$max."\" style=\"text-align:center; margin:auto\"></input> \
-                <input class=\"center-select\" id=\"Columns\" name=\"Columns\" value=\"".$columns."\" style=\"text-align:center; margin:auto\"></input> \
+                <div id=\"SchieberID\" style=\"grid-template-columns:2fr 2fr; grid-column-start: 1; grid-column-end: -1;display:grid\">\
+                <input type=\"number\" class=\"center-select\" id=\"Range_Min\" name=\"Range_Min\" min=\"0\" value=\"".$min."\" style=\"text-align:center; margin:auto\"></input> \
+                <input type=\"number\" class=\"center-select\" id=\"Range_Max\" name=\"Range_Max\" max=\"1000\" value=\"".$max."\" style=\"text-align:center; margin:auto\"></input> \
                 </div>\
             </div>';
             document.getElementById('Rangeoptionen').style.display='block';

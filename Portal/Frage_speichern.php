@@ -46,7 +46,7 @@ function speichern_range(){
     var ID = document.getElementById("ID_extern_Schieberegler").value;
     var range_min = document.getElementById("Range_Min").value;
 	var range_max = document.getElementById("Range_Max").value;
-    var columns = document.getElementById("Columns").value;
+    var columns = 5;
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.open("GET", "Rangeslider_update.php?min=" + range_min + "&max=" + range_max + "&columns=" + columns + "&ID=" + ID, true);

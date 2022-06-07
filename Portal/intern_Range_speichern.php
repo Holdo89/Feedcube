@@ -6,7 +6,6 @@ require_once "session.php";
 $ID=$_REQUEST["ID"];
 $max=$_REQUEST["Range_Max"];
 $min=$_REQUEST["Range_Min"];
-$columns=$_REQUEST["Columns"];
 
 if($max <= $min)
 {
@@ -25,7 +24,7 @@ $query = "UPDATE rangeslider_answers SET range_max = '".$max."' WHERE Intern_ID 
 
 $exec = mysqli_query($link,$query);
 
-$query = "UPDATE rangeslider_answers SET columns = '".$columns."' WHERE Intern_ID = '".$ID."'";
+$query = "UPDATE rangeslider_answers SET columns = '5' WHERE Intern_ID = '".$ID."'";
 
 $exec = mysqli_query($link,$query);
 header("location:Fragen.php");
