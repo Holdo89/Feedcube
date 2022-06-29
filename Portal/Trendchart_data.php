@@ -119,7 +119,7 @@ $feedback_year=substr($datum_max,0,4);
 			if($month_sum==0){
 				echo",";
 			}
-			echo $Average.",";
+			echo round($Average,2).",";
 			if($month_sum==0){
 					echo",";
 			}
