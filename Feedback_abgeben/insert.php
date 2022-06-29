@@ -12,7 +12,7 @@ $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
 
 date_default_timezone_set("Europe/Berlin");
-$Datum = date("Y-m-d h:i:s");
+$Datum = date("Y-m-d H:i:s");
 $Leistung = mysqli_real_escape_string($link, $_SESSION["Leistung"]);
 $Trainer = mysqli_real_escape_string($link, $_SESSION["Trainer"]);
 $Antworten_temp = $_REQUEST["Antworten_array"];
