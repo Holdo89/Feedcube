@@ -3,8 +3,8 @@
 	    <div></div>
 	    <div></div>
 		<span class="close" onclick="hideinformationWithoutremembering()" style="text-align:right">&times;</span>
-		<div>		
-		<h4 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/group.png" width="60"> Benutzer </h4>
+		<div style="text-align:center">		
+		<h4 style="font-size:30px; margin-bottom:10px;text-align:center;"><img src="../assets/brand/group.png" width="60"> Benutzer </h4>
 		<p style="text-align:left">
 		    Hier werden neue Benutzer hinzugefügt und verwaltet. Zu jedem Benutzer stehen weitere Optionen zur Verfügung. <br>
 		</p>

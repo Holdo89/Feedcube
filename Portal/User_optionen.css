@@ -5,6 +5,7 @@
   margin: 0;
 
   padding: 0;
+  text-align:left;
 
 }
 
@@ -54,8 +55,6 @@ h1 {
 
 label, input, textarea {
 
-  line-height: 25pt;
-
   font-family: "Spartan";
 
   outline: none;    
@@ -78,14 +77,11 @@ label, input, textarea {
 
 .überschrift{
   text-align:left;
+  font-size:16px;
+  margin-right:10px;
   font-weight: bold;
-  font-size:13px;
-  color:white;
-  background:rgba(4, 51, 78, 0.904);
   margin-bottom:0;
-  line-height: 20pt;
   border:none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
@@ -183,7 +179,7 @@ input, label, textarea,.Fragentyp_Select{
   padding: 3px;
   outline: none;
   border:none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align:left;
 }
 
 

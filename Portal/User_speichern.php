@@ -22,11 +22,9 @@ xmlhttp.send();
 
 function entfernen(Id){
 
-var Username = document.getElementById("Username_"+Id).value;
-
 var xmlhttp = new XMLHttpRequest();
 
-xmlhttp.open("GET", "User_entfernen.php?Id=" + Id + "&Username=" + Username, true);
+xmlhttp.open("GET", "User_entfernen.php?Id=" + Id, true);
 
 xmlhttp.send();
 
