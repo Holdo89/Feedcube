@@ -39,7 +39,7 @@ $Umfrage_titel = mysqli_fetch_array($exec_test);
 	$dir = "../assets/".$subdomain."/logo/";
 	$file = scandir($dir);
 	echo $file[2];
-	?>" alt="" width="220" height="70">
+	?>" alt="" width="220" height="70" style='object-fit:scale-down'>
 <label align=center style="line-height:23px;">
 <?php 
 	echo "Vielen Dank für die Teilnahme an der folgenden Umfrage</label><br><br>

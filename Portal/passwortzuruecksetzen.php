@@ -78,7 +78,7 @@ $code = $_GET['code'];
 ?>
 
 <form action="?send=1&amp;id=<?php echo htmlentities($id); ?>&amp;code=<?php echo htmlentities($code); ?>" method="post" style="padding:50px">
-        <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70"></p>
+        <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'></p>
 
 <?php
 //Abfrage des Nutzers

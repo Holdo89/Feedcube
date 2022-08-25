@@ -91,7 +91,7 @@ else{
 	$file = scandir($dir);
 
     echo"
-        <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'>
+        <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'>
         <div class='container' id = 'container'>";
     $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren Bewertung antworten
     echo"
@@ -180,7 +180,7 @@ function push_all_Answers(){
         }
         xhttp.open("GET", "insert.php?Antworten_array="+abgegebenes_feedback_array);
         xhttp.send();
-        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>Vielen Dank für die Teilnahme an der Umfrage.";
+        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'> <p style='text-align:center'>Vielen Dank für die Teilnahme an der Umfrage.";
     $sql = "SELECT Intervall FROM umfragen WHERE ID = ".$_SESSION["Umfrage"];
     $query = mysqli_query($link, $sql);
     $result = mysqli_fetch_array($query);

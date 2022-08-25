@@ -143,7 +143,7 @@
 	
 	<label> Logo Feedback abgeben:</label>
 	<div>
-	<input type="file" id="logo" name="logo" onchange="readURL(this,'#logo_view');"></input>
+	<input type="file" accept="image/*" id="logo" name="logo" onchange="readURL(this,'#logo_view');"></input>
 	<img id="logo_view" src="../assets/<?php echo $subdomain ?>/logo/<?php
 	$dir = "../assets/".$subdomain."/logo/";
 	$file = scandir($dir);

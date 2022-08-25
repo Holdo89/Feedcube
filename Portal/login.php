@@ -121,7 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script type = "text/javascript" src="app.js"></script>
 
     <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="padding:40px;">
-    <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70">
+    <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'>
     <div class="divider">
         <div class="login">
             <img src="user_security.svg" width="230" height="250">

@@ -142,7 +142,7 @@ while($index<$Anzahl_Fragen) {
 	$file = scandir($dir);
 
     echo"
-        <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'>
+        <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'>
         <div class='container' id = 'container'>
         <div class='chapter' id='chapter'>".$Kapitel_array[0]."</div>";
     $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren Bewertung antworten
@@ -226,7 +226,7 @@ function push_all_Answers(){
         i=i+1;
     }
     if(Fragenzahl == Anzahl_Fragen){
-        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>"; 
+        document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'> <p style='text-align:center'>"; 
         if($_SESSION["Sprache"]=="Deutsch")
         {
             $sql = "SELECT Text_nach_Abgabe FROM system";

@@ -26,7 +26,7 @@ $file = scandir($dir);
 </div>
 </body>
 <script>
-    document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>Vielen Dank für die Teilnahme an der Umfrage.";
+    document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'> <p style='text-align:center'>Vielen Dank für die Teilnahme an der Umfrage.";
     
     if(isset($_COOKIE["Umfrage".$_SESSION["Umfrage"]."_teilgenommen"])) {
         $sql = "SELECT Intervall FROM umfragen WHERE ID = ".$_SESSION["Umfrage"];

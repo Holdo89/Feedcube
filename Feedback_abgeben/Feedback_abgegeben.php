@@ -28,7 +28,7 @@ $file = scandir($dir);
 </div>
 </body>
 <script>
-document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70'> <p style='text-align:center'>"; 
+document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'> <p style='text-align:center'>"; 
         if($_SESSION["Sprache"]=="Deutsch")
         {
             $sql = "SELECT Text_nach_Abgabe FROM system";

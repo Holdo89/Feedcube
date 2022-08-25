@@ -40,7 +40,7 @@ include "../config.php";
 	$dir = "../assets/".$subdomain."/logo/";
 	$file = scandir($dir);
 	echo $file[2];
-	?>" alt="" width="220" height="70">
+	?>" alt="" width="220" height="100" style='object-fit:scale-down'>
 
 <div class="container">
 

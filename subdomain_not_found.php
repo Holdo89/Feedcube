@@ -40,7 +40,7 @@
 
 
 <form class="form-signin" action="subdomaininput.php" method="post" style="padding:50px; max-width:800px">
-    <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70"></p>
+    <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style="object-fit:scale-down"></p>
     <h1 class= "h4 mb-3 font-weight-normal">Subdomain wurde nicht gefunden</h1>
     Die eingegebene Subdomain wurde nicht gefunden. Wenn Sie sicher sind, diese Subdomain bereits registriert zu haben, teilen Sie uns das Probleme bitte in unserem <a href="https://feedcube.atlassian.net/servicedesk/customer/portal/2/create/2">Serviceportal</a> mit. 
     Alternativ können Sie uns gerne auch telefonisch oder per Email kontaktieren. Unsere Kontaktdaten finden Sie <a href="https://feedcube.net/kontakt/">hier.</a><br><br>
