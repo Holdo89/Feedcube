@@ -23,7 +23,11 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
 <script>
 function copyLink(id) {
     var copyLink = "https://<?php echo $subdomain ?>.feedcube.net/Software/Umfrage/Vorauswahl.php?Umfrage="+id;
-   navigator.clipboard.writeText(copyLink);
-    alert("Link zur Umfrage wurde in die Zwischenablage kopiert");
+   navigator.clipboard.writeText(copyLink).then(() => {
+        alert("Der Link zur Umfrage wurde erfolgreich in die Zwischenablage kopiert");
+      })
+      .catch(() => {
+        alert("Der Link zur Umfrage wurde nicht erfolgreich in die Zwischenablage kopiert");
+      });
 }
 </script>
