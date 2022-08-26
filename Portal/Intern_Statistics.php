@@ -188,7 +188,7 @@ else if($typ=="Schieberegler"){
 	echo "<p style='margin-bottom:-20px;'># Bewertungen: ".$Anzahl_abgegenes_feedback."</p>";
 }
 else if($typ=="Schieberegler"){
-	$sql_range = "SELECT * FROM rangeslider_answers WHERE Frage_ID = '".$ID."'";
+	$sql_range = "SELECT * FROM rangeslider_answers WHERE Intern_ID = '".$ID."'";
 	$exec_range = mysqli_query($link,$sql_range);
 	$row_range = mysqli_fetch_array($exec_range);
 	$range = ($row_range["range_max"]-$row_range["range_min"])*0.1;

@@ -151,7 +151,7 @@
 ?>
 <script>
 	document.getElementById("Fragen").className = "active";
-	document.getElementById("optionen").style.backgroundColor = "lightgrey";
+	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/questionmark.png" width="60" style="margin-top:-10px;"> Fragen </h1>
 		Hier kannst du Fragen, die beim Feedback gestellt werden, bearbeiten

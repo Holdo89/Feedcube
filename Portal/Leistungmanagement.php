@@ -95,7 +95,7 @@
 ?>
 <script>
 	document.getElementById("Leistungmanagement").className = "active";
-	document.getElementById("optionen").style.backgroundColor = "lightgrey";
+	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h1>
 		<p style="margin-bottom:10px;text-align:center; max-width:95vw""> Bearbeite hier die Leistungen zu denen du Feedback erhalten möchtest </p>	</div>

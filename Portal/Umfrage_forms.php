@@ -39,20 +39,20 @@
 			include "navigation.php";
 	?>
 <script>
-	document.getElementById("forms_admin").className = "active";
-	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
+	document.getElementById("Umfrage_forms").className = "active";
+	document.getElementById("UmfrageMöglichkeiten").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/documents.png" width="50" style="margin-top:-10px;"> Formulare </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks in Form von befüllten Formularen</p>	</div>
 		<div id=fullAuswahl class="forms">
 	<?php
-		include "FilterExportDeleteOptions.php"
+		include "FilterExportDeleteOptionsIntern.php"
 	?>
 
 	</div>
 	<hr>
 	<?php
-	include "Filter.php";
+	include "Filter_Umfrage.php";
 	?>
 
 	<div id="auswertungen" style="display:grid">
@@ -81,8 +81,7 @@ function update(){
 
 function load_country_data(limit, start)
  	{
-	var Trainer = Auswahl_Trainer.value;
-	var Leistung = Auswahl_Leistung.value;
+	var Umfrage = Auswahl_Umfrage.value;
 	var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
     if(Zeitraum=="Benutzerdefiniert")
@@ -104,7 +103,7 @@ function load_country_data(limit, start)
 	datum_max = datum_max.toISOString().split('T')[0];
   	$.ajax({
 	<?php
-			echo 'url:"formular_admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Trainer=" + Trainer';
+			echo 'url:"Umfrage_formular.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraum';
 	?>,
    method:"POST",
    data:{limit:limit, start:start},
@@ -151,7 +150,7 @@ function deleteFeedback(id){
 		if (confirm("Wollen Sie dieses Feedback wirklich entfernen?"))
 	  	{
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.open("GET", "deleteFeedback.php?Id=" + id, false);
+			xmlhttp.open("GET", "InterndeleteFeedback.php?Id=" + id, false);
 			xmlhttp.send();
 			location.reload();
 	  }

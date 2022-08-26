@@ -93,7 +93,7 @@
 ?>
 <script>
 	document.getElementById("Fragensets").className = "active";
-	document.getElementById("optionen").style.backgroundColor = "lightgrey";
+	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px; text-align:center"><img src="../assets/brand/questionset.png" width="70">  Fragensets </h1>
 		<p style="margin-bottom:30px; text-align:center"> Erstelle und bearbeite hier deine Fragensets, um sie anschließend bei den entsprechenden Leistungen anzuwenden</p>	</div>

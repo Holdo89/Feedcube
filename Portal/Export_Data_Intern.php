@@ -6,8 +6,7 @@
 
  $datum_min=$_REQUEST["datum_min"];
  $datum_max=$_REQUEST["datum_max"];
- $Frage=$_REQUEST["Frage"];
- $Frage_ID=substr($Frage,6);
+ $Umfrage=$_REQUEST["Umfrage"];
  $Zeitraum = $_REQUEST["Zeitraum"];
  if($Zeitraum != "Benutzerdefiniert")
  {
@@ -27,7 +26,7 @@
  }
  echo"\n";
    
-    $sql = "SELECT * FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' ORDER BY Datum DESC";
+    $sql = "SELECT * FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND Umfrage LIKE '".$Umfrage."' ORDER BY Datum DESC";
     $result=mysqli_query($link,$sql);
 
 // close connection

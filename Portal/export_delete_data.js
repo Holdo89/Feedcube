@@ -39,6 +39,7 @@ function delete_data()
 }
 
 function intern_delete_data(){
+    var Umfrage = Auswahl_Umfrage.value;
     var Zeitraumvalue =  document.getElementById("zeitraum").value;
     var value_min = $( "#slider-range" ).slider( "values", 0 );
     var value_max = $( "#slider-range" ).slider( "values", 1 );
@@ -53,7 +54,7 @@ function intern_delete_data(){
     if(confirm("Wollen Sie das gesammelte interne Feedback zum konfigurierten Filter löschen?"))
     {
     var xmlhttp = new XMLHttpRequest();    
-    xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Zeitraum=" + Zeitraumvalue, false);
+    xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraumvalue, false);
     xmlhttp.send();
     location.reload();
     }
@@ -159,7 +160,7 @@ function export_data(){
 
 function intern_export_data(){
     var Zeitraumvalue =  document.getElementById("zeitraum").value;
-    var Frage = Auswahl_Frage.value;
+    var Umfrage = Auswahl_Umfrage.value;
     var value_min = $( "#slider-range" ).slider( "values", 0 );
     var value_max = $( "#slider-range" ).slider( "values", 1 );
     var output = document.getElementById("demo");
@@ -186,7 +187,7 @@ function intern_export_data(){
           }
   
         }   
-    xmlhttp.open("GET", "Export_Data_Intern.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage + "&Zeitraum=" + Zeitraumvalue, true);
+    xmlhttp.open("GET", "Export_Data_Intern.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraumvalue, true);
     xmlhttp.send();
     }
 

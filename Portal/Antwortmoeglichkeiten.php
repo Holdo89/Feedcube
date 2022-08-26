@@ -133,7 +133,7 @@
 ?>
 <script>
 	document.getElementById("Antworten").className = "active";
-	document.getElementById("optionen").style.backgroundColor = "lightgrey";
+	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/check-mark.png" width="60" style="margin-top:-10px;"> Antworten </h1>
 		Hier kannst du Antwortmöglichkeiten zu Feedbackfragen hinzufügen oder bearbeiten
