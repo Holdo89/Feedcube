@@ -3,8 +3,8 @@
 	    <div></div>
 	    <div></div>
 		<span class="close" onclick="hideinformationWithoutremembering()" style="text-align:right">&times;</span>
-		<div>		
-		<h4 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h4>
+		<div style="text-align:center">		
+		<h4 style="font-size:30px; margin-bottom:10px; text-align:center"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h4>
 		<p style="text-align:left">
 		    Leistungen repräsentieren Dienstleistungen zu denen Feedback von Teilnehmern abgegeben werden. Beispiele dafür sind Schulungen, Seminare, oder auch Beratungen. 
 		    Um Fragen zu wählen die bei einer Leistung abgefragt werden klicken Sie <i class="fa fa-pencil" aria-hidden="true"></i>. Fragen können einzeln oder durch

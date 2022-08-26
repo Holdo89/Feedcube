@@ -95,10 +95,10 @@
 	document.getElementById("Fragensets").className = "active";
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/questionset.png" width="70" style="margin-top:-10px;">  Fragensets </h1>
-		<p style="margin-bottom:30px"> Erstelle und bearbeite hier deine Fragensets, um sie anschließend bei den entsprechenden Leistungen anzuwenden</p>	</div>
+		<h1 style="font-size:30px; margin-bottom:10px; text-align:center"><img src="../assets/brand/questionset.png" width="70">  Fragensets </h1>
+		<p style="margin-bottom:30px; text-align:center"> Erstelle und bearbeite hier deine Fragensets, um sie anschließend bei den entsprechenden Leistungen anzuwenden</p>	</div>
 		</div>
-	<div class="scroll">
+	<div class="scroll" style="text-align:center">
 	<style>
 	.überschrift{
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
@@ -157,9 +157,9 @@
 		<script>
 			document.getElementById("myTopnav").style.display="none";
 		</script>
-		<div class="content">
+		<div class="content" style="text-align:center">
 		<button class="TutorialNavi" onclick = "zurück()"><i class="fa fa-arrow-left"></i><br>zurück</button>
-		<progress id="progress" value="3" max="6" style="font-size:25px"></progress>
+		<progress id="progress" value="3" max="6" style="font-size:25px;"></progress>
 		<button class="TutorialNavi" onclick = "weiter()"><i class="fa fa-arrow-right"></i><br>weiter</button>
 		<progress id="progressmobile" value="3" max="6" style="font-size:25px;"></progress>
 </div>';
