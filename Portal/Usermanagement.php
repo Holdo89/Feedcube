@@ -603,7 +603,7 @@ a:hover .tooltiptext {
 		copyLink.select();
 		copyLink.setSelectionRange(0, 99999);
 		document.execCommand("copy");
-        alert("Der Link zur Umfrage wurde erfolgreich in die Zwischenablage kopiert");
+        alert("Der Link wurde erfolgreich in die Zwischenablage kopiert");
 	}
 	function setVisibility(id){
         if(id===undefined)
