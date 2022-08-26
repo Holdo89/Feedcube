@@ -412,7 +412,7 @@ a:hover .tooltiptext {
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/group.png" width="60" style="margin-top:-10px;">  Benutzer </h1>
-		<p style="margin:auto; margin-bottom:30px; text-align:center; max-width:95vw"> Bearbeite hier Benutzer und weise Berechtigungen als Trainer oder Administrator zu</p></div>
+		<p style="margin:auto; margin-bottom:10px; text-align:center; max-width:95vw"> Bearbeite hier Benutzer und weise Berechtigungen als Trainer oder Administrator zu</p></div>
 		
 	<div class="scroll">
 

@@ -14,9 +14,10 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Leistungen</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="leistung_optionen.css" rel="stylesheet" type="text/css">
+	<link href="User_optionen.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Leistung_speichern.php";
@@ -97,27 +98,15 @@
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h1>
-		<p style="margin-bottom:30px"> Bearbeite hier die Leistungen zu denen du Feedback erhalten möchtest </p>	</div>
+		<p style="margin-bottom:10px;text-align:center; max-width:95vw""> Bearbeite hier die Leistungen zu denen du Feedback erhalten möchtest </p>	</div>
 		</div>
 	<div class="scroll">
-	<style>
-	.überschrift{
-		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
-	}
-	</style>
-	<form action="insert_leistung.php<?php 
-	if(isset($_REQUEST["Step"]))
-	{
-		$Step = $_REQUEST["Step"];
-		echo"?Step=".$Step;
-	} ?>" method="post">
-	<label class="überschrift">Leistungen</label><label class="überschrift"></label><label class="überschrift"></label>
-	<?php
-		include "Leistung_Abfrage.php";
+	   <?php
+	include "Leistungstable.php";
 	?>
-	</form>
+
 	</div>
-	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'Leistung')"> Leistung hinzufügen</button>
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'Leistung')"><i class="fa fa-graduation-cap" style="font-size:18px" aria-hidden="true"></i> Leistung hinzufügen</button>
 
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -154,6 +143,25 @@
 	</form>
 	</div>
 
+			<!-- The Modal -->
+	<div id="LinkModal" class="modal">
+		<form class="modalform" method="get" style="text-align:left">
+			<span class="close">&times;</span>
+			<div id="Leistung_Auswahl" name="Leistung_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
+			<?php
+			include "Auswahlmöglichkeiten_Trainer.php"
+	?>
+			<br>
+			<input type="checkbox" id ="Sprache"> Englischer Kurs</input>
+			<p style="margin-top:20px;">Feedback-Link: </p>
+			<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
+			<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">Link kopieren</button>
+		</form>
+	</div>
+
     <script src="Leistungsjs.js" type="text/javascript"></script>
 	<?php
     include "Tutorial_Schritt5_Info.php";
@@ -177,6 +185,67 @@ if (isset($_REQUEST["Step"])) {
     <script src="Cookiefunctions.js" type="text/javascript"></script>
 
     <script>
+		var span = document.getElementsByClassName("close")[1];
+		var linkmodal = document.getElementById("LinkModal");
+		span.onclick = function() {
+  		linkmodal.style.display = "none";
+		copyButton.style.display = "none";
+	}
+	var Leistung_Element = document.getElementById("Leistung_Auswahl");
+		function createLink(Leistung_ID, Leistung) {
+			linkmodal.style.display = "block";
+			Leistung_Element.value = Leistung_ID;
+			var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
+			Auswahl_Leistung.value = "%"
+			Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für die Leistung:</div>";
+			var Link = document.getElementById("Link");
+			Link.value = "";
+		}
+	var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
+	var Auswahl_Sprache = document.getElementById("Sprache");
+	var Sprache = "Deutsch";
+	var Link = document.getElementById("Link");
+	var copyButton = document.getElementById("copyButton");
+	var current_url = window.location.href;
+	var index = current_url.indexOf("Portal");
+	current_url = current_url.substr(0,index)+"Feedback_abgeben";
+	Auswahl_Leistung.onchange = function(){
+		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
+		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
+		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		Link.value = Feedbacklink;
+		copyButton.style.display = "block";
+	};
+	Auswahl_Sprache.onclick = function(){
+		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
+		if(Auswahl_Sprache.checked)
+		{
+			Sprache= "Englisch";
+		}
+		else{
+			Sprache="Deutsch";
+		}
+		var Feedbacklink = current_url+"/Vorauswahl.php?Leistung_ID="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
+		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		Link.value = Feedbacklink;
+		copyButton.style.display = "block";
+	};
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+		copyButton.style.display = "none";
+	}
+	}
+	function copyLink() {
+		var copyLink = document.getElementById("Link");
+		copyLink.select();
+		copyLink.setSelectionRange(0, 99999);
+		document.execCommand("copy");
+        alert("Der Link wurde erfolgreich in die Zwischenablage kopiert");
+	}
+
 				checkCookie("LeistungInformationChecked", "LeistungInfo_Modal")
 				function weiter() {
 					window.location.href = "Usermanagement.php?Step=6"
