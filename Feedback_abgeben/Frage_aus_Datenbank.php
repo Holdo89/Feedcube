@@ -260,7 +260,7 @@ function push_all_Answers(){
 
 function get_next_question()
 {
-    
+    var Schiebereglerindex=0; 
     document.documentElement.scrollTop = 0; 
     var Fragenzahl = parseInt(document.getElementById("Fragenzahl").value); //Frage die gerade dran ist
     
@@ -310,7 +310,8 @@ function get_next_question()
             var Default_Schieberegler_array = [<?php foreach($Default_Schieberegler_array as $Default_Schieberegler){echo $Default_Schieberegler.",";};?>];
             var Max_Schieberegler_array = [<?php foreach($Max_Schieberegler_array as $Max_Schieberegler){echo $Max_Schieberegler.",";};?>];
             var Min_Schieberegler_array = [<?php foreach($Min_Schieberegler_array as $Min_Schieberegler){echo $Min_Schieberegler.",";};?>];
-            document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="<div style='text-align:center'><p style='margin-bottom:20px;'>Bewertung: <span id='output_"+Fragenzahl+"' style='font-size:15px;'>"+ Default_Schieberegler_array[0] + "</span></p><input type='range' style='width:80%; margin-left:10px;' min='"+ Min_Schieberegler_array[0] +"' max='" + Max_Schieberegler_array[0]+"' value='" + Default_Schieberegler_array[0] + "' name='element_1_"+Fragenzahl+"' id='element_1_"+Fragenzahl+"' ontouchend='input_update("+Fragenzahl+")' oninput='input_update("+Fragenzahl+"), color("+Fragenzahl+")'></div>";
+            document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="<div style='text-align:center'><p style='margin-bottom:20px;'>Bewertung: <span id='output_"+Fragenzahl+"' style='font-size:15px;'>"+ Default_Schieberegler_array[Schiebereglerindex] + "</span></p><input type='range' style='width:80%; margin-left:10px;' min='"+ Min_Schieberegler_array[Schiebereglerindex] +"' max='" + Max_Schieberegler_array[Schiebereglerindex]+"' value='" + Default_Schieberegler_array[Schiebereglerindex] + "' name='element_1_"+Fragenzahl+"' id='element_1_"+Fragenzahl+"' ontouchend='input_update("+Fragenzahl+")' oninput='input_update("+Fragenzahl+"), color("+Fragenzahl+")'></div>";
+            Schiebereglerindex=Schiebereglerindex+1;
         }
 
         else
