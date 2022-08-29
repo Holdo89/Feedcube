@@ -16,11 +16,13 @@ if($result["Intervall"]==0){
 $cookie_value = date("Y-m-d H:i", time() + 86400*$result["Intervall"]);
 setcookie($cookie_name, $cookie_value, time() + (86400*$result["Intervall"]), "/"); // 86400 = 1 day
 
+date_default_timezone_set("Europe/Berlin");
+$Datum = date("Y-m-d H:i:s");
 $Umfrage = mysqli_real_escape_string($link, $_SESSION["Umfrage"]);
 $Antworten_temp = $_REQUEST["Antworten_array"];
 echo $Antworten_temp = $_REQUEST["Antworten_array"];
 
-$Antworten="'".$Umfrage."',".$_REQUEST["Antworten_array"]; //In dieser Variable werden alle ANtowrten zu den Fragen zusammengefasst
+$Antworten="'".$Datum."','".$Umfrage."',".$_REQUEST["Antworten_array"]; //In dieser Variable werden alle ANtowrten zu den Fragen zusammengefasst
 
 echo $Antworten;
 $Fragenauswahl = array();
@@ -35,7 +37,7 @@ while($row = mysqli_fetch_assoc($result)){
   array_push($Fragenauswahl,"Frage_".$row["ID"]);
 }
 $Fragenauswahl = implode(",", $Fragenauswahl);
-$Spaltennamen="Umfrage, ";
+$Spaltennamen="Datum, Umfrage, ";
 $Spaltennamen = $Spaltennamen.$Fragenauswahl;
 
 // attempt insert query execution
