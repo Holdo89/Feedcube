@@ -123,11 +123,11 @@ while($row = mysqli_fetch_array($exec)){
 		'<div class="frage"><p>'.$row_questions["Fragen_intern"].'</div>
 		<div style="border: 1px solid #000; grid-column-start: 2; grid-column-end: -1; display: grid; grid-template-columns: auto auto auto auto auto;">
 		<div style="margin:auto;">Bewertung: '.$row["Frage_".$row_questions["ID"]].'</div>
-		<input type="range" id="range_'.$row["ID"].'" style="width:80%; grid-column-start: 2; grid-column-end: -1; margin:auto;" value='.$row["Frage_".$row_questions["ID"]].' min='.$row_range['range_min'].' max='.$row_range['range_max'].' name="element_1" wrap="soft"></input>
+		<input type="range" id="range_'.$feedback_index.'_'.$row_range["ID"].'" style="width:80%; grid-column-start: 2; grid-column-end: -1; margin:auto;" value='.$row["Frage_".$row_questions["ID"]].' min='.$row_range['range_min'].' max='.$row_range['range_max'].' name="element_1" wrap="soft"></input>
 		</div>
-		<script>function color(i) 
+		<script>function color(u,i) 
 		{ 
-			var slider = document.getElementById("range_"+i)
+			var slider = document.getElementById("range_"+u+"_"+i)
 			var value = (slider.value-slider.min)/(slider.max-slider.min)*100
 			var value2 = value-10
 			var temp =  (slider.value-slider.min)*(100/(slider.max-slider.min));
@@ -135,7 +135,7 @@ while($row = mysqli_fetch_array($exec)){
 			var color2 =  "#82CFD0 ";
 			slider.style.background = "linear-gradient(to right, "+color+"0%, "+color + value2 + "%, "+color+value2+"%, "+color2 + value + "%, #fff " + value + "%, white 100%)"
 		}
-		color('.$row["ID"].');
+		color('.$feedback_index.','.$row_range["ID"].');
 		</script>';
 		if($row["Frage_".$row_questions["ID"]]==NULL)
 		{
