@@ -277,7 +277,7 @@ else
 					?>
 				</p>
 				<p>Nächste Benachrichtigung am:
-				<input type="datetime-local" id="UmfrageDatum" style="border-left:none; border-right:none; border-top:none; width: 65px;; " name="UmfrageDatum"></input>
+				<input type="datetime-local" id="UmfrageDatum" style="border-left:none; border-right:none; border-top:none; " name="UmfrageDatum"></input>
 				</p>
 			</div>
 			<br>

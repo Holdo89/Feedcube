@@ -26,7 +26,7 @@
         <a id ="Intern" href="Intern.php"><i class="fa fa-pie-chart" aria-hidden="true"></i> Diagramme</a>
         <a id ="Umfrage_forms" href="Umfrage_forms.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>	
         <label style="margin-top:10px; text-align:left; border:none; outline:none; padding:3px; margin-bottom:5px;">Konfiguration</label>
-        <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-cogs" aria-hidden="true"></i> Konfiguration</a>
+        <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-cogs" aria-hidden="true"></i> Umfragen</a>
         <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Antworten</a>
     </div>
     </div>
