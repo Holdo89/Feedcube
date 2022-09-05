@@ -17,7 +17,8 @@
 	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type = "text/javascript" src="export_delete_data.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	
   </head>
@@ -44,6 +45,7 @@
 </script>
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/documents.png" width="50" style="margin-top:-10px;"> Formulare </h1>
 		<p style="margin-bottom:30px"> Hier findest du die Auswertung deines Kundenfeedbacks in Form von befüllten Formularen</p>	</div>
+		<div id=pdf>
 		<div id=fullAuswahl class="forms">
 	<?php
 		include "FilterExportDeleteOptions.php"
@@ -55,14 +57,15 @@
 	include "Filter.php";
 	?>
 
-	<div id="auswertungen" style="display:grid">
+	<div id="auswertungen" style="display:block;">
 	</div>
 	<div id="load_data_message"></div>
-	
+</div>
 </body>
 </html>
 
 <script>
+var scrollcounter = 0;
 var limit = 10;
 var start = 0;
 var action = 'inactive';
@@ -75,12 +78,13 @@ function update(){
 	{
 	start = 0;
 	action = 'active';
-	load_country_data(limit, start);
+	load_country_data(limit, start, 0);
 	}
 };
 
-function load_country_data(limit, start)
+function load_country_data(limit, start, scrollcounter)
  	{
+	var Scrollcounter = scrollcounter;
 	var Trainer = Auswahl_Trainer.value;
 	var Leistung = Auswahl_Leistung.value;
 	var Zeitraum =  document.getElementById("zeitraum").value;
@@ -104,7 +108,7 @@ function load_country_data(limit, start)
 	datum_max = datum_max.toISOString().split('T')[0];
   	$.ajax({
 	<?php
-			echo 'url:"formular_admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Trainer=" + Trainer';
+			echo 'url:"formular_admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Trainer=" + Trainer + "&Scrollcounter=" + Scrollcounter';
 	?>,
    method:"POST",
    data:{limit:limit, start:start},
@@ -138,10 +142,11 @@ function load_country_data(limit, start)
  $(window).scroll(function(){
   if($(window).scrollTop() + $(window).height() > $("#auswertungen").height() && action == 'inactive')
   {
+   scrollcounter = scrollcounter+10;
    action = 'active';
    start = start + limit;
    setTimeout(function(){
-    load_country_data(limit, start);
+    load_country_data(limit, start, scrollcounter);
    }, 1000);
   }
  });
@@ -156,4 +161,18 @@ function deleteFeedback(id){
 			location.reload();
 	  }
 	}
+</script>
+
+<script>
+function createPdf(){      
+    var source = window.document.getElementById("pdf");
+	var opt = {
+		margin:       1,
+		filename:     'myfile.pdf',
+		pagebreak:	  { mode: 'avoid-all'},
+		image:        { type: 'jpeg', quality: 0.98 },
+		html2canvas:  { scale: 2},
+		jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+	};
+    html2pdf().from(source).set(opt).save();}
 </script>

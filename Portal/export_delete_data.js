@@ -88,8 +88,6 @@ function export_data_admin(){
         datum_max.setDate(datum_max.getDate() - value_max);
         datum_max = datum_max.toISOString().split('T')[0];
         output.innerHTML = datum_min + " bis " + datum_max;
-        if(confirm("Wollen Sie das gesammelte Feedback zum konfigurierten Filter exportieren?"))
-        {
         var xmlhttp = new XMLHttpRequest(); 
         xmlhttp.onreadystatechange = function() {
 
@@ -107,8 +105,6 @@ function export_data_admin(){
         xmlhttp.open("GET", "Export_Data_Admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Zeitraum=" + Zeitraumvalue, true);
         xmlhttp.send();
         }
-    
-}
 
 
 
@@ -135,8 +131,6 @@ function export_data(){
     datum_max.setDate(datum_max.getDate() - value_max);
     datum_max = datum_max.toISOString().split('T')[0];
     output.innerHTML = datum_min + " bis " + datum_max;
-    if(confirm("Wollen Sie das gesammelte Feedback zum konfigurierten Filter exportieren?"))
-    {
     var xmlhttp = new XMLHttpRequest(); 
     xmlhttp.onreadystatechange = function() {
 
@@ -155,8 +149,6 @@ function export_data(){
     xmlhttp.send();
     }
 
-}
-
 
 function intern_export_data(){
     var Zeitraumvalue =  document.getElementById("zeitraum").value;
@@ -171,8 +163,6 @@ function intern_export_data(){
     datum_max.setDate(datum_max.getDate() - value_max);
     datum_max = datum_max.toISOString().split('T')[0];
     output.innerHTML = datum_min + " bis " + datum_max;
-    if(confirm("Wollen Sie das gesammelte interne Feedback zum konfigurierten Filter exportieren?"))
-    {
     var xmlhttp = new XMLHttpRequest(); 
     xmlhttp.onreadystatechange = function() {
 
@@ -190,5 +180,3 @@ function intern_export_data(){
     xmlhttp.open("GET", "Export_Data_Intern.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraumvalue, true);
     xmlhttp.send();
     }
-
-}
