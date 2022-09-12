@@ -11,7 +11,7 @@
 	<div id="Auswahl" class="grid-container-auswahl">
 	<label class="Auswahl">Umfrage: </label>
 			<?php
-				include "Auswahlmöglichkeiten_Umfrage_forms.php"
+				include "Auswahlmöglichkeiten_Umfrage.php"
 			?>
 		<label class="Auswahl" for="zeitraum" style="margin-top:5px">Zeitraum: </label>
 		<input id="zeitraum" style="background-color:white; width:300px; border:none" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />

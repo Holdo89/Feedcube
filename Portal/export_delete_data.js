@@ -1,6 +1,5 @@
 function delete_data()
 {
-    var Zeitraumvalue =  document.getElementById("zeitraum").value;
     var Trainer = Auswahl_Trainer.value;
     try{
         var Frage = Auswahl_Frage.value;
@@ -18,21 +17,22 @@ function delete_data()
     if(Leistung_Text == "%25"){
         Leistung_Text="Alle Leistungen";
     }
-    var value_min = $( "#slider-range" ).slider( "values", 0 );
-    var value_max = $( "#slider-range" ).slider( "values", 1 );
-    var output = document.getElementById("demo");
-    var datum_min = new Date();
-    var datum_max = new Date();
-    datum_min.setDate(datum_min.getDate() - value_min);
+	var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+
     datum_min = datum_min.toISOString().split('T')[0];
-    datum_max.setDate(datum_max.getDate() - value_max);
-    datum_max = datum_max.toISOString().split('T')[0];
-    output.innerHTML = datum_min + " bis " + datum_max;
+	datum_max = datum_max.toISOString().split('T')[0];
 
     if(confirm("Wollen Sie das gesammelte Feedback zum konfigurierten Filter löschen?"))
         {
             var xmlhttp = new XMLHttpRequest();    
-            xmlhttp.open("GET", "Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Zeitraum=" + Zeitraumvalue, false);
+            xmlhttp.open("GET", "Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, false);
             xmlhttp.send();
             location.reload();
         }
@@ -40,28 +40,27 @@ function delete_data()
 
 function intern_delete_data(){
     var Umfrage = Auswahl_Umfrage.value;
-    var Zeitraumvalue =  document.getElementById("zeitraum").value;
-    var value_min = $( "#slider-range" ).slider( "values", 0 );
-    var value_max = $( "#slider-range" ).slider( "values", 1 );
-    var output = document.getElementById("demo");
-    var datum_min = new Date();
-    var datum_max = new Date();
-    datum_min.setDate(datum_min.getDate() - value_min);
+	var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+
     datum_min = datum_min.toISOString().split('T')[0];
-    datum_max.setDate(datum_max.getDate() - value_max);
-    datum_max = datum_max.toISOString().split('T')[0];
-    output.innerHTML = datum_min + " bis " + datum_max;
+	datum_max = datum_max.toISOString().split('T')[0];
     if(confirm("Wollen Sie das gesammelte interne Feedback zum konfigurierten Filter löschen?"))
     {
     var xmlhttp = new XMLHttpRequest();    
-    xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraumvalue, false);
+    xmlhttp.open("GET", "Intern_Delete_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage, false);
     xmlhttp.send();
     location.reload();
     }
 }
 
 function export_data_admin(){
-    var Zeitraumvalue =  document.getElementById("zeitraum").value;
         var Trainer = Auswahl_Trainer.value;
         try{
         var Frage = Auswahl_Frage.value;
@@ -78,16 +77,17 @@ function export_data_admin(){
         if(Leistung_Text == "%25"){
             Leistung_Text="Alle Leistungen";
         }
-        var value_min = $( "#slider-range" ).slider( "values", 0 );
-        var value_max = $( "#slider-range" ).slider( "values", 1 );
-        var output = document.getElementById("demo");
-        var datum_min = new Date();
-        var datum_max = new Date();
-        datum_min.setDate(datum_min.getDate() - value_min);
+        var daterange = document.getElementById("zeitraum").value;
+        const DateRangeArray = daterange.split(" - ");
+        var datum_min = DateRangeArray[1];
+        var datum_max = DateRangeArray[0];	
+        datum_min = new Date(datum_min);
+        datum_max = new Date(datum_max);
+        datum_min.setDate(datum_min.getDate() + 1);
+        datum_max.setDate(datum_max.getDate() + 1);
         datum_min = datum_min.toISOString().split('T')[0];
-        datum_max.setDate(datum_max.getDate() - value_max);
         datum_max = datum_max.toISOString().split('T')[0];
-        output.innerHTML = datum_min + " bis " + datum_max;
+
         var xmlhttp = new XMLHttpRequest(); 
         xmlhttp.onreadystatechange = function() {
 
@@ -102,14 +102,13 @@ function export_data_admin(){
               }
       
             }   
-        xmlhttp.open("GET", "Export_Data_Admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Zeitraum=" + Zeitraumvalue, true);
+        xmlhttp.open("GET", "Export_Data_Admin.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer, true);
         xmlhttp.send();
         }
 
 
 
 function export_data(){
-    var Zeitraumvalue =  document.getElementById("zeitraum").value;
     try{
         var Frage = Auswahl_Frage.value;
         }
@@ -121,16 +120,17 @@ function export_data(){
     if(Leistung_Text == "%25"){
         Leistung_Text="Alle Leistungen";
     }
-    var value_min = $( "#slider-range" ).slider( "values", 0 );
-    var value_max = $( "#slider-range" ).slider( "values", 1 );
-    var output = document.getElementById("demo");
-    var datum_min = new Date();
-    var datum_max = new Date();
-    datum_min.setDate(datum_min.getDate() - value_min);
+	var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+
     datum_min = datum_min.toISOString().split('T')[0];
-    datum_max.setDate(datum_max.getDate() - value_max);
-    datum_max = datum_max.toISOString().split('T')[0];
-    output.innerHTML = datum_min + " bis " + datum_max;
+	datum_max = datum_max.toISOString().split('T')[0];
     var xmlhttp = new XMLHttpRequest(); 
     xmlhttp.onreadystatechange = function() {
 
@@ -145,24 +145,24 @@ function export_data(){
           }
   
         }   
-    xmlhttp.open("GET", "Export_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Zeitraum=" + Zeitraumvalue, true);
+    xmlhttp.open("GET", "Export_Data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage, true);
     xmlhttp.send();
     }
 
 
 function intern_export_data(){
-    var Zeitraumvalue =  document.getElementById("zeitraum").value;
     var Umfrage = Auswahl_Umfrage.value;
-    var value_min = $( "#slider-range" ).slider( "values", 0 );
-    var value_max = $( "#slider-range" ).slider( "values", 1 );
-    var output = document.getElementById("demo");
-    var datum_min = new Date();
-    var datum_max = new Date();
-    datum_min.setDate(datum_min.getDate() - value_min);
+    var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+
     datum_min = datum_min.toISOString().split('T')[0];
-    datum_max.setDate(datum_max.getDate() - value_max);
-    datum_max = datum_max.toISOString().split('T')[0];
-    output.innerHTML = datum_min + " bis " + datum_max;
+	datum_max = datum_max.toISOString().split('T')[0];
     var xmlhttp = new XMLHttpRequest(); 
     xmlhttp.onreadystatechange = function() {
 
@@ -177,6 +177,6 @@ function intern_export_data(){
           }
   
         }   
-    xmlhttp.open("GET", "Export_Data_Intern.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraumvalue, true);
+    xmlhttp.open("GET", "Export_Data_Intern.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage, true);
     xmlhttp.send();
     }

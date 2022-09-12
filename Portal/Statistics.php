@@ -8,12 +8,7 @@ include "IsAdmincheck.php";
  $ID = substr($Frage,6);
  $Antwort = 0;
  $Trainer=$_REQUEST["Trainer"];
- $Zeitraum = $_REQUEST["Zeitraum"];
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
 
  if($Leistung && $Frage!="undefined"){
 	echo "

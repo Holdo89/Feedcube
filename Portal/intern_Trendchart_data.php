@@ -13,12 +13,7 @@ $IsAdmin = $row["Is_Admin"];
  $ID = substr($Frage,6);
  $Month=$_REQUEST["Month"];
  $Frage_ID=substr($Frage,6);
- $Zeitraum = $_REQUEST["Zeitraum"];
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
 
  $query_typ = "SELECT Typ FROM intern WHERE ID=".$Frage_ID;
  $exec_typ = mysqli_query($link,$query_typ);

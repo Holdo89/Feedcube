@@ -8,12 +8,7 @@ include "IsAdmincheck.php";
  $Frage=$_REQUEST["Frage"];
  $Frage_ID=substr($Frage,6);
  $Trainer=$_REQUEST["Trainer"];
- $Zeitraum = $_REQUEST["Zeitraum"];
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
 
  if($Leistung && $Frage !="undefined"){ //falls noch keine multiplechoice Frage geschrieben wurde
 	$query = "SELECT Typ FROM admin WHERE ID=".$Frage_ID;

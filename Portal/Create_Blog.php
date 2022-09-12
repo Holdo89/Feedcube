@@ -8,12 +8,7 @@ require_once "session.php";
  $datum_max=$_REQUEST["datum_max"];
  $Leistung=$_REQUEST["Leistung"];
  $Frage=$_REQUEST["Frage"];
- $Zeitraum = $_REQUEST["Zeitraum"];
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
  
 if($Leistung && $Frage !="undefined"){
 

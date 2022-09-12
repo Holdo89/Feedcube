@@ -5,13 +5,8 @@
  $Leistung=$_REQUEST["Leistung"];
  $datum_min=$_REQUEST["datum_min"];
  $datum_max=$_REQUEST["datum_max"];
- $Zeitraum = $_REQUEST["Zeitraum"];
  $Scrollcounter = intval($_REQUEST["Scrollcounter"]);
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
 
 $query = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";	
 

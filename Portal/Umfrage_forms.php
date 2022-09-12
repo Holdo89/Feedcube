@@ -92,7 +92,7 @@
 }
 	</style>
 
-<body class="text-center" onload="datum_update(), update()">
+<body class="text-center" onload="update()">
 	<script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 	<link href="navigation.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="navigation.js"></script>
@@ -164,26 +164,19 @@ function load_country_data(limit, start, scrollcounter)
 	var Umfrage = Auswahl_Umfrage.value;
 	var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-    if(Zeitraum=="Benutzerdefiniert")
-	{
-		AuswahlZeitraum.style.visibility="visible"; 
-	}
-	else
-	{
-		AuswahlZeitraum.style.visibility="hidden"; 
-	}
-	var value_min = $( "#slider-range" ).slider( "values", 0 );
-	var value_max = $( "#slider-range" ).slider( "values", 1 );
-	var output = document.getElementById("demo");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
+	var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
 	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
 	datum_max = datum_max.toISOString().split('T')[0];
   	$.ajax({
 	<?php
-			echo 'url:"Umfrage_formular.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Zeitraum=" + Zeitraum + "&Scrollcounter=" + Scrollcounter';
+			echo 'url:"Umfrage_formular.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Scrollcounter=" + Scrollcounter';
 	?>,
    method:"POST",
    data:{limit:limit, start:start},
@@ -290,27 +283,23 @@ function deleteFeedback(id){
 		}
 		var Zeitraum =  document.getElementById("zeitraum").value;
 		var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-		var value_min = $( "#slider-range" ).slider( "values", 0 );
-		var value_max = $( "#slider-range" ).slider( "values", 1 );
-		var output = document.getElementById("demo");
-		var datum_min = new Date();
-		var datum_max = new Date();
-		datum_min.setDate(datum_min.getDate() - value_min);
+		var daterange = document.getElementById("zeitraum").value;
+		const DateRangeArray = daterange.split(" - ");
+		var datum_min = DateRangeArray[1];
+		var datum_max = DateRangeArray[0];	
+		datum_min = new Date(datum_min);
+		datum_max = new Date(datum_max);
+		datum_min.setDate(datum_min.getDate() + 1);
+		datum_max.setDate(datum_max.getDate() + 1);
 		datum_min = datum_min.toISOString().split('T')[0];
-		datum_max.setDate(datum_max.getDate() - value_max);
 		datum_max = datum_max.toISOString().split('T')[0];
+
 		var Datenow = new Date();
 		Datenow = Datenow.toISOString().split('T')[0];
-		if(Zeitraum=="Benutzerdefiniert")
-		{
-			var Datumvonbis = "<p id='Datumvonbis'><b>von: </b> "+datum_max+" <b>bis: </b>"+datum_min+"</p>";
-		}
-		else
-		{
-			var Datumvonbis = "";
-		}
+		
+		var Datumvonbis = "<p id='Datumvonbis'><b>von: </b> "+datum_max+" <b>bis: </b>"+datum_min+"</p>";
 
-		var Filter = "<div style='max-width:600px; line-height:200%; font-size:18px; text-align:left; margin:auto; margin-top:70px'><p><b>Umfrage:</b> "+Umfrage+"</p><p><b>Zeitraum:</b> "+Zeitraum+"</p>"+Datumvonbis+"<br><br><p>erstellt am: "+Datenow+"</p><p>erstellt von: <?php echo $_SESSION["username"];?><p style='margin-top:200px; font-size:12px;'><i class='fa fa-info' aria-hidden='true'></i> Dieses Dokument beinhaltet unter Umständen nicht alle Bewertungen zu den oben genannten Angaben, da in einer Auswertung maximal "+maxnumberofexportedpages.toString()+" Seiten exportiert werden. Um ältere Bewertungen zu exportieren verwenden Sie bitte einen detailierteren Filter</p></div>";
+		var Filter = "<div style='max-width:600px; line-height:200%; font-size:18px; text-align:left; margin:auto; margin-top:70px'><b>Umfrage:</b> "+Umfrage+"<p>"+Datumvonbis+"<br><br><p>erstellt am: "+Datenow+"</p><p>erstellt von: <?php echo $_SESSION["username"];?><p style='margin-top:200px; font-size:12px;'><i class='fa fa-info' aria-hidden='true'></i> Dieses Dokument beinhaltet unter Umständen nicht alle Bewertungen zu den oben genannten Angaben, da in einer Auswertung maximal "+maxnumberofexportedpages.toString()+" Seiten exportiert werden. Um ältere Bewertungen zu exportieren verwenden Sie bitte einen detailierteren Filter</p></div>";
 		var imagedata = "data:image/png;base64,<?php echo $imagedata ?>"; 
 		var smallimage = '<img src="' + imagedata + '"/ height="50" style="float:right; margin:15px; margin-right:25px;"><br>';
 		var largeimage = '<img src="' + imagedata + '"/ height="200" style="margin-top: 80px"><br><h1 style="margin-top:130px">Feedbackauswertung</h1>'+Filter;

@@ -17,7 +17,6 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="rangeslider_jquery_intern.js"> </script>
 <script type = "text/javascript" src="color_change.js"></script>
 <div id="FilterCharts" style="overflow:hidden; max-height:0px">
 	<div id="Auswahl" class="grid-container-auswahl" style="grid-template-columns: 1fr 2fr 5fr;">

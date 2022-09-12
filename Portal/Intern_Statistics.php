@@ -12,12 +12,7 @@ $IsAdmin = $row["Is_Admin"];
  $ID = substr($Frage,6);
  $Frage_multi="Intern_".$ID;
  $Antwort = 0;
- $Zeitraum = $_REQUEST["Zeitraum"];
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
  
  if($Frage!="undefined"){
 	echo "

@@ -10,12 +10,7 @@
  $Frage=$_REQUEST["Frage"];
  $Frage_ID=substr($Frage,6);
  $Trainer=$_SESSION["username"];
- $Zeitraum = $_REQUEST["Zeitraum"];
- if($Zeitraum != "Benutzerdefiniert")
- {
-	 $datum_min = date("Y-m-d");
-	 $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
- }
+
 
  $Id=[];
  $i=0;

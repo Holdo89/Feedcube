@@ -1,10 +1,4 @@
 
-<div class="FragenAuswahl" style="text-align:left;">
-<label class="Auswahl">Umfrage: </label>
-			<?php
-				include "Auswahlmöglichkeiten_Umfrage.php";
-			?>
-</div>
 <div id=fullAuswahl class="FragenAuswahl">
 
 <label class="Auswahl">Frage: </label>
@@ -26,7 +20,7 @@
 	</div>
 	<hr>
 	<?php
-	include "intern_Filter.php";
+	include "Filter_Umfrage_charts.php";
 	?>
 
 	<div id="undraw_empty" style="display:none; margin-top:48px;"><p><label>Es wurde noch kein Feedback abgegeben</label></p><img src="undraw_empty_xct9.svg" alt="" class="undraw_chart_empty"></div>

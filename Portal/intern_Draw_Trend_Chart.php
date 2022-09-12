@@ -6,40 +6,18 @@ function trendchartjs(typ,name){
 var Frage = Auswahl_Frage.value;
 var Zeitraum =  document.getElementById("zeitraum").value;
 var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-if(Zeitraum=="Benutzerdefiniert")
-{
-    AuswahlZeitraum.style.visibility="visible"; 
-    var value_min = $( "#slider-range" ).slider( "values", 0 );
-    var value_max = $( "#slider-range" ).slider( "values", 1 );
-}
-else
-{
-    AuswahlZeitraum.style.visibility="hidden"; 
-    var value_min = 0;
-    switch(Zeitraum){
-    case "24 hours":
-        var value_max = 1;
-        break;
-    case "3 days":
-        var value_max = 3;
-        break;
-    case "7 days":
-        var value_max = 7;
-        break;
-    case "30 days":
-        var value_max = 30;
-        break;
-    }
-}
-var output = document.getElementById("demo");
-var datum_min = new Date();
-var datum_max = new Date();
-datum_min.setDate(datum_min.getDate() - value_min);
-var d = datum_min;
-datum_min = datum_min.toISOString().split('T')[0];
-datum_max.setDate(datum_max.getDate() - value_max);
-var max_date =datum_max;
-datum_max = datum_max.toISOString().split('T')[0];
+var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+    var max_date =datum_max;
+    datum_min = datum_min.toISOString().split('T')[0];
+	datum_max = datum_max.toISOString().split('T')[0];
+
 
 var diffyear = parseInt(datum_min.substring(0,4))-parseInt(datum_max.substring(0,4))
 var month_min = parseInt(datum_min.substring(5,7));
@@ -61,10 +39,6 @@ while(diffyear>=1)
 else{
     month_sum = month_min-month_max;
 }
-//var diffmonth = parseInt(datum_min.substring(5,7))-parseInt(datum_max.substring(5,7))
-
-output.innerHTML = datum_min + " bis " + datum_max;
-
 
 var month = new Array();
   month[0] = 'Januar';
@@ -312,7 +286,7 @@ else{
 	}
 	;};
     }
-    xmlhttp.open("GET", "intern_Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Frage=" + Frage + "&Month=" + max_date.getMonth() + "&Zeitraum=" + Zeitraum, true);
+    xmlhttp.open("GET", "intern_Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Frage=" + Frage + "&Month=" + max_date.getMonth(), true);
     xmlhttp.send();
 
 }

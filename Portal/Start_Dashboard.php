@@ -15,12 +15,7 @@ require_once "session.php";
     $Trainer = $_REQUEST["Trainer"];
     $Leistung=$_REQUEST["Leistung"];
     $Trainer=$_REQUEST["Trainer"];
-    $Zeitraum = $_REQUEST["Zeitraum"];
-    if($Zeitraum != "Benutzerdefiniert")
-    {
-        $datum_min = date("Y-m-d");
-        $datum_max = date('Y-m-d', strtotime("-".$Zeitraum));
-    }
+
 
         $sql = "SELECT COUNT(ID) FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
         $query = mysqli_query($link,$sql);

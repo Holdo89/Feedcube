@@ -20,22 +20,17 @@ var charts = document.getElementById("charts");
 var Frage = Auswahl_Frage.value;
 var Zeitraum =  document.getElementById("zeitraum").value;
 var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-if(Zeitraum=="Benutzerdefiniert")
-{
-    AuswahlZeitraum.style.visibility="visible"; }
-else{
-        AuswahlZeitraum.style.visibility="hidden"; 
-    }
-var value_min = $( "#slider-range" ).slider( "values", 0 );
-var value_max = $( "#slider-range" ).slider( "values", 1 );
-var output = document.getElementById("demo");
-var datum_min = new Date();
-var datum_max = new Date();
-datum_min.setDate(datum_min.getDate() - value_min);
+var daterange = document.getElementById("zeitraum").value;
+const DateRangeArray = daterange.split(" - ");
+var datum_min = DateRangeArray[1];
+var datum_max = DateRangeArray[0];	
+datum_min = new Date(datum_min);
+datum_max = new Date(datum_max);
+datum_min.setDate(datum_min.getDate() + 1);
+datum_max.setDate(datum_max.getDate() + 1);
+
 datum_min = datum_min.toISOString().split('T')[0];
-datum_max.setDate(datum_max.getDate() - value_max);
 datum_max = datum_max.toISOString().split('T')[0];
-output.innerHTML = datum_min + " bis " + datum_max;
 
 get_options(Frage);
 
@@ -134,23 +129,17 @@ function statistics(name){
 var Frage = Auswahl_Frage.value;
 var Zeitraum =  document.getElementById("zeitraum").value;
 var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-if(Zeitraum=="Benutzerdefiniert")
-{
-    AuswahlZeitraum.style.visibility="visible"; }
-else{
-        AuswahlZeitraum.style.visibility="hidden"; 
-    }
-var value_min = $( "#slider-range" ).slider( "values", 0 );
-var value_max = $( "#slider-range" ).slider( "values", 1 );
-var output = document.getElementById("demo");
-var datum_min = new Date();
-var datum_max = new Date();
+var daterange = document.getElementById("zeitraum").value;
+const DateRangeArray = daterange.split(" - ");
+var datum_min = DateRangeArray[1];
+var datum_max = DateRangeArray[0];	
+datum_min = new Date(datum_min);
+datum_max = new Date(datum_max);
+datum_min.setDate(datum_min.getDate() + 1);
+datum_max.setDate(datum_max.getDate() + 1);
 
-datum_min.setDate(datum_min.getDate() - value_min);
 datum_min = datum_min.toISOString().split('T')[0];
-datum_max.setDate(datum_max.getDate() - value_max);
 datum_max = datum_max.toISOString().split('T')[0];
-output.innerHTML = datum_min + " bis " + datum_max;
 
 	var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -191,22 +180,17 @@ function update(){
     var Frage = Auswahl_Frage.value;
     var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-    if(Zeitraum=="Benutzerdefiniert")
-{
-    AuswahlZeitraum.style.visibility="visible"; }
-else{
-        AuswahlZeitraum.style.visibility="hidden"; 
-    }
-    var value_min = $( "#slider-range" ).slider( "values", 0 );
-    var value_max = $( "#slider-range" ).slider( "values", 1 );
-    var output = document.getElementById("demo");
-    var datum_min = new Date();
-    var datum_max = new Date();
-    datum_min.setDate(datum_min.getDate() - value_min);
+    var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+
     datum_min = datum_min.toISOString().split('T')[0];
-    datum_max.setDate(datum_max.getDate() - value_max);
-    datum_max = datum_max.toISOString().split('T')[0];
-    output.innerHTML = datum_min + " bis " + datum_max;
+	datum_max = datum_max.toISOString().split('T')[0];
 
     get_options(Frage);    
     var xmlhttp = new XMLHttpRequest();

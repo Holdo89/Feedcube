@@ -31,6 +31,7 @@
 				include "Draw_Charts.php";		//Pie and COlumnchart
 				include "Draw_Trend_Chart.php";		
 			?>	
+  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
   <script type = "text/javascript" src="export_delete_data.js"></script>
 
 </head>
@@ -144,26 +145,20 @@ function loadNewData(limit, start)
 	var Leistung = Auswahl_Leistung.value;
 	var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-    if(Zeitraum=="Benutzerdefiniert")
-	{
-		AuswahlZeitraum.style.visibility="visible"; 
-	}
-	else
-	{
-		AuswahlZeitraum.style.visibility="hidden"; 
-	}
-	var value_min = $( "#slider-range" ).slider( "values", 0 );
-	var value_max = $( "#slider-range" ).slider( "values", 1 );
-	var output = document.getElementById("slider-range");
-	var datum_min = new Date();
-	var datum_max = new Date();
-	datum_min.setDate(datum_min.getDate() - value_min);
+	var daterange = document.getElementById("zeitraum").value;
+	const DateRangeArray = daterange.split(" - ");
+	var datum_min = DateRangeArray[1];
+	var datum_max = DateRangeArray[0];	
+	datum_min = new Date(datum_min);
+	datum_max = new Date(datum_max);
+	datum_min.setDate(datum_min.getDate() + 1);
+	datum_max.setDate(datum_max.getDate() + 1);
+
 	datum_min = datum_min.toISOString().split('T')[0];
-	datum_max.setDate(datum_max.getDate() - value_max);
 	datum_max = datum_max.toISOString().split('T')[0];
 
   	$.ajax({
-   url:"Create_Blog.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage + "&Trainer=" + Trainer,
+   url:"Create_Blog.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer,
    method:"POST",
    data:{limit:limit, start:start},
    cache:false,

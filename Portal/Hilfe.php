@@ -53,7 +53,6 @@
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
 
 	
 
