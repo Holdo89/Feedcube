@@ -19,17 +19,15 @@ $query = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:5
  $i=0;
  $feedback_index = 1; //welches feedback ist gerade dran
 while($row = mysqli_fetch_array($exec)){
-	echo'<div style="padding:5px; border:none; padding-bottom:15px; margin:auto; margin-top:10px; margin-bottom:15px; width:95%;">';
+	echo'<div id="feedback_'.$feedback_index.'" style="padding:5px; border:none; padding-bottom:15px; margin:auto; margin-top:10px; margin-bottom:15px; width:95%;">';
 	$sql_test = "SELECT Leistung from leistungen WHERE ID = ".$row['Leistung'];
 	$exec_test = mysqli_query($link,$sql_test);
 	$leistung_titel = mysqli_fetch_array($exec_test); 
-	 echo "<p>".$leistung_titel['Leistung']."</p><p>";
-	 echo $row['Datum'];
-	 if($IsAdmin==1)
-	 {
-	 	echo ' <i class="fa fa-trash" onclick="deleteFeedback('.$row['ID'].')" style="cursor:pointer; float:right"></i>';
-	 }
-	 echo "</p>";
+	if($IsAdmin==1)
+	{
+		echo ' <i class="fa fa-trash" onclick="deleteFeedback('.$row['ID'].')" style="cursor:pointer; float:right; font-size:20px"></i>
+	           <i class="fa fa-file-pdf" onclick="createPdfeinzeln(\''.$feedback_index.'\')" style="cursor:pointer; float:right; margin-right:10px; color:#ad0b00; font-size:20px"></i>';
+	}
 	 $chapter = "";
 
 	//Hole zuerst die ID der Leistung die beurteilt wurde
@@ -54,7 +52,13 @@ while($row = mysqli_fetch_array($exec)){
 	$fragen_index = 1; //welche Frage im Feedback ist dran
 
 	while($row_questions = mysqli_fetch_array($execute)){
-		echo'<div id="formular_div_'.$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"].'" class="grid-container" style="padding:0px; margin:0px; overflow:auto;">';
+		echo'<div name="pdf">';
+		if($fragen_index==1){
+			echo "<p style='margin-top:20px'>".$leistung_titel['Leistung']."</p><p>";
+			echo $row['Datum'];
+			echo "</p>";
+		}
+		echo'<div id="formular_div_'.$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"].'" class="grid-container" style="padding:0px; margin:0px; overflow:auto;">';
 		if ($chapter != $row_questions["Kapitel"]){
  			echo'<div class="leer"></div>
 			<div class="chapter" style="grid-column-start: 1; grid-column-end: -1;">'.$row_questions["Kapitel"].'</div>';
@@ -70,7 +74,7 @@ while($row = mysqli_fetch_array($exec)){
 			echo'
 			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragen_extern"].'</div>';
 			while($row_answers=mysqli_fetch_array($result)){
-				echo"<script>document.getElementById('formular_div_".$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
+				echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
 				<div class="choice" for="element_'.$Scrollcounter.'_'.$i.'">'.$row_answers["Answers"].'</div>';
 				$gridcolumns = $gridcolumns." 2fr";
@@ -97,7 +101,7 @@ while($row = mysqli_fetch_array($exec)){
 			echo'
 			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragen_extern"].'</div>';
 			while($row_answers=mysqli_fetch_array($result)){
-				echo"<script>document.getElementById('formular_div_".$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
+				echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
 				<div class="choice" for="element_1_'.$option_index.'">'.$row_answers["Answers"].'</div>';
 				$gridcolumns = $gridcolumns." 2fr";
@@ -123,7 +127,7 @@ while($row = mysqli_fetch_array($exec)){
 		$sql_range="SELECT * FROM rangeslider_answers WHERE Frage_ID = ".$row_questions["ID"];
 		$result_range = mysqli_query($link,$sql_range);
 		$row_range=mysqli_fetch_array($result_range);
-		echo"<script>document.getElementById('formular_div_".$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
+		echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo
 		'<div class="frage"><p>'.$row_questions["Fragen_extern"].'</div>
 		<div style="border: 1px solid #000; border-top: none; border-left:none; grid-column-start: 2; grid-column-end: -1; display: grid; grid-template-columns: auto auto auto auto auto;">
@@ -144,31 +148,31 @@ while($row = mysqli_fetch_array($exec)){
 		</script>';
 		if($row["Frage_".$row_questions["ID"]]==NULL)
 		{
-			echo"<script>var elem = document.getElementById('formular_div_".$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
+			echo"<script>var elem = document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."'); elem.remove();</script>";
 		}
 
 	}
 
 	else{
-		echo"<script>document.getElementById('formular_div_".$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
+		echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo	
 		'<div class="frage"><p>'.$row_questions["Fragen_extern"].'</div>
 		<div class="frage_text" style="font-style:italic" name="element_1">'.$row["Frage_".$row_questions["ID"]].'</div>';
 		if($row["Frage_".$row_questions["ID"]]=='NULL')
 		{
-			echo"<script>var elem = document.getElementById('formular_div_".$Scrollcounter.$feedback_index.$fragen_index.$_POST["start"]."'); elem.remove();</script>";
+			echo"<script>var elem = document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."'); elem.remove();</script>";
 		}
 	}
 //wird benötigt um das vorherige Kapitel zu bestimmen um dann nur Kapitel zu schreiben wenn das vorige nicht das jetzige Kapitel ist
 
 $row_previous_chapter = mysqli_fetch_array($execute_chapter);
 $chapter=$row_previous_chapter["Kapitel"];
-echo"</div>";
+echo"</div></div>";
 $fragen_index=$fragen_index+1;
  }
 echo '</div>
 </div>
-<hr>';
+<hr style="margin-bottom:0px">';
 $i=$i+1;
 $feedback_index = $feedback_index+1;
 }
