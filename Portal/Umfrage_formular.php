@@ -76,7 +76,7 @@ while($row = mysqli_fetch_array($exec)){
 			while($row_answers=mysqli_fetch_array($result)){
 				echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
-				<div class="choice" for="element_'.$Scrollcounter.'_'.$i.'">'.$row_answers["Answers"].'</div>';
+				<div class="choice" style="border-bottom:none; margin-bottom:-10px" for="element_'.$Scrollcounter.'_'.$i.'">'.$row_answers["Answers"].'</div>';
 				$gridcolumns = $gridcolumns." 2fr";
 			 }
 			while($rows_answers = mysqli_fetch_assoc($exec_answers)){
@@ -102,13 +102,13 @@ while($row = mysqli_fetch_array($exec)){
 			while($row_answers=mysqli_fetch_array($result)){
 				echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
-				<div class="choice" for="element_1_'.$option_index.'">'.$row_answers["Answers"].'</div>';
+				<div class="choice" style="border-bottom:none; margin-bottom:-20px" for="element_1_'.$option_index.'">'.$row_answers["Answers"].'</div>';
 				$gridcolumns = $gridcolumns." 2fr";
 				$option_index=$option_index+1;
 			 }
 			while($rows_answers = mysqli_fetch_assoc($exec_answers)){
 					echo'
-					<div class="choice"><input name="element[]" type="checkbox" value="'.$option_index.'"'; 
+					<div class="choice" style="background: rgba(1, 1, 1, 0)"><input name="element[]" type="checkbox" value="'.$option_index.'"'; 
 					if(strpos($row["Frage_".$row_questions["ID"]],"|".$rows_answers["Answers"]."|")!==false)
 						{echo 'checked';}
 					echo'></div>';
