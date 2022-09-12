@@ -55,7 +55,15 @@ while($row = mysqli_fetch_array($exec)){
 			echo $row['Datum'];
 			echo "</p>";
 		}
-		echo'<div id="formular_div_'.$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"].'" class="grid-container" style="padding:0px; margin:0px; overflow:auto; border-top:1px solid black">';
+		echo'<div id="formular_div_'.$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"].'" class="grid-container" style="padding:0px; margin:0px; overflow:auto;';
+		if ($fragen_index==1) {
+			echo'border-top:1px solid black">';
+		}
+		else
+		{
+			echo'">';
+		}
+
 
 		if ($row_questions["Typ"]=="Bewertung"){
 			$sql="SELECT * FROM bewertung_answers WHERE Intern_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
