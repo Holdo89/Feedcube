@@ -20,19 +20,19 @@
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts2.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="hidefunction.js"></script>
+	<script type="text/javascript" src="createPdf.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-	<script type="text/javascript" src="hidefunction.js"></script>
-	<script type="text/javascript" src="createPdf.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 				<?php
 				include "Draw_Charts.php";		//Pie and COlumnchart
 				include "Draw_Trend_Chart.php";		
 			?>	
-  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
   <script type = "text/javascript" src="export_delete_data.js"></script>
+  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
 
 </head>
 <style>
@@ -45,8 +45,6 @@
 <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
-<script type = "text/javascript" src="export_delete_data.js"></script>
-<script type = "text/javascript" src="color_change.js"></script>
 <div class="header">
 <?php
 
@@ -143,16 +141,14 @@ function loadNewData(limit, start)
 	var Trainer = Auswahl_Trainer.value;
 	var Frage = Auswahl_Frage.value;
 	var Leistung = Auswahl_Leistung.value;
-	var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 	var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
 	datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];

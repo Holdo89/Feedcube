@@ -24,7 +24,7 @@ if ($i<1)
 }
 else
 {
-    echo'	<select class="Auswahl_Select" id="Auswahl_Trainer" name="Auswahl_Trainer" oninput="get_new_datediff(\'Diagramme\');update();">';
+    echo'	<select class="Auswahl_Select" id="Auswahl_Trainer" name="Auswahl_Trainer" oninput="get_datediff();update();">';
     echo '<option value="%25">Alle Trainer</option>';
 
     $sql = "SELECT name, username, Is_Trainer FROM users WHERE Is_Trainer = 1 ORDER BY name ASC" ;

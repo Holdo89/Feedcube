@@ -8,7 +8,7 @@
  $datum_max=$_REQUEST["datum_max"];
 
 
-$sql = "DELETE FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND Umfrage LIKE '".$Umfrage."'";
+$sql = "DELETE FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Umfrage LIKE '".$Umfrage."'";
    
 mysqli_query($link, $sql);
 

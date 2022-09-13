@@ -18,16 +18,17 @@ function get_options(Frage){
 function chartjs(typ,name){
 var charts = document.getElementById("charts");
 var Frage = Auswahl_Frage.value;
-var Zeitraum =  document.getElementById("zeitraum").value;
 var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 var daterange = document.getElementById("zeitraum").value;
-const DateRangeArray = daterange.split(" - ");
+console.log("Datum"+daterange);
+const DateRangeArray = daterange.split("   bis   ");
 var datum_min = DateRangeArray[1];
-var datum_max = DateRangeArray[0];	
+var datum_max = DateRangeArray[0];
+console.log("Datum"+datum_min);	
 datum_min = new Date(datum_min);
 datum_max = new Date(datum_max);
-datum_min.setDate(datum_min.getDate() + 1);
-datum_max.setDate(datum_max.getDate() + 1);
+
+console.log("Datum"+datum_min);
 
 datum_min = datum_min.toISOString().split('T')[0];
 datum_max = datum_max.toISOString().split('T')[0];
@@ -120,23 +121,20 @@ undraw_empty.style.display="none";
         }
     }
 	;};
-    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage + "&Zeitraum=" + Zeitraum, true);
+    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage, true);
     xmlhttp.send();
 }
 
 function statistics(name){
 
 var Frage = Auswahl_Frage.value;
-var Zeitraum =  document.getElementById("zeitraum").value;
 var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 var daterange = document.getElementById("zeitraum").value;
-const DateRangeArray = daterange.split(" - ");
+const DateRangeArray = daterange.split("   bis   ");
 var datum_min = DateRangeArray[1];
 var datum_max = DateRangeArray[0];	
 datum_min = new Date(datum_min);
 datum_max = new Date(datum_max);
-datum_min.setDate(datum_min.getDate() + 1);
-datum_max.setDate(datum_max.getDate() + 1);
 
 datum_min = datum_min.toISOString().split('T')[0];
 datum_max = datum_max.toISOString().split('T')[0];
@@ -159,7 +157,7 @@ datum_max = datum_max.toISOString().split('T')[0];
         }
       }
 
-    xmlhttp.open("GET", "Intern_Statistics.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage + "&Zeitraum=" + Zeitraum, true);
+    xmlhttp.open("GET", "Intern_Statistics.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage, true);
     xmlhttp.send();
 }
 
@@ -178,16 +176,14 @@ function update(){
     var xmlhttp = new XMLHttpRequest();
     var i = true;
     var Frage = Auswahl_Frage.value;
-    var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
     var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
@@ -203,7 +199,7 @@ function update(){
         Fragen_typ = array[0];
     }
 	;};
-    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Zeitraum=" + Zeitraum + "&Frage=" + Frage, false);
+    xmlhttp.open("GET", "intern_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Frage=" + Frage, false);
     xmlhttp.send();
     var undraw_empty= document.getElementById("undraw_empty");
 	undraw_empty.style.display="none";
@@ -356,19 +352,6 @@ function update_initiate(){
     drawtrendchart();
 }
 
-function datum_update(){
-var value_min = $( "#slider-range" ).slider( "values", 0 );
-var value_max = $( "#slider-range" ).slider( "values", 1 );
-var output = document.getElementById("demo");
-var datum_min = new Date();
-var datum_max = new Date();
-
-datum_min.setDate(datum_min.getDate() - value_min);
-datum_min = datum_min.toISOString().split('T')[0];
-datum_max.setDate(datum_max.getDate() - value_max);
-datum_max = datum_max.toISOString().split('T')[0];
-output.innerHTML = datum_min + " bis " + datum_max;
-}
 
 </script>
 

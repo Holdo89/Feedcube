@@ -38,7 +38,6 @@
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
 <script type = "text/javascript" src="export_delete_data.js"></script>
-<script type = "text/javascript" src="color_change.js"></script>
 <div class="header">
 <?php
 
@@ -87,16 +86,14 @@
 	function update(){
 	var Trainer = Auswahl_Trainer.value;
     var Leistung = Auswahl_Leistung.value;
-    var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 	var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
@@ -107,7 +104,7 @@
 				dashboard.innerHTML=this.responseText;
 			}
     	;};
-    	xmlhttp_options.open("GET", "Start_Dashboard.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Zeitraum=" + Zeitraum + "&Trainer=" + Trainer, false);
+    	xmlhttp_options.open("GET", "Start_Dashboard.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, false);
     	xmlhttp_options.send();
 	}
 </script>

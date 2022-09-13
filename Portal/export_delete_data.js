@@ -18,13 +18,12 @@ function delete_data()
         Leistung_Text="Alle Leistungen";
     }
 	var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
@@ -41,13 +40,12 @@ function delete_data()
 function intern_delete_data(){
     var Umfrage = Auswahl_Umfrage.value;
 	var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
@@ -78,13 +76,12 @@ function export_data_admin(){
             Leistung_Text="Alle Leistungen";
         }
         var daterange = document.getElementById("zeitraum").value;
-        const DateRangeArray = daterange.split(" - ");
+        const DateRangeArray = daterange.split("   bis   ");
         var datum_min = DateRangeArray[1];
         var datum_max = DateRangeArray[0];	
         datum_min = new Date(datum_min);
         datum_max = new Date(datum_max);
-        datum_min.setDate(datum_min.getDate() + 1);
-        datum_max.setDate(datum_max.getDate() + 1);
+
         datum_min = datum_min.toISOString().split('T')[0];
         datum_max = datum_max.toISOString().split('T')[0];
 
@@ -121,13 +118,12 @@ function export_data(){
         Leistung_Text="Alle Leistungen";
     }
 	var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
@@ -153,13 +149,12 @@ function export_data(){
 function intern_export_data(){
     var Umfrage = Auswahl_Umfrage.value;
     var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];

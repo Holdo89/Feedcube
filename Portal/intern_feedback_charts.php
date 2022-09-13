@@ -1,4 +1,3 @@
-
 <div id=fullAuswahl class="FragenAuswahl">
 
 <label class="Auswahl">Frage: </label>

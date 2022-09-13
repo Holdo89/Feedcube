@@ -14,10 +14,7 @@ $Trainer = $_REQUEST["Trainer"];
         $exec=mysqli_query($link,$sql);
         $row=mysqli_fetch_array($exec);
         $Mindate = $row['MIN(Datum)'];
-        $sql="SELECT DATEDIFF(CURRENT_DATE, '".$Mindate."') AS Datediff";
-        $exec=mysqli_query($link,$sql);
-        $rows=mysqli_fetch_array($exec);
-        echo $rows['Datediff'];
+        echo $Mindate;
     }
     else
     echo"7";

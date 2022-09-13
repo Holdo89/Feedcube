@@ -20,7 +20,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-	
+	<script type="text/javascript" src="rangeslider_jquery_intern.js"> </script>
+
   </head>
   <style>
 /* The Modal (background) */
@@ -125,6 +126,8 @@
 	<?php
 	include "Filter_Umfrage.php";
 	?>
+	  <script type="text/javascript" src="rangeslider_jquery_intern.js"> </script>
+
 			<!-- The Modal -->
 	<div id="LinkModal" class="modal">
 	<div class="modal-content">
@@ -162,16 +165,15 @@ function load_country_data(limit, start, scrollcounter)
  	{
 	var Scrollcounter = scrollcounter;
 	var Umfrage = Auswahl_Umfrage.value;
-	var Zeitraum =  document.getElementById("zeitraum").value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 	var daterange = document.getElementById("zeitraum").value;
-	const DateRangeArray = daterange.split(" - ");
+	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-	datum_min.setDate(datum_min.getDate() + 1);
-	datum_max.setDate(datum_max.getDate() + 1);
+
+	console.log(datum_max)
 	datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
   	$.ajax({
@@ -281,16 +283,14 @@ function deleteFeedback(id){
 		if(Umfrage=="%25"){
 			Umfrage="Alle Umfragen"
 		}
-		var Zeitraum =  document.getElementById("zeitraum").value;
 		var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 		var daterange = document.getElementById("zeitraum").value;
-		const DateRangeArray = daterange.split(" - ");
+		const DateRangeArray = daterange.split("   bis   ");
 		var datum_min = DateRangeArray[1];
 		var datum_max = DateRangeArray[0];	
 		datum_min = new Date(datum_min);
 		datum_max = new Date(datum_max);
-		datum_min.setDate(datum_min.getDate() + 1);
-		datum_max.setDate(datum_max.getDate() + 1);
+
 		datum_min = datum_min.toISOString().split('T')[0];
 		datum_max = datum_max.toISOString().split('T')[0];
 

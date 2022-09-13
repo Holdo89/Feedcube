@@ -29,7 +29,7 @@ include "IsAdmincheck.php";
 
  		while($i<=intval($rows["Anzahl_Antworten"])){
 			$rows_answers=mysqli_fetch_array($result_answers);
-				$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
+				$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
 			$exec = mysqli_query($link,$query);
 
 			while($row = mysqli_fetch_array($exec)){
@@ -55,7 +55,7 @@ include "IsAdmincheck.php";
 
  		while($i<=intval($rows["Anzahl_Antworten"])){
 			$rows_answers=mysqli_fetch_array($result_answers);
-			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
+			$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
 			$exec = mysqli_query($link,$query);
 
 			while($row = mysqli_fetch_array($exec)){
@@ -92,7 +92,7 @@ include "IsAdmincheck.php";
 		$exec = mysqli_query($link,$query);
 		$rowy = mysqli_fetch_array($exec);
  		while($i<=$rowy["columns"]){
-				$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59' AND Leistung LIKE '".$Leistung."' AND ".$Frage." < ".$feedback_range[$i]." AND ".$Frage." >= ".$feedback_range[$i-1]." AND Username LIKE '".$Trainer."'";
+				$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Leistung LIKE '".$Leistung."' AND ".$Frage." < ".$feedback_range[$i]." AND ".$Frage." >= ".$feedback_range[$i-1]." AND Username LIKE '".$Trainer."'";
 			$exec = mysqli_query($link,$query);
 
 			while($row = mysqli_fetch_array($exec))
