@@ -21,7 +21,7 @@
 			?>
 
 	<label class="Auswahl" for="zeitraum" style="margin-top:5px">Zeitraum: </label>
-		<input id="zeitraum" style="background-color:white; width:300px; border:none" onblur ="update()" type="text" name="daterange" />
+		<input id="zeitraum" style="background-color:white; width:300px; border:none" type="text" name="daterange" />
 	
 	</div>
 	<hr>

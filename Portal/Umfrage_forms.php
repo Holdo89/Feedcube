@@ -172,10 +172,11 @@ function load_country_data(limit, start, scrollcounter)
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-
-	console.log(datum_max)
 	datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
+
+	console.log("mindate: "+datum_min);
+	console.log("maxdate: "+datum_max);
   	$.ajax({
 	<?php
 			echo 'url:"Umfrage_formular.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Scrollcounter=" + Scrollcounter';

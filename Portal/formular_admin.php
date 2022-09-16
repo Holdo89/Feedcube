@@ -35,11 +35,11 @@ while($row = mysqli_fetch_array($exec)){
 	$currentFragenset = $rowcurrentFragenset["Fragenset"];
 	if($currentFragenset==0)
 	{
-		$query = "SELECT * FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
+		$query = "SELECT Kapitel,Typ,ID,Fragen_extern FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
 	}
 	else
 	{
-		$query = "SELECT * FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
+		$query = "SELECT Kapitel,Typ,ID,Fragen_extern FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
 	}
  	$execute = mysqli_query($link,$query);
  	$execute_chapter = mysqli_query($link,$query);
@@ -61,7 +61,7 @@ while($row = mysqli_fetch_array($exec)){
 
 
 		if ($row_questions["Typ"]=="Bewertung"){
-			$sql="SELECT * FROM bewertung_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
+			$sql="SELECT Answers FROM bewertung_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
 			$result = mysqli_query($link,$sql);
 			$gridcolumns = "25% 2fr ";
 			$sql_answers="SELECT Answers FROM bewertung_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
@@ -87,7 +87,7 @@ while($row = mysqli_fetch_array($exec)){
 
 		else if ($row_questions["Typ"]=="Multiplechoice"){
 			$option_index=1;
-			$sql="SELECT * FROM multiplechoice_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
+			$sql="SELECT Answers FROM multiplechoice_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
 			$result = mysqli_query($link,$sql);
 			$gridcolumns = "25% 2fr ";
 			$sql_answers="SELECT Answers FROM multiplechoice_answers WHERE Frage_".$row_questions["ID"]." = 1 ORDER BY post_order_no ASC";
@@ -119,7 +119,7 @@ while($row = mysqli_fetch_array($exec)){
 		}
 
 	else if($row_questions["Typ"]=="Schieberegler"){
-		$sql_range="SELECT * FROM rangeslider_answers WHERE Frage_ID = ".$row_questions["ID"];
+		$sql_range="SELECT ID,range_max,range_min range FROM rangeslider_answers WHERE Frage_ID = ".$row_questions["ID"];
 		$result_range = mysqli_query($link,$sql_range);
 		$row_range=mysqli_fetch_array($result_range);
 		echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$_POST["start"]."').style.gridTemplateColumns = '25% 4fr'</script>";

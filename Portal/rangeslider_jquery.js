@@ -13,7 +13,6 @@ $( function() {
                      if (this.readyState == 4 && this.status == 200) {
                       $('input[name="daterange"]').daterangepicker({
                         "showDropdowns": true,
-                      "autoApply": true,
                         ranges: {
                             'Heute': [moment(), moment()],
                             'Letzten 3 Tage': [moment().subtract(2, 'days'), moment()],
@@ -61,7 +60,7 @@ $( function() {
                         "startDate": this.responseText,
                         "endDate": "2022-09-12"
                     });
-                    
+                      
                     $('#zeitraum').on('apply.daterangepicker', function(ev, picker) {
                       update();
                     });                        

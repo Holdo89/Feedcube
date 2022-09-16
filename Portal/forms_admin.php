@@ -126,6 +126,9 @@
 	<?php
 	include "Filter.php";
 	?>
+	<div id="spinner" class="spinner-grow" role="status">
+  	<span class="sr-only">Loading...</span>
+	</div>
 			<!-- The Modal -->
 	<div id="LinkModal" class="modal">
 	<div class="modal-content">
@@ -150,19 +153,20 @@ var action = 'inactive';
 var blog = document.getElementById("auswertungen");
 
 function update(){
+	document.getElementById("spinner").display="block";
 	var output = document.getElementById("demo");
 	blog.innerHTML="";
 	if(action == 'inactive')
 	{
 	start = 0;
 	action = 'active';
-	load_country_data(limit, start, 0);
+	setTimeout(function(){load_country_data(limit, start, 0)},2000);
 	}
 };
 
 function load_country_data(limit, start, scrollcounter)
  	{
-		console.log(scrollcounter);
+
 	var Scrollcounter = scrollcounter;
 	var Trainer = Auswahl_Trainer.value;
 	var Leistung = Auswahl_Leistung.value;
@@ -178,8 +182,14 @@ function load_country_data(limit, start, scrollcounter)
 	datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
 
-	console.log("mindate: "+datum_min);
-	console.log("maxdate: "+datum_max);
+	try
+	{
+	datum_min=$('#zeitraum').startDate.format('YYYY-MM-DD');
+	datum_max=$('#zeitraum').endDate.format('YYYY-MM-DD');
+	}
+	catch{
+
+	}
 
   	$.ajax({
 	<?php
