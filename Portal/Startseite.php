@@ -22,7 +22,6 @@
 	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>	
-	<script type="text/javascript" src="rangeslider_jquery.js"> </script>
   	<script type = "text/javascript" src="export_delete_data.js"></script>
   	<link rel="manifest" href="../../manifest.json">
 
@@ -78,6 +77,7 @@
 	<?php
 	include "Filter.php";
 	?>
+		<script type="text/javascript" src="rangeslider_jquery.js"> </script>
 <div id="startdashboard">
 </div>
 </div>
