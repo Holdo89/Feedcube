@@ -107,6 +107,7 @@
     	xmlhttp_options.open("GET", "Start_Dashboard.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, false);
     	xmlhttp_options.send();
 	}
+	get_datediff();
 </script>
 </body>
 </html>
