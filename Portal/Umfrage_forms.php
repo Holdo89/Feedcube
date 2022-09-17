@@ -126,7 +126,6 @@
 	<?php
 	include "Filter_Umfrage.php";
 	?>
-	  <script type="text/javascript" src="rangeslider_jquery_intern.js"> </script>
 
 			<!-- The Modal -->
 	<div id="LinkModal" class="modal">
@@ -175,17 +174,10 @@ function load_country_data(limit, start, scrollcounter)
 	datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
 
-	console.log("mindate: "+datum_min);
-	console.log("maxdate: "+datum_max);
-  	$.ajax({
-	<?php
-			echo 'url:"Umfrage_formular.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Scrollcounter=" + Scrollcounter';
-	?>,
-   method:"POST",
-   data:{limit:limit, start:start},
-   cache:false,
-   success:function(data)
-   {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	var data = this.responseText
     $('#auswertungen').append(data);
     if(data.length <= 2)
     {
@@ -207,7 +199,9 @@ function load_country_data(limit, start, scrollcounter)
      	action = "inactive";
     }
    }
-  });
+   ;};
+	xmlhttp.open("GET", "Umfrage_formular.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Umfrage=" + Umfrage + "&Scrollcounter=" + Scrollcounter + "&limit=" + limit  + "&start=" + start, false);
+    xmlhttp.send();
  }
 
  $(window).scroll(function(){
@@ -216,9 +210,7 @@ function load_country_data(limit, start, scrollcounter)
 	scrollcounter = scrollcounter+limit;
    action = 'active';
    start = start + limit;
-   setTimeout(function(){
-    load_country_data(limit, start, scrollcounter);
-   }, 1000);
+   load_country_data(limit, start, scrollcounter);
   }
  });
 

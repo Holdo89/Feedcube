@@ -126,9 +126,7 @@
 	<?php
 	include "Filter.php";
 	?>
-	<div id="spinner" class="spinner-grow" role="status">
-  	<span class="sr-only">Loading...</span>
-	</div>
+
 			<!-- The Modal -->
 	<div id="LinkModal" class="modal">
 	<div class="modal-content">
@@ -153,21 +151,19 @@ var action = 'inactive';
 var blog = document.getElementById("auswertungen");
 
 function update(){
-	document.getElementById("spinner").display="block";
 	var output = document.getElementById("demo");
 	blog.innerHTML="";
 	if(action == 'inactive')
 	{
 	start = 0;
 	action = 'active';
-	setTimeout(function(){load_country_data(limit, start, 0)},2000);
+	load_country_data(limit, start, 0);
 	}
 };
 
 function load_country_data(limit, start, scrollcounter)
  	{
-
-	var Scrollcounter = scrollcounter;
+			var Scrollcounter = scrollcounter;
 	var Trainer = Auswahl_Trainer.value;
 	var Leistung = Auswahl_Leistung.value;
     
@@ -191,18 +187,13 @@ function load_country_data(limit, start, scrollcounter)
 
 	}
 
-  	$.ajax({
-	<?php
-			echo 'url:"formular_admin.php?datum_max=" + datum_max + "&datum_min=" + datum_min + "&Leistung=" + Leistung + "&Trainer=" + Trainer + "&Scrollcounter=" + Scrollcounter';
-	?>,
-   method:"POST",
-   data:{limit:limit, start:start},
-   cache:false,
-   success:function(data)
-   {
-    $('#auswertungen').append(data);
-    if(data.length <= 2)
-    {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		var data = this.responseText
+		$('#auswertungen').append(data);
+    	if(data.length <= 2)
+    	{
 		if(blog.innerHTML.length<=2)
 		{	
 			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_empty_xct9.svg" alt="" style="width:20%;" class="undraw_chart_empty">';
@@ -220,8 +211,10 @@ function load_country_data(limit, start, scrollcounter)
      	$('#load_data_message').html("<button type='button' style='display:none' class='btn btn-warning'>Bitte warten....</button>");
      	action = "inactive";
     }
-   }
-  });
+	}
+	;};
+	xmlhttp.open("GET", "formular_admin.php?datum_max=" + datum_max + "&datum_min=" + datum_min + "&Leistung=" + Leistung + "&Trainer=" + Trainer + "&Scrollcounter=" + Scrollcounter + "&limit=" + limit  + "&start=" + start, false);
+    xmlhttp.send();
  }
 
  $(window).scroll(function(){
@@ -230,9 +223,7 @@ function load_country_data(limit, start, scrollcounter)
    scrollcounter = scrollcounter+limit;
    action = 'active';
    start = start + limit;
-   setTimeout(function(){
     load_country_data(limit, start, scrollcounter);
-   }, 1000);
   }
  });
 
