@@ -58,7 +58,6 @@ $( function() {
                         },
                         "alwaysShowCalendars": true,
                         "startDate": this.responseText,
-                        "endDate": "2022-09-12"
                     });
                       
                     $('#zeitraum').on('apply.daterangepicker', function(ev, picker) {
