@@ -2,19 +2,9 @@
 
 <label class="Auswahl">Frage: </label>
 	<?php
-		include "intern_Auswahlmöglichkeiten_Fragen.php"
+		include "intern_Auswahlmöglichkeiten_Fragen.php";
+		include "FilterExportDeleteOptionsIntern.php"
 	?>
-	<div style="text-align:left;font-size:16px; margin-top:8px;cursor: pointer;" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
-	<?php
-	if($IsAdmin == 1)
-	{
-		echo'<div style="text-align:left;font-size:16px; margin-top:8px;cursor: pointer;" onclick="intern_export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
-		echo'<div style="text-align:left;font-size:16px; margin-top:8px;cursor: pointer;" onclick="intern_delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
-	}
-	else{
-		echo'<div style="text-align:left;font-size:18px; margin-top:8px;cursor: pointer;" onclick="export_data()"><i id="filtericon" class="fa fa-download" style="font-size:15px;" aria-hidden="true"></i> Export</div>';
-	}
-	?>	
 
 	</div>
 	<hr>

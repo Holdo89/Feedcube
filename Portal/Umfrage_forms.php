@@ -188,7 +188,7 @@ function load_country_data(limit, start, scrollcounter)
 		}
 		else
 		{	
-			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");	
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Bewertungen</button>");	
 		}
 		action="inactive";
 	}

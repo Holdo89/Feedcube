@@ -8,7 +8,7 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <div id="FilterCharts" style="overflow:hidden; grid-column: 1 / span 3; max-height:0px">
 	<div id="Auswahl" class="grid-container-auswahl">
-	<label class="Auswahl">Umfrage: </label>
+	<label class="Auswahl" style="margin-top:2px">Umfrage: </label>
 			<?php
 				include "Auswahlmöglichkeiten_Umfrage_forms.php"
 			?>

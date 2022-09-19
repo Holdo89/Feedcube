@@ -24,7 +24,8 @@
 				include "intern_Draw_Charts.php";		//Pie and COlumnchart
 				include "intern_Draw_Trend_Chart.php";
 	?>
-	<script type = "text/javascript" src="export_delete_data_intern.js"></script>
+		<script type="text/javascript" src="export_delete_data.js"></script>
+
     <script type="text/javascript" src="rangeslider_jquery_intern.js"> </script>
 
 </head>
@@ -122,7 +123,7 @@ function loadNewData(limit, start)
 		}
 		else
 		{	
-			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Kommentare</button>");	
+			$('#load_data_message').html("<button type='button' class='btn btn-info'>Keine weiteren Bewertungen</button>");	
 		}
 		action = "inactive";
 	}
