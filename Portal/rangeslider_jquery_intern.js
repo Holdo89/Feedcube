@@ -60,7 +60,7 @@ $( function() {
                     });
                     
                     $('#zeitraum').on('apply.daterangepicker', function(ev, picker) {
-                      update(picker.endDate.format('YYYY-MM-DD'), picker.startDate.format('YYYY-MM-DD'));
+                      update();
                     });                        
                       }
             ;};
