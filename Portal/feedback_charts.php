@@ -1,18 +1,18 @@
 <?php
  require_once "../config.php";
  require_once "session.php";
- 
+
  $sql = "SELECT Is_Admin FROM users WHERE username = '".$_SESSION["username"]."'";
  $result = mysqli_query($link, $sql);
  $row = mysqli_fetch_assoc($result);
-?>
+ ?>
 
 <!DOCTYPE HTML>
 
 <html>
 <?php
- require_once "FEEDCUBE_icon.php"
-?>
+  require_once "FEEDCUBE_icon.php"
+ ?>
 <head>
 
     <meta charset="UTF-8">
@@ -21,16 +21,16 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts2.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>
-	<script type="text/javascript" src="createPdf.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 				<?php
-				include "Draw_Charts.php";		//Pie and COlumnchart
-				include "Draw_Trend_Chart.php";		
-			?>	
+                 include "Draw_Charts.php";		//Pie and COlumnchart
+ include "Draw_Trend_Chart.php";
+ ?>	
   <script type = "text/javascript" src="export_delete_data.js"></script>
   <script type="text/javascript" src="rangeslider_jquery.js"> </script>
 
@@ -48,15 +48,16 @@
 <div class="header">
 <?php
 
-	$sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
-	$exec = mysqli_query($link,$sql);
-	$row = mysqli_fetch_assoc($exec);
-	$IsAdmin = $row["Is_Admin"];
-	if($IsAdmin == 1)
-		include "navigation_admin.php";
-	else
-		include "navigation.php";
-?>
+    $sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
+ $exec = mysqli_query($link, $sql);
+ $row = mysqli_fetch_assoc($exec);
+ $IsAdmin = $row["Is_Admin"];
+ if ($IsAdmin == 1) {
+     include "navigation_admin.php";
+ } else {
+     include "navigation.php";
+ }
+ ?>
 <script>
 	document.getElementById("feedback_charts").className = "active";
 	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
@@ -64,7 +65,7 @@
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/bar-chart.png" width="50" style="margin-top:-10px;"> Auswertung </h1>
 		<p style="margin:auto; margin-bottom:40px; width:90vw;"> Wähle eine Frage um das Feedback dazu auszuwerten</p>
     </div>
-<div id = "pdfExporterDiv" style="width:83vw; margin:auto;">	
+<div id = "test" style="width:83vw; margin:auto;">	
 
 <!--Auswertung von multiple choice Fragen-->
 
@@ -72,15 +73,15 @@
 <div id=fullAuswahl class="FragenAuswahl">
 <label class="Auswahl">Frage: </label>
 			<?php
-				include "Auswahlmöglichkeiten_Fragen.php";
-				include "FilterExportDeleteOptions.php";
-			?>	
+                 include "Auswahlmöglichkeiten_Fragen.php";
+ include "FilterExportDeleteOptions.php";
+ ?>	
 	</div>
 	<hr>
 	<?php
-	include "Filter.php";
-	?>
-
+    include "Filter.php";
+ ?>
+<div id = "pdf"> 	
 	<div id="undraw_empty" style="display:none; margin-top:48px;"><p><label>Es wurde noch kein Feedback abgegeben</label></p><img src="undraw_empty_xct9.svg" alt="" class="undraw_chart_empty"></div>
 
 
@@ -196,6 +197,127 @@ function loadNewData(limit, start)
    }, 500);
   }
  });
+
+
+
+
+
+ 
+ async function createPdf(){  
+        var opt = {
+            html2canvas:  { scale: 2, scrollY: 0, scrollX: 0},
+            filename:     'externes_feedback.pdf',
+            jsPDF:        { unit: 'pt', format: 'a3', orientation: 'portrait' }
+        };
+
+		var reportPageHeight = $('#pdf').innerHeight()*1.6;
+		var reportPageWidth = $('#pdf').innerWidth();
+
+		// create a new canvas object that we will populate with all other canvas objects
+		var pdfCanvas = $('<canvas />').attr({
+			id: "canvaspdf",
+			width: reportPageWidth,
+			height: reportPageHeight
+		});
+
+		// keep track canvas position
+		var pdfctx = $(pdfCanvas)[0].getContext('2d');
+		var pdfctxX = 50;
+		var pdfctxY = 50;
+		var buffer = 50;
+
+		// for each chart.js chart
+		$("canvas").each(function(index) {
+			// get the chart height/width
+			var canvasHeight = $(this).innerHeight()*0.9;
+			var canvasWidth = $(this).innerWidth()*0.9;
+
+			// draw the chart into the new canvas
+			pdfctx.drawImage($(this)[0], pdfctxX, pdfctxY, canvasWidth, canvasHeight);
+			pdfctxX += canvasWidth + buffer;
+
+			// our report page is in a grid pattern so replicate that in the new canvas
+		if (index % 2 === 1) {
+			pdfctxX = 50;
+			pdfctxY += canvasHeight + buffer;
+		}
+		});
+
+		console.log($(pdfCanvas)[0]);
+    
+        var i=0;
+        var fullsource = "Test";
+		var imagedata = pdfCanvas; 
+		var smallimage = $(pdfCanvas)[0];
+        let worker = html2pdf()
+        .set(opt)
+        .from(smallimage)
+        worker = worker.toPdf(); 
+		worker = worker
+                .get('pdf')
+                .from(smallimage)
+                .toContainer()
+                .toCanvas()
+                .toPdf()
+        worker.save();
+		setTimeout(() => {
+		update();
+	}, 1000);}
+
+
+
+
+
+
+
+async function createPdfde(){  
+  var reportPageHeight = $('#pdf').innerHeight()*1.6;
+  var reportPageWidth = $('#pdf').innerWidth();
+
+  // create a new canvas object that we will populate with all other canvas objects
+  var pdfCanvas = $('<canvas />').attr({
+    id: "canvaspdf",
+    width: reportPageWidth,
+    height: reportPageHeight
+  });
+
+  // keep track canvas position
+  var pdfctx = $(pdfCanvas)[0].getContext('2d');
+  var pdfctxX = 50;
+  var pdfctxY = 50;
+  var buffer = 50;
+
+  // for each chart.js chart
+  $("canvas").each(function(index) {
+    // get the chart height/width
+    var canvasHeight = $(this).innerHeight()*0.9;
+    var canvasWidth = $(this).innerWidth()*0.9;
+
+    // draw the chart into the new canvas
+    pdfctx.drawImage($(this)[0], pdfctxX, pdfctxY, canvasWidth, canvasHeight);
+    pdfctxX += canvasWidth + buffer;
+
+    // our report page is in a grid pattern so replicate that in the new canvas
+if (index % 2 === 1) {
+      pdfctxX = 50;
+      pdfctxY += canvasHeight + buffer;
+}
+  });
+
+  // create new pdf and add our new canvas as an image
+  var pdf = new jsPDF('p', 'pt', 'a3');
+  var Statistics = document.getElementById("Statistics").innerHTML;
+  html2canvas($(pdfCanvas), {
+			scale: 5,
+            onrendered: function(canvas) {                      
+                var doc = new jsPDF('p', 'mm');
+				pdf.addImage($(pdfCanvas)[0], 'PNG', 0, 0);
+                pdf.save('sample-file.pdf');
+            }
+        });
+
+  // download the pdf
+  pdf.save('filename.pdf');}
 </script>
 
 
