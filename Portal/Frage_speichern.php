@@ -26,10 +26,12 @@ function speichern_intern(Id){
     xmlhttp.send();
 }
 
-function entfernen_intern(Id){
+function Überschrift_entfernen(Id){
+         
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("GET", "interne_Frage_entfernen.php?Id=" + Id, true);
+xmlhttp.open("GET", "Überschrift_entfernen.php?Id=" + Id, true);
 xmlhttp.send();
+
 }
 
 

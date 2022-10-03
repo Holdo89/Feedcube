@@ -8,11 +8,13 @@
     <title>Fragen</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
+	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
 	<link href="Fragen.css" rel="stylesheet" type="text/css">
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
-	include "Frage_speichern.php";
-	?>
+    include "Frage_speichern.php";
+?>
 </head>
 <style>
 .radio-inline, .checkbox-inline{
@@ -31,7 +33,10 @@
   border:none; 
   border-radius:30px; 
   color:white; 
-  background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
+  background-color:<?php $sql='SELECT farbe FROM system';
+  $exec=mysqli_query($link, $sql);
+  $result=mysqli_fetch_assoc($exec);
+  echo $result['farbe']?>
 }
 #element2{
   width:200px;
@@ -47,8 +52,14 @@
   font-size: 16px; 
   border-radius:30px; 
   background-color:white; 
-  border-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
-  color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>
+  border-color:<?php $sql='SELECT farbe FROM system';
+  $exec=mysqli_query($link, $sql);
+  $result=mysqli_fetch_assoc($exec);
+  echo $result['farbe']?>;
+  color:<?php $sql='SELECT farbe FROM system';
+  $exec=mysqli_query($link, $sql);
+  $result=mysqli_fetch_assoc($exec);
+  echo $result['farbe']?>
 }
 /* The Modal (background) */
 .modal {
@@ -147,7 +158,7 @@
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
 	<?php
-	include "navigation_admin.php";	
+include "navigation_admin.php";
 ?>
 <script>
 	document.getElementById("Fragen").className = "active";
@@ -158,7 +169,10 @@
 	</div>
 	<style>
 	.überschrift{
-		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
+		background-color: <?php $sql='SELECT farbe FROM system';
+		$exec=mysqli_query($link, $sql);
+		$result=mysqli_fetch_assoc($exec);
+		echo $result['farbe']?>;
 	}
 	</style>
 	<div class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none;">
@@ -174,26 +188,27 @@
 		<strong> Note !</strong> <span class="warning-message"> Die angegebenen Werte waren nicht korrekt </span>
 	</div>
 
-	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;">Fragen an Kunden</p>
-	<hr style='max-width:90vw; margin:auto;'>
+	<p style="font-size:13pt; margin-bottom:10px; margin-top:50px;"></p>
 	<style>
 	.überschrift{
-		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
+		background-color: <?php $sql='SELECT farbe FROM system';
+		$exec=mysqli_query($link, $sql);
+		$result=mysqli_fetch_assoc($exec);
+		echo $result['farbe']?>;
 	}
 	</style>
 	<div id="externe_Fragen" class="scroll">
 	<form style=" border-radius:5px 5px 0px 0px;">
-	<label class="überschrift"></label>
-	<label class="überschrift">Kapitel</label>
-	<label class="überschrift">Frage</label>
-	<label class="überschrift"></label>
-	<label class="überschrift"></label>	
+	<label style ="grid-column: 1 / span 5; padding-left:10px" class="überschrift">Überschrift</label>
 	</form>
 	<?php
-		include "Fragen_Abfrage.php";
-	?>
+        include "Überschrift_Abfrage.php";
+?>
 	</div>
-	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'extern')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>" onclick = "showNewÜberschriftModal(undefined,'extern')"><i class="fa fa-list" style="font-size:19px" aria-hidden="true"></i> Überschrift hinzufügen</button>
 
 	<script>
 	function user_abfrage_speichern(id) {
@@ -208,12 +223,27 @@
 	function user_abfrage_speichern_intern(id) {
 		speichern_intern(id);
 	;}
-	function user_abfrage_löschen_intern(id) {
-  	if (confirm("Wollen Sie diese Frage entfernen? Ihre bestehenden Antworten zu dieser Frage werden ebenfalls entfernt"))
-	  {entfernen_intern(id);
-		alert("Die Frage wurde gelöscht");
-		location.reload();}
-	;}
+	function user_abfrage_löschen_Überschrift(id) {
+		var Anzahl = "";
+    var xmlhttp_options = new XMLHttpRequest();
+			var ID = id;
+			xmlhttp_options.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					Anzahl=this.responseText;
+                    console.log(Anzahl)
+				}
+			;};
+			xmlhttp_options.open("GET", "getAnzahlFragenInÜberschrift.php?ID=" + ID, false);
+			xmlhttp_options.send();
+	if(Anzahl!=0)
+	{
+		alert("Um die Überschrift zu löschen, verschiebe davor alle bestehenden Fragen zu einer anderen Überschrift")
+	} 
+	else{
+		Überschrift_entfernen(id);
+		location.reload();
+	}
+	}
 	function Antwort_speichern(id,typ) {
 		speichern_antwort(id, typ);
 	;}
@@ -226,25 +256,48 @@
 	;}
 	</script>
 
+	<div id="ÜberschriftModal" class="modal">
+	<form class="modalform" id="ÜberschriftModalform" action="insert_Überschrift" method="post">
+	<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
+	<div style="text-align:left">
+		<h4 id="ÜberschriftÜberschrift" style="margin-bottom:30px;">Neue Überschrift hinzufügen</h4>
+		<div id="Überschrift_Container">
+			<h5>Überschrift: </h5>
+			<input class="center_select" id="Überschrift" name="Überschrift" placeholder="Eingabe einer neuen Überschrift"></input>
+			<h5>Englische Übersetzung: </h5>
+			<input class="center_select" id="Überschrift_Übersetzung" name ="Überschrift_Übersetzung" placeholder="Eingabe der Übersetzung"></input>
+		</div>
+		<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+	  </div>
+	  </form>
+	  </div>
+	
+
+
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	<form class="modalform" id="Modalform" action="
-	<?php 
-	echo $_SERVER["PHP_SELF"];
-	if(isset($_REQUEST["Step"]))
-		{
-			$Step = $_REQUEST["Step"];
-			echo"?Step=".$Step;
-		} ?>" method="post">
+	<?php
+echo $_SERVER["PHP_SELF"];
+if (isset($_REQUEST["Step"])) {
+    $Step = $_REQUEST["Step"];
+    echo"?Step=".$Step;
+} ?>" method="post">
 		<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
 		<div style="text-align:left">
 		<h4 id="FragenÜberschrift" style="margin-bottom:30px;">Neue Frage hinzufügen</h4>
 				<div id="Kapitel_Container">
-					<h5>Kapitel: </h5>
-					<input class="center_select" id="Kapitel" name="Kapitel" placeholder="Eingabe eines neuen Kapitels"></input>
-					<h5 id="Kapitelübersetzung_Label">Kapitelübersetzung: </h5>
-					<input class="center_select" id="Kapitel_Übersetzung" name ="Kapitel_Übersetzung" placeholder="Eingabe der Kapitelübersetzung"></input>
+					<h5>Überschrift: </h5>
+					<select class="center_select" id="Kapitel" name="Kapitel">
+					<?php
+            $sql = "SELECT Überschrift FROM überschrift";
+$result = mysqli_query($link, $sql) ;
+while ($row = mysqli_fetch_assoc($result)) {
+    echo'<option value="'.$row["Überschrift"].'">'.$row["Überschrift"].'</option>';
+}
+?>
+					</select>
 				</div>
 				<br>
 				<h5>Frage: </h5>
@@ -295,14 +348,13 @@
 	  </div>
 
 	<script>
-	
 	$(document).ready(function(){
-		$( "#externe_Fragen" ).sortable({
+		$( ".externe_Fragen" ).sortable({
 			placeholder : "ui-state-highlight",
 			update  : function(event, ui)
 			{	
 				var post_order_ids = new Array();
-				$('#externe_Fragen form').each(function(){
+				$('.externe_Fragen form').each(function(){
 					post_order_ids.push($(this).data("post-id"));
 				});
 				$.ajax({
@@ -322,82 +374,8 @@
 				});
 			}
 		});
-		$( "#interne_Fragen" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#interne_Fragen form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload_intern.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#Antworten" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#Antworten form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload_antworten.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
-		$( "#Antworten_Multiplechoice" ).sortable({
-			placeholder : "ui-state-highlight",
-			update  : function(event, ui)
-			{	
-				var post_order_ids = new Array();
-				$('#Antworten_Multiplechoice form').each(function(){
-					post_order_ids.push($(this).data("post-id"));
-				});
-				$.ajax({
-					url:"ajax_upload_antworten_multiplechoice.php",
-					method:"POST",
-					data:{post_order_ids:post_order_ids},
-					success:function(data)
-					{
-					 if(data){
-					 	$(".alert-danger").hide();
-					 	$(".alert-success ").show();
-					 }else{
-					 	$(".alert-success").hide();
-					 	$(".alert-danger").show();
-					 }
-					}
-				});
-			}
-		});
 	});
+
 
 	var modal = document.getElementById("myModal");
 	var Bewertungoptionen = document.getElementById("Bewertungoptionen");
@@ -594,12 +572,11 @@
 			document.getElementById(questiontype).checked=true;
 			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type="+type+"&Questiontype="+questiontype
 			<?php
-				if(isset($_REQUEST["Step"]))
-				{
-					$Step = $_REQUEST["Step"];
-					echo'+"&Step='.$Step.'"';
-				};
-			?>;
+                if (isset($_REQUEST["Step"])) {
+                    $Step = $_REQUEST["Step"];
+                    echo'+"&Step='.$Step.'"';
+                };
+?>;
 			if(fragenspezifisch.checked == true)
 			{
 				var xmlhttp_options = new XMLHttpRequest();
@@ -621,22 +598,38 @@
 				{
 					if(questiontype=="Bewertung"){
 						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+						$result = mysqli_query($link, $sql);
+						while ($row = mysqli_fetch_assoc($result)) {
+						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';
+						}?>';
 					}
 					else{
 						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+						$result = mysqli_query($link, $sql);
+						while ($row = mysqli_fetch_assoc($result)) {
+						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';
+						}?>';
 					}
 				}
 				if(type=="intern")
 				{
 					if(questiontype=="Bewertung"){
 						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+						$result = mysqli_query($link, $sql);
+						while ($row = mysqli_fetch_assoc($result)) {
+						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';
+						}?>';
 					}
 					else{
 						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+						$result = mysqli_query($link, $sql);
+						while ($row = mysqli_fetch_assoc($result)) {
+						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';
+						}?>';
 					}
 				}
 			}
@@ -722,12 +715,11 @@
 				else if(questiontype=="Text")
 				{	
 					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Text<?php
-					if(isset($_REQUEST["Step"]))
-							{
-								$Step = $_REQUEST["Step"];
-								echo"&Step=".$Step;
-							};
-					?>";
+                    if (isset($_REQUEST["Step"])) {
+                        $Step = $_REQUEST["Step"];
+                        echo"&Step=".$Step;
+                    };
+?>";
 					Bewertungoptionen.innerHTML='';	
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
@@ -769,12 +761,11 @@
 				{						
 					document.getElementById("Text").checked=true;
 					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Text<?php
-					if(isset($_REQUEST["Step"]))
-					{
-						$Step = $_REQUEST["Step"];
-						echo'&Step='.$Step;
-					};
-					?>";
+if (isset($_REQUEST["Step"])) {
+    $Step = $_REQUEST["Step"];
+    echo'&Step='.$Step;
+};
+?>";
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";	
@@ -809,15 +800,13 @@
 		else{
 			var Modalform = document.getElementById("Modalform");
 			<?php
-			if(isset($_REQUEST["Step"]))
-			{
-				$Step=$_REQUEST["Step"];
-				echo'Modalform.action="Fragen.php?Step='.$Step.'";';
-			}
-			else{
-				echo'Modalform.action="Fragen.php";';
-			}
-			?>
+            if (isset($_REQUEST["Step"])) {
+                $Step=$_REQUEST["Step"];
+                echo'Modalform.action="Fragen.php?Step='.$Step.'";';
+            } else {
+                echo'Modalform.action="Fragen.php";';
+            }
+?>
 			document.getElementById("Bewertung").disabled=false;
 			document.getElementById("Multiplechoice").disabled=false;
 			document.getElementById("Schieberegler").disabled=false;
@@ -831,8 +820,6 @@
 			document.getElementById("Bewertungoptionen").style.display="none";
 			document.getElementById("Multiplechoiceoptionen").style.display="none";
 			document.getElementById("Rangeoptionen").style.display="none";
-			document.getElementById("Kapitel").value="";
-			document.getElementById("Kapitel_Übersetzung").value="";
 			document.getElementById("Frage").value="";
 			document.getElementById("Frage_Übersetzung").value="";
 			if(type=="intern")
@@ -842,7 +829,6 @@
 				document.getElementById("Frage_Übersetzung").style.display="none";
 			}
 			else{
-				document.getElementById("Kapitel_Container").style.display="block";
 				document.getElementById("Frageübersetzung_Label").style.display="block";
 				document.getElementById("Frage_Übersetzung").style.display="block";		
 			}
@@ -901,7 +887,11 @@
 				Multiplechoiceoptionen.style.display="none";
 				Rangeoptionen.style.display="none";
 				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-				<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'" checked><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
+				<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+				$result = mysqli_query($link, $sql);
+				while ($row = mysqli_fetch_assoc($result)) {
+				    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'" checked><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';
+				}?>';
 			}
 			else if (Fragentyp_value == "Multiplechoice")
 			{
@@ -909,7 +899,11 @@
 				Multiplechoiceoptionen.style.display="block";
 				Rangeoptionen.style.display="none";	
 				Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-				<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql); while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'" checked><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';}?>';
+				<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+				$result = mysqli_query($link, $sql);
+				while ($row = mysqli_fetch_assoc($result)) {
+				    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'" checked><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';
+				}?>';
 			}
 			checkAnswerboxes(id, externinterntyp, Fragentyp_value);	
 		}
@@ -935,7 +929,11 @@
 			//!id = neue Frage
 			if(!id)
 			{
-				Bewertungoptionen.innerHTML = '<?php $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC"; $result = mysqli_query($link,$sql);while($row = mysqli_fetch_assoc($result)){echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';}?>';
+				Bewertungoptionen.innerHTML = '<?php $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+				$result = mysqli_query($link, $sql);
+				while ($row = mysqli_fetch_assoc($result)) {
+				    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';
+				}?>';
 			}
 		}
 
@@ -967,11 +965,75 @@
 			}	
 	}
 
+	function showNewÜberschriftModal(){
+		resetÜberschrift();
+		var neueÜberschriftmodal=document.getElementById("ÜberschriftModal");
+		var neueÜberschriftmodalform=document.getElementById("ÜberschriftModalform");
+		document.getElementById("ÜberschriftÜberschrift").innerHTML = "Neue Überschrift hinzufügen";
+		neueÜberschriftmodal.style.display="block";
+		neueÜberschriftmodalform.action = "insert_Überschrift.php<?php 
+	if(isset($_REQUEST["Step"]))
+		{
+			$Step = $_REQUEST["Step"];
+			echo"?Step=".$Step;
+		} ?>";
+	}
+
+	function getÜberschrift(id){
+		var Überschrift = document.getElementById('Überschrift');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var Überschrift = document.getElementById('Überschrift');
+				Überschrift.value = this.responseText
+			;}
+		;};
+		xmlhttp_options.open("GET", "getÜberschrift.php?ID=" + id, false);
+		xmlhttp_options.send();
+	}
+
+	function getÜberschriftÜbersetzung(id){
+		var Überschrift = document.getElementById('Überschrift_Übersetzung');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var Überschrift = document.getElementById('Überschrift_Übersetzung');
+				console.log(this.responseText);
+				Überschrift.value = this.responseText
+			;}
+		;};
+		xmlhttp_options.open("GET", "getÜberschrift_Übersetzung.php?ID=" + id, false);
+		xmlhttp_options.send();
+	}
+
+	function resetÜberschrift(){
+		document.getElementById('Überschrift').value = "";
+		document.getElementById('Überschrift_Übersetzung').value = "";
+	}
+
+	function showÜberschrift(id){
+		var neueÜberschriftmodal=document.getElementById("ÜberschriftModal");
+		var neueÜberschriftmodalform=document.getElementById("ÜberschriftModalform");
+		getÜberschrift(id);
+		console.log(id)
+		getÜberschriftÜbersetzung(id);
+		document.getElementById("ÜberschriftÜberschrift").innerHTML = "Überschrift bearbeiten";
+		neueÜberschriftmodal.style.display="block";
+		neueÜberschriftmodalform.action = "update_Überschrift.php?ID="+id+"<?php 
+		if(isset($_REQUEST["Step"]))
+			{
+				$Step = $_REQUEST["Step"];
+				echo"?Step=".$Step;
+			} ?>";
+		}
 	// When the user clicks anywhere outside of the modal, close it
 
 	function hide_modal(){
 		var modal = document.getElementById("myModal");
+		var neueÜberschriftmodal=document.getElementById("ÜberschriftModal");
 		modal.style.display = "none";
+		neueÜberschriftmodal.style.display = "none";
+
 	}
 
 	window.onclick = function(event) {
