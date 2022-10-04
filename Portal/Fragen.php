@@ -43,15 +43,14 @@ include "Fragen_Seite.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($Fragentyp=="Schieberegler") {
         if ($max <= $min) {
-            $neues_Kapitel = $_REQUEST["Kapitel"];
+            $neues_Überschrift = $_REQUEST["Überschrift"];
             $neue_Frage = $_REQUEST["Frage"];
             $Antworttyp = $_REQUEST["Auswahl_Antworttyp"];
             $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
-            $Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
             
             echo"<script>
-            document.getElementById('Kapitel').value = '".$neues_Kapitel."';
-            document.getElementById('Kapitel_Übersetzung').value = '".$Kapitel_Englisch."';
+            document.getElementById('Überschrift').value = '".$neues_Überschrift."';
+            document.getElementById('Überschrift_Übersetzung').value = '".$Überschrift_Englisch."';
             document.getElementById('Frage').value = '".$neue_Frage."';
             document.getElementById('Frage_Übersetzung').value = '".$Frage_Englisch."';
             document.getElementById('Schieberegler').checked = true;

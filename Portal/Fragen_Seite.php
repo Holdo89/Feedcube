@@ -287,17 +287,17 @@ if (isset($_REQUEST["Step"])) {
 		<span class="close" style="text-align:right" onclick="hide_modal()">&times;</span>
 		<div style="text-align:left">
 		<h4 id="FragenÜberschrift" style="margin-bottom:30px;">Neue Frage hinzufügen</h4>
-				<div id="Kapitel_Container">
-					<h5>Überschrift: </h5>
-					<select class="center_select" id="Kapitel" name="Kapitel">
-					<?php
-            $sql = "SELECT Überschrift FROM überschrift";
-$result = mysqli_query($link, $sql) ;
-while ($row = mysqli_fetch_assoc($result)) {
-    echo'<option value="'.$row["Überschrift"].'">'.$row["Überschrift"].'</option>';
-}
-?>
-					</select>
+				<div id="Überschrift_Container">
+				<h5>Überschrift: </h5>
+				<select class="center_select" id="Überschrift" name="Überschrift">
+				<?php
+					$sql = "SELECT Überschrift FROM überschrift";
+					$result = mysqli_query($link, $sql) ;
+					while ($row = mysqli_fetch_assoc($result)) {
+						echo'<option value="'.$row["Überschrift"].'">'.$row["Überschrift"].'</option>';
+					}
+				?>
+				</select>
 				</div>
 				<br>
 				<h5>Frage: </h5>
@@ -359,6 +359,33 @@ while ($row = mysqli_fetch_assoc($result)) {
 				});
 				$.ajax({
 					url:"ajax_upload.php",
+					method:"POST",
+					data:{post_order_ids:post_order_ids},
+					success:function(data)
+					{
+					 if(data){
+					 	$(".alert-danger").hide();
+					 	$(".alert-success ").show();
+					 }else{
+					 	$(".alert-success").hide();
+					 	$(".alert-danger").show();
+					 }
+					}
+				});
+			}
+		});
+
+		$( ".Überschriften" ).sortable({
+			placeholder : "ui-state-highlight",
+			update  : function(event, ui)
+			{	
+				var post_order_ids = new Array();
+				$('.Überschriften form').each(function(){
+					post_order_ids.push($(this).data("post-ud"));
+					console.log(post_order_ids)
+				});
+				$.ajax({
+					url:"ajax_upload_überschrift.php",
 					method:"POST",
 					data:{post_order_ids:post_order_ids},
 					success:function(data)
@@ -455,24 +482,24 @@ while ($row = mysqli_fetch_assoc($result)) {
 		xmlhttp_options.send();
 	}
 
-	function getKapitelUebersetzung(id){
+	function getÜberschriftUebersetzung(id){
 		var xmlhttp_options = new XMLHttpRequest();
-		var kapitel = document.getElementById("Kapitel");   
+		var kapitel = document.getElementById("Überschrift");   
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				kapitel.value=this.responseText;
 			}
 		;};
-		xmlhttp_options.open("GET", "Kapitel_Beschreibung.php?ID=" + id, false);
+		xmlhttp_options.open("GET", "Überschrift_Beschreibung.php?ID=" + id, false);
 		xmlhttp_options.send();
 
-		var kapitel_englisch = document.getElementById("Kapitel_Übersetzung");            
+		var kapitel_englisch = document.getElementById("Überschrift_Übersetzung");
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				kapitel_englisch.value=this.responseText;
 			}
 		;};
-		xmlhttp_options.open("GET", "Kapitel_Uebersetzung.php?ID=" + id, true);
+		xmlhttp_options.open("GET", "Überschrift_Uebersetzung.php?ID=" + id, true);
 		xmlhttp_options.send();
 	}
 
@@ -683,7 +710,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 			if(type=='intern')
 			{
-				document.getElementById("Kapitel_Container").style.display="none";
+				document.getElementById("Überschrift_Container").style.display="none";
 				document.getElementById("Frageübersetzung_Label").style.display="none";
 				document.getElementById("Frage_Übersetzung").style.display="none";
 
@@ -728,11 +755,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 			}
 			else if(type=='extern')
 			{
-				document.getElementById("Kapitel_Container").style.display="block";
+				document.getElementById("Überschrift_Container").style.display="block";
 				document.getElementById("Frageübersetzung_Label").style.display="block";
 				document.getElementById("Frage_Übersetzung").style.display="block";
 
-				getKapitelUebersetzung(id);
+				getÜberschriftUebersetzung(id);
 
 				if(questiontype=="Bewertung")
 				{
@@ -824,7 +851,7 @@ if (isset($_REQUEST["Step"])) {
 			document.getElementById("Frage_Übersetzung").value="";
 			if(type=="intern")
 			{
-				document.getElementById("Kapitel_Container").style.display="none";
+				document.getElementById("Überschrift_Container").style.display="none";
 				document.getElementById("Frageübersetzung_Label").style.display="none";
 				document.getElementById("Frage_Übersetzung").style.display="none";
 			}
@@ -985,7 +1012,7 @@ if (isset($_REQUEST["Step"])) {
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var Überschrift = document.getElementById('Überschrift');
-				Überschrift.value = this.responseText
+				Überschrift.value = this.responseText.slice(0,-2);
 			;}
 		;};
 		xmlhttp_options.open("GET", "getÜberschrift.php?ID=" + id, false);
@@ -999,7 +1026,7 @@ if (isset($_REQUEST["Step"])) {
 			if (this.readyState == 4 && this.status == 200) {
 				var Überschrift = document.getElementById('Überschrift_Übersetzung');
 				console.log(this.responseText);
-				Überschrift.value = this.responseText
+				Überschrift.value = this.responseText.slice(0,-2);
 			;}
 		;};
 		xmlhttp_options.open("GET", "getÜberschrift_Übersetzung.php?ID=" + id, false);

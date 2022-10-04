@@ -78,7 +78,7 @@
 
 
 
-<!--erstes Kapitel Inhalt des Seminars-->
+<!--erstes Überschrift Inhalt des Seminars-->
 
 
 

@@ -17,16 +17,19 @@ $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
 
-$neues_Kapitel = mysqli_real_escape_string($link, $_REQUEST["Kapitel"]);
+$neues_Überschrift = mysqli_real_escape_string($link, $_REQUEST["Überschrift"]);
 $neue_Frage = mysqli_real_escape_string($link, $_REQUEST["Frage"]);
 $Fragentyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Fragentyp"]);
 $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
 $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
-$Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
+    $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$Überschrift."'";
+    $query = mysqli_query($link, $sql);
+    $row = mysqli_fetch_assoc($query);
+    $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
 
 if($Type=="extern")
 {
-    $sql = "INSERT INTO admin (Kapitel, Kapitel_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Kapitel', '$Kapitel_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
+    $sql = "INSERT INTO admin (Überschrift, Überschrift_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 }
 else
 {

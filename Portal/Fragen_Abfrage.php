@@ -1,15 +1,15 @@
 <?php
 
-$sql = "SELECT * FROM admin WHERE Kapitel = '".$row_überschrift["Überschrift"]."' ORDER BY post_order_no ASC";
+$sql = "SELECT * FROM admin WHERE Überschrift = '".$row_überschrift["Überschrift"]."' ORDER BY post_order_no ASC";
 $result = mysqli_query($link, $sql);
 $rowCount = mysqli_num_rows($result);
 
 if ($rowCount > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $tutorial_id = 	$row['post_id'];
-        echo "<form  class='form_intern' data-post-id=".$row["post_id"]." style = 'cursor: grab'>";
+        echo "</form><form data-post-id=".$row["post_id"]." style = 'cursor: grab'>";
         echo "<div class='center_select' style='text-align:center; margin:auto;min-width:35px'><i class='fa fa-bars'></i></div>";
-        echo "<input class='center_select' id='Frage_".$row["ID"]."' value='".$row["Fragen_extern"]."' onblur='user_abfrage_speichern(".$row["ID"].")'></input>";
+        echo "<div class='center_select' id='Frage_".$row["ID"]."'>".$row["Fragen_extern"]."</div>";
         if ($row["Typ"]=="Bewertung") {
             echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Bewertung\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         } elseif ($row["Typ"]=="Multiplechoice") {

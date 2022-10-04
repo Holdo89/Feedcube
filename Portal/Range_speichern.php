@@ -10,16 +10,21 @@ $Frage = $_REQUEST["Frage"];
 
 if($Type=="extern")
 {
-    $Kapitel = $_REQUEST["Kapitel"];
-    $Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
+    $Überschrift = $_REQUEST["Überschrift"];
+    
+    $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$Überschrift."'";
+    $query = mysqli_query($link, $sql);
+    $row = mysqli_fetch_assoc($query);
+    $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
+    
     $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
     $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-    $sql = "UPDATE admin SET Kapitel_Englisch = '".$Kapitel_Englisch."' WHERE ID = ".$ID;
+    $sql = "UPDATE admin SET Überschrift_Englisch = '".$Überschrift_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
     $sql = "UPDATE admin SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-    $sql = "UPDATE admin SET Kapitel = '".$Kapitel."' WHERE ID = ".$ID;
+    $sql = "UPDATE admin SET Überschrift = '".$Überschrift."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }
 else if($Type=="intern"){

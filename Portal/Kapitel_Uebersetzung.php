@@ -5,11 +5,11 @@ require_once "session.php";
 
 $ID = $_REQUEST["ID"];
 
-$sql = "SELECT Kapitel_Englisch FROM admin WHERE ID = ".$ID;
+$sql = "SELECT Überschrift_Englisch FROM admin WHERE ID = ".$ID;
 $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 
-echo $row["Kapitel_Englisch"];
+echo $row["Überschrift_Englisch"];
 
 
 ?>

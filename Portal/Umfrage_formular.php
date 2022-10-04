@@ -159,7 +159,7 @@ while($row = mysqli_fetch_array($exec)){
 			echo"<script>var elem = document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start."'); elem.remove();</script>";
 		}
 	}
-//wird benötigt um das vorherige Kapitel zu bestimmen um dann nur Kapitel zu schreiben wenn das vorige nicht das jetzige Kapitel ist
+//wird benötigt um das vorherige Überschrift zu bestimmen um dann nur Überschrift zu schreiben wenn das vorige nicht das jetzige Überschrift ist
 
 echo"</div></div>";
 $fragen_index=$fragen_index+1;

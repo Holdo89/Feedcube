@@ -2,11 +2,11 @@
 
 function speichern(Id)
 {
-    var Kapitel = document.getElementById("Kapitel_"+Id).value;
+    var Überschrift = document.getElementById("Überschrift_"+Id).value;
     var Frage = document.getElementById("Frage_"+Id).value;
     var Fragentyp = document.getElementById("Auswahl_Fragentyp_"+Id).value;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "Frage_database_update.php?Id=" + Id + "&Kapitel=" + Kapitel + "&Frage=" + Frage + "&Fragentyp=" + Fragentyp, true);
+    xmlhttp.open("GET", "Frage_database_update.php?Id=" + Id + "&Überschrift=" + Überschrift + "&Frage=" + Frage + "&Fragentyp=" + Fragentyp, true);
     xmlhttp.send();
 }
 

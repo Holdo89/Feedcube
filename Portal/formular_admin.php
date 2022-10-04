@@ -37,11 +37,11 @@ while($row = mysqli_fetch_array($exec)){
 	$currentFragenset = $rowcurrentFragenset["Fragenset"];
 	if($currentFragenset==0)
 	{
-		$query = "SELECT Kapitel,Typ,ID,Fragen_extern FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
+		$query = "SELECT Überschrift,Typ,ID,Fragen_extern FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
 	}
 	else
 	{
-		$query = "SELECT Kapitel,Typ,ID,Fragen_extern FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
+		$query = "SELECT Überschrift,Typ,ID,Fragen_extern FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
 	}
  	$execute = mysqli_query($link,$query);
  	$execute_chapter = mysqli_query($link,$query);
@@ -56,9 +56,9 @@ while($row = mysqli_fetch_array($exec)){
 			echo "</p>";
 		}
 		echo'<div id="formular_div_'.$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start.'" class="grid-container" style="padding:0px; margin:0px; overflow:auto;">';
-		if ($chapter != $row_questions["Kapitel"]){
+		if ($chapter != $row_questions["Überschrift"]){
  			echo'<div class="leer"></div>
-			<div class="chapter" style="grid-column-start: 1; grid-column-end: -1;">'.$row_questions["Kapitel"].'</div>';
+			<div class="chapter" style="grid-column-start: 1; grid-column-end: -1;">'.$row_questions["Überschrift"].'</div>';
 		}
 
 
@@ -160,10 +160,10 @@ while($row = mysqli_fetch_array($exec)){
 			echo"<script>var elem = document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start."'); elem.remove();</script>";
 		}
 	}
-//wird benötigt um das vorherige Kapitel zu bestimmen um dann nur Kapitel zu schreiben wenn das vorige nicht das jetzige Kapitel ist
+//wird benötigt um das vorherige Überschrift zu bestimmen um dann nur Überschrift zu schreiben wenn das vorige nicht das jetzige Überschrift ist
 
 $row_previous_chapter = mysqli_fetch_array($execute_chapter);
-$chapter=$row_previous_chapter["Kapitel"];
+$chapter=$row_previous_chapter["Überschrift"];
 echo"</div></div>";
 $fragen_index=$fragen_index+1;
  }

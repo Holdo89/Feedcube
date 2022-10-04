@@ -46,7 +46,7 @@ $result = mysqli_query($link, $sql) ;
 $index=0;
 
 $Fragen_array = array();
-$Kapitel_array = array();
+$Überschrift_array = array();
 $Fragentyp_array = array();
 $Fragenid_array = array();
 $Default_Schieberegler_array = array();
@@ -62,24 +62,24 @@ while($index<$Anzahl_Fragen) {
     $row = mysqli_fetch_assoc($result);
     if($_SESSION["Sprache"]=="Deutsch"){
         array_push($Fragen_array,$row["Fragen_extern"]);
-        array_push($Kapitel_array,$row["Kapitel"]);
+        array_push($Überschrift_array,$row["Überschrift"]);
     }
     else if($_SESSION["Sprache"]=="Englisch"){
         array_push($Fragen_array,$row["Frage_Englisch"]);
-        array_push($Kapitel_array,$row["Kapitel_Englisch"]);
+        array_push($Überschrift_array,$row["Überschrift_Englisch"]);
     }
     array_push($Fragentyp_array,$row["Typ"]);
     array_push($Fragenid_array,$row["ID"]);
 
-    //Berechne die Anzahl der unterschiedlichen Kapitel
-    $Anzahl_Kapitel=1;
-    $verschiedene_Kapitel_index =1;
-    while( $verschiedene_Kapitel_index<count($Kapitel_array))
+    //Berechne die Anzahl der unterschiedlichen Überschrift
+    $Anzahl_Überschrift=1;
+    $verschiedene_Überschrift_index =1;
+    while( $verschiedene_Überschrift_index<count($Überschrift_array))
     {
-        if ($Kapitel_array[$verschiedene_Kapitel_index]!=$Kapitel_array[$verschiedene_Kapitel_index-1]){
-            $Anzahl_Kapitel=$Anzahl_Kapitel+1;
+        if ($Überschrift_array[$verschiedene_Überschrift_index]!=$Überschrift_array[$verschiedene_Überschrift_index-1]){
+            $Anzahl_Überschrift=$Anzahl_Überschrift+1;
         }
-        $verschiedene_Kapitel_index=$verschiedene_Kapitel_index+1;
+        $verschiedene_Überschrift_index=$verschiedene_Überschrift_index+1;
     }
 
     $index=$index+1;
@@ -144,7 +144,7 @@ while($index<$Anzahl_Fragen) {
     echo"
         <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'>
         <div class='container' id = 'container'>
-        <div class='chapter' id='chapter'>".$Kapitel_array[0]."</div>";
+        <div class='chapter' id='chapter'>".$Überschrift_array[0]."</div>";
     $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren Bewertung antworten
     echo"
     </div>
@@ -159,7 +159,7 @@ var current_chapter =0;
 var abgegebenes_feedback_array = [];
 var current_html = [];
 var Anzahl_Fragen = <?php echo $Anzahl_Fragen;?>; //gesamte Anzahl der Fragen
-var Kapitel_array = [<?php foreach($Kapitel_array as $Kapitel){echo"'".$Kapitel."',";}?>];
+var Überschrift_array = [<?php foreach($Überschrift_array as $Überschrift){echo"'".$Überschrift."',";}?>];
 var Fragen_array = [<?php foreach($Fragen_array as $Frage){echo"'".$Frage."',";}?>];
 var Fragentyp_array = [<?php foreach($Fragentyp_array as $Fragentyp){echo"'".$Fragentyp."',";}?>];
 var Default_Schieberegler_array = [<?php foreach($Default_Schieberegler_array as $Default_Schieberegler){echo"'".$Default_Schieberegler."',";}?>];
@@ -205,7 +205,7 @@ function push_all_Answers(){
                         }
                     }
                     if (checked == false){
-                        current_chapter-- //wenn nichts gechecked wurde dann wird auch nicht das nächste Kapitel gezeigt
+                        current_chapter-- //wenn nichts gechecked wurde dann wird auch nicht das nächste Überschrift gezeigt
                         current_html.pop();
                         document.getElementById("submitbutton").click();
                         return false;
@@ -264,7 +264,7 @@ function get_next_question()
     document.documentElement.scrollTop = 0; 
     var Fragenzahl = parseInt(document.getElementById("Fragenzahl").value); //Frage die gerade dran ist
     
-    document.getElementById("container").innerHTML="<div class='chapter' id='chapter'>"+Kapitel_array[Fragenzahl]+"</div>";
+    document.getElementById("container").innerHTML="<div class='chapter' id='chapter'>"+Überschrift_array[Fragenzahl]+"</div>";
 
         do{
         document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+"<div class='frage' id='frage_"+Fragenzahl+"'>"+Fragen_array[Fragenzahl]+"</div><div id='Antwortmöglichkeiten_"+Fragenzahl+"'>";
@@ -317,16 +317,16 @@ function get_next_question()
         else
             document.getElementById("Antwortmöglichkeiten_"+Fragenzahl).innerHTML="<div><textarea class = 'frage_text' name='element_1_"+Fragenzahl+"' id='element_1_"+Fragenzahl+"' cols='50' rows='4' maxlength='1000' wrap='soft'></textarea></div>";      
             Fragenzahl = Fragenzahl +1 
-        }while(Kapitel_array[Fragenzahl-1]==Kapitel_array[Fragenzahl])
+        }while(Überschrift_array[Fragenzahl-1]==Überschrift_array[Fragenzahl])
         
         //weiter und zurück button hinzufügen
         document.getElementById("Fragenzahl").value=Fragenzahl;
         if (abgegebenes_feedback_array.length>0){
             document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"</div></div><input class='center_button' type='button' id ='button2' value='".$Buttontext_back."' onclick='previous_question()' style='display:inline; width:40%; margin:8%; margin-right:2%; margin-bottom:2%; margin-top:15%'>\""?>;
-            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"<input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='push_all_Answers()' style='display:inline; width:40%'><label class='label_progress' id='label_progress'>Kapitel \"";?>+parseInt(current_chapter+1)+<?php echo"\" von ".$Anzahl_Kapitel."</label><progress class='progressbar' id='progress' value='\"";?>+parseInt(current_chapter+1)+<?php echo"\"' max='".$Anzahl_Kapitel."'></progress></form>\""?>;    
+            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"<input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='push_all_Answers()' style='display:inline; width:40%'><label class='label_progress' id='label_progress'>Überschrift \"";?>+parseInt(current_chapter+1)+<?php echo"\" von ".$Anzahl_Überschrift."</label><progress class='progressbar' id='progress' value='\"";?>+parseInt(current_chapter+1)+<?php echo"\"' max='".$Anzahl_Überschrift."'></progress></form>\""?>;    
         }
         else
-            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"<input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='push_all_Answers()'><label class='label_progress' id='label_progress'>Kapitel \"";?>+parseInt(current_chapter+1)+<?php echo"\" von ".$Anzahl_Kapitel."</label><progress class='progressbar' id='progress' value='\"";?>+parseInt(current_chapter+1)+<?php echo"\"' max='".$Anzahl_Kapitel."'></progress></form>\""?>;    
+            document.getElementById("container").innerHTML=document.getElementById("container").innerHTML+ <?php echo"\"<input class='center_button' type='button' id ='button' value='".$Buttontext."' onclick='push_all_Answers()'><label class='label_progress' id='label_progress'>Überschrift \"";?>+parseInt(current_chapter+1)+<?php echo"\" von ".$Anzahl_Überschrift."</label><progress class='progressbar' id='progress' value='\"";?>+parseInt(current_chapter+1)+<?php echo"\"' max='".$Anzahl_Überschrift."'></progress></form>\""?>;    
 
         if (Fragenzahl==Anzahl_Fragen){
             document.getElementById("button").value=<?php echo"'".$Buttontext_send_feedback."'";?>;
@@ -336,9 +336,9 @@ function get_next_question()
 function previous_question(){
     current_chapter--
     var last_question = parseInt(Fragenzahl.value) -(parseInt(Fragenzahl.value) - abgegebenes_feedback_array.length)-1
-    last_Chapter = Kapitel_array[last_question-1];
+    last_Chapter = Überschrift_array[last_question-1];
     var u = 0;
-    while(Kapitel_array[last_question-u]==Kapitel_array[last_question-u-1]){
+    while(Überschrift_array[last_question-u]==Überschrift_array[last_question-u-1]){
 
         abgegebenes_feedback_array.pop()
         u=u+1;

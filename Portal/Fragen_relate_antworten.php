@@ -6,9 +6,12 @@ $Antworttyp = $_REQUEST["Auswahl_Antworttyp"];
 $Questiontype = $_REQUEST["Questiontype"];
 $ID = $_REQUEST["Id"];
 $Frage = $_REQUEST["Frage"];
-$Kapitel = $_REQUEST["Kapitel"];
+$Überschrift = $_REQUEST["Überschrift"];
 $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
-$Kapitel_Englisch = $_REQUEST["Kapitel_Übersetzung"];
+    $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$Überschrift."'";
+    $query = mysqli_query($link, $sql);
+    $row = mysqli_fetch_assoc($query);
+    $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
 
 if($Antworttyp == "fragenspezifisch")
 {
@@ -26,10 +29,10 @@ if($Type=="extern"){
     $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 
-    $sql = "UPDATE admin SET Kapitel = '".$Kapitel."' WHERE ID = ".$ID;
+    $sql = "UPDATE admin SET Überschrift = '".$Überschrift."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 
-    $sql = "UPDATE admin SET Kapitel_Englisch = '".$Kapitel_Englisch."' WHERE ID = ".$ID;
+    $sql = "UPDATE admin SET Überschrift_Englisch = '".$Überschrift_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 
     $sql = "UPDATE admin SET Antworttyp = '".$Antworttyp."' WHERE ID = ".$ID;

@@ -5,7 +5,7 @@
  $Id=$_REQUEST["Id"];
  $Fragentyp=$_REQUEST["Fragentyp"];
  $Frage=$_REQUEST["Frage"];
- $Kapitel=$_REQUEST["Kapitel"];
+ $Überschrift=$_REQUEST["Überschrift"];
 
 $query = "UPDATE admin SET Fragen_extern = '".$Frage."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
@@ -13,7 +13,7 @@ $exec = mysqli_query($link,$query);
 $query = "UPDATE admin SET Typ = '".$Fragentyp."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
 
-$query = "UPDATE admin SET Kapitel = '".$Kapitel."' WHERE ID = '".$Id."'";
+$query = "UPDATE admin SET Überschrift = '".$Überschrift."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
 
 if($Fragentyp=='Schieberegler')
