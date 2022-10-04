@@ -149,7 +149,7 @@
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<body class="text-center">
+<body class="text-center" onload=SortiereFragen()>
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -348,6 +348,19 @@ if (isset($_REQUEST["Step"])) {
 	  </div>
 
 	<script>
+
+	function SortiereFragen()
+	{
+		var post_order_ids = new Array();
+		$('.externe_Fragen form').each(function(){
+			post_order_ids.push($(this).data("post-id"));
+		});
+		$.ajax({
+			url:"ajax_upload.php",
+			method:"POST",
+			data:{post_order_ids:post_order_ids}
+		});
+	}
 	$(document).ready(function(){
 		$( ".externe_Fragen" ).sortable({
 			placeholder : "ui-state-highlight",
@@ -356,6 +369,13 @@ if (isset($_REQUEST["Step"])) {
 				var post_order_ids = new Array();
 				$('.externe_Fragen form').each(function(){
 					post_order_ids.push($(this).data("post-id"));
+					for (let index = 0; index < post_order_ids.length; ++index) {
+						const element = post_order_ids[index];
+						if(element == undefined)
+						{
+							post_order_ids.splice(index, 1);
+						}
+					}
 				});
 				$.ajax({
 					url:"ajax_upload.php",
@@ -383,6 +403,13 @@ if (isset($_REQUEST["Step"])) {
 				$('.Überschriften form').each(function(){
 					post_order_ids.push($(this).data("post-ud"));
 					console.log(post_order_ids)
+					for (let index = 0; index < post_order_ids.length; ++index) {
+						const element = post_order_ids[index];
+						if(element == undefined)
+						{
+							post_order_ids.splice(index, 1);
+						}
+					}
 				});
 				$.ajax({
 					url:"ajax_upload_überschrift.php",
@@ -399,6 +426,7 @@ if (isset($_REQUEST["Step"])) {
 					 }
 					}
 				});
+				SortiereFragen();
 			}
 		});
 	});

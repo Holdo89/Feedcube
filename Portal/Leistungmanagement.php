@@ -149,7 +149,7 @@
 			<span class="close">&times;</span>
 			<div id="Leistung_Auswahl" name="Leistung_Auswahl">Wähle dein Fragenset zur ausgewählten Leistung</div>
 			<?php
-			include "Auswahlmöglichkeiten_Trainer.php"
+			include "Auswahlmöglichkeiten_Trainer_ohne_alle.php"
 	?>
 			<br>
 			<input type="checkbox" id ="Sprache"> Englischer Kurs</input>
