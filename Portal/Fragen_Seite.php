@@ -289,7 +289,7 @@ if (isset($_REQUEST["Step"])) {
 		<h4 id="FragenÜberschrift" style="margin-bottom:30px;">Neue Frage hinzufügen</h4>
 				<div id="Überschrift_Container">
 				<h5>Überschrift: </h5>
-				<select class="center_select" id="Überschrift" name="Überschrift">
+				<select class="center_select" id="Überschrift_Fragen" name="Überschrift">
 				<?php
 					$sql = "SELECT Überschrift FROM überschrift";
 					$result = mysqli_query($link, $sql) ;
@@ -788,7 +788,8 @@ if (isset($_REQUEST["Step"])) {
 				document.getElementById("Frage_Übersetzung").style.display="block";
 
 				getÜberschriftUebersetzung(id);
-
+				getFragenÜberschrift(id);
+				console.log("getÜberschrift: "+id);
 				if(questiontype=="Bewertung")
 				{
 					getFragenspezifischeAntworten(id, questiontype, type);
@@ -1039,11 +1040,24 @@ if (isset($_REQUEST["Step"])) {
 		var xmlhttp_options = new XMLHttpRequest();
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				var Überschrift = document.getElementById('Überschrift');
+				console.log("Überschrift:"+this.responseText.slice(0,-2))
 				Überschrift.value = this.responseText.slice(0,-2);
 			;}
 		;};
 		xmlhttp_options.open("GET", "getÜberschrift.php?ID=" + id, false);
+		xmlhttp_options.send();
+	}
+
+	function getFragenÜberschrift(id){
+		var Überschrift = document.getElementById('Überschrift_Fragen');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log("Überschrift:"+this.responseText.slice(0,-2))
+				Überschrift.value = this.responseText.slice(0,-2);
+			;}
+		;};
+		xmlhttp_options.open("GET", "getFragenÜberschrift.php?ID=" + id, false);
 		xmlhttp_options.send();
 	}
 
@@ -1070,7 +1084,6 @@ if (isset($_REQUEST["Step"])) {
 		var neueÜberschriftmodal=document.getElementById("ÜberschriftModal");
 		var neueÜberschriftmodalform=document.getElementById("ÜberschriftModalform");
 		getÜberschrift(id);
-		console.log(id)
 		getÜberschriftÜbersetzung(id);
 		document.getElementById("ÜberschriftÜberschrift").innerHTML = "Überschrift bearbeiten";
 		neueÜberschriftmodal.style.display="block";
