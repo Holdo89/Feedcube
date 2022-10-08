@@ -17,7 +17,7 @@ while($row_überschrift = mysqli_fetch_assoc($result_überschrift)) {
 	include "Fragen_Abfrage.php";
 	echo'</div>
     </form>
-    <button type="button" id="element" style="width:250px; background-color:'; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'" onclick = "display_new('.$row_überschrift["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
+    <button type="button" id="element" style="width:250px; background-color:white; border: 2px solid '; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'; color:'; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'" onclick = "display_new('.$row_überschrift["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
     </div>';
 }
 echo'</div>';
