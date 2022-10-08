@@ -512,15 +512,6 @@ if (isset($_REQUEST["Step"])) {
 
 	function getÜberschriftUebersetzung(id){
 		var xmlhttp_options = new XMLHttpRequest();
-		var kapitel = document.getElementById("Überschrift");   
-		xmlhttp_options.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				kapitel.value=this.responseText;
-			}
-		;};
-		xmlhttp_options.open("GET", "Überschrift_Beschreibung.php?ID=" + id, false);
-		xmlhttp_options.send();
-
 		var kapitel_englisch = document.getElementById("Überschrift_Übersetzung");
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -849,6 +840,7 @@ if (isset($_REQUEST["Step"])) {
 		}
 		else if(id==0)
 		{
+			console.log("ID = 0")
 			document.getElementById("FragenÜberschrift").innerHTML="Neue Frage hinzufügen";
 			modal.style.display ="block";
 			document.getElementById('alert').style.display='block';
@@ -893,6 +885,41 @@ if (isset($_REQUEST["Step"])) {
 			document.getElementById("Fragenid").value = 0;
 		}
 	}
+
+	function display_new(Überschriftid)
+	{	
+			console.log("Übi:"+Überschriftid);
+			getÜberschrift(Überschriftid)
+			document.getElementById("FragenÜberschrift").innerHTML="Neue Frage hinzufügen";
+			var Modalform = document.getElementById("Modalform");
+			<?php
+            if (isset($_REQUEST["Step"])) {
+                $Step=$_REQUEST["Step"];
+                echo'Modalform.action="Fragen.php?Step='.$Step.'";';
+            } else {
+                echo'Modalform.action="Fragen.php";';
+            }
+?>
+			document.getElementById("Bewertung").disabled=false;
+			document.getElementById("Multiplechoice").disabled=false;
+			document.getElementById("Schieberegler").disabled=false;
+			document.getElementById("Text").disabled=false;
+			document.getElementById("Bewertung").checked=false;
+			document.getElementById("Multiplechoice").checked=false;
+			document.getElementById("Schieberegler").checked=false;
+			document.getElementById("Text").checked=false;
+			document.getElementById("fragenspezifisch").checked=false;
+			document.getElementById("vordefiniert").checked=false;
+			document.getElementById("Bewertungoptionen").style.display="none";
+			document.getElementById("Multiplechoiceoptionen").style.display="none";
+			document.getElementById("Rangeoptionen").style.display="none";
+			document.getElementById("Frage").value="";
+			document.getElementById("Frage_Übersetzung").value="";
+			document.getElementById("Frageübersetzung_Label").style.display="block";
+			document.getElementById("Frage_Übersetzung").style.display="block";		
+			modal.style.display ="block";
+			document.getElementById("Fragenid").value = 0;
+		}
 
 	function showoptions()
 	{
@@ -1040,7 +1067,8 @@ if (isset($_REQUEST["Step"])) {
 		var xmlhttp_options = new XMLHttpRequest();
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log("Überschrift:"+this.responseText.slice(0,-2))
+				Überschrift.value = this.responseText.slice(0,-2);
+				Überschrift = document.getElementById('Überschrift_Fragen');
 				Überschrift.value = this.responseText.slice(0,-2);
 			;}
 		;};
