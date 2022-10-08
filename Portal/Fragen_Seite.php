@@ -777,7 +777,7 @@ if (isset($_REQUEST["Step"])) {
 				document.getElementById("Überschrift_Container").style.display="block";
 				document.getElementById("Frageübersetzung_Label").style.display="block";
 				document.getElementById("Frage_Übersetzung").style.display="block";
-
+				
 				getÜberschriftUebersetzung(id);
 				getFragenÜberschrift(id);
 				console.log("getÜberschrift: "+id);
@@ -1068,6 +1068,8 @@ if (isset($_REQUEST["Step"])) {
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				Überschrift.value = this.responseText.slice(0,-2);
+				console.log("Überschrift: "+id);
+				console.log("Überschrift: "+this.responseText);
 				Überschrift = document.getElementById('Überschrift_Fragen');
 				Überschrift.value = this.responseText.slice(0,-2);
 			;}
@@ -1095,7 +1097,7 @@ if (isset($_REQUEST["Step"])) {
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var Überschrift = document.getElementById('Überschrift_Übersetzung');
-				console.log(this.responseText);
+				console.log("Überschrift_Übersetzung: "+this.responseText);
 				Überschrift.value = this.responseText.slice(0,-2);
 			;}
 		;};
@@ -1111,6 +1113,7 @@ if (isset($_REQUEST["Step"])) {
 	function showÜberschrift(id){
 		var neueÜberschriftmodal=document.getElementById("ÜberschriftModal");
 		var neueÜberschriftmodalform=document.getElementById("ÜberschriftModalform");
+		console.log("Überschrift: "+id)
 		getÜberschrift(id);
 		getÜberschriftÜbersetzung(id);
 		document.getElementById("ÜberschriftÜberschrift").innerHTML = "Überschrift bearbeiten";
