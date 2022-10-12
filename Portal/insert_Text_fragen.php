@@ -24,7 +24,7 @@ $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
 
 $Antwort = $_POST["checkbox"]; 
 $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
-    $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$Überschrift."'";
+    $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$neues_Überschrift."'";
     $query = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($query);
     $Überschrift_Englisch = $row["Überschrift_Übersetzung"];

@@ -6,10 +6,23 @@ require_once "../config.php";
 require_once "session.php";
 
 $Id = $_REQUEST["ID"];
+$sql = "SELECT Überschrift FROM überschrift WHERE ID=".$Id;
+$result = mysqli_query($link, $sql);
+$row = mysqli_fetch_array($result);
+$Alte_Überschrift = $row["Überschrift"];
+
 $Überschrift = mysqli_real_escape_string($link, $_REQUEST["Überschrift"]);
 $Überschrift_Übersetzung = mysqli_real_escape_string($link, $_REQUEST["Überschrift_Übersetzung"]);
 
 $sql = "UPDATE überschrift SET Überschrift = '$Überschrift', Überschrift_Übersetzung='$Überschrift_Übersetzung' WHERE ID=".$Id;
+
+if(mysqli_query($link, $sql)){
+
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+$sql = "UPDATE admin SET Überschrift = '$Überschrift', Überschrift_Englisch='$Überschrift_Übersetzung' WHERE Überschrift='".$Alte_Überschrift."'";
 
 if(mysqli_query($link, $sql)){
 
