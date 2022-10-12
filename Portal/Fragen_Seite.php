@@ -1069,8 +1069,11 @@ if (isset($_REQUEST["Step"])) {
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				Überschrift.value = this.responseText.slice(0,-2);
+<<<<<<< HEAD
 				console.log("Überschrift: "+id);
 				console.log("Überschrift: "+this.responseText);
+=======
+>>>>>>> 1a2cf4bf7f998100e1b8e46d30a8bdc99687550f
 				Überschrift = document.getElementById('Überschrift_Fragen');
 				Überschrift.value = this.responseText.slice(0,-2);
 			;}
