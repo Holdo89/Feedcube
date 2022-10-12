@@ -149,6 +149,7 @@
 </style>
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script src="touchjquery.js"></script>
 <body class="text-center" onload=SortiereFragen()>
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
@@ -1069,11 +1070,8 @@ if (isset($_REQUEST["Step"])) {
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				Überschrift.value = this.responseText.slice(0,-2);
-<<<<<<< HEAD
 				console.log("Überschrift: "+id);
 				console.log("Überschrift: "+this.responseText);
-=======
->>>>>>> 1a2cf4bf7f998100e1b8e46d30a8bdc99687550f
 				Überschrift = document.getElementById('Überschrift_Fragen');
 				Überschrift.value = this.responseText.slice(0,-2);
 			;}
