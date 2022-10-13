@@ -32,10 +32,10 @@
     <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
         
     <div id ="System" class="dropdown">
-        <button class="dropbtn"><i class="fas fa-cog" aria-hidden="true"></i> System </button>
+        <button class="dropbtn"><i class="fas fa-cog" aria-hidden="true"></i> Einstellungen</button>
         <div class="dropdown-content" style="text-align:left; font-size:13px; border:none; outline:none;">
         <a id ="Lookandfeel" href="Lookandfeel.php"><i class="fa-solid fa-paintbrush" aria-hidden="true"></i> Look & Feel</a>
-        <a id ="Einstellungen" href="Einstellungen.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Einstellungen</a>	
+        <a id ="VordefinierteTexte" href="VordefinierteTexte.php"><i class="fa fa-file-text-o" aria-hidden="true"></i>  Vordefinierte Texte</a>	
         <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Vordefinierte Antworten</a>
     </div>
     </div>
