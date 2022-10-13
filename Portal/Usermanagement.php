@@ -320,7 +320,7 @@
     <link href="tooltip.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="User_optionen.css" rel="stylesheet" type="text/css">
-    <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php

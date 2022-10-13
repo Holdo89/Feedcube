@@ -127,7 +127,7 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <script src="touchjquery.js"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
