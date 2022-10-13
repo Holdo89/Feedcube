@@ -7,12 +7,12 @@ echo '<div class="Überschriften" style="padding:10px;">';
 
 while($row_überschrift = mysqli_fetch_assoc($result_überschrift)) {
     echo "<form data-post-ud=".$row_überschrift["post_id"]." style='border-radius:5px 5px 0px 0px;margin-bottom:0px;'>
-    <button type='button' id='angle_".$row_überschrift["ID"]."' class='center_button' onclick='showQuestions(".$row_überschrift["ID"].");' ><i class='fa fa-angle-right'></i></button>
+    <p style='margin-top:7px; margin-bottom:0px' type='button' id='angle_".$row_überschrift["ID"]."' class='center_button' onclick='showQuestions(".$row_überschrift["ID"].");' ><i class='fa fa-angle-right'></i></p>
     <div class= center_select id='Überschrift_".$row_überschrift["ID"]."' style = 'cursor: grab'>".$row_überschrift["Überschrift"]."</div>
     <button type='button' class='center_button' onclick='showÜberschrift(".$row_überschrift["ID"].")'><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>           
     <button type='button' class='center_button' onclick='user_abfrage_löschen_Überschrift(".$row_überschrift["ID"].")'><i class='fa fa-trash'></i><span class='tooltiptext'>Löschen</span></button>";            
     echo'
-    <div id="form_'.$row_überschrift["ID"].'" style="display:none; width:100%; text-align:center; margin:auto; grid-column: 1 / span 4;">
+    <div id="form_'.$row_überschrift["ID"].'" style="background-color:ghostwhite; display:none; width:100%; text-align:center; margin:auto; grid-column: 1 / span 4;">
     <div class="externe_Fragen">';
 	include "Fragen_Abfrage.php";
 	echo'</div>

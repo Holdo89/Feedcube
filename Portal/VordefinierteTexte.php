@@ -36,7 +36,7 @@
 	document.getElementById("VordefinierteTexte").className = "active";
 	document.getElementById("System").style.backgroundColor = "lightgrey";
 </script>
-<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/text-format.png" width="60"> Vordefinierte Texte</h1>
+<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/text-format.png" width="60"> Texte</h1>
 <p style="margin-bottom:30px"> Definiere welche Texte bei der Abgabe von Feedback und bei der Teilnahme an Umfragen angezeigt wird</p>	</div>
 
 	</div>
