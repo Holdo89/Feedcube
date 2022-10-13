@@ -43,7 +43,7 @@ $Umfrage_titel = mysqli_fetch_array($exec_test);
 <label align=center style="line-height:23px;">
 <?php 
 	echo "Vielen Dank für die Teilnahme an der folgenden Umfrage</label><br><br>
-	<p>Umfrage	: <b>".$Umfrage_titel["Umfrage"]."</b></p>
+	<p>Umfrage: <b>".$Umfrage_titel["Umfrage"]."</b></p>
 	<input class='center_button' type='submit' value='Feedback starten'>";
 
 ?>

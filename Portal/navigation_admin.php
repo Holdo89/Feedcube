@@ -13,7 +13,6 @@
         <a id ="forms_admin" href="forms_admin.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>	
         <label style="margin-top:10px; text-align:left; border:none; outline:none; padding:3px; margin-bottom:5px;">Konfiguration</label>
         <a id ="Leistungmanagement" href="Leistungmanagement.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Leistungen</a>
-        <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Antworten</a>
         <a id ="Fragen" href="Fragen.php"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Fragen</a>
         <a id ="Fragensets" href="Fragenset.php"><i class="fa fa-question-circle" aria-hidden="true"></i> Fragensets</a>
     </div>
@@ -27,13 +26,19 @@
         <a id ="Umfrage_forms" href="Umfrage_forms.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Formulare</a>	
         <label style="margin-top:10px; text-align:left; border:none; outline:none; padding:3px; margin-bottom:5px;">Konfiguration</label>
         <a id ="Umfragen" href="Umfragen.php"><i class="fa fa-cogs" aria-hidden="true"></i> Umfragen</a>
-        <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Antworten</a>
     </div>
     </div>
 
-
-        <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
-        <a id ="System" href="System.php"><i class="fa fa-cog" aria-hidden="true"></i> System</a>
+    <a id ="Usermanagement" href="Usermanagement.php"><i class="fa fa-users" aria-hidden="true"></i> Benutzer</a>
+        
+    <div id ="System" class="dropdown">
+        <button class="dropbtn"><i class="fas fa-cog" aria-hidden="true"></i> System </button>
+        <div class="dropdown-content" style="text-align:left; font-size:13px; border:none; outline:none;">
+        <a id ="Lookandfeel" href="Lookandfeel.php"><i class="fa-solid fa-paintbrush" aria-hidden="true"></i> Look & Feel</a>
+        <a id ="Einstellungen" href="Einstellungen.php"><i class="fa fa-file-text-o" aria-hidden="true"></i> Einstellungen</a>	
+        <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i> Vordefinierte Antworten</a>
+    </div>
+    </div>
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
