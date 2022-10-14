@@ -232,10 +232,7 @@ if (isset($_REQUEST["Step"])) {
 	var Auswahl_Sprache = document.getElementById("Sprache");
 	var QRAuswahl = document.getElementsByName("qrvslink")[1];
 	var LinkAuswahl = document.getElementsByName("qrvslink")[0];
-	//QRvsLink.onchange = function(){
-	//	document.getElementById("qrcode-container").style.display="block";
-	//}
-	//console.log(document.querySelector('input[name="optradio"]:checked').value)
+
 	var Sprache = "Deutsch";
 	var Link = document.getElementById("Link");
 	var copyButton = document.getElementById("copyButton");
@@ -247,7 +244,6 @@ if (isset($_REQUEST["Step"])) {
 	LinkAuswahl.onchange = ShowLink;
 
 	function ShowLink(){
-		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
 		if(Auswahl_Leistung.value!="")
 		{
 			var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
@@ -305,7 +301,6 @@ if (isset($_REQUEST["Step"])) {
 	}
 	
 	Auswahl_Sprache.onclick = function(){
-		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
 		if(Auswahl_Sprache.checked)
 		{
 			Sprache= "Englisch";
@@ -315,8 +310,10 @@ if (isset($_REQUEST["Step"])) {
 		}
 		var Feedbacklink = current_url+"/Vorauswahl.php?Leistung_ID="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
 		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		if(Auswahl_Leistung.value!=""){
 		Link.value = Feedbacklink;
-		copyButton.style.display = "block";
+		}
+		ShowLink();
 	};
 
 	// When the user clicks anywhere outside of the modal, close it

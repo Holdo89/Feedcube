@@ -321,8 +321,10 @@
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="User_optionen.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+	<script src="FileSaver.js"></script>
 	<?php
      include "User_speichern.php"
  ?>
@@ -453,14 +455,32 @@ a:hover .tooltiptext {
  ?>
 		<br>
 		<input type="checkbox" id ="Sprache"> Englischer Kurs</input>
-		<p style="margin-top:20px;">Feedback-Link: </p>
+        <br><br>
+			<label class="radio-inline">
+			<input style="margin-top:-1px" type="radio" name="qrvslink" value="Link" checked>Feedback-Link
+			</label>
+			<label class="radio-inline">
+			<input style="margin-top:-1px" type="radio" name="qrvslink" value="QR">QR-Code
+			</label>
+			<br><br>
+			<div id="qrcode-container" style="display:none; width:200px;">
+    		<div id="qrcode-2" class="qrcode"></div>
+			<button type="button" id="QRSave" onclick="CopyQR()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">QR-Code kopieren</button>
+				<button type="button" id="QRSave" onclick="SaveQR()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">Als Bild speichern</button>
+	</div>
 		<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
 		<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system";
- $exec=mysqli_query($link, $sql);
- $result=mysqli_fetch_assoc($exec);
- echo $result['farbe']?>">Link kopieren</button>
-    </form>
-	</div>
+        $exec=mysqli_query($link, $sql);
+        $result=mysqli_fetch_assoc($exec);
+        echo $result['farbe']?>">Link kopieren</button>
+        </form>
+        </div>
 
 	<div id="newUserModal" class="modal" style="display:none;">
 		<form class="form-signin" style="display:block; padding:40px; max-width:1000px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);
@@ -544,7 +564,15 @@ a:hover .tooltiptext {
 	catch{
 	    
 	};
+    
+    var span = document.getElementsByClassName("close")[0];
 	var modal = document.getElementById("myModal");
+    let qrcodeContainer = document.getElementById("qrcode-2");
+    span.onclick = function() {
+        modal.style.display = "none";
+        copyButton.style.display = "none";
+        qrcodeContainer.innerHTML="";
+	}
 	var Trainer_element = document.getElementById("Trainer_Auswahl");
 	function display(Trainer) {
 		modal.style.display = "block";
@@ -556,24 +584,78 @@ a:hover .tooltiptext {
 		Link.value = "";
 	}
 	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
 	var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
 	var Auswahl_Sprache = document.getElementById("Sprache");
 	var Sprache = "Deutsch";
+    var QRAuswahl = document.getElementsByName("qrvslink")[1];
+	var LinkAuswahl = document.getElementsByName("qrvslink")[0];
 	var Link = document.getElementById("Link");
 	var copyButton = document.getElementById("copyButton");
 	var current_url = window.location.href;
 	var index = current_url.indexOf("Portal");
 	current_url = current_url.substr(0,index)+"Feedback_abgeben";
-	Auswahl_Leistung.onchange = function(){
-		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
-		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
-		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
-		Link.value = Feedbacklink;
-		copyButton.style.display = "block";
-	};
+    Auswahl_Leistung.onchange = ShowLink;
+	QRAuswahl.onchange = ShowLink;
+	LinkAuswahl.onchange = ShowLink;
+
+    function ShowLink(){
+		if(Auswahl_Leistung.value!="")
+		{
+            var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
+			Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+			Link.value = Feedbacklink;
+			copyButton.style.display = "block";
+			/*With some styles*/
+			let qrcodeContainer2 = document.getElementById("qrcode-2");
+			qrcodeContainer2.innerHTML = "";
+			new QRCode(qrcodeContainer2, {
+			text: Feedbacklink,
+			width: 200,
+			height: 200,
+			correctLevel: QRCode.CorrectLevel.H
+			});
+			if(document.querySelector('input[name="qrvslink"]:checked').value=="Link")
+			{
+				document.getElementById("qrcode-container").style.display = "none";
+				document.getElementById("Link").style.display = "block";
+				document.getElementById("copyButton").style.display = "block";
+
+			}
+			else{
+			document.getElementById("qrcode-container").style.display = "block";
+			document.getElementById("Link").style.display = "none";
+			document.getElementById("copyButton").style.display = "none";
+			}
+		}
+    };
+
+	function CopyQR(){
+        html2canvas($("#qrcode-2"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+				console.log(canvas);
+				canvas.toBlob(function(blob) { 
+    const item = new ClipboardItem({ "image/png": blob });
+    navigator.clipboard.write([item]); 
+	alert("QR-Code wurde als Bild in die Zwischenablage kopiert")
+		});
+    }
+    });
+	}
+
+	function SaveQR(){
+        html2canvas($("#qrcode-2"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+				console.log(canvas);
+                canvas.toBlob(function(blob) {
+                    saveAs(blob,"QRCode_"+Auswahl_Leistung.value+".png"); 
+                });
+            }
+        });
+	}
+
 	Auswahl_Sprache.onclick = function(){
-		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
 		if(Auswahl_Sprache.checked)
 		{
 			Sprache= "Englisch";
@@ -583,14 +665,11 @@ a:hover .tooltiptext {
 		}
 		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
 		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+		if(Auswahl_Leistung.value!=""){
 		Link.value = Feedbacklink;
-		copyButton.style.display = "block";
+		}
+		ShowLink();
 	};
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-  		modal.style.display = "none";
-		copyButton.style.display = "none";
-	}
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
 	if (event.target == modal) {
