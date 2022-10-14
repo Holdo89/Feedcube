@@ -9,7 +9,7 @@ $Schieberegler_err="";
  if ($_SERVER["REQUEST_METHOD"] == "POST") 
  {
     $ID=$_REQUEST["Fragenid"];
-    $Type = $_REQUEST["externinterntyp"];
+    $Type = "extern";
     $Fragentyp = $_REQUEST["Auswahl_Fragentyp"];
 
     if ($Fragentyp=="Schieberegler") 

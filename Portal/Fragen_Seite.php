@@ -333,8 +333,6 @@ if (isset($_REQUEST["Step"])) {
 				</div>
 				<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
 	 			</input>
-				 <input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
-	 			</input>
 				<div id="Bewertungoptionen" style="font-size:12px; display:none;">
 				</div>
 				<div id="Multiplechoiceoptionen" style="font-size:12px; display:none;">
@@ -443,7 +441,7 @@ if (isset($_REQUEST["Step"])) {
 	function addSpecificAnswer(Fragentyp, id){
 		console.log("ID="+id)
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
-		var Type = document.getElementById("externinterntyp").value;
+		var Type = "extern";
 		console.log("Answer:"+Answer)
 		console.log(Fragentyp.value)
 		if (Fragentyp.value == "Bewertung")
@@ -703,7 +701,6 @@ if (isset($_REQUEST["Step"])) {
 	function display(id, type, questiontype) 
 	{	
 		document.getElementById('alert').style.display='none';
-		document.getElementById("externinterntyp").value=type;
 
 		if (questiontype == "Bewertung" || questiontype == "Multiplechoice")
 		{
@@ -928,7 +925,7 @@ if (isset($_REQUEST["Step"])) {
 		var xmlhttp_options = new XMLHttpRequest();
 
 		document.getElementById('alert').style.display='none';
-		var externinterntyp = document.getElementById("externinterntyp").value
+		var externinterntyp = "extern";
 
 		var Modalform = document.getElementById("Modalform");
 		var id = document.getElementById('Fragenid').value;
