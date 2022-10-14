@@ -123,6 +123,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="touchjquery.js"></script>
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
@@ -158,7 +159,7 @@
 	</div>
 
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px; margin-top:30px;">
-	<label class="überschrift">Bewertung</label>
+	<label style="grid-column: 1 / span 2; padding-left:20px" class="überschrift">Bewertung</label>
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>
@@ -172,7 +173,7 @@
 
 
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px;">
-	<label class="überschrift">Multiplechoice</label>
+	<label style="grid-column: 1 / span 2; padding-left:20px"  class="überschrift">Multiplechoice</label>
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>

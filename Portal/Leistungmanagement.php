@@ -19,6 +19,11 @@
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="User_optionen.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+	<script src="FileSaver.js"></script>
+
+
 	<?php
 	include "Leistung_speichern.php";
 	include "Fragenset_speichern.php";
@@ -153,9 +158,27 @@
 	?>
 			<br>
 			<input type="checkbox" id ="Sprache"> Englischer Kurs</input>
-			<p style="margin-top:20px;">Feedback-Link: </p>
+			<br><br>
+			<label class="radio-inline">
+			<input style="margin-top:-1px" type="radio" name="qrvslink" value="Link" checked>Feedback-Link
+			</label>
+			<label class="radio-inline">
+			<input style="margin-top:-1px" type="radio" name="qrvslink" value="QR">QR-Code
+			</label>
+			<br><br>
+			<div id="qrcode-container" style="display:none; width:200px;">
+    		<div id="qrcode-2" class="qrcode"></div>
+			<button type="button" id="QRSave" onclick="CopyQR()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">QR-Code kopieren</button>
+				<button type="button" id="QRSave" onclick="SaveQR()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">Als Bild speichern</button>
+	</div>
 			<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
-			<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system";
+				<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system";
 	$exec=mysqli_query($link, $sql);
 	$result=mysqli_fetch_assoc($exec);
 	echo $result['farbe']?>">Link kopieren</button>
@@ -187,35 +210,100 @@ if (isset($_REQUEST["Step"])) {
     <script>
 		var span = document.getElementsByClassName("close")[1];
 		var linkmodal = document.getElementById("LinkModal");
+		let qrcodeContainer = document.getElementById("qrcode-2");
 		span.onclick = function() {
   		linkmodal.style.display = "none";
 		copyButton.style.display = "none";
+		qrcodeContainer.innerHTML="";
 	}
 	var Leistung_Element = document.getElementById("Leistung_Auswahl");
-		function createLink(Leistung_ID, Leistung) {
-			linkmodal.style.display = "block";
-			Leistung_Element.value = Leistung_ID;
-			var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
-			Auswahl_Leistung.value = "%"
-			Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für die Leistung:</div>";
-			var Link = document.getElementById("Link");
-			Link.value = "";
-		}
+
+	function createLink(Leistung_ID, Leistung) {
+		linkmodal.style.display = "block";
+		Leistung_Element.value = Leistung_ID;
+		var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
+		Auswahl_Leistung.value = "%"
+		Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für die Leistung:</div>";
+		var Link = document.getElementById("Link");
+		Link.value = "";
+	}
+
 	var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
 	var Auswahl_Sprache = document.getElementById("Sprache");
+	var QRAuswahl = document.getElementsByName("qrvslink")[1];
+	var LinkAuswahl = document.getElementsByName("qrvslink")[0];
+	//QRvsLink.onchange = function(){
+	//	document.getElementById("qrcode-container").style.display="block";
+	//}
+	//console.log(document.querySelector('input[name="optradio"]:checked').value)
 	var Sprache = "Deutsch";
 	var Link = document.getElementById("Link");
 	var copyButton = document.getElementById("copyButton");
 	var current_url = window.location.href;
 	var index = current_url.indexOf("Portal");
 	current_url = current_url.substr(0,index)+"Feedback_abgeben";
-	Auswahl_Leistung.onchange = function(){
+	Auswahl_Leistung.onchange = ShowLink;
+	QRAuswahl.onchange = ShowLink;
+	LinkAuswahl.onchange = ShowLink;
+
+	function ShowLink(){
 		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
-		var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
-		Feedbacklink = Feedbacklink.replaceAll(" ","%20");
-		Link.value = Feedbacklink;
-		copyButton.style.display = "block";
-	};
+		if(Auswahl_Leistung.value!="")
+		{
+			var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
+			Feedbacklink = Feedbacklink.replaceAll(" ","%20");
+			Link.value = Feedbacklink;
+			copyButton.style.display = "block";
+			/*With some styles*/
+			let qrcodeContainer2 = document.getElementById("qrcode-2");
+			qrcodeContainer2.innerHTML = "";
+			new QRCode(qrcodeContainer2, {
+			text: Feedbacklink,
+			width: 200,
+			height: 200,
+			correctLevel: QRCode.CorrectLevel.H
+			});
+			if(document.querySelector('input[name="qrvslink"]:checked').value=="Link")
+			{
+				document.getElementById("qrcode-container").style.display = "none";
+				document.getElementById("Link").style.display = "block";
+				document.getElementById("copyButton").style.display = "block";
+
+			}
+			else{
+			document.getElementById("qrcode-container").style.display = "block";
+			document.getElementById("Link").style.display = "none";
+			document.getElementById("copyButton").style.display = "none";
+			}
+		}
+    };
+
+	function CopyQR(){
+        html2canvas($("#qrcode-2"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+				console.log(canvas);
+				canvas.toBlob(function(blob) { 
+    const item = new ClipboardItem({ "image/png": blob });
+    navigator.clipboard.write([item]); 
+	alert("QR-Code wurde als Bild in die Zwischenablage kopiert")
+		});
+    }
+    });
+	}
+
+	function SaveQR(){
+        html2canvas($("#qrcode-2"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+				console.log(canvas);
+                canvas.toBlob(function(blob) {
+                    saveAs(blob,"QRCode_"+Auswahl_Leistung.value+".png"); 
+                });
+            }
+        });
+	}
+	
 	Auswahl_Sprache.onclick = function(){
 		var prefix = "Feedback-Link:<div style='font-size:13px;'> ";
 		if(Auswahl_Sprache.checked)
