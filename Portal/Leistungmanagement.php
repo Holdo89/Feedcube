@@ -246,7 +246,7 @@ if (isset($_REQUEST["Step"])) {
 	function ShowLink(){
 		if(Auswahl_Leistung.value!="")
 		{
-			var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.value+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
+			var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.options[Auswahl_Leistung.selectedIndex].text+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
 			Feedbacklink = Feedbacklink.replaceAll(" ","%20");
 			Link.value = Feedbacklink;
 			copyButton.style.display = "block";

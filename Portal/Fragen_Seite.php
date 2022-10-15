@@ -156,6 +156,8 @@
   visibility: visible;
 }
 </style>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script src="touchjquery.js"></script>
 <body class="text-center" onload=SortiereFragen()>
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
