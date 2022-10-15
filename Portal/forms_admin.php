@@ -94,7 +94,7 @@
 	</style>
 
 <body class="text-center" onload="update()">
-	<script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 	<link href="navigation.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="navigation.js"></script>
 

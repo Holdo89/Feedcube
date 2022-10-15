@@ -9,13 +9,22 @@
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
 	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
+	<link href="tooltip.css" rel="stylesheet" type="text/css">
 	<link href="Fragen.css" rel="stylesheet" type="text/css">
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
     include "Frage_speichern.php";
 ?>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+	<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"/>
+
 </head>
+
 <style>
 .radio-inline, .checkbox-inline{
 	border:none;
@@ -147,13 +156,11 @@
   visibility: visible;
 }
 </style>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="touchjquery.js"></script>
 <body class="text-center" onload=SortiereFragen()>
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-<script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
-<link href="tooltip.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
@@ -302,9 +309,22 @@ if (isset($_REQUEST["Step"])) {
 				<br>
 				<h5>Frage: </h5>
 				<input class="center_select" id="Frage"  name="Frage" placeholder="Eingabe einer neuen Frage" required></input>
+				<br>
 				<h5 id="Frageübersetzung_Label">Fragenübersetzung: </h5>
 				<input class="center_select" id="Frage_Übersetzung" name ="Frage_Übersetzung" placeholder="Eingabe der Fragenübersetzung"></input>
 				<br>
+				<br>
+				<p>
+					<?php
+						include "Auswahlmöglichkeiten_Fragensets.php";
+					?>
+				</p>
+				<br>
+				<p>
+					<?php
+						include "Auswahlmöglichkeiten_LeistungenOhneFragenset.php";
+					?>
+				</p>
 				<div class="container">
 				<h5>Fragentyp:</h5>
 					<label class="radio-inline">
@@ -330,8 +350,6 @@ if (isset($_REQUEST["Step"])) {
 					</label>
 				</div>
 				<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
-	 			</input>
-				 <input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
 	 			</input>
 				<div id="Bewertungoptionen" style="font-size:12px; display:none;">
 				</div>
@@ -441,7 +459,7 @@ if (isset($_REQUEST["Step"])) {
 	function addSpecificAnswer(Fragentyp, id){
 		console.log("ID="+id)
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
-		var Type = document.getElementById("externinterntyp").value;
+		var Type = "extern";
 		console.log("Answer:"+Answer)
 		console.log(Fragentyp.value)
 		if (Fragentyp.value == "Bewertung")
@@ -520,6 +538,132 @@ if (isset($_REQUEST["Step"])) {
 		;};
 		xmlhttp_options.open("GET", "Überschrift_Uebersetzung.php?ID=" + id, true);
 		xmlhttp_options.send();
+	}
+
+	function getLeistung(id){
+		var u = 0;
+		var selectbox=document.getElementsByClassName("multiselect-selected-text")[1];
+		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[1];
+
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText)
+				for (var i = 0; i < checkboxes.length; i++) {
+					if(checkboxes[i].value!="toggle")
+					{
+						if(this.responseText.includes("|"+checkboxes[i].value+"|"))
+						{
+							console.log(checkboxes[i].value)
+							document.getElementById(checkboxes[i].value).selected=true
+							checkboxes[i].checked = true;
+							var listitem = checkboxes[i].closest("li");
+							listitem.className = "active";
+							u=u+1;
+							if(u>1)
+							selectbox.innerHTML = u+" Leistungen gewählt";
+							else
+							selectbox.innerHTML = u+" Leistung gewählt";
+						}
+					}
+				}
+				selectbox.style.fontSize="15px";
+				selectbutton.style.border="none";
+				selectbutton.style.overflow="hidden";
+				selectbutton.style.maxWidth="300px";
+
+			}
+		;};
+		xmlhttp_options.open("GET", "getLeistungToQuestion.php?ID=" + id, true);
+		xmlhttp_options.send();		
+	}
+
+	function getFragenset(id){
+		var u = 0;
+		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
+		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
+
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		var xmlhttp_options = new XMLHttpRequest();
+		xmlhttp_options.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this.responseText)
+				for (var i = 0; i < checkboxes.length; i++) {
+					if(checkboxes[i].value!="toggle")
+					{
+						if(checkboxes[i].value!="multiselect-all")
+						{
+							document.getElementById(checkboxes[i].value).selected=false
+						}
+							checkboxes[i].checked = false;
+							var listitem = checkboxes[i].closest("li");
+							listitem.className = "false";
+						
+
+						if(this.responseText.includes("|"+checkboxes[i].value+"|"))
+						{
+							console.log(checkboxes[i].value)
+							document.getElementById(checkboxes[i].value).selected=true
+							checkboxes[i].checked = true;
+							var listitem = checkboxes[i].closest("li");
+							listitem.className = "active";
+							u=u+1;
+							if(u>1)
+							selectbox.innerHTML = u+" Fragensets gewählt";
+							else
+							selectbox.innerHTML = u+" Fragenset gewählt";
+						}
+					}
+				}
+				selectbox.style.fontSize="15px";
+				selectbutton.style.border="none";
+				selectbutton.style.overflow="hidden";
+				selectbutton.style.maxWidth="300px";
+
+			}
+		;};
+		xmlhttp_options.open("GET", "getFragensetToQuestion.php?ID=" + id, true);
+		xmlhttp_options.send();		
+	}
+
+	function resetRadio()
+	{
+		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
+		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
+
+		selectbox.style.fontSize="15px";
+		selectbutton.style.border="none";
+		selectbutton.style.overflow="hidden";
+		selectbutton.style.maxWidth="300px";
+		selectbox.innerHTML = "kein Fragenset gewählt";
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+		for (var i = 0; i < checkboxes.length; i++) {
+			if(checkboxes[i].value!="toggle")
+			{
+				if(checkboxes[i].value!="multiselect-all")
+				{
+					document.getElementById(checkboxes[i].value).selected=false
+				}
+				checkboxes[i].checked = false;
+				var listitem = checkboxes[i].closest("li");
+				listitem.className = "false";
+			}
+		}
+	}
+
+	
+	function resetLeistungen()
+	{
+		var selectbox=document.getElementsByClassName("multiselect-selected-text")[1];
+		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[1];
+
+		selectbox.style.fontSize="15px";
+		selectbutton.style.border="none";
+		selectbutton.style.overflow="hidden";
+		selectbutton.style.maxWidth="300px";
+		selectbox.innerHTML = "keine Leistung gewählt";
 	}
 
 	function Rangesliderabfrage(id, type){
@@ -700,8 +844,9 @@ if (isset($_REQUEST["Step"])) {
 
 	function display(id, type, questiontype) 
 	{	
+		getFragenset(id);
+		getLeistung(id);
 		document.getElementById('alert').style.display='none';
-		document.getElementById("externinterntyp").value=type;
 
 		if (questiontype == "Bewertung" || questiontype == "Multiplechoice")
 		{
@@ -884,6 +1029,8 @@ if (isset($_REQUEST["Step"])) {
 			modal.style.display ="block";
 			document.getElementById("Fragenid").value = 0;
 		}
+		resetLeistungen();
+		resetRadio();
 	}
 
 	function display_new(Überschriftid)
@@ -918,7 +1065,9 @@ if (isset($_REQUEST["Step"])) {
 			document.getElementById("Frageübersetzung_Label").style.display="block";
 			document.getElementById("Frage_Übersetzung").style.display="block";		
 			modal.style.display ="block";
-			document.getElementById("Fragenid").value = 0;
+			document.getElementById("Fragenid").value = 0;	
+			resetLeistungen();
+			resetRadio();
 		}
 
 	function showoptions()
@@ -926,7 +1075,7 @@ if (isset($_REQUEST["Step"])) {
 		var xmlhttp_options = new XMLHttpRequest();
 
 		document.getElementById('alert').style.display='none';
-		var externinterntyp = document.getElementById("externinterntyp").value
+		var externinterntyp = "extern";
 
 		var Modalform = document.getElementById("Modalform");
 		var id = document.getElementById('Fragenid').value;

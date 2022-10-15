@@ -235,7 +235,7 @@
 
     <link href="charts2.css" rel="stylesheet" type="text/css">
 
-    <script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 
 </head>
 

@@ -132,7 +132,7 @@ form,.form_intern, .form_antworten  {
 
  .form_antworten {
 
-   grid-template-columns:5fr 0.3fr 0.3fr;
+   grid-template-columns:0.3fr 5fr 0.3fr 0.3fr;
    width: 70vw;
 
  }
@@ -180,7 +180,6 @@ form,.form_intern, .form_antworten  {
 
 .center_select {
 
-  background-color:white;
   text-align:left;
   display: block;
   width: 100%;

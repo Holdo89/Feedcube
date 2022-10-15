@@ -29,7 +29,7 @@ body {
 }
 
 .fa-input { 
-  font-family: FontAwesome, "Spartan", Helvetica, Arial, sans-serif;
+  font-family: "Spartan", Helvetica, Arial, sans-serif;
   background-color: white;
   font-size:14pt;
   min-width:200px;

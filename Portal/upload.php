@@ -89,7 +89,7 @@ $logo_dir = "../assets/".$subdomain."/logo/";
 $bg_givefb_dir = "../assets/".$subdomain."/bg_givefb/";
 $bg_loginfb_dir = "../assets/".$subdomain."/bg_loginfb/";
 
-echo "<script type='text/javascript'>window.location.href='System.php';</script>";
+echo "<script type='text/javascript'>window.location.href='Lookandfeel.php';</script>";
 
 if($_FILES["logo"]["name"]!=""){
     $logo_file = $logo_dir . basename($_FILES["logo"]["name"]);

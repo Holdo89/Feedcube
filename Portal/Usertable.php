@@ -29,7 +29,7 @@ if(isset($_REQUEST["Step"]))
                                     <td>Username</td>  
                                     <td>Email</td>  
                                     <td>Rolle</td>
-                                    <td></td>
+                                    <td style="min-width:130px"></td>
                                </tr>  
                           </thead>  
                           <?php  

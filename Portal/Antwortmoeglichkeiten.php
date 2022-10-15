@@ -122,9 +122,11 @@
 	</script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="touchjquery.js"></script>
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-<script src="https://kit.fontawesome.com/662d1709e3.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
@@ -133,7 +135,7 @@
 ?>
 <script>
 	document.getElementById("Antworten").className = "active";
-	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
+	document.getElementById("System").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/check-mark.png" width="60" style="margin-top:-10px;"> Antworten </h1>
 		Hier kannst du Antwortmöglichkeiten zu Feedbackfragen hinzufügen oder bearbeiten
@@ -157,7 +159,7 @@
 	</div>
 
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px; margin-top:30px;">
-	<label class="überschrift">Bewertung</label>
+	<label style="grid-column: 1 / span 2; padding-left:20px" class="überschrift">Bewertung</label>
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>
@@ -171,7 +173,7 @@
 
 
 	<form class="form_antworten" style="border-radius:5px 5px 0px 0px;">
-	<label class="überschrift">Multiplechoice</label>
+	<label style="grid-column: 1 / span 2; padding-left:20px"  class="überschrift">Multiplechoice</label>
 	<label class="überschrift"></label>
 	<label class="überschrift"></label>
 	</form>
