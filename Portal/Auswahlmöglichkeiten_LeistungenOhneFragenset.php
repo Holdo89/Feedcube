@@ -24,7 +24,7 @@ else
 	});
 	</script>";
     
-    echo'Zu folgenden Leistungen hinzufügen: <select id="Auswahl_Leistung" name="Auswahl_Leistung[]" multiple="multiple">';
+    echo'Zu Leistungen hinzufügen: <select id="Auswahl_Leistung" name="Auswahl_Leistung[]" multiple="multiple">';
 	$sql = "SELECT Leistung FROM leistungen WHERE Fragenset=0";
     $result = mysqli_query($link, $sql) ;
 

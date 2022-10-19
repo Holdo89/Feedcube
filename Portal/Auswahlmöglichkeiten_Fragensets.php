@@ -24,7 +24,7 @@ else
 	});
 	</script>";
 
-    echo'Zu folgenden Fragensets hinzufügen: <select id="Auswahl_Fragenset" name="Auswahl_Fragenset[]" multiple="multiple">';
+    echo'Zu Fragensets hinzufügen: <select id="Auswahl_Fragenset" name="Auswahl_Fragenset[]" multiple="multiple">';
     $sql = "SELECT Fragenset FROM fragensets" ;
 
     $result = mysqli_query($link, $sql) ;
