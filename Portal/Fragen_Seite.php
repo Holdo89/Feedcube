@@ -671,8 +671,6 @@ if (isset($_REQUEST["Step"])) {
 	function Rangesliderabfrage(id, type){
 		var xmlhttp_options = new XMLHttpRequest();
 		var Schieberoutput = document.getElementById("SchieberID");
-		if(type=='extern')
-		{
 			var xmlhttp_options = new XMLHttpRequest();
 			var ID = id;
 			xmlhttp_options.onreadystatechange = function() {
@@ -682,19 +680,6 @@ if (isset($_REQUEST["Step"])) {
 			;};
 			xmlhttp_options.open("GET", "Rangeslider_Abfrage.php?ID=" + ID, true);
 			xmlhttp_options.send();
-		}
-		else if(type=='intern')
-		{
-			var xmlhttp_options = new XMLHttpRequest();
-			var ID = id;
-			xmlhttp_options.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					Schieberoutput.innerHTML=Schieberoutput.innerHTML+this.responseText;
-				}
-			;};
-			xmlhttp_options.open("GET", "intern_Rangeslider_Abfrage.php?ID=" + ID, true);
-			xmlhttp_options.send();
-		}
 	}
 
 	function checkAnswerboxes(id, type, questiontype){
@@ -874,53 +859,7 @@ if (isset($_REQUEST["Step"])) {
 			getCheckedAntworttyp(id, type);
 			getFragenUebersetzung(id, type);
 
-			if(type=='intern')
-			{
-				document.getElementById("Überschrift_Container").style.display="none";
-				document.getElementById("Frageübersetzung_Label").style.display="none";
-				document.getElementById("Frage_Übersetzung").style.display="none";
 
-
-				if(questiontype=="Bewertung")
-				{
-					getFragenspezifischeAntworten(id, questiontype, type);
-					Bewertungoptionen.style.display="block";
-					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="none";		
-				}
-				else if(questiontype=="Multiplechoice")
-				{	
-					getFragenspezifischeAntworten(id, questiontype, type);
-					Bewertungoptionen.style.display="none";
-					Multiplechoiceoptionen.style.display="block";
-					Rangeoptionen.style.display="none";	
-				}
-
-				if(questiontype=="Schieberegler")
-				{
-					document.getElementById("Schieberegler").checked=true;
-					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div id="SchieberID"></div>';
-					var ID = id;
-					Bewertungoptionen.style.display="none";
-					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="block";
-				}
-				else if(questiontype=="Text")
-				{	
-					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Text<?php
-                    if (isset($_REQUEST["Step"])) {
-                        $Step = $_REQUEST["Step"];
-                        echo"&Step=".$Step;
-                    };
-?>";
-					Bewertungoptionen.innerHTML='';	
-					Bewertungoptionen.style.display="none";
-					Multiplechoiceoptionen.style.display="none";
-					Rangeoptionen.style.display="none";			
-				}	
-			}
-			else if(type=='extern')
-			{
 				document.getElementById("Überschrift_Container").style.display="block";
 				document.getElementById("Frageübersetzung_Label").style.display="block";
 				document.getElementById("Frage_Übersetzung").style.display="block";
@@ -944,6 +883,14 @@ if (isset($_REQUEST["Step"])) {
 				}	
 				else if(questiontype=="Schieberegler")
 				{
+					<?php
+					if (isset($_REQUEST["Step"])) {
+						$Step=$_REQUEST["Step"];
+						echo'Modalform.action="Fragen.php?Step='.$Step.'";';
+					} else {
+						echo'Modalform.action="Fragen.php";';
+					}
+					?>
 					document.getElementById("Schieberegler").checked=true;
 					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div id="SchieberID"></div>';
 					var ID = id;
@@ -955,27 +902,16 @@ if (isset($_REQUEST["Step"])) {
 				{						
 					document.getElementById("Text").checked=true;
 					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=extern&Questiontype=Text<?php
-if (isset($_REQUEST["Step"])) {
-    $Step = $_REQUEST["Step"];
-    echo'&Step='.$Step;
-};
-?>";
+					if (isset($_REQUEST["Step"])) {
+						$Step = $_REQUEST["Step"];
+						echo'&Step='.$Step;
+					};
+					?>";
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";	
 				}			
-			}
-			else{
-				if(questiontype=="Bewertung")
-				{
-					modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Bewertung" method="post"><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-				}
-				if(questiontype=="Multiplechoice")
-				{
-					modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice" method="post"><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-				}
-
-			}
+			
 			if(questiontype=="Schieberegler")
 			{
 				Rangesliderabfrage(id, type);	
@@ -1001,7 +937,7 @@ if (isset($_REQUEST["Step"])) {
             } else {
                 echo'Modalform.action="Fragen.php";';
             }
-?>
+			?>
 			document.getElementById("Bewertung").disabled=false;
 			document.getElementById("Multiplechoice").disabled=false;
 			document.getElementById("Schieberegler").disabled=false;
@@ -1017,16 +953,8 @@ if (isset($_REQUEST["Step"])) {
 			document.getElementById("Rangeoptionen").style.display="none";
 			document.getElementById("Frage").value="";
 			document.getElementById("Frage_Übersetzung").value="";
-			if(type=="intern")
-			{
-				document.getElementById("Überschrift_Container").style.display="none";
-				document.getElementById("Frageübersetzung_Label").style.display="none";
-				document.getElementById("Frage_Übersetzung").style.display="none";
-			}
-			else{
-				document.getElementById("Frageübersetzung_Label").style.display="block";
-				document.getElementById("Frage_Übersetzung").style.display="block";		
-			}
+			document.getElementById("Frageübersetzung_Label").style.display="block";
+			document.getElementById("Frage_Übersetzung").style.display="block";		
 
 			modal.style.display ="block";
 			document.getElementById("Fragenid").value = 0;
@@ -1037,7 +965,6 @@ if (isset($_REQUEST["Step"])) {
 
 	function display_new(Überschriftid)
 	{	
-			console.log("Übi:"+Überschriftid);
 			getÜberschrift(Überschriftid)
 			document.getElementById("FragenÜberschrift").innerHTML="Neue Frage hinzufügen";
 			var Modalform = document.getElementById("Modalform");

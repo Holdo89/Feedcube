@@ -17,7 +17,7 @@ if ($rowCount > 0) {
         } elseif ($row["Typ"]=="Schieberegler") {
             echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"intern\", \"Schieberegler\");' ><i class='fa fa-pencil'></i></button>";
         } else {
-            echo "<button type='button' class='center_button'></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"intern\", \"Text\");' ><i class='fa fa-pencil'></i></button>";
         }
         echo "<button type='button' class='center_button' onclick='user_abfrage_löschen_intern(".$row["ID"].")'><i class='fa fa-trash'></i></button>";
 

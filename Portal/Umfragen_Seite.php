@@ -824,6 +824,7 @@ else
 			document.getElementById("Text").disabled=true;
 			document.getElementById(questiontype).disabled=false;
 			modal.style.display = "block";
+			var Modalform = document.getElementById("Modalform");
 
 			getFragenBeschreibung(id,type);
 			getCheckedAntworttyp(id, type);
@@ -847,6 +848,14 @@ else
 
 				if(questiontype=="Schieberegler")
 				{
+					<?php
+					if (isset($_REQUEST["Step"])) {
+						$Step=$_REQUEST["Step"];
+						echo'Modalform.action="Umfragen.php?Step='.$Step.'";';
+					} else {
+						echo'Modalform.action="Umfragen.php";';
+					}
+					?>
 					document.getElementById("Schieberegler").checked=true;
 					Rangeoptionen.innerHTML = '<h5>Wähle die Konfiguration des Schiebereglers:</h5><div id="SchieberID"></div>';
 					var ID = id;
@@ -856,22 +865,13 @@ else
 				}
 				else if(questiontype=="Text")
 				{	
+					document.getElementById("Text").checked=true;
 					Modalform.action="Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype=Text";
 					Bewertungoptionen.innerHTML='';	
 					Bewertungoptionen.style.display="none";
 					Multiplechoiceoptionen.style.display="none";
 					Rangeoptionen.style.display="none";			
 				}	
-			}
-			else{
-				if(questiontype=="Bewertung")
-				{
-					modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Bewertung" method="post"><input id="ID_answers_Bewertung" name="ID_answers_Bewertung" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Bewertung" name ="englisch_answers_Bewertung" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-				}
-				if(questiontype=="Multiplechoice")
-				{
-					modal.innerHTML = '<form class="modalform" action="Antwort_Uebersetzung_save.php?Type=answers&Questiontype=Multiplechoice" method="post"><input id="ID_answers_Multiplechoice" name="ID_answers_Multiplechoice" style="visibility:hidden"></input><div class="Kommentare" style="margin:auto; text-align:left"><span class="close" onclick="hide_modal();">&times;</span><div name="uebersetzung"><h4>Übersetzung</h4><h5>Antwort: </h5><input class="center_select" id="englisch_answers_Multiplechoice" name ="englisch_answers_Multiplechoice" style="display:inline-block ;width:500px; max-width:80%; width:80%; height:30px;"></input></div><h4><button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button></div></form>';
-				}
 			}
 
 			if(questiontype=="Schieberegler")
