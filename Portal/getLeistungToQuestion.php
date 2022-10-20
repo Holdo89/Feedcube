@@ -21,7 +21,7 @@ while($i<$AnzahlAllerLeistungen)
     $row = mysqli_fetch_array($result);
     if($row[$Leistungids[$i]]==1)
     {
-        echo "|".$Leistungnames[$i]."|";
+        echo "|".str_replace("Leistung_","",$Leistungids[$i])."|";
     };
     $i=$i+1;
 }

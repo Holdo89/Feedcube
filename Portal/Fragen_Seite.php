@@ -558,7 +558,7 @@ if (isset($_REQUEST["Step"])) {
 						if(this.responseText.includes("|"+checkboxes[i].value+"|"))
 						{
 							console.log(checkboxes[i].value)
-							document.getElementById(checkboxes[i].value).selected=true
+							document.getElementById("Leistung_"+checkboxes[i].value).selected=true
 							checkboxes[i].checked = true;
 							var listitem = checkboxes[i].closest("li");
 							listitem.className = "active";
@@ -596,17 +596,17 @@ if (isset($_REQUEST["Step"])) {
 					{
 						if(checkboxes[i].value!="multiselect-all")
 						{
-							document.getElementById(checkboxes[i].value).selected=false
+							document.getElementById("Fragenset_"+checkboxes[i].value).selected=false
 						}
 							checkboxes[i].checked = false;
 							var listitem = checkboxes[i].closest("li");
 							listitem.className = "false";
-						
 
+							
 						if(this.responseText.includes("|"+checkboxes[i].value+"|"))
 						{
-							console.log(checkboxes[i].value)
-							document.getElementById(checkboxes[i].value).selected=true
+							console.log("Value: |"+checkboxes[i].value+"|");
+							document.getElementById("Fragenset_"+checkboxes[i].value).selected=true
 							checkboxes[i].checked = true;
 							var listitem = checkboxes[i].closest("li");
 							listitem.className = "active";

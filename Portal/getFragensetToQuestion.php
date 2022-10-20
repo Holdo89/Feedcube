@@ -21,7 +21,7 @@ while($i<$AnzahlAllerFragensets)
     $row = mysqli_fetch_array($result);
     if($row[$Fragensetids[$i]]==1)
     {
-        echo "|".$Fragensetnames[$i]."|";
+        echo "|".str_replace("Fragenset_","",$Fragensetids[$i])."|";
     };
     $i=$i+1;
 }
