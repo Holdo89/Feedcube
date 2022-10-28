@@ -645,12 +645,22 @@ if (isset($_REQUEST["Step"])) {
 			if(checkboxes[i].value!="toggle")
 			{
 				if(checkboxes[i].value!="multiselect-all")
+				{	try{
+					console.log(checkboxes[i].value)
+					document.getElementById("Fragenset_"+checkboxes[i].value).selected=false
+					}
+				catch(e)
 				{
-					document.getElementById(checkboxes[i].value).selected=false
+					console.log("No item found in Fragenset")
+				}
 				}
 				checkboxes[i].checked = false;
+				try{
 				var listitem = checkboxes[i].closest("li");
 				listitem.className = "false";
+				}
+				catch(e)
+				{}
 			}
 		}
 	}
@@ -666,6 +676,30 @@ if (isset($_REQUEST["Step"])) {
 		selectbutton.style.overflow="hidden";
 		selectbutton.style.maxWidth="300px";
 		selectbox.innerHTML = "keine Leistung gewählt";
+		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+		for (var i = 0; i < checkboxes.length; i++) {
+			if(checkboxes[i].value!="toggle")
+			{
+				if(checkboxes[i].value!="multiselect-all")
+				{	try{
+					console.log(checkboxes[i].value)
+					document.getElementById("Leistung_"+checkboxes[i].value).selected=false
+					}
+				catch(e)
+				{
+					console.log("No item found in Fragenset")
+				}
+				}
+				checkboxes[i].checked = false;
+				try{
+				var listitem = checkboxes[i].closest("li");
+				listitem.className = "false";
+				}
+				catch(e)
+				{}
+			}
+		}
 	}
 
 	function Rangesliderabfrage(id, type){
@@ -831,6 +865,8 @@ if (isset($_REQUEST["Step"])) {
 
 	function display(id, type, questiontype) 
 	{	
+		resetLeistungen();
+		resetRadio();
 		getFragenset(id);
 		getLeistung(id);
 		document.getElementById('alert').style.display='none';
@@ -959,8 +995,6 @@ if (isset($_REQUEST["Step"])) {
 			modal.style.display ="block";
 			document.getElementById("Fragenid").value = 0;
 		}
-		resetLeistungen();
-		resetRadio();
 	}
 
 	function display_new(Überschriftid)

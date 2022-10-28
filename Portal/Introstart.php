@@ -259,7 +259,7 @@
 
         <div>
             <?php if ($host[0]=="test") {
-            echo '<img id="icon" class="btn" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="270" height="90" style="margin-bottom:20%">';
+            echo '<img id="icon" class="btn" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="90" style="margin-bottom:20%">';
         }?>
         </div>
 

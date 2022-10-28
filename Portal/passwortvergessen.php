@@ -66,7 +66,7 @@
 
 
 <form class="form-signin" action="?send=1" method="post" style="padding:50px">
-        <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'></p>
+        <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="70" style='object-fit:scale-down'></p>
 
         <?php 
 require_once "../config.php";
@@ -113,7 +113,7 @@ if(isset($_GET['send']) ) {
 
  //$from = "From: Feedcube <d.holzweber@hotmail.com>"; Loclahost Test
  $from = "From: Feedcube Automation <automation@feedcube.net>";
- //$url_passwortcode = 'http://'.$subdomain.'.localhost/Feedcube/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; //Loclahost Test
+ //$url_passwortcode = 'https://'.$subdomain.'.localhost/Feedcube/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; //Loclahost Test
  $url_passwortcode = 'https://'.$subdomain.'.feedcube.net/Software/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; 
 
  $text = 'Hallo '.$user['name'].',

@@ -46,7 +46,7 @@
 
 
 <form class="form-signin" action="subdomainsession.php" method="post" style="padding:20px">
-    <p><img class="mb-4" src="assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'></p>
+    <p><img class="mb-4" src="assets/brand/FEEDCUBE_logo_login.png" alt="" height="70" style='object-fit:scale-down'></p>
     <h1 class= "h4 mb-3 font-weight-normal">Subdomain eingeben</h1>
     Gib hier die Subdomain der Feedcube ein, bei der du dich anmelden möchtest<br><br>
     <?php
@@ -58,7 +58,7 @@
     <br>
     <input type="submit" style="width:200px" class="btn btn-primary" value="WEITER">
     <br><br>
-    <p>Neu bei Feedcube? In wenigen Schritten eine neue Subdomain <a href="https://feedcube.net/wp-signup.php">registrieren.</a></p>
+    <p>Neu bei Feedcube? In wenigen Schritten eine neue Subdomain <a href="https://feedcube.net/register.php">registrieren.</a></p>
 </form>
 </body>
 </html>

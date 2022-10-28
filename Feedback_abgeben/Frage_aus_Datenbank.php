@@ -240,7 +240,7 @@ echo "
                                                                     $result = mysqli_fetch_array($query);
                                                                     echo $result["Text_after_Feedback"] . "</p>";
                                                                 }
-                                                                echo "<img class='center' src='undraw_going_up.svg' alt='' width='300' style='margin-top:10vh;'> <p style='text-align:center; font-size:13px;'>Powered by <a href='https://feedcube.net'>Feedcube.net</a></p> \" ";
+                                                                echo "<img class='center' src='../assets/brand/upload.png' alt='' width='300' style='margin-top:10vh;'> <p style='text-align:center; font-size:13px;'>Powered by <a href='https://feedcube.net'>Feedcube.net</a></p> \" ";
                                                                 ?>;
             const xhttp = new XMLHttpRequest();
             //replace & in url weil sonst insert nicht funktioniert
@@ -318,7 +318,7 @@ echo "
                                         } ?>];
                 document.getElementById("Antwortmöglichkeiten_" + Fragenzahl).innerHTML = "";
                 while (i < Bewertung_array_value[Bewertungzahl].length) {
-                    document.getElementById("Antwortmöglichkeiten_" + Fragenzahl).innerHTML += "<div><input id='element_1_" + Fragenzahl + i + "' name='element_1_" + Fragenzahl + "' type='radio' value='|" + Bewertung_array_value[Bewertungzahl][i] + "|'class='choice' for='element_1_" + Fragenzahl + i + "' required>" + Bewertung_array[Bewertungzahl][i] + "</div>"
+                    document.getElementById("Antwortmöglichkeiten_" + Fragenzahl).innerHTML += "<div><input id='element_1_" + Fragenzahl + "_" + i + "' name='element_1_" + Fragenzahl + "' type='radio' value='|" + Bewertung_array_value[Bewertungzahl][i] + "|'class='choice' for='element_1_" + Fragenzahl + "_" + i + "' required>" + Bewertung_array[Bewertungzahl][i] + "</div>"
                     i++;
                 }
             } else if (Fragentyp_array[Fragenzahl] == "Multiplechoice") {
@@ -341,7 +341,7 @@ echo "
                                             } ?>];
                 document.getElementById("Antwortmöglichkeiten_" + Fragenzahl).innerHTML = "";
                 while (i < Multiplechoice_array_value[Multiplechoicezahl].length) {
-                    document.getElementById("Antwortmöglichkeiten_" + Fragenzahl).innerHTML += "<div><input id='element_1_" + Fragenzahl + i + "' name='element_1_" + Fragenzahl + "' type='checkbox' value='|" + Multiplechoice_array_value[Multiplechoicezahl][i] + "|'class='choice' for='element_1_" + Fragenzahl + i + "'>" + Multiplechoice_array[Multiplechoicezahl][i] + "</div>"
+                    document.getElementById("Antwortmöglichkeiten_" + Fragenzahl).innerHTML += "<div><input id='element_1_" + Fragenzahl + "_" + i + "' name='element_1_" + Fragenzahl + "' type='checkbox' value='|" + Multiplechoice_array_value[Multiplechoicezahl][i] + "|'class='choice' for='element_1_" + Fragenzahl + "_" + i + "'>" + Multiplechoice_array[Multiplechoicezahl][i] + "</div>"
                     i++;
                 }
             } else if (Fragentyp_array[Fragenzahl] == "Schieberegler") {

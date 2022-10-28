@@ -56,7 +56,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <h2>Hi <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, Willkommen auf der Startseite von</h2>
 
-<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="300" height="120">
+<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="90" style="margin-top:30px; margin-bottom:30px">
 <div style="grid-template-columns: auto auto;">
 <div style="text-align:center; margin:auto; margin-top:20px; margin-bottom:40px; font-size:18px; width:80vw; float:center;">
 
@@ -64,7 +64,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<p>Um den Vorgang zu beschleunigen kontaktiere bitte einen Feedcube Administrator.</b></p>
 
 </div>
-<img class="undraw_chart_empty" src="undraw_Confirmation.svg" alt="">
+<img class="undraw_chart_empty" src="../assets/brand/confirm.png" alt="">
 </div>
 
 </div>

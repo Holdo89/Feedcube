@@ -12,7 +12,7 @@
 	include "Filter_Umfrage_charts.php";
 	?>
 
-	<div id="undraw_empty" style="display:none; margin-top:48px;"><p><label>Es wurde noch kein Feedback abgegeben</label></p><img src="undraw_empty_xct9.svg" alt="" class="undraw_chart_empty"></div>
+	<div id="undraw_empty" style="display:none; margin-top:48px;"><p><label>Es wurde noch kein Feedback abgegeben</label></p><img src="../assets/brand/empty.png" alt="" class="undraw_chart_empty"></div>
 
 
 	<div id="loader" style = "display:none"></div>

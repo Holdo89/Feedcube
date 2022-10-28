@@ -22,6 +22,6 @@ $Text_after_Feedback = $_REQUEST["Text_after_Feedback"];
 $sql = "UPDATE system SET Text_after_Feedback = '".$Text_after_Feedback."';";
 $query = mysqli_query($link, $sql);
 
-header("Location:System.php")
+header("Location:VordefinierteTexte.php")
 
 ?>

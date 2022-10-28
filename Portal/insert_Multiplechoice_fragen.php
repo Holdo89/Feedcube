@@ -97,6 +97,46 @@ for ($i=0; $i<sizeof($Antwort);$i++)
     } 
 } 
 
+if ($Type=="extern") {
+    $columnnames = "";
+    $sql="SHOW COLUMNS FROM admin";
+
+
+    $query = mysqli_query($link, $sql);
+
+    while ($row = mysqli_fetch_assoc($query)) {
+        if (strpos($row["Field"], 'Fragenset_') !== false||strpos($row["Field"], 'Leistung_')!== false) {
+            $columnnames = $columnnames.$row["Field"]." = 0, ";
+        }
+    };
+
+    if ($columnnames!="") {
+        $columnnames = substr($columnnames, 0, -2);
+        $sql="UPDATE admin SET ".$columnnames." WHERE ID=".$ID;
+        $query = mysqli_query($link, $sql);
+    }
+
+    $Fragenset = "";
+    foreach ($_REQUEST['Auswahl_Fragenset'] as $subject) {
+        $Fragenset=$Fragenset." Fragenset_".$subject."= 1,";
+    }
+
+    $Leistungen = "";
+    foreach ($_REQUEST['Auswahl_Leistung'] as $subject) {
+        $Leistungen=$Leistungen." Leistung_".$subject."= 1,";
+    }
+
+    if ($Fragenset != "" || $Leistungen != "") {
+        if ($Leistungen == "") {
+            $Fragenset = substr($Fragenset, 0, -1);
+        } else {
+            $Leistungen = substr($Leistungen, 0, -1);
+        }
+        $sql="UPDATE admin SET ".$Fragenset.$Leistungen." WHERE ID=".$ID;
+        $query = mysqli_query($link, $sql);
+    }
+}
+
 mysqli_close($link);
 
 $Step = $_REQUEST["Step"];

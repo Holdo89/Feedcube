@@ -183,7 +183,7 @@ function load_country_data(limit, start, scrollcounter)
     {
 		if(blog.innerHTML.length<=2)
 		{	
-			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_empty_xct9.svg" alt="" style="width:20%;" class="undraw_chart_empty">';
+			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="../assets/brand/empty.png" alt="" style="width:30%;" class="undraw_chart_empty">';
 			$('#load_data_message').hide();
 		}
 		else
@@ -267,7 +267,10 @@ function deleteFeedback(id){
         fullsource = "<div style='width:900px; text-align:center; margin:auto;margin-top:50px'>";
         fullsourceheight = 0;
 		<?php
-		$dir = "../assets/".$subdomain."/logo/logo.png";
+		$dir = "../assets/".$subdomain."/logo/";
+		$file = scandir($dir);
+		$dir = $dir.$file[2];
+		$filetype = pathinfo($dir, PATHINFO_EXTENSION);
 		$imagedata = base64_encode(file_get_contents($dir));
 		?>
 		//Erste Seite
@@ -293,7 +296,7 @@ function deleteFeedback(id){
 		var Datumvonbis = "<p id='Datumvonbis'><b>von: </b> "+datum_max+" <b>bis: </b>"+datum_min+"</p>";
 
 		var Filter = "<div style='max-width:600px; line-height:200%; font-size:18px; text-align:left; margin:auto; margin-top:70px'><b>Umfrage:</b> "+Umfrage+"<p>"+Datumvonbis+"<br><br><p>erstellt am: "+Datenow+"</p><p>erstellt von: <?php echo $_SESSION["username"];?><p style='margin-top:200px; font-size:12px;'><i class='fa fa-info' aria-hidden='true'></i> Dieses Dokument beinhaltet unter Umständen nicht alle Bewertungen zu den oben genannten Angaben, da in einer Auswertung maximal "+maxnumberofexportedpages.toString()+" Seiten exportiert werden. Um ältere Bewertungen zu exportieren verwenden Sie bitte einen detailierteren Filter</p></div>";
-		var imagedata = "data:image/png;base64,<?php echo $imagedata ?>"; 
+		var imagedata = "data:image/<?php echo $filetype ?>;base64,<?php echo $imagedata ?>"; 
 		var smallimage = '<img src="' + imagedata + '"/ height="50" style="float:right; margin:15px; margin-right:25px;"><br>';
 		var largeimage = '<img src="' + imagedata + '"/ height="200" style="margin-top: 80px"><br><h1 style="margin-top:130px">Feedbackauswertung</h1>'+Filter;
         let worker = html2pdf()
@@ -373,10 +376,13 @@ function deleteFeedback(id){
         var fullsource = "<div style='width:900px; text-align:center; margin:auto;'>";
         var fullsourceheight = 0;
 		<?php
-		$dir = "../assets/".$subdomain."/logo/logo.png";
+		$dir = "../assets/".$subdomain."/logo/";
+		$file = scandir($dir);
+		$dir = $dir.$file[2];
+		$filetype = pathinfo($dir, PATHINFO_EXTENSION);
 		$imagedata = base64_encode(file_get_contents($dir));
 		?>
-		var imagedata = "data:image/png;base64,<?php echo $imagedata ?>"; 
+		var imagedata = "data:image/<?php echo $filetype ?>;base64,<?php echo $imagedata ?>"; 
 		var smallimage = '<img src="' + imagedata + '"/ height="50" style="float:right; margin:15px; margin-right:25px;"><br>';
         let worker = html2pdf()
         .set(opt)
