@@ -45,18 +45,18 @@ else{
 
 
 var month = new Array();
-  month[0] = 'Januar';
-  month[1] = "Februar";
+  month[0] = 'Jan';
+  month[1] = "Feb";
   month[2] = "März";
-  month[3] = "April";
+  month[3] = "Apr";
   month[4] = "Mai";
-  month[5] = "Juni";
-  month[6] = 'Juli';
-  month[7] = "August";
-  month[8] = "September";
-  month[9] = "Oktober";
-  month[10] = "November";
-  month[11] = "Dezember";
+  month[5] = "Jun";
+  month[6] = 'Jul';
+  month[7] = "Aug";
+  month[8] = "Sept";
+  month[9] = "Okt";
+  month[10] = "Nov";
+  month[11] = "Dez";
 
 var u=month_sum;
 var i=max_date.getMonth();
@@ -65,14 +65,16 @@ if(month_sum==0){
     month_labels.unshift("");
 }
 
+var currentYear = new Date().getFullYear();
 i=max_date.getMonth();
 while (u>=0){
 
 	if (i>11){
 		i=i-12;
+        currentYear=currentYear-1
 	}
 
-	month_labels.push(month[i]);
+	month_labels.push(month[i]+" "+currentYear);
 	u=u-1;	
 	i=i+1;
 
