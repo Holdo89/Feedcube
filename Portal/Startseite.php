@@ -50,7 +50,7 @@
 		include "navigation.php";
 ?>
 
-<img class="mb-4" src="../assets/brand/DASHBOARD.png" alt="" width="400" style="margin-bottom:30px">
+<img class="mb-4" src="../assets/brand/dashboard.png" alt="" width="300" style="margin-bottom:30px">
 <p style="max-width:90vw; margin:auto">Hier erhältst du einen groben Überblick über die Auswertung des Feedbacks</p><br>
 
     </div>

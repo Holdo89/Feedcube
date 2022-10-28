@@ -124,10 +124,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="80" style='object-fit:scale-down'>
     <div class="divider">
         <div class="login">
-            <img src="../assets/brand/devices.png" height="250">
+            <img src="../assets/brand/devices.png" height="200">
         </div>
         <div>   
-		<h4>Anmeldung</h4>
+            <br>
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label for="inputUsername" class="sr-only">Username</label>
                 <input type="text" id="inputUsername"  name="username" class="form-control" placeholder="Username" required autofocus value="<?php echo $username; ?>">
