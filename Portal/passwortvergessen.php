@@ -113,7 +113,7 @@ if(isset($_GET['send']) ) {
 
  //$from = "From: Feedcube <d.holzweber@hotmail.com>"; Loclahost Test
  $from = "From: Feedcube Automation <automation@feedcube.net>";
- //$url_passwortcode = 'http://'.$subdomain.'.localhost/Feedcube/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; //Loclahost Test
+ //$url_passwortcode = 'https://'.$subdomain.'.localhost/Feedcube/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; //Loclahost Test
  $url_passwortcode = 'https://'.$subdomain.'.feedcube.net/Software/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; 
 
  $text = 'Hallo '.$user['name'].',
