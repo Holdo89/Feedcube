@@ -44,7 +44,7 @@
     <h1 class= "h4 mb-3 font-weight-normal">Subdomain wurde nicht gefunden</h1>
     Die eingegebene Subdomain wurde nicht gefunden. Wenn Sie sicher sind, diese Subdomain bereits registriert zu haben, teilen Sie uns das Probleme bitte in unserem <a href="https://feedcube.atlassian.net/servicedesk/customer/portal/2/create/2">Serviceportal</a> mit. 
     Alternativ können Sie uns gerne auch telefonisch oder per Email kontaktieren. Unsere Kontaktdaten finden Sie <a href="https://feedcube.net/kontakt/">hier.</a><br><br>
-    Um eine neue Feedcube Subdomain zu registrieren folgen Sie bitte diesem <a href="https://feedcube.net/wp-signup.php">Link.</a>
+    Um eine neue Feedcube Subdomain zu registrieren folgen Sie bitte diesem <a href="https://feedcube.net/register.php">Link.</a>
     <br><br>
 
 </form>

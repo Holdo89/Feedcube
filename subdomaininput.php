@@ -58,7 +58,7 @@
     <br>
     <input type="submit" style="width:200px" class="btn btn-primary" value="WEITER">
     <br><br>
-    <p>Neu bei Feedcube? In wenigen Schritten eine neue Subdomain <a href="https://feedcube.net/wp-signup.php">registrieren.</a></p>
+    <p>Neu bei Feedcube? In wenigen Schritten eine neue Subdomain <a href="https://feedcube.net/register.php">registrieren.</a></p>
 </form>
 </body>
 </html>
