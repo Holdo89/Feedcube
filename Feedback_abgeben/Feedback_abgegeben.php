@@ -43,7 +43,7 @@ document.getElementById("Frage_form").innerHTML=<?php echo"\"<img class='center'
             $result = mysqli_fetch_array($query);
             echo $result["Text_after_Feedback"]."</p>";
         }
-        echo "<img class='center' src='undraw_going_up.svg' alt='' width='300' style='margin-top:10vh;'> <p style='text-align:center; font-size:13px;'>Powered by <a href='https://feedcube.net'>Feedcube.net</a></p> \" ";
+        echo "<img class='center' src='../assets/brand/upload.png' alt='' width='300' style='margin-top:10vh;'> <p style='text-align:center; font-size:13px;'>Powered by <a href='https://feedcube.net'>Feedcube.net</a></p> \" ";
         ?>;
 </script>
 </html>

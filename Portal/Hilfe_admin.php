@@ -56,7 +56,7 @@
 
 <h2>Hi <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, Willkommen auf der Startseite von</h2>
 
-<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="300" height="120">
+<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="120">
 
 <div style="text-align:left;margin-top:20px;margin-bottom:20px">
 

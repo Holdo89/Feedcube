@@ -64,6 +64,6 @@ require_once "session.php";
         echo"</div>";
     }
     else{
-        echo"<div style='text-align:center; grid-column: 1 / span 3;'><p><label style='margin-top:30px'>Es wurde noch kein Feedback abgegeben</label></p> <img src='undraw_empty_xct9.svg' alt='' class='undraw_chart_empty'></div>";
+        echo"<div style='text-align:center; grid-column: 1 / span 3;'><p><label style='margin-top:30px'>Es wurde noch kein Feedback abgegeben</label></p> <img src='../assets/brand/empty.png' alt='' class='undraw_chart_empty'></div>";
     }
 ?>

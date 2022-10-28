@@ -52,7 +52,7 @@ require_once "session.php";
 	include "navigation_admin.php";
 ?>
 
-<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="300" height="120">
+<img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="120">
 <div style="text-align:center; margin:auto; margin-top:20px; margin-bottom:40px; font-size:18px; width:80vw; float:center;">
 <p>Es gab neue Registrierungen im System</p><p>Bitte bestätige die neuen Benutzer oder lehne ihren Zugang ab</p> 
 </div>

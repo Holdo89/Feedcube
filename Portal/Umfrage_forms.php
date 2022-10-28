@@ -183,7 +183,7 @@ function load_country_data(limit, start, scrollcounter)
     {
 		if(blog.innerHTML.length<=2)
 		{	
-			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="undraw_empty_xct9.svg" alt="" style="width:20%;" class="undraw_chart_empty">';
+			blog.innerHTML='<p><label style="margin-top:30px">Es wurde noch kein Feedback abgegeben</label></p> <img src="../assets/brand/empty.png" alt="" style="width:30%;" class="undraw_chart_empty">';
 			$('#load_data_message').hide();
 		}
 		else

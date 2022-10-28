@@ -217,7 +217,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-        <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'>
+        <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="70" style='object-fit:scale-down'>
 		<h1  class= "h4 mb-3 font-weight-normal">Reset Password</h1>
 
         <p>Please fill out this form to reset your password.</p>

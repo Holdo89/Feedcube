@@ -121,13 +121,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script type = "text/javascript" src="app.js"></script>
 
     <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="padding:40px;">
-    <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'>
+    <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="80" style='object-fit:scale-down'>
     <div class="divider">
         <div class="login">
-            <img src="user_security.svg" width="230" height="250">
+            <img src="../assets/brand/devices.png" height="250">
         </div>
         <div>   
-		<h1 class="h4 mb-3 font-weight-normal">Anmeldung</h1>
+		<h4>Anmeldung</h4>
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label for="inputUsername" class="sr-only">Username</label>
                 <input type="text" id="inputUsername"  name="username" class="form-control" placeholder="Username" required autofocus value="<?php echo $username; ?>">

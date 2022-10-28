@@ -66,7 +66,7 @@
 
 
 <form class="form-signin" action="?send=1" method="post" style="padding:50px">
-        <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.svg" alt="" width="220" height="70" style='object-fit:scale-down'></p>
+        <p><img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="70" style='object-fit:scale-down'></p>
 
         <?php 
 require_once "../config.php";

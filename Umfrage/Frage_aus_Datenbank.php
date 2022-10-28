@@ -189,7 +189,7 @@ function push_all_Answers(){
         echo "Du kannst erneut an der Umfrage teilnehmen am: <br><br>".$cookie_value;
     }
     echo  " <br><br>Um die Auswertung der Umfrage zu sehen kehre zurück ins Portal </p>";
-    echo "<img class='center' src='undraw_going_up.svg' alt='' width='300' style='margin-top:10vh; width:50%;'> <input class='center_button' type='button' style='background-color:#084f6e; color:white' onclick=\\\"location.href='../Portal/Umfragen.php'\\\" value='zurück zum Portal'></input> \" ";
+    echo "<img class='center' src='../assets/brand/upload.png' alt='' style='margin-top:10vh; width:50%;'> <input class='center_button' type='button' style='background-color:#084f6e; color:white' onclick=\\\"location.href='../Portal/Umfragen.php'\\\" value='zurück zum Portal'></input> \" ";
     ?>;
     }
     else
