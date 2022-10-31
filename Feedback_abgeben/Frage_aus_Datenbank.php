@@ -90,7 +90,7 @@ else {
             $Bewertung_value = array(); //Bewertungmöglichkeiten der einzelnen Frage
             if($row['Antworttyp'] == 'vordefiniert')
             {
-                $sql_answers = "SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
+                $sql_answers = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
             }
             else{
                 $sql_answers = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = ".$row['ID']." ORDER BY post_order_no ASC";
@@ -113,7 +113,7 @@ else {
             $Multiplechoice_value = array();
             if($row['Antworttyp'] == 'vordefiniert')
             {
-                $sql_answers = "SELECT * FROM multiplechoice_answers ORDER BY post_order_no ASC";
+                $sql_answers = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
             }
             else{
                 $sql_answers = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row['ID']." ORDER BY post_order_no ASC";

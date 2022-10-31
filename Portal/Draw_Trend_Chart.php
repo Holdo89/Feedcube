@@ -66,12 +66,14 @@ if(month_sum==0){
 }
 
 var currentYear = new Date().getFullYear();
+diffyear = parseInt(datum_min.substring(0,4))-parseInt(datum_max.substring(0,4))
+currentYear = parseInt(datum_min.substring(0,4))- diffyear
 i=max_date.getMonth();
 while (u>=0){
 
 	if (i>11){
 		i=i-12;
-        currentYear=currentYear-1
+        currentYear=currentYear+1
 	}
 
 	month_labels.push(month[i]+" "+currentYear);
@@ -176,7 +178,17 @@ if(month_sum==0){
 Chart.pluginService.register(autoDisplayLegendPlugin);
 
 if(Fragen_typ=="Multiplechoice"){
-		window[name] = new Chart(ctx, {
+    var colorsteps = legende.length-1;
+        var chartcolors = [];
+        var bordercolors = [];
+    var hslnumber = 0;
+            while(hslnumber <= 360){
+                chartcolors.push("hsl("+hslnumber+", 75%, 85%, 0.2)");
+                bordercolors.push("hsl("+hslnumber+", 75%, 50%, 0.8)")
+                hslnumber = hslnumber + 360/colorsteps;
+            }
+        
+		Trendy = new Chart(ctx, {
 
 			type: typ,
 			data: {
@@ -187,40 +199,19 @@ if(Fragen_typ=="Multiplechoice"){
             $result_multi=mysqli_query($link,$sql);
             $rows_multi=mysqli_fetch_array($result_multi);
 
-            $sql_colors="SELECT COUNT(Answers) As Anzahl_Antworten FROM multiplechoice_answers ORDER BY post_order_no ASC";
-            $result_multi_colors=mysqli_query($link,$sql_colors);
+            $result_multi_colors=mysqli_query($link,$sql);
             $rows_multi_colors=mysqli_fetch_array($result_multi_colors);
 
             $i=0;
-            $chartcolors = array();
-            $bordercolors = array();
-            $hslnumber = 0;
-            $hslnumber_max = 360;
-            if($rows_multi_colors["Anzahl_Antworten"]==0)
-            {
-                $colorsteps = 1000;  
-            }
-            else
-            {
-                $colorsteps = 360/$rows_multi_colors["Anzahl_Antworten"];
-            }
-            while($hslnumber <= 360){
-                array_push($chartcolors,"hsl(".$hslnumber.", 75%, 85%, 0.2)");
-                array_push($bordercolors,"hsl(".$hslnumber.", 75%, 50%, 0.8)");
-                $hslnumber = $hslnumber + $colorsteps;
-            }
+
             while($i<$rows_multi["Anzahl_Antworten"])
             {
                 try{
                     echo"{
                         label: legende[".$i."],
                         data: array2[".$i."],
-                        borderColor: [
-                            '".$bordercolors[$i]."',
-                        ],
-                        backgroundColor: [
-                            '".$chartcolors[$i]."',
-                        ]
+                        borderColor: bordercolors[".$i."],
+                        backgroundColor: chartcolors[".$i."],
                     },";
                     $i = $i+1;
                 }
@@ -254,9 +245,31 @@ if(Fragen_typ=="Multiplechoice"){
 
     }
 
-});}
+});
+function removeData(chart) {
+    var AnzahlUndefinedLabels = 0
+
+    chart.data.datasets.forEach((dataset) => {
+        console.log(dataset.data.length)
+        if(dataset.data.length==0)
+        {
+            AnzahlUndefinedLabels=AnzahlUndefinedLabels+1
+        };
+    });
+    var i = 0;
+        console.log("Undfe"+AnzahlUndefinedLabels)
+        while(i<AnzahlUndefinedLabels)
+        {
+            chart.data.datasets.pop();
+            i=i+1
+        }
+    chart.update();
+}
+removeData(Trendy);
+
+}
 else{
-    window[name] = new Chart(ctx, {
+    Trendy = new Chart(ctx, {
 
 type: typ,
 
@@ -313,16 +326,11 @@ yAxes: [{
     xmlhttp.open("GET", "Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Leistung=" + Leistung + "&Frage=" + Frage + "&Trainer=" + Trainer + "&Month=" + max_date.getMonth(), true);
 
     xmlhttp.send();
-
 }
-
-
 
 function drawtrendchart(){
 
 trendchartjs('line','TrendChart');
-
-	
 
 }
 

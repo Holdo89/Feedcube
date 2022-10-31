@@ -39,35 +39,40 @@ else{
 }
 
 var month = new Array();
-  month[0] = 'Januar';
-  month[1] = "Februar";
+  month[0] = 'Jan';
+  month[1] = "Feb";
   month[2] = "März";
-  month[3] = "April";
+  month[3] = "Apr";
   month[4] = "Mai";
-  month[5] = "Juni";
-  month[6] = 'Juli';
-  month[7] = "August";
-  month[8] = "September";
-  month[9] = "Oktober";
-  month[10] = "November";
-  month[11] = "Dezember";
+  month[5] = "Jun";
+  month[6] = 'Jul';
+  month[7] = "Aug";
+  month[8] = "Sept";
+  month[9] = "Okt";
+  month[10] = "Nov";
+  month[11] = "Dez";
 
 
 
-var u=month_sum;
+  var u=month_sum;
 var i=max_date.getMonth();
 var month_labels = new Array();
 if(month_sum==0){
     month_labels.unshift("");
 }
 
+var currentYear = new Date().getFullYear();
+diffyear = parseInt(datum_min.substring(0,4))-parseInt(datum_max.substring(0,4))
+currentYear = parseInt(datum_min.substring(0,4))- diffyear
 i=max_date.getMonth();
 while (u>=0){
+
 	if (i>11){
 		i=i-12;
+        currentYear=currentYear+1
 	}
 
-	month_labels.push(month[i]);
+	month_labels.push(month[i]+" "+currentYear);
 	u=u-1;	
 	i=i+1;
 
@@ -76,7 +81,6 @@ while (u>=0){
 if(month_sum==0){
     month_labels.push("");
 }
-
 	var xmlhttp = new XMLHttpRequest();
 
 	xmlhttp.onreadystatechange = function() {
@@ -171,8 +175,17 @@ if(month_sum==0){
 Chart.pluginService.register(autoDisplayLegendPlugin);
 
 if(Fragen_typ=="Multiplechoice"){
-		window[name] = new Chart(ctx, {
-
+    var colorsteps = legende.length-1;
+        var chartcolors = [];
+        var bordercolors = [];
+    var hslnumber = 0;
+            while(hslnumber <= 360){
+                chartcolors.push("hsl("+hslnumber+", 75%, 85%, 0.2)");
+                bordercolors.push("hsl("+hslnumber+", 75%, 50%, 0.8)")
+                hslnumber = hslnumber + 360/colorsteps;
+            }
+        
+		Trendy = new Chart(ctx, {
 			type: typ,
 			data: {
 			labels: month_labels,
@@ -182,40 +195,19 @@ if(Fragen_typ=="Multiplechoice"){
             $result_multi=mysqli_query($link,$sql);
             $rows_multi=mysqli_fetch_array($result_multi);
 
-            $sql_colors="SELECT COUNT(Answers) As Anzahl_Antworten FROM multiplechoice_answers ORDER BY post_order_no ASC";
-            $result_multi_colors=mysqli_query($link,$sql_colors);
+            $result_multi_colors=mysqli_query($link,$sql);
             $rows_multi_colors=mysqli_fetch_array($result_multi_colors);
 
             $i=0;
-            $chartcolors = array();
-            $bordercolors = array();
-            $hslnumber = 0;
-            $hslnumber_max = 360;
-             if($rows_multi_colors["Anzahl_Antworten"]==0)
-            {
-                $colorsteps = 1000;  
-            }
-            else
-            {
-                $colorsteps = 360/$rows_multi_colors["Anzahl_Antworten"];
-            }
-            while($hslnumber <= 360){
-                array_push($chartcolors,"hsl(".$hslnumber.", 75%, 85%, 0.2)");
-                array_push($bordercolors,"hsl(".$hslnumber.", 75%, 50%, 0.8)");
-                $hslnumber = $hslnumber + $colorsteps;
-            }
+            
             while($i<$rows_multi["Anzahl_Antworten"])
             {
                 try{
                     echo"{
                         label: legende[".$i."],
                         data: array2[".$i."],
-                        borderColor: [
-                            '".$bordercolors[$i]."',
-                        ],
-                        backgroundColor: [
-                            '".$chartcolors[$i]."',
-                        ]
+                        borderColor: bordercolors[".$i."],
+                        backgroundColor: chartcolors[".$i."],
                     },";
                     $i = $i+1;
                 }
@@ -249,9 +241,31 @@ if(Fragen_typ=="Multiplechoice"){
 
     }
 
-});}
+});
+function removeData(chart) {
+    var AnzahlUndefinedLabels = 0
+
+    chart.data.datasets.forEach((dataset) => {
+        console.log(dataset.data.length)
+        if(dataset.data.length==0)
+        {
+            AnzahlUndefinedLabels=AnzahlUndefinedLabels+1
+        };
+    });
+    var i = 0;
+        console.log("Undfe"+AnzahlUndefinedLabels)
+        while(i<AnzahlUndefinedLabels)
+        {
+            chart.data.datasets.pop();
+            i=i+1
+        }
+    chart.update();
+}
+removeData(Trendy);
+
+}
 else{
-		window[name] = new Chart(ctx, {
+		Trendy = new Chart(ctx, {
 
 			type: typ,
 
@@ -290,7 +304,7 @@ else{
 }
 
 function drawtrendchart(){
-
+console.log("Hallo")
 trendchartjs('line','TrendChart');
 
 }
