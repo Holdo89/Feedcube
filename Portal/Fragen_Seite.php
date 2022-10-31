@@ -461,18 +461,23 @@ if (isset($_REQUEST["Step"])) {
 	function addSpecificAnswer(Fragentyp, id){
 		console.log("ID="+id)
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
+		var AnswerEnglisch = document.getElementById(Fragentyp.value+"newanswerEnglisch").value;
+
 		var Type = "extern";
-		console.log("Answer:"+Answer)
-		console.log(Fragentyp.value)
+	
 		if (Fragentyp.value == "Bewertung")
 		{
 			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_'+Type+'_Bewertung" name="checkbox[]" value="'+Answer+'" onclick="return false" checked><label for="'+ Answer +'_extern_Bewertung" style="border:none;"> '+Answer+'</label><br>';
-			Bewertungoptionen.innerHTML = Bewertungoptionen.innerHTML + inputtext; 
+			var inputtextEnglisch='<input type="hidden" value="'+AnswerEnglisch+'_unchecked" name="checkboxenglisch[]"><input type="checkbox" style="margin-left:0px; display:none" id="'+AnswerEnglisch+'_'+Type+'_Bewertung" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked><br>';
+
+			Bewertungoptionen.innerHTML = Bewertungoptionen.innerHTML + inputtext + inputtextEnglisch; 
 		}
 		else if (Fragentyp.value == "Multiplechoice")
 		{
 			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_'+Type+'_Multiplechoice" name="checkbox[]" value="'+Answer+'" onclick="return false" checked readonly><label for="'+ Answer +'_extern_Multiplechoice" style="border:none;"> '+Answer+'</label><br>';
-			Multiplechoiceoptionen.innerHTML = Multiplechoiceoptionen.innerHTML + inputtext;
+			var inputtextEnglisch='<input type="hidden" value="'+AnswerEnglisch+'_unchecked" name="checkboxenglisch[]"><input type="checkbox" style="margin-left:0px; display:none" id="'+AnswerEnglisch+'_'+Type+'_Bewertung" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked><br>';
+
+			Multiplechoiceoptionen.innerHTML = Multiplechoiceoptionen.innerHTML + inputtext + inputtextEnglisch;
 		}
 		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
 		if(id!=0 && id!=undefined)
@@ -482,7 +487,7 @@ if (isset($_REQUEST["Step"])) {
 			{
 				console.log("Response:"+this.responseText);
 			;};
-			xmlhttp_options.open("GET", "insert_Specific_Answer.php?ID=" + id + "&Answer=" +Answer+"&Fragentyp="+Fragentyp.value+"&Externinterntyp="+Type, false);
+			xmlhttp_options.open("GET", "insert_Specific_Answer.php?ID=" + id + "&Answer=" +Answer+ "&AnswerEnglisch=" +AnswerEnglisch+"&Fragentyp="+Fragentyp.value+"&Externinterntyp="+Type, false);
 			xmlhttp_options.send();
 		}
 	}
@@ -846,20 +851,29 @@ if (isset($_REQUEST["Step"])) {
 			}
 		}
 		else{
+			var HinzufügenSpecific ='<br><input id = "element" type="button" onclick="addSpecificAnswer('+questiontype+')" style="height: 40px; width:200px; padding: 4px; background-color:white; border: 2px solid; color:<?php
+			$sql='SELECT farbe FROM system';
+			$exec=mysqli_query($link, $sql);
+			$result_color=mysqli_fetch_assoc($exec);
+			echo $result_color['farbe']?>" value="Hinzufügen"></input><br><br><h5>Wähle Antworten für diese Frage:</h5>';
 			if(questiontype=="Bewertung")
 			{
 				Bewertungoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
-				<input type="button" onclick="addSpecificAnswer('+questiontype+')" value="hinzufügen"></input><br>\
-				<h5>Wähle Antworten für diese Frage:</h5>';
+				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
+				<h5>Übersetzung:</h5>\
+				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
+				'+HinzufügenSpecific;
 			}
 			if(questiontype=="Multiplechoice")
 			{
 				Multiplechoiceoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input>\
-				<input type="button" onclick="addSpecificAnswer('+questiontype+')" value="hinzufügen"></input><br>\
-				<h5>Wähle Antworten für diese Frage:</h5>';
+				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
+				<h5>Übersetzung:</h5>\
+				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
+				'+HinzufügenSpecific;
+
 			}
+
 		}
 	}
 

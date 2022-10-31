@@ -24,6 +24,8 @@ $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
 
 
 $Antwort = $_POST["checkbox"]; 
+$AntwortEnglisch = $_POST["checkboxenglisch"]; 
+
 $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
     $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$neues_Überschrift."'";
     $query = mysqli_query($link, $sql);
@@ -82,7 +84,7 @@ for ($i=0; $i<sizeof($Antwort);$i++)
     {
         if($Antworttyp=="fragenspezifisch")
         {
-            $sql = "INSERT INTO multiplechoice_answers (Answers, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Antwort[$i]. "','$ID', '$last_order','$last_order')";    
+            $sql = "INSERT INTO multiplechoice_answers (Answers, Answers_Englisch, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Antwort[$i]. "','".$AntwortEnglisch[$i]. "','$ID', '$last_order','$last_order')";    
             mysqli_query($link, $sql);
         }
         if($Type=="extern")
@@ -156,5 +158,6 @@ else{
     else{
         header("location: Umfragen.php");
     }
+    
 }
 ?>
