@@ -276,7 +276,7 @@ include "navigation_admin.php";
 			<h5>Englische Übersetzung: </h5>
 			<input class="center_select" id="Überschrift_Übersetzung" name ="Überschrift_Übersetzung" placeholder="Eingabe der Übersetzung"></input>
 		</div>
-		<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+		<button id="element" type="submit" name = "Submit" style="margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
 	  </div>
 	  </form>
 	  </div>
@@ -362,7 +362,7 @@ if (isset($_REQUEST["Step"])) {
 				</div>
 				<div id="Rangeoptionen_fragenspezifisch" style="font-size:12px; display:none;">
 				</div>
-				<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+				<button id = "element" type="submit" name = "Submit" style="margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
 				</form>
 	  </div>
 	  </div>
@@ -490,6 +490,37 @@ if (isset($_REQUEST["Step"])) {
 			xmlhttp_options.open("GET", "insert_Specific_Answer.php?ID=" + id + "&Answer=" +Answer+ "&AnswerEnglisch=" +AnswerEnglisch+"&Fragentyp="+Fragentyp.value+"&Externinterntyp="+Type, false);
 			xmlhttp_options.send();
 		}
+	}
+
+	function bearbeiteFragenspezifischeAntwort(id, Fragentyp){
+		console.log("ID="+id)
+		var FragenspezifischeAntwort = document.getElementById("Fragenspezifisch_"+Fragentyp+"_"+id).value; 
+		var FragenspezifischeAntwortEnglisch = document.getElementById("FragenspezifischEnglisch_"+Fragentyp+"_"+id).value; 
+		console.log("Hallo:"+FragenspezifischeAntwort + FragenspezifischeAntwortEnglisch)
+
+		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
+		if(id!=0 && id!=undefined)
+		{
+			var xmlhttp_options = new XMLHttpRequest();
+			xmlhttp_options.onreadystatechange = function() 
+			{
+				console.log("Response:"+this.responseText);
+			;};
+			xmlhttp_options.open("GET", "update_Specific_Answer.php?ID=" + id + "&Answer=" +FragenspezifischeAntwort+ "&AnswerEnglisch=" +FragenspezifischeAntwortEnglisch+"&Fragentyp="+Fragentyp, false);
+			xmlhttp_options.send();				
+		}
+	}	
+	
+	function ShowFragenspezifischeDetails(id, Fragentyp){
+		console.log("ID="+id)
+		var Container = document.getElementById("Container_"+Fragentyp+"_"+id);
+		if(Container.style.display === "grid")
+		{
+			Container.style.display = "none"
+		}
+		else
+		Container.style.display = "grid"
+		
 	}
 
 	function getCheckedAntworttyp(id, type){

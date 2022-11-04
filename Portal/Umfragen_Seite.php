@@ -221,7 +221,7 @@ else
 					</div>
 					<div id="Rangeoptionen_fragenspezifisch" style="font-size:12px; display:none;">
 					</div>
-					<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+					<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
 			</div>
 		</form>
 	</div>
@@ -283,7 +283,7 @@ else
 				</p>
 			</div>
 			<br>
-			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
+			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
 		</form>
 	</div>
 </div>
@@ -557,7 +557,7 @@ else
 						}
 					}
 				;};
-				xmlhttp_options.open("GET", "Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype+"&Typ="+type, false);
+				xmlhttp_options.open("GET", "Umfragen_Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype+"&Typ="+type, false);
 				xmlhttp_options.send();					
 			}
 			else{
@@ -581,16 +581,16 @@ else
 			{
 				Bewertungoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
 				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
-				<h5>Übersetzung:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
+				<h5 style="display:none">Übersetzung:</h5>\
+				<input style="display:none;margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
 				'+HinzufügenSpecific;
 			}
 			if(questiontype=="Multiplechoice")
 			{
 				Multiplechoiceoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
 				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
-				<h5>Übersetzung:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
+				<h5 style="display:none">Übersetzung:</h5>\
+				<input style="display:none;margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
 				'+HinzufügenSpecific;
 
 			}
