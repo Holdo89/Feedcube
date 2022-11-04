@@ -408,7 +408,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			<div class="form-group <?php echo (!empty($fullname_err)) ? 'has-error' : ''; ?>">
 
-                <input type="text" name="fullname" placeholder="Name" class="form-control" value="<?php echo $fullname; ?>" required>
+                <input type="text" name="fullname" placeholder="Vor und Nachname" class="form-control" value="<?php echo $fullname; ?>" required>
 
                 <span class="help-block"><?php echo $fullname_err; ?></span>
 
