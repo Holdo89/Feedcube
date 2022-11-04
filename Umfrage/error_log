@@ -1,0 +1,72 @@
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Fragen_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 109
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 109
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Fragentyp_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 110
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 110
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Default_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 111
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 111
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Max_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 112
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 112
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Min_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 113
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 113
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Bewertung_array_value in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 219
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 219
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Bewertung_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 220
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 220
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Multiplechoice_array_value in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 234
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 234
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Multiplechoice_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 235
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 235
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Default_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 248
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 248
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Max_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 249
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 249
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Notice:  Undefined variable: Min_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 250
+[09-Sep-2022 22:11:40 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 250
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Fragen_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 109
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 109
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Fragentyp_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 110
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 110
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Default_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 111
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 111
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Max_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 112
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 112
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Min_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 113
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 113
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Bewertung_array_value in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 219
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 219
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Bewertung_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 220
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 220
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Multiplechoice_array_value in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 234
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 234
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Multiplechoice_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 235
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 235
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Default_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 248
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 248
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Max_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 249
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 249
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Notice:  Undefined variable: Min_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 250
+[09-Sep-2022 22:11:44 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 250
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Fragen_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 109
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 109
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Fragentyp_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 110
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 110
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Default_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 111
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 111
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Max_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 112
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 112
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Min_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 113
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 113
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Bewertung_array_value in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 219
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 219
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Bewertung_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 220
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 220
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Multiplechoice_array_value in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 234
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 234
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Multiplechoice_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 235
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 235
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Default_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 248
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 248
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Max_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 249
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 249
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Notice:  Undefined variable: Min_Schieberegler_array in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 250
+[09-Sep-2022 22:11:48 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /home/bim8guh21h1z/public_html/test.feedcube.net/Software/Umfrage/Frage_aus_Datenbank.php on line 250
