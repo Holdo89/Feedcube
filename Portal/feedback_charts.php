@@ -27,10 +27,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-				<?php
-                 include "Draw_Charts.php";		//Pie and COlumnchart
- include "Draw_Trend_Chart.php";
- ?>	
+	<?php
+        include "Draw_Charts.php";		//Pie and COlumnchart
+ 		include "Draw_Trend_Chart.php";
+ 	?>	
   <script type = "text/javascript" src="export_delete_data.js"></script>
   <script type="text/javascript" src="rangeslider_jquery.js"> </script>
 
@@ -74,7 +74,10 @@
 <label class="Auswahl">Frage: </label>
 			<?php
                  include "Auswahlmöglichkeiten_Fragen.php";
- include "FilterExportDeleteOptions.php";
+ include "FilterExportDeleteCSV.php";
+ //wenn später pdf für charts eingebaut wird
+// include "FilterExportDeleteOptions.php";
+
  ?>	
 	</div>
 	<hr>

@@ -1,0 +1,21 @@
+<div style="text-align:left;font-size:12pt; margin-top:8px;cursor: pointer" onclick="toggleFilterVisibility('FilterCharts', 'filtericon')"><i id="filtericon" class="fa fa-filter" style="font-size:15px;" aria-hidden="true"></i> Filter</div>
+	<?php
+	if($IsAdmin == 1)
+	{
+		echo'    <div id ="UmfrageMöglichkeiten" class="dropdown" style="overflow:visible; text-align:left">
+		<button style="color:black; padding-top:8px; background:none; border:none"><i class="fas fa-download" aria-hidden="true"></i> Export </button>
+		<div class="dropdown-content" style="text-align:left; font-size:13px; border:none; outline:none; color:black">
+		<div style="text-align:left;font-size:12pt; margin-top:8px;cursor: pointer;" onclick="export_data_admin()"><i id="filtericon" class="fa fa-file-csv" style="font-size:15px; color:green;" aria-hidden="true"></i> CSV</div>
+		</div>
+		</div>';		
+		echo'<div style="text-align:left;font-size:12pt; margin-top:8px;cursor: pointer;" onclick="delete_data()"><i id="filtericon" class="fa fa-trash" style="font-size:15px;" aria-hidden="true"></i> Löschen</div>';
+	}
+	else{
+		echo'    <div id ="UmfrageMöglichkeiten" class="dropdown">
+		<button style="color:black; padding-top:8px; background:none; border:none"><i class="fas fa-download" aria-hidden="true"></i> Export </button>
+		<div class="dropdown-content" style="text-align:left; font-size:13px; border:none; outline:none; color:black">
+		<div style="text-align:left;font-size:12pt; margin-top:8px;cursor: pointer;" onclick="export_data()"><i id="filtericon" class="fa fa-file-csv" style="font-size:15px; color:green;" aria-hidden="true"></i> CSV</div>
+		</div>
+		</div>';	}
+	?>	
+	
