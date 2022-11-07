@@ -1,6 +1,6 @@
 <?php
 
-$Message ="<div id='Auswahl_Leistung' name='Auswahl_Leistung' class='Auswahlmöglichkeit'> Derzeit verwenden alle Leistungen Fragensets<a href='Fragenset.php'>hinzugefügt</a></div>";
+$Message ="";
 $i=0;
 $sql = "SELECT * FROM leistungen WHERE Fragenset=0";
 $result = mysqli_query($link, $sql) ;

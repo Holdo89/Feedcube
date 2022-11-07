@@ -670,11 +670,14 @@ if (isset($_REQUEST["Step"])) {
 		var selectbox=document.getElementsByClassName("multiselect-selected-text")[0];
 		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[0];
 
+		if(selectbox)
+		{
 		selectbox.style.fontSize="15px";
 		selectbutton.style.border="none";
 		selectbutton.style.overflow="hidden";
 		selectbutton.style.maxWidth="300px";
-		selectbox.innerHTML = "kein Fragenset gewählt";
+		selectbox.innerHTML = "Kein Fragenset gewählt";
+		}
 		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 		for (var i = 0; i < checkboxes.length; i++) {
@@ -707,11 +710,14 @@ if (isset($_REQUEST["Step"])) {
 		var selectbox=document.getElementsByClassName("multiselect-selected-text")[1];
 		var selectbutton=document.getElementsByClassName("multiselect dropdown-toggle btn btn-default")[1];
 
-		selectbox.style.fontSize="15px";
+		if(selectbox)
+		{selectbox.style.fontSize="15px";
 		selectbutton.style.border="none";
 		selectbutton.style.overflow="hidden";
 		selectbutton.style.maxWidth="300px";
 		selectbox.innerHTML = "keine Leistung gewählt";
+		}
+
 		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 		for (var i = 0; i < checkboxes.length; i++) {
