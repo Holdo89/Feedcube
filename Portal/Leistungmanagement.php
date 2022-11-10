@@ -342,7 +342,7 @@ if (isset($_REQUEST["Step"])) {
 				
 				function hideinformation(){
 					document.getElementById("LeistungInfo_Modal").style.display="none"
-					document.cookie = "LeistungInformationChecked=1";
+					document.cookie = "LeistungInformationChecked=1; expires=Fri, 27 Mar 2122 12:00:00 UTC";
 				}
 
         function hideinformationWithoutremembering(){

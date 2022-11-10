@@ -183,7 +183,7 @@
 			
 			function hideinformation(){
 				document.getElementById("FragensetInfo_Modal").style.display="none"
-				document.cookie = "FragensetInformationChecked=1";
+				document.cookie = "FragensetInformationChecked=1; expires=Fri, 27 Mar 2122 12:00:00 UTC";
 			}
 
 			function hideinformationWithoutremembering(){

@@ -99,7 +99,7 @@ include "Tutorial_Schritt7_Info.php";
 
     <script>
 
-        checkCookie("UmfragenInformationCheckedSchritt7", "UmfragenInfo_Modal")
+        checkCookie("UmfragenInformationChecked", "UmfragenInfo_Modal")
         function weiter() {
             window.location.href = "TutorialErfolg.php"
         }
@@ -110,7 +110,7 @@ include "Tutorial_Schritt7_Info.php";
         
         function hideinformation(){
             document.getElementById("UmfragenInfo_Modal").style.display="none"
-            document.cookie = "UmfragenInformationCheckedSchritt7=1";
+            document.cookie = "UmfragenInformationChecked=1; expires=Fri, 27 Mar 2122 12:00:00 UTC";
         }
         
         function hideinformationWithoutremembering(){

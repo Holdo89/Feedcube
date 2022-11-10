@@ -92,7 +92,7 @@ include "Tutorial_Schritt3_Info.php";
     <script src="Cookiefunctions.js" type="text/javascript"></script>
 
     <script>
-        checkCookie("FragenInformationCheckedSchritt3", "FragenInfo_Modal")
+        checkCookie("FragenInformationChecked", "FragenInfo_Modal")
         function weiter() {
             window.location.href = "Fragenset.php?Step=4"
         }
@@ -103,7 +103,7 @@ include "Tutorial_Schritt3_Info.php";
         
         function hideinformation(){
             document.getElementById("FragenInfo_Modal").style.display="none"
-            document.cookie = "FragenInformationCheckedSchritt3=1";
+            document.cookie = "FragenInformationChecked=1; expires=Fri, 27 Mar 2122 12:00:00 UTC";
         }
 
         function hideinformationWithoutremembering(){

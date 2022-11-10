@@ -778,7 +778,7 @@ a:hover .tooltiptext {
 				
 				function hideinformation(){
 					document.getElementById("UserInfo_Modal").style.display="none"
-					document.cookie = "UserInformationChecked=1";
+					document.cookie = "UserInformationChecked=1; expires=Fri, 27 Mar 2122 12:00:00 UTC";
 				}
 
         function hideinformationWithoutremembering(){

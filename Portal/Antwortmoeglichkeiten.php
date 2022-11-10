@@ -363,7 +363,7 @@ if (isset($_REQUEST["Step"])) {
 				
 				function hideinformation(){
 					document.getElementById("AntwortenInfo_Modal").style.display="none"
-					document.cookie = "AntwortenInformationChecked=1";
+					document.cookie = "AntwortenInformationChecked=1; expires=Fri, 27 Mar 2122 12:00:00 UTC";
 				}
 
         function hideinformationWithoutremembering(){
