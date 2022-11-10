@@ -578,7 +578,7 @@ a:hover .tooltiptext {
 		modal.style.display = "block";
 		Trainer_element.value = Trainer;
 		var Auswahl_Leistung = document.getElementById("Auswahl_Leistung");
-		Auswahl_Leistung.value = "%"
+		Auswahl_Leistung.value = "%";
 		Trainer_element.innerHTML= "Erzeuge einen Feedback-Link für den Trainer <b>" + Trainer + "</b><div style='margin-top:20px;margin-bottom:20px'>Leistung die bewertet wird:</div>";
 		var Link = document.getElementById("Link");
 		Link.value = "";
@@ -601,6 +601,21 @@ a:hover .tooltiptext {
     function ShowLink(){
 		if(Auswahl_Leistung.value!="")
 		{
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText=="")
+                    {
+                        Trainer_element.innerHTML='<div id="alert" class="alert icon-alert with-arrow alert-danger form-alter" role="alert"><i class="fa fa-fw fa-times-circle"></i><strong> Achtung!</strong> <span class="warning-message">Der Leistung wurden noch keine Fragen hinzugefügt</span></div>'+Trainer_element.innerHTML;
+                    }
+                    else
+                    {
+                        document.getElementById("alert").style.display="none";
+                    }
+                }
+            ;};
+            xmlhttp.open("GET", "Leistung_get_Fragenset_checked.php?ID=" + Auswahl_Leistung.value, true);	
+            xmlhttp.send();
             var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Trainer_element.value+"&Sprache="+Sprache+"&Leistung="+Auswahl_Leistung.value;
 			Feedbacklink = Feedbacklink.replaceAll(" ","%20");
 			Link.value = Feedbacklink;

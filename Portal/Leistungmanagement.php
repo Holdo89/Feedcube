@@ -226,6 +226,15 @@ if (isset($_REQUEST["Step"])) {
 		Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für die Leistung:</div>";
 		var Link = document.getElementById("Link");
 		Link.value = "";
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				if(this.responseText=="")
+				Leistung_Element.innerHTML='<div class="alert icon-alert with-arrow alert-danger form-alter" role="alert"><i class="fa fa-fw fa-times-circle"></i><strong> Achtung!</strong> <span class="warning-message">Der Leistung wurden noch keine Fragen hinzugefügt</span></div>'+Leistung_Element.innerHTML;
+			}
+		;};
+		xmlhttp.open("GET", "Leistung_get_Fragenset_checked.php?ID=" + Leistung_ID, true);	
+		xmlhttp.send();
 	}
 
 	var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
