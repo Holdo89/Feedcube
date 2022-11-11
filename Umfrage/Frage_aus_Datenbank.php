@@ -103,7 +103,7 @@ else{
 	$file = scandir($dir);
 
     echo"
-        <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='400' height='200' style='object-fit:scale-down'>
+        <img class='center' src='../assets/".$subdomain."/logo/".$file[2]."' alt='' width='150' height='70' style='object-fit:scale-down'>
         <div class='container' id = 'container'>";
     $i=0; //welche Frage ist gerade dran Submit Button ist notwendig fürvlidierung der leeren Bewertung antworten
     echo"
