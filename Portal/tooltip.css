@@ -2,14 +2,12 @@
   visibility: hidden;
   width: 120px;
   margin-left:-150px;
-  margin-top:10px;
-  background-color: white;
-  color: black;
+  margin-top:0px;
+  background-color: black;
+  color: white;
   text-align: center;
   font-size: 12px;
   border-radius: 6px;
-  border: solid;
-  border-width: 1px;
   padding: 5px 0;
   overflow:visible;
   /* Position the tooltip */

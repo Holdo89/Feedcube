@@ -1,3 +1,20 @@
+<?php
+require_once "../config.php";
+require_once "session.php";
+
+$sql = "SELECT Notification FROM users WHERE username ='".$_SESSION["username"]."'";
+$exec = mysqli_query($link,$sql);
+$row = mysqli_fetch_assoc($exec);
+$UserWantsNotification = $row["Notification"];
+?>
+    <link href="tooltip.css" rel="stylesheet" type="text/css">
+<style>
+    a:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+
+
 <div class="topnav" id="myTopnav" style="background-color:<?php $sql="SELECT farbe FROM system"; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>">
 <a class="image" style="padding:0px; padding-bottom:5px;"href="Start.php">
     <img src="../assets/brand/FEEDCUBE_logo.png" style="float:left; margin-right:30px; margin-left:15px; margin-top:3px;" width="50" height="50">
@@ -51,4 +68,33 @@
         <a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Abmelden</a>
     </div>
     </div>
+    <?php
+    if($UserWantsNotification)
+    {
+        echo'<a id="notification" onclick="setNotification()" style="float:right;"><span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung deaktivieren</span><i class="fa fa-bell" aria-hidden="true"></i></a>';
+    }
+    else{
+        echo'<a id="notification" onclick="setNotification()" style="float:right;"><span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung aktivieren</span><i class="fa fa-bell-slash" aria-hidden="true"></i></a>';  
+    }
+    ?>
+    <script>
+        function setNotification()
+        {
+            var notification = document.getElementById("notification");
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText==1)
+                    {
+                        notification.innerHTML='<span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung deaktivieren</span><i class="fa fa-bell" aria-hidden="true"></i>';
+                    }
+                    else{
+                        notification.innerHTML='<span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung aktivieren</span><i class="fa fa-bell-slash" aria-hidden="true"></i>'   
+                    }
+                }
+            ;};
+            xmlhttp.open("GET", "setNotification.php", false);	
+            xmlhttp.send();
+        }
+    </script>
 </div> 
