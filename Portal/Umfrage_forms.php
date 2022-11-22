@@ -100,15 +100,8 @@
 
 	<div class="header">
 	<?php
-		$sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
-		$exec = mysqli_query($link,$sql);
-		$row = mysqli_fetch_assoc($exec);
-		$IsAdmin = $row["Is_Admin"];
-		if($IsAdmin == 1)
-			include "navigation_admin.php";
-		else
-			include "navigation.php";
-	?>
+	include "navigation_admin.php";
+ ?>
 <script>
 	document.getElementById("Umfrage_forms").className = "active";
 	document.getElementById("UmfrageMöglichkeiten").style.backgroundColor = "lightgrey";

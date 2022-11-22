@@ -39,16 +39,8 @@
 <script type = "text/javascript" src="export_delete_data.js"></script>
 <div class="header">
 <?php
-
-	$sql = "SELECT Is_Admin FROM users WHERE username ='".$_SESSION["username"]."'";
-	$exec = mysqli_query($link,$sql);
-	$row = mysqli_fetch_assoc($exec);
-	$IsAdmin = $row["Is_Admin"];
-	if($IsAdmin == 1)
-		include "navigation_admin.php";
-	else
-		include "navigation.php";
-?>
+	include "navigation_admin.php";
+ ?>
 
 <img class="mb-4" src="../assets/brand/dashboard.png" alt="" width="300" style="margin-bottom:30px">
 <p style="max-width:90vw; margin:auto">Hier erhältst du einen groben Überblick über die Auswertung des Feedbacks</p><br>
