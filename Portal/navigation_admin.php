@@ -73,6 +73,7 @@ $IsAdmin = $row["Is_Admin"];
   margin-left: 200px; /* Same as the width of the sidenav */
   font-size: 20px; /* Increased text to enable scrolling */
   padding: 0px 10px;
+  margin-bottom:40px;
 }
 
 /* Add an active class to the active dropdown button */
@@ -112,16 +113,16 @@ $IsAdmin = $row["Is_Admin"];
 
 .openbtn {
   display:none;
-  font-size: 16px;
+  position: fixed;
+  top: 5px;
+  right:15px;
+  font-size: 20px;
   cursor: pointer;
-  background-color: white;
+  background-color: ghostwhite;
   color: black;
   padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
+  border-radius: 50px;
+  border:1px ghostwhite;
 }
 
 #main {
@@ -241,7 +242,7 @@ $IsAdmin = $row["Is_Admin"];
 </div>
 
 <div id="main">
-  <button class="openbtn" style="float:left" onclick="openNav()">☰</button>  
+  <button id="openbtn" class="openbtn" onclick="openNav()">☰</button>  
  </div>
 <script>
     //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
@@ -280,6 +281,9 @@ function openNav() {
     dropdownicons[i].style.display="inline-flex";
   }
 
+  document.getElementById('openbtn').setAttribute( "onClick", "closeNav()" );
+  document.getElementById('openbtn').innerHTML="x";
+
   document.getElementById('showhidebtn').setAttribute( "onClick", "closeNav()" );
   document.getElementById('showhidebtn').innerHTML="<i class='fa fa-angle-left' aria-hidden='true'></i>";
 
@@ -314,6 +318,8 @@ function closeNav() {
   for (i = 0; i < dropdownicons.length; i++) {
     dropdownicons[i].style.display="none";
   }
+  document.getElementById('openbtn').setAttribute( "onClick", "openNav()" );
+  document.getElementById('openbtn').innerHTML="☰";
 
   document.getElementById('showhidebtn').setAttribute( "onClick", "openNav()" );
   document.getElementById('showhidebtn').innerHTML="<i class='fa fa-angle-right' aria-hidden='true'></i>";
