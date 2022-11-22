@@ -108,24 +108,27 @@ if(isset($_GET['send']) ) {
  $statement = $pdo->prepare("UPDATE users SET passwortcode = :passwortcode, passwortcode_time = NOW() WHERE id = :userid");
  $result = $statement->execute(array('passwortcode' => sha1($passwortcode), 'userid' => $user['id']));
  
- $empfaenger = $user['email'];
+ $loc_de = setlocale(LC_ALL, 'de_DE@euro');
+ $empfaenger = escapeshellarg($user['email']);
  $betreff = "Passwortreset"; 
 
  //$from = "From: Feedcube <d.holzweber@hotmail.com>"; Loclahost Test
- $from = "From: Feedcube Automation <automation@feedcube.net>";
+ $from = escapeshellarg("From: Feedcube Automation <automation@feedcube.net>");
  //$url_passwortcode = 'https://'.$subdomain.'.localhost/Feedcube/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; //Loclahost Test
  $url_passwortcode = 'https://'.$subdomain.'.feedcube.net/Software/Portal/passwortzuruecksetzen.php?id='.$user['id'].'&code='.$passwortcode; 
 
- $text = 'Hallo '.$user['name'].',
+ $text = escapeshellarg('Hallo '.$user['name'].',
 für deinen Account auf '.$subdomain.'.feedcube.net wurde nach einem neuen Passwort gefragt. Um ein neues Passwort zu vergeben, rufe innerhalb der nächsten 24 Stunden die folgende Website auf:
 '.$url_passwortcode.'
  
 Sollte dir dein Passwort wieder eingefallen sein oder hast du dies nicht angefordert, so bitte ignoriere diese E-Mail.
  
 Viele Grüße,
-dein Feedcube-Team';
+dein Feedcube-Team');
  
- mail($empfaenger, $betreff, $text, $from);
+ //mail($empfaenger, $betreff, $text, $from);
+ exec("php sendemail.php {$empfaenger} {$betreff} {$text} {$from} >/dev/null 2>&1 &");
+
  
  echo "Ein Link um dein Passwort zurückzusetzen wurde an deine E-Mail-Adresse gesendet."; 
  $showForm = false;

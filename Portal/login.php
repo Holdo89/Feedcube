@@ -65,10 +65,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
 								// Redirect user to welcome page
 								header("location: Start.php");
-								$msg = $_SESSION["username"]." just logged in";
-								$headers .= 'From: Feedcube Automation <automation@feedcube.net>' . "\r\n";
-								mail("holdo89@gmail.com","My subject",$msg,$headers);
-                        } else{
+                                $loc_de = setlocale(LC_ALL, 'de_DE@euro');
+                                $mail=escapeshellarg("holdo89@gmail.com");
+                                $subject="Benutzeranmeldung";
+								$msg = escapeshellarg($_SESSION["username"]." just logged in");
+								$headers = escapeshellarg('From: Feedcube Automation <automation@feedcube.net>' . "\r\n");
+								exec("php sendemail.php {$mail} {$subject} {$msg} {$headers} >/dev/null 2>&1 &");
+                            } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
                         }
