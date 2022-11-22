@@ -128,7 +128,7 @@
 		<progress class='progressbar' id='progress' max=50 value=0 style="margin-bottom:20px"></progress><br>
 	</div>
 	</div>
-	<div id="auswertungen" style="display:block;">
+	<div id="auswertungen" style="display:block; width:95%; margin:auto; text-align:center;">
 	</div>
 	<div id="load_data_message"></div>
 </div>
