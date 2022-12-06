@@ -20,8 +20,12 @@ if(isset($_REQUEST["Step"]))
       </head>  
       <body>  
            <br /><br />  
-           <div class="container">  
-                <div class="table-responsive">  
+           <div class="container"> 
+           <button id="element" style="width:250px; background-color:<?php $sql_farbe='SELECT farbe FROM system';
+               $exec_farbe=mysqli_query($link, $sql_farbe);
+               $result_farbe=mysqli_fetch_assoc($exec_farbe);
+               echo $result_farbe['farbe']?>" onclick = "setVisibility()"><i class="fa fa-user-plus" style="font-size:19px" aria-hidden="true"></i> Benutzer hinzufügen</button> 
+          <div class="table-responsive">  
                      <table id="employee_data" class="table table-striped table-bordered">  
                           <thead>  
                                <tr>  
@@ -48,7 +52,7 @@ if(isset($_REQUEST["Step"]))
                                     echo'<label class="überschrift" style="text-align:center;"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i><span class="tooltiptext">Trainer</span></label>';
                                 }
                                 echo"</td>";
-                                echo'<td><label class="überschrift" onclick = "setVisibility('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fa fa-pencil" aria-hidden="true"></i><span class="tooltiptext">Bearbeiten</span></label><label class="überschrift" onclick="display(\''.$row["name"].'\')"><i class="fa fa-link"></i><span class="tooltiptext">Link erstellen</span></label><label class="überschrift" onclick="window.location.href=\'reset-password-admin.php?Id='.$row["id"].'&Name='.$row["name"].'\';"><i class="fa fa-lock"></i><span class="tooltiptext">Passwort ändern</span></label><label class="überschrift" onclick="user_abfrage_löschen('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fas fa-trash" aria-hidden="true"></i><span class="tooltiptext">Löschen</span></label></td>';
+                                echo'<td><label class="überschrift" onclick = "setVisibility('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fa fa-pencil" aria-hidden="true"></i><span class="tooltiptext">Bearbeiten</span></label><label class="überschrift" onclick="display(\''.$row["name"].'\')"><i class="fa fa-link"></i><span class="tooltiptext">Link erstellen</span></label><label class="überschrift" onclick="showPasswordModal('.$row["id"].')"><i class="fa fa-lock"></i><span class="tooltiptext">Passwort ändern</span></label><label class="überschrift" onclick="user_abfrage_löschen('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fas fa-trash" aria-hidden="true"></i><span class="tooltiptext">Löschen</span></label></td>';
                                 echo"</tr>";  
                           }  
                           ?>  

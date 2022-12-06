@@ -108,7 +108,7 @@ $Email = $row["email"];
 
 <div id="alert" class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none;">
 		<i class="fa fa-fw fa-check-circle"></i>
-		<strong> Success ! </strong> <span class="success-message">Dein Passwort wurde erfolgreich geändert</span>
+		<strong> Erfolg! </strong> <span class="success-message">Deine Änderungen wurden erfolgreich gespeichert</span>
 	</div>
 
 <form style="background-color:ghostwhite; padding:10px; margin-top:20px; grid-template-columns: auto; border:none;">
@@ -128,7 +128,7 @@ $Email = $row["email"];
 			<br>
 			<p>Email:</p>
 			<input type="email" class="form-control" style="width:90%;" name="Email" id="Email" minlength="3" maxlength="100" value="<?php echo $Email;?>"></input>
-
+			<p id="EmailError" style="display:none; color:red">Die eingegebene Emailadresse wird bereits verwendet</p>
 		</p>
 		<input class="btn fa-input"  type="submit" value="speichern" style="font-size: 14px; width:100px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"></input>
 
@@ -200,6 +200,8 @@ $Email = $row["email"];
 	{
 		var Name = document.getElementById("Name").value;
 		var Email = document.getElementById("Email").value;
+		var EmailError = document.getElementById("EmailError");		
+
 		var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -209,9 +211,13 @@ $Email = $row["email"];
 						document.getElementById('alert').style.display='block';
 						Userinfomodal.style.display = "none";
 					}
+					if(this.responseText=="2")
+					{
+						EmailError.style.display = "block";
+					}
                 }
             ;};
-		xmlhttp.open("POST", "updateProfilDetails.php?Name="+Name+"&Email="+Email, true);
+		xmlhttp.open("POST", "UpdateProfilDetails.php?Name="+Name+"&Email="+Email, true);
 		xmlhttp.send();
 	}
 

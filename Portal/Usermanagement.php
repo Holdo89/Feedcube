@@ -2,318 +2,6 @@
  require_once "../config.php";
  require_once "session.php";
  include "RedirectToStart.php";
-
- if(isset($_REQUEST["checkAdmin"])){
-    $IsAdmin=$_REQUEST["checkAdmin"];
- }
- else{
-    $IsAdmin=0;
- }
- if(isset($_REQUEST["checkTrainer"])){
-    $IsTrainer=$_REQUEST["checkTrainer"];
- }
- else{
-    $IsTrainer=0;
- }
-
- if (isset($_REQUEST["Exists"])) {
-     $Exists=$_REQUEST["Exists"];
-     // Define variables and initialize with empty values
-     $fullname = $username = $email="";
-     $fullname_err = $username_err = $email_err="";
-     // Processing form data when form is submitted
-     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         // Validate username
-         if (empty(trim($_POST["fullname"]))) {
-             $fullname_err = "Bitte gib deinen vollen Namen ein.";
-         } else {
-             // Prepare a select statement
-             $sql = "SELECT id FROM users WHERE name = ? AND id != ".$_REQUEST["Exists"];
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "s", $param_fullname);
-                 // Set parameters
-                 $param_fullname = trim($_POST["fullname"]);
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     /* store result */
-                     mysqli_stmt_store_result($stmt);
-                     $fullname = trim($_POST["fullname"]);
-                 } else {
-                     echo "Oops! Something went wrong. Please try again later.";
-                 }
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-         }
-         // Validate username
-         if (empty(trim($_POST["username"]))) {
-             $username_err = "Bitte gib einen Usernamen ein.";
-         } else {
-             // Prepare a select statement
-             $sql = "SELECT id FROM users WHERE username = ? AND id != ".$_REQUEST["Exists"];
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "s", $param_username);
-                 // Set parameters
-                 $param_username = trim($_POST["username"]);
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     /* store result */
-                     mysqli_stmt_store_result($stmt);
-                     if (mysqli_stmt_num_rows($stmt) == 1) {
-                         $username_err = "Dieser Username wird bereits verwendet.";
-                     } else {
-                         $username = trim($_POST["username"]);
-                     }
-                 } else {
-                     echo "Oops! Something went wrong. Please try again later.";
-                 }
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-         }
-         // Validate email
-         if (empty(trim($_POST["email"]))) {
-             $username_err = "Bitte eine Email Adresse eingeben.";
-         } else {
-             // Prepare a select statement
-             $sql = "SELECT id FROM users WHERE email = ? AND id != ".$_REQUEST["Exists"];
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "s", $param_email);
-                 // Set parameters
-                 $param_email = trim($_POST["email"]);
-                
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     /* store result */
-                     mysqli_stmt_store_result($stmt);
-                    
-                     if (mysqli_stmt_num_rows($stmt) == 1) {
-                         $email_err = "Diese Email ist bereits vergeben.";
-                     } else {
-                         $email = trim($_POST["email"]);
-                     }
-                 } else {
-                     echo "Oops! Something went wrong. Please try again later.";
-                 }
-    
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-         }
-    
-         // Check input errors before inserting in database
-         if (empty($fullname_err) && empty($username_err) && empty($email_err)) {
-             // Prepare an insert statement
-             $sql = "UPDATE users SET name=?, username=?, email=?, Is_Admin=?, Is_Trainer=? WHERE users.id = ".$Exists;
-         
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "sssss", $param_fullname, $param_username, $param_email, $IsAdmin, $IsTrainer);
-            
-                 // Set parameters
-                 $param_fullname = $fullname;
-                 $param_username = $username;
-                 $param_email = $email;
-                 $loc_de = setlocale(LC_ALL, 'de_DE@euro');
-                 $subject = escapeshellarg("neue Benutzerregistrierung");
-                 $msg = escapeshellarg("Ein Benutzer wurde bearbeitet\r\n \r\nBenutzername: ".$username." \r\nName: ".$fullname." \r\nEmail: ".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen\r\nhttps://".$subdomain.".feedcube.net");
-                 $headers = escapeshellarg('From: Feedcube Automation <automation@feedcube.net>' . "\r\n");
-                 $sql = "SELECT email FROM users WHERE Is_Admin = 1";
-                 $exec = mysqli_query($link,$sql);
-                 while($row=mysqli_fetch_array($exec))
-                 {
-                     $mail=escapeshellarg($row["email"]);
-                     exec("php sendemail.php {$mail} {$subject} {$msg} {$headers} >/dev/null 2>&1 &");
-                     //mail($row["email"],"neue Benutzerregistrierung",$registerMessage,$headers);
-                 }
-            
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     // Redirect to login page
-                     if (isset($_REQUEST["Step"])) {
-                         $Step = $_REQUEST["Step"];
-                         header("location: Usermanagement.php?Step=".$Step);
-                     } else {
-                         header("location: Usermanagement.php");
-                     }
-                 } else {
-                     echo "Something went wrong. Please try again later.";
-                 }
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-             $sql="UPDATE users SET internes_feedback_abgegeben = '2020-03-27 16:55:00' WHERE username = '".$param_username."'";
-             $query=mysqli_query($link, $sql);
-             $sql="UPDATE users SET Confirmed = 1 WHERE username = '".$param_username."'";
-             $query=mysqli_query($link, $sql);
-             // Close connection
-             mysqli_close($link);
-         } else {
-             echo"<script>function error(){setVisibility(".$_REQUEST["Exists"].")}</script>";
-         }
-     }
- } else {
-     // Define variables and initialize with empty values
-     $fullname = $username = $email = $password = $confirm_password = "";
-     $fullname_err = $username_err = $email_err = $password_err = $confirm_password_err = "";
-     // Processing form data when form is submitted
-     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         // Validate username
-         if (empty(trim($_POST["fullname"]))) {
-             $fullname_err = "Bitte gib deinen vollen Namen ein.";
-         } else {
-             // Prepare a select statement
-             $sql = "SELECT id FROM users WHERE name = ?";
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "s", $param_fullname);
-                 // Set parameters
-                 $param_fullname = trim($_POST["fullname"]);
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     /* store result */
-                     mysqli_stmt_store_result($stmt);
-                     $fullname = trim($_POST["fullname"]);
-                 } else {
-                     echo "Oops! Something went wrong. Please try again later.";
-                 }
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-         }
-         // Validate username
-         if (empty(trim($_POST["username"]))) {
-             $username_err = "Bitte gib einen Usernamen ein.";
-         } else {
-             // Prepare a select statement
-             $sql = "SELECT id FROM users WHERE username = ?";
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "s", $param_username);
-                 // Set parameters
-                 $param_username = trim($_POST["username"]);
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     /* store result */
-                     mysqli_stmt_store_result($stmt);
-                     if (mysqli_stmt_num_rows($stmt) == 1) {
-                         $username_err = "Dieser Username wird bereits verwendet.";
-                     } else {
-                         $username = trim($_POST["username"]);
-                     }
-                 } else {
-                     echo "Oops! Something went wrong. Please try again later.";
-                 }
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-         }
-         // Validate email
-         if (empty(trim($_POST["email"]))) {
-             $username_err = "Bitte eine Email Adresse eingeben.";
-         } else {
-             // Prepare a select statement
-             $sql = "SELECT id FROM users WHERE email = ?";
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "s", $param_email);
-                 // Set parameters
-                 $param_email = trim($_POST["email"]);
-                
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     /* store result */
-                     mysqli_stmt_store_result($stmt);
-                    
-                     if (mysqli_stmt_num_rows($stmt) == 1) {
-                         $email_err = "Diese Email ist bereits vergeben.";
-                     } else {
-                         $email = trim($_POST["email"]);
-                     }
-                 } else {
-                     echo "Oops! Something went wrong. Please try again later.";
-                 }
-    
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-         }
-         // Validate password
-         if (empty(trim($_POST["password"]))) {
-             $password_err = "Bitte Passwort eingeben.";
-         } elseif (strlen(trim($_POST["password"])) < 6) {
-             $password_err = "Passwort muss mindestens 6 Zeichen beinhalten.";
-         } else {
-             $password = trim($_POST["password"]);
-         }
-    
-         // Validate confirm password
-         if (empty(trim($_POST["confirm_password"]))) {
-             $confirm_password_err = "Bitte bestätige das Passwort.";
-         } else {
-             $confirm_password = trim($_POST["confirm_password"]);
-             if (empty($password_err) && ($password != $confirm_password)) {
-                 $confirm_password_err = "Passwörter stimmen nicht überein.";
-             }
-         }
-    
-         // Check input errors before inserting in database
-         if (empty($fullname_err) && empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)) {
-             // Prepare an insert statement
-             $sql = "INSERT INTO users (name, username, email, password, Is_Admin, Is_Trainer) VALUES (?, ?, ?, ?, ?, ?)";
-         
-             if ($stmt = mysqli_prepare($link, $sql)) {
-                 // Bind variables to the prepared statement as parameters
-                 mysqli_stmt_bind_param($stmt, "ssssss", $param_fullname, $param_username, $param_email, $param_password, $IsAdmin, $IsTrainer);
-            
-                 // Set parameters
-                 $param_fullname = $fullname;
-                 $param_username = $username;
-                 $param_email = $email;
-                 $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-                 $loc_de = setlocale(LC_ALL, 'de_DE@euro');
-                 $subject = escapeshellarg("neue Benutzerregistrierung");
-                 $msg = escapeshellarg("Ein neuer Benutzer hat sich registriert\r\n \r\nBenutzername: ".$username." \r\nName: ".$fullname." \r\nEmail: ".$email." \r\n\r\nMelden Sie sich bei Ihrem Feedcube System an um den Zugang zu bestätigen oder abzulehnen\r\nhttps://".$subdomain.".feedcube.net");
-                 $headers = escapeshellarg('From: Feedcube Automation <automation@feedcube.net>' . "\r\n");
-                 $sql = "SELECT email FROM users WHERE Is_Admin = 1";
-                 $exec = mysqli_query($link,$sql);
-                 while($row=mysqli_fetch_array($exec))
-                 {
-                     $mail=escapeshellarg($row["email"]);
-                     exec("php sendemail.php {$mail} {$subject} {$msg} {$headers} >/dev/null 2>&1 &");
-                     //mail($row["email"],"neue Benutzerregistrierung",$registerMessage,$headers);
-                 }
-            
-                 // Attempt to execute the prepared statement
-                 if (mysqli_stmt_execute($stmt)) {
-                     // Redirect to login page
-                     if (isset($_REQUEST["Step"])) {
-                         $Step = $_REQUEST["Step"];
-                         header("location: Usermanagement.php?Step=".$Step);
-                     } else {
-                         header("location: Usermanagement.php");
-                     }
-                 } else {
-                     echo "Something went wrong. Please try again later.";
-                 }
-                 // Close statement
-                 mysqli_stmt_close($stmt);
-             }
-             $sql="UPDATE users SET internes_feedback_abgegeben = '2020-03-27 16:55:00' WHERE username = '".$param_username."'";
-             $query=mysqli_query($link, $sql);
-             $sql="UPDATE users SET Confirmed = 1 WHERE username = '".$param_username."'";
-             $query=mysqli_query($link, $sql);
-             // Close connection
-             mysqli_close($link);
-         } else {
-             echo"<script>function error(){document.getElementById('newUserModal').style.display = 'block'}</script>";
-         }
-     }
- }
-
  ?>
 <!DOCTYPE HTML>
 <html>
@@ -332,12 +20,25 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 	<script src="FileSaver.js"></script>
 	<?php
      include "User_speichern.php"
  ?>
 </head>
 <style>
+    .form-control{
+        width:90%;
+    }
+    .bi.bi-eye-slash, .bi-eye{
+	display:initial; 
+	position:relative; 
+	left:85%; 
+	top:-10px;
+	cursor: pointer;
+}
 	#element{
   width:250px;
   position: relative;
@@ -422,11 +123,10 @@ a:hover .tooltiptext {
 	document.getElementById("optionen").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/group.png" width="60" style="margin-top:-10px;">  Benutzer </h1>
-		<p style="margin:auto; margin-bottom:10px; text-align:center; max-width:95vw"> Bearbeite hier Benutzer und weise Berechtigungen als Trainer oder Administrator zu</p></div>
+		<p style="margin:auto; text-align:center; max-width:95vw"> Füge neue Benutzer hinzu oder bearbeite die Informationen zu bestehenden Benutzer. Weise Berechtigungen als Trainer oder Administrator zu</p></div>
 		
 	<div class="scroll">
-
-
+        
 	<script>
 	function user_password_reset(id) {
   	if (confirm("Wollen Sie das Passwort zu diesem User ändern?"))
@@ -448,10 +148,14 @@ a:hover .tooltiptext {
 		location.reload();}
 	;}
 	</script>
-
+    <div id="alert" class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none; margin:auto; text-align:center">
+		<i class="fa fa-fw fa-check-circle"></i>
+		<strong> Success ! </strong> <span class="success-message">Deine Änderungen wurden erfolgreich gespeichert</span>
+	</div>
+    <input id="current_id" value="0" style="display:none"></input>
     <?php
- include "Usertable.php";
- ?>
+        include "Usertable.php";
+    ?>
 	</div>
 		<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -491,36 +195,35 @@ a:hover .tooltiptext {
         </div>
 
 	<div id="newUserModal" class="modal" style="display:none;">
-		<form class="form-signin" style="display:block; padding:40px; max-width:1000px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);
- if (isset($_REQUEST["Step"])) {
-     $Step = $_REQUEST["Step"];
-     echo"?Step=".$Step;
- } ?>" method="post">
-			<span class="close" onclick = "setVisibility(-1)" style="float:right; text-align:right">&times;</span>
-			<h1  class= "h4 mb-3 font-weight-normal">Registrierung</h1>
+		<form class="form-signin" style="display:block; padding:40px; max-width:1000px" onsubmit="createNewUser();return false;" method="post">
+			<span class="close" style="float:right; text-align:right">&times;</span>
+			<h4>Registrierung</h4>
 			<p>Fülle das Formular vollständig aus um einen neuen Benutzer zu erstellen.</p> 
-			<div class="form-group <?php echo (!empty($fullname_err)) ? 'has-error' : ''; ?>">
-				<input type="text" name="fullname" placeholder="Vor- und Nachname" class="form-control" value="<?php echo $fullname; ?>" required>
-				<span class="help-block"><?php echo $fullname_err; ?></span>
+            <br>
+			<div class="form-group">
+				<input type="text" id="newname" name="name" placeholder="Vor- und Nachname" class="form-control" value="" minlength="3" maxlength="100" required>
+				<span class="help-block" id="name_err" style="color:red; display:none">Fehler beim Namen</span>
 			</div>  
-			<div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-				<input type="text" name="username" placeholder="Benutzername" class="form-control" value="<?php echo $username; ?>" required>
-				<span class="help-block"><?php echo $username_err; ?></span>
+			<div class="form-group">
+				<input type="text" id="newusername" name="username" placeholder="Benutzername" class="form-control" value="" minlength="3" maxlength="100" required>
+				<span class="help-block" id="username_err" style="color:red; display:none">Username existiert bereits</span>
 			</div>   
-			<div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-				<input type="text" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>" required>
-				<span class="help-block"><?php echo $email_err; ?></span>
+			<div class="form-group">
+				<input type="email" id="newemail" name="email" placeholder="Email" class="form-control" value="" minlength="3" maxlength="100" required>
+				<span class="help-block" id="email_err" style="color:red; display:none">Email wird bereits verwendet</span>
 			</div>   
-			<div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-				<input type="password" name="password" placeholder="Passwort" class="form-control" value="<?php echo $password; ?>" required>
-				<span class="help-block"><?php echo $password_err; ?></span>
+			<div class="form-group">
+				<input type="password" style="margin-bottom:-16px" id="password" name="password" placeholder="Passwort" class="form-control" value="" minlength="6" maxlength="100" required/>
+                <i class="bi bi-eye-slash" id="toggleNeuesPasswort"></i>
+                <span class="help-block" id="password_err" style="color:red; display:none">Eingegebene Passwörter stimmen nicht überein</span>
 			</div>
-			<div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-				<input type="password" name="confirm_password" placeholder="Passwort bestätigen" class="form-control" value="<?php echo $confirm_password; ?>" required>
-				<span class="help-block"><?php echo $confirm_password_err; ?></span>
+			<div class="form-group">
+				<input type="password" style="margin-bottom:-16px" id="confirm_password" name="confirm_password" placeholder="Passwort bestätigen" class="form-control" value="" minlength="6" maxlength="100" required>
+                <i class="bi bi-eye-slash" id="toggleWiederholtesPasswort"></i>
+                <span class="help-block" id="confirm_password_err" style="color:red; display:none">Eingegebene Passwörter stimmen nicht überein</span>
 			</div>
             <label style="font-weight: normal"><input type="checkbox" id="checkAdmin" name="checkAdmin" value=1> Administrator </label>
-            <label style="font-weight: normal"><input type="checkbox" name="checkTrainer" name="checkTrainer" value=1> Trainer </label>
+            <label style="font-weight: normal"><input type="checkbox" id="checkTrainer" name="checkTrainer" value=1> Trainer </label>
 			<div class="form-group" style="text-align:center; margin:auto;">
 				<button type="submit" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
  $exec=mysqli_query($link, $sql);
@@ -531,40 +234,56 @@ a:hover .tooltiptext {
 	</div>
 
     <div id="existingUserModal" class="modal" style="display:none;">
-		<form id="existingUserForm" class="form-signin" style="display:block; padding:40px; max-width:1000px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?Exists=1";
- if (isset($_REQUEST["Step"])) {
-     $Step = $_REQUEST["Step"];
-     echo"&Step=".$Step;
- } ?>" method="post">
-			<span class="close" onclick = "setVisibility(-1)" style="float:right; text-align:right">&times;</span>
-			<h1  class= "h4 mb-3 font-weight-normal">Benutzer bearbeiten</h1>
-			<p>Fülle das Formular vollständig aus um einen neuen Benutzer zu erstellen.</p> 
-			<div class="form-group <?php echo (!empty($fullname_err)) ? 'has-error' : ''; ?>">
-				<input type="text" id="name" name="fullname" placeholder="Vor- und Nachname" class="form-control" value="<?php echo $fullname; ?>" required>
-				<span class="help-block"><?php echo $fullname_err; ?></span>
+		<form id="existingUserForm" class="form-signin" style="display:block; padding:40px; max-width:1000px" onsubmit="updateUserDetails();return false;" method="post">
+			<span class="close" style="float:right; text-align:right">&times;</span>
+			<h4>Benutzer bearbeiten</h4>
+            <br>
+			<div class="form-group">
+            <p>Vor- und Nachname:</p>
+				<input type="text" id="name" name="name" placeholder="Vor- und Nachname" class="form-control" value="<?php echo $fullname; ?>" minlength="3" maxlength="100" required>
+				<span class="help-block" id="existing_name_err" style="color:red; display:none">Fehler beim Namen</span>
 			</div>  
-			<div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-				<input type="text" id="username" name="username" placeholder="Benutzername" class="form-control" value="<?php echo $username; ?>" required>
-				<span class="help-block"><?php echo $username_err; ?></span>
+			<div class="form-group">
+            <p>Benutzername:</p>   
+				<input type="text" id="username" name="username" placeholder="Benutzername" class="form-control" value="<?php echo $username; ?>" minlength="3" maxlength="100" required>
+				<span class="help-block" id="existing_username_err" style="color:red; display:none">Der Username existiert bereits</span>
 			</div>   
-			<div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-				<input type="text" id="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>" required>
-				<span class="help-block"><?php echo $email_err; ?></span>
+			<div class="form-group">
+            <p>Email:</p> 
+				<input type="email" id="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>" minlength="3" maxlength="100" required>
+				<span class="help-block"  id="existing_email_err" style="color:red; display:none">Die Email existiert bereits</span>
 			</div> 
-            <label style="font-weight: normal"><input type="checkbox" id="checkAdminExist" name="checkAdmin" value=1> Administrator </label>
-            <label style="font-weight: normal"><input type="checkbox" id="checkTrainerExist" name="checkTrainer" value=1> Trainer </label>
-			<div class="form-group" style="text-align:center; margin:auto;">
-				<button type="submit" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
- $exec=mysqli_query($link, $sql);
- $result=mysqli_fetch_assoc($exec);
- echo $result['farbe']?>" class="btn btn-primary"><i class="fa fa-save" style="font-size:18px" aria-hidden="true"></i> speichern</button>
-			</div>
+            <label style="font-weight: normal"><input type="checkbox" id="checkAdminExist" name="checkAdminExist" value=1> Administrator </label>
+            <label style="font-weight: normal"><input type="checkbox" id="checkTrainerExist" name="checkTrainerExist" value=1> Trainer </label>
+            <br><br>
+            <input class="btn fa-input"  type="submit" value="speichern" style="font-size: 14px; width:100px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"></input>
+
 		</form>   
 	</div>
-	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
- $exec=mysqli_query($link, $sql);
- $result=mysqli_fetch_assoc($exec);
- echo $result['farbe']?>" onclick = "setVisibility()"><i class="fa fa-user-plus" style="font-size:19px" aria-hidden="true"></i> Benutzer hinzufügen</button>
+
+    <!-- The Modal -->
+    <div id="PasswordModal" class="modal">
+    <form class="modalform" onsubmit="saveNewPassword();return false;" method="post" style="text-align:left">
+    <span class="close">&times;</span>
+    <h4>Neues Passwort vergeben</h4>
+    <br>
+    <p>
+        <p>Neues Passwort:</p>
+        <input type="password" class="form-control" style="width:90%;" name="NeuesPasswortAdmin" id="NeuesPasswortAdmin" minlength="6" maxlength="100" required/>
+        <i class="bi bi-eye-slash" style="top:-25px" id="toggleNeuesPasswortAdmin"></i>
+        <p id="NeuesPasswortError" style="display:none; color:red">Die eingegebenen Passwörter stimmt nicht überein</p>
+
+        <p>Neues Passwort wiederholen:</p>
+        <input type="password" class="form-control" style="width:90%;" name="WiederholtesPasswortAdmin" id="WiederholtesPasswortAdmin" minlength="6" maxlength="100" required/>
+        <i class="bi bi-eye-slash" style="top:-25px" id="toggleWiederholtesPasswortAdmin"></i>
+        <p id="WiederholtesPasswortError" style="display:none; color:red">Die eingegebenen Passwörter stimmt nicht überein</p>
+
+    </p>
+    <input class="btn fa-input"  type="submit" value="speichern" style="font-size: 14px; width:100px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"></input>
+
+    </form>
+    </div>
+
 	<script>
 	try{
 	    error();
@@ -574,12 +293,27 @@ a:hover .tooltiptext {
 	};
     
     var span = document.getElementsByClassName("close")[0];
+    var closenewusermodal = document.getElementsByClassName("close")[1];
+    var closeexistingusermodal = document.getElementsByClassName("close")[2];
+    var closepasswordmodal = document.getElementsByClassName("close")[3];
 	var modal = document.getElementById("myModal");
+	var newUserModal = document.getElementById("newUserModal");
+	var existingUserModal = document.getElementById("existingUserModal");
+	var PasswordModal = document.getElementById("PasswordModal");
     let qrcodeContainer = document.getElementById("qrcode-2");
     span.onclick = function() {
         modal.style.display = "none";
         copyButton.style.display = "none";
         qrcodeContainer.innerHTML="";
+	}    
+    closenewusermodal.onclick = function() {
+        newUserModal.style.display = "none";
+	}    
+    closeexistingusermodal.onclick = function() {
+        existingUserModal.style.display = "none";
+	}
+    closepasswordmodal.onclick = function() {
+        PasswordModal.style.display = "none";
 	}
 	var Trainer_element = document.getElementById("Trainer_Auswahl");
 	function display(Trainer) {
@@ -605,6 +339,150 @@ a:hover .tooltiptext {
     Auswahl_Leistung.onchange = ShowLink;
 	QRAuswahl.onchange = ShowLink;
 	LinkAuswahl.onchange = ShowLink;
+
+
+    function createNewUser()
+	{
+        var Modal = document.getElementById("newUserModal");
+		var Name = document.getElementById("newname").value;
+        var Username = document.getElementById("newusername").value;
+		var Email = document.getElementById("newemail").value;
+        var Password = document.getElementById("password").value;
+        var Confirm_Password = document.getElementById("confirm_password").value;
+        var UsernameError = document.getElementById("username_err");
+        UsernameError.style.display="none";
+        var EmailError = document.getElementById("email_err");
+        EmailError.style.display="none";
+        var Confirm_PasswordError = document.getElementById("confirm_password_err");
+        Confirm_PasswordError.style.display="none";
+        var PasswordError = document.getElementById("password_err");
+        PasswordError.style.display="none";
+        var checkAdmin = document.getElementById("checkAdmin").checked;
+        if(checkAdmin == true)
+        {
+            checkAdmin = 1
+        }
+        else{
+            checkAdmin = 0
+        }
+        var checkTrainer = document.getElementById("checkTrainer").checked;
+        if(checkTrainer == true)
+        {
+            checkTrainer = 1
+        }
+        else{
+            checkTrainer = 0
+        }
+        console.log("CreateNewUser.php?fullname="+Name+"&username="+Username+"&email="+Email+"&password="+Password+"&confirm_password="+Confirm_Password+"&checkAdmin="+checkAdmin+"&checkTrainer="+checkTrainer);
+
+		var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+					console.log(this.responseText)
+                    if(this.responseText.includes("1"))
+					{
+                        UsernameError.style.display="block"
+					}
+                    if(this.responseText.includes("2"))
+					{
+                        EmailError.style.display="block"
+					}
+                    if(this.responseText.includes("3"))
+					{
+                        PasswordError.style.display="block"
+                        Confirm_PasswordError.style.display="block"
+					}
+					if(this.responseText=="4")
+					{
+						document.getElementById('alert').style.display='block';
+                        $('#employee_data').load( "Usermanagement.php #employee_data" );
+                        Modal.style.display = "none";
+					}
+                }
+            ;};
+		xmlhttp.open("POST", "CreateNewUser.php?fullname="+Name+"&username="+Username+"&email="+Email+"&password="+Password+"&confirm_password="+Confirm_Password+"&checkAdmin="+checkAdmin+"&checkTrainer="+checkTrainer, true);
+		xmlhttp.send();
+	}
+
+    function updateUserDetails()
+	{
+        var Modal = document.getElementById("existingUserModal");
+		var Name = document.getElementById("name").value;
+        var Username = document.getElementById("username").value;
+		var Email = document.getElementById("email").value;
+        var UsernameError = document.getElementById("existing_username_err");
+        UsernameError.style.display="none";
+        var EmailError = document.getElementById("existing_email_err");
+        EmailError.style.display="none";
+        var Id = document.getElementById("current_id").value;
+        var checkAdmin = document.getElementById("checkAdminExist").checked;
+        if(checkAdmin == true)
+        {
+            checkAdmin = 1
+        }
+        else{
+            checkAdmin = 0
+        }
+        var checkTrainer = document.getElementById("checkTrainerExist").checked;
+        if(checkTrainer == true)
+        {
+            checkTrainer = 1
+        }
+        else{
+            checkTrainer = 0
+        }
+        console.log("UpdateUserDetails.php?fullname="+Name+"&username="+Username+"&email="+Email+"&Exists="+Id+"&checkAdmin="+checkAdmin+"&checkTrainer="+checkTrainer);
+
+		var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+					console.log(this.responseText)
+                    if(this.responseText.includes("1"))
+					{
+                        UsernameError.style.display="block"
+					}
+                    if(this.responseText.includes("2"))
+					{
+                        EmailError.style.display="block"
+					}
+					if(this.responseText=="3")
+					{
+						document.getElementById('alert').style.display='block';
+                        $('#employee_data').load( "Usermanagement.php #employee_data" );
+                        Modal.style.display = "none";
+					}
+                }
+            ;};
+		xmlhttp.open("POST", "UpdateUserDetails.php?fullname="+Name+"&username="+Username+"&email="+Email+"&Exists="+Id+"&checkAdmin="+checkAdmin+"&checkTrainer="+checkTrainer, true);
+		xmlhttp.send();
+	}
+
+    function saveNewPassword() {
+		var NeuesPasswort = document.getElementById("NeuesPasswortAdmin").value;
+		var WiederholtesPasswort = document.getElementById("WiederholtesPasswortAdmin").value;
+		var NeuesPasswortError = document.getElementById("NeuesPasswortError");		
+		var WiederholtesPasswortError = document.getElementById("WiederholtesPasswortError");
+        var Id = document.getElementById("current_id").value;
+
+		var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+					console.log(this.responseText)
+					if(this.responseText=="2")
+					{
+						WiederholtesPasswortError.style.display="block";
+						NeuesPasswortError.style.display="block";
+					}
+					if(this.responseText=="3")
+					{
+						document.getElementById('alert').style.display='block';
+						PasswordModal.style.display = "none";
+					}
+                }
+            ;};
+            xmlhttp.open("POST", "saveNewPassword_admin.php?NeuesPasswort="+NeuesPasswort+"&WiederholtesPasswort="+WiederholtesPasswort+"&Id="+Id, true);	
+            xmlhttp.send();
+	}
 
     function ShowLink(){
 		if(Auswahl_Leistung.value!="")
@@ -721,20 +599,12 @@ a:hover .tooltiptext {
                 document.getElementById("newUserModal").style.display = "block";
             }
         }
-    else if(id==-1)
-    {
-        window.location = window.location.pathname 
-    <?php
-        if (isset($_REQUEST["Step"])) {
-            echo'+"?Step=6"';
-    }
-    ?>
-    }
     else{
         try{
             document.getElementById("name").value=document.getElementById("name_"+id).innerHTML;
             document.getElementById("username").value=document.getElementById("username_"+id).innerHTML;
             document.getElementById("email").value=document.getElementById("email_"+id).innerHTML;
+            document.getElementById("current_id").value=id;
             if(document.getElementById("berechtigung_"+id).innerHTML.indexOf("Administrator")!=-1)
             {
                 document.getElementById("checkAdminExist").checked = true;
@@ -761,13 +631,43 @@ a:hover .tooltiptext {
 		else{
 			document.getElementById("existingUserModal").style.display = "block";
 		}
-        document.getElementById("existingUserForm").action = "Usermanagement.php?Exists="+id+"<?php
-     if (isset($_REQUEST["Step"])) {
-         $Step = $_REQUEST["Step"];
-         echo"&Step=".$Step;
-     } ?>";
 	}
 }
+
+    function showPasswordModal(id) {
+        var PasswordModal = document.getElementById("PasswordModal");
+		PasswordModal.style.display = "block";
+        document.getElementById("current_id").value=id;
+	}	
+
+	togglePasswordVisibility('#toggleNeuesPasswort', '#password');
+	togglePasswordVisibility('#toggleWiederholtesPasswort', '#confirm_password');	
+    togglePasswordVisibility('#toggleNeuesPasswortAdmin', '#NeuesPasswortAdmin');
+	togglePasswordVisibility('#toggleWiederholtesPasswortAdmin', '#WiederholtesPasswortAdmin');
+
+	function togglePasswordVisibility(toggle, pass)
+	{
+		const togglePassword = document.querySelector(toggle);
+		const password = document.querySelector(pass);
+        console.log("test"+toggle) 
+        togglePassword.addEventListener('click', () => {
+  
+            // Toggle the type attribute using
+            const type = password
+                .getAttribute('type') === 'password' ?
+                'text' : 'password'; 
+            password.setAttribute('type', type);
+  
+            // Toggle the eye and bi-eye icon
+			if (togglePassword.getAttribute("class")=="bi bi-eye-slash") 
+			{
+				togglePassword.setAttribute("class", "bi-eye");
+			}
+			else{
+				togglePassword.setAttribute("class", "bi bi-eye-slash"); 
+			}
+        });
+	}
 	</script>
     	<?php
  include "Tutorial_Schritt6_Info.php";

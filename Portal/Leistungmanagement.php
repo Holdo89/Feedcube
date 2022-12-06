@@ -102,17 +102,14 @@
 	document.getElementById("Leistungmanagement").className = "active";
 	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
-		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Leistungen </h1>
-		<p style="margin-bottom:10px;text-align:center; max-width:95vw""> Bearbeite hier die Leistungen zu denen du Feedback erhalten möchtest </p>	</div>
-		</div>
+		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/graduation-hat.png" width="60"> Kursliste</h1>
+		<div style="text-align:center; max-width:95vw"> Füge neue Kurse, Seminare oder Schulungen hinzu und bearbeite Kurse zu denen du Feedback erhalten möchtest</div>
 	<div class="scroll">
 	   <?php
 	include "Leistungstable.php";
 	?>
 
 	</div>
-	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'Leistung')"><i class="fa fa-graduation-cap" style="font-size:18px" aria-hidden="true"></i> Leistung hinzufügen</button>
-
 	    <!-- The Modal -->
 	<div id="myModal" class="modal">
 	<form id="Leistung_Form" class = "modalform" action="Leistung_relate_question.php<?php 

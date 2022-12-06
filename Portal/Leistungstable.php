@@ -21,6 +21,7 @@ if(isset($_REQUEST["Step"]))
       <body>  
            <br /><br />  
            <div class="container">  
+           <button id="element" style="width:250px; background-color:<?php $sql_farbe='SELECT farbe FROM system'; $exec_farbe=mysqli_query($link,$sql_farbe); $result_farbe=mysqli_fetch_assoc($exec_farbe); echo $result_farbe['farbe']?>" onclick = "display(undefined,'Leistung')"><i class="fa fa-graduation-cap" style="font-size:18px" aria-hidden="true"></i> Kurs hinzufügen</button>
                 <div class="table-responsive">  
                      <table id="employee_data" class="table table-striped table-bordered">  
                           <thead>  

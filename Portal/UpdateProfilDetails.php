@@ -20,13 +20,38 @@ $row = mysqli_fetch_array($query);
 
 $Id=$row["id"];
 
-// Define variables and initialize with empty values
-
-
 // Processing form data when form is submitted
 // Validate new password
 $NeuerName=$NeueEmail="";
 $NeuerName_err=$NeueEmail_err="";
+
+
+// Define variables and initialize with empty values
+$sql = "SELECT id FROM users WHERE email = ? AND id != ".$Id;
+if ($stmt = mysqli_prepare($link, $sql)) {
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($stmt, "s", $param_email);
+    // Set parameters
+    $param_email = trim($_REQUEST["Email"]);
+
+    // Attempt to execute the prepared statement
+    if (mysqli_stmt_execute($stmt)) {
+        /* store result */
+        mysqli_stmt_store_result($stmt);
+
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            $NeueEmail_err = "Diese Email ist bereits vergeben.";
+            echo"2";
+        } else {
+            $NeueEmail = trim($_REQUEST["Email"]);
+        }
+    } else {
+        echo "Oops! Something went wrong. Please try again later.";
+    }
+
+    // Close statement
+    mysqli_stmt_close($stmt);
+}
 
 if (empty(trim($_REQUEST["Name"]))) {
     $NeuerName_err = "Please enter your Name";

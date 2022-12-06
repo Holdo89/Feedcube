@@ -171,7 +171,7 @@ $IsAdmin = $row["Is_Admin"];
     if ($IsAdmin) {
         echo'
         <label style="font-size:10pt; margin-top:10px; text-align:left; border:none; outline:none; padding:3px; margin-bottom:5px;">Konfiguration</label>
-        <a id ="Leistungmanagement" href="Leistungmanagement.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span class="nav-menu-hidden">Leistungen</span></a>
+        <a id ="Leistungmanagement" href="Leistungmanagement.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span class="nav-menu-hidden">Kursliste</span></a>
         <a id ="Fragen" href="Fragen.php"><i class="fa fa-question-circle-o" aria-hidden="true"></i><span class="nav-menu-hidden">Fragen</span></a>
         <a id ="Fragensets" href="Fragenset.php"><i class="fa fa-question-circle" aria-hidden="true"></i><span class="nav-menu-hidden">Fragensets</span></a>';
     }?>
