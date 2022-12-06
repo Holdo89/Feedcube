@@ -118,8 +118,8 @@ $IsAdmin = $row["Is_Admin"];
   right:15px;
   font-size: 20px;
   cursor: pointer;
-  background-color: ghostwhite;
-  color: black;
+  background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
+  color: white;
   padding: 10px 15px;
   border-radius: 50px;
   border:1px ghostwhite;
@@ -203,39 +203,7 @@ $IsAdmin = $row["Is_Admin"];
         <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i><span class="nav-menu-hidden">Antworten</span></a>
       </div>';
     }?>
-  <button class="dropdown-btn" onclick="openNav()"><i class="fa fa-user" aria-hidden="true"></i><span class="nav-menu-hidden"> Profil</span><i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="reset-password.php"><i class="fa fa-lock" aria-hidden="true"></i><span> Passwort reset</span></a>
-  
-    <?php
-    if ($UserWantsNotification) {
-        echo'<a id="notification" onclick="setNotification()"><span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung deaktivieren</span><i class="fa fa-bell" aria-hidden="true"></i><span> Benachrichtigung aktiviert </span></a>';
-    } else {
-        echo'<a id="notification" onclick="setNotification()"><span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung aktivieren</span><i class="fa fa-bell-slash" aria-hidden="true"></i><span> Benachrichtigung deaktiviert </span></a>';
-    }
-?>
-    <script>
-        function setNotification()
-        {
-            var notification = document.getElementById("notification");
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                    if(this.responseText==1)
-                    {
-                        notification.innerHTML='<span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung deaktivieren</span><i class="fa fa-bell" aria-hidden="true"></i>';
-                    }
-                    else{
-                        notification.innerHTML='<span class="tooltiptext" style="width:200px; margin-top:40px">Feedback-Benachrichtigung aktivieren</span><i class="fa fa-bell-slash" aria-hidden="true"></i>'   
-                    }
-                }
-            ;};
-            xmlhttp.open("GET", "setNotification.php", false);	
-            xmlhttp.send();
-        }
-    </script>
-</div>
+      <a id ="Profil" href="Profil.php" style="color:white; padding: 20px 8px 20px 25px;"><i class="fa fa-user" aria-hidden="true"></i><span class="nav-menu-hidden">Profil</span></a>
 <a href="logout.php" style="color:white; padding: 20px 8px 20px 25px;"><i class="fa fa-sign-out" aria-hidden="true"></i><span class="nav-menu-hidden"> Abmelden</span></a>
 <a href="javascript:void(0)" id="showhidebtn" class="closebtn" onclick="openNav()"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
 

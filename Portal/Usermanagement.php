@@ -557,7 +557,7 @@ a:hover .tooltiptext {
 				<button type="submit" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
  $exec=mysqli_query($link, $sql);
  $result=mysqli_fetch_assoc($exec);
- echo $result['farbe']?>" class="btn btn-primary"><i class="fa fa-save" style="font-size:18px" aria-hidden="true"></i> Speichern</button>
+ echo $result['farbe']?>" class="btn btn-primary"><i class="fa fa-save" style="font-size:18px" aria-hidden="true"></i> speichern</button>
 			</div>
 		</form>   
 	</div>

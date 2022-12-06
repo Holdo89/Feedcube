@@ -31,9 +31,9 @@ body {
 .fa-input { 
   font-family: "Spartan", Helvetica, Arial, sans-serif;
   background-color: white;
-  font-size:14pt;
+  font-size:13pt;
   min-width:200px;
-  width:20vw;
+  width:15vw;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px 10px;
 
@@ -110,29 +110,17 @@ form {
   --highlight: #306090;*/
 
   background: white;
-
   display: grid;
-
   grid-template-columns:2.5fr 5.5fr;
-
   margin:auto;
-
   text-align: left;
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
-  border-radius: 10px 10px;
-
+  border: none;
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
-
   position: relative;
-
   overflow: hidden;
-
   width: 80vw;
-
-
-
+  max-width:1000px;
+  margin:auto;
 }
 
 
@@ -251,7 +239,7 @@ textarea:-webkit-autofill:focus {
 
   form{
 
-    min-width:370px;
+    min-width:95%;
 
     font-size: 11px;
 
@@ -259,7 +247,7 @@ textarea:-webkit-autofill:focus {
 
   }
   .fa-input{
-    font-size: 12px;
+    font-size: 14px;
   }
   label{
 

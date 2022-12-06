@@ -276,7 +276,7 @@ include "navigation_admin.php";
 			<h5>Englische Übersetzung: </h5>
 			<input class="center_select" id="Überschrift_Übersetzung" name ="Überschrift_Übersetzung" placeholder="Eingabe der Übersetzung"></input>
 		</div>
-		<button id="element" type="submit" name = "Submit" style="margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
+		<button id="element" type="submit" name = "Submit" style="margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 	  </div>
 	  </form>
 	  </div>
@@ -362,7 +362,7 @@ if (isset($_REQUEST["Step"])) {
 				</div>
 				<div id="Rangeoptionen_fragenspezifisch" style="font-size:12px; display:none;">
 				</div>
-				<button id = "element" type="submit" name = "Submit" style="margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
+				<button id = "element" type="submit" name = "Submit" style="margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 				</form>
 	  </div>
 	  </div>

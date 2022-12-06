@@ -55,7 +55,6 @@
 		<strong> Ungültige Datei!</strong> <span class="warning-message"> Bitte lade nur JPG, JPEG, PNG oder GIF Dateien hoch mit einer maximalen Größe von 5 MB.</span>
 	</div>
 	<form action="Lookandfeel.php" method="post" enctype="multipart/form-data" style="margin-top:10px;">
-	<label class="überschrift">Look & Feel</label><label class="überschrift"></label>
 	
 	<script>
 	function user_abfrage_speichern(id) {
@@ -123,7 +122,8 @@
 	echo $file[2];
 ?>" alt="your image" width="200px" />
 	</div>
-	<button class="btn fa-input" type="submit" name = "Submit" style="margin:auto; grid-column: 1 / span 2; margin-top:30px; margin-bottom:30px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"><i class="fa fa-save"></i> Speichern</button>
+    <p></p>
+	<button class="btn fa-input" type="submit" name = "Submit" style="margin-top:30px; margin-bottom:30px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"><i class="fa fa-save"></i> speichern</button>
 	</form>
 	</div>
     </body>

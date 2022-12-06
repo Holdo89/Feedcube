@@ -213,7 +213,7 @@
 					</div>
 					<div id="Rangeoptionen_fragenspezifisch" style="font-size:12px; display:none;">
 					</div>
-					<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
+					<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 			</div>
 		</form>
 	</div>
@@ -275,7 +275,7 @@
 				</p>
 			</div>
 			<br>
-			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> Speichern</button>
+			<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class="fa fa-save"></i> speichern</button>
 		</form>
 	</div>
 </div>
