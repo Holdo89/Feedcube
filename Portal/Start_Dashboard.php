@@ -48,9 +48,35 @@ require_once "session.php";
             }
             echo"<div style='margin-bottom:5px;'>Leistung:</div><div style='margin-bottom:20px; font-size:18px;'>". $leistung_last."</div></div></div>";
         }
+    ?>
+<div id = "pdf"> 	
+	<div id="loader" style = "display:none"></div>
+	<div id="charts" class="grid-container-charts" >
+			<div class="leftchart"> 
+			<canvas id="TrendChart" height=200></canvas>
+			</div>
+            <div class= "rightchart">
+			<canvas id="PieChartTrainer" height=220></canvas>
+			</div>
+			<div class= "leftchart">
+			<canvas id="ColumnChart" height=180></canvas>
+			</div>
+			<div class= "rightchart">
+			<canvas id="PieChart" height=220></canvas>
+			</div>
+
+			</div>
+	</div>
+	<div id="Kommentare" class="Kommentare" style="margin:auto">
+	<span id="blog_posts" ></span> <!--hier werden die Kommentare eingefügt-->
+	<div id="load_data_message"></div>
+	</div>
+</div>
+    <?php
     
     if($Feedback_abgegeben)
     {   
+        
         echo"<h3 style='margin:auto; font-size:20px; margin-top:50px; grid-column-end:span 3; text-align:center; display:grid;'>Fragenauswertung</h3>";
         echo"<hr style='grid-column-end:span 3;'>";
         echo"<div style='grid-column-end:span 3;' class='startdashboard'>";
