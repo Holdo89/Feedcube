@@ -37,7 +37,15 @@
 
 </head>
 <style>
-
+.auswertung{
+	width:83vw; 
+	margin:auto;
+}
+@media only screen and (max-width: 600px){
+	.auswertung{
+		width:90vw; 
+	}
+}
 </style>
 <body class="text-center" onload="update()">
 
@@ -55,7 +63,7 @@
 <p style="max-width:90vw; margin:auto">Hier erhältst du einen groben Überblick über die Auswertung des Feedbacks</p><br>
 
     </div>
-<div style="width:83vw; margin:auto; @media only screen and (max-width: 600px){width:100vw; margin:0;}">	
+<div class="auswertung">	
 
 <!--Auswertung von multiple choice Fragen-->
 

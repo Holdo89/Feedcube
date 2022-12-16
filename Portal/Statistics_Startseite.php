@@ -13,7 +13,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 
-		$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+		$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 		$query_get_Anzahl_abgegebenes_feedback = mysqli_query($link, $sql_get_Anzahl_abgegebenes_feedback);
 		$Anzahl_abgegenes_feedback_row=mysqli_fetch_array($query_get_Anzahl_abgegebenes_feedback);
 		$Anzahl_abgegenes_feedback = $Anzahl_abgegenes_feedback_row["COUNT(".$Frage.")"];
@@ -24,7 +24,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 				$exec2 = mysqli_query($link, $sql2);
 				$row2=mysqli_fetch_array($exec2);
 				$Average=$Average+($i*intval($row2["COUNT(".$Frage.")"]));
@@ -47,14 +47,14 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 		$Bewertungsarray = array();
 
 		if($typ=="Bewertung"){
-			echo "<p>".round($Average,1)."</p>";
+			echo "<td>".round($Average,1)."</td>";
 		}
 		else if($typ=="Multiplechoice"){
 			$sql="SELECT Answers FROM multiplechoice_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 				$exec2 = mysqli_query($link, $sql2);
 				$row2=mysqli_fetch_array($exec2);
 				$a=array("Auswahl" => $row["Answers"], "Anzahl" => $row2["COUNT(".$Frage.")"]);
@@ -62,7 +62,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			}
 		}
 		else{
-			echo "<p>".$rowx["ROUND(AVG(".$Frage."),1)"]."</p>";
+			echo "<td>".$rowx["ROUND(AVG(".$Frage."),1)"]."</td>";
 		}
 	
 		//Array mit ANzahl pro AUswahlmöglichkeit nach Anzahl sortieren und ausgeben
@@ -70,8 +70,8 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 		array_multisort($columns, SORT_DESC, $Bewertungsarray);
 		$i =0;
 		while($i<sizeof($Bewertungsarray)&&$i<1){
-			echo "<p>".$Bewertungsarray[0]['Auswahl'].": ".$Bewertungsarray[0]['Anzahl']."</p>";
-			echo "<p>".$Bewertungsarray[sizeof($Bewertungsarray)-1]['Auswahl'].": ".$Bewertungsarray[sizeof($Bewertungsarray)-1]['Anzahl']."</p>";
+			echo "<td>".$Bewertungsarray[0]['Auswahl'].": ".$Bewertungsarray[0]['Anzahl']."</td>";
+			echo "<td>".$Bewertungsarray[sizeof($Bewertungsarray)-1]['Auswahl'].": ".$Bewertungsarray[sizeof($Bewertungsarray)-1]['Anzahl']."</td>";
 			$i++;
 		}
 		//last 10
@@ -89,7 +89,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
+				$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
 				$exec2 = mysqli_query($link, $sql2);
 				$row2=mysqli_fetch_array($exec2);
 				$Average_10=$Average_10+($i*intval($row2["result"]));
@@ -107,7 +107,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			}
 		}
 
-		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 23:59:59'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
+		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
 		$exec = mysqli_query($link,$query);
 		$rows = mysqli_fetch_array($exec);
 
@@ -115,33 +115,33 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			$Trend = round($Average_10-$Average,1);
 		if($Trend<=$range*-1)
 		{
-			echo"<p style='color:green'>&darr;  ";
+			echo"<td style='color:green'>&darr;  ";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 		
 		else if ($Trend>$range*-1 && $Trend<0){
-			echo"<p style='color:lightgreen'>&#x2198;  ";
+			echo"<td style='color:lightgreen'>&#x2198;  ";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 
 		else if ($Trend<$range && $Trend>0){
-			echo"<p style='color:orange'>&#x2197;  +";
+			echo"<td style='color:orange'>&#x2197;  +";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 
 		else if ($Trend==0){
-			echo"<p style='color:lightgreen'>&rarr;  ";
+			echo"<td style='color:lightgreen'>&rarr;  ";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 
 		else if ($Trend>=$range){
-			echo"<p style='color:red'>&uarr;  +";
+			echo"<td style='color:red'>&uarr;  +";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 	}
 	else if($typ=="Schieberegler"){
@@ -152,42 +152,153 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 		$Trend = $rows["ROUND(AVG(".$Frage."),1)"] - $rowx["ROUND(AVG(".$Frage."),1)"];
 		if($Trend<=$range*-1)
 		{
-			echo"<p style='color:red'>&darr;  ";
+			echo"<td style='color:red'>&darr;  ";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 		
 		else if ($Trend>$range*-1 && $Trend<0){
-			echo"<p style='color:orange'>&#x2198;  ";
+			echo"<td style='color:orange'>&#x2198;  ";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 
 		else if ($Trend<$range && $Trend>0){
-			echo"<p style='color:lightgreen'>&#x2197;  +";
+			echo"<td style='color:lightgreen'>&#x2197;  +";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 
 		else if ($Trend==0){
-			echo"<p style='color:lightgreen'>&rarr;  ";
+			echo"<td style='color:lightgreen'>&rarr;  ";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 
 		else if ($Trend>=$range){
-			echo"<p style='color:green'>&uarr;  +";
+			echo"<td style='color:green'>&uarr;  +";
 			echo $Trend;
-			echo" </p>";
+			echo" </td>";
 		}
 	}
+
+
+
+	//last 1000
+
+	$Average_100 = 0;
+	$i=1;
+	if($typ=="Bewertung"){
+
+		$sql_number_of_answers="SELECT COUNT(Answers) FROM bewertung_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
+		$exec_number_of_answers = mysqli_query($link, $sql_number_of_answers);
+		$number_of_answers = mysqli_fetch_array($exec_number_of_answers);
+		$range = intval($number_of_answers[0])*0.1;
+
+		$sql="SELECT Answers FROM bewertung_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
+		$exec = mysqli_query($link, $sql);
+		while($row=mysqli_fetch_array($exec))
+		{
+			$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 100) AS a";
+			$exec2 = mysqli_query($link, $sql2);
+			$row2=mysqli_fetch_array($exec2);
+			$Average_100=$Average_100+($i*intval($row2["result"]));
+			$i =$i+1;
+		}
+	}
+	if($typ=="Bewertung"||$typ=="Multiplechoice"){
+		if($Anzahl_abgegenes_feedback<100 && $Anzahl_abgegenes_feedback>0)
+		{
+			$Average_100 = $Average_100/$Anzahl_abgegenes_feedback;
+		}
+		else
+		{
+			$Average_100 = $Average_100/100;
+		}
+	}
+
+	$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 100) AS a";
+	$exec = mysqli_query($link,$query);
+	$rows = mysqli_fetch_array($exec);
+
+	if($typ=="Bewertung"){
+		$Trend = round($Average_100-$Average,1);
+	if($Trend<=$range*-1)
+	{
+		echo"<td style='color:green'>&darr;  ";
+		echo $Trend;
+		echo" </td>";
+	}
+	
+	else if ($Trend>$range*-1 && $Trend<0){
+		echo"<td style='color:lightgreen'>&#x2198;  ";
+		echo $Trend;
+		echo" </td>";
+	}
+
+	else if ($Trend<$range && $Trend>0){
+		echo"<td style='color:orange'>&#x2197;  +";
+		echo $Trend;
+		echo" </td>";
+	}
+
+	else if ($Trend==0){
+		echo"<td style='color:lightgreen'>&rarr;  ";
+		echo $Trend;
+		echo" </td>";
+	}
+
+	else if ($Trend>=$range){
+		echo"<td style='color:red'>&uarr;  +";
+		echo $Trend;
+		echo" </td>";
+	}
+}
+else if($typ=="Schieberegler"){
+	$sql_range = "SELECT * FROM rangeslider_answers WHERE Frage_ID = '".$ID."'";
+	$exec_range = mysqli_query($link,$sql_range);
+	$row_range = mysqli_fetch_array($exec_range);
+	$range = ($row_range["range_max"]-$row_range["range_min"])*0.1;
+	$Trend = $rows["ROUND(AVG(".$Frage."),1)"] - $rowx["ROUND(AVG(".$Frage."),1)"];
+	if($Trend<=$range*-1)
+	{
+		echo"<td style='color:red'>&darr;  ";
+		echo $Trend;
+		echo" </td>";
+	}
+	
+	else if ($Trend>$range*-1 && $Trend<0){
+		echo"<td style='color:orange'>&#x2198;  ";
+		echo $Trend;
+		echo" </td>";
+	}
+
+	else if ($Trend<$range && $Trend>0){
+		echo"<td style='color:lightgreen'>&#x2197;  +";
+		echo $Trend;
+		echo" </td>";
+	}
+
+	else if ($Trend==0){
+		echo"<td style='color:lightgreen'>&rarr;  ";
+		echo $Trend;
+		echo" </td>";
+	}
+
+	else if ($Trend>=$range){
+		echo"<td style='color:green'>&uarr;  +";
+		echo $Trend;
+		echo" </td>";
+	}
+}
+
 
 	}
 	else{
 		include "IsAdmincheck.php";
 		$exec = mysqli_query($link,$query);
 		$row = mysqli_fetch_array($exec);
-		echo "<p style='margin-bottom:-20px;'># Bewertungen: ".$row["COUNT(".$Frage.")"]."</p>";
+		echo "<td># Bewertungen: ".$row["COUNT(".$Frage.")"]."</td>";
 		echo"# Bewertungen: 0";
 	}
 }
