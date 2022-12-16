@@ -307,7 +307,6 @@ function update(){
 		var xmlhttp_options = new XMLHttpRequest();
      	xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText)
 				dashboard.innerHTML=this.responseText;
                 if(this.responseText.indexOf("Es wurde noch kein Feedback abgegeben")!=-1)
                 {
@@ -323,7 +322,6 @@ function update(){
         update_initiate();
     }
     catch{
-        console.log("catched");
     update_initiate();
     }
 }
