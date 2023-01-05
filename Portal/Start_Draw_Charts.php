@@ -46,6 +46,7 @@ function get_Trainers(Trainer){
 //Zeichnet die Charts mit dem TypColumn oder Piechart
 
 function chartjs(typ,name){
+    document.getElementById("loader").style.display="block"
 var charts = document.getElementById("charts");
 var Trainer = Auswahl_Trainer.value;
 var Leistung = Auswahl_Leistung.value;
@@ -66,6 +67,7 @@ get_options();
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("loader").style.display="none"
         console.log("Response Columnchart: "+this.responseText)
 		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
         var i=false;
@@ -101,8 +103,15 @@ xmlhttp.onreadystatechange = function() {
     },
 
     options: {
-	responsive: true, 
-    }
+        responsive: true,
+         legend: {
+            display: false
+         },
+         title: {
+            display: true,
+            text: 'Wie wurde insgesamt bewertet?'
+        }
+        }
 });
     }
 	;};

@@ -36,6 +36,21 @@ body{
   overflow-x:hidden;
 
 }
+.loader{
+  width:60px;
+  height:60px;
+  background:0 0;
+  border:10px solid transparent;
+  border-top-color:grey;
+  border-left-color:grey;
+  border-radius:50%;
+  text-align:center;
+  margin:auto;
+  margin-top:10%;
+  animation:loader .75s 300 ease forwards
+}
+@keyframes loader{100%{transform:rotate(360deg)}}
+
 
 .Auswahl{
 
@@ -199,9 +214,9 @@ margin-top: 20px;
   border-radius: 15px;
   font-size:15px;
   text-align:center; 
-  padding:50px;
-  padding-bottom:30px;
-  margin-bottom:30px; 
+  padding:30px;
+  padding-bottom:20px;
+  margin-bottom:20px; 
   grid-column: 1 / span 3; 
   display:grid; 
   grid-template-columns: 3fr 3fr 3fr;
@@ -235,12 +250,13 @@ select {
 }
 
 .FragenAuswahl{
-  grid-template-columns: 1fr 6fr 1fr 1fr 1fr; 
+  grid-template-columns: 8fr 2fr 2fr 2fr; 
   display:grid; 
   max-width:75vw; 
   margin:auto;
   margin-top:40px;
   margin-bottom:-20px;
+  text-align:left;
 }
 
 
@@ -297,16 +313,6 @@ h1{
   justify-items: center;
 
   margin:auto;
-
-}
-
-.FragenAuswahl{
-  
-  display: grid;
-  grid-template-columns: auto auto auto;
-  justify-items: center;
-  margin:auto;
-  max-width: 100vw;
 
 }
 
@@ -374,7 +380,7 @@ h1{
 }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
 
   label{
     font-size:14px;
@@ -468,7 +474,15 @@ h1{
   width:100%;
 
 }
+.FragenAuswahl{
+  
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+  margin:auto;
+  max-width: 100vw;
 
+}
 
 
 }

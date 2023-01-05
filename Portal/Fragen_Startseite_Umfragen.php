@@ -1,6 +1,6 @@
 <?php
-include "Statistics_Startseite.php";
-function questions($Fragentyp, $link, $Trainer, $Leistung, $datum_min, $datum_max)
+include "Statistics_Startseite_Umfragen.php";
+function questions_Umfrage($Fragentyp, $link, $Umfrage, $datum_min, $datum_max)
 {
     $sql = "SELECT * FROM users ORDER BY name";
     $result = mysqli_query($link, $sql);
@@ -58,7 +58,7 @@ function questions($Fragentyp, $link, $Trainer, $Leistung, $datum_min, $datum_ma
                                </tr>  
                           </thead>';
 
-    $sql = "SELECT ID, Typ, Fragen_extern FROM admin WHERE Fragen_extern !=''AND Typ = '".$Fragentyp."'";
+    $sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !=''AND Typ = '".$Fragentyp."'";
     $i=0;
     $result = mysqli_query($link, $sql) ;
     $row = mysqli_fetch_assoc($result);
@@ -66,8 +66,8 @@ function questions($Fragentyp, $link, $Trainer, $Leistung, $datum_min, $datum_ma
     while ($row = mysqli_fetch_assoc($result)) {
         echo"<tr>";
         if ($row['Typ']==$Fragentyp) {
-            echo "<td style='text-align:left' id='Frage_".$row['ID']."'>".$row['Fragen_extern']."</td>";
-            Statistik("Frage_".$row['ID'], $link, $Trainer, $Leistung, $datum_min, $datum_max);
+            echo "<td style='text-align:left' id='Frage_".$row['ID']."'>".$row['Fragen_intern']."</td>";
+            Statistik_Umfrage("Frage_".$row['ID'], $link, $Umfrage, $datum_min, $datum_max);
         }
     }
     echo"</tr>";

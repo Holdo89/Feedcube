@@ -2,12 +2,11 @@
 
 //Zeichnet die Charts mit dem TypColumn oder Piechart
 
-function trendchartjs(typ,name){
+function trendchartjs_Umfragen(typ,name){
 
-var Trainer = Auswahl_Trainer.value;
-var Leistung = Auswahl_Leistung.value;
+var Umfrage = Auswahl_Umfrage.value;
 var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
-var daterange = document.getElementById("zeitraum").value;
+var daterange = document.getElementById("zeitraum_umfragen").value;
 	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
@@ -180,14 +179,15 @@ yAxes: [{
 	}
 
 	;};
-    xmlhttp.open("GET", "Start_Trendchart_data.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Leistung=" + Leistung + "&Trainer=" + Trainer + "&Month=" + max_date.getMonth(), true);
+    xmlhttp.open("GET", "Start_Trendchart_data_Umfragen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&month_sum=" + month_sum + "&Umfrage=" + Umfrage + "&Month=" + max_date.getMonth(), true);
 
     xmlhttp.send();
 }
 
-function drawtrendchart(){
+function drawtrendchart_Umfragen(){
 
-trendchartjs('line','TrendChart');
+console.log("DrawTrendUmfragen");
+trendchartjs_Umfragen('line','TrendChart_Umfragen');
 
 }
 
