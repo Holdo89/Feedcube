@@ -29,18 +29,80 @@ if(isset($_REQUEST["Step"]))
                      <table id="employee_data" class="table table-striped table-bordered">  
                           <thead>  
                                <tr>  
-                                    <td>Name</td>  
-                                    <td>Username</td>  
-                                    <td>Email</td>  
-                                    <td>Rolle</td>
-                                    <td style="min-width:130px"></td>
+                               <td  style="max-width:20px"></td>  
+                              <td>Name</td>  
+                                   <td>Username</td>  
+                                   <td>Email</td>  
+                                   <td>Rolle</td>
+                                   <td style="min-width:130px"></td>
                                </tr>  
                           </thead>  
                           <?php  
+
+function getCapitals(string $name): string
+{
+$capitals = '';
+$words = preg_split('/[\s-]+/', $name);
+$words = [array_shift($words), array_pop($words)];
+foreach ($words as $word) {
+     if (ctype_digit($word) && strlen($word) == 1) {
+          $capitals .= $word;
+     } else {
+          $first = substr($word, 0, 1);
+          $capitals .= ctype_digit($first) ? '' : $first;
+     }
+}
+return strtoupper($capitals);
+}
+
+function getColor(string $name): string
+{
+// level 600, see: materialuicolors.co
+$colors = [
+     '#e53935', // red
+     '#d81b60', // pink
+     '#8e24aa', // purple
+     '#5e35b1', // deep-purple
+     '#3949ab', // indigo
+     '#1e88e5', // blue
+     '#039be5', // light-blue
+     '#00acc1', // cyan
+     '#00897b', // teal
+     '#43a047', // green
+     '#7cb342', // light-green
+     '#c0ca33', // lime
+     '#fdd835', // yellow
+     '#ffb300', // amber
+     '#fb8c00', // orange
+     '#f4511e', // deep-orange
+     '#6d4c41', // brown
+     '#757575', // grey
+     '#546e7a', // blue-grey
+];
+$unique = hexdec(substr(md5($name), -8));
+return $colors[$unique % count($colors)];
+}
+
                           while($row = mysqli_fetch_array($result))  
                           {  
                                echo "  
                                <tr>  
+                               <td id=avatar_".$row["id"].">";
+                               $sql_avatar = "SELECT Avatar from users WHERE id = ".$row["id"]." ORDER BY name";
+                              $result_avatar = mysqli_query($link,$sql_avatar);
+                              $row_avatar = mysqli_fetch_array($result_avatar);
+                              $image_src = $row_avatar['Avatar'];
+
+                              if ($image_src!="") {
+                              echo "<img src='".$image_src."' class='avatar' alt='Avatar' style='background-color:grey; object-fit:cover'/>";
+                              }
+                              else{
+                              $Color=getColor($row["name"]);
+                              $Initials = getCapitals($row["name"]);	
+                                   echo'<div class="initials-avatar large" style="background: '.$Color.';">'.$Initials.'</div>';
+                              }                         
+                               
+                               echo"</td>  
                                     <td id=name_".$row["id"].">".$row["name"]."</td>  
                                     <td id=username_".$row["id"].">".$row["username"]."</td>  
                                     <td id=email_".$row["id"].">".$row["email"]."</td>  

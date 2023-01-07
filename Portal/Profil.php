@@ -27,7 +27,7 @@ $Email = $row["email"];
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="system_optionen.css" rel="stylesheet" type="text/css">
+	<link href="Profil.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Leistung_speichern.php";
@@ -47,6 +47,11 @@ $Email = $row["email"];
 <p style="margin-bottom:30px; max-width:1000px; margin:auto; text-align:center">Bearbeite dein Benutzerprofil indem du persönliche Daten wartest, dein Passwort änderst oder deine Benachrichtigungen konfigurierst</p>	</div>
 
 	</div>
+	<div id="alert" class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none;">
+		<i class="fa fa-fw fa-check-circle"></i>
+		<strong> Erfolg! </strong> <span class="success-message">Deine Änderungen wurden erfolgreich gespeichert</span>
+	</div>
+
 	<div class="scroll">
 	<style>
 .bi.bi-eye-slash, .bi-eye{
@@ -105,16 +110,52 @@ $Email = $row["email"];
 		background-color: <?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>;
 	}
 	</style>
+<form id="submitform" method="post" style="text-align:center; margin:auto;" action="" enctype='multipart/form-data'>
+<div id="avatarform">
+<?php
 
-<div id="alert" class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none;">
-		<i class="fa fa-fw fa-check-circle"></i>
-		<strong> Erfolg! </strong> <span class="success-message">Deine Änderungen wurden erfolgreich gespeichert</span>
-	</div>
+include "showAvatarCurrentUser.php";
 
+if(isset($_POST['but_upload'])){
+ 
+    $name = $_FILES['file']['name'];
+    $target_dir = "../assets/".$subdomain."/";
+    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+    // Select file type
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    // Valid file extensions
+    $extensions_arr = array("jpg","jpeg","png","gif");
+
+    // Check extension
+    if( in_array($imageFileType,$extensions_arr) ){
+         // Upload file
+         if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name)){
+               // Convert to base64 
+               $image_base64 = base64_encode(file_get_contents($target_dir.$name) );
+               $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+
+               // Insert record
+               $query = "UPDATE users SET Avatar = '".$image."' WHERE username ='".$_SESSION["username"]."'";
+               mysqli_query($link,$query);
+			   unlink($target_dir.$name);
+         }
+    
+    }
+ 
+}
+?></div>
+    <input type='file' name='file' id='file' accept="image/*" class="hidden"  onchange="readURL(this);"/><br>
+	<label for="file" style="cursor:pointer">Profilbild wählen</label>/
+	<label onclick="showInitialen()" style="cursor:pointer">Initialen verwenden</label>	
+    <input type='submit' value='Speichern' name='but_upload' class="btn fa-input" style="font-size: 14px; color:white; min-width:180px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>">
+</form>
+
+<div>
 <form style="background-color:ghostwhite; padding:10px; margin-top:20px; grid-template-columns: auto; border:none;">
 	<label style="cursor:pointer" onclick="showUserinfoModal()"><i class="fa fa-user"></i> Persönliche Daten ändern</label>
 </form>
-
 
 		<!-- The Modal -->
 		<div id="UserinfoModal" class="modal">
@@ -155,7 +196,7 @@ $Email = $row["email"];
 
 ?>
 </form>
-
+</div>
 		<!-- The Modal -->
 		<div id="PasswordModal" class="modal">
 		<form class="modalform" onsubmit="saveNewPassword();return false;" method="post" style="text-align:left">
@@ -311,6 +352,31 @@ $Email = $row["email"];
 			}
         });
 	}
+
+	function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#avatar')
+                        .attr('src', e.target.result)
+                        .width(170)
+                        .height(170);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+				document.getElementById("avatar").style.display="inline-flex"
+				document.getElementById("avatar_initials").style.display="none"
+				document.getElementById("submitform").action="";
+            }
+        }
+	
+	function showInitialen(){
+		document.getElementById("avatar").style.display="none"
+		document.getElementById("avatar_initials").style.display="inline-flex"
+		document.getElementById("submitform").action="deleteAvatar.php";
+	}
+
     </script>
 
 	<div></div>

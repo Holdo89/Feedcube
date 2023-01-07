@@ -5,7 +5,6 @@
   margin: 0;
 
   padding: 0;
-  text-align:left;
 
 }
 
@@ -29,45 +28,23 @@ body {
 
 }
 
-
-
-h1 {
-
-  text-align: center;
-
-  margin: .67em 0;
-
-  font-size: 2.5em;
-
-  font-weight: 500;
-
-  line-height: 1.1;
-
-  margin-top: 20px;
-
-  margin-bottom: 50px;
-
-}
-
-
-
-
-
-label, input, textarea {
-
-  font-family: "Spartan";
-
-  outline: none;    
-
-}
-
 .avatar {
   vertical-align: middle;
-  width: 40px;
-  height: 40px;
+  text-align: center;
+  margin:auto;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
 }
 
+.scroll{
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+  width:70vw;
+  text-align:center;
+  margin:auto;
+  margin-top:20px;
+}
 
 .initials-avatar {
   display: inline-flex;
@@ -81,9 +58,45 @@ label, input, textarea {
   color: white;
 }
 .initials-avatar.large {
-  width: 40px;
-  height: 40px;
-  font-size: 15px;
+  width: 180px;
+  height: 180px;
+  font-size: 60px;
+}
+
+
+.fa-input { 
+  font-family: "Spartan", Helvetica, Arial, sans-serif;
+  background-color: white;
+  font-size:13pt;
+  min-width:200px;
+  width:15vw;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px 10px;
+
+}
+
+.überschrift{
+
+  text-align:left;
+
+  color:white;
+
+  padding:3px;
+
+  background:rgba(4, 51, 78, 0.904);
+
+  margin-bottom:0;
+
+  line-height: 20pt;
+
+}
+
+label, input, textarea {
+
+  line-height: 20pt;
+  border:none;
+  font-family: "Spartan";
+  outline: none;    
 }
 
 
@@ -100,49 +113,50 @@ label, input, textarea {
 
 
 
-.überschrift{
-  text-align:left;
-  font-size:16px;
-  margin-right:10px;
-  font-weight: bold;
-  margin-bottom:0;
-  border:none;
-}
-
-
-
 form {
 
  /* --background: white;
+
   --border: rgba(0, 0, 0, 0.125);
+
   --borderDark: rgba(0, 0, 0, 0.25);
+
   --borderDarker: rgba(0, 0, 0, 0.5);
+
   --bgColorH: 0;
+
   --bgColorS: 0%;
+
   --bgColorL: 98%;
+
   --fgColorH: 210;
+
   --fgColorS: 50%;
+
   --fgColorL: 38%;
+
   --shadeDark: 0.3;
+
   --shadeLight: 0.7;
+
   --shadeNormal: 0.5;
+
   --borderRadius: 0.125rem;
+
   --highlight: #306090;*/
 
   background: white;
-  display: grid;
-  grid-template-columns:1.5fr 0.7fr 2fr 50px 50px 50px 50px 50px;
+  display: block;
+  grid-template-columns:2.5fr 5.5fr;
   margin:auto;
   text-align: left;
-  border: 1px solid var(--border);
-  border-radius: 5px 5px 0px 0px;
+  border: none;
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
   position: relative;
   overflow: hidden;
-  width: 90vw;
+  max-width:50vw;
+  margin:auto;
 }
-
-
 
 
 
@@ -168,17 +182,11 @@ form {
 
   display: block;
 
-  text-align: center;
-
-  padding-top:0.55em;
-
-  font-size: 14pt;
+  font-size: 16pt;
 
   width: 100%;
 
-  color:black; 
-  border:none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border: 0px solid rgba(0, 0, 0, 0.1);
 
 }
 
@@ -192,8 +200,8 @@ form {
 
   width: 100%;
 
-  border:none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border: 0px solid rgba(0, 0, 0, 0.1);
+
 }
 
 
@@ -201,10 +209,13 @@ form {
 
 
 input, label, textarea,.Fragentyp_Select{
-  padding: 3px;
+
+  border: 0px solid rgba(0, 0, 0, 0.1);
+
+  padding: 12px;
+
   outline: none;
-  border:none;
-  text-align:left;
+
 }
 
 
@@ -223,7 +234,9 @@ textarea {
 
 }
 
-
+.system {
+  padding-top:20px;
+}
 
 ::selection {
 
@@ -257,23 +270,34 @@ textarea:-webkit-autofill:focus {
 
 
 
-
-
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 600px) {
 
   form{
-    width:95vw;
-    font-size: 12px;
-    overflow: auto;
-    margin:5px;
+
+    min-width:95%;
+
+    font-size: 11px;
+
+    padding:5px;
+
+  }
+  .fa-input{
+    font-size: 14px;
+  }
+  label{
+
+    padding:5px;
+
+  }
+  .system{
+
+    padding:15px;
 
   }
 
   .center_button {
 
     font-size: 14pt;
-
-    padding-top:0.5em;
 
     min-width:35px;
 
@@ -284,12 +308,20 @@ textarea:-webkit-autofill:focus {
     width:100%;
 
     overflow:auto;
+    display:block;
 
+  }
+  .avatar{
+    width: 130px;
+    height: 130px;
+  }
+  .initials-avatar.large {
+    width: 130px;
+    height: 130px;
+    font-size: 45px;
   }
 
 }
-
-
 
 
 
