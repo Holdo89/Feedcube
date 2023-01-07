@@ -22,9 +22,6 @@
 	<link href="StartCharts.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 	<?php
@@ -63,7 +60,7 @@
 }
 </style>
 
-<body class="text-center" onload="update()">
+<body class="text-center" onload="update(), update_umfragen()">
 
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 
@@ -107,6 +104,8 @@
  <script>
 	function toggleKursfeedback()
 	{
+		document.getElementById("startdashboard").style.display="block";
+		document.getElementById("startdashboard_umfragen").style.display="none";
 		var export_action = "export_data()";
 		if(document.getElementById("delete"))
 		{
@@ -122,11 +121,13 @@
 		document.getElementById("Umfragenneu").setAttribute("class", "btn btn-secondary");
 		document.getElementById("Umfragenneu").style.color="black";
 		document.getElementById("Kursfeedback").style.color="white";
-		update();
+		//update();
 
 	}
 	function toggleUmfragen()
 	{
+		document.getElementById("startdashboard").style.display="none";
+		document.getElementById("startdashboard_umfragen").style.display="block";
 		document.getElementById("export").setAttribute("onClick", "intern_export_data()");
 		document.getElementById("delete").setAttribute("onClick", "intern_delete_data()");
 		document.getElementById("Auswahl_Kursfeedback").style.visibility="hidden";		
@@ -137,11 +138,14 @@
 		document.getElementById("Umfragenneu").setAttribute("class", "btn btn-light");
 		document.getElementById("Umfragenneu").style.color="white";
 		document.getElementById("Kursfeedback").style.color="black";
-		update_umfragen()
+		if(document.getElementById("startdashboard_umfragen").innerHTML=="")
+		{
+			update_umfragen()
+		}
 	}
 </script>
-<div id="startdashboard">
-</div>
+<div id="startdashboard"></div>
+<div id="startdashboard_umfragen" style="display:none"></div>
 <div id="elementH"></div>
 </body>
 

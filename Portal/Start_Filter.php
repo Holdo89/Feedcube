@@ -30,7 +30,7 @@
 			<?php
 				include "Auswahlmöglichkeiten_Umfrage.php"
 			?>
-		<label class="Auswahl" for="zeitraum" style="margin-top:5px">Zeitraum: </label>
+		<label class="Auswahl" for="zeitraum_umfragen" style="margin-top:5px">Zeitraum: </label>
 		<input id="zeitraum_umfragen" style="background-color:white; width:300px; border:none" type="text" name="daterange" />
 	</div>
 	<hr>

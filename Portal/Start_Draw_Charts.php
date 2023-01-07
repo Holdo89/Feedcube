@@ -1,43 +1,50 @@
 
 <script>
 
-var options_answers = [];
-
+options_answers=[]
+options_Leistungen=[]
+options_Trainers=[]
 function get_options(){
     var xmlhttp_options = new XMLHttpRequest();
      xmlhttp_options.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             options_answers=this.responseText.slice(0, -1).split(",");	//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array und der letzte , wird entfernt mit slice
+            chartjs('bar','ColumnChart');
         }
     ;};
 
-    xmlhttp_options.open("GET", "Start_get_answers_options.php", false);
+    xmlhttp_options.open("GET", "Start_get_answers_options.php", true);
     xmlhttp_options.send();
 }
 
 
-function get_Leistungen(Leistung){
+function get_Leistungen(){
+    var Leistung = Auswahl_Leistung.value;
     console.log("Leistung:"+Leistung)
     var xmlhttp_options = new XMLHttpRequest();
      xmlhttp_options.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             options_Leistungen=this.responseText.slice(0, -1).split(",");	//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array und der letzte , wird entfernt mit slice
+            piechartjs('doughnut','PieChart');
         }
     ;};
 
-    xmlhttp_options.open("GET", "get_Leistungen.php?Leistung="+Leistung, false);
+    xmlhttp_options.open("GET", "get_Leistungen.php?Leistung="+Leistung, true);
     xmlhttp_options.send();
 }
 
-function get_Trainers(Trainer){
+function get_Trainers(){
+    var Trainer = Auswahl_Trainer.value;
     var xmlhttp_options = new XMLHttpRequest();
      xmlhttp_options.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             options_Trainers=this.responseText.slice(0, -1).split(",");	//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array und der letzte , wird entfernt mit slice
+            piecharttrainerjs('doughnut','PieChartTrainer');
+            trendchartjs('line','TrendChart');
         }
     ;};
 
-    xmlhttp_options.open("GET", "get_Trainers.php?Trainer="+Trainer, false);
+    xmlhttp_options.open("GET", "get_Trainers.php?Trainer="+Trainer, true);
     xmlhttp_options.send();
 }
 
@@ -46,7 +53,6 @@ function get_Trainers(Trainer){
 //Zeichnet die Charts mit dem TypColumn oder Piechart
 
 function chartjs(typ,name){
-    document.getElementById("loader").style.display="block"
 var charts = document.getElementById("charts");
 var Trainer = Auswahl_Trainer.value;
 var Leistung = Auswahl_Leistung.value;
@@ -62,12 +68,9 @@ var daterange = document.getElementById("zeitraum").value;
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
 
-get_options();
-
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("loader").style.display="none"
         console.log("Response Columnchart: "+this.responseText)
 		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
         var i=false;
@@ -115,7 +118,7 @@ xmlhttp.onreadystatechange = function() {
 });
     }
 	;};
-    xmlhttp.open("GET", "Start_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, false);
+    xmlhttp.open("GET", "Start_Anzahl_der_Bewertungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, true);
     xmlhttp.send();
 }
 
@@ -135,8 +138,6 @@ var daterange = document.getElementById("zeitraum").value;
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
-
-get_Leistungen(Leistung);
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -200,7 +201,7 @@ xmlhttp.onreadystatechange = function() {
     });
     }
 	;};
-    xmlhttp.open("GET", "Start_Anzahl_der_Bewertungen_nach_Leistungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, false);
+    xmlhttp.open("GET", "Start_Anzahl_der_Bewertungen_nach_Leistungen.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, true);
     xmlhttp.send();
 }
 
@@ -221,11 +222,11 @@ var daterange = document.getElementById("zeitraum").value;
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
 
-get_Trainers(Trainer);
-
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("loader").style.display="none"
+        document.getElementById("startdashboard").style.display="block"
         console.log("ResponseTrainers: "+this.responseText)
 		var array=this.responseText.split(",");		//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array
         console.log("array: "+array)
@@ -287,28 +288,30 @@ xmlhttp.onreadystatechange = function() {
     });
     }
 	;};
-    xmlhttp.open("GET", "Start_Anzahl_der_Bewertungen_nach_Trainer.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, false);
+    xmlhttp.open("GET", "Start_Anzahl_der_Bewertungen_nach_Trainer.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, true);
     xmlhttp.send();
 }
 
 
 function drawcharts(){  
-    chartjs('bar','ColumnChart');
-    piechartjs('doughnut','PieChart');
-    piecharttrainerjs('doughnut','PieChartTrainer');
+    get_options();
+    get_Leistungen();
+    get_Trainers();
 }
 
 function update(){
+    document.getElementById("loader").style.display="block"
+    document.getElementById("startdashboard").style.display="none"
 	var Trainer = Auswahl_Trainer.value;
     var Leistung = Auswahl_Leistung.value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 	var daterange = document.getElementById("zeitraum").value;
+    console.log("date:"+daterange)
 	const DateRangeArray = daterange.split("   bis   ");
 	var datum_min = DateRangeArray[1];
 	var datum_max = DateRangeArray[0];	
 	datum_min = new Date(datum_min);
 	datum_max = new Date(datum_max);
-
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
@@ -323,30 +326,14 @@ function update(){
                 }
 			}
     	;};
-    	xmlhttp_options.open("GET", "Start_Dashboard.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, false);
+    	xmlhttp_options.open("GET", "Start_Dashboard.php?datum_min=" + datum_min + "&datum_max=" + datum_max + "&Leistung=" + Leistung + "&Trainer=" + Trainer, true);
     	xmlhttp_options.send();
-
-	//get_datediff();
-    try{
         update_initiate();
-    }
-    catch{
-    update_initiate();
-    }
 }
 
 
 function update_initiate(){
-    try{
-    //ColumnChart.destroy();
-    //PieChart.destroy();
-    //TrendChart.destroy();
-        }
-    catch{
-        console.log("Chart was created first time");
-    }
     drawcharts();
-    drawtrendchart();
 }
 
 

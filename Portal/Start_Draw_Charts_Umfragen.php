@@ -1,26 +1,29 @@
 
 <script>
 
-var options_answers = [];
+var options_Umfrage = [];
 
 
-function get_Umfragen(Umfrage){
+function get_Umfragen(){
+    var Umfrage = Auswahl_Umfrage.value;
     var xmlhttp_options = new XMLHttpRequest();
      xmlhttp_options.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             options_Umfrage=this.responseText.slice(0, -1).split(",");	//diese Zeile ist notwendig weil ein string array "4,2,1,..." zur���ckgegeben wird und mit split erzeugen wir ein array und der letzte , wird entfernt mit slice
+            chartjs_Umfragen('bar','ColumnChart_Umfragen');
+            piechartjs_Umfragen('doughnut','PieChart_Umfragen');
+            chartjs_Umfragen('doughnut','PieChart_Umfragen_Bewertung');
+            trendchartjs_Umfragen('line','TrendChart_Umfragen');
         }
     ;};
 
-    xmlhttp_options.open("GET", "get_Umfragen.php?Umfrage="+Umfrage, false);
+    xmlhttp_options.open("GET", "get_Umfragen.php?Umfrage="+Umfrage, true);
     xmlhttp_options.send();
 }
 
 //Zeichnet die Charts mit dem TypColumn oder Piechart
 
 function chartjs_Umfragen(typ,name){
-document.getElementById("loader").style.display="block"
-console.log("Loader");
 var charts_Umfragen = document.getElementById("charts_Umfragen");
 var Umfrage = Auswahl_Umfrage.value;
 var daterange = document.getElementById("zeitraum_umfragen").value;
@@ -104,9 +107,6 @@ function piechartjs_Umfragen(typ,name){
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
 
-    get_Umfragen(Umfrage);
-    console.log("Umfragetest:"+Umfrage)
-
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -173,13 +173,12 @@ function piechartjs_Umfragen(typ,name){
 
 
 function drawcharts_Umfragen(){  
-    chartjs_Umfragen('bar','ColumnChart_Umfragen');
-    piechartjs_Umfragen('doughnut','PieChart_Umfragen');
-    chartjs_Umfragen('doughnut','PieChart_Umfragen_Bewertung');
+get_Umfragen();
 
 }
 
 function update_umfragen(){
+    document.getElementById("loader").style.display="block"
     var Umfrage = Auswahl_Umfrage.value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 	var daterange = document.getElementById("zeitraum_umfragen").value;
@@ -192,7 +191,7 @@ function update_umfragen(){
 
     datum_min = datum_min.toISOString().split('T')[0];
 	datum_max = datum_max.toISOString().split('T')[0];
-		var dashboard = document.getElementById("startdashboard");
+		var dashboard = document.getElementById("startdashboard_umfragen");
 		var xmlhttp_options = new XMLHttpRequest();
      	xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -213,7 +212,6 @@ function update_umfragen(){
 function update_initiate_umfragen(){
 
     drawcharts_Umfragen();
-    drawtrendchart_Umfragen();
 }
 
 function updateAuswahlFragen(){

@@ -40,8 +40,6 @@ else{
     month_sum = month_min-month_max;
 }
 
-//var diffmonth = parseInt(datum_min.substring(5,7))-parseInt(datum_max.substring(5,7))
-
 
 var month = new Array();
   month[0] = 'Jan';

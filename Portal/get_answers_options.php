@@ -33,10 +33,13 @@
             $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = ".$row['ID']." AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
         }
     }
-    $result=mysqli_query($link,$sql);
-    while($row=mysqli_fetch_array($result))
+    if ($Fragentyp!="Text")
     {
-        echo $row["Answers"].",";
+        $result=mysqli_query($link,$sql);
+        while($row=mysqli_fetch_array($result))
+        {
+            echo $row["Answers"].",";
+        }
     }
 }
 ?>

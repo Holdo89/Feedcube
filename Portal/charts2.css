@@ -167,6 +167,21 @@ margin-top: 20px;
     font-size:19px;
 }
 
+.loader{
+  width:60px;
+  height:60px;
+  background:0 0;
+  border:10px solid transparent;
+  border-top-color:grey;
+  border-left-color:grey;
+  border-radius:50%;
+  text-align:center;
+  margin:auto;
+  margin-top:10%;
+  animation:loader .75s 300 ease forwards
+}
+@keyframes loader{100%{transform:rotate(360deg)}}
+
 .startdashboard{
   grid-template-columns: 6fr 2fr 2fr; 
   column-gap: 10px;
