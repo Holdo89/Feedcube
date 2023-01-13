@@ -15,7 +15,7 @@
 				include "Auswahlmöglichkeiten_Trainer.php"
 			?>	
 	
-	<label class="Auswahl">Leistung: </label>
+	<label class="Auswahl">Kurs: </label>
 			<?php
 				include "Auswahlmöglichkeiten_Leistung.php"
 			?>

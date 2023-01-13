@@ -24,6 +24,7 @@ if ($i<1)
 }
 else
 {
+    echo'<span style="display:inline-flex; width:100%"><div id="avatarselect"></div>';
     echo' <select class="Auswahl_Select" id="Auswahl_Trainer" name="Auswahl_Trainer" oninput="update();">';
     echo '<option value="%25">Alle Trainer</option><option value="">Keine Angabe</option>';
 
@@ -43,7 +44,7 @@ else
         }
 
     }
-    echo'</select>';
+    echo'</select></span>';
 }	
 
 ?>

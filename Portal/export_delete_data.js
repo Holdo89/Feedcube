@@ -15,7 +15,7 @@ function delete_data()
     var Leistung_Text = Auswahl_Leistung.value;
     console.log("Leistungtext:"+Leistung_Text)
     if(Leistung_Text == "%25"){
-        Leistung_Text="Alle Leistungen";
+        Leistung_Text="Alle Kurse";
     }
 	var daterange = document.getElementById("zeitraum").value;
 	const DateRangeArray = daterange.split("   bis   ");
@@ -73,7 +73,7 @@ function export_data_admin(){
         }
         var Leistung_Text = Auswahl_Leistung.value;
         if(Leistung_Text == "%25"){
-            Leistung_Text="Alle Leistungen";
+            Leistung_Text="Alle Kurse";
         }
         var daterange = document.getElementById("zeitraum").value;
         const DateRangeArray = daterange.split("   bis   ");
@@ -115,7 +115,7 @@ function export_data(){
     var Leistung = Auswahl_Leistung.value;
     var Leistung_Text = Auswahl_Leistung.value;
     if(Leistung_Text == "%25"){
-        Leistung_Text="Alle Leistungen";
+        Leistung_Text="Alle Kurse";
     }
 	var daterange = document.getElementById("zeitraum").value;
 	const DateRangeArray = daterange.split("   bis   ");

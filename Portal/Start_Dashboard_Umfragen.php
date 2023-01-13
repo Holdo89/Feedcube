@@ -41,7 +41,7 @@ require_once "session.php";
             <div><div style='margin-bottom:20px;'>Anzahl abgegebenes Feedback</div><div style='margin-bottom:20px; font-size:40px'>".$Feedback_abgegeben."</div></div>
             <div><div style='margin-bottom:20px;'>Letztes Feedback vor</div><div style='margin-bottom:20px; font-size:25px;'>". $diff->format("%a Tagen")."</div><div style='margin-bottom:5px;'>abgegeben am: </div><div style='margin-bottom:20px;'>".$date_last."</div></div>
             <div>
-            <div style='margin-bottom:5px;'>Leistung:</div><div style='margin-bottom:20px; font-size:18px;'>". $leistung_last."</div></div></div>";
+            <div style='margin-bottom:5px;'>Kurs:</div><div style='margin-bottom:20px; font-size:18px;'>". $leistung_last."</div></div></div>";
         }
     ?>
 

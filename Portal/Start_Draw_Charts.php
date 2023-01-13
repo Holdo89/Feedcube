@@ -20,7 +20,7 @@ function get_options(){
 
 function get_Leistungen(){
     var Leistung = Auswahl_Leistung.value;
-    console.log("Leistung:"+Leistung)
+    console.log("Kurs:"+Leistung)
     var xmlhttp_options = new XMLHttpRequest();
      xmlhttp_options.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -303,6 +303,21 @@ function update(){
     document.getElementById("loader").style.display="block"
     document.getElementById("startdashboard").style.display="none"
 	var Trainer = Auswahl_Trainer.value;
+    var Avatar = document.getElementById("avatarselect");
+    if(Trainer!="" && Trainer!="%25")
+    {
+    var xmlhttp_avatar = new XMLHttpRequest();
+     	xmlhttp_avatar.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+                Avatar.innerHTML=this.responseText;
+			}
+    	;};
+    	xmlhttp_avatar.open("GET", "showAvatarChosenTrainer.php?Trainer=" + Trainer, true);
+    	xmlhttp_avatar.send();
+    }
+    else{
+        Avatar.innerHTML="";
+    }
     var Leistung = Auswahl_Leistung.value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 	var daterange = document.getElementById("zeitraum").value;

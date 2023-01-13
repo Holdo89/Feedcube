@@ -178,6 +178,21 @@ function update(){
     var xmlhttp = new XMLHttpRequest();
     var i = true;
     var Trainer = Auswahl_Trainer.value;
+    var Avatar = document.getElementById("avatarselect");
+    if(Trainer!="" && Trainer!="%25")
+    {
+    var xmlhttp_avatar = new XMLHttpRequest();
+     	xmlhttp_avatar.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+                Avatar.innerHTML=this.responseText;
+			}
+    	;};
+    	xmlhttp_avatar.open("GET", "showAvatarChosenTrainer.php?Trainer=" + Trainer, true);
+    	xmlhttp_avatar.send();
+    }
+    else{
+        Avatar.innerHTML="";
+    }
     var Frage = Auswahl_Frage.value;
     var Leistung = Auswahl_Leistung.value;
     var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");

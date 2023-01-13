@@ -124,7 +124,7 @@
 		<h4 id="LeistungÜberschrift" style="margin-bottom:30px; text-align:left;">Leistung hinzufügen</h4> 
 		<h5>Bezeichnung:</h5>
 		<input id="neuer_Leistung" class="center_select" name="neuer_Leistung" required></input>
-		<h5>Wähle dein Fragenset zur ausgewählten Leistung:</h5>
+		<h5>Wähle dein Fragenset zur ausgewählten Kurs:</h5>
 		<div>
 		<?php
 			include "Auswahlmöglichkeiten_Fragenset.php";
@@ -220,7 +220,7 @@ if (isset($_REQUEST["Step"])) {
 		Leistung_Element.value = Leistung_ID;
 		var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
 		Auswahl_Leistung.value = "%"
-		Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für die Leistung:</div>";
+		Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für den Kurs:</div>";
 		var Link = document.getElementById("Link");
 		Link.value = "";
 		var xmlhttp = new XMLHttpRequest();

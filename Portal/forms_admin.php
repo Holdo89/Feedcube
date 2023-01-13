@@ -144,6 +144,22 @@ var action = 'inactive';
 var blog = document.getElementById("auswertungen");
 
 function update(){
+	var Trainer = Auswahl_Trainer.value;
+    var Avatar = document.getElementById("avatarselect");
+    if(Trainer!="" && Trainer!="%25")
+    {
+    var xmlhttp_avatar = new XMLHttpRequest();
+     	xmlhttp_avatar.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+                Avatar.innerHTML=this.responseText;
+			}
+    	;};
+    	xmlhttp_avatar.open("GET", "showAvatarChosenTrainer.php?Trainer=" + Trainer, true);
+    	xmlhttp_avatar.send();
+    }
+    else{
+        Avatar.innerHTML="";
+    }
 	var output = document.getElementById("demo");
 	blog.innerHTML="";
 	if(action == 'inactive')
@@ -286,7 +302,7 @@ function deleteFeedback(id){
 		}
 		var Leistung = Auswahl_Leistung.value;
 		if(Leistung=="%25"){
-			Leistung="Alle Leistungen"
+			Leistung="Alle Kurse"
 		}
 		var AuswahlZeitraum = document.getElementById("AuswahlZeitraum");
 		var daterange = document.getElementById("zeitraum").value;
@@ -304,7 +320,7 @@ function deleteFeedback(id){
 
 		var Datumvonbis = "<p id='Datumvonbis'><b>von: </b> "+datum_max+" <b>bis: </b>"+datum_min+"</p>";
 
-		var Filter = "<div style='max-width:600px; line-height:200%; font-size:18px; text-align:left; margin:auto; margin-top:70px'><p><b>Trainer:</b> "+Trainer+"</p><p><b>Leistung:</b> "+Leistung+"</p>"+Datumvonbis+"<br><br><p>erstellt am: "+Datenow+"</p><p>erstellt von: <?php echo $_SESSION["username"];?><p style='margin-top:200px; font-size:12px;'><i class='fa fa-info' aria-hidden='true'></i> Dieses Dokument beinhaltet unter Umständen nicht alle Bewertungen zu den oben genannten Angaben, da in einer Auswertung maximal "+maxnumberofexportedpages.toString()+" Seiten exportiert werden. Um ältere Bewertungen zu exportieren verwenden Sie bitte einen detailierteren Filter</p></div>";
+		var Filter = "<div style='max-width:600px; line-height:200%; font-size:18px; text-align:left; margin:auto; margin-top:70px'><p><b>Trainer:</b> "+Trainer+"</p><p><b>Kurs:</b> "+Leistung+"</p>"+Datumvonbis+"<br><br><p>erstellt am: "+Datenow+"</p><p>erstellt von: <?php echo $_SESSION["username"];?><p style='margin-top:200px; font-size:12px;'><i class='fa fa-info' aria-hidden='true'></i> Dieses Dokument beinhaltet unter Umständen nicht alle Bewertungen zu den oben genannten Angaben, da in einer Auswertung maximal "+maxnumberofexportedpages.toString()+" Seiten exportiert werden. Um ältere Bewertungen zu exportieren verwenden Sie bitte einen detailierteren Filter</p></div>";
 		var imagedata = "data:image/<?php echo $filetype ?>+xml;base64,<?php echo $imagedata ?>"; 
 		var smallimage = '<img src="' + imagedata + '"/ height="50" style="float:right; margin:15px; margin-right:25px;"><br>';
 		var largeimage = '<img src="' + imagedata + '"/ height="200" style="margin-top: 80px"><br><h1 style="margin-top:130px">Feedbackauswertung</h1>'+Filter;

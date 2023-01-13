@@ -41,17 +41,32 @@ $leistung_titel = mysqli_fetch_array($exec_test);
 	$file = scandir($dir);
 	echo $file[2];
 	?>" alt="" width="220" height="100" style='object-fit:scale-down'>
-<label align=center style="line-height:23px;">
+<label style="line-height:23px">
 <?php 
 
 if($_SESSION["Sprache"]=="Deutsch")
 {
-	$sql = "SELECT Text_vor_Abgabe FROM system";
+	$sql = "SELECT Text_vor_Abgabe, Text_before_Feedback FROM system";
 	$query = mysqli_query($link, $sql);
 	$result = mysqli_fetch_array($query);
-	echo $result["Text_vor_Abgabe"]."</label>
-	<p style='margin-top:15px;'>Trainer: <b>".$_SESSION["Trainer"]."</b></p>
-	<p>Seminar: <b>".$leistung_titel["Leistung"]."</b></p>
+	echo $result["Text_vor_Abgabe"]."</label><div style='text-align:center; margin:auto'>";
+	include "showAvatarChosenTrainer.php";
+	echo"
+	</div>
+	<table style='line-height:35px'>
+	<tr>
+    <th></th>
+    <th></th>
+  	</tr>
+	<tr>
+	<td>Trainer: </td>
+	<td><b>".$_SESSION["Trainer"]."</td>
+	</tr>
+	<tr>
+	<td>Seminar: </td>
+	<td><b>".$leistung_titel["Leistung"]."</b></td>
+	</tr>
+	</table>
 	<input class='center_button' type='submit' value='Feedback starten'>";
 }
 else if($_SESSION["Sprache"]=="Englisch")

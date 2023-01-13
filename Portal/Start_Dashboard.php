@@ -47,7 +47,7 @@ require_once "session.php";
             if ($Is_admin){
                 echo"<div style='margin-bottom:5px;'>Trainer:</div><div style='margin-bottom:15px; font-size:18px;'>". $trainer_last."</div>";
             }
-            echo"<div style='margin-bottom:5px;'>Leistung:</div><div style='margin-bottom:20px; font-size:18px;'>". $leistung_last."</div></div></div>";
+            echo"<div style='margin-bottom:5px;'>Kurs:</div><div style='margin-bottom:20px; font-size:18px;'>". $leistung_last."</div></div></div>";
         }
     ?>
 
