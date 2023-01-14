@@ -46,38 +46,25 @@ $leistung_titel = mysqli_fetch_array($exec_test);
 
 if($_SESSION["Sprache"]=="Deutsch")
 {
-	$sql = "SELECT Text_vor_Abgabe, Text_before_Feedback FROM system";
-	$query = mysqli_query($link, $sql);
-	$result = mysqli_fetch_array($query);
-	echo $result["Text_vor_Abgabe"]."</label><div style='text-align:center; margin:auto'>";
+	echo "<label>Vielen Dank für die Teilnahme am Kurs <b>".$leistung_titel["Leistung"]." </b>. 
+	Wir freuen uns über jedes Feedback, um unsere Seminare weiter zu verbessern. 
+	<div style='text-align:center; margin:auto'>";
 	include "showAvatarChosenTrainer.php";
-	echo"
-	</div>
-	<table style='line-height:35px'>
-	<tr>
-    <th></th>
-    <th></th>
-  	</tr>
-	<tr>
-	<td>Trainer: </td>
-	<td><b>".$_SESSION["Trainer"]."</td>
-	</tr>
-	<tr>
-	<td>Seminar: </td>
-	<td><b>".$leistung_titel["Leistung"]."</b></td>
-	</tr>
-	</table>
+	echo"<br>
+	Ich wünsche dir weiterhin viel Erfolg!<br>
+	Dein Trainer: <b>".$_SESSION["Trainer"]."</b>
 	<input class='center_button' type='submit' value='Feedback starten'>";
 }
 else if($_SESSION["Sprache"]=="Englisch")
 {
-	$sql = "SELECT Text_before_Feedback FROM system";
-	$query = mysqli_query($link, $sql);
-	$result = mysqli_fetch_array($query);
-	echo $result["Text_before_Feedback"]."</label>
-	<p style='margin-top:15px;'>Trainer: <b>".$_SESSION["Trainer"]."</b></p>
-	<p>Seminar: <b>".$leistung_titel["Leistung"]."</b></p>
-	<input class='center_button' type='submit' value='start feedback'>";
+	echo "<label>Thank you for your participation on the course <b>".$leistung_titel["Leistung"]." </b>. 
+	We use Feedback, to further improve the quality of our seminars. 
+	<div style='text-align:center; margin:auto'>";
+	include "showAvatarChosenTrainer.php";
+	echo"<br>
+	I wish you all the best!<br>
+	Your Trainer: <b>".$_SESSION["Trainer"]."</b>
+	<input class='center_button' type='submit' value='Start Feedback'>";
 }
 ?>
 </form>

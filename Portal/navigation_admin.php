@@ -199,7 +199,6 @@ $IsAdmin = $row["Is_Admin"];
       </button>
       <div class="dropdown-container">
         <a id ="Lookandfeel" href="Lookandfeel.php"><i class="fa-solid fa-paintbrush" aria-hidden="true"></i><span class="nav-menu-hidden">Look & Feel</span></a>
-        <a id ="VordefinierteTexte" href="VordefinierteTexte.php"><i class="fa fa-file-text-o" aria-hidden="true"></i><span class="nav-menu-hidden">Textvorlagen</span></a>	
         <a id ="Antworten" href="Antwortmoeglichkeiten.php"><i class="fa fa-check-circle" aria-hidden="true"></i><span class="nav-menu-hidden">Antworten</span></a>
       </div>';
     }?>
