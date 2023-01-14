@@ -181,6 +181,7 @@ echo "
     var i = 0;
 
     function push_all_Answers() {
+        window.scrollTo(0, 0);
         current_chapter++
 
         current_html.push(document.getElementById("body").innerHTML)

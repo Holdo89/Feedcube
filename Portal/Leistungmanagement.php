@@ -169,10 +169,6 @@
 	$exec=mysqli_query($link, $sql);
 	$result=mysqli_fetch_assoc($exec);
 	echo $result['farbe']?>">QR-Code kopieren</button>
-				<button type="button" id="QRSave" onclick="SaveQR()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; background-color:<?php $sql="SELECT farbe FROM system";
-	$exec=mysqli_query($link, $sql);
-	$result=mysqli_fetch_assoc($exec);
-	echo $result['farbe']?>">Als Bild speichern</button>
 	</div>
 			<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
 				<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system";
@@ -292,18 +288,6 @@ if (isset($_REQUEST["Step"])) {
 		});
     }
     });
-	}
-
-	function SaveQR(){
-        html2canvas($("#qrcode-2"), {
-            onrendered: function(canvas) {
-                theCanvas = canvas;
-				console.log(canvas);
-                canvas.toBlob(function(blob) {
-                    saveAs(blob,"QRCode_"+Auswahl_Leistung.value+".png"); 
-                });
-            }
-        });
 	}
 	
 	Auswahl_Sprache.onclick = function(){
