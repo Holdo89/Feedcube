@@ -72,6 +72,11 @@
   cursor: pointer;
 }
 
+.userselect{
+	display:inline-flex; 
+	width:100%;
+}
+
 .modalform{
     width:90%; 
     text-align:center;
@@ -84,6 +89,44 @@
 
 .center_button:hover .tooltiptext {
   visibility: visible;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  line-height:35px;
+  margin-left:20px;
+  top:70px;
+  position: absolute;
+}
+
+.initials-avatar.large {
+  width: 100px;
+  height: 100px;
+  font-size: 35px;
+  margin-left:20px;
+  top:70px;
+  position: absolute;
+}
+
+.Auswahl_Select{
+	width:75%;
+	margin-bottom:15px;
+}
+@media only screen and (max-width: 650px) {
+.Auswahl_Select{
+	width:100%;
+	margin-bottom:10px;
+}
+	.avatar,.initials-avatar.large {
+  top:0px;
+  position: relative;
+}
+.userselect{
+	display:block;
+}
 }
 </style>
 <link href="tooltip.css" rel="stylesheet" type="text/css">
@@ -213,10 +256,12 @@ if (isset($_REQUEST["Step"])) {
 
 	function createLink(Leistung_ID, Leistung) {
 		linkmodal.style.display = "block";
+		var Avatar = document.getElementById("avatarselect");
+		Avatar.innerHTML="";
 		Leistung_Element.value = Leistung_ID;
 		var Auswahl_Leistung = document.getElementById("Auswahl_Trainer");
 		Auswahl_Leistung.value = "%"
-		Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:20px'>Trainer für den Kurs:</div>";
+		Leistung_Element.innerHTML= "Erzeuge einen Feedback-Link für die Leistung <b>" + Leistung + "</b><div style='margin-top:20px;margin-bottom:10px'>Trainer für den Kurs:</div>";
 		var Link = document.getElementById("Link");
 		Link.value = "";
 		var xmlhttp = new XMLHttpRequest();
@@ -248,6 +293,22 @@ if (isset($_REQUEST["Step"])) {
 	function ShowLink(){
 		if(Auswahl_Leistung.value!="")
 		{
+			var Trainer = Auswahl_Leistung.value;
+		var Avatar = document.getElementById("avatarselect");
+		if(Trainer!="Keine Angaben" && Trainer!="%25")
+		{
+		var xmlhttp_avatar = new XMLHttpRequest();
+			xmlhttp_avatar.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					Avatar.innerHTML=this.responseText;
+				}
+			;};
+			xmlhttp_avatar.open("GET", "showAvatarChosenTrainer.php?Trainer=" + Trainer, true);
+			xmlhttp_avatar.send();
+		}
+		else{
+			Avatar.innerHTML="";
+		}
 			var Feedbacklink = current_url+"/Vorauswahl.php?Trainer="+Auswahl_Leistung.options[Auswahl_Leistung.selectedIndex].text+"&Sprache="+Sprache+"&Leistung="+Leistung_Element.value;
 			Feedbacklink = Feedbacklink.replaceAll(" ","%20");
 			Link.value = Feedbacklink;

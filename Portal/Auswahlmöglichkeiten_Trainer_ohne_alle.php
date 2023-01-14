@@ -24,8 +24,9 @@ if ($i<1)
 }
 else
 {
-    echo'	<select class="Auswahl_Select" id="Auswahl_Trainer" name="Auswahl_Trainer" oninput="update();">';
-    echo '<option value="Keine Angaben">Keine Angaben</option>';
+    echo'<span class="userselect">';
+    echo'<select class="Auswahl_Select" id="Auswahl_Trainer" name="Auswahl_Trainer" oninput="update();">';
+    echo'<option value="Keine Angaben">Keine Angaben</option>';
 
     $sql = "SELECT name, username, Is_Trainer FROM users WHERE Is_Trainer = 1 ORDER BY name ASC" ;
 
@@ -43,7 +44,7 @@ else
         }
 
     }
-    echo'</select>';
+    echo'</select><div id="avatarselect"></div></span>                              ';
 }	
 
 ?>
