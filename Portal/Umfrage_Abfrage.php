@@ -7,7 +7,7 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     echo "<form style='border-radius:5px 5px 0px 0px;margin-bottom:0px;'>
     <button type='button' onclick='showQuestions(".$row_Umfragen["ID"].");' id='angle_".$row_Umfragen["ID"]."' class='center_button' ><i class='fa fa-angle-right'></i></button>
     <button type='button' onclick='showQuestions(".$row_Umfragen["ID"].");' class= center_select id='Umfrage_".$row_Umfragen["ID"]."'>".$row_Umfragen["Umfrage"]."</button>
-    <button type='button' class='center_button' onclick='copyLink(".$row_Umfragen["ID"].")';\"><i class='fa fa-link'></i><span class='tooltiptext'>Link kopieren</span></button>    
+    <button type='button' class='center_button' onclick='createLink(".$row_Umfragen["ID"].")';\"><i class='fa fa-link'></i><span class='tooltiptext'>Link kopieren</span></button>    
     <button type='button' class='center_button' onclick='showUmfrage(".$row_Umfragen["ID"].")'><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>           
     <button type='button' class='center_button' onclick='user_abfrage_löschen(".$row_Umfragen["ID"].")'><i class='fa fa-trash'></i><span class='tooltiptext'>Löschen</span></button>";            
     echo'

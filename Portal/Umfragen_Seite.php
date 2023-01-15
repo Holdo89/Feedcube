@@ -18,6 +18,8 @@
 	<link href="tooltip.css" rel="stylesheet" type="text/css">
 	<link href="umfrage_optionen.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 	<?php
 	include "Umfrage_speichern.php";
 	include "Fragenset_speichern.php";
@@ -218,6 +220,33 @@
 		</form>
 	</div>
 
+	<div id="LinkModal" class="modal">
+		<form class="modalform" method="get" style="text-align:left">
+			<span class="close" onclick="hide_LinkModal()">&times;</span>
+			<div id="Umfrage_Auswahl" name="Umfrage_Auswahl"></div>
+			<br>
+			<label class="radio-inline">
+			<input style="margin-top: 8px" type="radio" id="qrvslink" name="qrvslink" value="Link" checked>Feedback-Link
+			</label>
+			<label class="radio-inline">
+			<input style="margin-top: 8px" type="radio" name="qrvslink" value="QR">QR-Code
+			</label>
+			<br><br>
+			<div id="qrcode-container" style="display:none; width:200px;">
+    		<div id="qrcode-2" class="qrcode"></div>
+			<button type="button" id="QRSave" onclick="CopyQR()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">QR-Code kopieren</button>
+	</div>
+			<input type="text" id="Link" name="Link" style="margin-top:5px; border:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
+				<button id="copyButton" onclick="copyLink()" style="margin-top:20px; padding:7px; border:none; border-radius:2px; color:white; display:none; background-color:<?php $sql="SELECT farbe FROM system";
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>">Link kopieren</button>
+		</form>
+	</div>
+
 
 	  <!-- The Modal -->
 	<div id="neueUmfrage" class="modal">
@@ -313,6 +342,72 @@
 			}
 		});
 	});
+
+	var QRAuswahl = document.getElementsByName("qrvslink")[1];
+	var LinkAuswahl = document.getElementsByName("qrvslink")[0];
+	QRAuswahl.onchange = showLink;
+	LinkAuswahl.onchange = showLink;
+
+	function createLink(Umfrage_ID) {	
+		var Umfrage = document.getElementById("Umfrage_"+Umfrage_ID).innerHTML;
+		document.getElementById("Umfrage_Auswahl").innerHTML="Kopiere den Link zur Umfrage <b>"+Umfrage+"</b> oder erstelle einen QR Code"
+		var current_url = window.location.href;
+		var index = current_url.indexOf("Portal");
+		current_url = current_url.substr(0,index)+"Umfrage";
+		document.getElementById("LinkModal").style.display = "block";
+		var Link = document.getElementById("Link");
+		var Feedbacklink = current_url+"/Vorauswahl.php?Umfrage="+Umfrage_ID;
+		Link.value = Feedbacklink;
+		copyButton.style.display = "block";
+			/*With some styles*/
+			let qrcodeContainer2 = document.getElementById("qrcode-2");
+			qrcodeContainer2.innerHTML = "";
+			new QRCode(qrcodeContainer2, {
+			text: Feedbacklink,
+			width: 200,
+			height: 200,
+			correctLevel: QRCode.CorrectLevel.H
+			});
+			document.getElementById("qrvslink").checked = true;
+
+			showLink();
+	}
+
+	function showLink(){
+		if(document.querySelector('input[name="qrvslink"]:checked').value=="Link")
+			{
+				document.getElementById("qrcode-container").style.display = "none";
+				document.getElementById("Link").style.display = "block";
+				document.getElementById("copyButton").style.display = "block";
+
+			}
+			else{
+			document.getElementById("qrcode-container").style.display = "block";
+			document.getElementById("Link").style.display = "none";
+			document.getElementById("copyButton").style.display = "none";
+			}
+	}
+	function copyLink() {
+		var copyLink = document.getElementById("Link");
+		copyLink.select();
+		copyLink.setSelectionRange(0, 99999);
+		document.execCommand("copy");
+        alert("Der Link wurde erfolgreich in die Zwischenablage kopiert");
+	}
+
+	function CopyQR(){
+        html2canvas($("#qrcode-2"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+				console.log(canvas);
+				canvas.toBlob(function(blob) { 
+    const item = new ClipboardItem({ "image/png": blob });
+    navigator.clipboard.write([item]); 
+	alert("QR-Code wurde als Bild in die Zwischenablage kopiert")
+		});
+    }
+    });
+	}
 
 	function disablecustomintervall(){
 		var customInterval = document.getElementById("quantity");
@@ -773,7 +868,7 @@
 
 	function showUmfrage(id){
 		document.getElementById("ÜberschriftUmfrage").innerHTML = "Umfrage bearbeiten";
-		resetRadio();
+		//resetRadio();
 		neueUmfragemodal.style.display="block";
 		neueUmfragemodalform.action = "update_Umfrage.php?Id="+id;
 		getUmfrageBeschreibung(id);
@@ -1046,6 +1141,11 @@
 	function hide_newUmfragemodal()
 	{
 		neueUmfragemodal.style.display = "none";
+	}
+
+	function hide_LinkModal()
+	{
+		document.getElementById("LinkModal").style.display = "none";
 	}
 
 	window.onclick = function(event) {
