@@ -21,7 +21,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-	<script src="FileSaver.js"></script>
+	<script src="FileSaver.js?v=1"></script>
 
 
 	<?php
@@ -136,7 +136,7 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
     <div class="header">
 	<?php
 	include "navigation_admin.php";		//Pie and COlumnchart
@@ -221,7 +221,7 @@
 		</form>
 	</div>
 
-    <script src="Leistungsjs.js" type="text/javascript"></script>
+    <script src="Leistungsjs.js?v=1" type="text/javascript"></script>
 	<?php
     include "Tutorial_Schritt5_Info.php";
 if (isset($_REQUEST["Step"])) {
@@ -241,7 +241,7 @@ if (isset($_REQUEST["Step"])) {
 }
 ?>
     <link href="Tutorialstyle.css?v=1" rel="stylesheet" type="text/css">
-    <script src="Cookiefunctions.js" type="text/javascript"></script>
+    <script src="Cookiefunctions.js?v=1" type="text/javascript"></script>
 
     <script>
 		var span = document.getElementsByClassName("close")[1];

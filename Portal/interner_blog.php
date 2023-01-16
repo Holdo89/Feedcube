@@ -14,7 +14,7 @@
 	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
 	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
 	<link href="interner_blog.css?v=1" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="hidefunction.js"></script>
+	<script type="text/javascript" src="hidefunction.js?v=1"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 				include "intern_Draw_Charts.php";		//Pie and COlumnchart
@@ -72,7 +72,7 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
     <div class="header">
 	<?php
 	include "navigation_admin.php";		//Pie and COlumnchart

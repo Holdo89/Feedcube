@@ -89,7 +89,7 @@ include "Tutorial_Schritt3_Info.php";
 
 ?>
     <link href="Tutorialstyle.css?v=1" rel="stylesheet" type="text/css">
-    <script src="Cookiefunctions.js" type="text/javascript"></script>
+    <script src="Cookiefunctions.js?v=1" type="text/javascript"></script>
 
     <script>
         checkCookie("FragenInformationChecked", "FragenInfo_Modal")

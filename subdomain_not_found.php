@@ -33,7 +33,7 @@
     
     <link href="signin.css?v=1" rel="stylesheet">
     <link rel="manifest" href="../manifest.webmanifest">
-    <script src="../index.js" type="module"></script>
+    <script src="../index.js?v=1" type="module"></script>
   </head>
 
 <body class="text-center">

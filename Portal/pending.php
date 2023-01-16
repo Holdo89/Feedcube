@@ -29,7 +29,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
 	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
 	<link href="slider-range.css?v=1" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="hidefunction.js"></script>
+	<script type="text/javascript" src="hidefunction.js?v=1"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 
@@ -43,7 +43,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
 
 
 <div class="header">

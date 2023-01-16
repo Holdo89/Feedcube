@@ -20,7 +20,7 @@
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
 	<link href="charts2.css?v=1" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="hidefunction.js"></script>
+	<script type="text/javascript" src="hidefunction.js?v=1"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
@@ -31,8 +31,8 @@
         include "Draw_Charts.php";		//Pie and COlumnchart
  		include "Draw_Trend_Chart.php";
  	?>	
-  <script type = "text/javascript" src="export_delete_data.js"></script>
-  <script type="text/javascript" src="rangeslider_jquery.js"> </script>
+  <script type = "text/javascript" src="export_delete_data.js?v=1"></script>
+  <script type="text/javascript" src="rangeslider_jquery.js?v=1"> </script>
 
 </head>
 <style>
@@ -44,7 +44,7 @@
 
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
 <div class="header">
 <?php
 	include "navigation_admin.php";

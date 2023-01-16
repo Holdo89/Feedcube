@@ -130,9 +130,9 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-<script src="touchjquery.js"></script>
+<script src="touchjquery.js?v=1"></script>
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
     <div class="header">
 	<?php
 	include "navigation_admin.php";
@@ -1161,6 +1161,6 @@
 		location.reload();}
 	;}
 	</script>
-    <script src="Umfragenjs.js" type="text/javascript"></script>
+    <script src="Umfragenjs.js?v=1" type="text/javascript"></script>
     </body>
 </html>

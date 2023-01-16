@@ -27,7 +27,7 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
     <div class="header">
 	<?php
 	include "navigation_admin.php";

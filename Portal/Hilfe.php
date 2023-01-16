@@ -31,7 +31,7 @@
 
 	<link href="slider-range.css?v=1" rel="stylesheet" type="text/css">
 
-	<script type="text/javascript" src="hidefunction.js"></script>
+	<script type="text/javascript" src="hidefunction.js?v=1"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 

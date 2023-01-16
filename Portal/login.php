@@ -121,7 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$file = scandir($dir);
 	echo $file[2];
 	?>'">
-    <script type = "text/javascript" src="app.js"></script>
+    <script type = "text/javascript" src="app.js?v=1"></script>
 
     <form class="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" style="padding:40px;">
     <img class="mb-4" src="../assets/brand/FEEDCUBE_logo_login.png" alt="" height="80" style='object-fit:scale-down'>

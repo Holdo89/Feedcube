@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css?v=1" />
 
-	<script src="FileSaver.js"></script>
+	<script src="FileSaver.js?v=1"></script>
 	<?php
      include "User_speichern.php"
  ?>
@@ -113,7 +113,7 @@ a:hover .tooltiptext {
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js"></script>	
+<script type="text/javascript" src="navigation.js?v=1"></script>	
 <div class="header">
 	<?php
  include "navigation_admin.php";
@@ -672,7 +672,7 @@ a:hover .tooltiptext {
  }
  ?>
     <link href="Tutorialstyle.css?v=1" rel="stylesheet" type="text/css">
-    <script src="Cookiefunctions.js" type="text/javascript"></script>
+    <script src="Cookiefunctions.js?v=1" type="text/javascript"></script>
 
     <script>
 				checkCookie("UserInformationChecked", "UserInfo_Modal")
