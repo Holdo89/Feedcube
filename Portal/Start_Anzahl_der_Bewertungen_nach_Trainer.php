@@ -10,7 +10,7 @@ include "IsAdmincheck.php";
  echo"Test,";
 
  if($Trainer !="undefined"){
-	$query = "SELECT * FROM users WHERE username LIKE '".$Trainer."' ORDER BY name";
+	$query = "SELECT * FROM users WHERE username LIKE '".$Trainer."' AND Is_Trainer = 1 ORDER BY name";
 	$exec = mysqli_query($link,$query);
 	while($row = mysqli_fetch_array($exec))
 	{
