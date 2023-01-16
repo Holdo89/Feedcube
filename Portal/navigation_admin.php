@@ -8,7 +8,7 @@ $row = mysqli_fetch_assoc($exec);
 $UserWantsNotification = $row["Notification"];
 $IsAdmin = $row["Is_Admin"];
 ?>
-<link href="tooltip.css" rel="stylesheet" type="text/css">
+<link href="tooltip.css?v=1" rel="stylesheet" type="text/css">
 <style>
     a:hover .tooltiptext {
   visibility: visible;

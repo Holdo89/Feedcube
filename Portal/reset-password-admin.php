@@ -179,7 +179,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- Bootstrap core CSS -->
 
-<link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.css?v=1" rel="stylesheet">
 
 
 
@@ -217,7 +217,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!-- Custom styles for this template -->
 
-    <link href="signin.css" rel="stylesheet">
+    <link href="signin.css?v=1" rel="stylesheet">
 
   </head>
 

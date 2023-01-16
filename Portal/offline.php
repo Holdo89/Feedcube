@@ -10,7 +10,7 @@
 ?>
 
 <head>
-<link href="charts2.css" rel="stylesheet" type="text/css">
+<link href="charts2.css?v=1" rel="stylesheet" type="text/css">
     <title>Feedcube Offlinemessage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

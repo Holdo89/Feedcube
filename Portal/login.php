@@ -110,10 +110,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.css?v=1" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="signin.css?v=1" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
   </head>
 <body class="text-center" style="background-image:url('../assets/<?php echo $subdomain ?>/bg_loginfb/<?php

@@ -19,7 +19,7 @@ $file = scandir($dir);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Feedback abgeben</title>
 </head>
-<link href = "css/fancy.css" type = "text/css" rel = "stylesheet" /> 
+<link href = "css/fancy.css?v=1" type = "text/css" rel = "stylesheet" /> 
 <body id ='body' style= "background-image: url('../assets/<?php echo $subdomain ?>/bg_givefb/<?php $dir = "../assets/".$subdomain."/bg_givefb/";$file_background = scandir($dir);echo $file_background[2];?>');">
 <form id='Frage_form' style='margin:30px;min-height:600px;'>
 </form>

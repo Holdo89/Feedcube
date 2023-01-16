@@ -23,7 +23,7 @@
 
     <!-- Bootstrap core CSS -->
 
-<link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.css?v=1" rel="stylesheet">
 
 
 
@@ -59,7 +59,7 @@
 
     </style>
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="signin.css?v=1" rel="stylesheet">
   </head>
 
 <body class="text-center">

@@ -94,7 +94,7 @@ if (isset($_REQUEST["Step"])) {
 include "Tutorial_Schritt7_Info.php";
 
 ?>
-    <link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+    <link href="Tutorialstyle.css?v=1" rel="stylesheet" type="text/css">
     <script src="Cookiefunctions.js" type="text/javascript"></script>
 
     <script>

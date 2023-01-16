@@ -13,11 +13,11 @@
 <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Umfragen</title>
-	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
-	<link href="tooltip.css" rel="stylesheet" type="text/css">
-	<link href="umfrage_optionen.css" rel="stylesheet" type="text/css">
+	<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?v=1">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
+	<link href="Umfragen_Fragen.css?v=1" rel="stylesheet" type="text/css">
+	<link href="tooltip.css?v=1" rel="stylesheet" type="text/css">
+	<link href="umfrage_optionen.css?v=1" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <style>
 .radio-inline, .checkbox-inline{

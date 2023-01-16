@@ -29,7 +29,7 @@ function questions_Umfrage($Fragentyp, $link, $Umfrage, $datum_min, $datum_max)
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
            <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
            <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css?v=1" />  
       </head> 
 	  <p style="margin:auto; font-size:16px; margin-top:20px;">'.$Fragentyp.'</p>
  

@@ -8,16 +8,16 @@
 <?php
  require_once "FEEDCUBE_icon.php"
 ?><head>
-<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css?v=1" rel="stylesheet" type="text/css" />
 <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feedback Auswertung</title>
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="system_optionen.css" rel="stylesheet" type="text/css">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
+	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
+	<link href="system_optionen.css?v=1" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Leistung_speichern.php";
@@ -26,7 +26,7 @@
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-<link href="navigation.css" rel="stylesheet" type="text/css">
+<link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
 	<?php

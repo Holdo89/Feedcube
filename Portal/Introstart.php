@@ -233,7 +233,7 @@
     }
     </style>
 
-    <link href="charts2.css" rel="stylesheet" type="text/css">
+    <link href="charts2.css?v=1" rel="stylesheet" type="text/css">
 
     <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 

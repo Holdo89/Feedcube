@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fragen</title>
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="Umfragen_Fragen.css" rel="stylesheet" type="text/css">
-	<link href="tooltip.css" rel="stylesheet" type="text/css">
-	<link href="Fragen.css" rel="stylesheet" type="text/css">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
+	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
+	<link href="Umfragen_Fragen.css?v=1" rel="stylesheet" type="text/css">
+	<link href="tooltip.css?v=1" rel="stylesheet" type="text/css">
+	<link href="Fragen.css?v=1" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
     include "Frage_speichern.php";
@@ -21,7 +21,7 @@
 	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
-	<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"/>
+	<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css?v=1"/>
 
 </head>
 
@@ -162,7 +162,7 @@
 <body class="text-center" onload=SortiereFragen()>
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-<link href="navigation.css" rel="stylesheet" type="text/css">
+<link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">

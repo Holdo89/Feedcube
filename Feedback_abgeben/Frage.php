@@ -27,8 +27,8 @@ if(isset($_COOKIE["feedback_abgegeben"])) {
 	echo $file[2];
 	?>');">
 
-<link href="css/fancy.css" rel="stylesheet" type="text/css">
-<link href="../Portal/slider-range.css" rel="stylesheet" type="text/css">
+<link href="css/fancy.css?v=1" rel="stylesheet" type="text/css">
+<link href="../Portal/slider-range.css?v=1" rel="stylesheet" type="text/css">
 <input id="Bewertungzahl" style="display:none" value=0></input>
 <input id="Multiplechoicezahl" style="display:none" value=0></input>
 <input id="Schiebereglerzahl" style="display:none" value=1></input>

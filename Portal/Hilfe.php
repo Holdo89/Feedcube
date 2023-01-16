@@ -21,15 +21,15 @@
 
 	<title>Feedback Auswertung</title>
 
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css?v=1">
 
 	<link rel="icon" href="../assets/brand/FEEDCUBE_icon.png" type="image/gif">
 
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
 
-	<link href="charts.css" rel="stylesheet" type="text/css">
+	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
 
-	<link href="slider-range.css" rel="stylesheet" type="text/css">
+	<link href="slider-range.css?v=1" rel="stylesheet" type="text/css">
 
 	<script type="text/javascript" src="hidefunction.js"></script>
 
@@ -63,7 +63,7 @@
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-<link href="navigation.css" rel="stylesheet" type="text/css">
+<link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="navigation.js"></script>
 

@@ -12,9 +12,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Formulare</title>
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="forms.css" rel="stylesheet" type="text/css">
-	<link href="charts2.css" rel="stylesheet" type="text/css">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
+	<link href="forms.css?v=1" rel="stylesheet" type="text/css">
+	<link href="charts2.css?v=1" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type = "text/javascript" src="export_delete_data.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -95,7 +95,7 @@
 
 <body class="text-center" onload="update()">
 	<script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-	<link href="navigation.css" rel="stylesheet" type="text/css">
+	<link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="navigation.js"></script>
 
 	<div class="header">

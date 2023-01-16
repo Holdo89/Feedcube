@@ -31,7 +31,7 @@ include "../config.php";
 	$file = scandir($dir);
 	echo $file[2];
 	?>');">
-<link href="css/fancy_auswahl.css" rel="stylesheet" type="text/css">
+<link href="css/fancy_auswahl.css?v=1" rel="stylesheet" type="text/css">
 
 <input type="text" id="Link" name="Link" style="margin-top:5px; display:none; width:95%; background-color:rgba(0,0,0,0.03);" readonly="true"></input>
 

@@ -3,7 +3,7 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css?v=1 v3.0.3 | MIT License | github.com/necolas/normalize.css?v=1 */
 html {
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
@@ -187,7 +187,7 @@ html {
   th {
     padding: 0;
   }
-  /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+  /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css?v=1 */
   @media print {
     *,
     *:before,
@@ -6739,4 +6739,4 @@ html {
       display: none !important;
     }
   }
-  /*# sourceMappingURL=bootstrap.css.map */
+  /*# sourceMappingURL=bootstrap.css?v=1.map */

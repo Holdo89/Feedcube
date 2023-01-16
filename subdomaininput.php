@@ -19,7 +19,7 @@
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/dist/css/bootstrap.css?v=1" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -37,7 +37,7 @@
     </style>
     <!-- Custom styles for this template -->
     
-    <link href="Portal/signin.css" rel="stylesheet">
+    <link href="Portal/signin.css?v=1" rel="stylesheet">
     <link rel="manifest" href="manifest.webmanifest">
     <script src="index.js" type="module"></script>
   </head>

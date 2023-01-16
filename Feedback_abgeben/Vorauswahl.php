@@ -34,7 +34,7 @@ $leistung_titel = mysqli_fetch_array($exec_test);
 	$file = scandir($dir);
 	echo $file[2];
 	?>');">
-<link href="css/fancy_auswahl.css" rel="stylesheet" type="text/css">
+<link href="css/fancy_auswahl.css?v=1" rel="stylesheet" type="text/css">
 <form action="Frage.php" method="post">
 <img class="center" src="../assets/<?php echo $subdomain ?>/logo/<?php
 	$dir = "../assets/".$subdomain."/logo/";

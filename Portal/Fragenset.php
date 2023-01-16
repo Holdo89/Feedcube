@@ -14,10 +14,10 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fragensets</title>
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="tooltip.css" rel="stylesheet" type="text/css">
-	<link href="leistung_optionen.css" rel="stylesheet" type="text/css">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
+	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
+	<link href="tooltip.css?v=1" rel="stylesheet" type="text/css">
+	<link href="leistung_optionen.css?v=1" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Leistung_speichern.php";
@@ -85,7 +85,7 @@
 <body class="text-center">
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
-<link href="navigation.css" rel="stylesheet" type="text/css">
+<link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
 	<?php
@@ -168,7 +168,7 @@
 		$Step=$_REQUEST["Step"];
 	}
 	?>
-		<link href="Tutorialstyle.css" rel="stylesheet" type="text/css">
+		<link href="Tutorialstyle.css?v=1" rel="stylesheet" type="text/css">
 		<script src="Cookiefunctions.js" type="text/javascript"></script>
 
 		<script>

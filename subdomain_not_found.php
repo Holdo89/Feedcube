@@ -12,7 +12,7 @@
     <title>Subdomainfehler</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
     <!-- Bootstrap core CSS -->
-    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/dist/css/bootstrap.css?v=1" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -31,7 +31,7 @@
     </style>
     <!-- Custom styles for this template -->
     
-    <link href="signin.css" rel="stylesheet">
+    <link href="signin.css?v=1" rel="stylesheet">
     <link rel="manifest" href="../manifest.webmanifest">
     <script src="../index.js" type="module"></script>
   </head>

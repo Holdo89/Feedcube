@@ -25,10 +25,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 	<title>Feedback Auswertung</title>
 
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="charts.css" rel="stylesheet" type="text/css">
-	<link href="slider-range.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css?v=1">
+	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
+	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
+	<link href="slider-range.css?v=1" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="hidefunction.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
@@ -41,7 +41,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 
-<link href="navigation.css" rel="stylesheet" type="text/css">
+<link href="navigation.css?v=1" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="navigation.js"></script>	
 
