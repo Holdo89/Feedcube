@@ -26,7 +26,7 @@ if(isset($_REQUEST["Step"]))
                      <table id="employee_data" class="table table-striped table-bordered">  
                           <thead>  
                                <tr>  
-                                    <td>Leistung</td>   
+                                    <td>Kurse</td>   
                                     <td></td>
                                </tr>  
                           </thead>  

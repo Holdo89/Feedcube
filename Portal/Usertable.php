@@ -1,6 +1,13 @@
 <?php  
     require_once "../config.php";
     require_once "session.php";
+
+    $sql_admins = "SELECT COUNT(ID) FROM users WHERE Is_Admin = 1 ORDER BY name"; 
+    $result_admins = mysqli_query($link, $sql_admins);
+    $row_admins = mysqli_fetch_array($result_admins);
+    $AnzahlAdmins = $row_admins["COUNT(ID)"];
+
+
     $sql = "SELECT * FROM users ORDER BY name"; 
     $result = mysqli_query($link, $sql);
     $passwort_reset_text="this.innerHTML = Passwort reset";
@@ -114,8 +121,11 @@ return $colors[$unique % count($colors)];
                                     echo'<label class="überschrift" style="text-align:center;"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i><span class="tooltiptext">Trainer</span></label>';
                                 }
                                 echo"</td>";
-                                echo'<td><label class="überschrift" onclick = "setVisibility('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fa fa-pencil" aria-hidden="true"></i><span class="tooltiptext">Bearbeiten</span></label><label class="überschrift" onclick="display(\''.$row["name"].'\')"><i class="fa fa-link"></i><span class="tooltiptext">Link erstellen</span></label><label class="überschrift" onclick="showPasswordModal('.$row["id"].')"><i class="fa fa-lock"></i><span class="tooltiptext">Passwort ändern</span></label><label class="überschrift" onclick="user_abfrage_löschen('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fas fa-trash" aria-hidden="true"></i><span class="tooltiptext">Löschen</span></label></td>';
-                                echo"</tr>";  
+                                echo'<td><label class="überschrift" onclick = "setVisibility('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fa fa-pencil" aria-hidden="true"></i><span class="tooltiptext">Bearbeiten</span></label><label class="überschrift" onclick="display(\''.$row["name"].'\')"><i class="fa fa-link"></i><span class="tooltiptext">Link erstellen</span></label><label class="überschrift" onclick="showPasswordModal('.$row["id"].')"><i class="fa fa-lock"></i><span class="tooltiptext">Passwort ändern</span></label>';
+                              if ($AnzahlAdmins>1 or $row["Is_Admin"]==0) {
+                              echo'<label class="überschrift" onclick="user_abfrage_löschen('.$row["id"].')" style="text-align:center;margin-right:10px;"><i class="fas fa-trash" aria-hidden="true"></i><span class="tooltiptext">Löschen</span></label>';
+                              }
+                                   echo"</td></tr>";  
                           }  
                           ?>  
                      </table>  

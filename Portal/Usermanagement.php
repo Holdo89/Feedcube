@@ -428,7 +428,6 @@ a:hover .tooltiptext {
         else{
             checkTrainer = 0
         }
-        console.log("UpdateUserDetails.php?fullname="+Name+"&username="+Username+"&email="+Email+"&Exists="+Id+"&checkAdmin="+checkAdmin+"&checkTrainer="+checkTrainer);
 
 		var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -592,10 +591,26 @@ a:hover .tooltiptext {
             document.getElementById("current_id").value=id;
             if(document.getElementById("berechtigung_"+id).innerHTML.indexOf("Administrator")!=-1)
             {
-                document.getElementById("checkAdminExist").checked = true;
+				document.getElementById("checkAdminExist").checked = true;
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if(this.responseText=="1")
+						{
+							document.getElementById("checkAdminExist").checked = true;
+							document.getElementById('checkAdminExist').disabled = true;
+						}
+						else{
+							document.getElementById('checkAdminExist').disabled = false;
+						}
+							}
+						;};
+				xmlhttp.open("POST", "getAnzahlAdmins.php", true);	
+				xmlhttp.send();
             }
             else{
                 document.getElementById("checkAdminExist").checked = false;
+				document.getElementById('checkAdminExist').disabled = false;
             }
             ;
             if(document.getElementById("berechtigung_"+id).innerHTML.indexOf("Trainer")!=-1)
