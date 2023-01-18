@@ -39,7 +39,7 @@ else
         else{
             if($_SESSION["username"]==$row['username'])
             {
-                echo "<option value='".$row['username']."'>".$row['name']."</option>";
+                echo "<option value='".$row['username']."' selected>".$row['name']."</option>";
             }
         }
 
