@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css?v=1" />  
 	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
 	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
-	<link href="User_optionen.css?v=1" rel="stylesheet" type="text/css">
+	<link href="User_optionen.css?v=2" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>

@@ -66,10 +66,12 @@ label, input, textarea {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  cursor:pointer;
 }
 
 
 .initials-avatar {
+  cursor:pointer;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -84,6 +86,7 @@ label, input, textarea {
   width: 40px;
   height: 40px;
   font-size: 15px;
+  cursor:pointer;
 }
 
 

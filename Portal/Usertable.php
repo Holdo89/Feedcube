@@ -101,12 +101,12 @@ return $colors[$unique % count($colors)];
                               $image_src = $row_avatar['Avatar'];
 
                               if ($image_src!="") {
-                              echo "<img src='".$image_src."' class='avatar' alt='Avatar' style='background-color:grey; object-fit:cover'/>";
+                              echo "<img src='".$image_src."' class='avatar' onclick='showAvatarModal(\"".$row["username"]."\")' alt='Avatar' style='background-color:grey; object-fit:cover'/>";
                               }
                               else{
                               $Color=getColor($row["name"]);
                               $Initials = getCapitals($row["name"]);	
-                                   echo'<div class="initials-avatar large" style="background: '.$Color.';">'.$Initials.'</div>';
+                                   echo'<div class="initials-avatar large" onclick="showAvatarModal(\''.$row["username"].'\')" style="background: '.$Color.';">'.$Initials.'</div>';
                               }                         
                                
                                echo"</td>  

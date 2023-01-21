@@ -2,6 +2,37 @@
  require_once "../config.php";
  require_once "session.php";
  include "RedirectToStart.php";
+
+ if(isset($_POST['but_upload'])){
+	 
+	 $name = $_FILES['file']['name'];
+	 $target_dir = "../assets/".$subdomain."/";
+	 $target_file = $target_dir . basename($_FILES["file"]["name"]);
+ 
+	 // Select file type
+	 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+ 
+	 // Valid file extensions
+	 $extensions_arr = array("jpg","jpeg","png","gif");
+ 
+	 // Check extension
+	 if( in_array($imageFileType,$extensions_arr) ){
+		  // Upload file
+		  if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name)){
+				// Convert to base64 
+				$image_base64 = base64_encode(file_get_contents($target_dir.$name) );
+				$image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+ 
+				// Insert record
+				$query = "UPDATE users SET Avatar = '".$image."' WHERE username ='".$_REQUEST["chosenUsername"]."'";
+				mysqli_query($link,$query);
+				unlink($target_dir.$name);
+		  }
+	 
+	 }
+  
+ }
+
  ?>
 <!DOCTYPE HTML>
 <html>
@@ -15,7 +46,7 @@
 	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
     <link href="tooltip.css?v=1" rel="stylesheet" type="text/css">
 	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
-	<link href="User_optionen.css?v=1" rel="stylesheet" type="text/css">
+	<link href="User_optionen.css?v=2" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
@@ -281,6 +312,20 @@ a:hover .tooltiptext {
     </form>
     </div>
 
+	  <!-- The Modal -->
+	  <div id="AvatarModal" class="modal">
+	  <form id="submitform" method="post"class="form-signin" style="display:block; padding:40px; max-width:700px; text-align:center; margin:auto" action="" enctype='multipart/form-data'>
+	  <span class="close">&times;</span>
+	  <div id="avatarform" style="text-align:center; margin:auto"></div>
+	<input id="chosenUsername" name="chosenUsername" value="" style="visibility:hidden; height:0px"></input>
+    <input type='file' name='file' id='file' accept="image/*" class="hidden"  onchange="readURL(this);"/><br>
+	<label for="file" style="cursor:pointer">Profilbild wählen</label>/
+	<label onclick="showInitialen()" style="cursor:pointer">Initialen verwenden</label><br>
+    <input type='submit' value='Speichern' name='but_upload' class="btn fa-input" style="font-size: 14px; color:white; min-width:180px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>">
+</form>
+
+    </div>
+
 	<script>
 	try{
 	    error();
@@ -293,10 +338,12 @@ a:hover .tooltiptext {
     var closenewusermodal = document.getElementsByClassName("close")[1];
     var closeexistingusermodal = document.getElementsByClassName("close")[2];
     var closepasswordmodal = document.getElementsByClassName("close")[3];
+    var closeavatarmodal = document.getElementsByClassName("close")[4];
 	var modal = document.getElementById("myModal");
 	var newUserModal = document.getElementById("newUserModal");
 	var existingUserModal = document.getElementById("existingUserModal");
 	var PasswordModal = document.getElementById("PasswordModal");
+	var AvatarModal = document.getElementById("AvatarModal");
     let qrcodeContainer = document.getElementById("qrcode-2");
     span.onclick = function() {
         modal.style.display = "none";
@@ -311,6 +358,9 @@ a:hover .tooltiptext {
 	}
     closepasswordmodal.onclick = function() {
         PasswordModal.style.display = "none";
+	}    
+	closeavatarmodal.onclick = function() {
+        AvatarModal.style.display = "none";
 	}
 	var Trainer_element = document.getElementById("Trainer_Auswahl");
 	function display(Trainer) {
@@ -634,10 +684,33 @@ a:hover .tooltiptext {
 	}
 }
 
-    function showPasswordModal(id) {
+function showPasswordModal(id) {
         var PasswordModal = document.getElementById("PasswordModal");
 		PasswordModal.style.display = "block";
         document.getElementById("current_id").value=id;
+	}	
+
+function showAvatarModal(username) {
+        var AvatarModal = document.getElementById("AvatarModal");
+		var AvatarForm = document.getElementById("avatarform");
+		document.getElementById("chosenUsername").value=username;
+
+		AvatarModal.style.display = "block";
+		var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+					AvatarForm.innerHTML=this.responseText;
+					$('#avatar')
+			.width(150)
+			.height(150);
+			document.getElementById("avatar_initials").style.fontSize="40px"
+			$('#avatar_initials')
+			.width(150)
+			.height(150)
+                }
+            ;};
+            xmlhttp.open("GET", "showAvatarChosenTrainer.php?Trainer=" + username, false);	
+            xmlhttp.send();
 	}	
 
 	togglePasswordVisibility('#toggleNeuesPasswort', '#password');
@@ -708,6 +781,33 @@ a:hover .tooltiptext {
             document.getElementById("UserInfo_Modal").style.display="none"
         }
 
+		function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#avatar')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(150);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+				document.getElementById("avatar").style.display="inline-flex"
+				document.getElementById("avatar_initials").style.display="none"
+				document.getElementById("submitform").action="";
+            }
+        }
+	
+	function showInitialen(){
+		document.getElementById("avatar").style.display="none"
+		document.getElementById("avatar_initials").style.display="inline-flex"
+		document.getElementById("avatar_initials").style.fontSize="40px"
+		document.getElementById("submitform").action="deleteAvatar.php";
+		$('#avatar_initials')
+			.width(150)
+			.height(150)
+	}
     </script>
 
     </body>

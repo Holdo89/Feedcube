@@ -37,7 +37,7 @@ $Email = $row["email"];
  <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <script src="https://kit.fontawesome.com/9059ff5bc6.js" crossorigin="anonymous"></script>
 <link href="navigation.css?v=1" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="navigation.js?v=1"></script>	
+<script type="text/javascript" src="navigation.js"></script>	
     <div class="header">
 	<?php
 	include "navigation_admin.php";
@@ -114,8 +114,6 @@ $Email = $row["email"];
 <div id="avatarform">
 <?php
 
-include "showAvatarCurrentUser.php";
-
 if(isset($_POST['but_upload'])){
  
     $name = $_FILES['file']['name'];
@@ -145,6 +143,7 @@ if(isset($_POST['but_upload'])){
     }
  
 }
+include "showAvatarCurrentUser.php";
 ?></div>
     <input type='file' name='file' id='file' accept="image/*" class="hidden"  onchange="readURL(this);"/><br>
 	<label for="file" style="cursor:pointer">Profilbild wählen</label>/
