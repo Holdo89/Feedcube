@@ -116,8 +116,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link href="signin.css?v=1" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
   </head>
-<body class="text-center" style="background-image:url('../assets/<?php echo $subdomain ?>/bg_loginfb/<?php
-	$dir = "../assets/".$subdomain."/bg_loginfb/";
+<body class="text-center" style="background-image:url('../assets/<?php echo $subdomain ?>/bg_givefb/<?php
+	$dir = "../assets/".$subdomain."/bg_givefb/";
 	$file = scandir($dir);
 	echo $file[2];
 	?>'">

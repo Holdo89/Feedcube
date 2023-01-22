@@ -118,9 +118,8 @@ form {
   box-shadow: 1rem 1rem 1rem -0.75rem var(--border);
   position: relative;
   overflow: hidden;
-  width: 80vw;
-  max-width:1000px;
-  margin:auto;
+  width: 30%;
+  min-width:360px;
 }
 
 

@@ -17,7 +17,7 @@
     <title>Feedback Auswertung</title>
 	<link href="bootstrap.css?v=1" rel="stylesheet" type="text/css">
 	<link href="charts.css?v=1" rel="stylesheet" type="text/css">
-	<link href="system_optionen.css?v=1" rel="stylesheet" type="text/css">
+	<link href="system_optionen.css?v=3" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<?php
 	include "Leistung_speichern.php";
@@ -89,46 +89,7 @@
 	$host = explode('.', $url);
 	$subdomain = $host[0];
 	?>
-
-	<label>Farbschema:</label>
-	<input type="color" id="favcolor" name="favcolor" value="<?php $sql="SELECT farbe FROM system"; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" style="margin:12px; padding:2px; width:90px; height:30px;"></input>
-	
-	<label> Logo Feedback abgeben:</label>
-	<div>
-	<input type="file" id="logo" name="logo" accept="image/png,image/gif,image/jpeg" onchange="readURL(this,'#logo_view');"></input>
-	<img id="logo_view" src="../assets/<?php echo $subdomain ?>/logo/<?php
-	$dir = "../assets/".$subdomain."/logo/";
-	$file = scandir($dir);
-	echo $file[2]; //notwendig weil 0=.und 1=..
-	?>" alt="your image" width="200px" />
-	</div>
-
-	<label>Hintergrund Feedback abgeben:</label>
-	<div>
-	<input type="file" id="bgimage" name="bgimage" accept="image/png,image/gif,image/jpeg" onchange="readURL(this,'#bgimage_view');"></input>
-	<img id="bgimage_view" src="../assets/<?php echo $subdomain ?>/bg_givefb/<?php
-	$dir = "../assets/".$subdomain."/bg_givefb/";
-	$file = scandir($dir);
-	echo $file[2];
-	?>" alt="your image" width="200px" />
-	</div>
-	
-	<label>Hintergrund Feedcube login:</label>
-	<div>
-	<input type="file" id="bgimage2" name="bgimage2" accept="image/png,image/gif,image/jpeg" onchange="readURL(this,'#bgimage_view2');"></input>
-	<img id="bgimage_view2" src="../assets/<?php echo $subdomain ?>/bg_loginfb/<?php
-	$dir = "../assets/".$subdomain."/bg_loginfb/";
-	$file = scandir($dir);
-	echo $file[2];
-?>" alt="your image" width="200px" />
-	</div>
-    <p></p>
-	<button class="btn fa-input" type="submit" name = "Submit" style="margin-top:30px; margin-bottom:30px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"><i class="fa fa-save"></i> speichern</button>
-	</form>
-	</div>
-    </body>
-</html>
-<?php
+    <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     function delete_files($directory)
     {
@@ -193,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subdomain = $host[0];
 	$logo_dir = "../assets/".$subdomain."/logo/";
 	$bg_givefb_dir = "../assets/".$subdomain."/bg_givefb/";
-	$bg_loginfb_dir = "../assets/".$subdomain."/bg_loginfb/";
+	$bg_givefb_dir = "../assets/".$subdomain."/bg_givefb/";
 
 	function upload_file($filename, $filename_new, &$uploadOk)
     {
@@ -203,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$subdomain = $host[0];
 		$logo_dir = "../assets/".$subdomain."/logo/";
 		$bg_givefb_dir = "../assets/".$subdomain."/bg_givefb/";
-		$bg_loginfb_dir = "../assets/".$subdomain."/bg_loginfb/";
+		$bg_givefb_dir = "../assets/".$subdomain."/bg_givefb/";
 	
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
@@ -230,34 +191,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bggivefb_file = $bg_givefb_dir .$file[2];
     }
 
-    if ($_FILES["bgimage2"]["name"]!="") {
-        $bgloginfb_file = $bg_loginfb_dir . basename($_FILES["bgimage2"]["name"]);
-    } else {
-        $file = scandir($bg_loginfb_dir);
-        $bgloginfb_file = $bg_loginfb_dir .$file[2];
-    }
-
     $logoFileType = strtolower(pathinfo($logo_file, PATHINFO_EXTENSION));
     $bggivefbFileType = strtolower(pathinfo($bggivefb_file, PATHINFO_EXTENSION));
-    $bgloginfbFileType = strtolower(pathinfo($bgloginfb_file, PATHINFO_EXTENSION));
 
     $logo_file_new = $logo_dir ."logo.".$logoFileType;
     $bggivefb_file_new = $bg_givefb_dir ."bgimage.".$bggivefbFileType;
-    $bgloginfb_file_new = $bg_loginfb_dir ."bgimage2.".$bgloginfbFileType;
 
     $uploadOk = 1;
 
     checkfile("logo", $uploadOk);
     checkfile("bgimage", $uploadOk);
-    checkfile("bgimage2", $uploadOk);
 
     checkimagetype($logoFileType, $uploadOk);
     checkimagetype($bggivefbFileType, $uploadOk);
-    checkimagetype($bgloginfbFileType, $uploadOk);
 
     check_filesize("logo", $uploadOk);
     check_filesize("bgimage", $uploadOk);
-    check_filesize("bgimage2", $uploadOk);
 	
 	if ($_FILES["logo"]["name"]!="" && $uploadOk ==1) {
 		delete_files($logo_dir);
@@ -265,12 +214,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($_FILES["bgimage"]["name"]!="" && $uploadOk ==1) {
 		delete_files($bg_givefb_dir);
 	}
-	if ($_FILES["bgimage2"]["name"]!="" && $uploadOk ==1) {
-		delete_files($bg_loginfb_dir);
-	}
+
     upload_file("logo", $logo_file_new, $uploadOk);
     upload_file("bgimage", $bggivefb_file_new, $uploadOk);
-    upload_file("bgimage2", $bgloginfb_file_new, $uploadOk);
 }
 
 ?>
+
+	<label>Farbschema:</label>
+	<input type="color" id="favcolor" name="favcolor" value="<?php $sql="SELECT farbe FROM system"; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" style="margin:12px; padding:2px; width:90px; height:30px;"></input>
+	<label style="margin-top:30px;">Firmenlogo:</label>
+	<div style="margin-top:30px; margin-bottom:30px">
+	<input type="file" id="logo" name="logo" accept="image/png,image/gif,image/jpeg" onchange="readURL(this,'#logo_view');"></input>
+	<img id="logo_view" src="../assets/<?php echo $subdomain ?>/logo/<?php
+	$dir = "../assets/".$subdomain."/logo/";
+	$file = scandir($dir);
+	echo $file[2]; //notwendig weil 0=.und 1=..
+	?>" alt="your image" width="200px" />
+	</div>
+    
+	<label>Hintergrund:</label>
+	<div>
+	<input type="file" id="bgimage" name="bgimage" accept="image/png,image/gif,image/jpeg" onchange="readURL(this,'#bgimage_view');"></input>
+	<img id="bgimage_view" src="../assets/<?php echo $subdomain ?>/bg_givefb/<?php
+	$dir = "../assets/".$subdomain."/bg_givefb/";
+	$file = scandir($dir);
+	echo $file[2];
+	?>" alt="your image" width="200px" />
+	</div>
+    <p></p>
+	<button class="btn fa-input" type="submit" name = "Submit" style="margin-top:30px; margin-bottom:30px; color:white; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>"><i class="fa fa-save"></i> speichern</button>
+	</form>
+	</div>
+    </body>
+</html>
