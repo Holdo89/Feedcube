@@ -23,7 +23,7 @@ $IsAdmin = $row["Is_Admin"];
  $exec_max = mysqli_query($link,$query_max);
  $row_max = mysqli_fetch_array($exec_max);
 
- $sql="SELECT COUNT(".$Frage.") As Anzahl_Feedback FROM internes_feedback";
+ $sql="SELECT COUNT(".$Frage.") As Anzahl_Feedback FROM umfragenfeedback";
  $result_feedback=mysqli_query($link,$sql);
  $rows_feedback=mysqli_fetch_array($result_feedback);
 
@@ -90,7 +90,7 @@ $feedback_year=substr($datum_max,0,4);
 	
 	if($row_typ["Typ"]=="Bewertung")
 	{
-		$query = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
+		$query = "SELECT COUNT(".$Frage.") FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 		$Anzahl_abgegenes_feedback=0;
@@ -102,7 +102,7 @@ $feedback_year=substr($datum_max,0,4);
 
 		while($row=mysqli_fetch_array($exec))
 		{
-			$sql2 = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
+			$sql2 = "SELECT COUNT(".$Frage.") FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);
 			$Anzahl_abgegenes_feedback=$Anzahl_abgegenes_feedback+$row2["COUNT(".$Frage.")"];
@@ -133,7 +133,7 @@ $feedback_year=substr($datum_max,0,4);
 
 	else if($row_typ["Typ"]=="Multiplechoice")
 	{
-		$query = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
+		$query = "SELECT COUNT(".$Frage.") FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 		$Anzahl_abgegenes_feedback=0;
@@ -145,7 +145,7 @@ $feedback_year=substr($datum_max,0,4);
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
-			$sql2 = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
+			$sql2 = "SELECT COUNT(".$Frage.") FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);
 			$Anzahl_abgegenes_feedback=$Anzahl_abgegenes_feedback+$row2["COUNT(".$Frage.")"];
@@ -171,7 +171,7 @@ $feedback_year=substr($datum_max,0,4);
 
 	else
 	{
-		$query = "SELECT AVG(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
+		$query = "SELECT AVG(".$Frage.") FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year."";
 	
 		$exec = mysqli_query($link,$query);
 

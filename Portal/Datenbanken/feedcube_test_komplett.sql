@@ -81,10 +81,10 @@ INSERT INTO `bewertung_answers` (`ID`, `Answers`, `Answers_Englisch`, `Fragenspe
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `externes_feedback`
+-- Tabellenstruktur für Tabelle `kursfeedback`
 --
 
-CREATE TABLE `externes_feedback` (
+CREATE TABLE `kursfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Username` varchar(200) NOT NULL,
@@ -175,10 +175,10 @@ CREATE TABLE `interner_blog_kommentare` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `internes_feedback`
+-- Tabellenstruktur für Tabelle `umfragenfeedback`
 --
 
-CREATE TABLE `internes_feedback` (
+CREATE TABLE `umfragenfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Umfrage` varchar(200) NOT NULL,
@@ -328,7 +328,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL DEFAULT 'neuespasswort',
   `email` varchar(500) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `internes_feedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `umfragenfeedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Is_Admin` tinyint(1) NOT NULL,
   `Is_Trainer` tinyint(4) NOT NULL,
   `Is_Creator` tinyint(1) NOT NULL,
@@ -341,7 +341,7 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `internes_feedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`, `Confirmed`, `passwortcode`, `passwortcode_time`) VALUES
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `umfragenfeedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`, `Confirmed`, `passwortcode`, `passwortcode_time`) VALUES
 (1, 'test', 'test', '$2y$10$c7dOQDphK6CaGTbT/vccWuB09nReARZLvwPauG//ZeLagEd.FoybG', 'd.holzweber@hotmail.com', '2022-01-06 05:14:03', '2022-01-14 07:51:28', 1, 0, 1, 1, NULL, NULL),
 (6, 'Dominic Holzweber', 'Holdo', '$2y$10$DycP2i9bkZfS4qedAVAvqO606Lm2puEQy7lxI8pFus57KHbdkQ3lq', 'Holdo89@gmail.com', '2022-01-13 14:16:16', '2022-01-16 15:22:28', 0, 1, 0, 1, NULL, NULL);
 
@@ -362,9 +362,9 @@ ALTER TABLE `bewertung_answers`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `externes_feedback`
+-- Indizes für die Tabelle `kursfeedback`
 --
-ALTER TABLE `externes_feedback`
+ALTER TABLE `kursfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -394,9 +394,9 @@ ALTER TABLE `interner_blog_kommentare`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `internes_feedback`
+-- Indizes für die Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -455,9 +455,9 @@ ALTER TABLE `bewertung_answers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT für Tabelle `externes_feedback`
+-- AUTO_INCREMENT für Tabelle `kursfeedback`
 --
-ALTER TABLE `externes_feedback`
+ALTER TABLE `kursfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
@@ -485,9 +485,9 @@ ALTER TABLE `interner_blog_kommentare`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `internes_feedback`
+-- AUTO_INCREMENT für Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

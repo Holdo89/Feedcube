@@ -62,10 +62,10 @@ CREATE TABLE `bewertung_answers` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `externes_feedback`
+-- Tabellenstruktur für Tabelle `kursfeedback`
 --
 
-CREATE TABLE `externes_feedback` (
+CREATE TABLE `kursfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Username` varchar(200) NOT NULL,
@@ -139,10 +139,10 @@ CREATE TABLE `interner_blog_kommentare` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `internes_feedback`
+-- Tabellenstruktur für Tabelle `umfragenfeedback`
 --
 
-CREATE TABLE `internes_feedback` (
+CREATE TABLE `umfragenfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Umfrage` varchar(200) NOT NULL,
@@ -248,7 +248,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL DEFAULT 'neuespasswort',
   `email` varchar(500) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `internes_feedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `umfragenfeedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Is_Admin` tinyint(1) NOT NULL,
   `Is_Trainer` tinyint(4) NOT NULL,
   `Is_Creator` tinyint(1) NOT NULL,
@@ -274,9 +274,9 @@ ALTER TABLE `bewertung_answers`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `externes_feedback`
+-- Indizes für die Tabelle `kursfeedback`
 --
-ALTER TABLE `externes_feedback`
+ALTER TABLE `kursfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -306,9 +306,9 @@ ALTER TABLE `interner_blog_kommentare`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `internes_feedback`
+-- Indizes für die Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -367,9 +367,9 @@ ALTER TABLE `bewertung_answers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `externes_feedback`
+-- AUTO_INCREMENT für Tabelle `kursfeedback`
 --
-ALTER TABLE `externes_feedback`
+ALTER TABLE `kursfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -397,9 +397,9 @@ ALTER TABLE `interner_blog_kommentare`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `internes_feedback`
+-- AUTO_INCREMENT für Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --

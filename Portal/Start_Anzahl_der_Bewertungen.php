@@ -23,7 +23,7 @@ include "IsAdmincheck.php";
 			$i=$i+1;
 		}
 		$i=0;
-		$sql_fragenid="SELECT ID FROM admin WHERE Typ = 'Bewertung'";
+		$sql_fragenid="SELECT ID FROM fragen WHERE Typ = 'Bewertung'";
 		$result_fragenid=mysqli_query($link,$sql_fragenid);
 		while ($rows_fragenid=mysqli_fetch_array($result_fragenid)) 
 		{
@@ -31,7 +31,7 @@ include "IsAdmincheck.php";
 			$i=0;
 			while ($i<intval($rows["Anzahl_Antworten"])) {
 				$rows_answers=mysqli_fetch_array($result_answers);
-				$query = "SELECT COUNT(Frage_".$rows_fragenid["ID"].") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Frage_".$rows_fragenid["ID"]." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
+				$query = "SELECT COUNT(Frage_".$rows_fragenid["ID"].") FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Frage_".$rows_fragenid["ID"]." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
 				$exec = mysqli_query($link, $query);
 
 				while ($row = mysqli_fetch_array($exec)) {

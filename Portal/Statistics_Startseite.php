@@ -4,16 +4,16 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 	if($Frage!="undefined"){
 
 	//get type of question
-	$sql = "SELECT Typ FROM admin WHERE ID = '".$ID."'";
+	$sql = "SELECT Typ FROM fragen WHERE ID = '".$ID."'";
 	$exec = mysqli_query($link,$sql);
 	$row = mysqli_fetch_array($exec);
 	$typ=$row["Typ"]; 
 
-		$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+		$query = "SELECT COUNT(".$Frage.") FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 		$exec = mysqli_query($link, $query);
 		$row=mysqli_fetch_assoc($exec);
 
-		$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+		$sql_get_Anzahl_abgegebenes_feedback = "SELECT COUNT(".$Frage.") FROM kursfeedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 		$query_get_Anzahl_abgegebenes_feedback = mysqli_query($link, $sql_get_Anzahl_abgegebenes_feedback);
 		$Anzahl_abgegenes_feedback_row=mysqli_fetch_array($query_get_Anzahl_abgegebenes_feedback);
 		$Anzahl_abgegenes_feedback = $Anzahl_abgegenes_feedback_row["COUNT(".$Frage.")"];
@@ -24,7 +24,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+				$sql2 = "SELECT COUNT(".$Frage.") FROM kursfeedback  WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 				$exec2 = mysqli_query($link, $sql2);
 				$row2=mysqli_fetch_array($exec2);
 				$Average=$Average+($i*intval($row2["COUNT(".$Frage.")"]));
@@ -41,7 +41,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 				$Average = $Average/$Anzahl_abgegenes_feedback;
 			}
 
-		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM externes_feedback  WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM kursfeedback  WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 		$exec = mysqli_query($link,$query);
 		$rowx = mysqli_fetch_array($exec);
 		$Bewertungsarray = array();
@@ -54,7 +54,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				$sql2 = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+				$sql2 = "SELECT COUNT(".$Frage.") FROM kursfeedback WHERE ".$Frage." LIKE '%|".$row["Answers"]."|%' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 				$exec2 = mysqli_query($link, $sql2);
 				$row2=mysqli_fetch_array($exec2);
 				$a=array("Auswahl" => $row["Answers"], "Anzahl" => $row2["COUNT(".$Frage.")"]);
@@ -89,7 +89,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			$exec = mysqli_query($link, $sql);
 			while($row=mysqli_fetch_array($exec))
 			{
-				$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
+				$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM kursfeedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
 				$exec2 = mysqli_query($link, $sql2);
 				$row2=mysqli_fetch_array($exec2);
 				$Average_10=$Average_10+($i*intval($row2["result"]));
@@ -107,7 +107,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 			}
 		}
 
-		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
+		$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM kursfeedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 10) AS a";
 		$exec = mysqli_query($link,$query);
 		$rows = mysqli_fetch_array($exec);
 
@@ -199,7 +199,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{
-			$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM externes_feedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 100) AS a";
+			$sql2 = "SELECT COUNT(case when ".$Frage." = '|".$row["Answers"]."|' then 1 else null end) AS result FROM (SELECT ".$Frage." FROM kursfeedback WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 100) AS a";
 			$exec2 = mysqli_query($link, $sql2);
 			$row2=mysqli_fetch_array($exec2);
 			$Average_100=$Average_100+($i*intval($row2["result"]));
@@ -217,7 +217,7 @@ function Statistik($Frage,$link,$Trainer,$Leistung,$datum_min,$datum_max){
 		}
 	}
 
-	$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM externes_feedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 100) AS a";
+	$query = "SELECT ROUND(AVG(".$Frage."),1) FROM (SELECT * FROM kursfeedback  WHERE ".$Frage." != 'NULL' AND Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC LIMIT 100) AS a";
 	$exec = mysqli_query($link,$query);
 	$rows = mysqli_fetch_array($exec);
 

@@ -11,7 +11,7 @@ include "IsAdmincheck.php";
 
 
  if($Leistung && $Frage !="undefined"){ //falls noch keine multiplechoice Frage geschrieben wurde
-	$query = "SELECT * FROM admin WHERE ID=".$Frage_ID;
+	$query = "SELECT * FROM fragen WHERE ID=".$Frage_ID;
 	$exec = mysqli_query($link,$query);
 	$row = mysqli_fetch_array($exec);
 	
@@ -45,7 +45,7 @@ include "IsAdmincheck.php";
 
  		while($i<=intval($rows["Anzahl_Antworten"])){
 			$rows_answers=mysqli_fetch_array($result_answers);
-				$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
+				$query = "SELECT COUNT(".$Frage.") FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND ".$Frage." LIKE '%|".$rows_answers["Answers"]."|%' AND Username LIKE '".$Trainer."'";
 			$exec = mysqli_query($link,$query);
 
 			while($row = mysqli_fetch_array($exec)){
@@ -82,7 +82,7 @@ include "IsAdmincheck.php";
 		$exec = mysqli_query($link,$query);
 		$rowy = mysqli_fetch_array($exec);
  		while($i<=$rowy["columns"]){
-				$query = "SELECT COUNT(".$Frage.") FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Leistung LIKE '".$Leistung."' AND ".$Frage." < ".$feedback_range[$i]." AND ".$Frage." >= ".$feedback_range[$i-1]." AND Username LIKE '".$Trainer."'";
+				$query = "SELECT COUNT(".$Frage.") FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Leistung LIKE '".$Leistung."' AND ".$Frage." < ".$feedback_range[$i]." AND ".$Frage." >= ".$feedback_range[$i-1]." AND Username LIKE '".$Trainer."'";
 			$exec = mysqli_query($link,$query);
 
 			while($row = mysqli_fetch_array($exec))

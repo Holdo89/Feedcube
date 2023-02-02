@@ -30,7 +30,7 @@ require_once "../config.php";
 			$i=0;
 			while ($i<intval($rows["Anzahl_Antworten"])) {
 				$rows_answers=mysqli_fetch_array($result_answers);
-				$query = "SELECT COUNT(Frage_".$rows_fragenid["ID"].") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Umfrage LIKE '".$Umfrage."' AND Frage_".$rows_fragenid["ID"]." LIKE '%|".$rows_answers["Answers"]."|%'";
+				$query = "SELECT COUNT(Frage_".$rows_fragenid["ID"].") FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Umfrage LIKE '".$Umfrage."' AND Frage_".$rows_fragenid["ID"]." LIKE '%|".$rows_answers["Answers"]."|%'";
 				$exec = mysqli_query($link, $query);
 
 				while ($row = mysqli_fetch_array($exec)) {

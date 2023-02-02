@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Close statement
             mysqli_stmt_close($stmt);
         }
-        $sql="UPDATE users SET internes_feedback_abgegeben = '2020-03-27 16:55:00' WHERE username = '".$param_username."'";
+        $sql="UPDATE users SET umfragenfeedback_abgegeben = '2020-03-27 16:55:00' WHERE username = '".$param_username."'";
         $query=mysqli_query($link, $sql);
         $sql="UPDATE users SET Confirmed = 1 WHERE username = '".$param_username."'";
         $query=mysqli_query($link, $sql);

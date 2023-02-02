@@ -42,13 +42,13 @@ else if($Fragentyp=='Schieberegler'){
 mysqli_query($link, $sql);
 
 if($Fragentyp=='Text'){
-$sql= "ALTER TABLE internes_feedback ADD Frage_".$row['ID']." TEXT";}
+$sql= "ALTER TABLE umfragenfeedback ADD Frage_".$row['ID']." TEXT";}
 
 elseif($Fragentyp=='Bewertung' || $Fragentyp=='Multiplechoice'){
-$sql= "ALTER TABLE internes_feedback ADD Frage_".$row['ID']." TEXT";}
+$sql= "ALTER TABLE umfragenfeedback ADD Frage_".$row['ID']." TEXT";}
 
 elseif($Fragentyp=='Schieberegler'){
-$sql= "ALTER TABLE internes_feedback ADD Frage_".$row['ID']." INT(11)";}
+$sql= "ALTER TABLE umfragenfeedback ADD Frage_".$row['ID']." INT(11)";}
 
 //Fragen_relate_antworten.php
 

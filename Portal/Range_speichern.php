@@ -11,7 +11,7 @@ $Frage = $_REQUEST["Frage"];
 if($Type=="extern")
 {
     $columnnames = "";
-    $sql="SHOW COLUMNS FROM admin";
+    $sql="SHOW COLUMNS FROM fragen";
     $query = mysqli_query($link, $sql);
 
     while($row = mysqli_fetch_assoc($query))
@@ -23,7 +23,7 @@ if($Type=="extern")
     if($columnnames!="")
     {
         $columnnames = substr($columnnames, 0, -2);
-        $sql="UPDATE admin SET ".$columnnames." WHERE ID=".$ID;
+        $sql="UPDATE fragen SET ".$columnnames." WHERE ID=".$ID;
         $query = mysqli_query($link, $sql);  
     }
 
@@ -48,7 +48,7 @@ if($Type=="extern")
         else{
             $Leistungen = substr($Leistungen, 0, -1);  
         }
-        $sql="UPDATE admin SET ".$Fragenset.$Leistungen." WHERE ID=".$ID;
+        $sql="UPDATE fragen SET ".$Fragenset.$Leistungen." WHERE ID=".$ID;
         $query = mysqli_query($link, $sql);
     }
 
@@ -60,13 +60,13 @@ if($Type=="extern")
     $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
     
     $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
-    $sql = "UPDATE admin SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
+    $sql = "UPDATE fragen SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-    $sql = "UPDATE admin SET Überschrift_Englisch = '".$Überschrift_Englisch."' WHERE ID = ".$ID;
+    $sql = "UPDATE fragen SET Überschrift_Englisch = '".$Überschrift_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-    $sql = "UPDATE admin SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
+    $sql = "UPDATE fragen SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-    $sql = "UPDATE admin SET Überschrift = '".$Überschrift."' WHERE ID = ".$ID;
+    $sql = "UPDATE fragen SET Überschrift = '".$Überschrift."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }
 else if($Type=="intern"){

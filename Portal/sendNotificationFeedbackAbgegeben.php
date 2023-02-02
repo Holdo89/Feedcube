@@ -19,9 +19,9 @@ function sendNotification($subdomain)
     while($row_users = mysqli_fetch_array($result_users)){
     if ($row_users["Notification"]==1) {
         if ($row_users["Is_Admin"]==1) {
-                $sql = "SELECT COUNT(ID), Leistung FROM externes_feedback WHERE Datum > now() - INTERVAL 24 HOUR";
+                $sql = "SELECT COUNT(ID), Leistung FROM kursfeedback WHERE Datum > now() - INTERVAL 24 HOUR";
             } else {
-                $sql = "SELECT COUNT(ID), Leistung FROM externes_feedback WHERE username = '".$row_users["username"]."' AND Datum > now() - INTERVAL 24 HOUR";
+                $sql = "SELECT COUNT(ID), Leistung FROM kursfeedback WHERE username = '".$row_users["username"]."' AND Datum > now() - INTERVAL 24 HOUR";
             }
             $result = mysqli_query($link, $sql) ;
             $row = mysqli_fetch_array($result);

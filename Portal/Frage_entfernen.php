@@ -5,7 +5,7 @@ require_once "session.php";
 
 $Id=$_REQUEST["Id"];
 
-$sql = "SELECT Typ FROM admin WHERE ID = ".$Id;
+$sql = "SELECT Typ FROM fragen WHERE ID = ".$Id;
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($result);
 $Fragentyp = $row["Typ"];
@@ -26,10 +26,10 @@ else if($Fragentyp=="Schieberegler")
 }
 $result=mysqli_query($link, $sql);
 
-$sql="ALTER TABLE externes_feedback DROP COLUMN Frage_".$Id;
+$sql="ALTER TABLE kursfeedback DROP COLUMN Frage_".$Id;
 $result=mysqli_query($link, $sql);
 
-$sql = "DELETE FROM admin WHERE ID = '".$Id."'";
+$sql = "DELETE FROM fragen WHERE ID = '".$Id."'";
 
 if(mysqli_query($link, $sql)){
 } 
@@ -38,20 +38,20 @@ else{
 }
 
 $i = 1;
-$sql = "SELECT * FROM admin ORDER BY post_id";
+$sql = "SELECT * FROM fragen ORDER BY post_id";
 $query= mysqli_query($link,$sql);
 while($row = mysqli_fetch_assoc($query))
 {
-    $sql2 = "UPDATE admin SET post_id = ".$i." WHERE ID = ".$row["ID"];
+    $sql2 = "UPDATE fragen SET post_id = ".$i." WHERE ID = ".$row["ID"];
     $query2= mysqli_query($link,$sql2);
     $i = $i+1;
 }
 
-$sql ="SELECT count(*) FROM information_schema.columns WHERE table_schema = 'feedcube_".$subdomain."' AND table_name = 'externes_feedback';";
+$sql ="SELECT count(*) FROM information_schema.columns WHERE table_schema = 'feedcube_".$subdomain."' AND table_name = 'kursfeedback';";
 $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_array($result);
 if($row["count(*)"]==5){    
-    $sql="DELETE FROM externes_feedback;";
+    $sql="DELETE FROM kursfeedback;";
     $result=mysqli_query($link, $sql);
 }
 // close connection

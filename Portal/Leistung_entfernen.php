@@ -5,10 +5,10 @@ require_once "session.php";
 
 $Id=$_REQUEST["Id"];
 
-$sql="ALTER TABLE admin DROP COLUMN Leistung_".$Id;
+$sql="ALTER TABLE fragen DROP COLUMN Leistung_".$Id;
 $result=mysqli_query($link, $sql);
 
-$sql="DELETE FROM externes_feedback WHERE Leistung = '".$Id."'";
+$sql="DELETE FROM kursfeedback WHERE Leistung = '".$Id."'";
 $result=mysqli_query($link, $sql);
 
 $sql = "DELETE FROM leistungen WHERE ID = '".$Id."'";

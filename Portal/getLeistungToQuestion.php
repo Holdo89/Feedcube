@@ -16,7 +16,7 @@ $i=0;
 $AnzahlAllerLeistungen=count($Leistungids);
 while($i<$AnzahlAllerLeistungen)
 {
-    $sql = "SELECT ".$Leistungids[$i]." FROM admin WHERE ID = ".$ID;
+    $sql = "SELECT ".$Leistungids[$i]." FROM fragen WHERE ID = ".$ID;
     $result = mysqli_query($link,$sql);
     $row = mysqli_fetch_array($result);
     if($row[$Leistungids[$i]]==1)

@@ -6,7 +6,7 @@ require_once "session.php";
 $Id=$_REQUEST["Id"];
 
 
-$sql = "DELETE FROM externes_feedback WHERE ID = '".$Id."'";
+$sql = "DELETE FROM kursfeedback WHERE ID = '".$Id."'";
 
 mysqli_query($link, $sql);
 

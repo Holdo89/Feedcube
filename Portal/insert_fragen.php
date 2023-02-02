@@ -5,7 +5,7 @@
 require_once "../config.php";
 require_once "session.php";
 
-$sql = "SELECT MAX(post_order_no) FROM admin";
+$sql = "SELECT MAX(post_order_no) FROM fragen";
 $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
@@ -23,7 +23,7 @@ $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
     $row = mysqli_fetch_assoc($query);
     $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
 
-$sql = "INSERT INTO admin (Überschrift, Überschrift_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
+$sql = "INSERT INTO fragen (Überschrift, Überschrift_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 
 if(mysqli_query($link, $sql)){
 
@@ -31,7 +31,7 @@ if(mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-$sql = "SELECT ID FROM admin ORDER BY ID DESC LIMIT 1";
+$sql = "SELECT ID FROM fragen ORDER BY ID DESC LIMIT 1";
 $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
 $ID = $row['ID'];
@@ -48,13 +48,13 @@ else if($Fragentyp=='Schieberegler'){
 mysqli_query($link, $sql);
 
 if($Fragentyp=='Text'){
-$sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." TEXT";}
+$sql= "ALTER TABLE kursfeedback ADD Frage_".$row['ID']." TEXT";}
 
 elseif($Fragentyp=='Bewertung' || $Fragentyp=='Multiplechoice'){
-$sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." TEXT";}
+$sql= "ALTER TABLE kursfeedback ADD Frage_".$row['ID']." TEXT";}
 
 elseif($Fragentyp=='Schieberegler'){
-$sql= "ALTER TABLE externes_feedback ADD Frage_".$row['ID']." INT(11)";}
+$sql= "ALTER TABLE kursfeedback ADD Frage_".$row['ID']." INT(11)";}
 
 //Fragen_relate_antworten.php
 

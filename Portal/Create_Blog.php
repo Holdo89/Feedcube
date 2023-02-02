@@ -12,7 +12,7 @@ require_once "session.php";
  
 if($Leistung && $Frage !="undefined"){
 
-		$query = "SELECT ".$Frage.", Datum, Leistung FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND ".$Frage." != '' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
+		$query = "SELECT ".$Frage.", Datum, Leistung FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND ".$Frage." != '' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
 
 	$exec = mysqli_query($link,$query);
 	while($row = mysqli_fetch_array($exec)){

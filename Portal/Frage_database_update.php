@@ -7,13 +7,13 @@
  $Frage=$_REQUEST["Frage"];
  $Überschrift=$_REQUEST["Überschrift"];
 
-$query = "UPDATE admin SET Fragen_extern = '".$Frage."' WHERE ID = '".$Id."'";
+$query = "UPDATE fragen SET Fragen_extern = '".$Frage."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
 
-$query = "UPDATE admin SET Typ = '".$Fragentyp."' WHERE ID = '".$Id."'";
+$query = "UPDATE fragen SET Typ = '".$Fragentyp."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
 
-$query = "UPDATE admin SET Überschrift = '".$Überschrift."' WHERE ID = '".$Id."'";
+$query = "UPDATE fragen SET Überschrift = '".$Überschrift."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
 
 if($Fragentyp=='Schieberegler')
@@ -24,7 +24,7 @@ else{
     $Fragentyp='TEXT';
 }
 
-$query = "ALTER TABLE externes_feedback CHANGE Frage_".$Id." Frage_".$Id." ".$Fragentyp." NULL DEFAULT NULL";
+$query = "ALTER TABLE kursfeedback CHANGE Frage_".$Id." Frage_".$Id." ".$Fragentyp." NULL DEFAULT NULL";
 $exec = mysqli_query($link,$query);
 
 ?>

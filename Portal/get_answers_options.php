@@ -4,7 +4,7 @@
     $Frage=$_REQUEST["Frage"];
     if($Frage!="undefined"){
     $Frage_ID=substr($Frage,6);
-    $sql="SELECT * FROM admin WHERE ID = ".$Frage_ID." = '1'";
+    $sql="SELECT * FROM fragen WHERE ID = ".$Frage_ID." = '1'";
     $result=mysqli_query($link,$sql);
     $row=mysqli_fetch_array($result);
     $Fragentyp = $row["Typ"];

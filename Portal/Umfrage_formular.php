@@ -16,7 +16,7 @@ $Scrollcounter = intval($_REQUEST["Scrollcounter"]);
  $limit=$_REQUEST["limit"];
 
 
-$query = "SELECT * FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Umfrage LIKE '".$Umfrage."' ORDER BY Datum DESC LIMIT ".$start.", ".$limit."";
+$query = "SELECT * FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Umfrage LIKE '".$Umfrage."' ORDER BY Datum DESC LIMIT ".$start.", ".$limit."";
 
  $exec = mysqli_query($link,$query);
  $i=0;

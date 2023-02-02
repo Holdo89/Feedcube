@@ -94,7 +94,7 @@ function export_data_admin(){
               var hiddenElement = document.createElement('a');
               hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csv);
               hiddenElement.target = '_blank';
-              hiddenElement.download = 'externes_feedback.csv';
+              hiddenElement.download = 'kursfeedback.csv';
               hiddenElement.click();
               }
       
@@ -136,7 +136,7 @@ function export_data(){
           var hiddenElement = document.createElement('a');
           hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csv);
           hiddenElement.target = '_blank';
-          hiddenElement.download = 'externes_feedback.csv';
+          hiddenElement.download = 'kursfeedback.csv';
           hiddenElement.click();
           }
   
@@ -167,7 +167,7 @@ function intern_export_data(){
           var hiddenElement = document.createElement('a');
           hiddenElement.href = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURI(csv);
           hiddenElement.target = '_blank';
-          hiddenElement.download = 'internes_feedback.csv';
+          hiddenElement.download = 'umfragenfeedback.csv';
           hiddenElement.click();
           }
   

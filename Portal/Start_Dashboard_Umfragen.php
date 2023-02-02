@@ -15,13 +15,13 @@ require_once "session.php";
     $Umfrage = $_REQUEST["Umfrage"];
 
 
-        $sql = "SELECT COUNT(ID) FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Umfrage LIKE '".$Umfrage."'";
+        $sql = "SELECT COUNT(ID) FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Umfrage LIKE '".$Umfrage."'";
         $query = mysqli_query($link,$sql);
         $row = mysqli_fetch_array($query);
         $Feedback_abgegeben = $row["COUNT(ID)"];
         if($Feedback_abgegeben)
         {
-            $sql_date_last = "SELECT * FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Umfrage LIKE '".$Umfrage."' ORDER BY Datum DESC";
+            $sql_date_last = "SELECT * FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Umfrage LIKE '".$Umfrage."' ORDER BY Datum DESC";
             $query_date_last = mysqli_query($link,$sql_date_last);
             $row_date_last = mysqli_fetch_array($query_date_last);
 

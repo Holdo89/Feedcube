@@ -17,9 +17,9 @@ $result_currentFragenset = mysqli_query($link, $sql_currentFragenset);
 $rowcurrentFragenset = mysqli_fetch_assoc($result_currentFragenset);
 $currentFragenset = $rowcurrentFragenset["Fragenset"];
 if ($currentFragenset == 0) {
-    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM admin WHERE Leistung_" . $ID . " = 1";
+    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM fragen WHERE Leistung_" . $ID . " = 1";
 } else {
-    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM admin WHERE Fragenset_" . $currentFragenset . " = 1";
+    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM fragen WHERE Fragenset_" . $currentFragenset . " = 1";
 }
 //Gibt die Anzahl aller Fragen an diebei dieser Leistung abgefragt werden
 $result_rownumber = mysqli_query($link, $sql_rownumber);
@@ -31,9 +31,9 @@ if ($Anzahl_Fragen == 0)
 
 else {
     if ($currentFragenset == 0) {
-        $sql = "SELECT * FROM admin WHERE Leistung_" . $ID . " = 1 ORDER BY post_order_no ASC";
+        $sql = "SELECT * FROM fragen WHERE Leistung_" . $ID . " = 1 ORDER BY post_order_no ASC";
     } else {
-        $sql = "SELECT * FROM admin WHERE Fragenset_" . $currentFragenset . " = 1 ORDER BY post_order_no ASC";
+        $sql = "SELECT * FROM fragen WHERE Fragenset_" . $currentFragenset . " = 1 ORDER BY post_order_no ASC";
     }
     $result = mysqli_query($link, $sql);
     $index = 0;

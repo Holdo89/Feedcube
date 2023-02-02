@@ -127,10 +127,10 @@ INSERT INTO `bewertung_answers` (`ID`, `Answers`, `Answers_Englisch`, `Fragenspe
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `externes_feedback`
+-- Tabellenstruktur für Tabelle `kursfeedback`
 --
 
-CREATE TABLE `externes_feedback` (
+CREATE TABLE `kursfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Username` varchar(200) NOT NULL,
@@ -151,10 +151,10 @@ CREATE TABLE `externes_feedback` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `externes_feedback`
+-- Daten für Tabelle `kursfeedback`
 --
 
-INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
+INSERT INTO `kursfeedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
 (12, '2021-04-30 13:55:05', 'holzweber', 'Dominic Holzweber', '2', '|sehr gut|', '- Hat meine Erwartungen erfüllt\r\n- Manchmal zuviel Inhalt (lässt sich nicht vermeiden weil Zertifizierung) auf Kosten der Tiefe. Ich persönlich hab mehr davon, wenn auf die Breite verzichtet wird und dafür auf ausgewählte Themen mehr eingegangen wird. ', '|sehr gut|', '- Stoff gut strukturiert\r\n- auf Fragen eingegangen\r\n- Gutes Zeitmgmt bei viel Stoff\r\n\r\n', '|eher positiv|', 'Kommunikation vor und nach Kurs gut. (Hab sonst nicht viel Anhaltspunkte zur Beurteilung)', '- Praxisbeispiele\r\n- Diskussion mit anderen Kursteilnehmern (Die fachlich alle sehr gut wirkten)', '', '', NULL, NULL, NULL),
 (13, '2021-04-30 14:13:53', 'holzweber', 'Dominic Holzweber', '2', '|eher positiv|', 'Gut aufbereitet, viel Inhalt, breiter Überblick, teilweise zu wenig in die Tiefe', '|sehr gut|', 'Sehr freundlich und ruhig, geht auf Fragen ein.', '|eher positiv|', '', 'Umfang und Aufmachung der Unterlagen. Übungen größtenteils', 'Teilweise mehr Tiefe.\r\nMicroservices etwas genauer, Abgrenzung zu SCS.\r\n', '', NULL, NULL, NULL),
 (14, '2021-04-30 14:52:34', 'holzweber', 'Dominic Holzweber', '2', '|sehr gut|', 'Sehr breit gefächert.\r\nManchmal ein wenig mehr Details wünschenswert.', '|sehr gut|', 'Sehr Motiviert\r\nThemen gut vorgetragen\r\nGenug Paausen eingebaut', '|sehr gut|', '', 'Wenige Teilnehmer\r\nBreit gefächerte Themen', 'Netzwerkverbindung ;)', 'Das Tool funktioniert soweit gut.', NULL, NULL, NULL),
@@ -274,7 +274,7 @@ INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung
 (199, '2021-10-14 15:11:59', 'Pirklbauer', 'Mario Pirklbauer', '2', '|eher positiv|', 'Evtl. kürzerer Übungsbeispiele zu allen Themen - für machne war keine Zeit', '|sehr gut|', '', '|sehr gut|', '', 'Pausen, Beispiele', 'Mehr praktische Übungen, evtl. mehr Dikussionsrunden um Dinge zu lernen', '', '|eher positiv|', '', NULL),
 (200, '2021-10-14 15:12:56', 'Pirklbauer', 'Mario Pirklbauer', '2', '|eher positiv|', 'War sehr gut, mit den ganzen Diskussionen.', '|sehr gut|', 'Mario hat die Themen gut rüber gebracht.  ', '|sehr gut|', '', 'Diskussionsrunden mit den anderen Teilnehmern. Hat viel gebracht. ', 'Öfter kürzere Pausen als selten größere.', '', '|sehr gut|', '|Architektur & Modellierung||Programmierung & Code||Informationssicherheit & Datenschutz|', NULL),
 (201, '2021-10-14 15:13:03', 'Pirklbauer', 'Mario Pirklbauer', '2', '|eher positiv|', 'sehr \"IT\"-lastig, eine bessere Aufteilung auf die verschiedenen System (zB Embedded) wäre wünschenswert', '|sehr gut|', 'ruhige, nette, sachliche Art mit Witz', '|sehr gut|', '', '', '', '', '|eher positiv|', '|Architektur & Modellierung||Programmierung & Code|', NULL);
-INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
+INSERT INTO `kursfeedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
 (202, '2021-10-14 15:13:24', 'Pirklbauer', 'Mario Pirklbauer', '2', '|eher positiv|', 'Der Seminar ist mit sehr vielen verschiedenen Themen gefuellt. Daraus ergibt sich eine hohe Inhaltsdichte. Besser waere es den Seminar um 2 Tage zu verlaengern und mit mehr Uebungen aufzulockern.', '|sehr gut|', 'Mario ist gut und fundiert auf die aufkommenden Fragen eingegangen. Die von ihm geschaffene interaktive Atmosphere hat geholfen den Inhalten zu folgen.Weiter so!', '|sehr gut|', '', '', '', '', '|sehr gut|', '|Architektur & Modellierung||Informationssicherheit & Datenschutz||Requirements Engineering|', NULL),
 (203, '2021-10-14 15:13:29', 'Pirklbauer', 'Mario Pirklbauer', '2', '|sehr gut|', '', '|sehr gut|', 'Top Schulungsleiter, kurzweilige und motivierende Motivation, viele praktische Erfahrungswerte / -beispiele.', '|sehr gut|', '', 'Gute Balance zwischen Inhaltsvermittlung, Übungen und gemeinsamen Diskussionen', '', '', '|sehr gut|', '', NULL),
 (204, '2021-10-14 15:13:38', 'Pirklbauer', 'Mario Pirklbauer', '2', '|eher positiv|', 'Es ist nicht jeder Exkurs direkt als solcher zu erkennen.', '|sehr gut|', 'Immer ruhig bzw. lässt sich nicht aus der Ruhe bringen, sucht nach Beispielen, geht auf die Schüler ein. ', '|eher positiv|', 'Hat alles gut geklappt beim Seminar, vielleicht eine etwas frühere Kontaktaufnahme. Teils liegen große Zeitabstände zwischen Buchung und Seminar, was verunsichert ohne weitere Informationen zum Seminar.', 'Das jede Frage beantwortet wurde.', 'Eventuell an manchen Themen die unwichtig sind kürzen, um zeitlich etwas zu sparen.', '', '|sehr gut|', '', NULL),
@@ -395,7 +395,7 @@ INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung
 (349, '2021-12-23 07:27:14', 'Müller', 'Paul Müller', '1', '|sehr gut|', '', '|sehr gut|', '', '|sehr gut|', '', '', '', '', '|eher positiv|', '', NULL),
 (350, '2021-12-23 14:09:25', 'Müller', 'Paul Müller', '1', '|sehr gut|', '', '|sehr gut|', '', '|sehr gut|', '', 'Fallbespiele, eingehen auf Fragen, Tempo ,...', '', '', '|sehr gut|', '|Testen & Qualitätssicherung||Testautomatisierung|', NULL),
 (351, '2021-12-23 14:21:24', 'Müller', 'Paul Müller', '1', '|sehr gut|', 'Hat mir sehr viel gebracht, eine nette kleine Gruppe, positive Online-Erfahrung, sehr gute Stoffvermittlung, gute Unterlagen.', '|sehr gut|', 'Sehr gute kompetente Stoffvermittlung, gute einprägsame und nützliche Beispiele / Anmerkungen.', '|sehr gut|', '', 'rundum positiv, besonders die kleine Gruppe', '', '', '|sehr gut|', '', NULL);
-INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
+INSERT INTO `kursfeedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
 (352, '2021-12-23 15:06:22', 'Müller', 'Paul Müller', '1', '|sehr gut|', 'War gut strukturiert und nicht überladen. Man hat das Gefühl das alle lehrplanrelevanten Themen durchgenommen wurden.', '|sehr gut|', 'Paul hat sehr angenehm durch das Seminar geleitet, es blieb genügend Zeit um auf Fragen der Teilnehmer einzugehen. Und es kamen auch so manche nützliche Diskussionen zu Stande. Es war kein steifer Frontalunterricht, obwohl das bei Online Seminaren gar nicht so leicht ist. Immer wieder interaktive Übungen am Miro Board haben die Sache schön abgerundet.', '|sehr gut|', '', 'Das es eine ausgewogene Balance zwischen Durchnehmen des Stoffs und interaktiven Übungen gab. Auch das kritische Auseinandersetzen mit den Musterprüfungen war sehr hilfreich.', 'mir fällt nichts gravierendes ein', 'Frohe Weihnachten !!! Und g\"sund bleiben ;-)', '|sehr gut|', '|Testen & Qualitätssicherung||Projekt-& Produktmanagement||Testautomatisierung|', NULL),
 (355, '2022-01-04 13:00:48', 'Christmann', 'Stephan Christmann', '2', '|sehr gut|', 'Einiges kannte ich auch schon aus dem Studium. Da ich inzwischen auch praktische Erfahrungen in den dem Gebiet gesammelt habe, war mir der Inhalt diesmal nun viel zugänglicher. Die interaktiven Übungen haben mich beim Verstehen hervorragend unterstützt.', '|sehr gut|', 'man konnte ihm sehr gut folgen, die Präsentation war ansprechend, ich wurde \"abgeholt\".', '|sehr gut|', '', 'Die hervorrangende Schulung hat mich befähigt, direkt im Anschluss (1 Werktag später) die ISAQB Prüfung erfolgreich abzulegen. Vielen Dank!', '', '', '|sehr gut|', '|Architektur & Modellierung|', NULL),
 (356, '2022-01-11 14:12:20', 'Kunit', 'Peter Kunit', '3', '|sehr gut|', '', '|sehr gut|', '', '|eher positiv|', '', '', '', '', '|sehr gut|', '', NULL),
@@ -513,7 +513,7 @@ INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung
 (480, '2022-04-22 10:08:08', 'Pirklbauer', 'Mario Pirklbauer', '2', '|sehr gut|', '', '|sehr gut|', '', '|sehr gut|', '', '', '', '', '|sehr gut|', '|Agile Methoden||Architektur & Modellierung||Programmierung & Code||Requirements Engineering|', NULL),
 (481, '2022-04-22 10:08:25', 'Pirklbauer', 'Mario Pirklbauer', '2', '|sehr gut|', '', '|sehr gut|', '', '|sehr gut|', '', 'Sehr gutes Time-Boxing.Angenehmer Präsentationsstil.', 'Mikrofon des Trainers sollte gegen hochwertiges ausgetauscht werden', '', '|sehr gut|', '|Architektur & Modellierung||Requirements Engineering|', NULL),
 (482, '2022-04-27 12:17:35', 'Müller', 'Paul Müller', '24', '|eher negativ|', 'Feststeht aus meiner Sicht, dass zwischen SQL und prosma kein genügender Austausch bzgl. der Erwartungshaltung stattgefunden hat. Die Inhalte per se sind gut, haben aber nicht unseren Anforderungen an den Kurs entsprochen. ', '|eher negativ|', 'Sympathisch und authentisch.Zu geringfügig moderiert bzw. uns als Gruppe durch das Seminar geleitet. Pausenzeiten nicht fortlaufend beachtet, langwierige Diskussionen nicht unterbrochen, Aufgaben ungenau erklärt, allg. fehlende Struktur im Ablauf. Wir als Gruppe haben es ihm aber auch wirklich nicht leicht gemacht. ', '|eher negativ|', 'Es hätte meiner Ansicht nach im Vorfeld deutlich konkreterer Austausch zwischen Auftraggeber und -nehmer geben müssen. ', 'Die flexible und offene Haltung des Moderators/Trainers.', 'Schon genannt.', '', '|eher negativ|', '', NULL);
-INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
+INSERT INTO `kursfeedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
 (483, '2022-04-27 12:42:13', 'Synka', 'Josef Synka', '3', '|eher positiv|', '', '|sehr gut|', '', '|sehr gut|', '', 'Examples were good, and gave some good insights.', 'Examples and slides would be good to have on the same page if using tools like miro, which was fixed during the exercise', '', '|sehr gut|', '|Architektur & Modellierung|', NULL),
 (484, '2022-04-27 13:41:23', 'Synka', 'Josef Synka', '3', '|sehr gut|', '', '|eher positiv|', '', '|eher positiv|', '', 'Trainer knowledge, and training material ', 'Need more exercise, need online exame practices or more questions ', '', '|eher positiv|', '|Architektur & Modellierung||Programmierung & Code||Testen & Qualitätssicherung||Informationssicherheit & Datenschutz||Testautomatisierung|', NULL),
 (485, '2022-04-28 13:26:23', 'Synka', 'Josef Synka', '3', '|sehr gut|', 'would be better to give the PPT out instead of PDF with fixed rendering 2 slides per sheet', '|sehr gut|', '', '|sehr gut|', '', '', '', '', '|sehr gut|', '', NULL),
@@ -624,7 +624,7 @@ INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung
 (592, '2022-07-20 15:47:16', 'Müller', 'Paul Müller', '50', '|eher positiv|', '', '|sehr gut|', 'Motiviert und gut geredet', '|eher positiv|', '', 'praxis Beispiele', '', '', '|eher positiv|', '', NULL),
 (593, '2022-07-21 05:59:45', 'Müller', 'Paul Müller', '50', '|sehr gut|', '', '|sehr gut|', '', '|sehr gut|', '', '', '', '', '|eher positiv|', '', NULL),
 (594, '2022-07-22 14:07:50', 'Synka', 'Josef Synka', '1', '|sehr gut|', 'teilweise mit den ähnlichen Ausdrücken wie Testart, Testkategorie, etc verwirrend was jetzt was ist. Übungsbeispiele mit \"Java Pet Store\" fragwürdig. ', '|sehr gut|', 'Josef war sehr motiviert uns die Inhalte zu vermitteln und dabei nicht nur auf starres Auswendiglernen zu pochen sondern auch auf unseren Hausverstand zu appelieren, wodurch es einfacher wurde, da man nicht mehr nur die ganzen verwirrenden Ausdrücke vor sich hatte. ', '|sehr gut|', '', 'In-house training, Online Prüfung mit frei wählbarem Termin, Testprüfungen', 'Übersicht der unterschiedlichen Begriffe (Testarten, -verfahren, -stufen, etc) und wie sie zusammenspielen und kombiniert werden können', '', '|eher positiv|', '|Architektur & Modellierung||Informationssicherheit & Datenschutz|', NULL);
-INSERT INTO `externes_feedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
+INSERT INTO `kursfeedback` (`ID`, `Datum`, `Username`, `Trainer`, `Leistung`, `Frage_36`, `Frage_37`, `Frage_38`, `Frage_39`, `Frage_40`, `Frage_41`, `Frage_42`, `Frage_45`, `Frage_46`, `Frage_49`, `Frage_51`, `Frage_53`) VALUES
 (595, '2022-07-22 19:42:05', 'Schiller', 'Franz Schiller', '2', '|eher positiv|', 'negatives: es ist dasselbe, was man in der Universität lernt. Nichts neues.positives: eine gute Auffrischung nach ein paar Jahren berufliche Erfahrung.', '|sehr gut|', 'Sehr motiviert, nie langweilig, praktisch, hat alle Fragen gut erklärt.', '|eher positiv|', 'Generell sehr gut aber das \"lern Material\" kann besser sein. Die PowerPoints Seiten hilfen wirklich nicht, wenn man eine Prüfung machen will.', 'Der Kurs war nicht langweilig ', '- Lern Material', '', '|sehr gut|', '|Architektur & Modellierung||Programmierung & Code||Testen & Qualitätssicherung||Informationssicherheit & Datenschutz||Requirements Engineering|', NULL),
 (596, '2022-07-22 22:52:29', 'Schiller', 'Franz Schiller', '2', '|sehr gut|', 'Sehr interessant, etwas viel Stoff für 4 Tage', '|eher positiv|', 'Trainer kennt sich in der Materie sehr gut aus.Der Trainer hat leider sehr schnell gesprochen. Durch den Dialekt und das verschlucken mancher Buchstaben, war es teilweise ein wenig schwierig zu folgen.', '|sehr gut|', '', 'Vorabstimmung mit Frau Lübcke und Herrn Oestreich unkompliziert (trotz kurzfristiger Änderungen).', 'Mehr praktische Beispiele & Übungen. Stoff eventuell auf 5 ganze Tage aufteilen.', 'Danke', '|eher positiv|', '|Architektur & Modellierung||Programmierung & Code||Testautomatisierung|', NULL),
 (597, '2022-07-25 15:14:15', 'Schiller', 'Franz Schiller', '2', '|sehr gut|', '', '|sehr gut|', '', '|eher positiv|', '', '', '', '', '|sehr gut|', '', NULL),
@@ -747,10 +747,10 @@ INSERT INTO `interner_blog_kommentare` (`ID`, `ID_von_Blogbeitrag`, `Kommentar`,
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `internes_feedback`
+-- Tabellenstruktur für Tabelle `umfragenfeedback`
 --
 
-CREATE TABLE `internes_feedback` (
+CREATE TABLE `umfragenfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Umfrage` varchar(200) NOT NULL,
@@ -762,10 +762,10 @@ CREATE TABLE `internes_feedback` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `internes_feedback`
+-- Daten für Tabelle `umfragenfeedback`
 --
 
-INSERT INTO `internes_feedback` (`ID`, `Datum`, `Umfrage`, `Frage_8`, `Frage_9`, `Frage_10`, `Frage_11`, `Frage_12`) VALUES
+INSERT INTO `umfragenfeedback` (`ID`, `Datum`, `Umfrage`, `Frage_8`, `Frage_9`, `Frage_10`, `Frage_11`, `Frage_12`) VALUES
 (21, '2022-09-12 10:15:17', '46', 67, '|eher positiv|', '|Programmierung & Code|', 3, NULL);
 
 -- --------------------------------------------------------
@@ -945,7 +945,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(500) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `internes_feedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `umfragenfeedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Is_Admin` tinyint(1) NOT NULL,
   `Is_Trainer` tinyint(4) NOT NULL,
   `Is_Creator` tinyint(1) NOT NULL,
@@ -958,7 +958,7 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `internes_feedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`, `Confirmed`, `passwortcode`, `passwortcode_time`) VALUES
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `umfragenfeedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`, `Confirmed`, `passwortcode`, `passwortcode_time`) VALUES
 (87, 'Josef Synka', 'Synka', '$2y$10$j5FnlF72HzmWg4P1Qn1Qq.Ii9NHi7hxXFXi9vHpFsPcUcglmhRbgK', 'josef.synka@software-quality-lab.com', '2021-10-20 05:44:27', '2021-12-11 15:17:08', 0, 1, 0, 1, NULL, NULL),
 (72, 'swql', 'swql', '$2y$10$55v.mzupGVVLAmwN5BeK3u0RxbljXSXHiYsMcz9Z5TA06hoiFWhki', 'dominic.holzweber@software-quality-lab.com', '2021-04-21 14:42:25', '2020-03-27 23:55:00', 1, 0, 1, 1, NULL, NULL),
 (73, 'Dominic Holzweber', 'holzweber', '$2y$10$86OTHqoAeLMZvLjwSkks4O/3eNWy42wbS0XrwCRHKE8xB2n/wzvBO', 'd.holzweber@hotmail.com', '2021-04-21 14:46:11', '2022-02-18 20:26:27', 0, 1, 0, 1, NULL, NULL),
@@ -1023,9 +1023,9 @@ ALTER TABLE `bewertung_answers`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `externes_feedback`
+-- Indizes für die Tabelle `kursfeedback`
 --
-ALTER TABLE `externes_feedback`
+ALTER TABLE `kursfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -1055,9 +1055,9 @@ ALTER TABLE `interner_blog_kommentare`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `internes_feedback`
+-- Indizes für die Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -1122,9 +1122,9 @@ ALTER TABLE `bewertung_answers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT für Tabelle `externes_feedback`
+-- AUTO_INCREMENT für Tabelle `kursfeedback`
 --
-ALTER TABLE `externes_feedback`
+ALTER TABLE `kursfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=673;
 
 --
@@ -1152,9 +1152,9 @@ ALTER TABLE `interner_blog_kommentare`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT für Tabelle `internes_feedback`
+-- AUTO_INCREMENT für Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --

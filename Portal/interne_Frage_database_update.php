@@ -26,7 +26,7 @@ if($Fragentyp=='Text')
 
 else{$Fragentyp='INT(11)';}
 
-$query = "ALTER TABLE internes_feedback CHANGE Frage_".$Id." Frage_".$Id." ".$Fragentyp." NULL DEFAULT NULL";
+$query = "ALTER TABLE umfragenfeedback CHANGE Frage_".$Id." Frage_".$Id." ".$Fragentyp." NULL DEFAULT NULL";
 
 $exec = mysqli_query($link,$query);
 

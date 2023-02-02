@@ -58,7 +58,7 @@ function questions($Fragentyp, $link, $Trainer, $Leistung, $datum_min, $datum_ma
                                </tr>  
                           </thead>';
 
-    $sql = "SELECT ID, Typ, Fragen_extern FROM admin WHERE Fragen_extern !=''AND Typ = '".$Fragentyp."'";
+    $sql = "SELECT ID, Typ, Fragen_extern FROM fragen WHERE Fragen_extern !=''AND Typ = '".$Fragentyp."'";
     $i=0;
     $result = mysqli_query($link, $sql) ;
     $row = mysqli_fetch_assoc($result);

@@ -255,7 +255,7 @@ function deleteFeedback(id){
 		modal.style.display = "block"; 
 		var opt = {
             html2canvas:  { scale: 2, scrollY: 0, scrollX: 0},
-            filename:     'externes_feedback.pdf',
+            filename:     'kursfeedback.pdf',
             jsPDF:        { unit: 'pt', format: 'a3', orientation: 'portrait' }
         };
     
@@ -393,7 +393,7 @@ function deleteFeedback(id){
 	async function createPdfeinzeln(x){  
         var opt = {
             html2canvas:  { scale: 2, scrollY: 0, scrollX: 0},
-            filename:     'externes_feedback.pdf',
+            filename:     'kursfeedback.pdf',
             jsPDF:        { unit: 'pt', format: 'a3', orientation: 'portrait' }
         };
     

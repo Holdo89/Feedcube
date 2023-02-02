@@ -7,7 +7,7 @@ $ID = $_REQUEST["ID"];
 $Type = $_REQUEST["Type"];
 
 if($Type=="extern"){
-    $sql = "SELECT Fragen_extern as Frage FROM admin WHERE ID = ".$ID;
+    $sql = "SELECT Fragen_extern as Frage FROM fragen WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
     $row = mysqli_fetch_array($query);
 }

@@ -129,10 +129,10 @@ CREATE TABLE `interner_blog_kommentare` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `internes_feedback`
+-- Tabellenstruktur für Tabelle `umfragenfeedback`
 --
 
-CREATE TABLE `internes_feedback` (
+CREATE TABLE `umfragenfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Frage_23` int(11) DEFAULT NULL,
@@ -142,10 +142,10 @@ CREATE TABLE `internes_feedback` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `internes_feedback`
+-- Daten für Tabelle `umfragenfeedback`
 --
 
-INSERT INTO `internes_feedback` (`ID`, `Datum`, `Frage_23`, `Frage_24`, `Frage_25`, `Frage_26`) VALUES
+INSERT INTO `umfragenfeedback` (`ID`, `Datum`, `Frage_23`, `Frage_24`, `Frage_25`, `Frage_26`) VALUES
 (35, '2020-10-04 00:10:56', 80, 'Weniger Stress in der Arbeit', 65, 'Mehr Kontakt zu den Mitarbeitern');
 
 -- --------------------------------------------------------
@@ -206,7 +206,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(500) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `internes_feedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `umfragenfeedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Is_Admin` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -214,7 +214,7 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `internes_feedback_abgegeben`, `Is_Admin`) VALUES
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `umfragenfeedback_abgegeben`, `Is_Admin`) VALUES
 (68, 'Admin', 'Admin', '$2y$10$QCYntC.QWxn8h1H.o/8q.Oo/97GaZEZ3DfkVNY7/fdk6MJlOJHFM.', 'info@treevelop.com', '2020-09-18 20:13:48', '2020-10-06 10:14:59', 1),
 (71, 'Alle Berater', 'externes_feedback', '$2y$10$PlR96zGJ.YgsNpYO0dAKVehz48R0DgcpA7hxMFxECRHp3MDc8w4UG', 'trainer@email.com', '2020-09-18 20:22:23', '2020-10-04 00:03:49', 0),
 (72, 'Dominic Holzweber', 'Holdo', '$2y$10$8/rzZl5eO1oem.2xheBM5.qE1jpDnwHQrYAAJBKjR9/IkDWv4E1o6', 'dominic.holzweber@treevelop.com', '2020-10-04 01:30:05', '2020-10-11 23:23:02', 0),
@@ -256,9 +256,9 @@ ALTER TABLE `interner_blog_kommentare`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `internes_feedback`
+-- Indizes für die Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -316,9 +316,9 @@ ALTER TABLE `interner_blog_kommentare`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT für Tabelle `internes_feedback`
+-- AUTO_INCREMENT für Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --

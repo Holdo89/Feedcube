@@ -12,7 +12,7 @@
  $Id=[];
  $i=0;
  echo"Datum;Trainer;Leistung;";
- $sql="SELECT * FROM admin ORDER BY post_order_no ASC";
+ $sql="SELECT * FROM fragen ORDER BY post_order_no ASC";
  $result=mysqli_query($link,$sql);
  while($rows=mysqli_fetch_array($result)){
     echo '"'.$rows["Fragen_extern"].'";';
@@ -21,7 +21,7 @@
  }
  echo"\n";
    
-    $sql = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC";
+    $sql = "SELECT * FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."' ORDER BY Datum DESC";
     $result=mysqli_query($link,$sql);
 
 while($rows=mysqli_fetch_array($result)){

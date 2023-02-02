@@ -19,7 +19,7 @@ function questions($Fragentyp, $link){
 			}
 
 		echo"<p><b>".$Fragentyp."</b></p>";
-		$sql = "SELECT ID, Typ, Fragen_extern FROM admin WHERE Fragen_extern !=''AND Typ != 'Text'";
+		$sql = "SELECT ID, Typ, Fragen_extern FROM fragen WHERE Fragen_extern !=''AND Typ != 'Text'";
 		$i=0;
 		$result = mysqli_query($link, $sql) ;
 		while($row = mysqli_fetch_assoc($result)) {

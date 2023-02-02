@@ -22,7 +22,7 @@ if(mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-$sql = "UPDATE admin SET Überschrift = '$Überschrift', Überschrift_Englisch='$Überschrift_Übersetzung' WHERE Überschrift='".$Alte_Überschrift."'";
+$sql = "UPDATE fragen SET Überschrift = '$Überschrift', Überschrift_Englisch='$Überschrift_Übersetzung' WHERE Überschrift='".$Alte_Überschrift."'";
 
 if(mysqli_query($link, $sql)){
 

@@ -10,7 +10,7 @@ require_once "session.php";
 
 echo "Anzahl abgegebenes Feedback";
 
-$sql="SELECT COUNT(ID) As Anzahl_Feedback FROM internes_feedback";
+$sql="SELECT COUNT(ID) As Anzahl_Feedback FROM umfragenfeedback";
 $result_feedback=mysqli_query($link,$sql);
 $rows_feedback=mysqli_fetch_array($result_feedback);
 if ($rows_feedback["Anzahl_Feedback"]!=0) {
@@ -30,7 +30,7 @@ if ($rows_feedback["Anzahl_Feedback"]!=0) {
             }
         }
 
-        $query = "SELECT COUNT('ID') AS Number FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Umfrage LIKE '".$Umfrage."'";
+        $query = "SELECT COUNT('ID') AS Number FROM umfragenfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND Umfrage LIKE '".$Umfrage."'";
         $exec = mysqli_query($link, $query);
         $row=mysqli_fetch_assoc($exec);
         echo ",".$row["Number"];

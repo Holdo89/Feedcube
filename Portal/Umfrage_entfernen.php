@@ -31,7 +31,7 @@ while($row_Frage = mysqli_fetch_assoc($result_Frage))
     }
     $result=mysqli_query($link, $sql);
 
-    $sql="ALTER TABLE internes_feedback DROP COLUMN Frage_".$Id_Frage;
+    $sql="ALTER TABLE umfragenfeedback DROP COLUMN Frage_".$Id_Frage;
     $result=mysqli_query($link, $sql);
 
     $sql = "DELETE FROM intern WHERE ID = '".$Id_Frage."'";
@@ -47,16 +47,16 @@ while($row_Frage = mysqli_fetch_assoc($result_Frage))
     $query= mysqli_query($link,$sql);
     while($row = mysqli_fetch_assoc($query))
     {
-        $sql2 = "UPDATE admin SET post_id = ".$i." WHERE ID = ".$row["ID"];
+        $sql2 = "UPDATE fragen SET post_id = ".$i." WHERE ID = ".$row["ID"];
         $query2= mysqli_query($link,$sql2);
         $i = $i+1;
     }
 
-    $sql ="SELECT count(*) FROM information_schema.columns WHERE table_schema = 'feedcube_".$subdomain."' AND table_name = 'internes_feedback';";
+    $sql ="SELECT count(*) FROM information_schema.columns WHERE table_schema = 'feedcube_".$subdomain."' AND table_name = 'umfragenfeedback';";
     $result=mysqli_query($link, $sql);
     $row = mysqli_fetch_array($result);
     if($row["count(*)"]==5){    
-        $sql="DELETE FROM internes_feedback;";
+        $sql="DELETE FROM umfragenfeedback;";
         $result=mysqli_query($link, $sql);
     }
 // close connection
@@ -67,7 +67,7 @@ while($row_Frage = mysqli_fetch_assoc($result_Frage))
 $sql="ALTER TABLE intern DROP COLUMN Umfrage_".$Id;
 $result=mysqli_query($link, $sql);
 
-$sql="DELETE FROM internes_feedback WHERE Umfrage = '".$Umfrage."'";
+$sql="DELETE FROM umfragenfeedback WHERE Umfrage = '".$Umfrage."'";
 $result=mysqli_query($link, $sql);
 
 $sql = "DELETE FROM umfragen WHERE ID = '".$Id."'";

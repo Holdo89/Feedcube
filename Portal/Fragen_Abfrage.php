@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM admin WHERE Überschrift = '".$row_überschrift["Überschrift"]."' ORDER BY post_order_no ASC";
+$sql = "SELECT * FROM fragen WHERE Überschrift = '".$row_überschrift["Überschrift"]."' ORDER BY post_order_no ASC";
 $result = mysqli_query($link, $sql);
 $rowCount = mysqli_num_rows($result);
 

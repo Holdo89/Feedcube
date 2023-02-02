@@ -41,7 +41,7 @@ $Spaltennamen="Datum, Umfrage, ";
 $Spaltennamen = $Spaltennamen.$Fragenauswahl;
 
 // attempt insert query execution
-$sql = "INSERT INTO internes_feedback (".$Spaltennamen.") VALUES (".$Antworten.")";
+$sql = "INSERT INTO umfragenfeedback (".$Spaltennamen.") VALUES (".$Antworten.")";
 $dir = "../assets/".$subdomain."/logo/";
 $file = scandir($dir);
 if(mysqli_query($link, $sql)){

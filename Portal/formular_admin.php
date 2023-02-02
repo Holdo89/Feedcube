@@ -10,7 +10,7 @@
  $Scrollcounter = intval($_REQUEST["Scrollcounter"]);
 
 
-$query = "SELECT * FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$start.", ".$limit."";	
+$query = "SELECT * FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND Username LIKE '".$Trainer."' AND Leistung LIKE '".$Leistung."' ORDER BY Datum DESC LIMIT ".$start.", ".$limit."";	
 
  $exec = mysqli_query($link,$query);
  $i=0;
@@ -37,11 +37,11 @@ while($row = mysqli_fetch_array($exec)){
 	$currentFragenset = $rowcurrentFragenset["Fragenset"];
 	if($currentFragenset==0)
 	{
-		$query = "SELECT Überschrift,Typ,ID,Fragen_extern,Antworttyp FROM admin WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
+		$query = "SELECT Überschrift,Typ,ID,Fragen_extern,Antworttyp FROM fragen WHERE Leistung_".$row_ID." = 1 ORDER BY post_order_no ASC";	
 	}
 	else
 	{
-		$query = "SELECT Überschrift,Typ,ID,Fragen_extern,Antworttyp FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
+		$query = "SELECT Überschrift,Typ,ID,Fragen_extern,Antworttyp FROM fragen WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";	
 	}
  	$execute = mysqli_query($link,$query);
  	$execute_chapter = mysqli_query($link,$query);

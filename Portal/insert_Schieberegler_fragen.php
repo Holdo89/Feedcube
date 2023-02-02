@@ -7,7 +7,7 @@ require_once "session.php";
 
 if($Type=="extern")
 {
-    $sql = "SELECT MAX(post_order_no) FROM admin";
+    $sql = "SELECT MAX(post_order_no) FROM fragen";
 }
 else
 {
@@ -29,7 +29,7 @@ $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
 
 if($Type=="extern")
 {
-    $sql = "INSERT INTO admin (Überschrift, Überschrift_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
+    $sql = "INSERT INTO fragen (Überschrift, Überschrift_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 }
 else
 {
@@ -39,7 +39,7 @@ mysqli_query($link, $sql);
 
 if($Type=="extern")
 {
-    $sql = "SELECT ID FROM admin ORDER BY ID DESC LIMIT 1";
+    $sql = "SELECT ID FROM fragen ORDER BY ID DESC LIMIT 1";
 }
 else
 {
@@ -64,7 +64,7 @@ mysqli_query($link, $sql);
 
 if ($Type=="extern") {
     $columnnames = "";
-    $sql="SHOW COLUMNS FROM admin";
+    $sql="SHOW COLUMNS FROM fragen";
 
 
     $query = mysqli_query($link, $sql);
@@ -77,7 +77,7 @@ if ($Type=="extern") {
 
     if ($columnnames!="") {
         $columnnames = substr($columnnames, 0, -2);
-        $sql="UPDATE admin SET ".$columnnames." WHERE ID=".$ID;
+        $sql="UPDATE fragen SET ".$columnnames." WHERE ID=".$ID;
         $query = mysqli_query($link, $sql);
     }
 
@@ -97,7 +97,7 @@ if ($Type=="extern") {
         } else {
             $Leistungen = substr($Leistungen, 0, -1);
         }
-        $sql="UPDATE admin SET ".$Fragenset.$Leistungen." WHERE ID=".$ID;
+        $sql="UPDATE fragen SET ".$Fragenset.$Leistungen." WHERE ID=".$ID;
         $query = mysqli_query($link, $sql);
     }
 }

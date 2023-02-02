@@ -6,7 +6,7 @@ require_once "session.php";
 $Id=$_REQUEST["Id"];
 
 
-$sql = "DELETE FROM internes_feedback WHERE ID = '".$Id."'";
+$sql = "DELETE FROM umfragenfeedback WHERE ID = '".$Id."'";
 
 mysqli_query($link, $sql);
 

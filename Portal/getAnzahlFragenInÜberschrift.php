@@ -7,7 +7,7 @@ $ID=$_REQUEST["ID"];
     $row = mysqli_fetch_assoc($result);
     $Überschrift = $row["Überschrift"];
     
-    $sql = "SELECT COUNT(Überschrift) as Anzahl FROM admin WHERE Überschrift = '".$Überschrift."'"; 
+    $sql = "SELECT COUNT(Überschrift) as Anzahl FROM fragen WHERE Überschrift = '".$Überschrift."'"; 
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($result);
     echo $row["Anzahl"];

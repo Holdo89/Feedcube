@@ -17,13 +17,13 @@ require_once "session.php";
     $Trainer=$_REQUEST["Trainer"];
 
 
-        $sql = "SELECT COUNT(ID) FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+        $sql = "SELECT COUNT(ID) FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
         $query = mysqli_query($link,$sql);
         $row = mysqli_fetch_array($query);
         $Feedback_abgegeben = $row["COUNT(ID)"];
         if($Feedback_abgegeben)
         {
-            $sql_date_last = "SELECT Datum, Trainer, Leistung FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'  ORDER BY Datum DESC";
+            $sql_date_last = "SELECT Datum, Trainer, Leistung FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'  ORDER BY Datum DESC";
             $query_date_last = mysqli_query($link,$sql_date_last);
             $row_date_last = mysqli_fetch_array($query_date_last);
 

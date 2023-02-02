@@ -16,7 +16,7 @@ $i=0;
 $AnzahlAllerFragensets=count($Fragensetids);
 while($i<$AnzahlAllerFragensets)
 {
-    $sql = "SELECT ".$Fragensetids[$i]." FROM admin WHERE ID = ".$ID;
+    $sql = "SELECT ".$Fragensetids[$i]." FROM fragen WHERE ID = ".$ID;
     $result = mysqli_query($link,$sql);
     $row = mysqli_fetch_array($result);
     if($row[$Fragensetids[$i]]==1)

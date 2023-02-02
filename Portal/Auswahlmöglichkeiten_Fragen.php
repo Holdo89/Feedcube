@@ -18,7 +18,7 @@ else{
     }
 
 
-    $sql = "SELECT ID, Typ, Fragen_extern FROM admin WHERE Fragen_extern !='' ORDER BY post_order_no ASC";
+    $sql = "SELECT ID, Typ, Fragen_extern FROM fragen WHERE Fragen_extern !='' ORDER BY post_order_no ASC";
 
 	$i=0;
 	$result = mysqli_query($link, $sql) ;

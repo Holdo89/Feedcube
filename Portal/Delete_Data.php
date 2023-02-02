@@ -17,7 +17,7 @@
  $Trainer=$_REQUEST["Trainer"];
 
   
- $sql = "DELETE FROM externes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
+ $sql = "DELETE FROM kursfeedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00'AND Leistung LIKE '".$Leistung."' AND Username LIKE '".$Trainer."'";
 
 mysqli_query($link, $sql);
 

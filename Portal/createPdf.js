@@ -1,7 +1,7 @@
 function createPdf(){  
 	var opt = {
 		html2canvas:  { scale: 2},
-		filename:     'externes_feedback.pdf',
+		filename:     'kursfeedback.pdf',
 		jsPDF:        { unit: 'pt', format: 'a3', orientation: 'portrait' }
 	};
 
@@ -43,7 +43,7 @@ function createPdf(){
     function createPdfeinzeln(x){  
         var opt = {
             html2canvas:  { scale: 2},
-            filename:     'externes_feedback.pdf',
+            filename:     'kursfeedback.pdf',
             jsPDF:        { unit: 'pt', format: 'a3', orientation: 'portrait' }
         };
     

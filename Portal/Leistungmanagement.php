@@ -174,7 +174,7 @@
 		?>
 		</div>
 		<?php
-		$sql = "SELECT Fragen_extern FROM admin ORDER BY post_order_no";
+		$sql = "SELECT Fragen_extern FROM fragen ORDER BY post_order_no";
 		$result = mysqli_query($link,$sql);
 		while($row = mysqli_fetch_assoc($result)){
 			echo'

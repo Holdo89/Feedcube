@@ -30,9 +30,9 @@ $Spaltennamen = substr($Spaltennamen, 0, -1); //Löscht das letzte Zeichen bei S
 
 // attempt insert query execution
 
-$sql = "INSERT INTO internes_feedback (".$Spaltennamen.") VALUES (".$Antworten.")";
+$sql = "INSERT INTO umfragenfeedback (".$Spaltennamen.") VALUES (".$Antworten.")";
 if(mysqli_query($link, $sql)){
-    $sql = "UPDATE users SET internes_feedback_abgegeben = NOW() WHERE username = '".$_SESSION['username']."'";
+    $sql = "UPDATE users SET umfragenfeedback_abgegeben = NOW() WHERE username = '".$_SESSION['username']."'";
     $result = mysqli_query($link, $sql);
     $rowcolumns = mysqli_fetch_assoc($result);
     header("location: Intern.php");

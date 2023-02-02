@@ -105,7 +105,7 @@ INSERT INTO `umfragen` (`ID`, `Datum`, `Umfrage`, `Benachrichtigung`, `Intervall
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `internes_feedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`, `Confirmed`, `passwortcode`, `passwortcode_time`) VALUES
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `umfragenfeedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`, `Confirmed`, `passwortcode`, `passwortcode_time`) VALUES
 (1, 'test', 'test', '$2y$10$c7dOQDphK6CaGTbT/vccWuB09nReARZLvwPauG//ZeLagEd.FoybG', 'd.holzweber@hotmail.com', '2022-01-06 05:14:03', '2022-01-14 07:51:28', 1, 0, 1, 1, NULL, NULL),
 (6, 'Dominic Holzweber', 'Holdo', '$2y$10$DycP2i9bkZfS4qedAVAvqO606Lm2puEQy7lxI8pFus57KHbdkQ3lq', 'Holdo89@gmail.com', '2022-01-13 14:16:16', '2022-01-16 15:22:28', 0, 1, 0, 1, NULL, NULL);
 COMMIT;

@@ -23,7 +23,7 @@ else if($Fragentyp=="Schieberegler")
 $result=mysqli_query($link, $sql);
 
 
-$sql="ALTER TABLE internes_feedback DROP COLUMN Frage_".$Id;
+$sql="ALTER TABLE umfragenfeedback DROP COLUMN Frage_".$Id;
 $result=mysqli_query($link, $sql);
 
 $sql = "DELETE FROM intern WHERE ID = '".$Id."'";

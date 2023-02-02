@@ -147,10 +147,10 @@ CREATE TABLE `interner_blog_kommentare` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `internes_feedback`
+-- Tabellenstruktur für Tabelle `umfragenfeedback`
 --
 
-CREATE TABLE `internes_feedback` (
+CREATE TABLE `umfragenfeedback` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Frage_56` int(11) DEFAULT NULL,
@@ -160,10 +160,10 @@ CREATE TABLE `internes_feedback` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `internes_feedback`
+-- Daten für Tabelle `umfragenfeedback`
 --
 
-INSERT INTO `internes_feedback` (`ID`, `Datum`, `Frage_56`, `Frage_57`, `Frage_58`, `Frage_59`) VALUES
+INSERT INTO `umfragenfeedback` (`ID`, `Datum`, `Frage_56`, `Frage_57`, `Frage_58`, `Frage_59`) VALUES
 (56, '2021-01-06 00:18:37', 6, NULL, NULL, NULL),
 (58, '2021-02-17 22:40:54', 4, 83, 'Alles OK so weit', NULL),
 (59, '2021-02-18 00:24:40', 4, 85, 'giut', NULL);
@@ -275,7 +275,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(500) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
-  `internes_feedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `umfragenfeedback_abgegeben` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Is_Admin` tinyint(1) NOT NULL,
   `Is_Trainer` tinyint(4) NOT NULL,
   `Is_Creator` tinyint(1) NOT NULL
@@ -285,7 +285,7 @@ CREATE TABLE `users` (
 -- Daten für Tabelle `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `internes_feedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`) VALUES
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `created_at`, `umfragenfeedback_abgegeben`, `Is_Admin`, `Is_Trainer`, `Is_Creator`) VALUES
 (68, 'Admin', 'Admin', '$2y$10$QCYntC.QWxn8h1H.o/8q.Oo/97GaZEZ3DfkVNY7/fdk6MJlOJHFM.', 'info@feedtracker.com', '2020-09-18 20:13:48', '2021-02-17 22:40:54', 1, 0, 1),
 (71, 'Alle Berater', 'externes_feedback', '$2y$10$PlR96zGJ.YgsNpYO0dAKVehz48R0DgcpA7hxMFxECRHp3MDc8w4UG', 'trainer@email.com', '2020-09-18 20:22:23', '2021-02-01 12:29:09', 0, 1, 0),
 (87, 'Dominic Holzweber', 'Holdo', '$2y$10$WvKUeDN7REl.hq2kUoLqVOc5B/LDRLeJuH4SMZhsqcnb0xvqh0XWK', 'd.holzweber@hotmail.com', '2021-01-02 20:54:00', '2021-02-20 22:47:44', 0, 1, 0);
@@ -326,9 +326,9 @@ ALTER TABLE `interner_blog_kommentare`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indizes für die Tabelle `internes_feedback`
+-- Indizes für die Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
@@ -398,9 +398,9 @@ ALTER TABLE `interner_blog_kommentare`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT für Tabelle `internes_feedback`
+-- AUTO_INCREMENT für Tabelle `umfragenfeedback`
 --
-ALTER TABLE `internes_feedback`
+ALTER TABLE `umfragenfeedback`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --

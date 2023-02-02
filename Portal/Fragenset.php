@@ -136,7 +136,7 @@
 		<input id="neues_Fragenset" class="center_select" name="neues_Fragenset" required></input>
 		<h5 style="margin-top:40px">Wähle deine Fragen zum ausgewählten Fragenset:</h5>
 		<?php
-		$sql = "SELECT Fragen_extern FROM admin ORDER BY post_order_no";
+		$sql = "SELECT Fragen_extern FROM fragen ORDER BY post_order_no";
 		$result = mysqli_query($link,$sql);
 		while($row = mysqli_fetch_assoc($result)){
 			echo'

@@ -2,7 +2,7 @@
 include "../config.php";
 $ID = $_REQUEST["ID"];
 $checked_Fragen = "";
-$sql = "SELECT Fragen_extern FROM admin";
+$sql = "SELECT Fragen_extern FROM fragen";
 $result = mysqli_query($link,$sql);
 while($row = mysqli_fetch_assoc($result)){
     $checked_Fragen = $checked_Fragen.$row["Fragen_extern"].";.,";

@@ -32,10 +32,10 @@ $rowcurrentFragenset = mysqli_fetch_assoc($result_currentFragenset);
 $currentFragenset = $rowcurrentFragenset["Fragenset"];
 if($currentFragenset==0)
 {
-    $sql = "SELECT ID FROM admin WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";}
+    $sql = "SELECT ID FROM fragen WHERE Leistung_".$ID." = 1 ORDER BY post_order_no ASC";}
 else
 {
-    $sql = "SELECT ID FROM admin WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";}
+    $sql = "SELECT ID FROM fragen WHERE Fragenset_".$currentFragenset." = 1 ORDER BY post_order_no ASC";}
 
 $result = mysqli_query($link, $sql) ;
 
@@ -47,7 +47,7 @@ $Spaltennamen="Datum, Username, Trainer, Leistung, ";
 $Spaltennamen = $Spaltennamen.$Fragenauswahl;
 
 // attempt insert query execution
-$sql = "INSERT INTO externes_feedback (".$Spaltennamen.") VALUES (".$Antworten.")";
+$sql = "INSERT INTO kursfeedback (".$Spaltennamen.") VALUES (".$Antworten.")";
 $dir = "../assets/".$subdomain."/logo/";
 $file = scandir($dir);
 if(mysqli_query($link, $sql)){
