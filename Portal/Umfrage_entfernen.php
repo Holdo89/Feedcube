@@ -19,13 +19,7 @@ while($row_Frage = mysqli_fetch_assoc($result_Frage))
     $row = mysqli_fetch_array($result);
     $Fragentyp = $row["Typ"];
 
-    if($Fragentyp=="Bewertung")
-    {
-        $sql="ALTER TABLE bewertung_answers DROP COLUMN Intern_".$Id_Frage;
-        $result=mysqli_query($link, $sql);
-        $sql="DELETE FROM bewertung_answers WHERE Fragenspezifisch = '".$Id_Frage."'";
-    }
-    else if($Fragentyp=="Multiplechoice")
+    if($Fragentyp=="Multiplechoice")
     {
         $sql="ALTER TABLE multiplechoice_answers DROP COLUMN Intern_".$Id_Frage;
         $result=mysqli_query($link, $sql);

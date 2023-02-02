@@ -38,25 +38,24 @@ $IsAdmin = $row["Is_Admin"];
 
  if($rows_feedback["Anzahl_Feedback"]!=0){
 	if($row_typ["Typ"]=="Bewertung" || $row_typ["Typ"]=="Multiplechoice"){
-		if($row_typ['Antworttyp'] == 'vordefiniert')
-			{
-				$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE Fragenspezifisch = 0 AND Intern_".$Frage_ID." = 1";
-			}
-			else{
-				$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE Fragenspezifisch =  ".$row_typ['ID']." AND Intern_".$Frage_ID." = 1";
-			}        
-
-		$result_multi=mysqli_query($link,$sql);
-		$rows_multi=mysqli_fetch_array($result_multi);
+	if($row_typ["Typ"]=="Bewertung")
+	{
+		$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers";
+	}
+	else if($row_typ["Typ"]=="Multiplechoice"){
+		$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE Fragenspezifisch =  ".$row_typ['ID']." AND Intern_".$Frage_ID." = 1";
+	}        
+	$result_multi=mysqli_query($link,$sql);
+	$rows_multi=mysqli_fetch_array($result_multi);
 	}
 
  if($Frage !="undefined"){ //falls noch keine multiplechoice Frage geschrieben wurde
 	if($row_typ["Typ"]=="Bewertung" || $row_typ["Typ"]=="Multiplechoice"){
-		if($row_typ['Antworttyp'] == 'vordefiniert')
+		if($row_typ["Typ"]=="Bewertung")
 		{
-			$sql="SELECT * FROM ".$Typ."_answers WHERE Fragenspezifisch = 0 AND Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
+			$sql="SELECT * FROM ".$Typ."_answers ORDER BY post_order_no ASC";
 		}
-		else{
+		else if($row_typ["Typ"]=="Multiplechoice"){
 			$sql="SELECT * FROM ".$Typ."_answers WHERE Fragenspezifisch = ".$row_typ['ID']." AND Intern_".$Frage_ID." = 1 ORDER BY post_order_no ASC";
 		}
 		$i=1;
@@ -97,13 +96,10 @@ $feedback_year=substr($datum_max,0,4);
 		$Anzahl_abgegenes_feedback=0;
 		$Average = 0;
 		$g=1;
-		if($row_typ['Antworttyp'] == 'vordefiniert')
-        {
-            $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0  AND Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }
-        else{
-            $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = ".$row_typ['ID']." AND Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }		$exec = mysqli_query($link, $sql);
+
+        $sql = "SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
+        $exec = mysqli_query($link, $sql);
+
 		while($row=mysqli_fetch_array($exec))
 		{
 			$sql2 = "SELECT COUNT(".$Frage.") FROM internes_feedback WHERE Datum <= '".$datum_min." 23:59:59' AND Datum >= '".$datum_max." 00:00:00' AND MONTH(Datum) = ".$u." AND YEAR(Datum) = ".$feedback_year." AND ".$Frage." LIKE '%|".$row["Answers"]."|%'";
@@ -143,13 +139,9 @@ $feedback_year=substr($datum_max,0,4);
 		$Anzahl_abgegenes_feedback=0;
 		$Average = array();
 		$g=1;
-		if($row_typ['Antworttyp'] == 'vordefiniert')
-        {
-            $sql = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = 0  AND Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }
-        else{
-            $sql = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row_typ['ID']." AND Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }			
+
+        $sql = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row_typ['ID']." AND Intern_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
+			
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{

@@ -88,36 +88,23 @@ else {
         } else if ($row['Typ'] == 'Bewertung') {
             $Bewertung = array();
             $Bewertung_value = array(); //Bewertungmöglichkeiten der einzelnen Frage
-            if($row['Antworttyp'] == 'vordefiniert')
-            {
-                $sql_answers = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-            }
-            else{
-                $sql_answers = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = ".$row['ID']." ORDER BY post_order_no ASC";
-            }
+            $sql_answers = "SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
             $result_answers = mysqli_query($link, $sql_answers);
             while ($row_answers = mysqli_fetch_array($result_answers)) {
-                if ($row_answers["Frage_" . $row["ID"]] == 1) {
                     array_push($Bewertung_value, $row_answers['Answers']);
                     if ($_SESSION["Sprache"] == "Deutsch") {
                         array_push($Bewertung, $row_answers['Answers']);
                     } else if ($_SESSION["Sprache"] == "Englisch") {
                         array_push($Bewertung, $row_answers['Answers_Englisch']);
                     }
-                }
             }
             array_push($Bewertung_array_value, $Bewertung_value);
             array_push($Bewertung_array, $Bewertung);
         } else if ($row['Typ'] == 'Multiplechoice') {
             $Multiplechoice = array(); //Multiplechoicemöglichkeiten der einzelnen Frage
             $Multiplechoice_value = array();
-            if($row['Antworttyp'] == 'vordefiniert')
-            {
-                $sql_answers = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-            }
-            else{
-                $sql_answers = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row['ID']." ORDER BY post_order_no ASC";
-            }
+            $sql_answers = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row['ID']." ORDER BY post_order_no ASC";
+            
             $result_answers = mysqli_query($link, $sql_answers);
             while ($row_answers = mysqli_fetch_array($result_answers)) {
                 if ($row_answers["Frage_" . $row["ID"]] == 1) {

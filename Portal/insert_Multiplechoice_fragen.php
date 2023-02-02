@@ -68,32 +68,22 @@ mysqli_query($link, $sql);
 $sql= "ALTER TABLE ".$Type."es_feedback ADD Frage_".$row['ID']." TEXT";
 mysqli_query($link, $sql);
 
-if($Antworttyp == "fragenspezifisch")
-{
-    $Fragenspezifisch = $ID;
-}
-else
-{
-    $Fragenspezifisch = 0;
-}
-
 //Fragen_relate_antworten.php
 for ($i=0; $i<sizeof($Antwort);$i++) 
 { 
     if(!strpos($Antwort[$i],"_unchecked"))
     {
-        if($Antworttyp=="fragenspezifisch")
-        {
-            $sql = "INSERT INTO multiplechoice_answers (Answers, Answers_Englisch, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Antwort[$i]. "','".$AntwortEnglisch[$i]. "','$ID', '$last_order','$last_order')";    
-            mysqli_query($link, $sql);
-        }
+
+        $sql = "INSERT INTO multiplechoice_answers (Answers, Answers_Englisch, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Antwort[$i]. "','".$AntwortEnglisch[$i]. "','$ID', '$last_order','$last_order')";    
+        mysqli_query($link, $sql);
+
         if($Type=="extern")
             {
-                $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";   
+                $query="UPDATE multiplechoice_answers SET Frage_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$ID."'";   
             }
             else
             {
-                $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$Fragenspezifisch."'";  
+                $query="UPDATE multiplechoice_answers SET Intern_".$ID." = 1 WHERE Answers = '".$Antwort[$i]. "' AND Fragenspezifisch = '".$ID."'";  
             }
         mysqli_query($link,$query); 
     } 

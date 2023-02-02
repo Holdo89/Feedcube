@@ -1,6 +1,6 @@
 <?php
 
-$sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch=0 ORDER BY post_order_no ASC";
+$sql = "SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
 $result = mysqli_query($link, $sql);
 
 while($row = mysqli_fetch_assoc($result)) {

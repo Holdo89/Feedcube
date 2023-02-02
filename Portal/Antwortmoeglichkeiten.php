@@ -172,19 +172,6 @@
 	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'answers', 'Bewertung')"> Bewertung hinzufügen</button>
 
 
-	<form class="form_antworten" style="border-radius:5px 5px 0px 0px;">
-	<label style="grid-column: 1 / span 2; padding-left:20px"  class="überschrift">Multiplechoice</label>
-	<label class="überschrift"></label>
-	<label class="überschrift"></label>
-	</form>
-	<div id="Antworten_Multiplechoice" class="scroll">
-	<?php
-		include "Antworten_Abfrage_Multiplechoice.php";
-	?>
-	</div>
-	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']?>" onclick = "display(undefined,'answers', 'Multiplechoice')"> Option hinzufügen</button>
-
-
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	</div>

@@ -22,6 +22,10 @@ while($row_überschrift = mysqli_fetch_assoc($result_überschrift)) {
 }
 echo'</div>';
 ?>
+	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
+	$exec=mysqli_query($link, $sql);
+	$result=mysqli_fetch_assoc($exec);
+	echo $result['farbe']?>" onclick = "showNewÜberschriftModal(undefined,'extern')"><i class="fa fa-list" style="font-size:19px" aria-hidden="true"></i> Überschrift hinzufügen</button>
 <script>
 function copyLink(id) {
     var copyLink = "https://<?php echo $subdomain ?>.feedcube.net/Software/Überschrift/Vorauswahl.php?Überschrift="+id;

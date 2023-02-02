@@ -20,25 +20,21 @@ include "IsAdmincheck.php";
 		if($row["Typ"]=="Bewertung")
 		{
 			$Typ="bewertung";
+			$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE ".$Frage." = 1";
 		}
 		else
 		{
 			$Typ="multiplechoice";
+			$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE Fragenspezifisch =  ".$row['ID']." AND ".$Frage." = 1";
 		}
 		echo $row["Typ"].',';
-		if($row['Antworttyp'] == 'vordefiniert')
-        {
-			$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE Fragenspezifisch = 0 AND ".$Frage." = 1";
-        }
-        else{
-			$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE Fragenspezifisch =  ".$row['ID']." AND ".$Frage." = 1";
-        }
+	
 		$result=mysqli_query($link,$sql);
 		$rows=mysqli_fetch_array($result);
 
-        if($row['Antworttyp'] == 'vordefiniert')
+		if($row["Typ"]=="Bewertung")
         {
-            $sql_answers = "SELECT * FROM ".$Typ."_answers WHERE Fragenspezifisch = 0  AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
+            $sql_answers = "SELECT * FROM ".$Typ."_answers ORDER BY post_order_no ASC";
         }
         else{
             $sql_answers = "SELECT * FROM ".$Typ."_answers WHERE Fragenspezifisch = ".$row['ID']." AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";

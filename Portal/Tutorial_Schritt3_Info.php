@@ -44,7 +44,6 @@
 		</div>
 		<p style="text-align:left">
 		<b>Text</b> - Fragen werden durch ein Kommentar in Textform beantwortet.<br><br>
-		<i style="font-size:20px; color:blue" class="fas fa-info"></i> Für die Antwortmöglichkeiten bei Bewertungen und Multiplechoice Fragen können vordefinierte Optionen gewählt, oder fragenspezifische Antworten erstellt werden.  
 		Um eine bestehende Frage zu bearbeiten, klicke <i class="fa fa-pencil" aria-hidden="true"></i>.
 		</p>
 		    <button id="element" style="font-size:13px; margin-top:20px; width:170px; padding:10px;"><i class="fa fa-check" aria-hidden="true" style="font-size:13px"></i> Alles klar</button>

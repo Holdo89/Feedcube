@@ -15,23 +15,11 @@
     
     if ($Fragentyp=="Multiplechoice")
     {
-        if($row['Antworttyp'] == 'vordefiniert')
-        {
-            $sql = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = 0  AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }
-        else{
-            $sql = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row['ID']." AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }    
+        $sql = "SELECT * FROM multiplechoice_answers WHERE Fragenspezifisch = ".$row['ID']." AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";   
     }
     else
     {
-        if($row['Antworttyp'] == 'vordefiniert')
-        {
-            $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0  AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }
-        else{
-            $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = ".$row['ID']." AND Frage_".$Frage_ID." = '1' ORDER BY post_order_no ASC";
-        }
+        $sql = "SELECT * FROM bewertung_answers ORDER BY post_order_no ASC";
     }
     if ($Fragentyp!="Text")
     {

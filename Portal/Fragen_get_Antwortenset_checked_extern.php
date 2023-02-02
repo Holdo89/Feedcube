@@ -6,7 +6,7 @@ $Type = $_REQUEST["Type"];
 if ($Type == "Bewertung")
 {
     $checked_Fragen = "";
-    $sql = "SELECT Answers FROM bewertung_answers WHERE Frage_".$ID." = 1 ORDER BY post_order_no ASC";
+    $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
     $result = mysqli_query($link,$sql);
     while($row = mysqli_fetch_assoc($result)){
         $checked_Fragen = $checked_Fragen.$row["Answers"].",";

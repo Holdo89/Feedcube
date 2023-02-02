@@ -24,7 +24,7 @@ $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
 
 if ($Fragentyp=="Bewertung") {
-    $sql = "INSERT INTO bewertung_answers (Answers, Answers_Englisch, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Answer. "','".$AnswerEnglisch. "','$ID', '$last_order','$last_order')";
+    $sql = "INSERT INTO bewertung_answers (Answers, Answers_Englisch, post_order_no, post_id) VALUES ('".$Answer. "','".$AnswerEnglisch. "', '$last_order','$last_order')";
 }
 if ($Fragentyp=="Multiplechoice") {
     $sql = "INSERT INTO multiplechoice_answers (Answers, Answers_Englisch, Fragenspezifisch, post_order_no, post_id) VALUES ('".$Answer. "','".$AnswerEnglisch. "','$ID', '$last_order','$last_order')";

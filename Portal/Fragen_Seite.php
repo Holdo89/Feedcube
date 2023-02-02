@@ -171,7 +171,6 @@ include "navigation_admin.php";
 ?>
 <script>
 	document.getElementById("Fragen").className = "active";
-	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:10px;"><img src="../assets/brand/questionmark.png" width="60" style="margin-top:-10px;"> Fragen </h1>
 		Hier kannst du Fragen, die beim Feedback gestellt werden, bearbeiten
@@ -214,11 +213,6 @@ include "navigation_admin.php";
         include "Überschrift_Abfrage.php";
 ?>
 	</div>
-	<button id="element" style="width:250px; background-color:<?php $sql='SELECT farbe FROM system';
-	$exec=mysqli_query($link, $sql);
-	$result=mysqli_fetch_assoc($exec);
-	echo $result['farbe']?>" onclick = "showNewÜberschriftModal(undefined,'extern')"><i class="fa fa-list" style="font-size:19px" aria-hidden="true"></i> Überschrift hinzufügen</button>
-
 	<script>
 	function user_abfrage_speichern(id) {
 			speichern(id);
@@ -327,7 +321,7 @@ if (isset($_REQUEST["Step"])) {
 						include "Auswahlmöglichkeiten_LeistungenOhneFragenset.php";
 					?>
 				</p>
-				<div class="container">
+				<div class="container" style="margin-bottom:20px;">
 				<h5>Fragentyp:</h5>
 					<label class="radio-inline">
 					<input type="radio" name="Auswahl_Fragentyp" id="Bewertung" value="Bewertung" style="margin-top:10px;" oninput="showoptions()" required>Bewertung
@@ -342,18 +336,30 @@ if (isset($_REQUEST["Step"])) {
 					<input type="radio" name="Auswahl_Fragentyp" id="Text" value="Text" style="margin-top:10px;" oninput="showoptions()" required>Text
 					</label>
 				</div>
-				<div id="Antworttyp_container" class="container" style="display:none">
+				<div id="Antworttyp_container" class="container" style="display:none; margin-bottom:20px;">
 				<p>Antworttyp:</p>
 					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Antworttyp" id="vordefiniert" value="vordefiniert" style="margin-top:10px;" value="vordefiniert" oninput="showoptions()">Vordefiniert
+					<input type="radio" name="Auswahl_Antworttyp" id="vordefiniert" value="vordefiniert" style="margin-top:10px;" oninput="showoptions()">Vordefiniert
 					</label>
 					<label class="radio-inline">
-					<input type="radio" name="Auswahl_Antworttyp" id="fragenspezifisch" value="fragenspezifisch" style="margin-top:10px;" value="fragenspezifisch" oninput="showoptions()">Fragenspezifisch
+					<input type="radio" name="Auswahl_Antworttyp" id="Emoticons" value="Emoticons" style="margin-top:10px;" oninput="showoptions()">Emoticons
+					</label>					
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Antworttyp" id="Sterne" value="Sterne" style="margin-top:10px;" oninput="showoptions()">Sterne
 					</label>
+				</div>
+				<div id="Multiplechoicetyp_container" class="container" style="display:none; margin-bottom:20px;">
+				<p>Antworttyp:</p>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Multiplechoicetyp" id="Checkboxtyp" value="Checkboxtyp" style="margin-top:10px;">Checkbox
+					</label>
+					<label class="radio-inline">
+					<input type="radio" name="Auswahl_Multiplechoicetyp" id="Radiotyp" value="Radiotyp" style="margin-top:10px;">Radiobutton
+					</label>					
 				</div>
 				<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
 	 			</input>
-				<div id="Bewertungoptionen" style="font-size:12px; display:none;">
+				<div id="Bewertungoptionen" style="display:none;">
 				</div>
 				<div id="Multiplechoiceoptionen" style="font-size:12px; display:none;">
 				</div>
@@ -452,32 +458,50 @@ if (isset($_REQUEST["Step"])) {
 	});
 
 
+	function updateInput(wert, element){
+		console.log(element);
+		console.log(wert);
+		document.getElementById(element).value = wert;
+		document.getElementById(element).setAttribute("value", wert);
+	}
+
 	var modal = document.getElementById("myModal");
 	var Bewertungoptionen = document.getElementById("Bewertungoptionen");
 	var Multiplechoiceoptionen = document.getElementById("Multiplechoiceoptionen");
 	var Rangeoptionen = document.getElementById("Rangeoptionen");
 	var Modalform = document.getElementById("Modalform");
+	var addedquestions=0
 
 	function addSpecificAnswer(Fragentyp, id){
-		console.log("ID="+id)
+		var tempid=0;
+		var xmlhttp_options = new XMLHttpRequest();
+			xmlhttp_options.onreadystatechange = function() 
+			{
+				tempid=parseInt(this.responseText)+1+addedquestions;
+				addedquestions=addedquestions+1;
+			;};
+		xmlhttp_options.open("GET", "getLastMultiplechoiceId.php", false);
+		xmlhttp_options.send();
+		
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
 		var AnswerEnglisch = document.getElementById(Fragentyp.value+"newanswerEnglisch").value;
 
 		var Type = "extern";
 	
-		if (Fragentyp.value == "Bewertung")
+		if (Fragentyp.value == "Multiplechoice")
 		{
-			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_'+Type+'_Bewertung" name="checkbox[]" value="'+Answer+'" onclick="return false" checked><label for="'+ Answer +'_extern_Bewertung" style="border:none;"> '+Answer+'</label><br>';
-			var inputtextEnglisch='<input type="hidden" value="'+AnswerEnglisch+'_unchecked" name="checkboxenglisch[]"><input type="checkbox" style="margin-left:0px; display:none" id="'+AnswerEnglisch+'_'+Type+'_Bewertung" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked><br>';
-
-			Bewertungoptionen.innerHTML = Bewertungoptionen.innerHTML + inputtext + inputtextEnglisch; 
-		}
-		else if (Fragentyp.value == "Multiplechoice")
-		{
-			var inputtext='<input type="hidden" value="'+Answer+'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'+Answer+'_'+Type+'_Multiplechoice" name="checkbox[]" value="'+Answer+'" onclick="return false" checked readonly><label for="'+ Answer +'_extern_Multiplechoice" style="border:none;"> '+Answer+'</label><br>';
-			var inputtextEnglisch='<input type="hidden" value="'+AnswerEnglisch+'_unchecked" name="checkboxenglisch[]"><input type="checkbox" style="margin-left:0px; display:none" id="'+AnswerEnglisch+'_'+Type+'_Bewertung" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked><br>';
-
-			Multiplechoiceoptionen.innerHTML = Multiplechoiceoptionen.innerHTML + inputtext + inputtextEnglisch;
+			var inputtext='\
+			<div style="background-color:ghostwhite; margin-bottom:10px; padding: 5px;">\
+				<input type="hidden" value="'+tempid+'_unchecked" name="checkbox[]">\
+					<input type="checkbox" style="margin-left:0px;" id="'+ tempid +'_extern_Multiplechoice" name="checkbox[]" value="'+ Answer +'" checked>\
+				<input type="hidden" value="'+tempid+'_unchecked_englisch" name="checkboxenglisch[]">\
+					<input type="checkbox" style="margin-left:0px; display:none" id="'+tempid+'_extern_Multiplechoice_englisch" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked>\
+						<label id="label_'+tempid+'" for="'+ tempid +'_extern_Multiplechoice" style="border:none;"> '+ Answer +'</label>\
+						<button type="button" style="border:none; background:white; margin-left:10px;" onclick="ShowFragenspezifischeDetails('+ tempid +',\'Multiplechoice\')"><i class="fa fa-pencil"></i></button>\
+						<button type="button" style="border:none; background:white; margin-left:10px;" onclick="Antwort_löschen('+ tempid +',\'Multiplechoice\')"><i class="fa fa-trash"></i></button>\
+			<div id="Container_Multiplechoice_'+tempid+'" style="grid-template-columns:auto auto; display:none"><div>Bezeichnung:</div><div>Englische Übersetzung:</div>\
+    		<div><input id="Fragenspezifisch_Multiplechoice_'+ tempid +'" onchange="updateInput(this.value, \'Fragenspezifisch_Multiplechoice_'+ tempid +'\')" style="width:90%" value="'+ Answer +'"></div><div><input id="FragenspezifischEnglisch_Multiplechoice_'+ tempid +'" onchange="updateInput(this.value, \'FragenspezifischEnglisch_Multiplechoice_'+ tempid +'\')" style="width:90%" value="'+AnswerEnglisch+'"></div><div><input id="element2" type="button" value="speichern" style="width:150px; padding:2px; margin-left:10px; margin-top:20px; margin-bottom:10px; font-size:13px" onclick="bearbeiteFragenspezifischeAntwort('+tempid+',\'Multiplechoice\')"</input></div></div></div></div>'
+			Multiplechoiceoptionen.innerHTML = Multiplechoiceoptionen.innerHTML + inputtext
 		}
 		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
 		if(id!=0 && id!=undefined)
@@ -493,11 +517,16 @@ if (isset($_REQUEST["Step"])) {
 	}
 
 	function bearbeiteFragenspezifischeAntwort(id, Fragentyp){
-		console.log("ID="+id)
+
 		var FragenspezifischeAntwort = document.getElementById("Fragenspezifisch_"+Fragentyp+"_"+id).value; 
 		var FragenspezifischeAntwortEnglisch = document.getElementById("FragenspezifischEnglisch_"+Fragentyp+"_"+id).value; 
-		console.log("Hallo:"+FragenspezifischeAntwort + FragenspezifischeAntwortEnglisch)
 
+		document.getElementById("label_"+id).innerHTML=FragenspezifischeAntwort;
+		document.getElementById(id +'_extern_Multiplechoice').value=FragenspezifischeAntwort;
+		console.log("Amtwort:"+FragenspezifischeAntwort)
+		console.log("AmtwortEnglisch:"+FragenspezifischeAntwortEnglisch)
+
+		document.getElementById(id +'_extern_Multiplechoice_englisch').value=FragenspezifischeAntwortEnglisch;
 		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
 		if(id!=0 && id!=undefined)
 		{
@@ -506,7 +535,9 @@ if (isset($_REQUEST["Step"])) {
 			{
 				console.log("Response:"+this.responseText);
 			;};
-			xmlhttp_options.open("GET", "update_Specific_Answer.php?ID=" + id + "&Answer=" +FragenspezifischeAntwort+ "&AnswerEnglisch=" +FragenspezifischeAntwortEnglisch+"&Fragentyp="+Fragentyp, false);
+			FragenspezifischeAntwort=FragenspezifischeAntwort.replaceAll("&", "%26");
+			FragenspezifischeAntwortEnglisch=FragenspezifischeAntwortEnglisch.replaceAll("&", "%26");
+			xmlhttp_options.open("GET", "update_Specific_Answer.php?ID=" + id + "&Answer=" +FragenspezifischeAntwort+ "&AnswerEnglisch=" +FragenspezifischeAntwortEnglisch+"&Fragentyp="+Fragentyp, true);
 			xmlhttp_options.send();				
 		}
 	}	
@@ -527,26 +558,19 @@ if (isset($_REQUEST["Step"])) {
 
 		var xmlhttp_options = new XMLHttpRequest();
 		var frage = document.getElementById("Frage");     
-		xmlhttp_options.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) {
-				frage.value=this.responseText;
-			}
-		;};
-		xmlhttp_options.open("GET", "Fragen_Beschreibung.php?ID=" + id + "&Type=" +type, false);
-		xmlhttp_options.send();
 
 		var vordefiniert = document.getElementById("vordefiniert"); 
-		var fragenspezifisch = document.getElementById("fragenspezifisch"); 
+		var Emoticons = document.getElementById("Emoticons"); 
+		var Sterne = document.getElementById("Sterne"); 
 		xmlhttp_options.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				if(this.response!="fragenspezifisch")
+				if(this.response=="vordefiniert")
 				{
 					vordefiniert.checked=true;
 				}
 				else
 				{
-					fragenspezifisch.checked=true;
+					Emoticons.checked=true;
 				}
 			}
 		;};
@@ -760,15 +784,9 @@ if (isset($_REQUEST["Step"])) {
 	}
 
 	function checkAnswerboxes(id, type, questiontype){
-		console.log("ID:"+id)
-		console.log("Fragentyp:"+questiontype)
-		console.log("Typ:"+type)
+
 		if(id!=0)
 		{
-			var fragenspezifisch = "false";
-			if(document.getElementById("fragenspezifisch").checked == true){
-				fragenspezifisch = "true";
-			}
 			var xmlhttp1 = new XMLHttpRequest();
 
 			xmlhttp1.onreadystatechange = function() {
@@ -777,7 +795,6 @@ if (isset($_REQUEST["Step"])) {
 				var i=0;
 				while (i<checked_sets.length){
 					var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
-					console.log("not checked"+checkbox);
 					checkbox.checked=false;	
 					i=i+1;		
 				}
@@ -799,7 +816,7 @@ if (isset($_REQUEST["Step"])) {
 				xmlhttp.send();
 			}
 			};
-			xmlhttp1.open("GET", "Fragen_get_Antwortenset.php?ID=" + id  + "&Type="+questiontype+"&fragenspezifisch="+fragenspezifisch, false);
+			xmlhttp1.open("GET", "Fragen_get_Antwortenset.php?ID=" + id  + "&Type="+questiontype, false);
 			xmlhttp1.send();
 		}
 	}
@@ -817,12 +834,9 @@ if (isset($_REQUEST["Step"])) {
 	}
 
 	function getFragenspezifischeAntworten(id, questiontype, type){
-		console.log("Typ="+type)
 		if(id!=0)
 		{
-			var Modalform = document.getElementById("Modalform");
-			var fragenspezifisch = document.getElementById("fragenspezifisch");
-			
+			var Modalform = document.getElementById("Modalform");		
 			document.getElementById(questiontype).checked=true;
 			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type="+type+"&Questiontype="+questiontype
 			<?php
@@ -831,60 +845,25 @@ if (isset($_REQUEST["Step"])) {
                     echo'+"&Step='.$Step.'"';
                 };
 ?>;
-			if(fragenspezifisch.checked == true)
+			if(questiontype=="Multiplechoice")
 			{
 				var xmlhttp_options = new XMLHttpRequest();
 				xmlhttp_options.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						if(questiontype=="Bewertung"){
-							Bewertungoptionen.innerHTML=this.responseText;
-						}
-						if(questiontype=="Multiplechoice"){
 							Multiplechoiceoptionen.innerHTML=this.responseText;
 						}
-					}
 				;};
 				xmlhttp_options.open("GET", "Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype+"&Typ="+type, false);
 				xmlhttp_options.send();					
 			}
 			else{
-				if(type=="extern")
-				{
-					if(questiontype=="Bewertung"){
-						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-						$result = mysqli_query($link, $sql);
-						while ($row = mysqli_fetch_assoc($result)) {
-						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';
-						}?>';
-					}
-					else{
-						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-						$result = mysqli_query($link, $sql);
-						while ($row = mysqli_fetch_assoc($result)) {
-						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';
-						}?>';
-					}
-				}
-				if(type=="intern")
-				{
-					if(questiontype=="Bewertung"){
-						Bewertungoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-						$result = mysqli_query($link, $sql);
-						while ($row = mysqli_fetch_assoc($result)) {
-						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Bewertung" style="border:none"> '.$row["Answers"].'</label><br>';
-						}?>';
-					}
-					else{
-						Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-						<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-						$result = mysqli_query($link, $sql);
-						while ($row = mysqli_fetch_assoc($result)) {
-						    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_intern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_intern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';
-						}?>';
-					}
+				if(questiontype=="Bewertung"){
+					Bewertungoptionen.innerHTML='<h5>Vorschau:</h5>\
+					<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
+					$result = mysqli_query($link, $sql);
+					while ($row = mysqli_fetch_assoc($result)) {
+						echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
+					}?>';
 				}
 			}
 		}
@@ -894,23 +873,12 @@ if (isset($_REQUEST["Step"])) {
 			$exec=mysqli_query($link, $sql);
 			$result_color=mysqli_fetch_assoc($exec);
 			echo $result_color['farbe']?>" value="Hinzufügen"></input><br><br><h5>Wähle Antworten für diese Frage:</h5>';
-			if(questiontype=="Bewertung")
-			{
-				Bewertungoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
-				<h5>Übersetzung:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
-				'+HinzufügenSpecific;
-			}
-			if(questiontype=="Multiplechoice")
-			{
-				Multiplechoiceoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
-				<h5>Übersetzung:</h5>\
-				<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
-				'+HinzufügenSpecific;
 
-			}
+			Multiplechoiceoptionen.innerHTML='<h5>Erstelle eine neue Antwort für diese Frage:</h5>\
+			<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswer" name="newanswer"></input><br>\
+			<h5>Übersetzung:</h5>\
+			<input style="margin-left:0px; width:60%; min-width:220px;" id="'+questiontype+'newanswerEnglisch" name="newanswerEnglisch"></input>\
+			'+HinzufügenSpecific;
 
 		}
 	}
@@ -923,12 +891,19 @@ if (isset($_REQUEST["Step"])) {
 		getLeistung(id);
 		document.getElementById('alert').style.display='none';
 
-		if (questiontype == "Bewertung" || questiontype == "Multiplechoice")
+		if (questiontype == "Bewertung")
 		{
 			document.getElementById('Antworttyp_container').style.display="block";
+			document.getElementById('Multiplechoicetyp_container').style.display="none";
+		}
+		else if (questiontype == "Multiplechoice")
+		{
+			document.getElementById('Antworttyp_container').style.display="none";
+			document.getElementById('Multiplechoicetyp_container').style.display="block";
 		}
 		else{
-			document.getElementById('Antworttyp_container').style.display="none";	
+			document.getElementById('Antworttyp_container').style.display="none";
+			document.getElementById('Multiplechoicetyp_container').style.display="none";	
 		}
 		if(id && id!=0)
 		{
@@ -954,7 +929,6 @@ if (isset($_REQUEST["Step"])) {
 				
 				getÜberschriftUebersetzung(id);
 				getFragenÜberschrift(id);
-				console.log("getÜberschrift: "+id);
 				if(questiontype=="Bewertung")
 				{
 					getFragenspezifischeAntworten(id, questiontype, type);
@@ -1004,10 +978,7 @@ if (isset($_REQUEST["Step"])) {
 			{
 				Rangesliderabfrage(id, type);	
 			}	
-			if (document.getElementById("fragenspezifisch").checked==false){
-				console.log("display");
-				checkAnswerboxes(id, type, questiontype);
-			}		
+				checkAnswerboxes(id, type, questiontype);	
 		}
 		else if(id==0)
 		{
@@ -1034,7 +1005,8 @@ if (isset($_REQUEST["Step"])) {
 			document.getElementById("Multiplechoice").checked=false;
 			document.getElementById("Schieberegler").checked=false;
 			document.getElementById("Text").checked=false;
-			document.getElementById("fragenspezifisch").checked=false;
+			document.getElementById("Emoticon").checked=false;
+			document.getElementById("Sterne").checked=false;
 			document.getElementById("vordefiniert").checked=false;
 			document.getElementById("Bewertungoptionen").style.display="none";
 			document.getElementById("Multiplechoiceoptionen").style.display="none";
@@ -1051,6 +1023,8 @@ if (isset($_REQUEST["Step"])) {
 
 	function display_new(Überschriftid)
 	{	
+		document.getElementById('Multiplechoicetyp_container').style.display="none";
+			document.getElementById('Antworttyp_container').style.display="none";
 			getÜberschrift(Überschriftid)
 			document.getElementById("FragenÜberschrift").innerHTML="Neue Frage hinzufügen";
 			var Modalform = document.getElementById("Modalform");
@@ -1070,7 +1044,8 @@ if (isset($_REQUEST["Step"])) {
 			document.getElementById("Multiplechoice").checked=false;
 			document.getElementById("Schieberegler").checked=false;
 			document.getElementById("Text").checked=false;
-			document.getElementById("fragenspezifisch").checked=false;
+			document.getElementById("Emoticons").checked=false;
+			document.getElementById("Sterne").checked=false;
 			document.getElementById("vordefiniert").checked=false;
 			document.getElementById("Bewertungoptionen").style.display="none";
 			document.getElementById("Multiplechoiceoptionen").style.display="none";
@@ -1108,82 +1083,64 @@ if (isset($_REQUEST["Step"])) {
 				Antworttyp_value = Antworttyp[i].value;
 			}
 		}
-		if (Fragentyp_value == "Bewertung" || Fragentyp_value == "Multiplechoice")
+		if (Fragentyp_value == "Bewertung")
 		{
 			document.getElementById('Antworttyp_container').style.display="block";
+			document.getElementById('Multiplechoicetyp_container').style.display="none";
 			document.getElementById('vordefiniert').required=true;
-			document.getElementById('fragenspezifisch').required=true;
+			document.getElementById('Emoticons').required=true;
+			document.getElementById('Sterne').required=true;
+			document.getElementById('Checkboxtyp').required=false;
+			document.getElementById('Radiotyp').required=false;
+
+		}
+		else if (Fragentyp_value == "Multiplechoice")
+		{
+			document.getElementById('Antworttyp_container').style.display="none";
+			document.getElementById('Multiplechoicetyp_container').style.display="block";
+			document.getElementById('vordefiniert').required=false;
+			document.getElementById('Emoticons').required=false;
+			document.getElementById('Sterne').required=false;
+			document.getElementById('Checkboxtyp').required=true;
+			document.getElementById('Radiotyp').required=true;
 		}
 		else{
+			document.getElementById('Multiplechoicetyp_container').style.display="none";
 			document.getElementById('Antworttyp_container').style.display="none";
 			document.getElementById('vordefiniert').required=false;
-			document.getElementById('fragenspezifisch').required=false;	
+			document.getElementById('Emoticons').required=false;
+			document.getElementById('Sterne').required=false;
+			document.getElementById('Checkboxtyp').required=false;
+			document.getElementById('Radiotyp').required=false;
 		}
 		var Bewertungoptionen = document.getElementById("Bewertungoptionen");
 		var Multiplechoiceoptionen = document.getElementById("Multiplechoiceoptionen");
 		var Rangeoptionen = document.getElementById("Rangeoptionen");
 		var Rangeoptionen_fragenspezifisch = document.getElementById("Rangeoptionen_fragenspezifisch");
 
-		if(Antworttyp_value == "vordefiniert")
+		if(Fragentyp_value == "Bewertung")
 		{
-			console.log("showoptions")
 			Rangeoptionen_fragenspezifisch.style.display="none";
-			if (Fragentyp_value == "Bewertung")
-			{
 				Bewertungoptionen.style.display="block";
 				Multiplechoiceoptionen.style.display="none";
 				Rangeoptionen.style.display="none";
-				Bewertungoptionen.innerHTML = '<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-				<?php $sql = "SELECT Answers FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
+				Bewertungoptionen.innerHTML = '<h5 style="margin-bottom:20px">Vorschau:</h5>\
+				<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
 				$result = mysqli_query($link, $sql);
 				while ($row = mysqli_fetch_assoc($result)) {
-				    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'" checked><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';
-				}?>';
-			}
-			else if (Fragentyp_value == "Multiplechoice")
-			{
-				Bewertungoptionen.style.display="none";
-				Multiplechoiceoptionen.style.display="block";
-				Rangeoptionen.style.display="none";	
-				Multiplechoiceoptionen.innerHTML='<h5>Wähle deine Antworten zur ausgewählten Frage:</h5>\
-				<?php $sql = "SELECT Answers FROM multiplechoice_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-				$result = mysqli_query($link, $sql);
-				while ($row = mysqli_fetch_assoc($result)) {
-				    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Multiplechoice" name="checkbox[]" value="'.$row["Answers"].'" checked><label for="'.$row["Answers"].'_extern_Multiplechoice" style="border:none"> '.$row["Answers"].'</label><br>';
+				    echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
 				}?>';
 			}
 			checkAnswerboxes(id, externinterntyp, Fragentyp_value);	
-		}
 		
-		if(Antworttyp_value == "fragenspezifisch")
+		
+		if(Fragentyp_value == "Multiplechoice")
 		{
-			if (Fragentyp_value == "Bewertung")
-			{
-				getFragenspezifischeAntworten(id, Fragentyp_value, externinterntyp);
-				Bewertungoptionen.style.display="block";
-				Multiplechoiceoptionen.style.display="none";
-				Rangeoptionen.style.display="none";	
-			}
-
-			else if (Fragentyp_value == "Multiplechoice")
-			{
 				getFragenspezifischeAntworten(id, Fragentyp_value, externinterntyp);
 				Bewertungoptionen.style.display="none";
 				Multiplechoiceoptionen.style.display="block";
-				Rangeoptionen.style.display="none";	
-			}
-			Rangeoptionen.style.display="none";
-			//!id = neue Frage
-			if(!id)
-			{
-				Bewertungoptionen.innerHTML = '<?php $sql = "SELECT * FROM bewertung_answers WHERE Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-				$result = mysqli_query($link, $sql);
-				while ($row = mysqli_fetch_assoc($result)) {
-				    echo'<input type="hidden" value="'.$row["Answers"].'_unchecked" name="checkbox[]"><input type="checkbox" style="margin-left:0px;" id="'.$row["Answers"].'_extern_Bewertung" name="checkbox[]" value="'.$row["Answers"].'"><label for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</label><br>';
-				}?>';
-			}
-		}
-
+				Rangeoptionen.style.display="none";
+		}	
 
 		if(Fragentyp_value=="Schieberegler")
 			{

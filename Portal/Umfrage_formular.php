@@ -63,14 +63,8 @@ while($row = mysqli_fetch_array($exec)){
 
 
 		if ($row_questions["Typ"]=="Bewertung"){
-			if($row_questions["Antworttyp"]=="vordefiniert")
-			{
-				$sql="SELECT Answers FROM bewertung_answers WHERE Intern_".$row_questions["ID"]." = 1 AND Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-			}
-			else
-			{
-				$sql="SELECT Answers FROM bewertung_answers WHERE Intern_".$row_questions["ID"]." = 1 AND Fragenspezifisch = ".$row_questions["ID"]." ORDER BY post_order_no ASC";
-			}			
+
+			$sql="SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";		
 			$result = mysqli_query($link,$sql);
 			$gridcolumns = "25% 2fr ";
 			$exec_answers=mysqli_query($link,$sql);
@@ -94,14 +88,7 @@ while($row = mysqli_fetch_array($exec)){
 		}
 
 		else if ($row_questions["Typ"]=="Multiplechoice"){
-			if($row_questions["Antworttyp"]=="vordefiniert")
-			{
-				$sql="SELECT Answers FROM multiplechoice_answers WHERE Intern_".$row_questions["ID"]." = 1 AND Fragenspezifisch = 0 ORDER BY post_order_no ASC";
-			}
-			else
-			{
-				$sql="SELECT Answers FROM multiplechoice_answers WHERE Intern_".$row_questions["ID"]." = 1 AND Fragenspezifisch = ".$row_questions["ID"]." ORDER BY post_order_no ASC";
-			}
+			$sql="SELECT Answers FROM multiplechoice_answers WHERE Intern_".$row_questions["ID"]." = 1 AND Fragenspezifisch = ".$row_questions["ID"]." ORDER BY post_order_no ASC";
 			$option_index=1;
 			$result = mysqli_query($link,$sql);
 			$gridcolumns = "25% 2fr ";
