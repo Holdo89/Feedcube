@@ -17,9 +17,9 @@ $result_currentFragenset = mysqli_query($link, $sql_currentFragenset);
 $rowcurrentFragenset = mysqli_fetch_assoc($result_currentFragenset);
 $currentFragenset = $rowcurrentFragenset["Fragenset"];
 if ($currentFragenset == 0) {
-    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM fragen WHERE Leistung_" . $ID . " = 1";
+    $sql_rownumber = "SELECT COUNT(Fragenbeschreibung) AS 'Anzahl_Fragen' FROM fragen WHERE Leistung_" . $ID . " = 1";
 } else {
-    $sql_rownumber = "SELECT COUNT(Fragen_extern) AS 'Anzahl_Fragen' FROM fragen WHERE Fragenset_" . $currentFragenset . " = 1";
+    $sql_rownumber = "SELECT COUNT(Fragenbeschreibung) AS 'Anzahl_Fragen' FROM fragen WHERE Fragenset_" . $currentFragenset . " = 1";
 }
 //Gibt die Anzahl aller Fragen an diebei dieser Leistung abgefragt werden
 $result_rownumber = mysqli_query($link, $sql_rownumber);
@@ -54,7 +54,7 @@ else {
     while ($index < $Anzahl_Fragen) {
         $row = mysqli_fetch_assoc($result);
         if ($_SESSION["Sprache"] == "Deutsch") {
-            array_push($Fragen_array, $row["Fragen_extern"]);
+            array_push($Fragen_array, $row["Fragenbeschreibung"]);
             array_push($Überschrift_array, $row["Überschrift"]);
         } else if ($_SESSION["Sprache"] == "Englisch") {
             array_push($Fragen_array, $row["Frage_Englisch"]);

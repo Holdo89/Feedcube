@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- Daten für Tabelle `admin`
 --
 
-INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragen_extern`, `Kapitel`, `Frage_Englisch`, `Kapitel_Englisch`, `post_order_no`, `post_id`, `Fragenset_12`, `Leistung_6`) VALUES
+INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragenbeschreibung`, `Kapitel`, `Frage_Englisch`, `Kapitel_Englisch`, `post_order_no`, `post_id`, `Fragenset_12`, `Leistung_6`) VALUES
 (71, '2022-01-30 08:27:11', 'Bewertung', 'vordefiniert', 'TEst', '', '', '', 1, 1, NULL, 1),
 (72, '2022-01-30 08:36:04', 'Bewertung', 'vordefiniert', 'ofibuewmq qphefoiug weö0fhiwe9uiFWE  ?', 'Test2', 'feiwfew', 'TEs 3', 2, 2, NULL, 1);
 

@@ -64,7 +64,7 @@ if($Type=="extern")
     $query = mysqli_query($link, $sql);
     $sql = "UPDATE fragen SET Überschrift_Englisch = '".$Überschrift_Englisch."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
-    $sql = "UPDATE fragen SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
+    $sql = "UPDATE fragen SET Fragenbeschreibung = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
     $sql = "UPDATE fragen SET Überschrift = '".$Überschrift."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);

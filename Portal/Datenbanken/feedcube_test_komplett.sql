@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
   `Antworttyp` varchar(40) NOT NULL,
-  `Fragen_extern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Kapitel` varchar(500) NOT NULL,
   `Frage_Englisch` varchar(500) DEFAULT NULL,
   `Kapitel_Englisch` varchar(500) DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
 -- Daten für Tabelle `admin`
 --
 
-INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragen_extern`, `Kapitel`, `Frage_Englisch`, `Kapitel_Englisch`, `post_order_no`, `post_id`, `Fragenset_12`, `Leistung_6`) VALUES
+INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragenbeschreibung`, `Kapitel`, `Frage_Englisch`, `Kapitel_Englisch`, `post_order_no`, `post_id`, `Fragenset_12`, `Leistung_6`) VALUES
 (71, '2022-01-30 08:27:11', 'Bewertung', 'vordefiniert', 'TEst', '', '', '', 1, 1, NULL, 1),
 (72, '2022-01-30 08:36:04', 'Bewertung', 'vordefiniert', 'ofibuewmq qphefoiug weö0fhiwe9uiFWE  ?', 'Test2', 'feiwfew', 'TEs 3', 2, 2, NULL, 1);
 

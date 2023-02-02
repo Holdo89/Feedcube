@@ -19,7 +19,7 @@ function questions($Fragentyp, $link){
 			}
 
 		echo"<p><b>".$Fragentyp."</b></p>";
-		$sql = "SELECT ID, Typ, Fragen_extern FROM fragen WHERE Fragen_extern !=''AND Typ != 'Text'";
+		$sql = "SELECT ID, Typ, Fragenbeschreibung FROM fragen WHERE Fragenbeschreibung !=''AND Typ != 'Text'";
 		$i=0;
 		$result = mysqli_query($link, $sql) ;
 		while($row = mysqli_fetch_assoc($result)) {
@@ -36,7 +36,7 @@ function questions($Fragentyp, $link){
 	
 				if($row['Typ']==$Fragentyp){
 	
-					echo "<div style='margin-bottom:20px;' id='Frage_".$row['ID']."'>".$row['Fragen_extern']."</div>";
+					echo "<div style='margin-bottom:20px;' id='Frage_".$row['ID']."'>".$row['Fragenbeschreibung']."</div>";
 	
 				}
 			}

@@ -58,7 +58,7 @@ function questions($Fragentyp, $link, $Trainer, $Leistung, $datum_min, $datum_ma
                                </tr>  
                           </thead>';
 
-    $sql = "SELECT ID, Typ, Fragen_extern FROM fragen WHERE Fragen_extern !=''AND Typ = '".$Fragentyp."'";
+    $sql = "SELECT ID, Typ, Fragenbeschreibung FROM fragen WHERE Fragenbeschreibung !=''AND Typ = '".$Fragentyp."'";
     $i=0;
     $result = mysqli_query($link, $sql) ;
     $row = mysqli_fetch_assoc($result);
@@ -66,7 +66,7 @@ function questions($Fragentyp, $link, $Trainer, $Leistung, $datum_min, $datum_ma
     while ($row = mysqli_fetch_assoc($result)) {
         echo"<tr>";
         if ($row['Typ']==$Fragentyp) {
-            echo "<td style='text-align:left' id='Frage_".$row['ID']."'>".$row['Fragen_extern']."</td>";
+            echo "<td style='text-align:left' id='Frage_".$row['ID']."'>".$row['Fragenbeschreibung']."</td>";
             Statistik("Frage_".$row['ID'], $link, $Trainer, $Leistung, $datum_min, $datum_max);
         }
     }

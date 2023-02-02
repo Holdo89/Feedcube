@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
   `Antworttyp` varchar(40) NOT NULL,
-  `Fragen_extern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Überschrift` varchar(500) NOT NULL,
   `Frage_Englisch` varchar(500) DEFAULT NULL,
   `Überschrift_Englisch` varchar(500) DEFAULT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `admin` (
 -- Daten für Tabelle `admin`
 --
 
-INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragen_extern`, `Überschrift`, `Frage_Englisch`, `Überschrift_Englisch`, `post_order_no`, `post_id`, `Leistung_1`, `Fragenset_1`, `Leistung_2`, `Leistung_3`, `Leistung_5`, `Leistung_6`, `Leistung_8`, `Leistung_11`, `Leistung_13`, `Leistung_15`, `Leistung_20`, `Leistung_22`, `Leistung_24`, `Leistung_25`, `Leistung_26`, `Fragenset_4`, `Leistung_33`, `Leistung_34`, `Leistung_35`, `Leistung_36`, `Leistung_37`, `Leistung_38`, `Leistung_39`, `Leistung_40`, `Leistung_41`, `Leistung_42`, `Leistung_43`, `Leistung_44`, `Leistung_45`, `Leistung_46`, `Leistung_47`, `Leistung_48`, `Leistung_49`, `Leistung_50`, `Leistung_51`, `Leistung_52`) VALUES
+INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragenbeschreibung`, `Überschrift`, `Frage_Englisch`, `Überschrift_Englisch`, `post_order_no`, `post_id`, `Leistung_1`, `Fragenset_1`, `Leistung_2`, `Leistung_3`, `Leistung_5`, `Leistung_6`, `Leistung_8`, `Leistung_11`, `Leistung_13`, `Leistung_15`, `Leistung_20`, `Leistung_22`, `Leistung_24`, `Leistung_25`, `Leistung_26`, `Fragenset_4`, `Leistung_33`, `Leistung_34`, `Leistung_35`, `Leistung_36`, `Leistung_37`, `Leistung_38`, `Leistung_39`, `Leistung_40`, `Leistung_41`, `Leistung_42`, `Leistung_43`, `Leistung_44`, `Leistung_45`, `Leistung_46`, `Leistung_47`, `Leistung_48`, `Leistung_49`, `Leistung_50`, `Leistung_51`, `Leistung_52`) VALUES
 (36, '2021-04-29 14:53:07', 'Bewertung', 'vordefiniert', 'Wie hat Ihnen der Inhalt des Seminars gefallen?', 'Seminar', 'How did you like the content of the seminar?', '', 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1),
 (37, '2021-04-29 14:57:34', 'Text', 'vordefiniert', 'Anmerkung zum Seminarinhalt', 'Seminar', 'Remarks on the seminar', '', 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1),
 (38, '2021-04-29 15:02:25', 'Bewertung', 'vordefiniert', 'Wie bewerten Sie die Leistung des Trainers? ', 'Trainer', 'How did you like the performance of the trainer?', '', 5, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1),

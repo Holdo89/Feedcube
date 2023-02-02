@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
-  `Fragen_extern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Kapitel` varchar(500) NOT NULL,
   `Leistung_39` tinyint(1) NOT NULL,
   `Leistung_37` tinyint(1) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 -- Daten für Tabelle `admin`
 --
 
-INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Fragen_extern`, `Kapitel`, `Leistung_39`, `Leistung_37`, `Leistung_38`) VALUES
+INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Fragenbeschreibung`, `Kapitel`, `Leistung_39`, `Leistung_37`, `Leistung_38`) VALUES
 (258, '2021-01-07 14:08:56', 'multiple_choice', 'Wie haben Sie den Trainer empfunden?', 'Test', 1, 0, 1),
 (259, '2021-01-07 14:09:07', 'rangeslider', 'Testrange', 'Test', 1, 1, 1),
 (260, '2021-01-07 14:09:15', 'text', 'Testtext', 'Test', 1, 1, 1),

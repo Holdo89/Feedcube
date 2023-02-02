@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
-  `Fragen_extern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Kapitel` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 

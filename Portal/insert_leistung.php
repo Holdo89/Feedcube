@@ -34,11 +34,11 @@ if($Auswahl_Fragenset=="kein_Fragenset")
 
     for ($i=0; $i<sizeof ($Frage);$i++) { 
         if(!strpos($Frage[$i],"_unchecked")){
-        $query="UPDATE fragen SET Leistung_".$ID." = 1 WHERE Fragen_extern = '".$Frage[$i]. "'";  
+        $query="UPDATE fragen SET Leistung_".$ID." = 1 WHERE Fragenbeschreibung = '".$Frage[$i]. "'";  
         mysqli_query($link,$query); 
         } 
         else{
-            $query="UPDATE fragen SET Leistung_".$ID." = 0 WHERE Fragen_extern = '".substr($Frage[$i],0,-10). "'";  
+            $query="UPDATE fragen SET Leistung_".$ID." = 0 WHERE Fragenbeschreibung = '".substr($Frage[$i],0,-10). "'";  
             mysqli_query($link,$query); 
         }
     } 

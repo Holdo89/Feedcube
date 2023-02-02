@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
-  `Fragen_extern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Kapitel` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 -- Daten für Tabelle `admin`
 --
 
-INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Fragen_extern`, `Kapitel`) VALUES
+INSERT INTO `admin` (`ID`, `Datum`, `Typ`, `Fragenbeschreibung`, `Kapitel`) VALUES
 (258, '2021-01-07 14:08:56', 'multiple_choice', 'Testmulti', 'Test'),
 (259, '2021-01-07 14:09:07', 'rangeslider', 'Testrange', 'Test'),
 (260, '2021-01-07 14:09:15', 'text', 'Testtext', 'Test');

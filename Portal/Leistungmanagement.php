@@ -174,13 +174,13 @@
 		?>
 		</div>
 		<?php
-		$sql = "SELECT Fragen_extern FROM fragen ORDER BY post_order_no";
+		$sql = "SELECT Fragenbeschreibung FROM fragen ORDER BY post_order_no";
 		$result = mysqli_query($link,$sql);
 		while($row = mysqli_fetch_assoc($result)){
 			echo'
-			<input type="hidden" value="'.$row["Fragen_extern"].'_unchecked" name="checkbox[]">
-			<input type="checkbox" id="'.$row["Fragen_extern"].'" name="checkbox[]" value="'.$row["Fragen_extern"].'">
-			<label for="'.$row["Fragen_extern"].'" style="border:none"> '.$row["Fragen_extern"].'</label><br>';
+			<input type="hidden" value="'.$row["Fragenbeschreibung"].'_unchecked" name="checkbox[]">
+			<input type="checkbox" id="'.$row["Fragenbeschreibung"].'" name="checkbox[]" value="'.$row["Fragenbeschreibung"].'">
+			<label for="'.$row["Fragenbeschreibung"].'" style="border:none"> '.$row["Fragenbeschreibung"].'</label><br>';
 		}
 		?>
 		<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class='fa fa-save'></i> speichern</button>

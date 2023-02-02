@@ -18,7 +18,7 @@
  $sql="SELECT * FROM fragen ORDER BY post_order_no ASC";
  $result=mysqli_query($link,$sql);
  while($rows=mysqli_fetch_array($result)){
-    echo '"'.$rows["Fragen_extern"].'";';
+    echo '"'.$rows["Fragenbeschreibung"].'";';
     $Id[$i]="Frage_".$rows["ID"];
     $i=$i+1;
  }

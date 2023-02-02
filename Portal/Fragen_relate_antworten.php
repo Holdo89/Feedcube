@@ -62,7 +62,7 @@ $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
     $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
 
 if($Type=="extern"){
-    $sql = "UPDATE fragen SET Fragen_extern = '".$Frage."' WHERE ID = ".$ID;
+    $sql = "UPDATE fragen SET Fragenbeschreibung = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 
     $sql = "UPDATE fragen SET Frage_Englisch = '".$Frage_Englisch."' WHERE ID = ".$ID;

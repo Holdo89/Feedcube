@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
   `Antworttyp` varchar(40) NOT NULL,
-  `Fragen_extern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Kapitel` varchar(500) NOT NULL,
   `Frage_Englisch` varchar(500) DEFAULT NULL,
   `Kapitel_Englisch` varchar(500) DEFAULT NULL,

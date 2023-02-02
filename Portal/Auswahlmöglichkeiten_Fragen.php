@@ -18,7 +18,7 @@ else{
     }
 
 
-    $sql = "SELECT ID, Typ, Fragen_extern FROM fragen WHERE Fragen_extern !='' ORDER BY post_order_no ASC";
+    $sql = "SELECT ID, Typ, Fragenbeschreibung FROM fragen WHERE Fragenbeschreibung !='' ORDER BY post_order_no ASC";
 
 	$i=0;
 	$result = mysqli_query($link, $sql) ;
@@ -34,7 +34,7 @@ else{
 		$result = mysqli_query($link, $sql) ;
 
     	while($row = mysqli_fetch_assoc($result)) {
-			echo "<option value='Frage_".$row['ID']."'>".$row['Fragen_extern']."</option>";
+			echo "<option value='Frage_".$row['ID']."'>".$row['Fragenbeschreibung']."</option>";
 		}
 		echo"</select>";
 	}

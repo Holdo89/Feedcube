@@ -31,7 +31,7 @@ $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
 
 if($Type=="extern")
 {
-    $sql = "INSERT INTO fragen (Überschrift, Überschrift_Englisch, Typ, Fragen_extern, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
+    $sql = "INSERT INTO fragen (Überschrift, Überschrift_Englisch, Typ, Fragenbeschreibung, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 }
 else
 {

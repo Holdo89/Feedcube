@@ -7,7 +7,7 @@
  $Frage=$_REQUEST["Frage"];
  $Überschrift=$_REQUEST["Überschrift"];
 
-$query = "UPDATE fragen SET Fragen_extern = '".$Frage."' WHERE ID = '".$Id."'";
+$query = "UPDATE fragen SET Fragenbeschreibung = '".$Frage."' WHERE ID = '".$Id."'";
 $exec = mysqli_query($link,$query);
 
 $query = "UPDATE fragen SET Typ = '".$Fragentyp."' WHERE ID = '".$Id."'";

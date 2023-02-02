@@ -136,13 +136,13 @@
 		<input id="neues_Fragenset" class="center_select" name="neues_Fragenset" required></input>
 		<h5 style="margin-top:40px">Wähle deine Fragen zum ausgewählten Fragenset:</h5>
 		<?php
-		$sql = "SELECT Fragen_extern FROM fragen ORDER BY post_order_no";
+		$sql = "SELECT Fragenbeschreibung FROM fragen ORDER BY post_order_no";
 		$result = mysqli_query($link,$sql);
 		while($row = mysqli_fetch_assoc($result)){
 			echo'
-			<input type="hidden" value="Fragenset_'.$row["Fragen_extern"].'_unchecked" name="Fragenset_checkbox[]">
-			<input type="checkbox" id="Fragenset_'.$row["Fragen_extern"].'" name="Fragenset_checkbox[]" value="'.$row["Fragen_extern"].'">
-			<label for="Fragenset_'.$row["Fragen_extern"].'" style="border:none"> '.$row["Fragen_extern"].'</label><br>';
+			<input type="hidden" value="Fragenset_'.$row["Fragenbeschreibung"].'_unchecked" name="Fragenset_checkbox[]">
+			<input type="checkbox" id="Fragenset_'.$row["Fragenbeschreibung"].'" name="Fragenset_checkbox[]" value="'.$row["Fragenbeschreibung"].'">
+			<label for="Fragenset_'.$row["Fragenbeschreibung"].'" style="border:none"> '.$row["Fragenbeschreibung"].'</label><br>';
 		}
 		?>
 		<button type="submit" name = "Submit" style="background-color:white; border-radius:10px; border:1px; margin-bottom:20px;margin-top:10px; font-size:16px;" ><i class='fa fa-save'></i> speichern</button>
