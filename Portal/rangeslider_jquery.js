@@ -65,7 +65,7 @@ $( function() {
                     });                        
                       }
             ;};
-            xmlhttp_options.open("GET", "first_date_extern.php?Trainer="+Trainer, false);
+            xmlhttp_options.open("GET", "first_date.php?Trainer="+Trainer, false);
             xmlhttp_options.send();
                       
       return datediff;

@@ -13,7 +13,7 @@ while($row_überschrift = mysqli_fetch_assoc($result_überschrift)) {
     <button type='button' class='center_button' onclick='user_abfrage_löschen_Überschrift(".$row_überschrift["ID"].")'><i class='fa fa-trash'></i><span class='tooltiptext'>Löschen</span></button>";            
     echo'
     <div id="form_'.$row_überschrift["ID"].'" style="background-color:ghostwhite; display:none; width:100%; text-align:center; margin:auto; grid-column: 1 / span 4;">
-    <div class="externe_Fragen">';
+    <div class="Kursfragen">';
 	include "Fragen_Abfrage.php";
 	echo'</div>
     </form>

@@ -108,7 +108,7 @@
   cursor: pointer;
 }
 
-#externe_Fragen form.ui-state-highlight {
+#Kursfragen form.ui-state-highlight {
     padding: 20px;
     background-color: #eaecec;
     border: 1px dotted #ccc;
@@ -205,7 +205,7 @@ include "navigation_admin.php";
 		echo $result['farbe']?>;
 	}
 	</style>
-	<div id="externe_Fragen" class="scroll">
+	<div id="Kursfragen" class="scroll">
 	<form style=" border-radius:5px 5px 0px 0px;">
 	<label style ="grid-column: 1 / span 5; padding-left:10px" class="überschrift">Überschrift</label>
 	</form>
@@ -378,7 +378,7 @@ if (isset($_REQUEST["Step"])) {
 	function SortiereFragen()
 	{
 		var post_order_ids = new Array();
-		$('.externe_Fragen form').each(function(){
+		$('.Kursfragen form').each(function(){
 			post_order_ids.push($(this).data("post-id"));
 		});
 		$.ajax({
@@ -388,12 +388,12 @@ if (isset($_REQUEST["Step"])) {
 		});
 	}
 	$(document).ready(function(){
-		$( ".externe_Fragen" ).sortable({
+		$( ".Kursfragen" ).sortable({
 			placeholder : "ui-state-highlight",
 			update  : function(event, ui)
 			{	
 				var post_order_ids = new Array();
-				$('.externe_Fragen form').each(function(){
+				$('.Kursfragen form').each(function(){
 					post_order_ids.push($(this).data("post-id"));
 					for (let index = 0; index < post_order_ids.length; ++index) {
 						const element = post_order_ids[index];
@@ -493,10 +493,10 @@ if (isset($_REQUEST["Step"])) {
 			var inputtext='\
 			<div style="background-color:ghostwhite; margin-bottom:10px; padding: 5px;">\
 				<input type="hidden" value="'+tempid+'_unchecked" name="checkbox[]">\
-					<input type="checkbox" style="margin-left:0px;" id="'+ tempid +'_extern_Multiplechoice" name="checkbox[]" value="'+ Answer +'" checked>\
+					<input type="checkbox" style="margin-left:0px;" id="'+ tempid +'_Multiplechoice" name="checkbox[]" value="'+ Answer +'" checked>\
 				<input type="hidden" value="'+tempid+'_unchecked_englisch" name="checkboxenglisch[]">\
-					<input type="checkbox" style="margin-left:0px; display:none" id="'+tempid+'_extern_Multiplechoice_englisch" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked>\
-						<label id="label_'+tempid+'" for="'+ tempid +'_extern_Multiplechoice" style="border:none;"> '+ Answer +'</label>\
+					<input type="checkbox" style="margin-left:0px; display:none" id="'+tempid+'_Multiplechoice_englisch" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked>\
+						<label id="label_'+tempid+'" for="'+ tempid +'_Multiplechoice" style="border:none;"> '+ Answer +'</label>\
 						<button type="button" style="border:none; background:white; margin-left:10px;" onclick="ShowFragenspezifischeDetails('+ tempid +',\'Multiplechoice\')"><i class="fa fa-pencil"></i></button>\
 						<button type="button" style="border:none; background:white; margin-left:10px;" onclick="Antwort_löschen('+ tempid +',\'Multiplechoice\')"><i class="fa fa-trash"></i></button>\
 			<div id="Container_Multiplechoice_'+tempid+'" style="grid-template-columns:auto auto; display:none"><div>Bezeichnung:</div><div>Englische Übersetzung:</div>\
@@ -522,11 +522,11 @@ if (isset($_REQUEST["Step"])) {
 		var FragenspezifischeAntwortEnglisch = document.getElementById("FragenspezifischEnglisch_"+Fragentyp+"_"+id).value; 
 
 		document.getElementById("label_"+id).innerHTML=FragenspezifischeAntwort;
-		document.getElementById(id +'_extern_Multiplechoice').value=FragenspezifischeAntwort;
+		document.getElementById(id +'_Multiplechoice').value=FragenspezifischeAntwort;
 		console.log("Amtwort:"+FragenspezifischeAntwort)
 		console.log("AmtwortEnglisch:"+FragenspezifischeAntwortEnglisch)
 
-		document.getElementById(id +'_extern_Multiplechoice_englisch').value=FragenspezifischeAntwortEnglisch;
+		document.getElementById(id +'_Multiplechoice_englisch').value=FragenspezifischeAntwortEnglisch;
 		//Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
 		if(id!=0 && id!=undefined)
 		{
@@ -812,7 +812,7 @@ if (isset($_REQUEST["Step"])) {
 						}
 					}
 				};
-				xmlhttp.open("GET", "Fragen_get_Antwortenset_checked_"+type+".php?ID=" + id + "&Type="+questiontype, false);
+				xmlhttp.open("GET", "Fragen_get_Antwortenset_checked.php?ID=" + id + "&Type="+questiontype, false);
 				xmlhttp.send();
 			}
 			};
@@ -862,7 +862,7 @@ if (isset($_REQUEST["Step"])) {
 					<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
 					$result = mysqli_query($link, $sql);
 					while ($row = mysqli_fetch_assoc($result)) {
-						echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
+						echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
 					}?>';
 				}
 			}
@@ -1128,7 +1128,7 @@ if (isset($_REQUEST["Step"])) {
 				<?php $sql = "SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
 				$result = mysqli_query($link, $sql);
 				while ($row = mysqli_fetch_assoc($result)) {
-				    echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_extern_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
+				    echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
 				}?>';
 			}
 			checkAnswerboxes(id, externinterntyp, Fragentyp_value);	

@@ -61,7 +61,7 @@
   cursor: pointer;
 }
 
-#externe_Fragen form.ui-state-highlight {
+#Kursfragen form.ui-state-highlight {
     padding: 20px;
     background-color: #eaecec;
     border: 1px dotted #ccc;

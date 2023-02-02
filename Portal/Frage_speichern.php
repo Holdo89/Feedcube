@@ -45,7 +45,7 @@ function speichern_antwort(Id, typ){
 }
 
 function speichern_range(){
-    var ID = document.getElementById("ID_extern_Schieberegler").value;
+    var ID = document.getElementById("ID_Schieberegler").value;
     var range_min = document.getElementById("Range_Min").value;
 	var range_max = document.getElementById("Range_Max").value;
     var columns = 5;
