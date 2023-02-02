@@ -14,7 +14,7 @@
  $sql="SELECT * FROM intern";
  $result=mysqli_query($link,$sql);
  while($rows=mysqli_fetch_array($result)){
-    echo $rows["Fragen_intern"].";";
+    echo $rows["Fragenbeschreibung"].";";
     $Id[$i]="Frage_".$rows["ID"];
     $i=$i+1;
  }

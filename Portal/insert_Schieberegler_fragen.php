@@ -33,7 +33,7 @@ if($Type=="extern")
 }
 else
 {
-    $sql = "INSERT INTO intern (Typ, Fragen_intern, Antworttyp, Umfrage_".$Umfragenid.", post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '1', '$last_order','$last_order')";
+    $sql = "INSERT INTO intern (Typ, Fragenbeschreibung, Antworttyp, Umfrage_".$Umfragenid.", post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '1', '$last_order','$last_order')";
 }
 mysqli_query($link, $sql);
 

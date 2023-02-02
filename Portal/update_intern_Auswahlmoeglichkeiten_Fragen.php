@@ -16,11 +16,11 @@ $Message ="<option id='Auswahl_Frage' name='Auswahl_Frage' class = 'Auswahlmögl
 
 if($ID=="%")
 {
-	$sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' ORDER BY post_order_no ASC";
+	$sql = "SELECT ID, Typ, Fragenbeschreibung FROM intern WHERE Fragenbeschreibung !='' ORDER BY post_order_no ASC";
 
 }
 else{
-	$sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' AND Umfrage_".$ID." = 1 ORDER BY post_order_no ASC";
+	$sql = "SELECT ID, Typ, Fragenbeschreibung FROM intern WHERE Fragenbeschreibung !='' AND Umfrage_".$ID." = 1 ORDER BY post_order_no ASC";
 }
 
 $i=0;
@@ -37,7 +37,7 @@ else{
 	$result = mysqli_query($link, $sql) ;
 
 	while($row = mysqli_fetch_assoc($result)) {
-		echo "<option value='Frage_".$row['ID']."'>".$row['Fragen_intern']."</option>";
+		echo "<option value='Frage_".$row['ID']."'>".$row['Fragenbeschreibung']."</option>";
 	}
 	echo"</select>";
 }

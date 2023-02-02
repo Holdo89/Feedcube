@@ -18,7 +18,7 @@ else{
     }
 
 
-    $sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !='' AND Typ = 'Text'";
+    $sql = "SELECT ID, Typ, Fragenbeschreibung FROM intern WHERE Fragenbeschreibung !='' AND Typ = 'Text'";
 
 	$i=0;
 	$result = mysqli_query($link, $sql) ;
@@ -37,7 +37,7 @@ else{
 
 			if($row['Typ']=='Text'){
 
-				echo "<option value='Frage_".$row['ID']."'>".$row['Fragen_intern']."</option>";
+				echo "<option value='Frage_".$row['ID']."'>".$row['Fragenbeschreibung']."</option>";
 
 			}
 		}

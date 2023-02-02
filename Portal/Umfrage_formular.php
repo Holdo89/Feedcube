@@ -70,7 +70,7 @@ while($row = mysqli_fetch_array($exec)){
 			$exec_answers=mysqli_query($link,$sql);
 
 			echo'
-			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragen_intern"].'</div>';
+			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragenbeschreibung"].'</div>';
 			while($row_answers=mysqli_fetch_array($result)){
 				echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
@@ -94,7 +94,7 @@ while($row = mysqli_fetch_array($exec)){
 			$gridcolumns = "25% 2fr ";
 			$exec_answers=mysqli_query($link,$sql);
 			echo'
-			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragen_intern"].'</div>';
+			<div class="frage" style="grid-row-end: span 2">'.$row_questions["Fragenbeschreibung"].'</div>';
 			while($row_answers=mysqli_fetch_array($result)){
 				echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start."').style.gridTemplateColumns = '".$gridcolumns."'</script>";
 				echo'
@@ -124,7 +124,7 @@ while($row = mysqli_fetch_array($exec)){
 		$row_range=mysqli_fetch_array($result_range);
 		echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo
-		'<div class="frage"><p>'.$row_questions["Fragen_intern"].'</div>
+		'<div class="frage"><p>'.$row_questions["Fragenbeschreibung"].'</div>
 		<div style="border: 1px solid #000; border-top: none; border-left:none; grid-column-start: 2; grid-column-end: -1; display: grid; grid-template-columns: auto auto auto auto auto;">
 		<div style="margin:auto;">Bewertung: '.$row["Frage_".$row_questions["ID"]].'</div>
 		<input type="range" id="range_'.$Scrollcounter.'_'.$feedback_index.'_'.$row_range["ID"].'" style="width:80%; grid-column-start: 2; grid-column-end: -1; margin:auto;" value='.$row["Frage_".$row_questions["ID"]].' min='.$row_range['range_min'].' max='.$row_range['range_max'].' name="element_1" wrap="soft"></input>
@@ -151,7 +151,7 @@ while($row = mysqli_fetch_array($exec)){
 	else{
 		echo"<script>document.getElementById('formular_div_".$Scrollcounter."_".$feedback_index."_".$fragen_index."_".$start."').style.gridTemplateColumns = '25% 4fr'</script>";
 		echo	
-		'<div class="frage"><p>'.$row_questions["Fragen_intern"].'</div>
+		'<div class="frage"><p>'.$row_questions["Fragenbeschreibung"].'</div>
 		<div class="frage_text" style="font-style:italic" name="element_1">'.$row["Frage_".$row_questions["ID"]].'</div>';
 		if($row["Frage_".$row_questions["ID"]]=='NULL')
 		{

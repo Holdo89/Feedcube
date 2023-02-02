@@ -10,7 +10,7 @@
  $Frage=$_REQUEST["Frage"];
 
 
-$query = "UPDATE intern SET Fragen_intern = '".$Frage."' WHERE ID = '".$Id."'";
+$query = "UPDATE intern SET Fragenbeschreibung = '".$Frage."' WHERE ID = '".$Id."'";
 
 $exec = mysqli_query($link,$query);
 

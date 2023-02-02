@@ -9,7 +9,7 @@ if ($rowCount > 0) {
         $tutorial_id = 	$row['post_id'];
         echo "<form class='form_intern' data-post-id=".$row["post_id"]." style = 'cursor: grab'>";
         echo "<p class='center_select' style='text-align:center; margin:auto; min-width:35px'><i class='fa fa-bars'></i></p>";
-        echo "<div class='center_select' id='Frage_".$row["ID"]."'>".$row["Fragen_intern"]."</div>";
+        echo "<div class='center_select' id='Frage_".$row["ID"]."'>".$row["Fragenbeschreibung"]."</div>";
         if ($row["Typ"]=="Bewertung") {
             echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"intern\", \"Bewertung\");' ><i class='fa fa-pencil'></i></button>";
         } elseif ($row["Typ"]=="Multiplechoice") {

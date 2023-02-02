@@ -98,7 +98,7 @@ CREATE TABLE `intern` (
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
   `Antworttyp` varchar(40) NOT NULL,
-  `Fragen_intern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Frage_Englisch` varchar(500) DEFAULT NULL,
   `post_order_no` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,

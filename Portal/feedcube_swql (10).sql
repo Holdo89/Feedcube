@@ -685,7 +685,7 @@ CREATE TABLE `intern` (
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
   `Antworttyp` varchar(40) NOT NULL,
-  `Fragen_intern` varchar(500) NOT NULL,
+  `Fragenbeschreibung` varchar(500) NOT NULL,
   `Frage_Englisch` varchar(500) DEFAULT NULL,
   `post_order_no` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
@@ -697,7 +697,7 @@ CREATE TABLE `intern` (
 -- Daten für Tabelle `intern`
 --
 
-INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragen_intern`, `Frage_Englisch`, `post_order_no`, `post_id`, `Umfrage_46`, `Umfrage_47`) VALUES
+INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragenbeschreibung`, `Frage_Englisch`, `post_order_no`, `post_id`, `Umfrage_46`, `Umfrage_47`) VALUES
 (8, '2022-06-07 13:29:23', 'Schieberegler', 'vordefiniert', 'Range', NULL, 4, 1, 1, NULL),
 (9, '2022-08-27 09:27:45', 'Bewertung', 'vordefiniert', 'Test', NULL, 1, 2, 1, NULL),
 (10, '2022-08-27 09:27:58', 'Multiplechoice', 'vordefiniert', 'Tes2', NULL, 2, 3, 1, NULL),

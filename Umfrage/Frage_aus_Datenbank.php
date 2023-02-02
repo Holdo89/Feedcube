@@ -6,7 +6,7 @@ $Buttontext = "WEITER";
 $Buttontext_send_feedback = "SENDEN";
 $Buttontext_back = "ZURÜCK";
 
-$sql_rownumber = "SELECT COUNT(Fragen_intern) AS 'Anzahl_Fragen' FROM intern WHERE Umfrage_".$ID." = 1";
+$sql_rownumber = "SELECT COUNT(Fragenbeschreibung) AS 'Anzahl_Fragen' FROM intern WHERE Umfrage_".$ID." = 1";
 
 //Gibt die Anzahl aller Fragen an diebei dieser Umfrage abgefragt werden
 $result_rownumber = mysqli_query($link, $sql_rownumber) ;
@@ -36,7 +36,7 @@ else{
 
     while($index<$Anzahl_Fragen) {
         $row = mysqli_fetch_assoc($result);
-        array_push($Fragen_array,$row["Fragen_intern"]);
+        array_push($Fragen_array,$row["Fragenbeschreibung"]);
         array_push($Fragentyp_array,$row["Typ"]);
         array_push($Fragenid_array,$row["ID"]);
 

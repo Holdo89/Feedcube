@@ -79,14 +79,14 @@ CREATE TABLE `intern` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
-  `Fragen_intern` varchar(500) NOT NULL
+  `Fragenbeschreibung` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `intern`
 --
 
-INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Fragen_intern`) VALUES
+INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Fragenbeschreibung`) VALUES
 (56, '2021-01-05 13:49:02', 'multiple_choice', 'Test'),
 (57, '2021-01-17 21:49:31', 'rangeslider', 'Range'),
 (58, '2021-01-17 21:49:38', 'text', 'Text');

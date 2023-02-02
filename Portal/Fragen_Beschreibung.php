@@ -12,7 +12,7 @@ if($Type=="extern"){
     $row = mysqli_fetch_array($query);
 }
 else if($Type=="intern"){
-    $sql = "SELECT Fragen_intern as Frage FROM intern WHERE ID = ".$ID;
+    $sql = "SELECT Fragenbeschreibung as Frage FROM intern WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
     $row = mysqli_fetch_array($query);
 }

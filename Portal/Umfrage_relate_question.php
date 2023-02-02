@@ -11,11 +11,11 @@ if($Auswahl_Fragenset=="kein_Fragenset")
 
     for ($i=0; $i<sizeof ($Frage);$i++) { 
         if(!strpos($Frage[$i],"_unchecked")){
-        $query="UPDATE intern SET Umfrage_".$ID." = 1 WHERE Fragen_intern = '".$Frage[$i]. "'";  
+        $query="UPDATE intern SET Umfrage_".$ID." = 1 WHERE Fragenbeschreibung = '".$Frage[$i]. "'";  
         mysqli_query($link,$query); 
         } 
         else{
-            $query="UPDATE intern SET Umfrage_".$ID." = 0 WHERE Fragen_intern = '".substr($Frage[$i],0,-10). "'";  
+            $query="UPDATE intern SET Umfrage_".$ID." = 0 WHERE Fragenbeschreibung = '".substr($Frage[$i],0,-10). "'";  
             mysqli_query($link,$query); 
         }
     } 

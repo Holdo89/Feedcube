@@ -58,7 +58,7 @@ function questions_Umfrage($Fragentyp, $link, $Umfrage, $datum_min, $datum_max)
                                </tr>  
                           </thead>';
 
-    $sql = "SELECT ID, Typ, Fragen_intern FROM intern WHERE Fragen_intern !=''AND Typ = '".$Fragentyp."'";
+    $sql = "SELECT ID, Typ, Fragenbeschreibung FROM intern WHERE Fragenbeschreibung !=''AND Typ = '".$Fragentyp."'";
     $i=0;
     $result = mysqli_query($link, $sql) ;
     $row = mysqli_fetch_assoc($result);
@@ -66,7 +66,7 @@ function questions_Umfrage($Fragentyp, $link, $Umfrage, $datum_min, $datum_max)
     while ($row = mysqli_fetch_assoc($result)) {
         echo"<tr>";
         if ($row['Typ']==$Fragentyp) {
-            echo "<td style='text-align:left' id='Frage_".$row['ID']."'>".$row['Fragen_intern']."</td>";
+            echo "<td style='text-align:left' id='Frage_".$row['ID']."'>".$row['Fragenbeschreibung']."</td>";
             Statistik_Umfrage("Frage_".$row['ID'], $link, $Umfrage, $datum_min, $datum_max);
         }
     }

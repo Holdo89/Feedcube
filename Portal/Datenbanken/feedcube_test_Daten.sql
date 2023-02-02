@@ -51,7 +51,7 @@ INSERT INTO `fragensets` (`ID`, `Datum`, `Fragenset`) VALUES
 -- Daten für Tabelle `intern`
 --
 
-INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragen_intern`, `Frage_Englisch`, `post_order_no`, `post_id`, `Umfrage_35`, `Umfrage_36`, `Umfrage_37`, `Umfrage_38`, `Umfrage_39`, `Umfrage_40`) VALUES
+INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Antworttyp`, `Fragenbeschreibung`, `Frage_Englisch`, `post_order_no`, `post_id`, `Umfrage_35`, `Umfrage_36`, `Umfrage_37`, `Umfrage_38`, `Umfrage_39`, `Umfrage_40`) VALUES
 (32, '2022-01-30 15:12:07', 'Multiplechoice', 'fragenspezifisch', 'Testfrage', NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (33, '2022-01-30 15:17:06', 'Schieberegler', 'vordefiniert', 'fwef', NULL, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL),
 (34, '2022-01-30 15:18:11', 'Schieberegler', 'vordefiniert', 'nkl', NULL, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL),

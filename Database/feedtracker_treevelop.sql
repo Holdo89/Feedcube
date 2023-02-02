@@ -87,14 +87,14 @@ CREATE TABLE `intern` (
   `ID` int(11) NOT NULL,
   `Datum` timestamp NOT NULL DEFAULT current_timestamp(),
   `Typ` varchar(200) NOT NULL,
-  `Fragen_intern` varchar(500) NOT NULL
+  `Fragenbeschreibung` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `intern`
 --
 
-INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Fragen_intern`) VALUES
+INSERT INTO `intern` (`ID`, `Datum`, `Typ`, `Fragenbeschreibung`) VALUES
 (23, '2020-10-04 00:06:55', 'rangeslider', 'Derzeitige Stimmung im Unternehmen?'),
 (24, '2020-10-04 00:07:14', 'text', 'Was würdest du gerne ändern?'),
 (25, '2020-10-04 00:07:53', 'rangeslider', 'Wie motiviert fühlst du dich?'),

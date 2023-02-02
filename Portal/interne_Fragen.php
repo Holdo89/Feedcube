@@ -42,7 +42,7 @@ while($row = mysqli_fetch_assoc($result)){
     }
     echo"
 
-    <div class='frage'>".$row['Fragen_intern']."</div>";
+    <div class='frage'>".$row['Fragenbeschreibung']."</div>";
 
 
 

@@ -17,7 +17,7 @@ $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
 
 $Antwort = $_POST["checkbox"]; 
 
-$sql = "INSERT INTO intern (Typ, Fragen_intern, Antworttyp, post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '$last_order','$last_order')";
+$sql = "INSERT INTO intern (Typ, Fragenbeschreibung, Antworttyp, post_order_no, post_id) VALUES ('$Fragentyp', '$neue_Frage', '$Antworttyp', '$last_order','$last_order')";
 
 if(mysqli_query($link, $sql)){
 

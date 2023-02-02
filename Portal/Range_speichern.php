@@ -70,7 +70,7 @@ if($Type=="extern")
     $query = mysqli_query($link, $sql);
 }
 else if($Type=="intern"){
-    $sql = "UPDATE intern SET Fragen_intern = '".$Frage."' WHERE ID = ".$ID;
+    $sql = "UPDATE intern SET Fragenbeschreibung = '".$Frage."' WHERE ID = ".$ID;
     $query = mysqli_query($link, $sql);
 }
 
