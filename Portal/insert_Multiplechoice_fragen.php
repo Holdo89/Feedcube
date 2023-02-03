@@ -8,6 +8,8 @@ require_once "session.php";
 if($Type=="extern")
 {
     $sql = "SELECT MAX(post_order_no) FROM fragen";
+    $neues_Überschrift = mysqli_real_escape_string($link, $_REQUEST["Überschrift"]);
+
 }
 else
 {
@@ -17,23 +19,23 @@ $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
 
-$neues_Überschrift = mysqli_real_escape_string($link, $_REQUEST["Überschrift"]);
 $neue_Frage = mysqli_real_escape_string($link, $_REQUEST["Frage"]);
 $Fragentyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Fragentyp"]);
 $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
 
 
 $Antwort = $_POST["checkbox"]; 
-$AntwortEnglisch = $_POST["checkboxenglisch"]; 
 
-$Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
+if($Type=="extern")
+{
+    $AntwortEnglisch = $_POST["checkboxenglisch"]; 
+
+    $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
     $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$neues_Überschrift."'";
     $query = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($query);
     $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
 
-if($Type=="extern")
-{
     $sql = "INSERT INTO fragen (Überschrift, Überschrift_Englisch, Typ, Fragenbeschreibung, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 }
 else
@@ -59,14 +61,19 @@ $ID = $row['ID'];
 if ($Type=="extern") 
 {
     $sql= "ALTER TABLE multiplechoice_answers ADD Frage_".$row['ID']." tinyint(1)";
+    mysqli_query($link, $sql);
+
+    $sql= "ALTER TABLE kursfeedback ADD Frage_".$row['ID']." TEXT";
+    mysqli_query($link, $sql);
 }
 else{
     $sql= "ALTER TABLE multiplechoice_answers ADD Intern_".$row['ID']." tinyint(1)";
-}
-mysqli_query($link, $sql);
+    mysqli_query($link, $sql);
 
-$sql= "ALTER TABLE ".$Type."es_feedback ADD Frage_".$row['ID']." TEXT";
-mysqli_query($link, $sql);
+    $sql= "ALTER TABLE umfragenfeedback ADD Frage_".$row['ID']." TEXT";
+    mysqli_query($link, $sql);
+}
+
 
 //Fragen_relate_antworten.php
 for ($i=0; $i<sizeof($Antwort);$i++) 

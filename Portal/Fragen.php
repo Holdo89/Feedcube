@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>\
             </div>';
             document.getElementById('Rangeoptionen').style.display='block';
-            display(".$ID.", \"".$Type."\", \"Schieberegler\");
+            display(".$ID.", \"Schieberegler\");
             document.getElementById('alert').style.display='block';
             </script>";
         }

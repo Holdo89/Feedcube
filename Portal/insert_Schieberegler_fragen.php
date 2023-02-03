@@ -17,18 +17,18 @@ $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 $last_order = $row["MAX(post_order_no)"]+1; //die letzte Frage fürdieReihenfolge von Drag and Drop
 
-$neues_Überschrift = mysqli_real_escape_string($link, $_REQUEST["Überschrift"]);
 $neue_Frage = mysqli_real_escape_string($link, $_REQUEST["Frage"]);
 $Fragentyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Fragentyp"]);
 $Antworttyp = mysqli_real_escape_string($link, $_REQUEST["Auswahl_Antworttyp"]);
-$Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
+
+if($Type=="extern")
+{
+    $neues_Überschrift = mysqli_real_escape_string($link, $_REQUEST["Überschrift"]);
+    $Frage_Englisch = $_REQUEST["Frage_Übersetzung"];
     $sql = "SELECT Überschrift_Übersetzung FROM überschrift WHERE Überschrift = '".$neues_Überschrift."'";
     $query = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($query);
     $Überschrift_Englisch = $row["Überschrift_Übersetzung"];
-
-if($Type=="extern")
-{
     $sql = "INSERT INTO fragen (Überschrift, Überschrift_Englisch, Typ, Fragenbeschreibung, Frage_Englisch, Antworttyp, post_order_no, post_id) VALUES ('$neues_Überschrift', '$Überschrift_Englisch', '$Fragentyp', '$neue_Frage', '$Frage_Englisch', '$Antworttyp', '$last_order','$last_order')";
 }
 else
@@ -52,15 +52,20 @@ $ID = $row['ID'];
 if($Type=="extern")
 {
     $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Frage_ID) VALUES (".$max.", ".$min.", 5, ".$row['ID'].")";
+    mysqli_query($link, $sql);
+
+    $sql= "ALTER TABLE  kursfeedback ADD Frage_".$row['ID']." INT(11)";
+    mysqli_query($link, $sql);
 }
 else
 {
     $sql = "INSERT INTO rangeslider_answers (range_max, range_min, columns, Intern_ID) VALUES (".$max.", ".$min.", 5, ".$row['ID'].")";
-}
-mysqli_query($link, $sql);
+    mysqli_query($link, $sql);
 
-$sql= "ALTER TABLE  ".$Type."es_feedback ADD Frage_".$row['ID']." INT(11)";
-mysqli_query($link, $sql);
+    $sql= "ALTER TABLE  umfragenfeedback ADD Frage_".$row['ID']." INT(11)";
+    mysqli_query($link, $sql);
+}
+
 
 if ($Type=="extern") {
     $columnnames = "";

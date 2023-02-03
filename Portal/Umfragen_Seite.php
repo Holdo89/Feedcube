@@ -100,7 +100,7 @@
   cursor: pointer;
 }
 
-.interne_Fragen form.ui-state-highlight {
+.Umfragenfragen form.ui-state-highlight {
     padding: 20px;
     background-color: #eaecec;
     border: 1px dotted #ccc;
@@ -215,8 +215,6 @@
 					</input>
 					<input id="Fragenid" name="Fragenid" style="font-size:12px; display:none;" value = 0>
 					</input>
-					<input id="externinterntyp" name="externinterntyp" style="font-size:12px; display:none;">
-					</input>
 					<div id="Bewertungoptionen" style="display:none;">
 					</div>
 					<div id="Multiplechoiceoptionen" style="font-size:12px; display:none;">
@@ -327,12 +325,12 @@
 	document.getElementById("UmfrageDatum").min=today;
 
 	$(document).ready(function(){
-		$( ".interne_Fragen" ).sortable({
+		$( ".Umfragenfragen" ).sortable({
 			placeholder : "ui-state-highlight",
 			update  : function(event, ui)
 			{	
 				var post_order_ids = new Array();
-				$('.interne_Fragen form').each(function(){
+				$('.Umfragenfragen form').each(function(){
 					post_order_ids.push($(this).data("post-id"));
 				});
 				$.ajax({
@@ -519,16 +517,15 @@
 		var Answer = document.getElementById(Fragentyp.value+"newanswer").value;
 		var AnswerEnglisch = document.getElementById(Fragentyp.value+"newanswerEnglisch").value;
 
-		var Type = document.getElementById("externinterntyp").value;
 		if (Fragentyp.value == "Multiplechoice")
 		{
 			var inputtext='\
 			<div style="background-color:ghostwhite; margin-bottom:10px; padding: 5px;">\
 				<input type="hidden" value="'+tempid+'_unchecked" name="checkbox[]">\
-					<input type="checkbox" style="margin-left:0px;" id="'+ tempid +'_intern_Multiplechoice" name="checkbox[]" value="'+ Answer +'" checked>\
+					<input type="checkbox" style="margin-left:0px;" id="'+ tempid +'_Multiplechoice" name="checkbox[]" value="'+ Answer +'" checked>\
 				<input type="hidden" value="'+tempid+'_unchecked_englisch" name="checkboxenglisch[]">\
-					<input type="checkbox" style="margin-left:0px; display:none" id="'+tempid+'_intern_Multiplechoice_englisch" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked>\
-						<label id="label_'+tempid+'" for="'+ tempid +'_intern_Multiplechoice" style="border:none;"> '+ Answer +'</label>\
+					<input type="checkbox" style="margin-left:0px; display:none" id="'+tempid+'_Multiplechoice_englisch" name="checkboxenglisch[]" value="'+AnswerEnglisch+'" onclick="return false" checked>\
+						<label id="label_'+tempid+'" for="'+ tempid +'_Multiplechoice" style="border:none;"> '+ Answer +'</label>\
 						<button type="button" style="border:none; background:white; margin-left:10px;" onclick="ShowFragenspezifischeDetails('+ tempid +',\'Multiplechoice\')"><i class="fa fa-pencil"></i></button>\
 						<button type="button" style="border:none; background:white; margin-left:10px;" onclick="Antwort_löschen('+ tempid +',\'Multiplechoice\')"><i class="fa fa-trash"></i></button>\
 			<div id="Container_Multiplechoice_'+tempid+'" style="grid-template-columns:auto auto; display:none"><div>Bezeichnung:</div><div>Englische Übersetzung:</div>\
@@ -543,7 +540,7 @@
 			{
 				console.log("Response:"+this.responseText);
 			;};
-			xmlhttp_options.open("GET", "insert_Specific_Answer.php?ID=" + id + "&Answer=" +Answer+ "&AnswerEnglisch=" +AnswerEnglisch+"&Fragentyp="+Fragentyp.value+"&Externinterntyp="+Type, false);
+			xmlhttp_options.open("GET", "insert_Specific_Answer.php?ID=" + id + "&Answer=" +Answer+ "&AnswerEnglisch=" +AnswerEnglisch+"&Fragentyp="+Fragentyp.value, false);
 			xmlhttp_options.send();
 		}
 	}
@@ -567,11 +564,11 @@ var FragenspezifischeAntwort = document.getElementById("Fragenspezifisch_"+Frage
 var FragenspezifischeAntwortEnglisch = document.getElementById("FragenspezifischEnglisch_"+Fragentyp+"_"+id).value; 
 
 document.getElementById("label_"+id).innerHTML=FragenspezifischeAntwort;
-document.getElementById(id +'_intern_Multiplechoice').value=FragenspezifischeAntwort;
+document.getElementById(id +'_Multiplechoice').value=FragenspezifischeAntwort;
 console.log("Amtwort:"+FragenspezifischeAntwort)
 console.log("AmtwortEnglisch:"+FragenspezifischeAntwortEnglisch)
 
-document.getElementById(id +'_intern_Multiplechoice_englisch').value=FragenspezifischeAntwortEnglisch;
+document.getElementById(id +'_Multiplechoice_englisch').value=FragenspezifischeAntwortEnglisch;
 //Wenn die Id nicht 0 ist also eine bestehende Frage bearbeitet wird dann schreib die neue Antwort in die Datenbank sofort wenn sie hinzugefügt wird
 if(id!=0 && id!=undefined)
 {
@@ -587,7 +584,7 @@ if(id!=0 && id!=undefined)
 }
 }	
 
-	function getCheckedAntworttyp(id, type){
+	function getCheckedAntworttyp(id){
 
 		var xmlhttp_options = new XMLHttpRequest();
 		var frage = document.getElementById("Frage");     
@@ -606,11 +603,11 @@ if(id!=0 && id!=undefined)
 				}
 			}
 		;};
-		xmlhttp_options.open("GET", "Fragen_Check_Fragenspezifisch.php?ID=" + id + "&Type=" +type, false);
+		xmlhttp_options.open("GET", "Fragen_Check_Fragenspezifisch.php?ID=" + id, false);
 		xmlhttp_options.send();
 	}
 
-	function Rangesliderabfrage(id, type){
+	function Rangesliderabfrage(id){
 		var xmlhttp_options = new XMLHttpRequest();
 		var Schieberoutput = document.getElementById("SchieberID");
 		var xmlhttp_options = new XMLHttpRequest();
@@ -624,7 +621,7 @@ if(id!=0 && id!=undefined)
 		xmlhttp_options.send();
 	}
 
-	function checkAnswerboxes(id, type, questiontype){
+	function checkAnswerboxes(id, questiontype){
 
 if(id!=0)
 {
@@ -635,7 +632,7 @@ if(id!=0)
 		var checked_sets = this.response.split(",");
 		var i=0;
 		while (i<checked_sets.length){
-			var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
+			var checkbox = document.getElementById(checked_sets[i]+'_'+questiontype);
 			checkbox.checked=false;	
 			i=i+1;		
 		}
@@ -646,14 +643,14 @@ if(id!=0)
 				var checked_sets = this.response.split(",");
 				var i=0;
 				while (i<checked_sets.length){
-					var checkbox = document.getElementById(checked_sets[i]+'_'+type+"_"+questiontype);
+					var checkbox = document.getElementById(checked_sets[i]+'_'+questiontype);
 					console.log("checked:"+checkbox);
 					checkbox.checked=true;	
 					i=i+1;		
 				}
 			}
 		};
-		xmlhttp.open("GET", "Fragen_get_Antwortenset_checked_"+type+".php?ID=" + id + "&Type="+questiontype, false);
+		xmlhttp.open("GET", "Fragen_get_Antwortenset_checked.php?ID=" + id + "&Type="+questiontype, false);
 		xmlhttp.send();
 	}
 	};
@@ -663,7 +660,7 @@ if(id!=0)
 }
 
 
-	function getFragenBeschreibung(id, type){
+	function getFragenBeschreibung(id){
 		var xmlhttp_options = new XMLHttpRequest();
 		var frage = document.getElementById("Frage");     
 				xmlhttp_options.onreadystatechange = function() {
@@ -671,16 +668,16 @@ if(id!=0)
 						frage.value=this.responseText;
 					}
 				;};
-				xmlhttp_options.open("GET", "Fragen_Beschreibung.php?ID=" + id + "&Type=" +type, false);
+				xmlhttp_options.open("GET", "Intern_Fragen_Beschreibung.php?ID=" + id, false);
 				xmlhttp_options.send();
 	}
 
-	function getFragenspezifischeAntworten(id, questiontype, type){
+	function getFragenspezifischeAntworten(id, questiontype){
 		if(id!=0)
 		{
 			var Modalform = document.getElementById("Modalform");		
 			document.getElementById(questiontype).checked=true;
-			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type="+type+"&Questiontype="+questiontype
+			Modalform.action = "Fragen_relate_antworten.php?Id="+id+"&Type=intern&Questiontype="+questiontype
 			<?php
                 if (isset($_REQUEST["Step"])) {
                     $Step = $_REQUEST["Step"];
@@ -695,7 +692,7 @@ if(id!=0)
 							Multiplechoiceoptionen.innerHTML=this.responseText;
 						}
 				;};
-				xmlhttp_options.open("GET", "Umfragen_Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype+"&Typ="+type, false);
+				xmlhttp_options.open("GET", "Umfragen_Fragenspezifische_Antworten.php?ID=" + id + "&Fragentyp="+questiontype, false);
 				xmlhttp_options.send();					
 			}
 			else{
@@ -944,11 +941,10 @@ if(id!=0)
 		}
 	}
 
-	function display(id, type, questiontype, umfragenid) 
+	function display(id, questiontype, umfragenid) 
 	{	
 		document.getElementById('Umfragenid').value = umfragenid;
 		document.getElementById('alert').style.display='none';
-		document.getElementById("externinterntyp").value=type;
 
 		if (questiontype == "Bewertung")
 		{
@@ -975,19 +971,19 @@ if(id!=0)
 			modal.style.display = "block";
 			var Modalform = document.getElementById("Modalform");
 
-			getFragenBeschreibung(id,type);
-			getCheckedAntworttyp(id, type);
+			getFragenBeschreibung(id);
+			getCheckedAntworttyp(id);
 
 			if(questiontype=="Bewertung")
 			{
-				getFragenspezifischeAntworten(id, questiontype, type);
+				getFragenspezifischeAntworten(id, questiontype);
 				Bewertungoptionen.style.display="block";
 				Multiplechoiceoptionen.style.display="none";
 				Rangeoptionen.style.display="none";		
 			}
 			else if(questiontype=="Multiplechoice")
 			{	
-				getFragenspezifischeAntworten(id, questiontype, type);
+				getFragenspezifischeAntworten(id, questiontype);
 				Bewertungoptionen.style.display="none";
 				Multiplechoiceoptionen.style.display="block";
 				Rangeoptionen.style.display="none";	
@@ -1022,9 +1018,9 @@ if(id!=0)
 
 			if(questiontype=="Schieberegler")
 			{
-				Rangesliderabfrage(id, type);	
+				Rangesliderabfrage(id);	
 			}	
-			checkAnswerboxes(id, type, questiontype);		
+			checkAnswerboxes(id, questiontype);		
 		}
 		else if(id==0)
 		{
@@ -1103,7 +1099,6 @@ if(id!=0)
 		var xmlhttp_options = new XMLHttpRequest();
 
 		document.getElementById('alert').style.display='none';
-		var externinterntyp = document.getElementById("externinterntyp").value
 
 		var Modalform = document.getElementById("Modalform");
 		var id = document.getElementById('Fragenid').value;
@@ -1169,12 +1164,12 @@ if(id!=0)
 				    echo'<input type="radio" name="bewertungTextOption" style="margin-left:0px; margin-top:0px;"><p for="'.$row["Answers"].'_intern_Bewertung" style="border:none;"> '.$row["Answers"].'</p></input><br>';
 				}?>';
 			}
-			checkAnswerboxes(id, externinterntyp, Fragentyp_value);	
+			checkAnswerboxes(id, Fragentyp_value);	
 		
 		
 		if(Fragentyp_value == "Multiplechoice")
 		{
-				getFragenspezifischeAntworten(id, Fragentyp_value, externinterntyp);
+				getFragenspezifischeAntworten(id, Fragentyp_value);
 				Bewertungoptionen.style.display="none";
 				Multiplechoiceoptionen.style.display="block";
 				Rangeoptionen.style.display="none";

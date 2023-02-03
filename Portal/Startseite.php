@@ -30,8 +30,8 @@
 		include "Start_Draw_Charts_Umfragen.php";
 		include "Start_Draw_Trend_Chart_Umfragen.php";
  	?>	
-  <script type = "text/javascript" src="export_delete_data.js?v=1"></script>
-  <script type="text/javascript" src="rangeslider_jquery.js?v=1"> </script>
+  <script type = "text/javascript" src="export_delete_data.js?v=2"></script>
+  <script type="text/javascript" src="rangeslider_jquery.js?v=2"> </script>
   <script type="text/javascript" src="start_rangeslider_jquery_intern.js?v=1"> </script>
   <link rel="manifest" href="../../manifest.json">
 

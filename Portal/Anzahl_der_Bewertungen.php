@@ -20,7 +20,7 @@ include "IsAdmincheck.php";
 		if($row["Typ"]=="Bewertung")
 		{
 			$Typ="bewertung";
-			$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers WHERE ".$Frage." = 1";
+			$sql="SELECT COUNT(Answers) As Anzahl_Antworten FROM ".$Typ."_answers";
 		}
 		else
 		{

@@ -31,8 +31,8 @@
         include "Draw_Charts.php";		//Pie and COlumnchart
  		include "Draw_Trend_Chart.php";
  	?>	
-  <script type = "text/javascript" src="export_delete_data.js?v=1"></script>
-  <script type="text/javascript" src="rangeslider_jquery.js?v=1"> </script>
+  <script type = "text/javascript" src="export_delete_data.js?v=2"></script>
+  <script type="text/javascript" src="rangeslider_jquery.js?v=2"> </script>
 
 </head>
 <style>
@@ -51,7 +51,6 @@
  ?>
 <script>
 	document.getElementById("feedback_charts").className = "active";
-	document.getElementById("Feedback").style.backgroundColor = "lightgrey";
 </script>
 		<h1 style="font-size:30px; margin-bottom:20px;"><img src="../assets/brand/bar-chart.png" width="50" style="margin-top:-10px;"> Auswertung </h1>
 		<p style="margin:auto; margin-bottom:40px; width:90vw;"> Wähle eine Frage um das Feedback dazu auszuwerten</p>

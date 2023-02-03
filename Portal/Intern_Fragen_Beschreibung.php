@@ -5,7 +5,7 @@ require_once "session.php";
 
 $ID = $_REQUEST["ID"];
 
-$sql = "SELECT Fragenbeschreibung FROM fragen WHERE ID = ".$ID;
+$sql = "SELECT Fragenbeschreibung FROM intern WHERE ID = ".$ID;
 $query = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($query);
 

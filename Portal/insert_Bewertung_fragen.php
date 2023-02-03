@@ -61,16 +61,14 @@ $ID = $row['ID'];
 
 if($Type=="extern")
 {
-    $sql= "ALTER TABLE bewertung_answers ADD Frage_".$row['ID']." tinyint(1)";
+    $sql= "ALTER TABLE kursfeedback ADD Frage_".$row['ID']." TEXT";
+    mysqli_query($link, $sql);
 }
 else
 {
-    $sql= "ALTER TABLE bewertung_answers ADD Intern_".$row['ID']." tinyint(1)";
+    $sql= "ALTER TABLE umfragenfeedback ADD Frage_".$row['ID']." TEXT";
+    mysqli_query($link, $sql);
 }
-mysqli_query($link, $sql);
-
-$sql= "ALTER TABLE ".$Type."es_feedback ADD Frage_".$row['ID']." TEXT";
-mysqli_query($link, $sql);
 
 
 if ($Type=="extern") {

@@ -36,10 +36,8 @@ $result=mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
 $ID = $row['ID'];
 
-if($Fragentyp=='Bewertung'){
-    $sql= "ALTER TABLE bewertung_answers ADD Frage_".$row['ID']." tinyint(1)";
-}
-else if($Fragentyp=='Multiplechoice'){
+
+if($Fragentyp=='Multiplechoice'){
     $sql= "ALTER TABLE multiplechoice_answers ADD Frage_".$row['ID']." tinyint(1)";
 }
 else if($Fragentyp=='Schieberegler'){

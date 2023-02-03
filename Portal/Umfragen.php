@@ -6,9 +6,10 @@ $Schieberegler_err="";
 
  if ($_SERVER["REQUEST_METHOD"] == "POST") 
  {
+
     $ID=$_REQUEST["Fragenid"];
     $Umfragenid=$_REQUEST["Umfragenid"];
-    $Type = $_REQUEST["externinterntyp"];
+    $Type = "intern";
     $Fragentyp = $_REQUEST["Auswahl_Fragentyp"];
 
     if ($Fragentyp=="Schieberegler") 
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>\
             </div>';
             document.getElementById('Rangeoptionen').style.display='block';
-            display(".$ID.", \"".$Type."\", \"Schieberegler\");
+            display(".$ID.", \"Schieberegler\");
             document.getElementById('alert').style.display='block';
             </script>";
         }

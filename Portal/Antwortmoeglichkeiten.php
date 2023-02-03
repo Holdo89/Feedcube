@@ -68,7 +68,7 @@
     cursor: move;
     margin-top: 12px;
     }
-#interne_Fragen form.ui-state-highlight {
+#Umfragenfragen form.ui-state-highlight {
     padding: 20px;
     background-color: #eaecec;
     border: 1px dotted #ccc;

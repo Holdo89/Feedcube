@@ -13,10 +13,10 @@ while($row_Umfragen = mysqli_fetch_assoc($result_Umfragen)) {
     echo'
 	</form>
     <div id="form_'.$row_Umfragen["ID"].'" style="display:none; width:100%; text-align:center; margin:auto">
-    <div class="interne_Fragen" style="padding:10px;">';
-	include "interne_Fragen_Abfrage.php";
+    <div class="Umfragenfragen" style="padding:10px;">';
+	include "Umfragenfragen_Abfrage.php";
 	echo'</div>
-    <button id="element" style="width:250px; background-color:white; border: 2px solid '; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'; color:'; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'" onclick = "display(undefined,\'intern\',undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
+    <button id="element" style="width:250px; background-color:white; border: 2px solid '; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'; color:'; $sql='SELECT farbe FROM system'; $exec=mysqli_query($link,$sql); $result=mysqli_fetch_assoc($exec); echo $result['farbe']; echo'" onclick = "display(undefined,undefined,'.$row_Umfragen["ID"].')"><i class="fa fa-question" style="font-size:19px" aria-hidden="true"></i> Frage hinzufügen</button>
     </div>';
 }
 ?>

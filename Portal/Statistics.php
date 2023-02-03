@@ -31,7 +31,7 @@ $typ=$row["Typ"];
     $Average = 0;
 	$i=1;
 	if($typ=="Bewertung"){
-		$sql="SELECT Answers FROM bewertung_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
+		$sql="SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{	
@@ -93,12 +93,12 @@ $typ=$row["Typ"];
 	$i=1;
 	if($typ=="Bewertung"){
 
-		$sql_number_of_answers="SELECT COUNT(Answers) FROM bewertung_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
+		$sql_number_of_answers="SELECT COUNT(Answers) FROM bewertung_answers ORDER BY post_order_no ASC";
 		$exec_number_of_answers = mysqli_query($link, $sql_number_of_answers);
 		$number_of_answers = mysqli_fetch_array($exec_number_of_answers);
 		$range = intval($number_of_answers[0])*0.1;
 
-		$sql="SELECT Answers FROM bewertung_answers WHERE ".$Frage." = 1 ORDER BY post_order_no ASC";
+		$sql="SELECT Answers FROM bewertung_answers ORDER BY post_order_no ASC";
 		$exec = mysqli_query($link, $sql);
 		while($row=mysqli_fetch_array($exec))
 		{

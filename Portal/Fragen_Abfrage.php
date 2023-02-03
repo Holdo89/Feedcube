@@ -11,13 +11,13 @@ if ($rowCount > 0) {
         echo "<p name='bars' class='center_select' style='text-align:center; margin:auto;min-width:35px'><i class='fa fa-bars'></i></p>";
         echo "<div class='center_select' id='Frage_".$row["ID"]."'>".$row["Fragenbeschreibung"]."</div>";
         if ($row["Typ"]=="Bewertung") {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Bewertung\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"Bewertung\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         } elseif ($row["Typ"]=="Multiplechoice") {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Multiplechoice\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"Multiplechoice\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         } elseif ($row["Typ"]=="Schieberegler") {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Schieberegler\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"Schieberegler\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         } elseif ($row["Typ"]=="Text") {
-            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"extern\", \"Text\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
+            echo "<button type='button' class='center_button' onclick='display(".$row["ID"].", \"Text\");' ><i class='fa fa-pencil'></i><span class='tooltiptext'>Bearbeiten</span></button>";
         } else {
             echo "<button type='button' class='center_button'></button>";
         }

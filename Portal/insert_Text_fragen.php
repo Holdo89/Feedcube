@@ -54,8 +54,13 @@ $row = mysqli_fetch_assoc($result);
 $ID = $row['ID'];
 
 mysqli_query($link, $sql);
-
-$sql= "ALTER TABLE ".$Type."es_feedback ADD Frage_".$row['ID']." TEXT";
+if ($Type=="extern") {
+    $sql= "ALTER TABLE kursfeedback ADD Frage_".$row['ID']." TEXT";
+}
+else
+{
+    $sql= "ALTER TABLE umfragenfeedback ADD Frage_".$row['ID']." TEXT";
+}
 
 mysqli_query($link, $sql);
 

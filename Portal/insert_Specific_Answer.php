@@ -9,7 +9,6 @@ $Answer = $_REQUEST["Answer"];
 $AnswerEnglisch = $_REQUEST["AnswerEnglisch"];
 $ID = $_REQUEST["ID"];
 $Fragentyp = $_REQUEST["Fragentyp"];
-$Type = $_REQUEST["Externinterntyp"];
 
 if ($Fragentyp=="Bewertung")
 {
